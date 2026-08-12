@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contronym: The Majorana of Meaning</title>
+
+<style>
+body {
+  font-family: system-ui, sans-serif;
+  background-color: #f9f7f2;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 28px 12px;
+  margin: 0;
+}
+
+h1 { font-size: 2.3rem; margin: 0 0 0.2em; }
+h2 { font-style: italic; margin: 0 0 1.2em; text-align: center; }
+
+.game-container {
+  position: relative;
+  width: min(400px, 94vw);
+  height: 380px;
+  margin-bottom: 14px;
+}
+
+.axis { position: absolute; background: #000; }
+
+.x-axis {
+  width: 100%;
+  height: 2px;
+  bottom: 40px;
+  left: 0;
+  background: #0057a8;
+}
+
+.y-axis {
+  width: 2px;
+  height: 100%;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  background: #b11b2b;
+}
+
+.label {
+  position: absolute;
+  font-style: italic;
+  font-size: 0.82rem;
+  z-index: 5;
+  background: rgba(249, 247, 242, 0.84);
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+
+.left-label {
+  bottom: 215px;
+  left: 20px;
+  color: #8b1e1e;
+  text-align: left;
+  line-height: 1.6;
+}
+
+.right-label {
+  bottom: 215px;
+  right: 20px;
+  color: #0057a8;
+  text-align: right;
+  line-height: 1.6;
+}
+
+.x-label { bottom: 20px; right: 10px; color: #0057a8; }
+.y-label { top: 10px; left: 52%; color: #b11b2b; }
+
+.parabola-svg {
+  position: absolute;
+  bottom: -90px;
+  left: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+.majorana-trail {
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  width: 240px;
+  height: 100px;
+  z-index: 4;
+}
+
+.answer-boxes {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  max-width: 94vw;
+}
+
+.letter-box {
+  width: 34px;
+  height: 36px;
+  border: 1px solid #333;
+  font-family: monospace;
+  font-size: 1.15rem;
+  background-color: white;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+
+.revealed { background-color: #e0f7fa; }
+
+.button-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+button {
+  padding: 8px 13px;
+  font-size: 0.92rem;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  background-color: #d8ecf3;
+}
+
+#submit-answer { background: #d7e8ff; }
+#reset-puzzle { background: #f3d8d8; }
+
+#hint-text, #message, #attempts, #result-card {
+  max-width: 430px;
+  text-align: center;
+  padding: 0 12px;
+}
+
+#attempts {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #555;
+  font-style: italic;
+}
+
+#hint-text {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #666;
+  margin-top: 10px;
+  display: none;
+}
+
+#message {
+  font-size: 0.92rem;
+  color: #008080;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+#result-card {
+  display: none;
+  margin-top: 16px;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  background: #fffdf8;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.majorana-logo {
+  font-family: Georgia, serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #b11b2b;
+  line-height: 1;
+}
+
+.result-title {
+  font-weight: 800;
+  color: #0057a8;
+  margin-top: 8px;
+  font-size: 1.05rem;
+}
+
+.definition-box {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  text-align: left;
+  line-height: 1.45;
+}
+
+.definition-box strong { color: #333; }
+
+.share-preview {
+  margin-top: 12px;
+  background: #f9f7f2;
+  border-radius: 10px;
+  padding: 10px;
+  white-space: pre-line;
+  font-family: monospace;
+  font-size: 0.82rem;
+  text-align: left;
+}
+
+.share-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.footer-note {
+  margin-top: 18px;
+  margin-bottom: 20px;
+  font-size: 0.78rem;
+  color: #666;
+  font-style: italic;
+  text-align: center;
+}
+
+sup {
+  font-weight: 800;
+  font-style: normal;
+  font-size: 0.72rem;
+  margin-left: 2px;
+}
+
+@media (max-width: 430px) {
+  body { padding-top: 20px; }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1rem; }
+  .game-container { height: 340px; }
+  .left-label {
+    left: 8px;
+    bottom: 190px;
+    font-size: 0.75rem;
+  }
+  .right-label {
+    right: 8px;
+    bottom: 190px;
+    font-size: 0.75rem;
+  }
+  .letter-box {
+    width: 31px;
+    height: 34px;
+  }
+}
+</style>
+</head>
+
+<body>
+<h1>Contronym</h1>
+<h2>The Majorana of Meaning</h2>
+
+<div class="game-container">
+  <div class="axis x-axis"></div>
+  <div class="axis y-axis"></div>
+
+  <span class="label left-label" id="left-label"></span>
+  <span class="label right-label" id="right-label"></span>
+  <span class="label x-label">transverse</span>
+  <span class="label y-label">conjugate</span>
+
+  <svg class="parabola-svg" width="400" height="340" viewBox="0 0 400 340">
+    <path d="M 95 40 Q 200 340 305 40"
+      stroke="#00bfff"
+      stroke-width="2"
+      stroke-dasharray="6 6"
+      fill="none" />
+  </svg>
+
+  <svg class="majorana-trail" width="240" height="100" viewBox="0 0 240 100">
+    <path d="M 10 60 C 40 20, 80 100, 120 60 S 200 0, 230 60"
+      stroke="#888"
+      stroke-width="2"
+      stroke-dasharray="5 5"
+      fill="none" />
+    <text x="225" y="65" font-size="20" font-style="italic" font-family="serif" fill="#333">ν</text>
+  </svg>
+</div>
+
+<div class="answer-boxes" id="answer-boxes"></div>
+
+<p id="attempts">Contronym #001 • Attempts: 0 / 3 • Hints used: 0</p>
+
+<div class="button-row">
+  <button id="submit-answer">Submit Answer</button>
+  <button id="show-hint">Reveal Hint Word</button>
+  <button id="reset-puzzle">Reset Puzzle</button>
+</div>
+
+<p id="hint-text"></p>
+<p id="message"></p>
+
+<div id="result-card">
+  <div class="majorana-logo">Cν</div>
+  <div class="result-title" id="result-title"></div>
+  <div class="definition-box" id="definition-box"></div>
+  <div class="share-preview" id="share-preview"></div>
+
+  <div class="share-buttons">
+    <button id="native-share">Share</button>
+    <button id="copy-share">Copy for Instagram/Facebook</button>
+  </div>
+</div>
+
+<div class="footer-note">Context determines charge. Play again next week at PAT Tutoring.</div>
+
+<script>
+const puzzle = {
+  number: "001",
+  date: "June 2026",
+  word: "SANCTION",
+  hints: [
+    { word: "restrict", charge: "-" },
+    { word: "permit", charge: "+" },
+    { word: "penalize", charge: "-" },
+    { word: "authorize", charge: "+" },
+    { word: "punish", charge: "-" },
+    { word: "approve", charge: "+" }
+  ],
+  message: "A word that can officially approve or penalize depending on context.",
+  positiveDefinition: "to officially approve, permit, or authorize something.",
+  negativeDefinition: "to penalize, punish, or place restrictions on someone or something.",
+  positiveExample: "The committee sanctioned the proposal.",
+  negativeExample: "The league sanctioned the player.",
+  footer: "Context determines charge. Play again next week at PAT Tutoring."
+};
+
+const word = puzzle.word.toUpperCase();
+let visibleHintCount = 2;
+let attempts = 0;
+let solved = false;
+let hintsUsed = 0;
+
+document.addEventListener("DOMContentLoaded", () => {
+  const answerBoxes = document.getElementById("answer-boxes");
+  const hintText = document.getElementById("hint-text");
+  const showHintBtn = document.getElementById("show-hint");
+  const submitBtn = document.getElementById("submit-answer");
+  const resetBtn = document.getElementById("reset-puzzle");
+  const message = document.getElementById("message");
+  const attemptsText = document.getElementById("attempts");
+  const leftLabel = document.getElementById("left-label");
+  const rightLabel = document.getElementById("right-label");
+  const resultCard = document.getElementById("result-card");
+  const resultTitle = document.getElementById("result-title");
+  const definitionBox = document.getElementById("definition-box");
+  const sharePreview = document.getElementById("share-preview");
+  const nativeShareBtn = document.getElementById("native-share");
+  const copyShareBtn = document.getElementById("copy-share");
+
+  function renderHints() {
+    const shownHints = puzzle.hints.slice(0, visibleHintCount);
+
+    leftLabel.innerHTML =
+      shownHints.filter(h => h.charge === "-")
+        .map(h => `${h.word}<sup>−</sup>`)
+        .join("<br>") || "negative";
+
+    rightLabel.innerHTML =
+      shownHints.filter(h => h.charge === "+")
+        .map(h => `${h.word}<sup>+</sup>`)
+        .join("<br>") || "positive";
+
+    hintText.textContent = puzzle.message;
+    showHintBtn.textContent =
+      visibleHintCount >= puzzle.hints.length ? "Show Full Hint" : "Reveal Hint Word";
+  }
+
+  function createBoxes() {
+    answerBoxes.innerHTML = "";
+
+    for (let i = 0; i < word.length; i++) {
+      const box = document.createElement("input");
+      box.type = "text";
+      box.maxLength = 1;
+      box.className = "letter-box";
+      box.dataset.index = i;
+      box.autocomplete = "off";
+      box.inputMode = "text";
+      answerBoxes.appendChild(box);
+    }
+  }
+
+  function getGuess() {
+    return Array.from(answerBoxes.children)
+      .map(box => box.value.toUpperCase())
+      .join("");
+  }
+
+  function updateAttempts() {
+    attemptsText.textContent =
+      `Contronym #${puzzle.number} • Attempts: ${attempts} / 3 • Hints used: ${hintsUsed}`;
+  }
+
+  function lockGame() {
+    Array.from(answerBoxes.children).forEach(box => box.disabled = true);
+    submitBtn.disabled = true;
+    showHintBtn.disabled = true;
+  }
+
+  function resultPhrase() {
+    if (!solved) return "No Majorana found";
+    if (attempts === 1) return "Majorana in One";
+    if (attempts === 2) return "Majorana in Two";
+    return "Majorana in Three";
+  }
+
+  function shareText() {
+    const positiveHint = puzzle.hints.find(h => h.charge === "+")?.word || "positive";
+    const negativeHint = puzzle.hints.find(h => h.charge === "-")?.word || "negative";
+
+    return `Cν Contronym #${puzzle.number}
+${resultPhrase()}
+Attempts: ${attempts}/3
+Hints used: ${hintsUsed}
+Word: ${solved ? puzzle.word : "Unsolved"}
+
++ ${positiveHint}
+− ${negativeHint}
+
+${puzzle.footer}`;
+  }
+
+  function showResult() {
+    resultCard.style.display = "block";
+    resultTitle.textContent = `${resultPhrase()} • Contronym #${puzzle.number}`;
+
+    definitionBox.innerHTML = `
+      <strong>${puzzle.word}</strong><br>
+      <em>${puzzle.date}</em><br><br>
+
+      <strong>Positive charge (+):</strong> ${puzzle.positiveDefinition}<br>
+      <em>${puzzle.positiveExample}</em><br><br>
+
+      <strong>Negative charge (−):</strong> ${puzzle.negativeDefinition}<br>
+      <em>${puzzle.negativeExample}</em><br><br>
+
+      <strong>Field Note:</strong> ${puzzle.footer}
+    `;
+
+    sharePreview.textContent = shareText();
+  }
+
+  function submitGuess() {
+    if (solved || attempts >= 3) return;
+
+    const guess = getGuess();
+
+    if (Array.from(answerBoxes.children).some(box => box.value === "")) {
+      message.textContent = "Fill in every box before submitting.";
+      return;
+    }
+
+    attempts++;
+    updateAttempts();
+
+    if (guess === word) {
+      solved = true;
+      message.textContent = `${resultPhrase()} — you found the Majorana of Meaning.`;
+      lockGame();
+      showResult();
+    } else if (attempts >= 3) {
+      message.textContent = `The Majorana was ${word}.`;
+      lockGame();
+      showResult();
+    } else {
+      message.textContent =
+        `Not quite — charge mismatch. ${3 - attempts} attempt${3 - attempts === 1 ? "" : "s"} left.`;
+    }
+  }
+
+  createBoxes();
+  renderHints();
+  updateAttempts();
+
+  answerBoxes.addEventListener("input", e => {
+    const target = e.target;
+    const index = parseInt(target.dataset.index);
+
+    target.value = target.value.toUpperCase();
+
+    if (target.value.length === 1) {
+      const next = answerBoxes.children[index + 1];
+      if (next) next.focus();
+    }
+  });
+
+  answerBoxes.addEventListener("keydown", e => {
+    const target = e.target;
+    const index = parseInt(target.dataset.index);
+
+    if (e.key === "Backspace" && target.value === "") {
+      const previous = answerBoxes.children[index - 1];
+      if (previous) previous.focus();
+    }
+
+    if (e.key === "Enter") {
+      submitGuess();
+    }
+  });
+
+  submitBtn.addEventListener("click", submitGuess);
+
+  showHintBtn.addEventListener("click", () => {
+    if (visibleHintCount < puzzle.hints.length) {
+      visibleHintCount++;
+      hintsUsed++;
+      renderHints();
+      updateAttempts();
+    } else {
+      hintText.style.display = "block";
+    }
+  });
+
+  resetBtn.addEventListener("click", () => {
+    attempts = 0;
+    solved = false;
+    hintsUsed = 0;
+    visibleHintCount = 2;
+
+    Array.from(answerBoxes.children).forEach(box => {
+      box.value = "";
+      box.disabled = false;
+      box.classList.remove("revealed");
+    });
+
+    submitBtn.disabled = false;
+    showHintBtn.disabled = false;
+
+    renderHints();
+    updateAttempts();
+
+    hintText.style.display = "none";
+    message.textContent = "";
+    resultCard.style.display = "none";
+
+    answerBoxes.children[0].focus();
+  });
+
+  nativeShareBtn.addEventListener("click", async () => {
+    const text = shareText();
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Contronym: The Majorana of Meaning",
+          text: text,
+          url: window.location.href
+        });
+      } catch {}
+    } else {
+      await navigator.clipboard.writeText(text);
+      nativeShareBtn.textContent = "Copied!";
+      setTimeout(() => nativeShareBtn.textContent = "Share", 1200);
+    }
+  });
+
+  copyShareBtn.addEventListener("click", async () => {
+    const text = shareText();
+
+    try {
+      await navigator.clipboard.writeText(text);
+      copyShareBtn.textContent = "Copied!";
+      setTimeout(() => copyShareBtn.textContent = "Copy for Instagram/Facebook", 1200);
+    } catch {
+      alert(text);
+    }
+  });
+});
+</script>
+</body>
+</html>
