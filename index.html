@@ -140,6 +140,28 @@
         cursor: default;
     }
 
+    /* CONTRONYM CARD */
+
+    .contronym-card {
+        border-color: var(--blue);
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .contronym-card:hover {
+        background: #eef5fb;
+        border-color: #0057a8;
+    }
+
+    .contronym-card h2 {
+        color: #0057a8;
+    }
+
+    .contronym-card .icon {
+        color: #b11b2b;
+    }
+
     /* BUTTONS */
 
     .farm-button,
@@ -320,23 +342,6 @@
 </header>
 
 <main>
-    
-    .contronym-button {
-  display: inline-block;
-  padding: 14px 22px;
-  background: #d7e8ff;
-  color: #0057a8;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 12px;
-  transition: 0.2s;
-}
-
-.contronym-button:hover,
-.contronym-button:active {
-  background: #bcd8ff;
-  transform: scale(1.03);
-}
 
 <!-- HOME -->
 
@@ -361,11 +366,11 @@
             <p>Coming Soon</p>
         </div>
 
-        <div class="world-card coming">
+        <a href="./contronym.html" class="world-card contronym-card">
             <div class="icon">±</div>
             <h2>Contronym</h2>
-            <p>Coming Soon</p>
-        </div>
+            <p>Enter the Majorana of Meaning</p>
+        </a>
 
         <div class="world-card coming">
             <div class="icon">≈</div>
@@ -478,7 +483,7 @@
 </main>
 
 <footer>
-    PAT Learning Lab • Molecular Farm Prototype v0.01
+    PAT Learning Lab • Prototype v0.02
 </footer>
 
 
@@ -515,7 +520,7 @@ const species = [
         icon: "⚡",
         clue:
         "Study the Lightning-Bug. Its anatomy represents its electrons.",
-        
+
         questions: [
             {
                 question:
@@ -909,7 +914,7 @@ function showPeriodex() {
 
     showScreen("periodex");
 }
-<a href="contronym.html">Play Contronym</a>
+
 
 /* ---------------------------
    SAVE
@@ -931,6 +936,10 @@ function savePlayer() {
 buildPeriod();
 updateXP();
 
+</script>
+
+</body>
+</html>
 </script>
 
 </body>
