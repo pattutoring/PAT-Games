@@ -37,9 +37,6 @@ const clueCards = [
     difficulty:
       "Easy",
 
-
-    /* ORIGINAL RELEASE */
-
     clueSlides: [
 
       "images/cluecards/001/IMG_0202.jpeg",
@@ -51,9 +48,6 @@ const clueCards = [
       "images/cluecards/001/IMG_0203.jpeg"
 
     ],
-
-
-    /* ANSWER RELEASE */
 
     solutionSlides: [
 
@@ -98,6 +92,15 @@ let guesses =
 
 let solved =
   false;
+
+
+/*
+  THE MAIN CLUE IMAGE IS PRELOADED
+  AND STORED HERE FOR SHARING.
+*/
+
+let shareImageFile =
+  null;
 
 
 /* ==========================================================
@@ -259,6 +262,72 @@ function getSlides() {
 
 
 /* ==========================================================
+   PRELOAD MAIN CLUE IMAGE FOR SHARING
+========================================================== */
+
+async function prepareShareImage() {
+
+  shareImageFile =
+    null;
+
+
+  const imageUrl =
+    activeClue.clueSlides[0];
+
+
+  try {
+
+    const response =
+      await fetch(
+        imageUrl
+      );
+
+
+    if (
+      !response.ok
+    ) {
+
+      throw new Error(
+        "Could not load share image."
+      );
+
+    }
+
+
+    const blob =
+      await response.blob();
+
+
+    shareImageFile =
+      new File(
+
+        [blob],
+
+        `Koan-Kaon-Clue-${activeClue.number}.jpeg`,
+
+        {
+          type:
+            blob.type ||
+            "image/jpeg"
+        }
+
+      );
+
+  }
+
+  catch(error) {
+
+    console.log(
+      "Could not prepare share image:",
+      error
+    );
+
+  }
+
+}
+
+
+/* ==========================================================
    LOAD CLUE
 ========================================================== */
 
@@ -371,6 +440,14 @@ function loadClue(card) {
 
   renderSlide();
 
+
+  /*
+    PREPARE SHARE IMAGE NOW,
+    BEFORE THE USER EVER PRESSES SHARE.
+  */
+
+  prepareShareImage();
+
 }
 
 
@@ -396,17 +473,6 @@ function renderSlide() {
 
   clueImage.src =
     slides[slideIndex];
-
-
-  clueImage.onerror =
-    () => {
-
-      console.error(
-        "Could not load image:",
-        clueImage.src
-      );
-
-    };
 
 
   slideCounter.textContent =
@@ -798,9 +864,12 @@ guessInput.addEventListener(
 
 function buildShareText() {
 
-  let resultLine =
-    "";
+  let resultLine;
 
+
+  /*
+    AFTER A CORRECT SOLVE
+  */
 
   if (
     solved
@@ -810,6 +879,29 @@ function buildShareText() {
       `Solved in ${guesses} ${guesses === 1 ? "guess" : "guesses"}!`;
 
   }
+
+
+  /*
+    MANUAL REVEAL
+  */
+
+  else if (
+    solutionUnlocked
+  ) {
+
+    resultLine =
+      guesses === 0
+
+        ? "Answer revealed"
+
+        : `Answer revealed after ${guesses} ${guesses === 1 ? "guess" : "guesses"}`;
+
+  }
+
+
+  /*
+    STILL UNSOLVED
+  */
 
   else {
 
@@ -833,14 +925,11 @@ PAT Learning Lab`;
 
 
 /* ==========================================================
-   SHARE FIRST CLUE IMAGE
+   SHARE FUNCTION
 
-   IMPORTANT:
-   THIS ALWAYS USES clueSlides[0].
+   BOTH SHARE BUTTONS USE THIS.
 
-   FOR #001 THAT IS:
-
-   IMG_0202.jpeg
+   ALWAYS SHARES THE ORIGINAL MAIN CLUE IMAGE.
 ========================================================== */
 
 async function shareCurrentClue() {
@@ -849,72 +938,25 @@ async function shareCurrentClue() {
     buildShareText();
 
 
-  const pageUrl =
-    window.location.href;
+  /*
+    IMAGE IS ALREADY PREPARED,
+    SO SAFARI CAN OPEN THE SHARE SHEET
+    IMMEDIATELY FROM THE BUTTON TAP.
+  */
 
+  if (
+    shareImageFile &&
+    navigator.share &&
+    navigator.canShare &&
+    navigator.canShare(
+      {
+        files:
+          [shareImageFile]
+      }
+    )
+  ) {
 
-  const imageUrl =
-    activeClue.clueSlides[0];
-
-
-  try {
-
-    /*
-      FETCH THE ORIGINAL CLUE IMAGE
-    */
-
-    const response =
-      await fetch(
-        imageUrl
-      );
-
-
-    if (
-      !response.ok
-    ) {
-
-      throw new Error(
-        "Could not load clue image."
-      );
-
-    }
-
-
-    const blob =
-      await response.blob();
-
-
-    const imageFile =
-      new File(
-
-        [blob],
-
-        `Koan-Kaon-Clue-${activeClue.number}.jpeg`,
-
-        {
-          type:
-            blob.type ||
-            "image/jpeg"
-        }
-
-      );
-
-
-    /*
-      BEST OPTION:
-      SHARE IMAGE + TEXT
-    */
-
-    if (
-      navigator.share &&
-      navigator.canShare &&
-      navigator.canShare(
-        {
-          files:
-            [imageFile]
-        }
-      )
-    ) {
+    try {
 
       await navigator.share(
         {
@@ -925,24 +967,37 @@ async function shareCurrentClue() {
             text,
 
           files:
-            [imageFile]
+            [shareImageFile]
         }
       );
 
+    }
 
-      return;
+    catch(error) {
+
+      console.log(
+        "Share cancelled:",
+        error
+      );
 
     }
 
 
-    /*
-      SECOND OPTION:
-      SHARE TEXT + LINK
-    */
+    return;
 
-    if (
-      navigator.share
-    ) {
+  }
+
+
+  /*
+    FALLBACK:
+    SHARE TEXT + LINK
+  */
+
+  if (
+    navigator.share
+  ) {
+
+    try {
 
       await navigator.share(
         {
@@ -953,27 +1008,40 @@ async function shareCurrentClue() {
             text,
 
           url:
-            pageUrl
+            window.location.href
         }
       );
 
+    }
 
-      return;
+    catch(error) {
+
+      console.log(
+        "Share cancelled:",
+        error
+      );
 
     }
 
 
-    /*
-      FINAL FALLBACK:
-      COPY SHARE TEXT
-    */
+    return;
+
+  }
+
+
+  /*
+    FINAL FALLBACK:
+    COPY TEXT
+  */
+
+  try {
 
     await navigator
       .clipboard
       .writeText(
         `${text}
 
-${pageUrl}`
+${window.location.href}`
       );
 
 
@@ -983,13 +1051,8 @@ ${pageUrl}`
 
   catch(error) {
 
-    /*
-      Cancelling the iOS share sheet
-      will also land here.
-    */
-
     console.log(
-      "Share cancelled or unavailable:",
+      "Clipboard unavailable:",
       error
     );
 
@@ -1004,47 +1067,23 @@ ${pageUrl}`
 
 function showCopiedMessage() {
 
-  if (
-    shareButton
-  ) {
-
-    shareButton.textContent =
-      "Copied!";
-
-  }
+  shareButton.textContent =
+    "Copied!";
 
 
-  if (
-    shareSolvedButton
-  ) {
-
-    shareSolvedButton.textContent =
-      "Copied!";
-
-  }
+  shareSolvedButton.textContent =
+    "Copied!";
 
 
   setTimeout(
     () => {
 
-      if (
-        shareButton
-      ) {
-
-        shareButton.textContent =
-          "📤 Share Clue";
-
-      }
+      shareButton.textContent =
+        "📤 Share Clue";
 
 
-      if (
-        shareSolvedButton
-      ) {
-
-        shareSolvedButton.textContent =
-          "📤 Share Result";
-
-      }
+      shareSolvedButton.textContent =
+        "📤 Share Result";
 
     },
 
@@ -1055,7 +1094,7 @@ function showCopiedMessage() {
 
 
 /* ==========================================================
-   CONNECT SHARE BUTTONS
+   CONNECT BOTH SHARE BUTTONS
 ========================================================== */
 
 shareButton.addEventListener(
@@ -1165,17 +1204,21 @@ function buildArchive() {
 
             loadClue(card);
 
+
             playView.classList.add(
               "active"
             );
+
 
             archiveView.classList.remove(
               "active"
             );
 
+
             currentTab.classList.add(
               "active"
             );
+
 
             archiveTab.classList.remove(
               "active"
