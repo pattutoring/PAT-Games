@@ -47,8 +47,6 @@ const clueCards = [
 
     clueSlides: [
 
-      "/PAT-Games/images/cluecards/001/IMG_0202.jpeg",
-
       "/PAT-Games/images/cluecards/001/IMG_0200.jpeg",
 
       "/PAT-Games/images/cluecards/001/IMG_0201.jpeg",
