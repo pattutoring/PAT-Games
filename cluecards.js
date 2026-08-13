@@ -176,6 +176,9 @@ const bigRevealButton =
 const shareButton =
   document.getElementById("shareButton");
 
+const shareSolvedButton =
+  document.getElementById("shareSolvedButton");
+
 const solutionInfo =
   document.getElementById("solutionInfo");
 
@@ -207,14 +210,13 @@ function buildAnswerPlaceholder(text) {
   const clean =
     text.replace(/[()]/g, "");
 
-  return clean
-    .replace(
-      /\d+/g,
-      number =>
-        "_".repeat(
-          Number(number)
-        )
-    );
+  return clean.replace(
+    /\d+/g,
+    number =>
+      "_".repeat(
+        Number(number)
+      )
+  );
 
 }
 
@@ -396,11 +398,6 @@ function renderSlide() {
     slides[slideIndex];
 
 
-  /*
-    This makes image path problems obvious
-    instead of silently showing a blank box.
-  */
-
   clueImage.onerror =
     () => {
 
@@ -408,9 +405,6 @@ function renderSlide() {
         "Could not load image:",
         clueImage.src
       );
-
-      clueImage.alt =
-        `Image missing: ${slides[slideIndex]}`;
 
     };
 
@@ -701,13 +695,9 @@ function submitGuess() {
   }
 
 
-  const rawGuess =
-    guessInput.value;
-
-
   const guess =
     normalizeAnswer(
-      rawGuess
+      guessInput.value
     );
 
 
@@ -752,11 +742,6 @@ function submitGuess() {
       "correct"
     );
 
-
-    /*
-      Brief delay so the player can
-      actually see the correct message.
-    */
 
     setTimeout(
       revealSolution,
@@ -808,22 +793,37 @@ guessInput.addEventListener(
 
 
 /* ==========================================================
-   SHARE
+   SHARE TEXT
 ========================================================== */
 
 function buildShareText() {
 
-  const guessLabel =
-    guesses === 1
-      ? "guess"
-      : "guesses";
+  let resultLine =
+    "";
+
+
+  if (
+    solved
+  ) {
+
+    resultLine =
+      `Solved in ${guesses} ${guesses === 1 ? "guess" : "guesses"}!`;
+
+  }
+
+  else {
+
+    resultLine =
+      `${guesses} ${guesses === 1 ? "guess" : "guesses"} so far`;
+
+  }
 
 
   return `KOAN~KAON • Clue-Card #${activeClue.number}
 
 "${activeClue.clue}" ${activeClue.enumeration}
 
-${guesses} ${guessLabel}
+${resultLine}
 
 Can you collapse the clue?
 
@@ -832,127 +832,241 @@ PAT Learning Lab`;
 }
 
 
-shareButton.addEventListener(
-  "click",
-  async () => {
+/* ==========================================================
+   SHARE FIRST CLUE IMAGE
 
-    const text =
-      buildShareText();
+   IMPORTANT:
+   THIS ALWAYS USES clueSlides[0].
 
+   FOR #001 THAT IS:
 
-    const imageUrl =
-      activeClue.clueSlides[0];
+   IMG_0202.jpeg
+========================================================== */
 
+async function shareCurrentClue() {
 
-    try {
-
-      const response =
-        await fetch(
-          imageUrl
-        );
+  const text =
+    buildShareText();
 
 
-      const blob =
-        await response.blob();
+  const pageUrl =
+    window.location.href;
 
 
-      const file =
-        new File(
-          [blob],
-          `clue-card-${activeClue.number}.jpeg`,
-          {
-            type:
-              blob.type ||
-              "image/jpeg"
-          }
-        );
+  const imageUrl =
+    activeClue.clueSlides[0];
 
 
-      if (
-        navigator.share &&
-        navigator.canShare &&
-        navigator.canShare(
-          {
-            files: [file]
-          }
-        )
-      ) {
+  try {
 
-        await navigator.share(
-          {
-            title:
-              `Koan~Kaon Clue-Card #${activeClue.number}`,
+    /*
+      FETCH THE ORIGINAL CLUE IMAGE
+    */
 
-            text:
-              text,
-
-            files:
-              [file]
-          }
-        );
+    const response =
+      await fetch(
+        imageUrl
+      );
 
 
-        return;
+    if (
+      !response.ok
+    ) {
 
-      }
+      throw new Error(
+        "Could not load clue image."
+      );
 
-
-      if (
-        navigator.share
-      ) {
-
-        await navigator.share(
-          {
-            title:
-              `Koan~Kaon Clue-Card #${activeClue.number}`,
-
-            text:
-              text,
-
-            url:
-              window.location.href
-          }
-        );
+    }
 
 
-        return;
+    const blob =
+      await response.blob();
 
-      }
+
+    const imageFile =
+      new File(
+
+        [blob],
+
+        `Koan-Kaon-Clue-${activeClue.number}.jpeg`,
+
+        {
+          type:
+            blob.type ||
+            "image/jpeg"
+        }
+
+      );
 
 
-      await navigator.clipboard.writeText(
+    /*
+      BEST OPTION:
+      SHARE IMAGE + TEXT
+    */
+
+    if (
+      navigator.share &&
+      navigator.canShare &&
+      navigator.canShare(
+        {
+          files:
+            [imageFile]
+        }
+      )
+    ) {
+
+      await navigator.share(
+        {
+          title:
+            `Koan~Kaon Clue-Card #${activeClue.number}`,
+
+          text:
+            text,
+
+          files:
+            [imageFile]
+        }
+      );
+
+
+      return;
+
+    }
+
+
+    /*
+      SECOND OPTION:
+      SHARE TEXT + LINK
+    */
+
+    if (
+      navigator.share
+    ) {
+
+      await navigator.share(
+        {
+          title:
+            `Koan~Kaon Clue-Card #${activeClue.number}`,
+
+          text:
+            text,
+
+          url:
+            pageUrl
+        }
+      );
+
+
+      return;
+
+    }
+
+
+    /*
+      FINAL FALLBACK:
+      COPY SHARE TEXT
+    */
+
+    await navigator
+      .clipboard
+      .writeText(
         `${text}
 
-${window.location.href}`
+${pageUrl}`
       );
 
 
-      shareButton.textContent =
-        "Copied!";
-
-
-      setTimeout(
-        () => {
-
-          shareButton.textContent =
-            "Share Clue";
-
-        },
-        1200
-      );
-
-    }
-
-    catch(error) {
-
-      console.log(
-        "Share cancelled:",
-        error
-      );
-
-    }
+    showCopiedMessage();
 
   }
+
+  catch(error) {
+
+    /*
+      Cancelling the iOS share sheet
+      will also land here.
+    */
+
+    console.log(
+      "Share cancelled or unavailable:",
+      error
+    );
+
+  }
+
+}
+
+
+/* ==========================================================
+   SHARE BUTTON FEEDBACK
+========================================================== */
+
+function showCopiedMessage() {
+
+  if (
+    shareButton
+  ) {
+
+    shareButton.textContent =
+      "Copied!";
+
+  }
+
+
+  if (
+    shareSolvedButton
+  ) {
+
+    shareSolvedButton.textContent =
+      "Copied!";
+
+  }
+
+
+  setTimeout(
+    () => {
+
+      if (
+        shareButton
+      ) {
+
+        shareButton.textContent =
+          "📤 Share Clue";
+
+      }
+
+
+      if (
+        shareSolvedButton
+      ) {
+
+        shareSolvedButton.textContent =
+          "📤 Share Result";
+
+      }
+
+    },
+
+    1400
+  );
+
+}
+
+
+/* ==========================================================
+   CONNECT SHARE BUTTONS
+========================================================== */
+
+shareButton.addEventListener(
+  "click",
+  shareCurrentClue
+);
+
+
+shareSolvedButton.addEventListener(
+  "click",
+  shareCurrentClue
 );
 
 
