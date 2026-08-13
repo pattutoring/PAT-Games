@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
 
 /* ==========================================================
@@ -38,29 +38,18 @@ const clueCards = [
       "Easy",
 
     clueSlides: [
-
       "images/cluecards/001/IMG_0202.jpeg",
-
       "images/cluecards/001/IMG_0200.jpeg",
-
       "images/cluecards/001/IMG_0201.jpeg",
-
       "images/cluecards/001/IMG_0203.jpeg"
-
     ],
 
     solutionSlides: [
-
       "images/cluecards/001/IMG_0202.jpeg",
-
       "images/cluecards/001/IMG_0204.jpeg",
-
       "images/cluecards/001/IMG_0206.jpeg",
-
       "images/cluecards/001/IMG_0205.jpeg"
-
     ]
-
   }
 
 ];
@@ -71,45 +60,32 @@ const clueCards = [
 ========================================================== */
 
 const currentClue =
-  clueCards[
-    clueCards.length - 1
-  ];
-
+  clueCards[clueCards.length - 1];
 
 let activeClue =
   currentClue;
 
-
 let phase =
   "clue";
-
 
 let slideIndex =
   0;
 
-
-let solutionUnlocked =
-  false;
-
-
 let guesses =
   0;
-
 
 let solved =
   false;
 
-
-/*
-  Prepared version of the first clue image.
-*/
+let solutionUnlocked =
+  false;
 
 let shareImageFile =
   null;
 
 
 /* ==========================================================
-   ELEMENTS
+   GET ELEMENTS
 ========================================================== */
 
 const currentTab =
@@ -130,11 +106,11 @@ const clueNumber =
 const clueTitle =
   document.getElementById("clueTitle");
 
-const clueText =
-  document.getElementById("clueText");
-
 const enumeration =
   document.getElementById("enumeration");
+
+const clueText =
+  document.getElementById("clueText");
 
 const cluePhaseButton =
   document.getElementById("cluePhaseButton");
@@ -175,14 +151,14 @@ const guessCounter =
 const guessFeedback =
   document.getElementById("guessFeedback");
 
+const shareButton =
+  document.getElementById("shareButton");
+
 const revealBox =
   document.getElementById("revealBox");
 
 const bigRevealButton =
   document.getElementById("bigRevealButton");
-
-const shareButton =
-  document.getElementById("shareButton");
 
 const solutionInfo =
   document.getElementById("solutionInfo");
@@ -210,26 +186,32 @@ const archiveList =
    ANSWER PLACEHOLDER
 ========================================================== */
 
-function buildAnswerPlaceholder(text) {
+function makePlaceholder(enumerationText) {
 
   const clean =
-    text.replace(/[()]/g, "");
+    enumerationText
+      .replace("(", "")
+      .replace(")", "");
 
+  const pieces =
+    clean.split("-");
 
-  return clean.replace(
-    /\d+/g,
+  return pieces
+    .map(function (piece) {
 
-    number =>
-      "_".repeat(
-        Number(number)
-      )
-  );
+      const number =
+        parseInt(piece, 10);
+
+      return "_".repeat(number);
+
+    })
+    .join("-");
 
 }
 
 
 /* ==========================================================
-   NORMALIZE ANSWER
+   ANSWER NORMALIZATION
 ========================================================== */
 
 function normalizeAnswer(text) {
@@ -237,97 +219,24 @@ function normalizeAnswer(text) {
   return text
     .trim()
     .toUpperCase()
-    .replace(
-      /[^A-Z0-9]/g,
-      ""
-    );
+    .replace(/[^A-Z0-9]/g, "");
 
 }
 
 
 /* ==========================================================
-   SLIDES
+   GET SLIDES
 ========================================================== */
 
 function getSlides() {
 
-  if (
-    phase ===
-    "solution"
-  ) {
+  if (phase === "solution") {
 
     return activeClue.solutionSlides;
 
   }
 
-
   return activeClue.clueSlides;
-
-}
-
-
-/* ==========================================================
-   PREPARE FIRST CLUE IMAGE FOR SHARING
-========================================================== */
-
-async function prepareShareImage() {
-
-  shareImageFile =
-    null;
-
-
-  const imageUrl =
-    activeClue.clueSlides[0];
-
-
-  try {
-
-    const response =
-      await fetch(
-        imageUrl
-      );
-
-
-    if (
-      !response.ok
-    ) {
-
-      throw new Error(
-        "Could not load share image."
-      );
-
-    }
-
-
-    const blob =
-      await response.blob();
-
-
-    shareImageFile =
-      new File(
-
-        [blob],
-
-        `Koan-Kaon-Clue-${activeClue.number}.jpeg`,
-
-        {
-          type:
-            blob.type ||
-            "image/jpeg"
-        }
-
-      );
-
-  }
-
-  catch(error) {
-
-    console.log(
-      "Share image preparation failed:",
-      error
-    );
-
-  }
 
 }
 
@@ -341,85 +250,74 @@ function loadClue(card) {
   activeClue =
     card;
 
-
   phase =
     "clue";
-
 
   slideIndex =
     0;
 
+  guesses =
+    0;
+
+  solved =
+    false;
 
   solutionUnlocked =
     false;
 
 
-  guesses =
-    0;
-
-
-  solved =
-    false;
-
+  /* HEADER */
 
   clueNumber.textContent =
-    `CLUE-CARD #${card.number}`;
-
+    "CLUE-CARD #" + card.number;
 
   clueTitle.textContent =
-    buildAnswerPlaceholder(
-      card.enumeration
-    );
-
+    makePlaceholder(card.enumeration);
 
   enumeration.textContent =
     card.enumeration;
 
-
   clueText.textContent =
-    `"${card.clue}"`;
+    '"' + card.clue + '"';
 
+
+  /* GUESSING */
 
   guessCounter.textContent =
     "Guesses: 0";
 
-
   guessInput.value =
     "";
-
 
   guessInput.disabled =
     false;
 
-
   guessButton.disabled =
     false;
 
-
   guessFeedback.textContent =
     "";
-
 
   guessFeedback.classList.remove(
     "correct"
   );
 
 
+  /* SOLUTION INFO */
+
   answerTitle.textContent =
     card.answer;
-
 
   senseA.textContent =
     card.senseA;
 
-
   senseB.textContent =
     card.senseB;
 
-
   mechanism.textContent =
-    `${card.type} • ${card.mechanism}`;
-
+    card.type +
+    " • " +
+    card.mechanism;
 
   mechanismDescription.textContent =
     card.mechanismDescription;
@@ -429,31 +327,28 @@ function loadClue(card) {
     "visible"
   );
 
-
   revealBox.style.display =
     "block";
-
 
   shareButton.textContent =
     "📤 Share Clue";
 
 
+  /* PHASE BUTTONS */
+
   cluePhaseButton.classList.add(
     "active"
   );
 
-
   solutionPhaseButton.classList.remove(
     "active"
   );
-
 
   solutionPhaseButton.textContent =
     "🔒 Reveal Solution";
 
 
   renderSlide();
-
 
   prepareShareImage();
 
@@ -469,24 +364,50 @@ function renderSlide() {
   const slides =
     getSlides();
 
+  if (!slides || slides.length === 0) {
+    return;
+  }
+
+  if (slideIndex < 0) {
+    slideIndex = 0;
+  }
+
+  if (slideIndex >= slides.length) {
+    slideIndex = slides.length - 1;
+  }
+
 
   clueImage.src =
     slides[slideIndex];
 
+  clueImage.alt =
+    "Clue-Card #" +
+    activeClue.number +
+    " slide " +
+    (slideIndex + 1);
+
 
   slideCounter.textContent =
-    `${slideIndex + 1} / ${slides.length}`;
+    (slideIndex + 1) +
+    " / " +
+    slides.length;
 
 
-  phaseLabel.textContent =
-    phase === "clue"
-      ? "CLUE RELEASE"
-      : "SOLUTION RELEASE";
+  if (phase === "clue") {
+
+    phaseLabel.textContent =
+      "CLUE RELEASE";
+
+  } else {
+
+    phaseLabel.textContent =
+      "SOLUTION RELEASE";
+
+  }
 
 
   previousButton.disabled =
     slideIndex === 0;
-
 
   nextButton.disabled =
     slideIndex ===
@@ -507,57 +428,44 @@ function buildDots() {
   dots.innerHTML =
     "";
 
-
   const slides =
     getSlides();
 
 
-  slides.forEach(
-    (slide, index) => {
+  slides.forEach(function (slide, index) {
 
-      const dot =
-        document.createElement(
-          "button"
-        );
+    const dot =
+      document.createElement("button");
 
-
-      dot.className =
-        "dot";
+    dot.className =
+      "dot";
 
 
-      if (
-        index ===
-        slideIndex
-      ) {
+    if (index === slideIndex) {
 
-        dot.classList.add(
-          "active"
-        );
-
-      }
-
-
-      dot.addEventListener(
-        "click",
-
-        () => {
-
-          slideIndex =
-            index;
-
-
-          renderSlide();
-
-        }
-      );
-
-
-      dots.appendChild(
-        dot
+      dot.classList.add(
+        "active"
       );
 
     }
-  );
+
+
+    dot.addEventListener(
+      "click",
+      function () {
+
+        slideIndex =
+          index;
+
+        renderSlide();
+
+      }
+    );
+
+
+    dots.appendChild(dot);
+
+  });
 
 }
 
@@ -568,15 +476,11 @@ function buildDots() {
 
 previousButton.addEventListener(
   "click",
+  function () {
 
-  () => {
-
-    if (
-      slideIndex > 0
-    ) {
+    if (slideIndex > 0) {
 
       slideIndex--;
-
 
       renderSlide();
 
@@ -588,12 +492,10 @@ previousButton.addEventListener(
 
 nextButton.addEventListener(
   "click",
-
-  () => {
+  function () {
 
     const slides =
       getSlides();
-
 
     if (
       slideIndex <
@@ -601,7 +503,6 @@ nextButton.addEventListener(
     ) {
 
       slideIndex++;
-
 
       renderSlide();
 
@@ -612,31 +513,26 @@ nextButton.addEventListener(
 
 
 /* ==========================================================
-   CLUE PHASE
+   CLUE RELEASE TAB
 ========================================================== */
 
 cluePhaseButton.addEventListener(
   "click",
-
-  () => {
+  function () {
 
     phase =
       "clue";
 
-
     slideIndex =
       0;
-
 
     cluePhaseButton.classList.add(
       "active"
     );
 
-
     solutionPhaseButton.classList.remove(
       "active"
     );
-
 
     renderSlide();
 
@@ -653,10 +549,8 @@ function revealSolution() {
   solutionUnlocked =
     true;
 
-
   phase =
     "solution";
-
 
   slideIndex =
     0;
@@ -669,7 +563,6 @@ function revealSolution() {
   guessInput.disabled =
     true;
 
-
   guessButton.disabled =
     true;
 
@@ -677,11 +570,9 @@ function revealSolution() {
   solutionPhaseButton.textContent =
     "🔓 Solution";
 
-
   solutionPhaseButton.classList.add(
     "active"
   );
-
 
   cluePhaseButton.classList.remove(
     "active"
@@ -692,15 +583,9 @@ function revealSolution() {
     "visible"
   );
 
-
   revealBox.style.display =
     "none";
 
-
-  /*
-    SAME WORKING SHARE BUTTON,
-    JUST CHANGE ITS LABEL.
-  */
 
   shareButton.textContent =
     "📤 Share Result";
@@ -712,20 +597,16 @@ function revealSolution() {
 
 
 /* ==========================================================
-   SOLUTION BUTTON
+   SOLUTION TAB
 ========================================================== */
 
 solutionPhaseButton.addEventListener(
   "click",
+  function () {
 
-  () => {
-
-    if (
-      !solutionUnlocked
-    ) {
+    if (!solutionUnlocked) {
 
       revealSolution();
-
 
       return;
 
@@ -735,20 +616,16 @@ solutionPhaseButton.addEventListener(
     phase =
       "solution";
 
-
     slideIndex =
       0;
-
 
     solutionPhaseButton.classList.add(
       "active"
     );
 
-
     cluePhaseButton.classList.remove(
       "active"
     );
-
 
     renderSlide();
 
@@ -758,7 +635,6 @@ solutionPhaseButton.addEventListener(
 
 bigRevealButton.addEventListener(
   "click",
-
   revealSolution
 );
 
@@ -785,13 +661,10 @@ function submitGuess() {
     );
 
 
-  if (
-    guess === ""
-  ) {
+  if (guess === "") {
 
     guessFeedback.textContent =
       "Type an answer first.";
-
 
     return;
 
@@ -800,29 +673,25 @@ function submitGuess() {
 
   guesses++;
 
-
   guessCounter.textContent =
-    `Guesses: ${guesses}`;
+    "Guesses: " + guesses;
 
 
-  const answer =
+  const correctAnswer =
     normalizeAnswer(
       activeClue.answer
     );
 
 
-  if (
-    guess ===
-    answer
-  ) {
+  if (guess === correctAnswer) {
 
     solved =
       true;
 
-
     guessFeedback.textContent =
-      `Correct — ${activeClue.answer}!`;
-
+      "Correct — " +
+      activeClue.answer +
+      "!";
 
     guessFeedback.classList.add(
       "correct"
@@ -831,9 +700,8 @@ function submitGuess() {
 
     setTimeout(
       revealSolution,
-      500
+      400
     );
-
 
     return;
 
@@ -843,10 +711,8 @@ function submitGuess() {
   guessFeedback.textContent =
     "Not quite — try another interpretation.";
 
-
   guessInput.value =
     "";
-
 
   guessInput.focus();
 
@@ -855,23 +721,17 @@ function submitGuess() {
 
 guessButton.addEventListener(
   "click",
-
   submitGuess
 );
 
 
 guessInput.addEventListener(
   "keydown",
+  function (event) {
 
-  event => {
-
-    if (
-      event.key ===
-      "Enter"
-    ) {
+    if (event.key === "Enter") {
 
       event.preventDefault();
-
 
       submitGuess();
 
@@ -882,205 +742,55 @@ guessInput.addEventListener(
 
 
 /* ==========================================================
-   SHARE TEXT
+   PREPARE SHARE IMAGE
 ========================================================== */
 
-function buildShareText() {
+async function prepareShareImage() {
 
-  let resultLine;
+  shareImageFile =
+    null;
 
+  const imageUrl =
+    activeClue.clueSlides[0];
 
-  if (
-    solved
-  ) {
-
-    resultLine =
-      `Solved in ${guesses} ${guesses === 1 ? "guess" : "guesses"}!`;
-
-  }
-
-
-  else if (
-    solutionUnlocked
-  ) {
-
-    if (
-      guesses === 0
-    ) {
-
-      resultLine =
-        "Answer revealed";
-
-    }
-
-    else {
-
-      resultLine =
-        `Answer revealed after ${guesses} ${guesses === 1 ? "guess" : "guesses"}`;
-
-    }
-
-  }
-
-
-  else {
-
-    resultLine =
-      `${guesses} ${guesses === 1 ? "guess" : "guesses"} so far`;
-
-  }
-
-
-  return `KOAN~KAON • Clue-Card #${activeClue.number}
-
-"${activeClue.clue}" ${activeClue.enumeration}
-
-${resultLine}
-
-Can you collapse the clue?
-
-PAT Learning Lab`;
-
-}
-
-
-/* ==========================================================
-   ONE PERSISTENT SHARE FUNCTION
-========================================================== */
-
-async function shareCurrentClue() {
-
-  const text =
-    buildShareText();
-
-
-  /*
-    IMAGE SHARE
-  */
-
-  if (
-    shareImageFile &&
-    navigator.share &&
-    navigator.canShare &&
-    navigator.canShare(
-      {
-        files:
-          [shareImageFile]
-      }
-    )
-  ) {
-
-    try {
-
-      await navigator.share(
-        {
-          title:
-            `Koan~Kaon Clue-Card #${activeClue.number}`,
-
-          text:
-            text,
-
-          files:
-            [shareImageFile]
-        }
-      );
-
-    }
-
-    catch(error) {
-
-      console.log(
-        "Share cancelled:",
-        error
-      );
-
-    }
-
-
-    return;
-
-  }
-
-
-  /*
-    TEXT + URL FALLBACK
-  */
-
-  if (
-    navigator.share
-  ) {
-
-    try {
-
-      await navigator.share(
-        {
-          title:
-            `Koan~Kaon Clue-Card #${activeClue.number}`,
-
-          text:
-            text,
-
-          url:
-            window.location.href
-        }
-      );
-
-    }
-
-    catch(error) {
-
-      console.log(
-        "Share cancelled:",
-        error
-      );
-
-    }
-
-
-    return;
-
-  }
-
-
-  /*
-    COPY FALLBACK
-  */
 
   try {
 
-    await navigator
-      .clipboard
-      .writeText(
-        `${text}
+    const response =
+      await fetch(imageUrl);
 
-${window.location.href}`
+    if (!response.ok) {
+
+      throw new Error(
+        "Share image did not load."
       );
 
-
-    const originalText =
-      shareButton.textContent;
+    }
 
 
-    shareButton.textContent =
-      "Copied!";
+    const blob =
+      await response.blob();
 
 
-    setTimeout(
-      () => {
-
-        shareButton.textContent =
-          originalText;
-
-      },
-
-      1400
-    );
+    shareImageFile =
+      new File(
+        [blob],
+        "Koan-Kaon-Clue-" +
+        activeClue.number +
+        ".jpeg",
+        {
+          type:
+            blob.type ||
+            "image/jpeg"
+        }
+      );
 
   }
 
-  catch(error) {
+  catch (error) {
 
     console.log(
+      "Share image error:",
       error
     );
 
@@ -1089,14 +799,171 @@ ${window.location.href}`
 }
 
 
-/*
-  ONE BUTTON.
-  ONE EVENT LISTENER.
-*/
+/* ==========================================================
+   SHARE TEXT
+========================================================== */
+
+function buildShareText() {
+
+  let result;
+
+
+  if (solved) {
+
+    result =
+      "Solved in " +
+      guesses +
+      " " +
+      (
+        guesses === 1
+          ? "guess"
+          : "guesses"
+      ) +
+      "!";
+
+  }
+
+  else if (solutionUnlocked) {
+
+    result =
+      guesses === 0
+        ? "Answer revealed"
+        : "Answer revealed after " +
+          guesses +
+          " guesses";
+
+  }
+
+  else {
+
+    result =
+      guesses +
+      " " +
+      (
+        guesses === 1
+          ? "guess"
+          : "guesses"
+      ) +
+      " so far";
+
+  }
+
+
+  return (
+    "KOAN~KAON • Clue-Card #" +
+    activeClue.number +
+    "\n\n" +
+    '"' +
+    activeClue.clue +
+    '" ' +
+    activeClue.enumeration +
+    "\n\n" +
+    result +
+    "\n\n" +
+    "Can you collapse the clue?\n\n" +
+    "PAT Learning Lab"
+  );
+
+}
+
+
+/* ==========================================================
+   SHARE
+========================================================== */
+
+async function shareCurrentClue() {
+
+  const text =
+    buildShareText();
+
+
+  try {
+
+    if (
+      shareImageFile &&
+      navigator.share &&
+      navigator.canShare &&
+      navigator.canShare({
+        files: [shareImageFile]
+      })
+    ) {
+
+      await navigator.share({
+        title:
+          "Koan~Kaon Clue-Card #" +
+          activeClue.number,
+
+        text:
+          text,
+
+        files:
+          [shareImageFile]
+      });
+
+      return;
+
+    }
+
+
+    if (navigator.share) {
+
+      await navigator.share({
+        title:
+          "Koan~Kaon Clue-Card #" +
+          activeClue.number,
+
+        text:
+          text,
+
+        url:
+          window.location.href
+      });
+
+      return;
+
+    }
+
+
+    await navigator.clipboard.writeText(
+      text +
+      "\n\n" +
+      window.location.href
+    );
+
+
+    const oldText =
+      shareButton.textContent;
+
+    shareButton.textContent =
+      "Copied!";
+
+
+    setTimeout(
+      function () {
+
+        shareButton.textContent =
+          oldText;
+
+      },
+      1200
+    );
+
+  }
+
+  catch (error) {
+
+    console.log(
+      "Share cancelled:",
+      error
+    );
+
+  }
+
+}
+
 
 shareButton.addEventListener(
   "click",
-
   shareCurrentClue
 );
 
@@ -1113,159 +980,124 @@ function buildArchive() {
 
   const oldClues =
     clueCards
-      .slice(
-        0,
-        -1
-      )
+      .slice(0, -1)
       .reverse();
 
 
-  if (
-    oldClues.length === 0
-  ) {
+  if (oldClues.length === 0) {
 
-    archiveList.innerHTML = `
-
-      <div class="empty-archive">
-
-        Clue-Card #001 is currently live.
-
-        <br><br>
-
-        When #002 is released,
-        #001 will automatically move here.
-
-      </div>
-
-    `;
-
+    archiveList.innerHTML =
+      '<div class="empty-archive">' +
+      'Clue-Card #001 is currently live.' +
+      '<br><br>' +
+      'When #002 is released, #001 will automatically move here.' +
+      '</div>';
 
     return;
 
   }
 
 
-  oldClues.forEach(
-    card => {
+  oldClues.forEach(function (card) {
 
-      const box =
-        document.createElement(
-          "div"
-        );
-
-
-      box.className =
-        "archive-card";
-
-
-      box.innerHTML = `
-
-        <div class="archive-top">
-
-          <span class="archive-number">
-            CLUE-CARD #${card.number}
-          </span>
-
-          <span>
-            ${card.difficulty}
-          </span>
-
-        </div>
-
-        <div class="archive-clue">
-
-          "${card.clue}"
-
-          ${card.enumeration}
-
-        </div>
-
-        <button
-          class="archive-play-button"
-        >
-          Play Archived Clue
-        </button>
-
-      `;
-
-
-      box
-        .querySelector(
-          ".archive-play-button"
-        )
-        .addEventListener(
-
-          "click",
-
-          () => {
-
-            loadClue(
-              card
-            );
-
-
-            playView.classList.add(
-              "active"
-            );
-
-
-            archiveView.classList.remove(
-              "active"
-            );
-
-
-            currentTab.classList.add(
-              "active"
-            );
-
-
-            archiveTab.classList.remove(
-              "active"
-            );
-
-          }
-
-        );
-
-
-      archiveList.appendChild(
-        box
+    const box =
+      document.createElement(
+        "div"
       );
 
-    }
-  );
+
+    box.className =
+      "archive-card";
+
+
+    box.innerHTML =
+      '<div class="archive-top">' +
+
+        '<span class="archive-number">' +
+          'CLUE-CARD #' +
+          card.number +
+        '</span>' +
+
+        '<span>' +
+          card.difficulty +
+        '</span>' +
+
+      '</div>' +
+
+      '<div class="archive-clue">' +
+        '"' +
+        card.clue +
+        '" ' +
+        card.enumeration +
+      '</div>' +
+
+      '<button class="archive-play-button">' +
+        'Play Archived Clue' +
+      '</button>';
+
+
+    box
+      .querySelector(
+        ".archive-play-button"
+      )
+      .addEventListener(
+        "click",
+        function () {
+
+          loadClue(card);
+
+          playView.classList.add(
+            "active"
+          );
+
+          archiveView.classList.remove(
+            "active"
+          );
+
+          currentTab.classList.add(
+            "active"
+          );
+
+          archiveTab.classList.remove(
+            "active"
+          );
+
+        }
+      );
+
+
+    archiveList.appendChild(
+      box
+    );
+
+  });
 
 }
 
 
 /* ==========================================================
-   NAVIGATION
+   MAIN NAVIGATION
 ========================================================== */
 
 currentTab.addEventListener(
   "click",
-
-  () => {
+  function () {
 
     loadClue(
       currentClue
     );
 
-
     playView.classList.add(
       "active"
     );
-
 
     archiveView.classList.remove(
       "active"
     );
 
-
     currentTab.classList.add(
       "active"
     );
-
 
     archiveTab.classList.remove(
       "active"
@@ -1277,26 +1109,21 @@ currentTab.addEventListener(
 
 archiveTab.addEventListener(
   "click",
-
-  () => {
+  function () {
 
     buildArchive();
-
 
     playView.classList.remove(
       "active"
     );
 
-
     archiveView.classList.add(
       "active"
     );
 
-
     currentTab.classList.remove(
       "active"
     );
-
 
     archiveTab.classList.add(
       "active"
@@ -1316,28 +1143,28 @@ let touchStartX =
 
 imageFrame.addEventListener(
   "touchstart",
-
-  event => {
+  function (event) {
 
     touchStartX =
-      event.changedTouches[0].screenX;
+      event
+        .changedTouches[0]
+        .screenX;
 
   },
-
   {
-    passive:
-      true
+    passive: true
   }
 );
 
 
 imageFrame.addEventListener(
   "touchend",
-
-  event => {
+  function (event) {
 
     const touchEndX =
-      event.changedTouches[0].screenX;
+      event
+        .changedTouches[0]
+        .screenX;
 
 
     const difference =
@@ -1346,9 +1173,7 @@ imageFrame.addEventListener(
 
 
     if (
-      Math.abs(
-        difference
-      ) < 50
+      Math.abs(difference) < 50
     ) {
 
       return;
@@ -1368,7 +1193,6 @@ imageFrame.addEventListener(
 
       slideIndex++;
 
-
       renderSlide();
 
     }
@@ -1381,16 +1205,13 @@ imageFrame.addEventListener(
 
       slideIndex--;
 
-
       renderSlide();
 
     }
 
   },
-
   {
-    passive:
-      true
+    passive: true
   }
 );
 
