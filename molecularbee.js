@@ -4,7 +4,7 @@ document.addEventListener(
 
 
 /* ==========================================================
-   PLAYER STATE
+   PLAYER
 ========================================================== */
 
 let player =
@@ -35,18 +35,14 @@ function savePlayer() {
 function updatePlayerDisplay() {
 
   document
-    .getElementById(
-      "xpText"
-    )
+    .getElementById("xpText")
     .textContent =
       player.xp +
       " XP";
 
 
   document
-    .getElementById(
-      "streakText"
-    )
+    .getElementById("streakText")
     .textContent =
       player.streak;
 
@@ -128,13 +124,10 @@ document
         "click",
         function () {
 
-          const target =
+          showScreen(
             button.getAttribute(
               "data-screen"
-            );
-
-          showScreen(
-            target
+            )
           );
 
         }
@@ -145,7 +138,113 @@ document
 
 
 /* ==========================================================
-   SPELLING-BEE DATA
+   GENERIC HEX CREATOR
+========================================================== */
+
+function createHex(
+  symbol,
+  label,
+  data
+) {
+
+  const hex =
+    document.createElement(
+      "button"
+    );
+
+
+  hex.type =
+    "button";
+
+
+  hex.className =
+    "hex";
+
+
+  hex.draggable =
+    true;
+
+
+  hex.dataset.symbol =
+    symbol;
+
+
+  if (
+    data
+  ) {
+
+    Object.keys(data)
+      .forEach(
+        function (key) {
+
+          hex.dataset[key] =
+            data[key];
+
+        }
+      );
+
+  }
+
+
+  const strong =
+    document.createElement(
+      "strong"
+    );
+
+
+  strong.textContent =
+    symbol;
+
+
+  const small =
+    document.createElement(
+      "small"
+    );
+
+
+  small.textContent =
+    label ||
+    "Atom";
+
+
+  hex.appendChild(
+    strong
+  );
+
+
+  hex.appendChild(
+    small
+  );
+
+
+  return hex;
+
+}
+
+
+/* ==========================================================
+   DRAG STATE
+========================================================== */
+
+let draggedPayload =
+  null;
+
+
+function setDragPayload(
+  type,
+  payload
+) {
+
+  draggedPayload = {
+    type: type,
+    payload: payload
+  };
+
+}
+
+
+/* ==========================================================
+   SPELLING BEE
 ========================================================== */
 
 const spellingChallenges = [
@@ -154,19 +253,23 @@ const spellingChallenges = [
     name:
       "water",
 
-    answer:
-      "HHO",
-
-    displayAnswer:
+    formula:
       "H₂O",
+
+    sequence:
+      [
+        "H",
+        "H",
+        "O"
+      ],
 
     tiles:
       [
         "H",
-        "O",
         "H",
+        "O",
         "C",
-        "Na"
+        "N"
       ]
   },
 
@@ -174,11 +277,15 @@ const spellingChallenges = [
     name:
       "carbon dioxide",
 
-    answer:
-      "COO",
-
-    displayAnswer:
+    formula:
       "CO₂",
+
+    sequence:
+      [
+        "C",
+        "O",
+        "O"
+      ],
 
     tiles:
       [
@@ -194,11 +301,16 @@ const spellingChallenges = [
     name:
       "ammonia",
 
-    answer:
-      "NHHH",
-
-    displayAnswer:
+    formula:
       "NH₃",
+
+    sequence:
+      [
+        "N",
+        "H",
+        "H",
+        "H"
+      ],
 
     tiles:
       [
@@ -208,6 +320,33 @@ const spellingChallenges = [
         "H",
         "O",
         "C"
+      ]
+  },
+
+  {
+    name:
+      "methane",
+
+    formula:
+      "CH₄",
+
+    sequence:
+      [
+        "C",
+        "H",
+        "H",
+        "H",
+        "H"
+      ],
+
+    tiles:
+      [
+        "C",
+        "H",
+        "H",
+        "H",
+        "H",
+        "O"
       ]
   }
 
@@ -246,31 +385,16 @@ const spellingFeedback =
   );
 
 
-function loadSpellingChallenge() {
+function addSpellingAtom(
+  symbol
+) {
 
-  spellingBuild =
-    [];
-
-
-  const challenge =
-    spellingChallenges[
-      spellingIndex
-    ];
-
-
-  spellingPrompt.textContent =
-    "Spell " +
-    challenge.name +
-    " using the element tiles.";
-
-
-  spellingFeedback.textContent =
-    "";
+  spellingBuild.push(
+    symbol
+  );
 
 
   renderSpellingBuild();
-
-  renderSpellingTiles();
 
 }
 
@@ -286,8 +410,8 @@ function renderSpellingBuild() {
     0
   ) {
 
-    spellingBuildZone.textContent =
-      "Build the formula here.";
+    spellingBuildZone.innerHTML =
+      "<em>Build the molecular hive here.</em>";
 
     return;
 
@@ -297,22 +421,23 @@ function renderSpellingBuild() {
   spellingBuild.forEach(
     function (symbol) {
 
-      const token =
-        document.createElement(
-          "span"
+      const hex =
+        createHex(
+          symbol,
+          "Placed"
         );
 
 
-      token.className =
-        "build-token";
+      hex.draggable =
+        false;
 
 
-      token.textContent =
-        symbol;
+      hex.style.cursor =
+        "default";
 
 
       spellingBuildZone.appendChild(
-        token
+        hex
       );
 
     }
@@ -335,45 +460,113 @@ function renderSpellingTiles() {
 
   challenge.tiles.forEach(
     function (
-      tile,
+      symbol,
       index
     ) {
 
-      const button =
-        document.createElement(
-          "button"
+      const hex =
+        createHex(
+          symbol,
+          "Atom",
+          {
+            index: index
+          }
         );
 
 
-      button.className =
-        "element-tile";
-
-
-      button.textContent =
-        tile;
-
-
-      button.addEventListener(
+      hex.addEventListener(
         "click",
         function () {
 
-          spellingBuild.push(
-            tile
+          addSpellingAtom(
+            symbol
           );
 
+        }
+      );
 
-          renderSpellingBuild();
+
+      hex.addEventListener(
+        "dragstart",
+        function () {
+
+          setDragPayload(
+            "spelling",
+            symbol
+          );
 
         }
       );
 
 
       spellingTiles.appendChild(
-        button
+        hex
       );
 
     }
   );
+
+}
+
+
+spellingBuildZone.addEventListener(
+  "dragover",
+  function (event) {
+
+    event.preventDefault();
+
+  }
+);
+
+
+spellingBuildZone.addEventListener(
+  "drop",
+  function (event) {
+
+    event.preventDefault();
+
+
+    if (
+      draggedPayload &&
+      draggedPayload.type ===
+      "spelling"
+    ) {
+
+      addSpellingAtom(
+        draggedPayload.payload
+      );
+
+    }
+
+  }
+);
+
+
+function loadSpellingChallenge() {
+
+  spellingBuild =
+    [];
+
+
+  const challenge =
+    spellingChallenges[
+      spellingIndex
+    ];
+
+
+  spellingPrompt.textContent =
+    "Spell " +
+    challenge.name +
+    " using the honeycomb atoms.";
+
+
+  spellingFeedback.textContent =
+    "";
+
+
+  renderSpellingBuild();
+
+  renderSpellingTiles();
 
 }
 
@@ -400,17 +593,7 @@ document
   )
   .addEventListener(
     "click",
-    function () {
-
-      spellingBuild =
-        [];
-
-      spellingFeedback.textContent =
-        "";
-
-      renderSpellingBuild();
-
-    }
+    loadSpellingChallenge
   );
 
 
@@ -434,16 +617,20 @@ document
         );
 
 
+      const answer =
+        challenge.sequence.join(
+          ""
+        );
+
+
       if (
         guess ===
-        challenge.answer
+        answer
       ) {
 
         spellingFeedback.textContent =
-          "✓ Correct! " +
-          challenge.displayAnswer +
-          " builds " +
-          challenge.name +
+          "✓ Correct! The hive collapses into " +
+          challenge.formula +
           ".";
 
 
@@ -475,7 +662,443 @@ document
       else {
 
         spellingFeedback.textContent =
-          "Not quite. Check the number and order of atoms.";
+          "Not quite. Check how many of each atom belong in the molecule.";
+
+
+        breakStreak();
+
+      }
+
+    }
+  );
+
+
+/* ==========================================================
+   QUEEN BEE
+========================================================== */
+
+const queenChallenges = [
+
+  {
+    central:
+      "O",
+
+    molecule:
+      "H₂O",
+
+    name:
+      "water",
+
+    required:
+      [
+        "H",
+        "H"
+      ],
+
+    tiles:
+      [
+        "H",
+        "H",
+        "C",
+        "Na"
+      ]
+  },
+
+  {
+    central:
+      "C",
+
+    molecule:
+      "CO₂",
+
+    name:
+      "carbon dioxide",
+
+    required:
+      [
+        "O",
+        "O"
+      ],
+
+    tiles:
+      [
+        "O",
+        "O",
+        "H",
+        "N"
+      ]
+  },
+
+  {
+    central:
+      "N",
+
+    molecule:
+      "NH₃",
+
+    name:
+      "ammonia",
+
+    required:
+      [
+        "H",
+        "H",
+        "H"
+      ],
+
+    tiles:
+      [
+        "H",
+        "H",
+        "H",
+        "O"
+      ]
+  },
+
+  {
+    central:
+      "C",
+
+    molecule:
+      "CH₄",
+
+    name:
+      "methane",
+
+    required:
+      [
+        "H",
+        "H",
+        "H",
+        "H"
+      ],
+
+    tiles:
+      [
+        "H",
+        "H",
+        "H",
+        "H",
+        "O"
+      ]
+  }
+
+];
+
+
+let queenIndex =
+  0;
+
+
+let queenBuild =
+  [];
+
+
+const queenPrompt =
+  document.getElementById(
+    "queenPrompt"
+  );
+
+
+const queenElement =
+  document.getElementById(
+    "queenElement"
+  );
+
+
+const queenTiles =
+  document.getElementById(
+    "queenTiles"
+  );
+
+
+const queenRing =
+  document.getElementById(
+    "queenRing"
+  );
+
+
+const queenHive =
+  document.getElementById(
+    "queenHive"
+  );
+
+
+const queenFeedback =
+  document.getElementById(
+    "queenFeedback"
+  );
+
+
+function addQueenAtom(
+  symbol
+) {
+
+  if (
+    queenBuild.length >=
+    4
+  ) {
+
+    queenFeedback.textContent =
+      "The Queen's first hive ring is full.";
+
+    return;
+
+  }
+
+
+  queenBuild.push(
+    symbol
+  );
+
+
+  renderQueenBuild();
+
+}
+
+
+function renderQueenBuild() {
+
+  queenRing.innerHTML =
+    "";
+
+
+  queenBuild.forEach(
+    function (symbol) {
+
+      const hex =
+        createHex(
+          symbol,
+          "Bonded"
+        );
+
+
+      hex.classList.add(
+        "placed-hex"
+      );
+
+
+      hex.draggable =
+        false;
+
+
+      queenRing.appendChild(
+        hex
+      );
+
+    }
+  );
+
+}
+
+
+function renderQueenTiles() {
+
+  queenTiles.innerHTML =
+    "";
+
+
+  const challenge =
+    queenChallenges[
+      queenIndex
+    ];
+
+
+  challenge.tiles.forEach(
+    function (symbol) {
+
+      const hex =
+        createHex(
+          symbol,
+          "Worker"
+        );
+
+
+      hex.addEventListener(
+        "click",
+        function () {
+
+          addQueenAtom(
+            symbol
+          );
+
+        }
+      );
+
+
+      hex.addEventListener(
+        "dragstart",
+        function () {
+
+          setDragPayload(
+            "queen",
+            symbol
+          );
+
+        }
+      );
+
+
+      queenTiles.appendChild(
+        hex
+      );
+
+    }
+  );
+
+}
+
+
+queenHive.addEventListener(
+  "dragover",
+  function (event) {
+
+    event.preventDefault();
+
+  }
+);
+
+
+queenHive.addEventListener(
+  "drop",
+  function (event) {
+
+    event.preventDefault();
+
+
+    if (
+      draggedPayload &&
+      draggedPayload.type ===
+      "queen"
+    ) {
+
+      addQueenAtom(
+        draggedPayload.payload
+      );
+
+    }
+
+  }
+);
+
+
+function loadQueenChallenge() {
+
+  queenBuild =
+    [];
+
+
+  const challenge =
+    queenChallenges[
+      queenIndex
+    ];
+
+
+  queenElement.textContent =
+    challenge.central;
+
+
+  queenPrompt.textContent =
+    "Build " +
+    challenge.name +
+    " (" +
+    challenge.molecule +
+    ") around the Queen.";
+
+
+  queenFeedback.textContent =
+    "";
+
+
+  renderQueenBuild();
+
+  renderQueenTiles();
+
+}
+
+
+document
+  .getElementById(
+    "queenReset"
+  )
+  .addEventListener(
+    "click",
+    loadQueenChallenge
+  );
+
+
+document
+  .getElementById(
+    "queenCheck"
+  )
+  .addEventListener(
+    "click",
+    function () {
+
+      const challenge =
+        queenChallenges[
+          queenIndex
+        ];
+
+
+      const guess =
+        queenBuild
+          .slice()
+          .sort()
+          .join(
+            ""
+          );
+
+
+      const answer =
+        challenge.required
+          .slice()
+          .sort()
+          .join(
+            ""
+          );
+
+
+      if (
+        guess ===
+        answer
+      ) {
+
+        queenFeedback.textContent =
+          "✓ Hive complete! " +
+          challenge.molecule +
+          " forms around the Queen.";
+
+
+        rewardPlayer(
+          15
+        );
+
+
+        setTimeout(
+          function () {
+
+            queenIndex =
+              (
+                queenIndex +
+                1
+              )
+              %
+              queenChallenges.length;
+
+
+            loadQueenChallenge();
+
+          },
+          1200
+        );
+
+      }
+
+      else {
+
+        queenFeedback.textContent =
+          "Not quite. Check how many atoms should surround the Queen.";
 
 
         breakStreak();
@@ -565,6 +1188,49 @@ const workerFeedback =
   );
 
 
+function updateWorkerDisplay() {
+
+  document
+    .getElementById(
+      "protonCount"
+    )
+    .textContent =
+      workerProtons;
+
+
+  document
+    .getElementById(
+      "neutronCount"
+    )
+    .textContent =
+      workerNeutrons;
+
+
+  document
+    .getElementById(
+      "innerElectronCount"
+    )
+    .textContent =
+      Math.min(
+        workerElectrons,
+        2
+      );
+
+
+  document
+    .getElementById(
+      "outerElectronCount"
+    )
+    .textContent =
+      Math.max(
+        workerElectrons -
+        2,
+        0
+      );
+
+}
+
+
 function loadWorkerChallenge() {
 
   workerProtons =
@@ -594,57 +1260,6 @@ function loadWorkerChallenge() {
 
 
   updateWorkerDisplay();
-
-}
-
-
-function updateWorkerDisplay() {
-
-  document
-    .getElementById(
-      "protonCount"
-    )
-    .textContent =
-      workerProtons;
-
-
-  document
-    .getElementById(
-      "neutronCount"
-    )
-    .textContent =
-      workerNeutrons;
-
-
-  const inner =
-    Math.min(
-      workerElectrons,
-      2
-    );
-
-
-  const outer =
-    Math.max(
-      workerElectrons -
-      2,
-      0
-    );
-
-
-  document
-    .getElementById(
-      "innerElectronCount"
-    )
-    .textContent =
-      inner;
-
-
-  document
-    .getElementById(
-      "outerElectronCount"
-    )
-    .textContent =
-      outer;
 
 }
 
@@ -733,7 +1348,7 @@ document
       ) {
 
         workerFeedback.textContent =
-          "✓ Atom built correctly!";
+          "✓ Atom built correctly.";
 
 
         rewardPlayer(
@@ -764,7 +1379,7 @@ document
       else {
 
         workerFeedback.textContent =
-          "Not quite. Check the atomic number, isotope, and neutral electron count.";
+          "Not quite. Check the nucleus and neutral electron count.";
 
 
         breakStreak();
@@ -776,254 +1391,81 @@ document
 
 
 /* ==========================================================
-   QUEEN BEE
-========================================================== */
-
-const queenChallenges = [
-
-  {
-    queen:
-      "O",
-
-    prompt:
-      "Which compound can be built around oxygen?",
-
-    choices:
-      [
-        "H₂O",
-        "NaCl",
-        "CH₄",
-        "NH₃"
-      ],
-
-    correct:
-      "H₂O"
-  },
-
-  {
-    queen:
-      "C",
-
-    prompt:
-      "Which molecule contains carbon as the central element?",
-
-    choices:
-      [
-        "CO₂",
-        "H₂O",
-        "NH₃",
-        "NaCl"
-      ],
-
-    correct:
-      "CO₂"
-  }
-
-];
-
-
-let queenIndex =
-  0;
-
-
-function loadQueenChallenge() {
-
-  const challenge =
-    queenChallenges[
-      queenIndex
-    ];
-
-
-  document
-    .getElementById(
-      "queenElement"
-    )
-    .textContent =
-      challenge.queen;
-
-
-  document
-    .getElementById(
-      "queenPrompt"
-    )
-    .textContent =
-      challenge.prompt;
-
-
-  const options =
-    document.getElementById(
-      "queenOptions"
-    );
-
-
-  options.innerHTML =
-    "";
-
-
-  document
-    .getElementById(
-      "queenFeedback"
-    )
-    .textContent =
-      "";
-
-
-  challenge.choices.forEach(
-    function (choice) {
-
-      const button =
-        document.createElement(
-          "button"
-        );
-
-
-      button.className =
-        "choice-button";
-
-
-      button.textContent =
-        choice;
-
-
-      button.addEventListener(
-        "click",
-        function () {
-
-          if (
-            choice ===
-            challenge.correct
-          ) {
-
-            document
-              .getElementById(
-                "queenFeedback"
-              )
-              .textContent =
-                "✓ Correct. The queen element belongs in " +
-                choice +
-                ".";
-
-
-            rewardPlayer(
-              10
-            );
-
-
-            setTimeout(
-              function () {
-
-                queenIndex =
-                  (
-                    queenIndex +
-                    1
-                  )
-                  %
-                  queenChallenges.length;
-
-
-                loadQueenChallenge();
-
-              },
-              1100
-            );
-
-          }
-
-          else {
-
-            document
-              .getElementById(
-                "queenFeedback"
-              )
-              .textContent =
-                "Not that hive. Look for the compound containing the queen element.";
-
-
-            breakStreak();
-
-          }
-
-        }
-      );
-
-
-      options.appendChild(
-        button
-      );
-
-    }
-  );
-
-}
-
-
-/* ==========================================================
    POLLINATION
 ========================================================== */
 
 const pollinationChallenges = [
 
   {
+    flower:
+      "Cl⁻",
+
     pollen:
       "Na⁺",
 
-    flower:
-      "Cl⁻",
+    pollenCharge:
+      1,
 
-    prompt:
-      "What neutral compound forms when this pollen reaches the flower?",
+    flowerCharge:
+      -1,
 
-    choices:
-      [
-        "NaCl",
-        "Na₂Cl",
-        "NaCl₂"
-      ],
+    neededPollen:
+      1,
 
-    correct:
-      "NaCl"
+    formula:
+      "NaCl",
+
+    available:
+      4
   },
 
   {
-    pollen:
-      "Ca²⁺",
-
-    flower:
-      "Cl⁻",
-
-    prompt:
-      "How many chloride ions are needed to balance one calcium ion?",
-
-    choices:
-      [
-        "CaCl",
-        "CaCl₂",
-        "Ca₂Cl"
-      ],
-
-    correct:
-      "CaCl₂"
-  },
-
-  {
-    pollen:
-      "Al³⁺",
-
     flower:
       "O²⁻",
 
-    prompt:
-      "Which formula balances the total positive and negative charge?",
+    pollen:
+      "Na⁺",
 
-    choices:
-      [
-        "AlO",
-        "Al₂O₃",
-        "Al₃O₂"
-      ],
+    pollenCharge:
+      1,
 
-    correct:
-      "Al₂O₃"
+    flowerCharge:
+      -2,
+
+    neededPollen:
+      2,
+
+    formula:
+      "Na₂O",
+
+    available:
+      4
+  },
+
+  {
+    flower:
+      "Cl⁻",
+
+    pollen:
+      "Ca²⁺",
+
+    pollenCharge:
+      2,
+
+    flowerCharge:
+      -1,
+
+    neededPollen:
+      1,
+
+    flowerCount:
+      2,
+
+    formula:
+      "CaCl₂",
+
+    available:
+      3
   }
 
 ];
@@ -1033,7 +1475,104 @@ let pollinationIndex =
   0;
 
 
-function loadPollinationChallenge() {
+let delivered =
+  [];
+
+
+const pollenBank =
+  document.getElementById(
+    "pollenBank"
+  );
+
+
+const flowerTarget =
+  document.getElementById(
+    "flowerTarget"
+  );
+
+
+const flowerIon =
+  document.getElementById(
+    "flowerIon"
+  );
+
+
+const deliveredPollen =
+  document.getElementById(
+    "deliveredPollen"
+  );
+
+
+const pollinationPrompt =
+  document.getElementById(
+    "pollinationPrompt"
+  );
+
+
+const pollinationFeedback =
+  document.getElementById(
+    "pollinationFeedback"
+  );
+
+
+const pollinationResult =
+  document.getElementById(
+    "pollinationResult"
+  );
+
+
+function deliverPollen(
+  symbol
+) {
+
+  delivered.push(
+    symbol
+  );
+
+
+  renderDeliveredPollen();
+
+}
+
+
+function renderDeliveredPollen() {
+
+  deliveredPollen.innerHTML =
+    "";
+
+
+  delivered.forEach(
+    function (symbol) {
+
+      const token =
+        document.createElement(
+          "span"
+        );
+
+
+      token.className =
+        "delivered-token";
+
+
+      token.textContent =
+        symbol;
+
+
+      deliveredPollen.appendChild(
+        token
+      );
+
+    }
+  );
+
+}
+
+
+function renderPollenBank() {
+
+  pollenBank.innerHTML =
+    "";
+
 
   const challenge =
     pollinationChallenges[
@@ -1041,134 +1580,274 @@ function loadPollinationChallenge() {
     ];
 
 
-  document
-    .getElementById(
-      "pollenIon"
-    )
-    .textContent =
+  for (
+    let i = 0;
+    i < challenge.available;
+    i++
+  ) {
+
+    const piece =
+      document.createElement(
+        "button"
+      );
+
+
+    piece.type =
+      "button";
+
+
+    piece.className =
+      "pollen-piece";
+
+
+    piece.draggable =
+      true;
+
+
+    piece.textContent =
       challenge.pollen;
 
 
-  document
-    .getElementById(
-      "flowerIon"
-    )
-    .textContent =
-      challenge.flower;
+    piece.addEventListener(
+      "click",
+      function () {
+
+        if (
+          piece.classList.contains(
+            "used"
+          )
+        ) {
+
+          return;
+
+        }
 
 
-  document
-    .getElementById(
-      "pollinationPrompt"
-    )
-    .textContent =
-      challenge.prompt;
-
-
-  document
-    .getElementById(
-      "pollinationFeedback"
-    )
-    .textContent =
-      "";
-
-
-  const choices =
-    document.getElementById(
-      "pollinationChoices"
-    );
-
-
-  choices.innerHTML =
-    "";
-
-
-  challenge.choices.forEach(
-    function (choice) {
-
-      const button =
-        document.createElement(
-          "button"
+        piece.classList.add(
+          "used"
         );
 
 
-      button.className =
-        "choice-button";
+        deliverPollen(
+          challenge.pollen
+        );
+
+      }
+    );
 
 
-      button.textContent =
-        choice;
+    piece.addEventListener(
+      "dragstart",
+      function () {
 
+        if (
+          piece.classList.contains(
+            "used"
+          )
+        ) {
 
-      button.addEventListener(
-        "click",
-        function () {
-
-          if (
-            choice ===
-            challenge.correct
-          ) {
-
-            document
-              .getElementById(
-                "pollinationFeedback"
-              )
-              .textContent =
-                "✓ Charges balanced. Compound formed: " +
-                choice;
-
-
-            rewardPlayer(
-              15
-            );
-
-
-            setTimeout(
-              function () {
-
-                pollinationIndex =
-                  (
-                    pollinationIndex +
-                    1
-                  )
-                  %
-                  pollinationChallenges.length;
-
-
-                loadPollinationChallenge();
-
-              },
-              1100
-            );
-
-          }
-
-          else {
-
-            document
-              .getElementById(
-                "pollinationFeedback"
-              )
-              .textContent =
-                "Charge mismatch. The total positive and negative charge must cancel.";
-
-
-            breakStreak();
-
-          }
+          return;
 
         }
+
+
+        setDragPayload(
+          "pollination",
+          {
+            symbol:
+              challenge.pollen,
+
+            element:
+              piece
+          }
+        );
+
+      }
+    );
+
+
+    pollenBank.appendChild(
+      piece
+    );
+
+  }
+
+}
+
+
+flowerTarget.addEventListener(
+  "dragover",
+  function (event) {
+
+    event.preventDefault();
+
+  }
+);
+
+
+flowerTarget.addEventListener(
+  "drop",
+  function (event) {
+
+    event.preventDefault();
+
+
+    if (
+      draggedPayload &&
+      draggedPayload.type ===
+      "pollination"
+    ) {
+
+      const piece =
+        draggedPayload
+          .payload
+          .element;
+
+
+      if (
+        piece.classList.contains(
+          "used"
+        )
+      ) {
+
+        return;
+
+      }
+
+
+      piece.classList.add(
+        "used"
       );
 
 
-      choices.appendChild(
-        button
+      deliverPollen(
+        draggedPayload
+          .payload
+          .symbol
       );
 
     }
-  );
+
+  }
+);
+
+
+function loadPollinationChallenge() {
+
+  delivered =
+    [];
+
+
+  const challenge =
+    pollinationChallenges[
+      pollinationIndex
+    ];
+
+
+  flowerIon.textContent =
+    challenge.flower;
+
+
+  pollinationPrompt.textContent =
+    "Carry enough " +
+    challenge.pollen +
+    " pollen to the " +
+    challenge.flower +
+    " flower to form a neutral ionic compound.";
+
+
+  pollinationFeedback.textContent =
+    "";
+
+
+  pollinationResult.textContent =
+    "";
+
+
+  renderDeliveredPollen();
+
+  renderPollenBank();
 
 }
+
+
+document
+  .getElementById(
+    "pollinationReset"
+  )
+  .addEventListener(
+    "click",
+    loadPollinationChallenge
+  );
+
+
+document
+  .getElementById(
+    "pollinationCheck"
+  )
+  .addEventListener(
+    "click",
+    function () {
+
+      const challenge =
+        pollinationChallenges[
+          pollinationIndex
+        ];
+
+
+      if (
+        delivered.length ===
+        challenge.neededPollen
+      ) {
+
+        pollinationResult.textContent =
+          "🌸 " +
+          challenge.formula;
+
+
+        pollinationFeedback.textContent =
+          "✓ Charges balance. The flower blooms into " +
+          challenge.formula +
+          ".";
+
+
+        rewardPlayer(
+          15
+        );
+
+
+        setTimeout(
+          function () {
+
+            pollinationIndex =
+              (
+                pollinationIndex +
+                1
+              )
+              %
+              pollinationChallenges.length;
+
+
+            loadPollinationChallenge();
+
+          },
+          1400
+        );
+
+      }
+
+      else {
+
+        pollinationFeedback.textContent =
+          "Charge mismatch. Adjust the number of pollen pieces.";
+
+
+        breakStreak();
+
+      }
+
+    }
+  );
 
 
 /* ==========================================================
@@ -1179,9 +1858,9 @@ updatePlayerDisplay();
 
 loadSpellingChallenge();
 
-loadWorkerChallenge();
-
 loadQueenChallenge();
+
+loadWorkerChallenge();
 
 loadPollinationChallenge();
 
