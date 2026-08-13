@@ -1123,3 +1123,233 @@ footer {
   }
 
 }
+/* =========================
+   HIDDEN ANSWER
+========================= */
+
+.answer-placeholder {
+  margin:
+    12px
+    auto
+    8px;
+}
+
+.answer-label {
+  display:
+    block;
+
+  color:
+    #777;
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    2px;
+
+  margin-bottom:
+    4px;
+}
+
+.answer-placeholder h2 {
+  font-family:
+    monospace;
+
+  letter-spacing:
+    4px;
+
+  margin:
+    5px 0;
+
+  font-size:
+    clamp(
+      1.5rem,
+      6vw,
+      2.2rem
+    );
+}
+
+
+/* =========================
+   GUESSING
+========================= */
+
+.guess-panel {
+  margin-top:
+    20px;
+
+  padding-top:
+    18px;
+
+  border-top:
+    1px solid #ddd1bd;
+}
+
+.guess-counter {
+  font-size:
+    0.85rem;
+
+  color:
+    #666;
+
+  font-weight:
+    bold;
+
+  margin-bottom:
+    9px;
+}
+
+.guess-row {
+  display:
+    flex;
+
+  gap:
+    8px;
+
+  max-width:
+    520px;
+
+  margin:
+    auto;
+}
+
+#guessInput {
+  flex:
+    1;
+
+  min-width:
+    0;
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    10px;
+
+  background:
+    white;
+
+  padding:
+    11px
+    12px;
+
+  font:
+    inherit;
+
+  text-align:
+    center;
+
+  text-transform:
+    uppercase;
+}
+
+.guess-button {
+  border:
+    none;
+
+  border-radius:
+    10px;
+
+  background:
+    var(--brown);
+
+  color:
+    white;
+
+  padding:
+    11px
+    15px;
+
+  font-weight:
+    bold;
+
+  cursor:
+    pointer;
+}
+
+.guess-feedback {
+  min-height:
+    28px;
+
+  margin-top:
+    10px;
+
+  font-size:
+    0.9rem;
+
+  font-style:
+    italic;
+
+  color:
+    var(--red);
+}
+
+.guess-feedback.correct {
+  color:
+    #49723e;
+
+  font-weight:
+    bold;
+}
+
+
+/* =========================
+   REVEAL + SHARE
+========================= */
+
+.reveal-actions {
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    10px;
+}
+
+.share-button {
+  border:
+    2px solid var(--blue);
+
+  background:
+    white;
+
+  color:
+    var(--blue);
+
+  padding:
+    13px
+    22px;
+
+  border-radius:
+    12px;
+
+  font-weight:
+    bold;
+
+  cursor:
+    pointer;
+}
+
+
+@media
+(max-width: 600px) {
+
+  .guess-row {
+    flex-direction:
+      column;
+  }
+
+  .guess-button {
+    width:
+      100%;
+  }
+
+}
