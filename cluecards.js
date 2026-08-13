@@ -2,237 +2,30 @@
    KOAN~KAON CLUE-CARDS
    PAT LEARNING LAB
 
-   ADD FUTURE CLUE-CARDS TO THE DATABASE BELOW.
+   HOW THIS FILE WORKS:
 
-   THE LAST ENTRY AUTOMATICALLY BECOMES THE CURRENT CLUE.
-
-   ALL PREVIOUS ENTRIES AUTOMATICALLY APPEAR IN THE ARCHIVE.
+   • The LAST clue in clueCards becomes the current clue.
+   • Older clues automatically move into the Archive.
+   • Answers stay hidden until solved or revealed.
 ========================================================== */
 
 
 /* ==========================================================
    CLUE-CARD DATABASE
-========================================================== */
 
+   ADD FUTURE CLUES HERE.
+========================================================== */
 
 const clueCards = [
 
-   /* ==========================================================
-   SHARE
-========================================================== */
-
-
-function buildShareText() {
-
-  return `KOAN~KAON • Clue-Card #${activeClue.number}
-
-"${activeClue.clue}" ${activeClue.enumeration}
-
-Guesses: ${guesses}
-
-Can you collapse the clue?
-
-PAT Learning Lab`;
-
-}
-
-
-
-shareButton
-  .addEventListener(
-
-    "click",
-
-    async () => {
-
-
-      const text =
-        buildShareText();
-
-
-      const url =
-        window.location.href;
-
-
-      /*
-        Always use the FIRST CLUE IMAGE,
-        regardless of which slide is currently open.
-      */
-
-      const imageUrl =
-        activeClue.clueSlides[0];
-
-
-      try {
-
-
-        const response =
-          await fetch(
-            imageUrl
-          );
-
-
-        const blob =
-          await response.blob();
-
-
-        const file =
-          new File(
-
-            [
-              blob
-            ],
-
-            `clue-card-${activeClue.number}.jpeg`,
-
-            {
-              type:
-                blob.type
-                ||
-                "image/jpeg"
-            }
-
-          );
-
-
-        /*
-          iPhone/iPad Safari can share files
-          when Web Share Level 2 is available.
-        */
-
-        if (
-          navigator.share
-          &&
-          navigator.canShare
-          &&
-          navigator.canShare(
-            {
-              files:
-                [
-                  file
-                ]
-            }
-          )
-        ) {
-
-
-          await navigator.share(
-            {
-
-              title:
-                `Koan~Kaon Clue-Card #${activeClue.number}`,
-
-              text:
-                text,
-
-              files:
-                [
-                  file
-                ]
-
-            }
-          );
-
-
-          return;
-
-        }
-
-
-        /*
-          FALLBACK:
-          share text + page link
-        */
-
-        if (
-          navigator.share
-        ) {
-
-
-          await navigator.share(
-            {
-
-              title:
-                `Koan~Kaon Clue-Card #${activeClue.number}`,
-
-              text:
-                text,
-
-              url:
-                url
-
-            }
-          );
-
-
-          return;
-
-        }
-
-
-        /*
-          FINAL FALLBACK:
-          copy text
-        */
-
-        await navigator
-          .clipboard
-          .writeText(
-            `${text}
-
-${url}`
-          );
-
-
-        shareButton.textContent =
-          "Copied!";
-
-
-        setTimeout(
-          () => {
-
-            shareButton.textContent =
-              "Share Clue";
-
-          },
-
-          1400
-        );
-
-
-      }
-
-      catch (
-        error
-      ) {
-
-        /*
-          User cancelling the native share sheet
-          should not create an error message.
-        */
-
-        console.log(
-          error
-        );
-
-      }
-
-    }
-
-  );
-
   /* ========================================================
-     CLUE-CARD #001
-     HAT-TRICK
+     CLUE-CARD #001 — HAT-TRICK
   ======================================================== */
 
   {
+    number: "001",
 
-    number:
-      "001",
-
-    title:
-      "Hat-Trick",
+    title: "Hat-Trick",
 
     clue:
       "Pulling a rabbit out three times is the goal.",
@@ -253,8 +46,7 @@ ${url}`
     /* ------------------------------------------------------
        ORIGINAL CLUE RELEASE
 
-       Display order from your original release:
-
+       Exact order:
        IMG_0202
        IMG_0200
        IMG_0201
@@ -277,10 +69,10 @@ ${url}`
     /* ------------------------------------------------------
        ANSWER RELEASE
 
-       The original clue card is deliberately reused first.
+       Main clue image is deliberately shown again first.
 
-       Then:
-
+       Exact order:
+       IMG_0202
        IMG_0204
        IMG_0206
        IMG_0205
@@ -310,34 +102,31 @@ ${url}`
 
     difficulty:
       "Easy"
-
   }
 
 
   /*
   ==========================================================
-  FUTURE CLUE #002 EXAMPLE
+  FUTURE CLUE-CARD #002
 
   When #002 is ready:
 
-  1. Put its images inside:
+  1. Create:
 
      images/cluecards/002/
 
-  2. Add a comma after the closing brace of #001.
+  2. Upload its images there.
 
-  3. Add another object like this:
+  3. Put a comma after the closing } for #001.
 
+  4. Add another object like:
 
   ,
 
   {
+    number: "002",
 
-    number:
-      "002",
-
-    title:
-      "Your Answer",
+    title: "ANSWER",
 
     clue:
       "Your clue here.",
@@ -352,22 +141,16 @@ ${url}`
       "Homophone",
 
     mechanismDescription:
-      "Two sounds collapse toward one answer.",
+      "Two sounds converge toward one answer.",
 
     clueSlides: [
-
       "images/cluecards/002/IMG_0001.jpeg",
-
       "images/cluecards/002/IMG_0002.jpeg"
-
     ],
 
     solutionSlides: [
-
       "images/cluecards/002/IMG_0001.jpeg",
-
       "images/cluecards/002/IMG_0003.jpeg"
-
     ],
 
     answer:
@@ -381,158 +164,17 @@ ${url}`
 
     difficulty:
       "Easy"
-
   }
 
   ==========================================================
   */
 
-
 ];
 
-/* ==========================================================
-   GUESSING
-========================================================== */
-
-
-function normalizeAnswer(
-  text
-) {
-
-  return text
-    .trim()
-    .toUpperCase()
-    .replace(
-      /\s+/g,
-      "-"
-    );
-
-}
-
-
-
-function submitGuess() {
-
-  if (
-    solved
-  ) {
-
-    return;
-
-  }
-
-
-  const guess =
-    normalizeAnswer(
-      guessInput.value
-    );
-
-
-  if (
-    !guess
-  ) {
-
-    guessFeedback.textContent =
-      "Enter an answer first.";
-
-    return;
-
-  }
-
-
-  guesses++;
-
-
-  guessCounter.textContent =
-    `Guesses: ${guesses}`;
-
-
-  const correctAnswer =
-    normalizeAnswer(
-      activeClue.answer
-    );
-
-
-  if (
-    guess ===
-    correctAnswer
-  ) {
-
-    solved =
-      true;
-
-
-    guessFeedback.textContent =
-      `Correct — ${activeClue.answer}!`;
-
-
-    guessFeedback
-      .classList
-      .add(
-        "correct"
-      );
-
-
-    guessInput.disabled =
-      true;
-
-
-    guessButton.disabled =
-      true;
-
-
-    revealSolution();
-
-
-    return;
-
-  }
-
-
-  guessFeedback.textContent =
-    "Not quite. Re-examine the clue from both senses.";
-
-
-  guessInput.select();
-
-}
-
-
-
-guessButton
-  .addEventListener(
-
-    "click",
-
-    submitGuess
-
-  );
-
-
-guessInput
-  .addEventListener(
-
-    "keydown",
-
-    event => {
-
-      if (
-        event.key ===
-        "Enter"
-      ) {
-
-        submitGuess();
-
-      }
-
-    }
-
-  );
 
 /* ==========================================================
    STATE
 ========================================================== */
-
 
 const currentClue =
   clueCards[
@@ -554,6 +196,8 @@ let slideIndex =
 
 let solutionUnlocked =
   false;
+
+
 let guesses =
   0;
 
@@ -564,9 +208,8 @@ let solved =
 
 
 /* ==========================================================
-   ELEMENTS
+   PAGE ELEMENTS
 ========================================================== */
-
 
 const currentTab =
   document.getElementById(
@@ -646,6 +289,12 @@ const clueImage =
   );
 
 
+const imageFrame =
+  document.getElementById(
+    "imageFrame"
+  );
+
+
 const previousButton =
   document.getElementById(
     "previousButton"
@@ -716,6 +365,8 @@ const archiveList =
   document.getElementById(
     "archiveList"
   );
+
+
 const guessInput =
   document.getElementById(
     "guessInput"
@@ -746,10 +397,99 @@ const shareButton =
   );
 
 
+
 /* ==========================================================
-   GET CURRENT SLIDES
+   ANSWER PLACEHOLDER
+
+   Example:
+   (3-5) → ___-_____
+
+   (5,6) → _____,______
 ========================================================== */
 
+function buildAnswerPlaceholder(
+  enumerationText
+) {
+
+  const clean =
+    enumerationText
+      .replace(
+        /[()]/g,
+        ""
+      );
+
+
+  const parts =
+    clean.match(
+      /\d+|[-,\/ ]/g
+    );
+
+
+  if (
+    !parts
+  ) {
+
+    return "?????";
+  }
+
+
+  return parts
+    .map(
+      part => {
+
+        if (
+          /^\d+$/.test(
+            part
+          )
+        ) {
+
+          return "_".repeat(
+            Number(
+              part
+            )
+          );
+        }
+
+
+        return part;
+
+      }
+    )
+    .join("");
+
+}
+
+
+
+/* ==========================================================
+   NORMALIZE ANSWERS
+
+   HAT-TRICK
+   hat trick
+   Hat Trick
+
+   all count as the same answer.
+========================================================== */
+
+function normalizeAnswer(
+  text
+) {
+
+  return text
+    .trim()
+    .toUpperCase()
+    .replace(
+      /[^A-Z0-9]/g,
+      ""
+    );
+
+}
+
+
+
+/* ==========================================================
+   CURRENT SLIDE SET
+========================================================== */
 
 function getSlides() {
 
@@ -770,56 +510,12 @@ function getSlides() {
 
 
 /* ==========================================================
-   LOAD CLUE DATA
+   LOAD A CLUE
 ========================================================== */
 
-function buildAnswerPlaceholder(
-  enumeration
+function loadClue(
+  card
 ) {
-
-  return enumeration
-    .replace(
-      /[()]/g,
-      ""
-    )
-    .split(
-      ""
-    )
-    .map(
-      character => {
-
-        if (
-          /\d/.test(
-            character
-          )
-        ) {
-
-          return "_".repeat(
-            Number(
-              character
-            )
-          );
-
-        }
-
-
-        if (
-          character === "-"
-        ) {
-
-          return "-";
-
-        }
-
-
-        return "";
-
-      }
-    )
-    .join("");
-
-}
-function loadClue(card) {
 
   activeClue =
     card;
@@ -835,40 +531,60 @@ function loadClue(card) {
 
   solutionUnlocked =
     false;
-guesses =
-  0;
 
 
-solved =
-  false;
+  guesses =
+    0;
 
 
-guessInput.value =
-  "";
+  solved =
+    false;
 
 
-guessFeedback.textContent =
-  "";
+  /* RESET GUESSING */
+
+  guessInput.value =
+    "";
 
 
-guessFeedback
-  .classList
-  .remove(
-    "correct"
-  );
+  guessInput.disabled =
+    false;
 
 
-guessCounter.textContent =
-  "Guesses: 0";
+  guessButton.disabled =
+    false;
+
+
+  guessCounter.textContent =
+    "Guesses: 0";
+
+
+  guessFeedback.textContent =
+    "";
+
+
+  guessFeedback
+    .classList
+    .remove(
+      "correct"
+    );
+
+
+  /* CLUE INFORMATION */
 
   clueNumber.textContent =
     `CLUE-CARD #${card.number}`;
 
 
+  /*
+    IMPORTANT:
+    THE ACTUAL ANSWER IS NOT SHOWN HERE.
+  */
+
   clueTitle.textContent =
-  buildAnswerPlaceholder(
-    card.enumeration
-  );
+    buildAnswerPlaceholder(
+      card.enumeration
+    );
 
 
   clueText.textContent =
@@ -878,6 +594,8 @@ guessCounter.textContent =
   enumeration.textContent =
     card.enumeration;
 
+
+  /* SOLUTION INFORMATION */
 
   answerTitle.textContent =
     card.answer;
@@ -899,6 +617,8 @@ guessCounter.textContent =
     card.mechanismDescription;
 
 
+  /* HIDE SOLUTION */
+
   solutionInfo
     .classList
     .remove(
@@ -909,6 +629,8 @@ guessCounter.textContent =
   revealBox.style.display =
     "block";
 
+
+  /* RESET PHASE BUTTONS */
 
   cluePhaseButton
     .classList
@@ -929,26 +651,29 @@ guessCounter.textContent =
 
 
   renderSlide();
-   
-guessInput.disabled =
-  false;
 
-
-guessButton.disabled =
-  false;
 }
 
 
 
 /* ==========================================================
-   RENDER SLIDE
+   RENDER CURRENT IMAGE
 ========================================================== */
-
 
 function renderSlide() {
 
   const slides =
     getSlides();
+
+
+  if (
+    slideIndex >=
+    slides.length
+  ) {
+
+    slideIndex =
+      slides.length - 1;
+  }
 
 
   clueImage.src =
@@ -958,7 +683,7 @@ function renderSlide() {
 
 
   clueImage.alt =
-    `Koan Kaon Clue-Card #${activeClue.number} slide ${slideIndex + 1}`;
+    `Koan~Kaon Clue-Card #${activeClue.number} slide ${slideIndex + 1}`;
 
 
   slideCounter.textContent =
@@ -966,11 +691,12 @@ function renderSlide() {
 
 
   phaseLabel.textContent =
-    phase === "clue"
+    phase ===
+    "clue"
 
-    ? "CLUE RELEASE"
+      ? "CLUE RELEASE"
 
-    : "SOLUTION RELEASE";
+      : "SOLUTION RELEASE";
 
 
   previousButton.disabled =
@@ -992,7 +718,6 @@ function renderSlide() {
    DOT NAVIGATION
 ========================================================== */
 
-
 function buildDots() {
 
   dots.innerHTML =
@@ -1009,7 +734,6 @@ function buildDots() {
       index
     ) => {
 
-
       const dot =
         document.createElement(
           "button"
@@ -1018,6 +742,12 @@ function buildDots() {
 
       dot.className =
         "dot";
+
+
+      dot.setAttribute(
+        "aria-label",
+        `Go to slide ${index + 1}`
+      );
 
 
       if (
@@ -1042,6 +772,7 @@ function buildDots() {
           slideIndex =
             index;
 
+
           renderSlide();
 
         }
@@ -1063,7 +794,6 @@ function buildDots() {
    PREVIOUS / NEXT
 ========================================================== */
 
-
 previousButton
   .addEventListener(
 
@@ -1077,6 +807,7 @@ previousButton
       ) {
 
         slideIndex--;
+
 
         renderSlide();
 
@@ -1105,6 +836,7 @@ nextButton
 
         slideIndex++;
 
+
         renderSlide();
 
       }
@@ -1118,7 +850,6 @@ nextButton
 /* ==========================================================
    CLUE PHASE
 ========================================================== */
-
 
 cluePhaseButton
   .addEventListener(
@@ -1158,21 +889,11 @@ cluePhaseButton
 
 
 /* ==========================================================
-   SOLUTION PHASE
+   REVEAL SOLUTION
 ========================================================== */
 
-
 function revealSolution() {
-clueTitle.textContent =
-   
-  activeClue.answer;
-   guessInput.disabled =
-  true;
 
-
-guessButton.disabled =
-  true;
-   
   solutionUnlocked =
     true;
 
@@ -1183,6 +904,23 @@ guessButton.disabled =
 
   slideIndex =
     0;
+
+
+  /*
+    ONLY NOW DOES THE ANSWER APPEAR
+    AT THE TOP OF THE PAGE.
+  */
+
+  clueTitle.textContent =
+    activeClue.answer;
+
+
+  guessInput.disabled =
+    true;
+
+
+  guessButton.disabled =
+    true;
 
 
   solutionPhaseButton.textContent =
@@ -1220,6 +958,10 @@ guessButton.disabled =
 
 
 
+/* ==========================================================
+   SOLUTION TAB
+========================================================== */
+
 solutionPhaseButton
   .addEventListener(
 
@@ -1232,6 +974,7 @@ solutionPhaseButton
       ) {
 
         revealSolution();
+
 
         return;
 
@@ -1267,6 +1010,11 @@ solutionPhaseButton
   );
 
 
+
+/* ==========================================================
+   BIG REVEAL BUTTON
+========================================================== */
+
 bigRevealButton
   .addEventListener(
 
@@ -1279,9 +1027,358 @@ bigRevealButton
 
 
 /* ==========================================================
-   ARCHIVE
+   GUESSING
 ========================================================== */
 
+function submitGuess() {
+
+  if (
+    solved ||
+    solutionUnlocked
+  ) {
+
+    return;
+
+  }
+
+
+  const guess =
+    normalizeAnswer(
+      guessInput.value
+    );
+
+
+  if (
+    !guess
+  ) {
+
+    guessFeedback.textContent =
+      "Enter an answer first.";
+
+
+    return;
+
+  }
+
+
+  guesses++;
+
+
+  guessCounter.textContent =
+    `Guesses: ${guesses}`;
+
+
+  const correctAnswer =
+    normalizeAnswer(
+      activeClue.answer
+    );
+
+
+  if (
+    guess ===
+    correctAnswer
+  ) {
+
+    solved =
+      true;
+
+
+    guessFeedback.textContent =
+      `Correct — ${activeClue.answer}!`;
+
+
+    guessFeedback
+      .classList
+      .add(
+        "correct"
+      );
+
+
+    revealSolution();
+
+
+    return;
+
+  }
+
+
+  guessFeedback.textContent =
+    "Not quite. Re-examine the clue from both senses.";
+
+
+  guessInput.select();
+
+}
+
+
+
+/* GUESS BUTTON */
+
+guessButton
+  .addEventListener(
+
+    "click",
+
+    submitGuess
+
+  );
+
+
+/* ENTER KEY */
+
+guessInput
+  .addEventListener(
+
+    "keydown",
+
+    event => {
+
+      if (
+        event.key ===
+        "Enter"
+      ) {
+
+        submitGuess();
+
+      }
+
+    }
+
+  );
+
+
+
+/* ==========================================================
+   SHARE TEXT
+========================================================== */
+
+function buildShareText() {
+
+  const guessWord =
+    guesses === 1
+
+      ? "guess"
+
+      : "guesses";
+
+
+  return `KOAN~KAON • Clue-Card #${activeClue.number}
+
+"${activeClue.clue}" ${activeClue.enumeration}
+
+${guesses} ${guessWord}
+
+Can you collapse the clue?
+
+PAT Learning Lab`;
+
+}
+
+
+
+/* ==========================================================
+   SHARE
+
+   Always attempts to share ONLY the first/main clue image:
+
+   IMG_0202.jpeg for #001.
+
+   It does NOT share an answer image.
+========================================================== */
+
+shareButton
+  .addEventListener(
+
+    "click",
+
+    async () => {
+
+      const text =
+        buildShareText();
+
+
+      const url =
+        window.location.href;
+
+
+      /*
+        ALWAYS SHARE THE FIRST
+        CLUE-RELEASE IMAGE.
+      */
+
+      const imageUrl =
+        activeClue
+          .clueSlides[0];
+
+
+      try {
+
+        const response =
+          await fetch(
+            imageUrl
+          );
+
+
+        if (
+          !response.ok
+        ) {
+
+          throw new Error(
+            "Image could not be loaded."
+          );
+
+        }
+
+
+        const blob =
+          await response.blob();
+
+
+        const file =
+          new File(
+
+            [
+              blob
+            ],
+
+            `Koan-Kaon-Clue-Card-${activeClue.number}.jpeg`,
+
+            {
+              type:
+                blob.type ||
+                "image/jpeg"
+            }
+
+          );
+
+
+        /*
+          BEST CASE:
+          SHARE IMAGE + TEXT + URL
+        */
+
+        if (
+          navigator.share &&
+          navigator.canShare &&
+          navigator.canShare(
+            {
+              files:
+                [
+                  file
+                ]
+            }
+          )
+        ) {
+
+          await navigator.share(
+            {
+              title:
+                `Koan~Kaon Clue-Card #${activeClue.number}`,
+
+              text:
+                text,
+
+              url:
+                url,
+
+              files:
+                [
+                  file
+                ]
+            }
+          );
+
+
+          return;
+
+        }
+
+
+        /*
+          FALLBACK:
+          SHARE TEXT + URL
+        */
+
+        if (
+          navigator.share
+        ) {
+
+          await navigator.share(
+            {
+              title:
+                `Koan~Kaon Clue-Card #${activeClue.number}`,
+
+              text:
+                text,
+
+              url:
+                url
+            }
+          );
+
+
+          return;
+
+        }
+
+
+        /*
+          FINAL FALLBACK:
+          COPY TO CLIPBOARD
+        */
+
+        await navigator
+          .clipboard
+          .writeText(
+            `${text}
+
+${url}`
+          );
+
+
+        shareButton.textContent =
+          "Copied!";
+
+
+        setTimeout(
+          () => {
+
+            shareButton.textContent =
+              "Share Clue";
+
+          },
+
+          1400
+        );
+
+      }
+
+
+      catch (
+        error
+      ) {
+
+        /*
+          This includes cancelling
+          the iPhone/iPad share sheet.
+        */
+
+        console.log(
+          "Share cancelled or unavailable:",
+          error
+        );
+
+      }
+
+    }
+
+  );
+
+
+
+/* ==========================================================
+   ARCHIVE
+========================================================== */
 
 function buildArchive() {
 
@@ -1327,7 +1424,6 @@ function buildArchive() {
   archived.forEach(
     card => {
 
-
       const archiveCard =
         document.createElement(
           "div"
@@ -1337,6 +1433,16 @@ function buildArchive() {
       archiveCard.className =
         "archive-card";
 
+
+      /*
+        IMPORTANT:
+
+        WE DO NOT DISPLAY card.title HERE.
+
+        card.title IS THE ANSWER,
+        SO SHOWING IT WOULD SPOIL
+        AN ARCHIVED PUZZLE.
+      */
 
       archiveCard.innerHTML = `
 
@@ -1353,13 +1459,6 @@ function buildArchive() {
             ${card.difficulty}
 
           </span>
-
-        </div>
-
-
-        <div class="archive-title">
-
-          ${card.title}
 
         </div>
 
@@ -1429,8 +1528,11 @@ function buildArchive() {
 
             window.scrollTo(
               {
-                top: 0,
-                behavior: "smooth"
+                top:
+                  0,
+
+                behavior:
+                  "smooth"
               }
             );
 
@@ -1451,9 +1553,8 @@ function buildArchive() {
 
 
 /* ==========================================================
-   TOP NAVIGATION
+   CURRENT CLUE TAB
 ========================================================== */
-
 
 currentTab
   .addEventListener(
@@ -1499,6 +1600,11 @@ currentTab
   );
 
 
+
+/* ==========================================================
+   ARCHIVE TAB
+========================================================== */
+
 archiveTab
   .addEventListener(
 
@@ -1543,9 +1649,9 @@ archiveTab
 
 
 /* ==========================================================
-   SWIPE SUPPORT FOR IPHONE / IPAD
+   SWIPE SUPPORT
+   IPHONE / IPAD
 ========================================================== */
-
 
 let touchStartX =
   0;
@@ -1554,11 +1660,6 @@ let touchStartX =
 let touchEndX =
   0;
 
-
-const imageFrame =
-  document.getElementById(
-    "imageFrame"
-  );
 
 
 imageFrame
@@ -1576,10 +1677,12 @@ imageFrame
     },
 
     {
-      passive: true
+      passive:
+        true
     }
 
   );
+
 
 
 imageFrame
@@ -1600,7 +1703,8 @@ imageFrame
     },
 
     {
-      passive: true
+      passive:
+        true
     }
 
   );
@@ -1617,8 +1721,7 @@ function handleSwipe() {
   if (
     Math.abs(
       difference
-    )
-    <
+    ) <
     50
   ) {
 
@@ -1631,30 +1734,40 @@ function handleSwipe() {
     getSlides();
 
 
+  /*
+    SWIPE LEFT
+    → NEXT SLIDE
+  */
+
   if (
     difference <
-    0
-    &&
+    0 &&
     slideIndex <
     slides.length - 1
   ) {
 
     slideIndex++;
 
+
     renderSlide();
 
   }
 
 
+  /*
+    SWIPE RIGHT
+    → PREVIOUS SLIDE
+  */
+
   if (
     difference >
-    0
-    &&
+    0 &&
     slideIndex >
     0
   ) {
 
     slideIndex--;
+
 
     renderSlide();
 
@@ -1667,7 +1780,6 @@ function handleSwipe() {
 /* ==========================================================
    START
 ========================================================== */
-
 
 loadClue(
   currentClue
