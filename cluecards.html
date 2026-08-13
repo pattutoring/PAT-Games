@@ -245,7 +245,7 @@
     </div>
 
 
-    <!-- REVEAL + SHARE -->
+    <!-- REVEAL BOX -->
 
     <div
       id="revealBox"
@@ -261,23 +261,29 @@
         Look for one answer capable of satisfying every layer.
       </p>
 
-      <div class="reveal-actions">
+      <button
+        id="bigRevealButton"
+        class="reveal-answer-button"
+      >
+        Reveal the Answer
+      </button>
 
-        <button
-          id="bigRevealButton"
-          class="reveal-answer-button"
-        >
-          Reveal the Answer
-        </button>
+    </div>
 
-        <button
-          id="shareButton"
-          class="share-button"
-        >
-          📤 Share Clue
-        </button>
 
-      </div>
+    <!-- ONE PERSISTENT SHARE BUTTON -->
+
+    <div
+      class="reveal-actions"
+      style="margin-top:18px;"
+    >
+
+      <button
+        id="shareButton"
+        class="share-button"
+      >
+        📤 Share Clue
+      </button>
 
     </div>
 
@@ -333,20 +339,6 @@
         </span>
 
       </p>
-
-
-      <!-- SHARE ALSO AVAILABLE AFTER SOLVING -->
-
-      <div class="reveal-actions">
-
-        <button
-          id="shareSolvedButton"
-          class="share-button"
-        >
-          📤 Share Result
-        </button>
-
-      </div>
 
     </div>
 
