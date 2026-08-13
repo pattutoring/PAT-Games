@@ -78,14 +78,14 @@
   </div>
 
 
-  <!-- CURRENT CLUE -->
+  <!-- PLAY VIEW -->
 
   <section
     id="playView"
     class="view active"
   >
 
-    <!-- CLUE HEADER -->
+    <!-- CLUE HEADING -->
 
     <div class="clue-heading">
 
@@ -102,14 +102,12 @@
         </span>
 
         <h2 id="clueTitle">
-          ___-_____
         </h2>
 
         <div
           id="enumeration"
           class="enumeration"
         >
-          (3-5)
         </div>
 
       </div>
@@ -123,7 +121,7 @@
     </div>
 
 
-    <!-- PHASE SELECTOR -->
+    <!-- CLUE / SOLUTION TABS -->
 
     <div class="phase-row">
 
@@ -205,11 +203,7 @@
 
     <!-- GUESS AREA -->
 
-    <div class="clue-heading guess-area">
-
-      <h3>
-        Collapse the clue.
-      </h3>
+    <div class="guess-panel">
 
       <div
         id="guessCounter"
@@ -242,10 +236,27 @@
       >
       </div>
 
+
+      <!-- SHARE STAYS HERE -->
+
+      <div
+        class="reveal-actions"
+        style="margin-top: 10px;"
+      >
+
+        <button
+          id="shareButton"
+          class="share-button"
+        >
+          📤 Share Clue
+        </button>
+
+      </div>
+
     </div>
 
 
-    <!-- REVEAL BOX -->
+    <!-- REVEAL AREA -->
 
     <div
       id="revealBox"
@@ -253,7 +264,7 @@
     >
 
       <h3>
-        Need to collapse the wave function?
+        Think you've collapsed the clue?
       </h3>
 
       <p>
@@ -271,24 +282,7 @@
     </div>
 
 
-    <!-- ONE PERSISTENT SHARE BUTTON -->
-
-    <div
-      class="reveal-actions"
-      style="margin-top:18px;"
-    >
-
-      <button
-        id="shareButton"
-        class="share-button"
-      >
-        📤 Share Clue
-      </button>
-
-    </div>
-
-
-    <!-- FULL SOLUTION EXPLANATION -->
+    <!-- SOLUTION INFORMATION -->
 
     <div
       id="solutionInfo"
@@ -302,13 +296,14 @@
       <h2 id="answerTitle">
       </h2>
 
-
       <p class="solution-intro">
-        One phrase. Two meanings. Both sides collapse into the same answer.
+        One answer satisfies two meanings at the same time.
       </p>
 
 
       <div class="solution-grid">
+
+        <!-- MAGIC -->
 
         <div class="solution-card">
 
@@ -321,6 +316,8 @@
 
         </div>
 
+
+        <!-- SPORT -->
 
         <div class="solution-card">
 
@@ -335,6 +332,8 @@
 
       </div>
 
+
+      <!-- MECHANISM -->
 
       <div class="mechanism">
 
@@ -351,22 +350,6 @@
 
         <span id="mechanismDescription">
         </span>
-
-      </div>
-
-
-      <div class="solution-summary">
-
-        <strong>
-          Why it works:
-        </strong>
-
-        <p>
-          In magic, the clue points toward pulling something from a hat.
-          In sport, a hat-trick means scoring three times.
-          The surface reading lets both meanings coexist until the solver
-          collapses them into one shared answer.
-        </p>
 
       </div>
 
