@@ -7,73 +7,207 @@ document.addEventListener(
    PLAYER
 ========================================================== */
 
-let xp = 0;
-let streak = 0;
+let player =
+  JSON.parse(
+    localStorage.getItem(
+      "molecularBeePlayer"
+    )
+  )
 
-const xpText =
-  document.getElementById("xpText");
+  ||
 
-const streakText =
-  document.getElementById("streakText");
+  {
+    xp: 0,
+    streak: 0
+  };
 
-function updatePlayer() {
-  xpText.textContent = xp + " XP";
-  streakText.textContent = streak;
+
+function savePlayer() {
+
+  localStorage.setItem(
+    "molecularBeePlayer",
+    JSON.stringify(player)
+  );
+
+}
+
+
+function updatePlayerDisplay() {
+
+  document
+    .getElementById(
+      "xpText"
+    )
+    .textContent =
+      player.xp +
+      " XP";
+
+
+  document
+    .getElementById(
+      "streakText"
+    )
+    .textContent =
+      player.streak;
+
+}
+
+
+function rewardPlayer(
+  amount
+) {
+
+  player.xp +=
+    amount;
+
+  player.streak++;
+
+  savePlayer();
+
+  updatePlayerDisplay();
+
 }
 
 
 /* ==========================================================
-   SCREEN NAVIGATION
+   NAVIGATION
 ========================================================== */
 
-const screens =
-  document.querySelectorAll(".screen");
+function showScreen(
+  id
+) {
 
-document
-  .querySelectorAll("[data-screen]")
-  .forEach(function (button) {
+  document
+    .querySelectorAll(
+      ".screen"
+    )
+    .forEach(
+      function (
+        screen
+      ) {
 
-    button.addEventListener(
-      "click",
-      function () {
-
-        const target =
-          button.dataset.screen;
-
-        screens.forEach(
-          function (screen) {
-            screen.classList.remove("active");
-          }
+        screen.classList.remove(
+          "active"
         );
-
-        document
-          .getElementById(target)
-          .classList
-          .add("active");
-
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
 
       }
     );
 
-  });
+
+  document
+    .getElementById(
+      id
+    )
+    .classList
+    .add(
+      "active"
+    );
+
+
+  window.scrollTo(
+    {
+      top: 0,
+      behavior: "smooth"
+    }
+  );
+
+}
+
+
+document
+  .querySelectorAll(
+    "[data-screen]"
+  )
+  .forEach(
+    function (
+      button
+    ) {
+
+      button.addEventListener(
+        "click",
+        function () {
+
+          showScreen(
+            button.getAttribute(
+              "data-screen"
+            )
+          );
+
+        }
+      );
+
+    }
+  );
+
+
+/* ==========================================================
+   HELPERS
+========================================================== */
+
+function createHex(
+  symbol,
+  label
+) {
+
+  const hex =
+    document.createElement(
+      "button"
+    );
+
+
+  hex.type =
+    "button";
+
+
+  hex.className =
+    "hex";
+
+
+  const small =
+    document.createElement(
+      "small"
+    );
+
+
+  small.textContent =
+    label ||
+    "Atom";
+
+
+  const strong =
+    document.createElement(
+      "strong"
+    );
+
+
+  strong.textContent =
+    symbol;
+
+
+  hex.appendChild(
+    small
+  );
+
+
+  hex.appendChild(
+    strong
+  );
+
+
+  return hex;
+
+}
 
 
 /* ==========================================================
    BUZZWORD DATABASE
-
-   Add future Buzzwords here.
-
-   The LAST entry becomes today's challenge.
 ========================================================== */
 
 const buzzwords = [
 
   {
-    number: "001",
+    number:
+      "001",
 
     name:
       "Carbon Dioxide",
@@ -84,180 +218,350 @@ const buzzwords = [
     center:
       "C",
 
-    clue:
-      "A gas essential to photosynthesis. One carbon atom anchors the molecule.",
-
-    /*
-      Six positions surround the center.
-
-      null means the cell is not needed
-      for this molecule.
-    */
-
-    slots: [
-      null,
-      "O",
-      null,
-      null,
-      "O",
-      null
-    ],
-
-    tiles: [
-      "O",
-      "H",
-      "N",
-      "O",
-      "Cl",
-      "Na"
-    ],
+    centerName:
+      "Carbon",
 
     type:
       "Covalent Molecule",
 
-    anchor:
-      "Carbon",
+    slots:
+      [
+        "O",
+        "O",
+        null,
+        null,
+        null,
+        null
+      ],
 
-    atomCount:
-      "3",
+    tiles:
+      [
+        "O",
+        "O",
+        "H",
+        "N",
+        "Cl",
+        "Na"
+      ],
 
-    mass:
-      "44.01 g/mol",
+    prompt:
+      "Complete the carbon dioxide molecular hive.",
 
-    explanation:
-      "Carbon forms two double bonds with oxygen, giving carbon and both oxygen atoms complete valence shells.",
+    hint:
+      "The revealed carbon center needs two oxygen honeycombs.",
+
+    why:
+      "Carbon dioxide contains one carbon atom and two oxygen atoms.",
 
     fact:
-      "Plants take in carbon dioxide during photosynthesis and use its carbon to help construct sugars."
+      "Plants use carbon dioxide during photosynthesis.",
 
+    pieceCount:
+      3
+  },
+
+
+  {
+    number:
+      "002",
+
+    name:
+      "Water",
+
+    formula:
+      "H₂O",
+
+    center:
+      "O",
+
+    centerName:
+      "Oxygen",
+
+    type:
+      "Covalent Molecule",
+
+    slots:
+      [
+        null,
+        null,
+        "H",
+        "H",
+        null,
+        null
+      ],
+
+    tiles:
+      [
+        "H",
+        "H",
+        "C",
+        "N",
+        "Na",
+        "Cl"
+      ],
+
+    prompt:
+      "Complete the water molecular hive.",
+
+    hint:
+      "Two hydrogen honeycombs belong around oxygen.",
+
+    why:
+      "Water contains two hydrogen atoms for every one oxygen atom.",
+
+    fact:
+      "Water's bent geometry contributes to its polarity.",
+
+    pieceCount:
+      3
+  },
+
+
+  {
+    number:
+      "003",
+
+    name:
+      "Ammonia",
+
+    formula:
+      "NH₃",
+
+    center:
+      "N",
+
+    centerName:
+      "Nitrogen",
+
+    type:
+      "Covalent Molecule",
+
+    slots:
+      [
+        "H",
+        "H",
+        "H",
+        null,
+        null,
+        null
+      ],
+
+    tiles:
+      [
+        "H",
+        "H",
+        "H",
+        "O",
+        "C",
+        "Cl"
+      ],
+
+    prompt:
+      "Complete the ammonia molecular hive.",
+
+    hint:
+      "Three hydrogen honeycombs belong around nitrogen.",
+
+    why:
+      "Ammonia contains one nitrogen atom and three hydrogen atoms.",
+
+    fact:
+      "Ammonia is important in fertilizer production.",
+
+    pieceCount:
+      4
+  },
+
+
+  {
+    number:
+      "004",
+
+    name:
+      "Calcium Nitrate",
+
+    formula:
+      "Ca(NO₃)₂",
+
+    center:
+      "Ca²⁺",
+
+    centerName:
+      "Calcium ion",
+
+    type:
+      "Ionic / Polyatomic",
+
+    slots:
+      [
+        "NO₃⁻",
+        "NO₃⁻",
+        null,
+        null,
+        null,
+        null
+      ],
+
+    tiles:
+      [
+        "NO₃⁻",
+        "NO₃⁻",
+        "Cl⁻",
+        "OH⁻",
+        "Na⁺",
+        "SO₄²⁻"
+      ],
+
+    prompt:
+      "Complete the calcium nitrate ionic hive.",
+
+    hint:
+      "The +2 center requires two −1 nitrate ions.",
+
+    why:
+      "Two nitrate ions contribute −2 total charge, balancing Ca²⁺.",
+
+    fact:
+      "Calcium nitrate is commonly used in fertilizers.",
+
+    pieceCount:
+      3
   }
 
 ];
 
 
-const activeBuzzword =
-  buzzwords[
-    buzzwords.length - 1
-  ];
-
-
 /* ==========================================================
-   BUZZWORD ELEMENTS
+   DAILY BUZZWORD
 ========================================================== */
 
-const buzzCenterElement =
-  document.getElementById(
-    "buzzCenterElement"
+const buzzStartDate =
+  new Date(
+    "2026-08-13T00:00:00"
   );
 
-const buzzClue =
-  document.getElementById(
-    "buzzClue"
-  );
 
-const buzzTileBank =
-  document.getElementById(
-    "buzzTileBank"
-  );
+const buzzToday =
+  new Date();
 
-const buzzSlots =
-  Array.from(
-    document.querySelectorAll(
-      ".buzz-slot"
+
+buzzToday.setHours(
+  0,
+  0,
+  0,
+  0
+);
+
+
+const buzzDaysPassed =
+  Math.max(
+    0,
+    Math.floor(
+      (
+        buzzToday -
+        buzzStartDate
+      )
+      /
+      86400000
     )
   );
 
-const buzzCheck =
-  document.getElementById(
-    "buzzCheck"
-  );
 
-const buzzReset =
-  document.getElementById(
-    "buzzReset"
-  );
+const buzzIndex =
+  buzzDaysPassed %
+  buzzwords.length;
 
-const buzzFeedback =
-  document.getElementById(
-    "buzzFeedback"
-  );
 
-const buzzAttempts =
-  document.getElementById(
-    "buzzAttempts"
-  );
-
-const buzzStreak =
-  document.getElementById(
-    "buzzStreak"
-  );
-
-const buzzReveal =
-  document.getElementById(
-    "buzzReveal"
-  );
-
-const buzzMoleculeName =
-  document.getElementById(
-    "buzzMoleculeName"
-  );
-
-const buzzFormula =
-  document.getElementById(
-    "buzzFormula"
-  );
-
-const buzzType =
-  document.getElementById(
-    "buzzType"
-  );
-
-const buzzAnchor =
-  document.getElementById(
-    "buzzAnchor"
-  );
-
-const buzzAtomCount =
-  document.getElementById(
-    "buzzAtomCount"
-  );
-
-const buzzMass =
-  document.getElementById(
-    "buzzMass"
-  );
-
-const buzzExplanation =
-  document.getElementById(
-    "buzzExplanation"
-  );
-
-const buzzFact =
-  document.getElementById(
-    "buzzFact"
-  );
-
-const shareBuzz =
-  document.getElementById(
-    "shareBuzz"
-  );
+const activeBuzz =
+  buzzwords[
+    buzzIndex
+  ];
 
 
 /* ==========================================================
    BUZZWORD STATE
 ========================================================== */
 
-let selectedBuzzTile =
+let selectedBuzzPiece =
   null;
 
-let buzzPlaced =
-  new Array(6).fill(null);
+
+let selectedBuzzButton =
+  null;
+
 
 let buzzAttemptCount =
   0;
 
+
 let buzzSolved =
   false;
+
+
+/* ==========================================================
+   BUZZWORD ELEMENTS
+========================================================== */
+
+const buzzCenter =
+  document.getElementById(
+    "buzzCenter"
+  );
+
+
+const buzzwordNumber =
+  document.getElementById(
+    "buzzwordNumber"
+  );
+
+
+const buzzwordPrompt =
+  document.getElementById(
+    "buzzwordPrompt"
+  );
+
+
+const buzzHint =
+  document.getElementById(
+    "buzzHint"
+  );
+
+
+const buzzTiles =
+  document.getElementById(
+    "buzzTiles"
+  );
+
+
+const buzzCells =
+  Array.from(
+    document.querySelectorAll(
+      "[data-buzz-slot]"
+    )
+  );
+
+
+const buzzFeedback =
+  document.getElementById(
+    "buzzFeedback"
+  );
+
+
+const buzzAttempts =
+  document.getElementById(
+    "buzzAttempts"
+  );
+
+
+const buzzStreak =
+  document.getElementById(
+    "buzzStreak"
+  );
+
+
+const buzzReveal =
+  document.getElementById(
+    "buzzReveal"
+  );
 
 
 /* ==========================================================
@@ -266,121 +570,178 @@ let buzzSolved =
 
 function loadBuzzword() {
 
-  buzzCenterElement.textContent =
-    activeBuzzword.center;
+  selectedBuzzPiece =
+    null;
 
-  buzzClue.textContent =
-    activeBuzzword.clue;
 
-  buzzMoleculeName.textContent =
-    activeBuzzword.name;
+  selectedBuzzButton =
+    null;
 
-  buzzFormula.textContent =
-    activeBuzzword.formula;
 
-  buzzType.textContent =
-    activeBuzzword.type;
+  buzzAttemptCount =
+    0;
 
-  buzzAnchor.textContent =
-    activeBuzzword.anchor;
 
-  buzzAtomCount.textContent =
-    activeBuzzword.atomCount;
+  buzzSolved =
+    false;
 
-  buzzMass.textContent =
-    activeBuzzword.mass;
 
-  buzzExplanation.textContent =
-    activeBuzzword.explanation;
+  buzzCenter.textContent =
+    activeBuzz.center;
 
-  buzzFact.textContent =
-    activeBuzzword.fact;
 
-  resetBuzzword();
+  buzzwordNumber.textContent =
+    "Molecule of the Day • #"
+    +
+    activeBuzz.number;
+
+
+  buzzwordPrompt.textContent =
+    activeBuzz.prompt;
+
+
+  buzzHint.textContent =
+    activeBuzz.hint;
+
+
+  buzzAttempts.textContent =
+    "0";
+
+
+  buzzStreak.textContent =
+    player.streak;
+
+
+  buzzFeedback.textContent =
+    "";
+
+
+  buzzReveal.classList.remove(
+    "visible"
+  );
+
+
+  buzzCells.forEach(
+    function (
+      cell
+    ) {
+
+      cell.classList.remove(
+        "filled"
+      );
+
+
+      cell.dataset.symbol =
+        "";
+
+
+      delete cell.dataset.pieceIndex;
+
+
+      cell.innerHTML =
+        "<span>?</span>";
+
+    }
+  );
+
+
+  renderBuzzPieces();
 
 }
 
 
 /* ==========================================================
-   CREATE AVAILABLE BUZZ TILES
+   BUZZWORD PIECES
 ========================================================== */
 
-function buildBuzzTiles() {
+function renderBuzzPieces() {
 
-  buzzTileBank.innerHTML = "";
+  buzzTiles.innerHTML =
+    "";
 
-  activeBuzzword.tiles.forEach(
-    function (symbol, index) {
 
-      const tile =
+  activeBuzz.tiles.forEach(
+    function (
+      symbol,
+      index
+    ) {
+
+      const button =
         document.createElement(
           "button"
         );
 
-      tile.type =
+
+      button.type =
         "button";
 
-      tile.className =
-        "buzz-tile";
 
-      tile.textContent =
+      button.className =
+        "buzz-piece";
+
+
+      button.textContent =
         symbol;
 
-      tile.dataset.symbol =
+
+      button.dataset.symbol =
         symbol;
 
-      tile.dataset.index =
+
+      button.dataset.piece =
         index;
 
-      tile.draggable =
-        true;
 
-
-      tile.addEventListener(
+      button.addEventListener(
         "click",
         function () {
 
+          if (
+            button.classList.contains(
+              "used"
+            )
+          ) {
+
+            return;
+
+          }
+
+
           document
             .querySelectorAll(
-              ".buzz-tile"
+              ".buzz-piece"
             )
             .forEach(
-              function (other) {
-                other.classList.remove(
+              function (
+                piece
+              ) {
+
+                piece.classList.remove(
                   "selected"
                 );
+
               }
             );
 
-          selectedBuzzTile =
-            symbol;
 
-          tile.classList.add(
+          button.classList.add(
             "selected"
           );
 
-        }
-      );
 
-
-      tile.addEventListener(
-        "dragstart",
-        function (event) {
-
-          event.dataTransfer.setData(
-            "text/plain",
-            symbol
-          );
-
-          selectedBuzzTile =
+          selectedBuzzPiece =
             symbol;
 
+
+          selectedBuzzButton =
+            button;
+
         }
       );
 
 
-      buzzTileBank.appendChild(
-        tile
+      buzzTiles.appendChild(
+        button
       );
 
     }
@@ -390,193 +751,231 @@ function buildBuzzTiles() {
 
 
 /* ==========================================================
-   BUZZ HIVE SLOTS
+   BUZZ CELL INTERACTION
 ========================================================== */
 
-buzzSlots.forEach(
-  function (slot) {
+buzzCells.forEach(
+  function (
+    cell
+  ) {
 
-    const index =
-      Number(
-        slot.dataset.slot
-      );
-
-
-    slot.addEventListener(
+    cell.addEventListener(
       "click",
       function () {
 
         if (
           buzzSolved
         ) {
+
           return;
+
         }
+
 
         if (
-          selectedBuzzTile
+          cell.classList.contains(
+            "filled"
+          )
         ) {
 
-          placeBuzzTile(
-            index,
-            selectedBuzzTile
-          );
+          const originalPieceIndex =
+            cell.dataset.pieceIndex;
 
-        }
 
-        else if (
-          buzzPlaced[index]
-        ) {
+          if (
+            originalPieceIndex !==
+            undefined
+          ) {
 
-          buzzPlaced[index] =
-            null;
+            const original =
+              buzzTiles.querySelector(
+                '[data-piece="'
+                +
+                originalPieceIndex
+                +
+                '"]'
+              );
 
-          slot.textContent =
-            "?";
 
-          slot.classList.remove(
+            if (
+              original
+            ) {
+
+              original.classList.remove(
+                "used"
+              );
+
+            }
+
+          }
+
+
+          cell.classList.remove(
             "filled"
           );
 
+
+          cell.dataset.symbol =
+            "";
+
+
+          delete cell.dataset.pieceIndex;
+
+
+          cell.innerHTML =
+            "<span>?</span>";
+
+
+          return;
+
         }
 
-      }
-    );
+
+        if (
+          !selectedBuzzPiece ||
+          !selectedBuzzButton
+        ) {
+
+          buzzFeedback.textContent =
+            "Select a molecular honeycomb first.";
+
+          return;
+
+        }
 
 
-    slot.addEventListener(
-      "dragover",
-      function (event) {
-        event.preventDefault();
-      }
-    );
+        cell.classList.add(
+          "filled"
+        );
 
 
-    slot.addEventListener(
-      "drop",
-      function (event) {
+        cell.dataset.symbol =
+          selectedBuzzPiece;
 
-        event.preventDefault();
 
-        const symbol =
-          event.dataTransfer.getData(
-            "text/plain"
+        cell.dataset.pieceIndex =
+          selectedBuzzButton
+            .dataset
+            .piece;
+
+
+        cell.innerHTML =
+          "<span>"
+          +
+          selectedBuzzPiece
+          +
+          "</span>";
+
+
+        selectedBuzzButton
+          .classList
+          .remove(
+            "selected"
           );
 
-        placeBuzzTile(
-          index,
-          symbol
-        );
+
+        selectedBuzzButton
+          .classList
+          .add(
+            "used"
+          );
+
+
+        selectedBuzzPiece =
+          null;
+
+
+        selectedBuzzButton =
+          null;
+
+
+        buzzFeedback.textContent =
+          "";
 
       }
     );
 
   }
 );
-
-
-/* ==========================================================
-   PLACE TILE
-========================================================== */
-
-function placeBuzzTile(
-  index,
-  symbol
-) {
-
-  if (
-    buzzSolved
-  ) {
-    return;
-  }
-
-  buzzPlaced[index] =
-    symbol;
-
-  buzzSlots[index].textContent =
-    symbol;
-
-  buzzSlots[index]
-    .classList
-    .add("filled");
-
-}
 
 
 /* ==========================================================
    CHECK BUZZWORD
 ========================================================== */
 
-buzzCheck.addEventListener(
-  "click",
-  function () {
+document
+  .getElementById(
+    "buzzCheck"
+  )
+  .addEventListener(
+    "click",
+    function () {
 
-    if (
-      buzzSolved
-    ) {
-      return;
-    }
-
-    buzzAttemptCount++;
-
-    buzzAttempts.textContent =
-      buzzAttemptCount;
-
-
-    let correct =
-      true;
-
-
-    activeBuzzword.slots.forEach(
-      function (
-        expected,
-        index
+      if (
+        buzzSolved
       ) {
 
-        if (
-          expected === null
+        return;
+
+      }
+
+
+      buzzAttemptCount++;
+
+
+      buzzAttempts.textContent =
+        buzzAttemptCount;
+
+
+      let correct =
+        true;
+
+
+      activeBuzz.slots.forEach(
+        function (
+          expected,
+          index
         ) {
 
-          /*
-            Unused hive cells must remain empty.
-          */
+          const actual =
+            buzzCells[
+              index
+            ].dataset.symbol
+            ||
+            null;
+
 
           if (
-            buzzPlaced[index] !== null
+            actual !==
+            expected
           ) {
-            correct = false;
+
+            correct =
+              false;
+
           }
 
         }
+      );
 
-        else if (
-          buzzPlaced[index] !== expected
-        ) {
 
-          correct = false;
+      if (
+        correct
+      ) {
 
-        }
+        solveBuzzword();
 
       }
-    );
 
+      else {
 
-    if (
-      correct
-    ) {
+        buzzFeedback.textContent =
+          "Not quite — some molecular honeycombs are in the wrong part of the hive.";
 
-      solveBuzzword();
-
-    }
-
-    else {
-
-      buzzFeedback.textContent =
-        "Not quite — some atoms are buzzing in the wrong part of the hive.";
+      }
 
     }
-
-  }
-);
+  );
 
 
 /* ==========================================================
@@ -588,45 +987,49 @@ function solveBuzzword() {
   buzzSolved =
     true;
 
+
   buzzFeedback.textContent =
     "🐝 Hive complete!";
 
-  xp += 25;
 
-  streak++;
-
-  updatePlayer();
-
-  buzzStreak.textContent =
-    streak;
-
-
-  /*
-    Reveal every correct molecular position.
-  */
-
-  activeBuzzword.slots.forEach(
+  activeBuzz.slots.forEach(
     function (
-      symbol,
+      expected,
       index
     ) {
 
+      const cell =
+        buzzCells[
+          index
+        ];
+
+
       if (
-        symbol
+        expected
       ) {
 
-        buzzSlots[index].textContent =
-          symbol;
+        cell.classList.add(
+          "filled"
+        );
 
-        buzzSlots[index]
-          .classList
-          .add("filled");
+
+        cell.innerHTML =
+          "<span>"
+          +
+          expected
+          +
+          "</span>";
 
       }
 
       else {
 
-        buzzSlots[index].textContent =
+        cell.classList.remove(
+          "filled"
+        );
+
+
+        cell.innerHTML =
           "";
 
       }
@@ -635,22 +1038,74 @@ function solveBuzzword() {
   );
 
 
+  document
+    .getElementById(
+      "buzzFormula"
+    )
+    .textContent =
+      activeBuzz.formula;
+
+
+  document
+    .getElementById(
+      "buzzName"
+    )
+    .textContent =
+      activeBuzz.name;
+
+
+  document
+    .getElementById(
+      "buzzType"
+    )
+    .textContent =
+      activeBuzz.type;
+
+
+  document
+    .getElementById(
+      "buzzAnchorInfo"
+    )
+    .textContent =
+      activeBuzz.centerName;
+
+
+  document
+    .getElementById(
+      "buzzPieceCount"
+    )
+    .textContent =
+      activeBuzz.pieceCount;
+
+
+  document
+    .getElementById(
+      "buzzWhy"
+    )
+    .textContent =
+      activeBuzz.why;
+
+
+  document
+    .getElementById(
+      "buzzFact"
+    )
+    .textContent =
+      activeBuzz.fact;
+
+
   buzzReveal.classList.add(
     "visible"
   );
 
 
-  setTimeout(
-    function () {
-
-      buzzReveal.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-
-    },
-    250
+  rewardPlayer(
+    25
   );
+
+
+  buzzStreak.textContent =
+    player.streak;
 
 }
 
@@ -659,178 +1114,486 @@ function solveBuzzword() {
    RESET BUZZWORD
 ========================================================== */
 
-function resetBuzzword() {
-
-  buzzPlaced =
-    new Array(6).fill(null);
-
-  buzzAttemptCount =
-    0;
-
-  buzzSolved =
-    false;
-
-  selectedBuzzTile =
-    null;
-
-  buzzAttempts.textContent =
-    "0";
-
-  buzzFeedback.textContent =
-    "";
-
-  buzzReveal.classList.remove(
-    "visible"
+document
+  .getElementById(
+    "buzzReset"
+  )
+  .addEventListener(
+    "click",
+    loadBuzzword
   );
-
-
-  buzzSlots.forEach(
-    function (slot) {
-
-      slot.textContent =
-        "?";
-
-      slot.classList.remove(
-        "filled"
-      );
-
-    }
-  );
-
-
-  buildBuzzTiles();
-
-}
-
-
-buzzReset.addEventListener(
-  "click",
-  resetBuzzword
-);
 
 
 /* ==========================================================
-   SHARE MY BUZZ
+   SHARE IMAGE
 ========================================================== */
 
-function buildBuzzShareText() {
+function drawShareHex(
+  ctx,
+  x,
+  y,
+  radius,
+  center
+) {
 
-  let attemptLine;
+  ctx.beginPath();
 
-  if (
-    buzzAttemptCount === 1
+
+  for (
+    let i = 0;
+    i < 6;
+    i++
   ) {
 
-    attemptLine =
-      "Hive completed in 1 attempt";
+    const angle =
+      Math.PI /
+      3 *
+      i;
+
+
+    const px =
+      x +
+      radius *
+      Math.cos(
+        angle
+      );
+
+
+    const py =
+      y +
+      radius *
+      Math.sin(
+        angle
+      );
+
+
+    if (
+      i === 0
+    ) {
+
+      ctx.moveTo(
+        px,
+        py
+      );
+
+    }
+
+    else {
+
+      ctx.lineTo(
+        px,
+        py
+      );
+
+    }
 
   }
 
-  else {
 
-    attemptLine =
-      "Hive completed in " +
-      buzzAttemptCount +
-      " attempts";
-
-  }
+  ctx.closePath();
 
 
-  return (
-    "🐝 MOLECULAR BEE\n" +
-    "BUZZWORD #" +
-    activeBuzzword.number +
-    "\n\n" +
+  ctx.fillStyle =
+    center
+      ?
+        "#d8a72f"
+      :
+        "#fff3c7";
 
-    "⬡   ⬡   ⬡\n" +
-    "  ⬡  🐝  ⬡\n" +
-    "⬡   ⬡   ⬡\n\n" +
 
-    attemptLine +
-    "\n" +
+  ctx.fill();
 
-    "🔥 Buzz Streak: " +
-    streak +
-    "\n\n" +
 
-    "The molecules are buzzing around the hive.\n\n" +
+  ctx.lineWidth =
+    4;
 
-    "Can you solve today's Buzzword?\n" +
 
-    "PAT Learning Lab"
+  ctx.strokeStyle =
+    "#99711f";
+
+
+  ctx.stroke();
+
+}
+
+
+/* ==========================================================
+   BUILD SHARE CARD
+========================================================== */
+
+async function buildBuzzShareImage() {
+
+  const canvas =
+    document.createElement(
+      "canvas"
+    );
+
+
+  canvas.width =
+    1080;
+
+
+  canvas.height =
+    1080;
+
+
+  const ctx =
+    canvas.getContext(
+      "2d"
+    );
+
+
+  ctx.fillStyle =
+    "#fff8e8";
+
+
+  ctx.fillRect(
+    0,
+    0,
+    1080,
+    1080
+  );
+
+
+  ctx.textAlign =
+    "center";
+
+
+  ctx.fillStyle =
+    "#29261f";
+
+
+  ctx.font =
+    "bold 70px Georgia";
+
+
+  ctx.fillText(
+    "MOLECULAR BEE",
+    540,
+    110
+  );
+
+
+  ctx.fillStyle =
+    "#99711f";
+
+
+  ctx.font =
+    "bold 38px Georgia";
+
+
+  ctx.fillText(
+    "BUZZWORD #"
+    +
+    activeBuzz.number,
+    540,
+    170
+  );
+
+
+  const radius =
+    88;
+
+
+  const surrounding =
+    [
+      [460, 335],
+      [620, 335],
+      [380, 475],
+      [700, 475],
+      [460, 615],
+      [620, 615]
+    ];
+
+
+  surrounding.forEach(
+    function (
+      point
+    ) {
+
+      drawShareHex(
+        ctx,
+        point[0],
+        point[1],
+        radius,
+        false
+      );
+
+    }
+  );
+
+
+  drawShareHex(
+    ctx,
+    540,
+    475,
+    radius,
+    true
+  );
+
+
+  ctx.font =
+    "76px Arial";
+
+
+  ctx.fillStyle =
+    "#29261f";
+
+
+  ctx.fillText(
+    "🐝",
+    540,
+    500
+  );
+
+
+  ctx.fillStyle =
+    "#29261f";
+
+
+  ctx.font =
+    "bold 42px Georgia";
+
+
+  ctx.fillText(
+    buzzAttemptCount ===
+    1
+      ?
+        "Hive completed in 1 attempt"
+      :
+        "Hive completed in "
+        +
+        buzzAttemptCount
+        +
+        " attempts",
+    540,
+    790
+  );
+
+
+  ctx.fillText(
+    "🔥 "
+    +
+    player.streak
+    +
+    "-day Buzz Streak",
+    540,
+    850
+  );
+
+
+  ctx.fillStyle =
+    "#765638";
+
+
+  ctx.font =
+    "italic 34px Georgia";
+
+
+  ctx.fillText(
+    "Can you complete today's hive?",
+    540,
+    925
+  );
+
+
+  ctx.font =
+    "bold 30px Georgia";
+
+
+  ctx.fillText(
+    "PAT Learning Lab",
+    540,
+    980
+  );
+
+
+  return new Promise(
+    function (
+      resolve
+    ) {
+
+      canvas.toBlob(
+        function (
+          blob
+        ) {
+
+          if (
+            !blob
+          ) {
+
+            resolve(
+              null
+            );
+
+            return;
+
+          }
+
+
+          resolve(
+            new File(
+              [
+                blob
+              ],
+              "Molecular-Bee-Buzzword-"
+              +
+              activeBuzz.number
+              +
+              ".png",
+              {
+                type:
+                  "image/png"
+              }
+            )
+          );
+
+        },
+        "image/png"
+      );
+
+    }
   );
 
 }
 
 
-shareBuzz.addEventListener(
-  "click",
-  async function () {
+/* ==========================================================
+   SHARE BUZZ
+========================================================== */
 
-    const text =
-      buildBuzzShareText();
+document
+  .getElementById(
+    "shareBuzzButton"
+  )
+  .addEventListener(
+    "click",
+    async function () {
 
-    try {
+      const text =
+        "🐝 MOLECULAR BEE • BUZZWORD #"
+        +
+        activeBuzz.number
+        +
+        "\n\nHive completed in "
+        +
+        buzzAttemptCount
+        +
+        " attempt"
+        +
+        (
+          buzzAttemptCount ===
+          1
+            ?
+              ""
+            :
+              "s"
+        )
+        +
+        "\n🔥 "
+        +
+        player.streak
+        +
+        "-day Buzz Streak"
+        +
+        "\n\nCan you complete today's molecular hive?"
+        +
+        "\n\nPAT Learning Lab";
 
-      if (
-        navigator.share
-      ) {
 
-        await navigator.share({
+      const file =
+        await buildBuzzShareImage();
 
-          title:
-            "Molecular Bee Buzzword #" +
-            activeBuzzword.number,
 
-          text:
-            text,
+      try {
 
-          url:
-            window.location.href
+        if (
+          file
+          &&
+          navigator.share
+          &&
+          navigator.canShare
+          &&
+          navigator.canShare(
+            {
+              files:
+                [
+                  file
+                ]
+            }
+          )
+        ) {
 
-        });
+          await navigator.share(
+            {
+              title:
+                "Molecular Bee Buzzword #"
+                +
+                activeBuzz.number,
 
-        return;
+              text:
+                text,
+
+              files:
+                [
+                  file
+                ]
+            }
+          );
+
+
+          return;
+
+        }
+
+
+        if (
+          navigator.share
+        ) {
+
+          await navigator.share(
+            {
+              title:
+                "Molecular Bee Buzzword #"
+                +
+                activeBuzz.number,
+
+              text:
+                text,
+
+              url:
+                window.location.href
+            }
+          );
+
+
+          return;
+
+        }
+
+
+        await navigator.clipboard.writeText(
+          text
+          +
+          "\n\n"
+          +
+          window.location.href
+        );
 
       }
 
+      catch (
+        error
+      ) {
 
-      await navigator.clipboard.writeText(
-        text +
-        "\n\n" +
-        window.location.href
-      );
+        console.log(
+          "Share cancelled."
+        );
 
-
-      const original =
-        shareBuzz.textContent;
-
-      shareBuzz.textContent =
-        "Copied! 🐝";
-
-
-      setTimeout(
-        function () {
-
-          shareBuzz.textContent =
-            original;
-
-        },
-        1300
-      );
+      }
 
     }
-
-    catch (error) {
-
-      console.log(
-        "Share cancelled."
-      );
-
-    }
-
-  }
-);
+  );
 
 
 /* ==========================================================
@@ -840,111 +1603,461 @@ shareBuzz.addEventListener(
 const spellingChallenges = [
 
   {
-    name: "Water",
-    formula: ["H", "H", "O"]
+    name:
+      "water",
+
+    formula:
+      "H₂O",
+
+    required:
+      [
+        "H",
+        "H",
+        "O"
+      ],
+
+    tiles:
+      [
+        "H",
+        "H",
+        "O",
+        "C",
+        "N"
+      ]
   },
 
-  {
-    name: "Carbon Dioxide",
-    formula: ["C", "O", "O"]
-  },
 
   {
-    name: "Ammonia",
-    formula: ["N", "H", "H", "H"]
+    name:
+      "carbon dioxide",
+
+    formula:
+      "CO₂",
+
+    required:
+      [
+        "C",
+        "O",
+        "O"
+      ],
+
+    tiles:
+      [
+        "C",
+        "O",
+        "O",
+        "H",
+        "N"
+      ]
+  },
+
+
+  {
+    name:
+      "ammonia",
+
+    formula:
+      "NH₃",
+
+    required:
+      [
+        "N",
+        "H",
+        "H",
+        "H"
+      ],
+
+    tiles:
+      [
+        "N",
+        "H",
+        "H",
+        "H",
+        "O"
+      ]
+  },
+
+
+  {
+    name:
+      "methane",
+
+    formula:
+      "CH₄",
+
+    required:
+      [
+        "C",
+        "H",
+        "H",
+        "H",
+        "H"
+      ],
+
+    tiles:
+      [
+        "C",
+        "H",
+        "H",
+        "H",
+        "H",
+        "O"
+      ]
   }
 
 ];
 
-let spellingIndex = 0;
-let spellingAnswer = [];
 
-const spellingPrompt =
-  document.getElementById("spellingPrompt");
+let spellingIndex =
+  0;
+
+
+let formulaPreview =
+  null;
+
 
 const spellingBuild =
-  document.getElementById("spellingBuild");
+  document.getElementById(
+    "spellingBuild"
+  );
+
 
 const spellingTiles =
-  document.getElementById("spellingTiles");
+  document.getElementById(
+    "spellingTiles"
+  );
+
 
 const spellingFeedback =
-  document.getElementById("spellingFeedback");
+  document.getElementById(
+    "spellingFeedback"
+  );
 
 
-function loadSpelling() {
+function buildSpellingGrid() {
 
-  const challenge =
-    spellingChallenges[spellingIndex];
-
-  spellingPrompt.textContent =
-    "Build " + challenge.name;
-
-  spellingAnswer = [];
-
-  spellingBuild.innerHTML = "";
-
-  spellingTiles.innerHTML = "";
-
-  spellingFeedback.textContent = "";
+  spellingBuild.innerHTML =
+    "";
 
 
-  const options =
-    [
-      ...challenge.formula,
-      "Na",
-      "Cl",
-      "N"
-    ];
+  spellingBuild.classList.add(
+    "honey-grid"
+  );
 
 
-  options.forEach(
-    function (symbol) {
+  for (
+    let i = 0;
+    i < 12;
+    i++
+  ) {
 
-      const tile =
-        document.createElement("button");
-
-      tile.type = "button";
-
-      tile.className =
-        "honey-tile";
-
-      tile.textContent =
-        symbol;
-
-      tile.draggable =
-        true;
-
-
-      tile.addEventListener(
-        "click",
-        function () {
-
-          spellingAnswer.push(
-            symbol
-          );
-
-          renderSpellingAnswer();
-
-        }
+    const slot =
+      document.createElement(
+        "div"
       );
 
 
-      tile.addEventListener(
-        "dragstart",
-        function (event) {
+    slot.className =
+      "honey-slot";
 
-          event.dataTransfer.setData(
-            "text/plain",
-            symbol
-          );
+
+    slot.dataset.slot =
+      i;
+
+
+    spellingBuild.appendChild(
+      slot
+    );
+
+  }
+
+
+  if (
+    formulaPreview
+  ) {
+
+    formulaPreview.remove();
+
+  }
+
+
+  formulaPreview =
+    document.createElement(
+      "div"
+    );
+
+
+  formulaPreview.className =
+    "formula-preview empty";
+
+
+  formulaPreview.textContent =
+    "Chemical formula will appear here";
+
+
+  spellingBuild
+    .parentNode
+    .insertBefore(
+      formulaPreview,
+      spellingBuild.nextSibling
+    );
+
+}
+
+
+function getSpellingBuild() {
+
+  return Array.from(
+    spellingBuild
+      .querySelectorAll(
+        ".honey-slot.filled"
+      )
+  )
+  .map(
+    function (
+      slot
+    ) {
+
+      return slot.dataset.symbol;
+
+    }
+  );
+
+}
+
+
+function formulaFromSequence(
+  sequence
+) {
+
+  if (
+    sequence.length ===
+    0
+  ) {
+
+    return "";
+
+  }
+
+
+  const subscripts =
+    {
+      2: "₂",
+      3: "₃",
+      4: "₄",
+      5: "₅",
+      6: "₆"
+    };
+
+
+  let result =
+    "";
+
+
+  let current =
+    sequence[0];
+
+
+  let count =
+    1;
+
+
+  for (
+    let i = 1;
+    i <= sequence.length;
+    i++
+  ) {
+
+    if (
+      sequence[i] ===
+      current
+    ) {
+
+      count++;
+
+    }
+
+    else {
+
+      result +=
+        current;
+
+
+      if (
+        count >
+        1
+      ) {
+
+        result +=
+          subscripts[count]
+          ||
+          count;
+
+      }
+
+
+      current =
+        sequence[i];
+
+
+      count =
+        1;
+
+    }
+
+  }
+
+
+  return result;
+
+}
+
+
+function updateSpellingFormula() {
+
+  const sequence =
+    getSpellingBuild();
+
+
+  if (
+    sequence.length ===
+    0
+  ) {
+
+    formulaPreview.textContent =
+      "Chemical formula will appear here";
+
+
+    formulaPreview.classList.add(
+      "empty"
+    );
+
+
+    return;
+
+  }
+
+
+  formulaPreview.classList.remove(
+    "empty"
+  );
+
+
+  formulaPreview.textContent =
+    formulaFromSequence(
+      sequence
+    );
+
+}
+
+
+function placeSpellingAtom(
+  symbol
+) {
+
+  const slot =
+    spellingBuild.querySelector(
+      ".honey-slot:not(.filled)"
+    );
+
+
+  if (
+    !slot
+  ) {
+
+    return false;
+
+  }
+
+
+  slot.classList.add(
+    "filled"
+  );
+
+
+  slot.dataset.symbol =
+    symbol;
+
+
+  slot.appendChild(
+    createHex(
+      symbol,
+      "Atom"
+    )
+  );
+
+
+  updateSpellingFormula();
+
+
+  return true;
+
+}
+
+
+function loadSpellingChallenge() {
+
+  const challenge =
+    spellingChallenges[
+      spellingIndex
+    ];
+
+
+  document
+    .getElementById(
+      "spellingPrompt"
+    )
+    .textContent =
+      "Spell "
+      +
+      challenge.name
+      +
+      " using the honeycomb atoms.";
+
+
+  spellingFeedback.textContent =
+    "";
+
+
+  buildSpellingGrid();
+
+
+  spellingTiles.innerHTML =
+    "";
+
+
+  challenge.tiles.forEach(
+    function (
+      symbol
+    ) {
+
+      const hex =
+        createHex(
+          symbol,
+          "Atom"
+        );
+
+
+      hex.addEventListener(
+        "click",
+        function () {
+
+          if (
+            placeSpellingAtom(
+              symbol
+            )
+          ) {
+
+            hex.remove();
+
+          }
 
         }
       );
 
 
       spellingTiles.appendChild(
-        tile
+        hex
       );
 
     }
@@ -953,110 +2066,128 @@ function loadSpelling() {
 }
 
 
-function renderSpellingAnswer() {
-
-  spellingBuild.innerHTML = "";
-
-  spellingAnswer.forEach(
-    function (symbol) {
-
-      const tile =
-        document.createElement("div");
-
-      tile.className =
-        "hex";
-
-      tile.textContent =
-        symbol;
-
-      spellingBuild.appendChild(
-        tile
-      );
-
-    }
-  );
-
-}
-
-
-spellingBuild.addEventListener(
-  "dragover",
-  function (event) {
-    event.preventDefault();
-  }
-);
-
-
-spellingBuild.addEventListener(
-  "drop",
-  function (event) {
-
-    event.preventDefault();
-
-    spellingAnswer.push(
-      event.dataTransfer.getData(
-        "text/plain"
-      )
-    );
-
-    renderSpellingAnswer();
-
-  }
-);
-
-
 document
-  .getElementById("spellingBackspace")
+  .getElementById(
+    "spellingBackspace"
+  )
   .addEventListener(
     "click",
     function () {
 
-      spellingAnswer.pop();
-
-      renderSpellingAnswer();
-
-    }
-  );
-
-
-document
-  .getElementById("spellingReset")
-  .addEventListener(
-    "click",
-    loadSpelling
-  );
-
-
-document
-  .getElementById("spellingCheck")
-  .addEventListener(
-    "click",
-    function () {
-
-      const correct =
-        spellingChallenges[
-          spellingIndex
-        ].formula;
+      const slots =
+        spellingBuild.querySelectorAll(
+          ".honey-slot.filled"
+        );
 
 
       if (
-        spellingAnswer.join(",") ===
-        correct.join(",")
+        slots.length ===
+        0
+      ) {
+
+        return;
+
+      }
+
+
+      const last =
+        slots[
+          slots.length -
+          1
+        ];
+
+
+      last.innerHTML =
+        "";
+
+
+      last.classList.remove(
+        "filled"
+      );
+
+
+      delete last.dataset.symbol;
+
+
+      updateSpellingFormula();
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "spellingReset"
+  )
+  .addEventListener(
+    "click",
+    loadSpellingChallenge
+  );
+
+
+document
+  .getElementById(
+    "spellingCheck"
+  )
+  .addEventListener(
+    "click",
+    function () {
+
+      const challenge =
+        spellingChallenges[
+          spellingIndex
+        ];
+
+
+      if (
+        getSpellingBuild()
+          .join(
+            ""
+          )
+        ===
+        challenge.required
+          .join(
+            ""
+          )
       ) {
 
         spellingFeedback.textContent =
-          "🐝 Correct molecule!";
+          "✓ Correct! "
+          +
+          challenge.formula
+          +
+          " completed.";
 
-        xp += 10;
 
-        updatePlayer();
+        rewardPlayer(
+          10
+        );
+
+
+        setTimeout(
+          function () {
+
+            spellingIndex =
+              (
+                spellingIndex +
+                1
+              )
+              %
+              spellingChallenges.length;
+
+
+            loadSpellingChallenge();
+
+          },
+          1100
+        );
 
       }
 
       else {
 
         spellingFeedback.textContent =
-          "Not quite. Check the atom ratio.";
+          "Not quite. Check the molecular formula.";
 
       }
 
@@ -1068,656 +2199,263 @@ document
    QUEEN BEE
 ========================================================== */
 
-const queenPrompt =
-  document.getElementById("queenPrompt");
-
-const queenElement =
-  document.getElementById("queenElement");
-
-const queenRing =
-  document.getElementById("queenRing");
-
-const queenTiles =
-  document.getElementById("queenTiles");
-
-const queenFeedback =
-  document.getElementById("queenFeedback");
-
-let queenPlaced = [];
-
-
-function loadQueen() {
-
-  queenPrompt.textContent =
-    "Build water around the Queen oxygen.";
-
-  queenElement.textContent =
-    "O";
-
-  queenPlaced = [];
-
-  queenRing.innerHTML = "";
-
-  queenTiles.innerHTML = "";
-
-  queenFeedback.textContent = "";
-
-
-  ["H", "H", "C", "Na", "Cl"]
-    .forEach(
-      function (symbol) {
-
-        const tile =
-          document.createElement(
-            "button"
-          );
-
-        tile.type =
-          "button";
-
-        tile.className =
-          "honey-tile";
-
-        tile.textContent =
-          symbol;
-
-        tile.draggable =
-          true;
-
-
-        tile.addEventListener(
-          "click",
-          function () {
-
-            queenPlaced.push(
-              symbol
-            );
-
-            renderQueen();
-
-          }
-        );
-
-
-        tile.addEventListener(
-          "dragstart",
-          function (event) {
-
-            event.dataTransfer.setData(
-              "text/plain",
-              symbol
-            );
-
-          }
-        );
-
-
-        queenTiles.appendChild(
-          tile
-        );
-
-      }
-    );
-
-}
-
-
-function renderQueen() {
-
-  queenRing.innerHTML = "";
-
-  queenPlaced.forEach(
-    function (symbol) {
-
-      const tile =
-        document.createElement(
-          "div"
-        );
-
-      tile.className =
-        "hex";
-
-      tile.textContent =
-        symbol;
-
-      queenRing.appendChild(
-        tile
-      );
-
-    }
-  );
-
-}
-
-
-queenRing.addEventListener(
-  "dragover",
-  function (event) {
-    event.preventDefault();
-  }
-);
-
-
-queenRing.addEventListener(
-  "drop",
-  function (event) {
-
-    event.preventDefault();
-
-    queenPlaced.push(
-      event.dataTransfer.getData(
-        "text/plain"
-      )
-    );
-
-    renderQueen();
-
-  }
-);
-
-
-document
-  .getElementById("queenCheck")
-  .addEventListener(
-    "click",
-    function () {
-
-      const hydrogens =
-        queenPlaced.filter(
-          function (item) {
-            return item === "H";
-          }
-        ).length;
-
-
-      if (
-        hydrogens === 2 &&
-        queenPlaced.length === 2
-      ) {
-
-        queenFeedback.textContent =
-          "👑 Correct — H₂O!";
-
-        xp += 10;
-
-        updatePlayer();
-
-      }
-
-      else {
-
-        queenFeedback.textContent =
-          "The Queen needs exactly two hydrogen neighbors.";
-
-      }
-
-    }
-  );
-
-
-document
-  .getElementById("queenReset")
-  .addEventListener(
-    "click",
-    loadQueen
-  );
-
-
-/* ==========================================================
-   WORKER BEE
-========================================================== */
-
-let protons = 0;
-let neutrons = 0;
-let electrons = 0;
-
-const protonCount =
-  document.getElementById("protonCount");
-
-const neutronCount =
-  document.getElementById("neutronCount");
-
-const innerElectronCount =
-  document.getElementById(
-    "innerElectronCount"
-  );
-
-const outerElectronCount =
-  document.getElementById(
-    "outerElectronCount"
-  );
-
-const workerPrompt =
-  document.getElementById(
-    "workerPrompt"
-  );
-
-const workerFeedback =
-  document.getElementById(
-    "workerFeedback"
-  );
-
-
-function renderAtom() {
-
-  protonCount.textContent =
-    protons;
-
-  neutronCount.textContent =
-    neutrons;
-
-  innerElectronCount.textContent =
-    Math.min(
-      electrons,
-      2
-    );
-
-  outerElectronCount.textContent =
-    Math.max(
-      electrons - 2,
-      0
-    );
-
-}
-
-
-function resetWorker() {
-
-  protons = 0;
-  neutrons = 0;
-  electrons = 0;
-
-  workerPrompt.textContent =
-    "Build a neutral carbon-12 atom.";
-
-  workerFeedback.textContent =
-    "";
-
-  renderAtom();
-
-}
-
-
-document
-  .getElementById("addProton")
-  .addEventListener(
-    "click",
-    function () {
-
-      protons++;
-      renderAtom();
-
-    }
-  );
-
-
-document
-  .getElementById("addNeutron")
-  .addEventListener(
-    "click",
-    function () {
-
-      neutrons++;
-      renderAtom();
-
-    }
-  );
-
-
-document
-  .getElementById("addElectron")
-  .addEventListener(
-    "click",
-    function () {
-
-      electrons++;
-      renderAtom();
-
-    }
-  );
-
-
-document
-  .getElementById("workerReset")
-  .addEventListener(
-    "click",
-    resetWorker
-  );
-
-
-document
-  .getElementById("workerCheck")
-  .addEventListener(
-    "click",
-    function () {
-
-      if (
-        protons === 6 &&
-        neutrons === 6 &&
-        electrons === 6
-      ) {
-
-        workerFeedback.textContent =
-          "🔧 Correct — Carbon-12!";
-
-        xp += 10;
-
-        updatePlayer();
-
-      }
-
-      else {
-
-        workerFeedback.textContent =
-          "Keep building: carbon-12 needs 6 protons, 6 neutrons and 6 electrons.";
-
-      }
-
-    }
-  );
-
-
-/* ==========================================================
-   POLLINATION
-========================================================== */
-
-const pollinationChallenges = [
+const queenChallenges = [
 
   {
-    flower: "Na⁺",
-    pollen: "Cl⁻",
-    answer: "NaCl"
+    central:
+      "O",
+
+    name:
+      "water",
+
+    formula:
+      "H₂O",
+
+    required:
+      [
+        "H",
+        "H"
+      ],
+
+    tiles:
+      [
+        "H",
+        "H",
+        "C",
+        "Na"
+      ]
   },
 
-  {
-    flower: "Ca²⁺",
-    pollen: "Cl⁻",
-    needed: 2,
-    answer: "CaCl₂"
-  },
 
   {
-    flower: "Al³⁺",
-    pollen: "O²⁻",
-    needed: 3,
-    answer: "Al₂O₃"
+    central:
+      "C",
+
+    name:
+      "carbon dioxide",
+
+    formula:
+      "CO₂",
+
+    required:
+      [
+        "O",
+        "O"
+      ],
+
+    tiles:
+      [
+        "O",
+        "O",
+        "H",
+        "N"
+      ]
   },
 
-  {
-    flower: "Mg²⁺",
-    pollen: "F⁻",
-    needed: 2,
-    answer: "MgF₂"
-  },
 
   {
-    flower: "K⁺",
-    pollen: "Br⁻",
-    answer: "KBr"
+    central:
+      "N",
+
+    name:
+      "ammonia",
+
+    formula:
+      "NH₃",
+
+    required:
+      [
+        "H",
+        "H",
+        "H"
+      ],
+
+    tiles:
+      [
+        "H",
+        "H",
+        "H",
+        "O"
+      ]
   }
 
 ];
 
-let pollinationIndex = 0;
-let delivered = [];
 
-const flowerIon =
-  document.getElementById("flowerIon");
+let queenIndex =
+  0;
 
-const pollenBank =
-  document.getElementById("pollenBank");
 
-const deliveredPollen =
+const queenHive =
   document.getElementById(
-    "deliveredPollen"
-  );
-
-const pollinationPrompt =
-  document.getElementById(
-    "pollinationPrompt"
-  );
-
-const pollinationResult =
-  document.getElementById(
-    "pollinationResult"
-  );
-
-const pollinationFeedback =
-  document.getElementById(
-    "pollinationFeedback"
-  );
-
-const flowerTarget =
-  document.getElementById(
-    "flowerTarget"
+    "queenHive"
   );
 
 
-function loadPollination() {
+const queenTiles =
+  document.getElementById(
+    "queenTiles"
+  );
 
-  const challenge =
-    pollinationChallenges[
-      pollinationIndex %
-      pollinationChallenges.length
-    ];
 
-  delivered = [];
+const queenFeedback =
+  document.getElementById(
+    "queenFeedback"
+  );
 
-  flowerIon.textContent =
-    challenge.flower;
 
-  pollinationPrompt.textContent =
-    "Choose pollen that can neutralize the flower.";
+function buildQueenHive() {
 
-  pollenBank.innerHTML =
-    "";
-
-  deliveredPollen.innerHTML =
-    "";
-
-  pollinationResult.textContent =
-    "";
-
-  pollinationFeedback.textContent =
+  queenHive.innerHTML =
     "";
 
 
-  const options = [
-    challenge.pollen,
-    "Cl⁻",
-    "O²⁻",
-    "Na⁺",
-    "F⁻",
-    "Br⁻"
-  ];
-
-
-  options.forEach(
-    function (ion) {
-
-      const pollen =
-        document.createElement(
-          "button"
-        );
-
-      pollen.type =
-        "button";
-
-      pollen.className =
-        "honey-tile";
-
-      pollen.textContent =
-        ion;
-
-      pollen.draggable =
-        true;
-
-
-      pollen.addEventListener(
-        "click",
-        function () {
-
-          deliverPollen(
-            ion
-          );
-
-        }
-      );
-
-
-      pollen.addEventListener(
-        "dragstart",
-        function (event) {
-
-          event.dataTransfer.setData(
-            "text/plain",
-            ion
-          );
-
-        }
-      );
-
-
-      pollenBank.appendChild(
-        pollen
-      );
-
-    }
-  );
-
-}
-
-
-function deliverPollen(ion) {
-
-  delivered.push(
-    ion
-  );
-
-  const piece =
+  const grid =
     document.createElement(
       "div"
     );
 
-  piece.className =
-    "hex";
 
-  piece.textContent =
-    ion;
+  grid.className =
+    "queen-grid";
 
-  deliveredPollen.appendChild(
-    piece
+
+  for (
+    let i = 1;
+    i <= 6;
+    i++
+  ) {
+
+    const slot =
+      document.createElement(
+        "div"
+      );
+
+
+    slot.className =
+      "queen-slot slot-"
+      +
+      i;
+
+
+    grid.appendChild(
+      slot
+    );
+
+  }
+
+
+  const center =
+    document.createElement(
+      "div"
+    );
+
+
+  center.className =
+    "queen-slot center-slot filled";
+
+
+  const queen =
+    createHex(
+      queenChallenges[
+        queenIndex
+      ].central,
+      "👑 Queen"
+    );
+
+
+  center.appendChild(
+    queen
+  );
+
+
+  grid.appendChild(
+    center
+  );
+
+
+  queenHive.appendChild(
+    grid
   );
 
 }
 
 
-flowerTarget.addEventListener(
-  "dragover",
-  function (event) {
-    event.preventDefault();
-  }
-);
+function placeQueenAtom(
+  symbol
+) {
 
-
-flowerTarget.addEventListener(
-  "drop",
-  function (event) {
-
-    event.preventDefault();
-
-    deliverPollen(
-      event.dataTransfer.getData(
-        "text/plain"
-      )
+  const slot =
+    queenHive.querySelector(
+      ".queen-slot:not(.center-slot):not(.filled)"
     );
 
+
+  if (
+    !slot
+  ) {
+
+    return false;
+
   }
-);
 
 
-document
-  .getElementById(
-    "pollinationReset"
-  )
-  .addEventListener(
-    "click",
-    loadPollination
+  slot.classList.add(
+    "filled"
   );
 
 
-document
-  .getElementById(
-    "pollinationCheck"
-  )
-  .addEventListener(
-    "click",
-    function () {
-
-      const challenge =
-        pollinationChallenges[
-          pollinationIndex %
-          pollinationChallenges.length
-        ];
-
-      const needed =
-        challenge.needed || 1;
-
-      const correctCount =
-        delivered.filter(
-          function (ion) {
-            return ion ===
-              challenge.pollen;
-          }
-        ).length;
+  slot.dataset.symbol =
+    symbol;
 
 
-      if (
-        correctCount === needed &&
-        delivered.length === needed
-      ) {
-
-        pollinationResult.textContent =
-          "🌼 " +
-          challenge.answer;
-
-        pollinationFeedback.textContent =
-          "Neutral compound grown!";
-
-        xp += 10;
-
-        updatePlayer();
-
-        pollinationIndex++;
-
-      }
-
-      else {
-
-        pollinationFeedback.textContent =
-          "The charges have not balanced yet.";
-
-      }
-
-    }
+  slot.appendChild(
+    createHex(
+      symbol,
+      "Worker"
+    )
   );
 
 
-/* ==========================================================
-   START
-========================================================== */
+  return true;
 
-updatePlayer();
-
-loadBuzzword();
-
-loadSpelling();
-
-loadQueen();
-
-resetWorker();
-
-loadPollination();
+}
 
 
-});
+function loadQueenChallenge() {
+
+  const challenge =
+    queenChallenges[
+      queenIndex
+    ];
+
+
+  document
+    .getElementById(
+      "queenPrompt"
+    )
+    .textContent =
+      "Build "
+      +
+      challenge.name
+      +
+      " around the Queen.";
+
+
+  queenFeedback.textContent =
+    "";
+
+
+  buildQueenHive();
+
+
+  queenTiles.innerHTML =
+    "";
+
+
+  challenge.tiles.forEach(
+    function (
+      symbol
+    ) {
+
+     
