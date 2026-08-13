@@ -13,7 +13,7 @@
 
   <link
     rel="stylesheet"
-    href="molecularbee.css?v=20260813-2"
+    href="molecularbee.css?v=20260813-3"
   >
 </head>
 
@@ -91,6 +91,8 @@
     <div class="mode-grid">
 
 
+      <!-- SPELLING BEE -->
+
       <button
         class="mode-card"
         data-screen="spellingScreen"
@@ -112,6 +114,8 @@
 
       </button>
 
+
+      <!-- QUEEN BEE -->
 
       <button
         class="mode-card"
@@ -135,6 +139,8 @@
       </button>
 
 
+      <!-- WORKER BEE -->
+
       <button
         class="mode-card"
         data-screen="workerScreen"
@@ -157,6 +163,8 @@
       </button>
 
 
+      <!-- POLLINATION -->
+
       <button
         class="mode-card"
         data-screen="pollinationScreen"
@@ -178,6 +186,8 @@
 
       </button>
 
+
+      <!-- HIVE MIND -->
 
       <button
         class="mode-card locked-card"
@@ -242,6 +252,7 @@
         id="spellingPrompt"
         class="prompt"
       >
+        Spell water using the honeycomb atoms.
       </p>
 
 
@@ -256,6 +267,9 @@
         class="honeycomb-build"
         data-drop-zone="spelling"
       >
+        <em>
+          Build the molecular hive here.
+        </em>
       </div>
 
 
@@ -339,12 +353,13 @@
         id="queenPrompt"
         class="prompt"
       >
+        Build water around the Queen.
       </p>
 
 
       <div class="instruction-note">
         The Queen element stays fixed.
-        Add the correct surrounding atoms.
+        Drag or tap the correct surrounding atoms into the hive.
       </div>
 
 
@@ -353,6 +368,8 @@
         class="queen-hive"
         data-drop-zone="queen"
       >
+
+        <!-- FIXED CENTRAL QUEEN ELEMENT -->
 
         <div
           id="queenCenter"
@@ -367,8 +384,14 @@
             O
           </strong>
 
+          <small>
+            Queen
+          </small>
+
         </div>
 
+
+        <!-- DRAGGED ATOMS APPEAR HERE -->
 
         <div
           id="queenRing"
@@ -378,6 +401,12 @@
 
       </div>
 
+
+      <!-- AVAILABLE HONEYCOMB TILES -->
+
+      <h3>
+        Worker Atoms
+      </h3>
 
       <div
         id="queenTiles"
@@ -451,6 +480,7 @@
         id="workerPrompt"
         class="prompt"
       >
+        Build a neutral helium atom.
       </p>
 
 
@@ -599,18 +629,21 @@
         id="pollinationPrompt"
         class="prompt"
       >
+        Carry enough charged pollen to the flower
+        to build a neutral ionic compound.
       </p>
 
 
       <div class="instruction-note">
         Drag pollen onto the flower,
         or tap the pollen to send it there.
-        Build a neutral ionic compound.
       </div>
 
 
       <div class="pollination-board">
 
+
+        <!-- POLLEN SIDE -->
 
         <div class="pollen-meadow">
 
@@ -627,6 +660,8 @@
         </div>
 
 
+        <!-- FLOWER SIDE -->
+
         <div
           id="flowerTarget"
           class="flower-target"
@@ -642,6 +677,7 @@
           </div>
 
           <strong id="flowerIon">
+            Cl⁻
           </strong>
 
 
@@ -757,7 +793,7 @@
 </footer>
 
 
-<script src="molecularbee.js?v=20260813-2"></script>
+<script src="molecularbee.js?v=20260813-3"></script>
 
 </body>
 
