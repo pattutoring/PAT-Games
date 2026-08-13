@@ -20,7 +20,6 @@
 
 <body>
 
-
 <header>
 
   <a
@@ -58,7 +57,6 @@
   </p>
 
 </header>
-
 
 
 <main>
@@ -99,7 +97,12 @@
   >
 
 
+    <!-- =========================
+         CLUE HEADING
+    ========================== -->
+
     <div class="clue-heading">
+
 
       <div
         id="clueNumber"
@@ -108,85 +111,88 @@
       </div>
 
 
-      <h2
-        id="clueTitle"
-      >
+      <!-- ANSWER PLACEHOLDER -->
+
       <div class="answer-placeholder">
 
-  <span class="answer-label">
-    ANSWER
-  </span>
-
-  <h2 id="clueTitle">
-  </h2>
-
-  <div
-    id="enumeration"
-    class="enumeration"
-  >
-  </div>
-
-</div>
+        <span class="answer-label">
+          ANSWER
+        </span>
 
 
-<p
-  id="clueText"
-  class="clue-text"
->
-</p>
+        <h2 id="clueTitle">
+        </h2>
 
 
-<div class="guess-panel">
+        <div
+          id="enumeration"
+          class="enumeration"
+        >
+        </div>
 
-  <div
-    id="guessCounter"
-    class="guess-counter"
-  >
-    Guesses: 0
-  </div>
+      </div>
 
-  <div class="guess-row">
 
-    <input
-      id="guessInput"
-      type="text"
-      autocomplete="off"
-      placeholder="What is the answer?"
-    >
+      <!-- MAIN CLUE TEXT -->
 
-    <div class="reveal-actions">
+      <p
+        id="clueText"
+        class="clue-text"
+      >
+      </p>
 
-  <button
-    id="bigRevealButton"
-    class="reveal-answer-button"
-  >
-    Reveal the Answer
-  </button>
 
-  <button
-    id="shareButton"
-    class="share-button"
-  >
-    Share Clue
-  </button>
+      <!-- =========================
+           GUESSING
+      ========================== -->
 
-</div>
+      <div class="guess-panel">
 
-  </div>
 
-  <div
-    id="guessFeedback"
-    class="guess-feedback"
-  >
-  </div>
+        <div
+          id="guessCounter"
+          class="guess-counter"
+        >
+          Guesses: 0
+        </div>
 
-</div>
+
+        <div class="guess-row">
+
+          <input
+            id="guessInput"
+            type="text"
+            autocomplete="off"
+            placeholder="What is the answer?"
+          >
+
+
+          <button
+            id="guessButton"
+            class="guess-button"
+          >
+            Submit Guess
+          </button>
+
+        </div>
+
+
+        <div
+          id="guessFeedback"
+          class="guess-feedback"
+        >
+        </div>
+
+      </div>
+
 
     </div>
 
 
 
-    <!-- PHASE SELECTOR -->
+    <!-- =========================
+         PHASE SELECTOR
+    ========================== -->
 
     <div class="phase-row">
 
@@ -209,9 +215,12 @@
 
 
 
-    <!-- IMAGE VIEWER -->
+    <!-- =========================
+         IMAGE VIEWER
+    ========================== -->
 
     <div class="viewer">
+
 
       <div class="viewer-label">
 
@@ -242,6 +251,7 @@
 
       <div class="viewer-controls">
 
+
         <button
           id="previousButton"
           class="viewer-button"
@@ -257,6 +267,7 @@
           Next →
         </button>
 
+
       </div>
 
 
@@ -266,47 +277,72 @@
       >
       </div>
 
+
     </div>
 
 
 
-    <!-- REVEAL CTA -->
+    <!-- =========================
+         REVEAL / SHARE CTA
+    ========================== -->
 
     <div
       id="revealBox"
       class="reveal-box"
     >
 
+
       <h3>
         Think you've collapsed the clue?
       </h3>
+
 
       <p>
         Work backward from the surface story.
         Look for one answer capable of satisfying every layer.
       </p>
 
-      <button
-        id="bigRevealButton"
-        class="reveal-answer-button"
-      >
-        Reveal the Answer
-      </button>
+
+      <div class="reveal-actions">
+
+
+        <button
+          id="bigRevealButton"
+          class="reveal-answer-button"
+        >
+          Reveal the Answer
+        </button>
+
+
+        <button
+          id="shareButton"
+          class="share-button"
+        >
+          Share Clue
+        </button>
+
+
+      </div>
+
 
     </div>
 
 
 
-    <!-- SOLUTION INFORMATION -->
+    <!-- =========================
+         SOLUTION INFORMATION
+    ========================== -->
 
     <div
       id="solutionInfo"
       class="solution-info"
     >
 
+
       <div class="solution-badge">
         CLUE SOLVED
       </div>
+
 
       <h2
         id="answerTitle"
@@ -315,6 +351,7 @@
 
 
       <div class="solution-grid">
+
 
         <div class="solution-card">
 
@@ -339,6 +376,7 @@
 
         </div>
 
+
       </div>
 
 
@@ -354,6 +392,7 @@
 
       </p>
 
+
     </div>
 
 
@@ -362,13 +401,14 @@
 
 
   <!-- =========================
-       ARCHIVE
+       ARCHIVE VIEW
   ========================== -->
 
   <section
     id="archiveView"
     class="view"
   >
+
 
     <div class="archive-heading">
 
@@ -390,6 +430,7 @@
     >
     </div>
 
+
   </section>
 
 
@@ -410,7 +451,6 @@
   Solve clues. Level up. Master meaning.
 
 </footer>
-
 
 
 <script src="cluecards.js"></script>
