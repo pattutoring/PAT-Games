@@ -13,7 +13,7 @@
 
   <link
     rel="stylesheet"
-    href="molecularbee.css?v=20260813-6"
+    href="molecularbee.css?v=20260813-8"
   >
 </head>
 
@@ -82,37 +82,35 @@
       type="button"
     >
 
-      <div class="buzz-feature-top">
+      <div class="buzz-feature-label">
+        🐝 BUZZWORD OF THE DAY
+      </div>
 
-        <span class="buzz-badge">
-          BUZZWORD OF THE DAY
-        </span>
+      <div class="mini-buzz-hive">
 
-        <span>
+        <span class="mini-buzz-cell mini-buzz-top-left"></span>
+        <span class="mini-buzz-cell mini-buzz-top-right"></span>
+
+        <span class="mini-buzz-cell mini-buzz-left"></span>
+
+        <span class="mini-buzz-cell mini-buzz-center">
           🐝
         </span>
 
-      </div>
+        <span class="mini-buzz-cell mini-buzz-right"></span>
 
-
-      <div class="buzz-feature-hive">
-
-        <span class="mini-hive-hex"></span>
-        <span class="mini-hive-hex"></span>
-        <span class="mini-hive-center">⬢</span>
-        <span class="mini-hive-hex"></span>
-        <span class="mini-hive-hex"></span>
+        <span class="mini-buzz-cell mini-buzz-bottom-left"></span>
+        <span class="mini-buzz-cell mini-buzz-bottom-right"></span>
 
       </div>
-
 
       <h2 id="homeBuzzwordTitle">
         Today's Molecular Challenge
       </h2>
 
       <p>
-        One larger molecule or compound.
-        One hive. One challenge every day.
+        Complete the daily molecular hive
+        and share your buzz.
       </p>
 
       <strong>
@@ -221,7 +219,7 @@
 
         <p>
           Carry charged pollen to flowers
-          and grow neutral ionic compounds.
+          and form ionic compounds.
         </p>
 
       </button>
@@ -278,24 +276,45 @@
 
     <div class="game-card buzzword-card">
 
-      <div class="buzz-title-row">
+      <div class="buzz-brand">
+
+        <div class="buzz-brand-bee">
+          🐝
+        </div>
 
         <div>
 
           <div class="game-label">
-            BUZZWORD OF THE DAY
+            MOLECULAR BEE™
           </div>
 
-          <h2 id="buzzwordNumber">
-            Buzzword #001
+          <h2>
+            BUZZWORD
           </h2>
 
+          <div
+            id="buzzwordNumber"
+            class="buzz-number"
+          >
+            Molecule of the Day • #001
+          </div>
+
         </div>
 
-        <div class="buzz-large-bee">
-          🐝
-        </div>
+      </div>
 
+
+      <p
+        id="buzzwordPrompt"
+        class="buzz-prompt"
+      >
+      </p>
+
+
+      <div
+        id="buzzHint"
+        class="instruction-note"
+      >
       </div>
 
 
@@ -318,72 +337,98 @@
       </div>
 
 
-      <p
-        id="buzzwordPrompt"
-        class="prompt buzz-prompt"
-      >
-      </p>
-
-
-      <div
-        id="buzzHint"
-        class="instruction-note"
-      >
-      </div>
-
-
-      <!-- BUZZWORD HIVE -->
+      <!-- SEVEN-CELL HIVE -->
 
       <div
         id="buzzHive"
         class="buzz-hive"
       >
 
-        <div class="buzz-grid">
+        <button
+          class="buzz-cell buzz-cell-1"
+          data-buzz-slot="0"
+          type="button"
+        >
+          <span>?</span>
+        </button>
+
+        <button
+          class="buzz-cell buzz-cell-2"
+          data-buzz-slot="1"
+          type="button"
+        >
+          <span>?</span>
+        </button>
+
+        <button
+          class="buzz-cell buzz-cell-3"
+          data-buzz-slot="2"
+          type="button"
+        >
+          <span>?</span>
+        </button>
 
 
-          <div class="buzz-slot buzz-slot-1"></div>
-          <div class="buzz-slot buzz-slot-2"></div>
-          <div class="buzz-slot buzz-slot-3"></div>
-          <div class="buzz-slot buzz-slot-4"></div>
-          <div class="buzz-slot buzz-slot-5"></div>
-          <div class="buzz-slot buzz-slot-6"></div>
-          <div class="buzz-slot buzz-slot-7"></div>
-          <div class="buzz-slot buzz-slot-8"></div>
+        <div class="buzz-cell buzz-center-cell">
 
+          <span class="buzz-anchor-label">
+            CENTER
+          </span>
 
-          <!-- CENTRAL REVEALED ELEMENT / ION -->
-
-          <div class="buzz-slot buzz-center-slot filled">
-
-            <div class="hex buzz-center-hex">
-
-              <small>
-                Anchor
-              </small>
-
-              <strong id="buzzCenter">
-                S
-              </strong>
-
-            </div>
-
-          </div>
+          <strong id="buzzCenter">
+            C
+          </strong>
 
         </div>
+
+
+        <button
+          class="buzz-cell buzz-cell-4"
+          data-buzz-slot="3"
+          type="button"
+        >
+          <span>?</span>
+        </button>
+
+        <button
+          class="buzz-cell buzz-cell-5"
+          data-buzz-slot="4"
+          type="button"
+        >
+          <span>?</span>
+        </button>
+
+        <button
+          class="buzz-cell buzz-cell-6"
+          data-buzz-slot="5"
+          type="button"
+        >
+          <span>?</span>
+        </button>
 
       </div>
 
 
-      <h3>
-        Available Molecular Pieces
-      </h3>
+      <div class="buzz-hive-caption">
+        Build the molecule around the revealed center.
+      </div>
+
+
+      <div class="buzz-piece-heading">
+        Molecular Honeycombs
+      </div>
 
 
       <div
         id="buzzTiles"
         class="honeycomb-bank"
       >
+      </div>
+
+
+      <div class="instruction-note">
+        Tap a molecular honeycomb, then tap an empty hive cell.
+        Tap a filled hive cell to remove it.
       </div>
 
 
@@ -394,7 +439,7 @@
           class="primary-button"
           type="button"
         >
-          Check Hive
+          Check Buzzword
         </button>
 
         <button
@@ -402,7 +447,7 @@
           class="secondary-button"
           type="button"
         >
-          Reset
+          Reset Hive
         </button>
 
       </div>
@@ -415,22 +460,24 @@
       </div>
 
 
-      <!-- BUZZWORD REVEAL -->
+      <!-- SOLVED REVEAL -->
 
       <div
         id="buzzReveal"
         class="buzz-reveal"
       >
 
-        <div class="solution-badge">
-          HIVE COMPLETE
+        <div class="buzz-complete-badge">
+          🐝 HIVE COMPLETE
         </div>
+
 
         <div
           id="buzzFormula"
           class="buzz-formula"
         >
         </div>
+
 
         <h2 id="buzzName">
         </h2>
@@ -453,7 +500,7 @@
           <div class="buzz-info-card">
 
             <span>
-              ANCHOR
+              CENTER
             </span>
 
             <strong id="buzzAnchorInfo">
@@ -465,7 +512,7 @@
           <div class="buzz-info-card">
 
             <span>
-              PIECES
+              HIVE PIECES
             </span>
 
             <strong id="buzzPieceCount">
@@ -476,10 +523,10 @@
         </div>
 
 
-        <div class="buzz-fact">
+        <div class="buzz-note">
 
           <strong>
-            Why it works
+            Why the Hive Works
           </strong>
 
           <p id="buzzWhy">
@@ -488,10 +535,10 @@
         </div>
 
 
-        <div class="buzz-fact">
+        <div class="buzz-note buzz-fact-note">
 
           <strong>
-            Molecule Note
+            🐝 Molecular Note
           </strong>
 
           <p id="buzzFact">
@@ -552,8 +599,7 @@
 
 
       <div class="instruction-note">
-        Drag a honeycomb tile into the hive,
-        or tap it to place it.
+        Tap a honeycomb atom to place it into the molecular hive.
       </div>
 
 
@@ -649,7 +695,7 @@
 
       <div class="instruction-note">
         The Queen element stays fixed.
-        Drag or tap the correct surrounding atoms into the hive.
+        Place the correct atoms into the surrounding hive.
       </div>
 
 
@@ -889,8 +935,8 @@
 
 
       <div class="instruction-note">
-        Drag pollen onto the flower,
-        or tap the pollen to send it there.
+        Tap charged pollen to send it to the flower.
+        Build a neutral ionic compound.
       </div>
 
 
@@ -927,11 +973,9 @@
           <strong id="flowerIon">
           </strong>
 
-
           <div class="delivered-label">
             Pollinated With
           </div>
-
 
           <div
             id="deliveredPollen"
@@ -1017,8 +1061,8 @@
         🧠🐝
 
         <p>
-          Cooperative and competitive
-          chemistry building is coming soon.
+          Cooperative and competitive chemistry
+          building is coming soon.
         </p>
 
       </div>
@@ -1032,14 +1076,11 @@
 
 
 <footer>
-
-  Molecular Bee™
-  • PAT Learning Lab
-
+  Molecular Bee™ • PAT Learning Lab
 </footer>
 
 
-<script src="molecularbee.js?v=20260813-6"></script>
+<script src="molecularbee.js?v=20260813-8"></script>
 
 </body>
 
