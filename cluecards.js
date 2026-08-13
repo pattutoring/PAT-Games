@@ -17,6 +17,209 @@
 
 const clueCards = [
 
+   /* ==========================================================
+   SHARE
+========================================================== */
+
+
+function buildShareText() {
+
+  return `KOAN~KAON • Clue-Card #${activeClue.number}
+
+"${activeClue.clue}" ${activeClue.enumeration}
+
+Guesses: ${guesses}
+
+Can you collapse the clue?
+
+PAT Learning Lab`;
+
+}
+
+
+
+shareButton
+  .addEventListener(
+
+    "click",
+
+    async () => {
+
+
+      const text =
+        buildShareText();
+
+
+      const url =
+        window.location.href;
+
+
+      /*
+        Always use the FIRST CLUE IMAGE,
+        regardless of which slide is currently open.
+      */
+
+      const imageUrl =
+        activeClue.clueSlides[0];
+
+
+      try {
+
+
+        const response =
+          await fetch(
+            imageUrl
+          );
+
+
+        const blob =
+          await response.blob();
+
+
+        const file =
+          new File(
+
+            [
+              blob
+            ],
+
+            `clue-card-${activeClue.number}.jpeg`,
+
+            {
+              type:
+                blob.type
+                ||
+                "image/jpeg"
+            }
+
+          );
+
+
+        /*
+          iPhone/iPad Safari can share files
+          when Web Share Level 2 is available.
+        */
+
+        if (
+          navigator.share
+          &&
+          navigator.canShare
+          &&
+          navigator.canShare(
+            {
+              files:
+                [
+                  file
+                ]
+            }
+          )
+        ) {
+
+
+          await navigator.share(
+            {
+
+              title:
+                `Koan~Kaon Clue-Card #${activeClue.number}`,
+
+              text:
+                text,
+
+              files:
+                [
+                  file
+                ]
+
+            }
+          );
+
+
+          return;
+
+        }
+
+
+        /*
+          FALLBACK:
+          share text + page link
+        */
+
+        if (
+          navigator.share
+        ) {
+
+
+          await navigator.share(
+            {
+
+              title:
+                `Koan~Kaon Clue-Card #${activeClue.number}`,
+
+              text:
+                text,
+
+              url:
+                url
+
+            }
+          );
+
+
+          return;
+
+        }
+
+
+        /*
+          FINAL FALLBACK:
+          copy text
+        */
+
+        await navigator
+          .clipboard
+          .writeText(
+            `${text}
+
+${url}`
+          );
+
+
+        shareButton.textContent =
+          "Copied!";
+
+
+        setTimeout(
+          () => {
+
+            shareButton.textContent =
+              "Share Clue";
+
+          },
+
+          1400
+        );
+
+
+      }
+
+      catch (
+        error
+      ) {
+
+        /*
+          User cancelling the native share sheet
+          should not create an error message.
+        */
+
+        console.log(
+          error
+        );
+
+      }
+
+    }
+
+  );
 
   /* ========================================================
      CLUE-CARD #001
@@ -187,7 +390,144 @@ const clueCards = [
 
 ];
 
+/* ==========================================================
+   GUESSING
+========================================================== */
 
+
+function normalizeAnswer(
+  text
+) {
+
+  return text
+    .trim()
+    .toUpperCase()
+    .replace(
+      /\s+/g,
+      "-"
+    );
+
+}
+
+
+
+function submitGuess() {
+
+  if (
+    solved
+  ) {
+
+    return;
+
+  }
+
+
+  const guess =
+    normalizeAnswer(
+      guessInput.value
+    );
+
+
+  if (
+    !guess
+  ) {
+
+    guessFeedback.textContent =
+      "Enter an answer first.";
+
+    return;
+
+  }
+
+
+  guesses++;
+
+
+  guessCounter.textContent =
+    `Guesses: ${guesses}`;
+
+
+  const correctAnswer =
+    normalizeAnswer(
+      activeClue.answer
+    );
+
+
+  if (
+    guess ===
+    correctAnswer
+  ) {
+
+    solved =
+      true;
+
+
+    guessFeedback.textContent =
+      `Correct — ${activeClue.answer}!`;
+
+
+    guessFeedback
+      .classList
+      .add(
+        "correct"
+      );
+
+
+    guessInput.disabled =
+      true;
+
+
+    guessButton.disabled =
+      true;
+
+
+    revealSolution();
+
+
+    return;
+
+  }
+
+
+  guessFeedback.textContent =
+    "Not quite. Re-examine the clue from both senses.";
+
+
+  guessInput.select();
+
+}
+
+
+
+guessButton
+  .addEventListener(
+
+    "click",
+
+    submitGuess
+
+  );
+
+
+guessInput
+  .addEventListener(
+
+    "keydown",
+
+    event => {
+
+      if (
+        event.key ===
+        "Enter"
+      ) {
+
+        submitGuess();
+
+      }
+
+    }
+
+  );
 
 /* ==========================================================
    STATE
@@ -213,6 +553,12 @@ let slideIndex =
 
 
 let solutionUnlocked =
+  false;
+let guesses =
+  0;
+
+
+let solved =
   false;
 
 
@@ -370,7 +716,34 @@ const archiveList =
   document.getElementById(
     "archiveList"
   );
+const guessInput =
+  document.getElementById(
+    "guessInput"
+  );
 
+
+const guessButton =
+  document.getElementById(
+    "guessButton"
+  );
+
+
+const guessCounter =
+  document.getElementById(
+    "guessCounter"
+  );
+
+
+const guessFeedback =
+  document.getElementById(
+    "guessFeedback"
+  );
+
+
+const shareButton =
+  document.getElementById(
+    "shareButton"
+  );
 
 
 /* ==========================================================
@@ -400,7 +773,52 @@ function getSlides() {
    LOAD CLUE DATA
 ========================================================== */
 
+function buildAnswerPlaceholder(
+  enumeration
+) {
 
+  return enumeration
+    .replace(
+      /[()]/g,
+      ""
+    )
+    .split(
+      ""
+    )
+    .map(
+      character => {
+
+        if (
+          /\d/.test(
+            character
+          )
+        ) {
+
+          return "_".repeat(
+            Number(
+              character
+            )
+          );
+
+        }
+
+
+        if (
+          character === "-"
+        ) {
+
+          return "-";
+
+        }
+
+
+        return "";
+
+      }
+    )
+    .join("");
+
+}
 function loadClue(card) {
 
   activeClue =
@@ -417,14 +835,40 @@ function loadClue(card) {
 
   solutionUnlocked =
     false;
+guesses =
+  0;
 
+
+solved =
+  false;
+
+
+guessInput.value =
+  "";
+
+
+guessFeedback.textContent =
+  "";
+
+
+guessFeedback
+  .classList
+  .remove(
+    "correct"
+  );
+
+
+guessCounter.textContent =
+  "Guesses: 0";
 
   clueNumber.textContent =
     `CLUE-CARD #${card.number}`;
 
 
   clueTitle.textContent =
-    card.title;
+  buildAnswerPlaceholder(
+    card.enumeration
+  );
 
 
   clueText.textContent =
@@ -485,7 +929,13 @@ function loadClue(card) {
 
 
   renderSlide();
+   
+guessInput.disabled =
+  false;
 
+
+guessButton.disabled =
+  false;
 }
 
 
@@ -713,7 +1163,16 @@ cluePhaseButton
 
 
 function revealSolution() {
+clueTitle.textContent =
+   
+  activeClue.answer;
+   guessInput.disabled =
+  true;
 
+
+guessButton.disabled =
+  true;
+   
   solutionUnlocked =
     true;
 
