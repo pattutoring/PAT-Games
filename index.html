@@ -7,940 +7,440 @@
 <title>PAT Learning Lab</title>
 
 <style>
-    :root {
-        --cream: #fff8e8;
-        --paper: #fffdf6;
-        --ink: #29261f;
-        --green: #58784b;
-        --light-green: #dfe9d7;
-        --gold: #d5a83e;
-        --brown: #8b633e;
-        --red: #b9574e;
-        --blue: #477ca8;
-        --shadow: rgba(52, 43, 29, 0.15);
-    }
+:root {
+  --cream: #fff7e8;
+  --paper: #fffdf7;
+  --ink: #29261f;
+  --green: #59784c;
+  --light-green: #e5eddc;
+  --brown: #8b633e;
+  --gold: #d6aa44;
+  --red: #b6534d;
+  --blue: #467dad;
+  --purple: #71558e;
+  --shadow: rgba(50,40,25,.14);
+}
 
-    * {
-        box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    body {
-        margin: 0;
-        font-family: Georgia, "Times New Roman", serif;
-        background: var(--cream);
-        color: var(--ink);
-    }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
 
-    button {
-        font: inherit;
-    }
+header {
+  padding: 42px 20px 25px;
+  text-align: center;
+}
 
-    /* HEADER */
+.brand-small {
+  color: var(--green);
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 4px;
+}
 
-    header {
-        text-align: center;
-        padding: 28px 20px 18px;
-    }
+h1 {
+  margin: 4px 0;
+  font-size: clamp(2.3rem, 9vw, 4.6rem);
+  letter-spacing: 2px;
+}
 
-    header h1 {
-        margin: 0;
-        font-size: clamp(2rem, 7vw, 3.8rem);
-        letter-spacing: 2px;
-    }
+.tagline {
+  margin-top: 8px;
+  color: var(--brown);
+  font-weight: bold;
+}
 
-    header p {
-        margin: 8px 0 0;
-        color: var(--green);
-        font-weight: bold;
-    }
+.intro {
+  max-width: 680px;
+  margin: 24px auto 0;
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
 
-    .xp-bar {
-        width: min(500px, 90%);
-        height: 14px;
-        background: #e7ddc7;
-        border-radius: 20px;
-        margin: 16px auto 5px;
-        overflow: hidden;
-    }
+main {
+  width: min(1050px, 92%);
+  margin: auto;
+  padding-bottom: 70px;
+}
 
-    #xpFill {
-        width: 0%;
-        height: 100%;
-        background: var(--gold);
-        transition: width 0.4s;
-    }
+.section-title {
+  text-align: center;
+  margin: 30px 0 25px;
+}
 
-    /* MAIN */
+.section-title h2 {
+  margin-bottom: 7px;
+}
 
-    main {
-        width: min(1000px, 92%);
-        margin: auto;
-        padding-bottom: 60px;
-    }
+.lab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
 
-    .screen {
-        display: none;
-        animation: appear 0.3s ease;
-    }
+.lab-card {
+  background: var(--paper);
+  border: 2px solid var(--brown);
+  border-radius: 20px;
+  padding: 25px 22px;
+  min-height: 255px;
+  box-shadow: 0 7px 18px var(--shadow);
+  display: flex;
+  flex-direction: column;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
 
-    .screen.active {
-        display: block;
-    }
+.lab-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px var(--shadow);
+}
 
-    @keyframes appear {
-        from {
-            opacity: 0;
-            transform: translateY(8px);
-        }
+.lab-icon {
+  font-size: 3rem;
+  margin-bottom: 7px;
+}
 
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
+.lab-card h2 {
+  margin: 5px 0 7px;
+}
 
-    .section-title {
-        text-align: center;
-        margin-bottom: 25px;
-    }
+.lab-card p {
+  line-height: 1.5;
+  flex-grow: 1;
+}
 
-    /* WORLD CARDS */
+.card-button {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  background: var(--green);
+  color: white;
+  padding: 13px 15px;
+  border-radius: 12px;
+  font-weight: bold;
+  margin-top: 12px;
+}
 
-    .world-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 18px;
-    }
+.card-button:hover {
+  filter: brightness(.95);
+}
 
-    .world-card {
-        background: var(--paper);
-        border: 2px solid var(--brown);
-        border-radius: 18px;
-        padding: 25px 20px;
-        text-align: center;
-        box-shadow: 0 6px 15px var(--shadow);
-        cursor: pointer;
-        transition: 0.2s;
-    }
+.contronym {
+  border-color: var(--blue);
+}
 
-    .world-card:hover {
-        transform: translateY(-4px);
-    }
+.contronym .card-button {
+  background: var(--blue);
+}
 
-    .world-card h2 {
-        margin-bottom: 5px;
-    }
+.clue-card {
+  border-color: var(--purple);
+}
 
-    .world-card .icon {
-        font-size: 3rem;
-    }
+.coming-button {
+  display: block;
+  text-align: center;
+  background: #ddd5c7;
+  color: #736b61;
+  padding: 13px;
+  border-radius: 12px;
+  font-weight: bold;
+  margin-top: 12px;
+}
 
-    .coming {
-        opacity: 0.48;
-        cursor: default;
-    }
+.philosophy {
+  background: var(--paper);
+  border-left: 7px solid var(--gold);
+  padding: 25px;
+  border-radius: 15px;
+  margin: 40px 0;
+  box-shadow: 0 5px 15px var(--shadow);
+}
 
-    /* CONTRONYM CARD */
+.philosophy h2 {
+  margin-top: 0;
+}
 
-    .contronym-card {
-        border-color: var(--blue);
-        text-decoration: none;
-        color: var(--ink);
-        display: block;
-    }
+.philosophy strong {
+  color: var(--green);
+}
 
-    .contronym-card:hover {
-        background: #eef5fb;
-        border-color: #0057a8;
-    }
+.growing {
+  background: var(--light-green);
+  padding: 23px;
+  border-radius: 16px;
+  text-align: center;
+  margin-top: 35px;
+}
 
-    .contronym-card h2 {
-        color: #0057a8;
-    }
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  opacity: .65;
+  font-size: .85rem;
+}
 
-    .contronym-card .icon {
-        color: #b11b2b;
-    }
+@media (max-width: 600px) {
+  header {
+    padding-top: 30px;
+  }
 
-    /* BUTTONS */
+  .intro {
+    font-size: 1rem;
+  }
 
-    .farm-button,
-    .back-button,
-    .answer-button {
-        border: none;
-        border-radius: 12px;
-        cursor: pointer;
-        padding: 13px 20px;
-        font-weight: bold;
-    }
-
-    .farm-button {
-        background: var(--green);
-        color: white;
-        width: 100%;
-        margin: 8px 0;
-    }
-
-    .back-button {
-        background: transparent;
-        border: 2px solid var(--brown);
-        color: var(--brown);
-        margin-bottom: 20px;
-    }
-
-    /* CHEMICAL PERIOD */
-
-    .period {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
-        max-width: 650px;
-        margin: 25px auto;
-    }
-
-    .element {
-        min-height: 115px;
-        background: var(--paper);
-        border: 2px solid var(--green);
-        border-radius: 12px;
-        padding: 10px;
-        cursor: pointer;
-        position: relative;
-        transition: 0.2s;
-    }
-
-    .element:hover {
-        transform: scale(1.04);
-        background: var(--light-green);
-    }
-
-    .atomic-number {
-        font-size: 0.75rem;
-    }
-
-    .symbol {
-        font-size: 2rem;
-        font-weight: bold;
-        text-align: center;
-    }
-
-    .animal {
-        text-align: center;
-        font-size: 0.8rem;
-        margin-top: 5px;
-    }
-
-    .locked {
-        opacity: 0.45;
-    }
-
-    .unlocked::after {
-        content: "✓";
-        position: absolute;
-        top: 6px;
-        right: 8px;
-        color: var(--green);
-        font-weight: bold;
-    }
-
-    /* SPECIES */
-
-    .species-card {
-        max-width: 650px;
-        margin: auto;
-        background: var(--paper);
-        border: 2px solid var(--brown);
-        border-radius: 20px;
-        padding: 30px;
-        box-shadow: 0 8px 20px var(--shadow);
-        text-align: center;
-    }
-
-    .species-placeholder {
-        width: 180px;
-        height: 180px;
-        margin: 15px auto;
-        border-radius: 50%;
-        border: 3px dashed var(--gold);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 4rem;
-        background: var(--cream);
-    }
-
-    .clue {
-        background: var(--light-green);
-        padding: 15px;
-        border-radius: 12px;
-        margin: 20px 0;
-    }
-
-    /* QUESTIONS */
-
-    #answers {
-        display: grid;
-        gap: 10px;
-        margin-top: 20px;
-    }
-
-    .answer-button {
-        background: white;
-        border: 2px solid var(--green);
-    }
-
-    .answer-button:hover {
-        background: var(--light-green);
-    }
-
-    #feedback {
-        min-height: 50px;
-        margin-top: 18px;
-        font-weight: bold;
-    }
-
-    /* PERIOD-EX */
-
-    .catalogue-card {
-        background: var(--paper);
-        border-left: 6px solid var(--gold);
-        padding: 18px;
-        margin: 12px 0;
-        border-radius: 8px;
-    }
-
-    footer {
-        text-align: center;
-        padding: 30px;
-        font-size: 0.8rem;
-        opacity: 0.6;
-    }
-
-    @media (max-width: 600px) {
-        .period {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .element {
-            min-height: 105px;
-        }
-    }
+  .lab-card {
+    min-height: auto;
+  }
+}
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>PAT LEARNING LAB</h1>
-    <p>Learn it. See it. Rebuild it.</p>
 
-    <div class="xp-bar">
-        <div id="xpFill"></div>
-    </div>
+  <div class="brand-small">
+    PAT TUTORING
+  </div>
 
-    <small id="xpText">0 XP</small>
+  <h1>LEARNING LAB</h1>
+
+  <div class="tagline">
+    Learn it. See it. Rebuild it.
+  </div>
+
+  <p class="intro">
+    A growing collection of visual games, puzzles and learning systems
+    built around one idea:
+    <strong>
+      don't just memorize an answer — learn enough of the structure
+      to reconstruct it.
+    </strong>
+  </p>
+
 </header>
+
 
 <main>
 
-<!-- HOME -->
-
-<section id="home" class="screen active">
-
-    <div class="section-title">
-        <h2>Choose a World</h2>
-        <p>Every answer can be reconstructed.</p>
-    </div>
-
-    <div class="world-grid">
-
-        <div class="world-card" onclick="showScreen('farm')">
-            <div class="icon">🌱</div>
-            <h2>Molecular Farm</h2>
-            <p>Grow your chemistry.</p>
-        </div>
-
-        <div class="world-card coming">
-            <div class="icon">🐝</div>
-            <h2>Molecular Bee</h2>
-            <p>Coming Soon</p>
-        </div>
-
-        <a href="./contronym.html" class="world-card contronym-card">
-            <div class="icon">±</div>
-            <h2>Contronym</h2>
-            <p>Enter the Majorana of Meaning</p>
-        </a>
-
-        <div class="world-card coming">
-            <div class="icon">≈</div>
-            <h2>Koan</h2>
-            <p>Coming Soon</p>
-        </div>
-
-        <div class="world-card coming">
-            <div class="icon">∫</div>
-            <h2>Cryptic-Calculus</h2>
-            <p>Coming Soon</p>
-        </div>
-
-    </div>
-
-</section>
+  <div class="section-title">
+    <h2>Choose a Learning World</h2>
+    <p>
+      Explore chemistry, language, mathematics and critical thinking.
+    </p>
+  </div>
 
 
-<!-- MOLECULAR FARM -->
-
-<section id="farm" class="screen">
-
-    <button class="back-button" onclick="showScreen('home')">
-        ← Learning Lab
-    </button>
-
-    <div class="section-title">
-        <h1>🌱 Molecular Farm</h1>
-        <p>Grow Your Chemistry</p>
-    </div>
-
-    <button class="farm-button" onclick="showScreen('periodScreen')">
-        Explore the Chemical-Period
-    </button>
-
-    <button class="farm-button" onclick="showPeriodex()">
-        Open Your Period-ex
-    </button>
-
-</section>
+  <div class="lab-grid">
 
 
-<!-- CHEMICAL PERIOD -->
+    <!-- MOLECULAR FARM -->
 
-<section id="periodScreen" class="screen">
+    <article class="lab-card">
 
-    <button class="back-button" onclick="showScreen('farm')">
-        ← Farm
-    </button>
+      <div class="lab-icon">
+        🌾
+      </div>
 
-    <div class="section-title">
-        <h1>The Chemical-Period</h1>
-        <p>Don't memorize the element. Rebuild it.</p>
-    </div>
+      <h2>
+        Molecular Farm
+      </h2>
 
-    <div id="period" class="period"></div>
+      <p>
+        Explore chemistry through memorable species whose structures,
+        families and transformations are based on real chemical behavior.
+      </p>
 
-</section>
+      <div class="coming-button">
+        Interactive Farm Growing Soon
+      </div>
 
-
-<!-- SPECIES -->
-
-<section id="speciesScreen" class="screen">
-
-    <button class="back-button" onclick="showScreen('periodScreen')">
-        ← Chemical-Period
-    </button>
-
-    <div class="species-card">
-
-        <h1 id="speciesName"></h1>
-
-        <div id="speciesImage" class="species-placeholder">
-            ⚛️
-        </div>
-
-        <div class="clue">
-            <strong>Observe first.</strong>
-            <p id="speciesClue"></p>
-        </div>
-
-        <h3 id="questionText"></h3>
-
-        <div id="answers"></div>
-
-        <div id="feedback"></div>
-
-    </div>
-
-</section>
+    </article>
 
 
-<!-- PERIOD EX -->
 
-<section id="periodex" class="screen">
+    <!-- CONTRONYM -->
 
-    <button class="back-button" onclick="showScreen('farm')">
-        ← Farm
-    </button>
+    <article class="lab-card contronym">
 
-    <div class="section-title">
-        <h1>📖 Period-ex</h1>
-        <p>Your catalogue of discovered species.</p>
-    </div>
+      <div class="lab-icon">
+        ±
+      </div>
 
-    <div id="catalogue"></div>
+      <h2>
+        Contronym
+      </h2>
 
-</section>
+      <p>
+        Explore words capable of carrying opposing meanings.
+        Use hints, polarity and context to reverse-engineer the word.
+      </p>
+
+      <a
+        class="card-button"
+        href="contronym.html"
+      >
+        Play Contronym
+      </a>
+
+    </article>
+
+
+
+    <!-- CLUE CARDS -->
+
+    <article class="lab-card clue-card">
+
+      <div class="lab-icon">
+        🧩
+      </div>
+
+      <h2>
+        Cryptic Clue-Cards
+      </h2>
+
+      <p>
+        Reverse-engineer wordplay through double definitions,
+        homophones, transformations, Meaning Graphs and
+        Cryptic-Calculus.
+      </p>
+
+      <div class="coming-button">
+        Clue Card #001 Coming Soon
+      </div>
+
+    </article>
+
+
+
+    <!-- MOLECULAR BEE -->
+
+    <article class="lab-card">
+
+      <div class="lab-icon">
+        🐝
+      </div>
+
+      <h2>
+        Molecular Bee
+      </h2>
+
+      <p>
+        Build rapid recognition of elements, formulas and chemical
+        structures through a spelling-bee-inspired challenge.
+      </p>
+
+      <div class="coming-button">
+        Coming Soon
+      </div>
+
+    </article>
+
+
+
+    <!-- KOAN -->
+
+    <article class="lab-card">
+
+      <div class="lab-icon">
+        ≈
+      </div>
+
+      <h2>
+        Koan~Kaon
+      </h2>
+
+      <p>
+        Solve layered language puzzles using ambiguity,
+        approximation, superposition and lateral reasoning.
+      </p>
+
+      <div class="coming-button">
+        Coming Soon
+      </div>
+
+    </article>
+
+
+
+    <!-- CRYPTIC CALCULUS -->
+
+    <article class="lab-card">
+
+      <div class="lab-icon">
+        ∫
+      </div>
+
+      <h2>
+        Cryptic-Calculus
+      </h2>
+
+      <p>
+        Treat wordplay like mathematics: identify the transformation,
+        work backwards and reconstruct the answer.
+      </p>
+
+      <div class="coming-button">
+        Coming Soon
+      </div>
+
+    </article>
+
+
+  </div>
+
+
+
+  <section class="philosophy">
+
+    <h2>
+      The Reverse-Engineering Principle
+    </h2>
+
+    <p>
+      Memorization can give you an answer.
+      Understanding gives you a way to find it again.
+    </p>
+
+    <p>
+      PAT Learning Lab is built around
+      <strong>
+        observing structure, finding relationships,
+        reconstructing solutions and explaining why they work.
+      </strong>
+    </p>
+
+  </section>
+
+
+
+  <section class="growing">
+
+    <h2>
+      🧪 The Lab Is Growing
+    </h2>
+
+    <p>
+      New puzzles, Molecular Farm species, Clue-Cards,
+      games and interactive experiments are being added over time.
+    </p>
+
+  </section>
+
 
 </main>
 
+
 <footer>
-    PAT Learning Lab • Prototype v0.02
+  PAT Tutoring • Learning Lab Prototype
 </footer>
 
-
-<script>
-
-/* ---------------------------
-   SPECIES DATA
----------------------------- */
-
-const species = [
-
-    {
-        atomicNumber: 1,
-        symbol: "H",
-        name: "Hydrogen Hippo",
-        icon: "🦛",
-        clue: "Hydrogen is the simplest element.",
-        unlockedByDefault: true
-    },
-
-    {
-        atomicNumber: 2,
-        symbol: "He",
-        name: "Helium Hyena",
-        icon: "😆",
-        clue: "Helium's first shell is completely filled.",
-        unlockedByDefault: true
-    },
-
-    {
-        atomicNumber: 3,
-        symbol: "Li",
-        name: "Lithium Lightning-Bug",
-        icon: "⚡",
-        clue:
-        "Study the Lightning-Bug. Its anatomy represents its electrons.",
-
-        questions: [
-            {
-                question:
-                "How many valence electrons does Lithium have?",
-                answers: ["1", "2", "3", "4"],
-                correct: "1",
-                explanation:
-                "Exactly. Lithium has one valence electron — represented by the single outer antenna."
-            },
-
-            {
-                question:
-                "Lithium has 2 inner electrons and 1 outer electron. How many total electrons?",
-                answers: ["2", "3", "4", "5"],
-                correct: "3",
-                explanation:
-                "2 + 1 = 3 electrons."
-            },
-
-            {
-                question:
-                "A neutral atom with 3 electrons must have how many protons?",
-                answers: ["1", "2", "3", "4"],
-                correct: "3",
-                explanation:
-                "Three. That gives Lithium atomic number 3."
-            }
-        ]
-    },
-
-    {
-        atomicNumber: 4,
-        symbol: "Be",
-        name: "Beryllium Bee",
-        icon: "🐝",
-        clue:
-        "Two outer electrons are represented in the Bee's design."
-    },
-
-    {
-        atomicNumber: 5,
-        symbol: "B",
-        name: "Boron Butterfly",
-        icon: "🦋",
-        clue:
-        "Look for three outer electrons in the Butterfly's anatomy."
-    },
-
-    {
-        atomicNumber: 6,
-        symbol: "C",
-        name: "Carbon Clam",
-        icon: "🐚",
-        clue:
-        "Carbon carries four valence electrons."
-    },
-
-    {
-        atomicNumber: 7,
-        symbol: "N",
-        name: "Nitrogen",
-        icon: "?",
-        clue:
-        "This species hasn't been discovered yet."
-    },
-
-    {
-        atomicNumber: 8,
-        symbol: "O",
-        name: "Oxygen Owl",
-        icon: "🦉",
-        clue:
-        "H(OO)T! Oxygen has six valence electrons."
-    }
-
-];
-
-
-/* ---------------------------
-   PLAYER DATA
----------------------------- */
-
-let player = JSON.parse(localStorage.getItem("patPlayer")) || {
-    xp: 0,
-    unlocked: [1, 2]
-};
-
-let currentSpecies = null;
-let currentQuestion = 0;
-
-
-/* ---------------------------
-   NAVIGATION
----------------------------- */
-
-function showScreen(id) {
-
-    document.querySelectorAll(".screen")
-        .forEach(screen => screen.classList.remove("active"));
-
-    document.getElementById(id)
-        .classList.add("active");
-
-    window.scrollTo(0, 0);
-}
-
-
-/* ---------------------------
-   CHEMICAL PERIOD
----------------------------- */
-
-function buildPeriod() {
-
-    const period = document.getElementById("period");
-
-    period.innerHTML = "";
-
-    species.forEach(item => {
-
-        const discovered =
-            player.unlocked.includes(item.atomicNumber);
-
-        const box = document.createElement("div");
-
-        box.className =
-            "element " + (discovered ? "unlocked" : "locked");
-
-        box.innerHTML = `
-            <div class="atomic-number">
-                ${item.atomicNumber}
-            </div>
-
-            <div class="symbol">
-                ${item.symbol}
-            </div>
-
-            <div class="animal">
-                ${item.icon}<br>
-                ${item.name}
-            </div>
-        `;
-
-        box.onclick = () => openSpecies(item);
-
-        period.appendChild(box);
-    });
-}
-
-
-/* ---------------------------
-   OPEN SPECIES
----------------------------- */
-
-function openSpecies(item) {
-
-    currentSpecies = item;
-    currentQuestion = 0;
-
-    document.getElementById("speciesName")
-        .textContent = item.name;
-
-    document.getElementById("speciesImage")
-        .textContent = item.icon;
-
-    document.getElementById("speciesClue")
-        .textContent = item.clue;
-
-    showScreen("speciesScreen");
-
-    if (item.questions) {
-        loadQuestion();
-    } else {
-
-        document.getElementById("questionText")
-            .textContent =
-            "More reconstruction challenges coming soon.";
-
-        document.getElementById("answers")
-            .innerHTML = "";
-
-        document.getElementById("feedback")
-            .innerHTML = "";
-    }
-}
-
-
-/* ---------------------------
-   QUESTIONS
----------------------------- */
-
-function loadQuestion() {
-
-    const q =
-        currentSpecies.questions[currentQuestion];
-
-    document.getElementById("questionText")
-        .textContent = q.question;
-
-    document.getElementById("feedback")
-        .textContent = "";
-
-    const answers =
-        document.getElementById("answers");
-
-    answers.innerHTML = "";
-
-    q.answers.forEach(answer => {
-
-        const button =
-            document.createElement("button");
-
-        button.className = "answer-button";
-
-        button.textContent = answer;
-
-        button.onclick =
-            () => checkAnswer(answer);
-
-        answers.appendChild(button);
-    });
-}
-
-
-/* ---------------------------
-   CHECK ANSWER
----------------------------- */
-
-function checkAnswer(answer) {
-
-    const q =
-        currentSpecies.questions[currentQuestion];
-
-    const feedback =
-        document.getElementById("feedback");
-
-    if (answer === q.correct) {
-
-        feedback.innerHTML =
-            "✓ " + q.explanation;
-
-        addXP(10);
-
-        setTimeout(() => {
-
-            currentQuestion++;
-
-            if (
-                currentQuestion <
-                currentSpecies.questions.length
-            ) {
-                loadQuestion();
-            } else {
-                completeSpecies();
-            }
-
-        }, 1300);
-
-    } else {
-
-        feedback.innerHTML =
-            "Not quite. Look at the structure again.";
-
-    }
-}
-
-
-/* ---------------------------
-   COMPLETE SPECIES
----------------------------- */
-
-function completeSpecies() {
-
-    if (
-        !player.unlocked.includes(
-            currentSpecies.atomicNumber
-        )
-    ) {
-
-        player.unlocked.push(
-            currentSpecies.atomicNumber
-        );
-
-        addXP(25);
-    }
-
-    savePlayer();
-
-    document.getElementById("questionText")
-        .innerHTML =
-        "🌱 SPECIES CATALOGUED!";
-
-    document.getElementById("answers")
-        .innerHTML =
-        `
-        <button
-            class="farm-button"
-            onclick="showPeriodex()"
-        >
-            View in Period-ex
-        </button>
-        `;
-
-    document.getElementById("feedback")
-        .innerHTML =
-        `
-        <strong>
-            ${currentSpecies.symbol}
-            • Atomic Number
-            ${currentSpecies.atomicNumber}
-        </strong>
-        `;
-
-    buildPeriod();
-}
-
-
-/* ---------------------------
-   XP
----------------------------- */
-
-function addXP(amount) {
-
-    player.xp += amount;
-
-    savePlayer();
-
-    updateXP();
-}
-
-
-function updateXP() {
-
-    document.getElementById("xpText")
-        .textContent =
-        player.xp + " XP";
-
-    const percent =
-        Math.min(player.xp % 100, 100);
-
-    document.getElementById("xpFill")
-        .style.width =
-        percent + "%";
-}
-
-
-/* ---------------------------
-   PERIOD-EX
----------------------------- */
-
-function showPeriodex() {
-
-    const catalogue =
-        document.getElementById("catalogue");
-
-    catalogue.innerHTML = "";
-
-    const discovered =
-        species.filter(item =>
-            player.unlocked.includes(
-                item.atomicNumber
-            )
-        );
-
-    if (discovered.length === 0) {
-
-        catalogue.innerHTML =
-            "<p>No species discovered yet.</p>";
-
-    } else {
-
-        discovered.forEach(item => {
-
-            catalogue.innerHTML += `
-                <div class="catalogue-card">
-
-                    <strong>
-                        ${item.icon}
-                        ${item.name}
-                    </strong>
-
-                    <br>
-
-                    ${item.symbol}
-                    • Atomic Number
-                    ${item.atomicNumber}
-
-                </div>
-            `;
-        });
-    }
-
-    showScreen("periodex");
-}
-
-
-/* ---------------------------
-   SAVE
----------------------------- */
-
-function savePlayer() {
-
-    localStorage.setItem(
-        "patPlayer",
-        JSON.stringify(player)
-    );
-}
-
-
-/* ---------------------------
-   START
----------------------------- */
-
-buildPeriod();
-updateXP();
-
-</script>
-
 </body>
-</html>
-</script>
-
-</body>
-</html>
+</html></html>
