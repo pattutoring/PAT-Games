@@ -1,0 +1,1125 @@
+:root {
+
+  --cream: #fff8e8;
+  --paper: #fffdf6;
+  --ink: #29261f;
+
+  --red: #9d2d28;
+  --blue: #245c96;
+
+  --dark-red: #761b1b;
+  --dark-blue: #123d70;
+
+  --gold: #d2a23c;
+  --purple: #5d3b76;
+
+  --brown: #755234;
+
+  --light-red: #f4dfda;
+  --light-blue: #e2edf7;
+
+  --shadow:
+    rgba(45, 35, 20, 0.16);
+}
+
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+
+  margin: 0;
+
+  background:
+    var(--cream);
+
+  color:
+    var(--ink);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+}
+
+
+button {
+  font: inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+
+  text-align: center;
+
+  padding:
+    30px
+    18px
+    15px;
+}
+
+
+.lab-link {
+
+  display:
+    inline-block;
+
+  text-decoration:
+    none;
+
+  border:
+    2px solid var(--brown);
+
+  color:
+    var(--brown);
+
+  border-radius:
+    10px;
+
+  padding:
+    8px 13px;
+
+  font-weight:
+    bold;
+
+  margin-bottom:
+    20px;
+}
+
+
+.koan-logo {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  font-weight:
+    900;
+
+  font-size:
+    clamp(
+      2.2rem,
+      9vw,
+      4.5rem
+    );
+
+  letter-spacing:
+    2px;
+
+  line-height:
+    1;
+}
+
+
+.koan {
+  color:
+    var(--red);
+}
+
+
+.kaon {
+  color:
+    var(--blue);
+}
+
+
+.tilde {
+  color:
+    var(--ink);
+
+  font-weight:
+    normal;
+}
+
+
+header h1 {
+
+  margin:
+    18px
+    0
+    5px;
+
+  font-size:
+    clamp(
+      1.4rem,
+      5vw,
+      2.3rem
+    );
+
+  letter-spacing:
+    3px;
+}
+
+
+.tagline {
+
+  margin:
+    5px 0;
+
+  color:
+    var(--brown);
+
+  font-weight:
+    bold;
+
+  font-style:
+    italic;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+
+  width:
+    min(
+      900px,
+      94%
+    );
+
+  margin:
+    auto;
+
+  padding-bottom:
+    60px;
+}
+
+
+/* =========================
+   TOP NAV
+========================= */
+
+.top-nav {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    10px;
+
+  margin:
+    15px
+    0
+    25px;
+}
+
+
+.nav-button {
+
+  border:
+    2px solid var(--brown);
+
+  background:
+    var(--paper);
+
+  color:
+    var(--brown);
+
+  padding:
+    10px
+    18px;
+
+  border-radius:
+    10px;
+
+  cursor:
+    pointer;
+
+  font-weight:
+    bold;
+}
+
+
+.nav-button.active {
+
+  color:
+    white;
+
+  background:
+    var(--brown);
+}
+
+
+/* =========================
+   VIEWS
+========================= */
+
+.view {
+  display:
+    none;
+}
+
+
+.view.active {
+  display:
+    block;
+}
+
+
+/* =========================
+   CLUE HEADING
+========================= */
+
+.clue-heading {
+
+  background:
+    var(--paper);
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    18px;
+
+  padding:
+    22px;
+
+  text-align:
+    center;
+
+  box-shadow:
+    0
+    6px
+    18px
+    var(--shadow);
+
+  margin-bottom:
+    18px;
+}
+
+
+.clue-number {
+
+  color:
+    var(--red);
+
+  font-size:
+    0.9rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    2px;
+}
+
+
+.clue-heading h2 {
+
+  margin:
+    7px
+    0
+    10px;
+
+  font-size:
+    1.6rem;
+}
+
+
+.clue-text {
+
+  font-style:
+    italic;
+
+  font-size:
+    clamp(
+      1.15rem,
+      4vw,
+      1.45rem
+    );
+
+  line-height:
+    1.45;
+
+  margin:
+    10px
+    auto;
+
+  max-width:
+    650px;
+}
+
+
+.enumeration {
+
+  color:
+    var(--red);
+
+  font-weight:
+    bold;
+
+  font-size:
+    1.1rem;
+}
+
+
+/* =========================
+   PHASE BUTTONS
+========================= */
+
+.phase-row {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:
+    10px;
+
+  margin-bottom:
+    12px;
+}
+
+
+.phase-button {
+
+  border:
+    2px solid var(--red);
+
+  color:
+    var(--red);
+
+  background:
+    var(--paper);
+
+  padding:
+    12px;
+
+  border-radius:
+    11px;
+
+  font-weight:
+    bold;
+
+  cursor:
+    pointer;
+}
+
+
+.phase-button.solution {
+
+  border-color:
+    var(--blue);
+
+  color:
+    var(--blue);
+}
+
+
+.phase-button.active {
+
+  color:
+    white;
+
+  background:
+    var(--red);
+}
+
+
+.phase-button.solution.active {
+
+  color:
+    white;
+
+  background:
+    var(--blue);
+}
+
+
+/* =========================
+   IMAGE VIEWER
+========================= */
+
+.viewer {
+
+  background:
+    var(--paper);
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    20px;
+
+  overflow:
+    hidden;
+
+  box-shadow:
+    0
+    8px
+    22px
+    var(--shadow);
+}
+
+
+.viewer-label {
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  padding:
+    12px
+    16px;
+
+  background:
+    #eee3cd;
+
+  font-weight:
+    bold;
+
+  font-size:
+    0.85rem;
+
+  letter-spacing:
+    1px;
+}
+
+
+.image-frame {
+
+  width:
+    100%;
+
+  min-height:
+    300px;
+
+  background:
+    #ede6d8;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+}
+
+
+.image-frame img {
+
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    auto;
+
+  max-height:
+    1050px;
+
+  object-fit:
+    contain;
+}
+
+
+/* =========================
+   VIEWER CONTROLS
+========================= */
+
+.viewer-controls {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:
+    10px;
+
+  padding:
+    14px;
+}
+
+
+.viewer-button {
+
+  border:
+    2px solid var(--brown);
+
+  background:
+    white;
+
+  color:
+    var(--brown);
+
+  padding:
+    12px;
+
+  border-radius:
+    10px;
+
+  font-weight:
+    bold;
+
+  cursor:
+    pointer;
+}
+
+
+.viewer-button.primary {
+
+  background:
+    var(--brown);
+
+  color:
+    white;
+}
+
+
+.viewer-button:disabled {
+
+  opacity:
+    0.35;
+
+  cursor:
+    default;
+}
+
+
+/* =========================
+   DOTS
+========================= */
+
+.dots {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    8px;
+
+  padding:
+    0
+    12px
+    16px;
+}
+
+
+.dot {
+
+  width:
+    10px;
+
+  height:
+    10px;
+
+  border-radius:
+    50%;
+
+  border:
+    none;
+
+  padding:
+    0;
+
+  background:
+    #bdb4a6;
+
+  cursor:
+    pointer;
+}
+
+
+.dot.active {
+
+  background:
+    var(--gold);
+
+  transform:
+    scale(1.3);
+}
+
+
+/* =========================
+   REVEAL
+========================= */
+
+.reveal-box {
+
+  margin-top:
+    22px;
+
+  padding:
+    24px;
+
+  text-align:
+    center;
+
+  border-radius:
+    17px;
+
+  background:
+    #f1e9d8;
+
+  border:
+    2px dashed var(--gold);
+}
+
+
+.reveal-box h3 {
+
+  margin-top:
+    0;
+}
+
+
+.reveal-box p {
+
+  line-height:
+    1.5;
+
+  max-width:
+    620px;
+
+  margin:
+    10px
+    auto
+    18px;
+}
+
+
+.reveal-answer-button {
+
+  border:
+    none;
+
+  background:
+    var(--blue);
+
+  color:
+    white;
+
+  padding:
+    13px
+    22px;
+
+  border-radius:
+    12px;
+
+  font-weight:
+    bold;
+
+  cursor:
+    pointer;
+}
+
+
+/* =========================
+   SOLUTION INFO
+========================= */
+
+.solution-info {
+
+  display:
+    none;
+
+  margin-top:
+    22px;
+
+  background:
+    var(--paper);
+
+  border:
+    2px solid var(--gold);
+
+  border-radius:
+    18px;
+
+  padding:
+    22px;
+
+  text-align:
+    center;
+}
+
+
+.solution-info.visible {
+  display:
+    block;
+}
+
+
+.solution-badge {
+
+  display:
+    inline-block;
+
+  background:
+    var(--gold);
+
+  padding:
+    7px
+    15px;
+
+  border-radius:
+    999px;
+
+  font-weight:
+    bold;
+
+  font-size:
+    0.8rem;
+
+  letter-spacing:
+    1px;
+}
+
+
+.solution-info h2 {
+
+  font-size:
+    2rem;
+
+  margin:
+    13px
+    0
+    18px;
+}
+
+
+.solution-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:
+    12px;
+}
+
+
+.solution-card {
+
+  border-radius:
+    12px;
+
+  padding:
+    16px;
+
+  background:
+    #f7f2e8;
+}
+
+
+.mini-label {
+
+  display:
+    inline-block;
+
+  padding:
+    5px
+    10px;
+
+  border-radius:
+    999px;
+
+  font-weight:
+    bold;
+
+  font-size:
+    0.8rem;
+
+  color:
+    white;
+}
+
+
+.mini-label.red {
+
+  background:
+    var(--red);
+}
+
+
+.mini-label.blue {
+
+  background:
+    var(--blue);
+}
+
+
+.mechanism {
+
+  border-top:
+    1px solid #ddd1bd;
+
+  margin-top:
+    18px;
+
+  padding-top:
+    18px;
+
+  line-height:
+    1.5;
+}
+
+
+/* =========================
+   ARCHIVE
+========================= */
+
+.archive-heading {
+
+  text-align:
+    center;
+
+  margin-bottom:
+    20px;
+}
+
+
+.archive-heading p {
+
+  color:
+    #666;
+
+  line-height:
+    1.5;
+}
+
+
+.archive-list {
+
+  display:
+    grid;
+
+  gap:
+    15px;
+}
+
+
+.archive-card {
+
+  background:
+    var(--paper);
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    16px;
+
+  padding:
+    18px;
+
+  box-shadow:
+    0
+    5px
+    15px
+    var(--shadow);
+}
+
+
+.archive-top {
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+}
+
+
+.archive-number {
+
+  color:
+    var(--red);
+
+  font-weight:
+    bold;
+}
+
+
+.archive-title {
+
+  font-size:
+    1.35rem;
+
+  font-weight:
+    bold;
+
+  margin:
+    8px
+    0;
+}
+
+
+.archive-clue {
+
+  font-style:
+    italic;
+
+  line-height:
+    1.4;
+
+  margin-bottom:
+    14px;
+}
+
+
+.archive-play-button {
+
+  border:
+    none;
+
+  background:
+    var(--brown);
+
+  color:
+    white;
+
+  padding:
+    10px
+    15px;
+
+  border-radius:
+    10px;
+
+  cursor:
+    pointer;
+
+  font-weight:
+    bold;
+}
+
+
+.empty-archive {
+
+  text-align:
+    center;
+
+  color:
+    #777;
+
+  background:
+    var(--paper);
+
+  border:
+    1px solid #ddd;
+
+  border-radius:
+    15px;
+
+  padding:
+    25px;
+
+  font-style:
+    italic;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+  text-align:
+    center;
+
+  padding:
+    30px
+    15px;
+
+  color:
+    #665846;
+
+  font-size:
+    0.82rem;
+
+  line-height:
+    1.6;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media
+(max-width: 600px) {
+
+  .phase-row {
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .solution-grid {
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .viewer-controls {
+
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+
+  .image-frame {
+
+    min-height:
+      200px;
+  }
+
+}
