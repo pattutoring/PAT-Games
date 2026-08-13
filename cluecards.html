@@ -1,1 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Koan~Kaon Clue-Cards | PAT Learning Lab</title>
+
+  <link
+    rel="stylesheet"
+    href="cluecards.css"
+  >
+</head>
+
+
+<body>
+
+
+<header>
+
+  <a
+    class="lab-link"
+    href="index.html"
+  >
+    ← PAT Learning Lab
+  </a>
+
+
+  <div class="koan-logo">
+
+    <span class="koan">
+      KOAN
+    </span>
+
+    <span class="tilde">
+      ~
+    </span>
+
+    <span class="kaon">
+      KAON
+    </span>
+
+  </div>
+
+
+  <h1>
+    CRYPTIC CLUE-CARDS
+  </h1>
+
+
+  <p class="tagline">
+    A Game of Meaning
+  </p>
+
+</header>
+
+
+
+<main>
+
+
+  <!-- =========================
+       TOP NAVIGATION
+  ========================== -->
+
+  <div class="top-nav">
+
+    <button
+      id="currentTab"
+      class="nav-button active"
+    >
+      Current Clue
+    </button>
+
+
+    <button
+      id="archiveTab"
+      class="nav-button"
+    >
+      Archive
+    </button>
+
+  </div>
+
+
+
+  <!-- =========================
+       CURRENT / PLAY VIEW
+  ========================== -->
+
+  <section
+    id="playView"
+    class="view active"
+  >
+
+
+    <div class="clue-heading">
+
+      <div
+        id="clueNumber"
+        class="clue-number"
+      >
+      </div>
+
+
+      <h2
+        id="clueTitle"
+      >
+      </h2>
+
+
+      <p
+        id="clueText"
+        class="clue-text"
+      >
+      </p>
+
+
+      <div
+        id="enumeration"
+        class="enumeration"
+      >
+      </div>
+
+    </div>
+
+
+
+    <!-- PHASE SELECTOR -->
+
+    <div class="phase-row">
+
+      <button
+        id="cluePhaseButton"
+        class="phase-button active"
+      >
+        🧩 Clue Release
+      </button>
+
+
+      <button
+        id="solutionPhaseButton"
+        class="phase-button solution"
+      >
+        🔒 Reveal Solution
+      </button>
+
+    </div>
+
+
+
+    <!-- IMAGE VIEWER -->
+
+    <div class="viewer">
+
+      <div class="viewer-label">
+
+        <span id="phaseLabel">
+          CLUE RELEASE
+        </span>
+
+        <span id="slideCounter">
+          1 / 4
+        </span>
+
+      </div>
+
+
+      <div
+        id="imageFrame"
+        class="image-frame"
+      >
+
+        <img
+          id="clueImage"
+          src=""
+          alt="Koan Kaon Clue-Card"
+        >
+
+      </div>
+
+
+      <div class="viewer-controls">
+
+        <button
+          id="previousButton"
+          class="viewer-button"
+        >
+          ← Previous
+        </button>
+
+
+        <button
+          id="nextButton"
+          class="viewer-button primary"
+        >
+          Next →
+        </button>
+
+      </div>
+
+
+      <div
+        id="dots"
+        class="dots"
+      >
+      </div>
+
+    </div>
+
+
+
+    <!-- REVEAL CTA -->
+
+    <div
+      id="revealBox"
+      class="reveal-box"
+    >
+
+      <h3>
+        Think you've collapsed the clue?
+      </h3>
+
+      <p>
+        Work backward from the surface story.
+        Look for one answer capable of satisfying every layer.
+      </p>
+
+      <button
+        id="bigRevealButton"
+        class="reveal-answer-button"
+      >
+        Reveal the Answer
+      </button>
+
+    </div>
+
+
+
+    <!-- SOLUTION INFORMATION -->
+
+    <div
+      id="solutionInfo"
+      class="solution-info"
+    >
+
+      <div class="solution-badge">
+        CLUE SOLVED
+      </div>
+
+      <h2
+        id="answerTitle"
+      >
+      </h2>
+
+
+      <div class="solution-grid">
+
+        <div class="solution-card">
+
+          <span class="mini-label red">
+            Magic Sense
+          </span>
+
+          <p id="senseA">
+          </p>
+
+        </div>
+
+
+        <div class="solution-card">
+
+          <span class="mini-label blue">
+            Sport Sense
+          </span>
+
+          <p id="senseB">
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <p class="mechanism">
+
+        <strong id="mechanism">
+        </strong>
+
+        <br>
+
+        <span id="mechanismDescription">
+        </span>
+
+      </p>
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =========================
+       ARCHIVE
+  ========================== -->
+
+  <section
+    id="archiveView"
+    class="view"
+  >
+
+    <div class="archive-heading">
+
+      <h2>
+        Clue-Card Archive
+      </h2>
+
+      <p>
+        Return to previous Koan~Kaon puzzles
+        without revealing their answers first.
+      </p>
+
+    </div>
+
+
+    <div
+      id="archiveList"
+      class="archive-list"
+    >
+    </div>
+
+  </section>
+
+
+</main>
+
+
+
+<footer>
+
+  <strong>
+    KOAN~KAON
+  </strong>
+
+  • Powered by Cryptic-Calculus™
+
+  <br>
+
+  Solve clues. Level up. Master meaning.
+
+</footer>
+
+
+
+<script src="cluecards.js"></script>
+
+</body>
+</html>
