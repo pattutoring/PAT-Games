@@ -13,7 +13,7 @@
 
   <link
     rel="stylesheet"
-    href="cluecards.css"
+    href="cluecards.css?v=20260813-1"
   >
 </head>
 
@@ -64,6 +64,7 @@
     <button
       id="currentTab"
       class="nav-button active"
+      type="button"
     >
       Current Clue
     </button>
@@ -71,6 +72,7 @@
     <button
       id="archiveTab"
       class="nav-button"
+      type="button"
     >
       Archive
     </button>
@@ -78,7 +80,7 @@
   </div>
 
 
-  <!-- PLAY VIEW -->
+  <!-- CURRENT CLUE -->
 
   <section
     id="playView"
@@ -93,7 +95,9 @@
         id="clueNumber"
         class="clue-number"
       >
+        CLUE-CARD #001
       </div>
+
 
       <div class="answer-placeholder">
 
@@ -102,32 +106,37 @@
         </span>
 
         <h2 id="clueTitle">
+          ___-_____
         </h2>
 
         <div
           id="enumeration"
           class="enumeration"
         >
+          (3-5)
         </div>
 
       </div>
+
 
       <p
         id="clueText"
         class="clue-text"
       >
+        “Pulling a rabbit out three times is the goal.”
       </p>
 
     </div>
 
 
-    <!-- CLUE / SOLUTION TABS -->
+    <!-- PHASE BUTTONS -->
 
     <div class="phase-row">
 
       <button
         id="cluePhaseButton"
         class="phase-button active"
+        type="button"
       >
         🧩 Clue Release
       </button>
@@ -135,6 +144,7 @@
       <button
         id="solutionPhaseButton"
         class="phase-button solution"
+        type="button"
       >
         🔒 Reveal Solution
       </button>
@@ -166,8 +176,8 @@
 
         <img
           id="clueImage"
-          src=""
-          alt="Koan~Kaon Clue-Card"
+          src="/PAT-Games/images/cluecards/001/IMG_0202.jpeg"
+          alt="Koan~Kaon Clue-Card #001"
         >
 
       </div>
@@ -178,6 +188,8 @@
         <button
           id="previousButton"
           class="viewer-button"
+          type="button"
+          disabled
         >
           ← Previous
         </button>
@@ -185,6 +197,7 @@
         <button
           id="nextButton"
           class="viewer-button primary"
+          type="button"
         >
           Next →
         </button>
@@ -201,9 +214,13 @@
     </div>
 
 
-    <!-- GUESS AREA -->
+    <!-- GUESS SECTION -->
 
     <div class="guess-panel">
+
+      <h3>
+        Collapse the clue.
+      </h3>
 
       <div
         id="guessCounter"
@@ -212,23 +229,28 @@
         Guesses: 0
       </div>
 
+
       <div class="guess-row">
 
         <input
           id="guessInput"
           type="text"
           autocomplete="off"
+          autocapitalize="characters"
+          spellcheck="false"
           placeholder="What is the answer?"
         >
 
         <button
           id="guessButton"
           class="guess-button"
+          type="button"
         >
           Submit Guess
         </button>
 
       </div>
+
 
       <div
         id="guessFeedback"
@@ -237,16 +259,14 @@
       </div>
 
 
-      <!-- SHARE STAYS HERE -->
+      <!-- SHARE BUTTON -->
 
-      <div
-        class="reveal-actions"
-        style="margin-top: 10px;"
-      >
+      <div class="share-row">
 
         <button
           id="shareButton"
           class="share-button"
+          type="button"
         >
           📤 Share Clue
         </button>
@@ -256,7 +276,7 @@
     </div>
 
 
-    <!-- REVEAL AREA -->
+    <!-- MANUAL REVEAL -->
 
     <div
       id="revealBox"
@@ -275,6 +295,7 @@
       <button
         id="bigRevealButton"
         class="reveal-answer-button"
+        type="button"
       >
         Reveal the Answer
       </button>
@@ -282,7 +303,7 @@
     </div>
 
 
-    <!-- SOLUTION INFORMATION -->
+    <!-- SOLUTION EXPLANATION -->
 
     <div
       id="solutionInfo"
@@ -294,16 +315,15 @@
       </div>
 
       <h2 id="answerTitle">
+        HAT-TRICK
       </h2>
 
       <p class="solution-intro">
-        One answer satisfies two meanings at the same time.
+        One answer satisfies two different meanings at the same time.
       </p>
 
 
       <div class="solution-grid">
-
-        <!-- MAGIC -->
 
         <div class="solution-card">
 
@@ -312,12 +332,11 @@
           </span>
 
           <p id="senseA">
+            Magic: pulling a rabbit out of a hat.
           </p>
 
         </div>
 
-
-        <!-- SPORT -->
 
         <div class="solution-card">
 
@@ -326,14 +345,13 @@
           </span>
 
           <p id="senseB">
+            Sport: scoring three goals.
           </p>
 
         </div>
 
       </div>
 
-
-      <!-- MECHANISM -->
 
       <div class="mechanism">
 
@@ -344,11 +362,13 @@
         <br><br>
 
         <strong id="mechanism">
+          Double-Play • Double Definition / Superposition
         </strong>
 
-        <br>
+        <br><br>
 
         <span id="mechanismDescription">
+          One answer satisfies two different meanings at the same time.
         </span>
 
       </div>
@@ -404,7 +424,7 @@
 </footer>
 
 
-<script src="cluecards.js"></script>
+<script src="cluecards.js?v=20260813-1"></script>
 
 </body>
 
