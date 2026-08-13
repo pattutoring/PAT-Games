@@ -1,6 +1,302 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Molecular Farm | PAT Learning Lab</title>
+
+  <link
+    rel="stylesheet"
+    href="molecularfarm.css"
+  >
+</head>
+
 <body>
-<h1>Molecular Farm Test</h1>
+
+<header>
+
+  <a
+    class="lab-link"
+    href="index.html"
+  >
+    ← PAT Learning Lab
+  </a>
+
+  <h1>🌾 MOLECULAR FARM</h1>
+
+  <p>Grow Your Chemistry</p>
+
+  <div class="xp-bar">
+    <div id="xpFill"></div>
+  </div>
+
+  <small id="xpText">
+    0 XP
+  </small>
+
+</header>
+
+
+<main>
+
+  <!-- ==============================
+       FARM HOME
+  =============================== -->
+
+  <section
+    id="farmHome"
+    class="screen active"
+  >
+
+    <div class="section-title">
+
+      <h2>
+        Welcome to Molecular Farm
+      </h2>
+
+      <p>
+        Don't just memorize chemistry.
+        Reconstruct it.
+      </p>
+
+    </div>
+
+
+    <div class="world-grid">
+
+
+      <div
+        class="world-card"
+        onclick="showScreen('periodScreen')"
+      >
+
+        <div class="icon">
+          🌱
+        </div>
+
+        <h2>
+          Chemical-Period
+        </h2>
+
+        <p>
+          Explore the elemental species
+          of Molecular Farm.
+        </p>
+
+      </div>
+
+
+      <div
+        class="world-card"
+        onclick="showPeriodex()"
+      >
+
+        <div class="icon">
+          📖
+        </div>
+
+        <h2>
+          Period-ex
+        </h2>
+
+        <p>
+          View the species you have
+          identified and catalogued.
+        </p>
+
+      </div>
+
+
+      <div class="world-card">
+
+        <div class="icon">
+          ⚗️
+        </div>
+
+        <h2>
+          Reactions
+        </h2>
+
+        <p>
+          Balance equations and discover
+          interactions between species.
+        </p>
+
+        <small>
+          Coming Soon
+        </small>
+
+      </div>
+
+
+      <div class="world-card">
+
+        <div class="icon">
+          🐙
+        </div>
+
+        <h2>
+          Evolution Lines
+        </h2>
+
+        <p>
+          Follow families across pH,
+          protonation and chemical environments.
+        </p>
+
+        <small>
+          Coming Soon
+        </small>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==============================
+       CHEMICAL PERIOD
+  =============================== -->
+
+  <section
+    id="periodScreen"
+    class="screen"
+  >
+
+    <button
+      class="back-button"
+      onclick="showScreen('farmHome')"
+    >
+      ← Farm
+    </button>
+
+
+    <div class="section-title">
+
+      <h1>
+        The Chemical-Period
+      </h1>
+
+      <p>
+        Observe the structure.
+        Reconstruct the species.
+      </p>
+
+    </div>
+
+
+    <div
+      id="period"
+      class="period"
+    ></div>
+
+  </section>
+
+
+  <!-- ==============================
+       SPECIES SCREEN
+  =============================== -->
+
+  <section
+    id="speciesScreen"
+    class="screen"
+  >
+
+    <button
+      class="back-button"
+      onclick="showScreen('periodScreen')"
+    >
+      ← Chemical-Period
+    </button>
+
+
+    <div class="species-card">
+
+      <h1 id="speciesName"></h1>
+
+
+      <div
+        id="speciesImage"
+        class="species-placeholder"
+      >
+        ⚛️
+      </div>
+
+
+      <div class="clue">
+
+        <strong>
+          Observe first.
+        </strong>
+
+        <p id="speciesClue"></p>
+
+      </div>
+
+
+      <h3 id="questionText"></h3>
+
+
+      <div id="answers"></div>
+
+
+      <div id="feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==============================
+       PERIOD-EX
+  =============================== -->
+
+  <section
+    id="periodex"
+    class="screen"
+  >
+
+    <button
+      class="back-button"
+      onclick="showScreen('farmHome')"
+    >
+      ← Farm
+    </button>
+
+
+    <div class="section-title">
+
+      <h1>
+        📖 Period-ex
+      </h1>
+
+      <p>
+        Your catalogue of discovered species.
+      </p>
+
+    </div>
+
+
+    <div id="catalogue"></div>
+
+  </section>
+
+</main>
+
+
+<footer>
+  PAT Learning Lab • Molecular Farm Prototype
+</footer>
+
+
+<script src="molecularfarm.js"></script>
+
 </body>
 </html>
