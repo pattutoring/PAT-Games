@@ -13,7 +13,7 @@
 
   <link
     rel="stylesheet"
-    href="molecularbee.css?v=20260813-1"
+    href="molecularbee.css?v=20260813-2"
   >
 </head>
 
@@ -28,7 +28,7 @@
     ← PAT Learning Lab
   </a>
 
-  <div class="bee-logo">
+  <div class="bee-mark">
     🐝
   </div>
 
@@ -43,18 +43,19 @@
 
   <div class="player-bar">
 
-    <div>
+    <span>
+      🍯
       <strong id="xpText">
         0 XP
       </strong>
-    </div>
+    </span>
 
-    <div>
+    <span>
       🔥 Streak:
       <strong id="streakText">
         0
       </strong>
-    </div>
+    </span>
 
   </div>
 
@@ -76,12 +77,12 @@
     <div class="section-heading">
 
       <h2>
-        Choose Your Hive
+        Choose a Hive
       </h2>
 
       <p>
-        Practice chemistry by recognizing, constructing,
-        and explaining chemical structure.
+        Recognize chemistry, construct it,
+        then explain why the structure works.
       </p>
 
     </div>
@@ -90,11 +91,10 @@
     <div class="mode-grid">
 
 
-      <!-- SPELLING BEE -->
-
       <button
         class="mode-card"
         data-screen="spellingScreen"
+        type="button"
       >
 
         <div class="mode-icon">
@@ -106,18 +106,17 @@
         </h2>
 
         <p>
-          Spell compounds and molecules
-          using element tiles.
+          Spell molecules and compounds
+          with honeycomb atom tiles.
         </p>
 
       </button>
 
 
-      <!-- QUEEN BEE -->
-
       <button
         class="mode-card"
         data-screen="queenScreen"
+        type="button"
       >
 
         <div class="mode-icon">
@@ -129,18 +128,17 @@
         </h2>
 
         <p>
-          Build valid compounds around
-          one central element.
+          Build molecules around
+          one central Queen element.
         </p>
 
       </button>
 
 
-      <!-- WORKER BEE -->
-
       <button
         class="mode-card"
         data-screen="workerScreen"
+        type="button"
       >
 
         <div class="mode-icon">
@@ -152,22 +150,21 @@
         </h2>
 
         <p>
-          Construct atoms from protons,
-          neutrons, and electrons.
+          Construct atoms from
+          protons, neutrons and electrons.
         </p>
 
       </button>
 
 
-      <!-- POLLINATION -->
-
       <button
         class="mode-card"
         data-screen="pollinationScreen"
+        type="button"
       >
 
         <div class="mode-icon">
-          🌸
+          🌼
         </div>
 
         <h2>
@@ -175,18 +172,17 @@
         </h2>
 
         <p>
-          Match charged pollen with
-          charged flowers to form compounds.
+          Carry charged pollen to flowers
+          and grow neutral ionic compounds.
         </p>
 
       </button>
 
 
-      <!-- HIVE MIND -->
-
       <button
         class="mode-card locked-card"
         data-screen="hiveScreen"
+        type="button"
       >
 
         <div class="mode-icon">
@@ -198,7 +194,7 @@
         </h2>
 
         <p>
-          Multiplayer chemistry challenges.
+          Multiplayer chemistry construction.
         </p>
 
         <small>
@@ -226,6 +222,7 @@
     <button
       class="back-button"
       data-screen="homeScreen"
+      type="button"
     >
       ← Hive
     </button>
@@ -238,7 +235,7 @@
       </div>
 
       <h2>
-        Spell the Compound
+        Spell the Molecule
       </h2>
 
       <p
@@ -248,16 +245,23 @@
       </p>
 
 
+      <div class="instruction-note">
+        Drag a honeycomb tile into the hive,
+        or tap it to place it.
+      </div>
+
+
       <div
         id="spellingBuild"
-        class="build-zone"
+        class="honeycomb-build"
+        data-drop-zone="spelling"
       >
       </div>
 
 
       <div
         id="spellingTiles"
-        class="tile-bank"
+        class="honeycomb-bank"
       >
       </div>
 
@@ -267,20 +271,23 @@
         <button
           id="spellingBackspace"
           class="secondary-button"
+          type="button"
         >
-          ← Remove
+          ← Remove Last
         </button>
 
         <button
           id="spellingCheck"
           class="primary-button"
+          type="button"
         >
-          Check
+          Check Molecule
         </button>
 
         <button
           id="spellingReset"
           class="secondary-button"
+          type="button"
         >
           Reset
         </button>
@@ -312,6 +319,7 @@
     <button
       class="back-button"
       data-screen="homeScreen"
+      type="button"
     >
       ← Hive
     </button>
@@ -327,20 +335,6 @@
         Build Around the Queen
       </h2>
 
-
-      <div class="queen-element">
-
-        <span class="queen-crown">
-          👑
-        </span>
-
-        <strong id="queenElement">
-          O
-        </strong>
-
-      </div>
-
-
       <p
         id="queenPrompt"
         class="prompt"
@@ -348,10 +342,68 @@
       </p>
 
 
+      <div class="instruction-note">
+        The Queen element stays fixed.
+        Add the correct surrounding atoms.
+      </div>
+
+
       <div
-        id="queenOptions"
-        class="choice-grid"
+        id="queenHive"
+        class="queen-hive"
+        data-drop-zone="queen"
       >
+
+        <div
+          id="queenCenter"
+          class="hex queen-hex"
+        >
+
+          <span class="queen-crown">
+            👑
+          </span>
+
+          <strong id="queenElement">
+            O
+          </strong>
+
+        </div>
+
+
+        <div
+          id="queenRing"
+          class="queen-ring"
+        >
+        </div>
+
+      </div>
+
+
+      <div
+        id="queenTiles"
+        class="honeycomb-bank"
+      >
+      </div>
+
+
+      <div class="button-row">
+
+        <button
+          id="queenCheck"
+          class="primary-button"
+          type="button"
+        >
+          Check Molecule
+        </button>
+
+        <button
+          id="queenReset"
+          class="secondary-button"
+          type="button"
+        >
+          Reset
+        </button>
+
       </div>
 
 
@@ -379,6 +431,7 @@
     <button
       class="back-button"
       data-screen="homeScreen"
+      type="button"
     >
       ← Hive
     </button>
@@ -457,6 +510,7 @@
         <button
           id="addProton"
           class="particle-button"
+          type="button"
         >
           + Proton
         </button>
@@ -464,6 +518,7 @@
         <button
           id="addNeutron"
           class="particle-button"
+          type="button"
         >
           + Neutron
         </button>
@@ -471,6 +526,7 @@
         <button
           id="addElectron"
           class="particle-button"
+          type="button"
         >
           + Electron
         </button>
@@ -483,6 +539,7 @@
         <button
           id="workerCheck"
           class="primary-button"
+          type="button"
         >
           Check Atom
         </button>
@@ -490,6 +547,7 @@
         <button
           id="workerReset"
           class="secondary-button"
+          type="button"
         >
           Reset
         </button>
@@ -521,6 +579,7 @@
     <button
       class="back-button"
       data-screen="homeScreen"
+      type="button"
     >
       ← Hive
     </button>
@@ -533,9 +592,8 @@
       </div>
 
       <h2>
-        Balance the Charges
+        Carry the Charge
       </h2>
-
 
       <p
         id="pollinationPrompt"
@@ -544,48 +602,90 @@
       </p>
 
 
-      <div class="pollination-field">
+      <div class="instruction-note">
+        Drag pollen onto the flower,
+        or tap the pollen to send it there.
+        Build a neutral ionic compound.
+      </div>
 
-        <div class="pollen-zone">
 
-          <div class="pollination-title">
-            Pollen
-          </div>
+      <div class="pollination-board">
+
+
+        <div class="pollen-meadow">
+
+          <h3>
+            Charged Pollen
+          </h3>
 
           <div
-            id="pollenIon"
-            class="charged-object"
+            id="pollenBank"
+            class="pollen-bank"
           >
           </div>
 
         </div>
 
 
-        <div class="pollination-arrow">
-          →
-        </div>
+        <div
+          id="flowerTarget"
+          class="flower-target"
+          data-drop-zone="pollination"
+        >
 
-
-        <div class="flower-zone">
-
-          <div class="pollination-title">
-            Flower
+          <div class="flower-icon">
+            🌼
           </div>
 
+          <div class="flower-label">
+            Flower Charge
+          </div>
+
+          <strong id="flowerIon">
+          </strong>
+
+
+          <div class="delivered-label">
+            Pollinated With
+          </div>
+
+
           <div
-            id="flowerIon"
-            class="charged-object flower"
+            id="deliveredPollen"
+            class="delivered-pollen"
           >
           </div>
 
         </div>
+
+
+      </div>
+
+
+      <div class="button-row">
+
+        <button
+          id="pollinationCheck"
+          class="primary-button"
+          type="button"
+        >
+          Grow Compound
+        </button>
+
+        <button
+          id="pollinationReset"
+          class="secondary-button"
+          type="button"
+        >
+          Reset
+        </button>
 
       </div>
 
 
       <div
-        id="pollinationChoices"
-        class="choice-grid"
+        id="pollinationResult"
+        class="compound-result"
       >
       </div>
 
@@ -614,6 +714,7 @@
     <button
       class="back-button"
       data-screen="homeScreen"
+      type="button"
     >
       ← Hive
     </button>
@@ -634,7 +735,8 @@
         🧠🐝
 
         <p>
-          Team chemistry challenges are coming soon.
+          Cooperative and competitive
+          chemistry building is coming soon.
         </p>
 
       </div>
@@ -655,7 +757,7 @@
 </footer>
 
 
-<script src="molecularbee.js?v=20260813-1"></script>
+<script src="molecularbee.js?v=20260813-2"></script>
 
 </body>
 
