@@ -17,7 +17,6 @@
   >
 </head>
 
-
 <body>
 
 <header>
@@ -28,7 +27,6 @@
   >
     ← PAT Learning Lab
   </a>
-
 
   <div class="koan-logo">
 
@@ -46,11 +44,9 @@
 
   </div>
 
-
   <h1>
     CRYPTIC CLUE-CARDS
   </h1>
-
 
   <p class="tagline">
     A Game of Meaning
@@ -61,10 +57,7 @@
 
 <main>
 
-
-  <!-- =========================
-       TOP NAVIGATION
-  ========================== -->
+  <!-- TOP NAVIGATION -->
 
   <div class="top-nav">
 
@@ -74,7 +67,6 @@
     >
       Current Clue
     </button>
-
 
     <button
       id="archiveTab"
@@ -86,23 +78,16 @@
   </div>
 
 
-
-  <!-- =========================
-       CURRENT / PLAY VIEW
-  ========================== -->
+  <!-- CURRENT CLUE -->
 
   <section
     id="playView"
     class="view active"
   >
 
-
-    <!-- =========================
-         CLUE HEADING
-    ========================== -->
+    <!-- CLUE HEADER -->
 
     <div class="clue-heading">
-
 
       <div
         id="clueNumber"
@@ -110,30 +95,24 @@
       >
       </div>
 
-
-      <!-- ANSWER PLACEHOLDER -->
-
       <div class="answer-placeholder">
 
         <span class="answer-label">
           ANSWER
         </span>
 
-
         <h2 id="clueTitle">
+          ___-_____
         </h2>
-
 
         <div
           id="enumeration"
           class="enumeration"
         >
+          (3-5)
         </div>
 
       </div>
-
-
-      <!-- MAIN CLUE TEXT -->
 
       <p
         id="clueText"
@@ -141,58 +120,10 @@
       >
       </p>
 
-
-      <!-- =========================
-           GUESSING
-      ========================== -->
-
-      <div class="guess-panel">
-
-
-        <div
-          id="guessCounter"
-          class="guess-counter"
-        >
-          Guesses: 0
-        </div>
-
-
-        <div class="guess-row">
-
-          <input
-            id="guessInput"
-            type="text"
-            autocomplete="off"
-            placeholder="What is the answer?"
-          >
-
-
-          <button
-            id="guessButton"
-            class="guess-button"
-          >
-            Submit Guess
-          </button>
-
-        </div>
-
-
-        <div
-          id="guessFeedback"
-          class="guess-feedback"
-        >
-        </div>
-
-      </div>
-
-
     </div>
 
 
-
-    <!-- =========================
-         PHASE SELECTOR
-    ========================== -->
+    <!-- PHASE SELECTOR -->
 
     <div class="phase-row">
 
@@ -202,7 +133,6 @@
       >
         🧩 Clue Release
       </button>
-
 
       <button
         id="solutionPhaseButton"
@@ -214,13 +144,9 @@
     </div>
 
 
-
-    <!-- =========================
-         IMAGE VIEWER
-    ========================== -->
+    <!-- IMAGE VIEWER -->
 
     <div class="viewer">
-
 
       <div class="viewer-label">
 
@@ -243,14 +169,13 @@
         <img
           id="clueImage"
           src=""
-          alt="Koan Kaon Clue-Card"
+          alt="Koan~Kaon Clue-Card"
         >
 
       </div>
 
 
       <div class="viewer-controls">
-
 
         <button
           id="previousButton"
@@ -259,14 +184,12 @@
           ← Previous
         </button>
 
-
         <button
           id="nextButton"
           class="viewer-button primary"
         >
           Next →
         </button>
-
 
       </div>
 
@@ -277,34 +200,68 @@
       >
       </div>
 
+    </div>
+
+
+    <!-- GUESS AREA BELOW IMAGES -->
+
+    <div class="clue-heading guess-area">
+
+      <h3>
+        Collapse the clue.
+      </h3>
+
+      <div
+        id="guessCounter"
+        class="guess-counter"
+      >
+        Guesses: 0
+      </div>
+
+      <div class="guess-row">
+
+        <input
+          id="guessInput"
+          type="text"
+          autocomplete="off"
+          placeholder="What is the answer?"
+        >
+
+        <button
+          id="guessButton"
+          class="guess-button"
+        >
+          Submit Guess
+        </button>
+
+      </div>
+
+      <div
+        id="guessFeedback"
+        class="guess-feedback"
+      >
+      </div>
 
     </div>
 
 
-
-    <!-- =========================
-         REVEAL / SHARE CTA
-    ========================== -->
+    <!-- REVEAL + SHARE -->
 
     <div
       id="revealBox"
       class="reveal-box"
     >
 
-
       <h3>
-        Think you've collapsed the clue?
+        Need to collapse the wave function?
       </h3>
-
 
       <p>
         Work backward from the surface story.
         Look for one answer capable of satisfying every layer.
       </p>
 
-
       <div class="reveal-actions">
-
 
         <button
           id="bigRevealButton"
@@ -313,7 +270,6 @@
           Reveal the Answer
         </button>
 
-
         <button
           id="shareButton"
           class="share-button"
@@ -321,37 +277,26 @@
           Share Clue
         </button>
 
-
       </div>
-
 
     </div>
 
 
-
-    <!-- =========================
-         SOLUTION INFORMATION
-    ========================== -->
+    <!-- SOLUTION INFO -->
 
     <div
       id="solutionInfo"
       class="solution-info"
     >
 
-
       <div class="solution-badge">
         CLUE SOLVED
       </div>
 
-
-      <h2
-        id="answerTitle"
-      >
+      <h2 id="answerTitle">
       </h2>
 
-
       <div class="solution-grid">
-
 
         <div class="solution-card">
 
@@ -364,7 +309,6 @@
 
         </div>
 
-
         <div class="solution-card">
 
           <span class="mini-label blue">
@@ -376,9 +320,7 @@
 
         </div>
 
-
       </div>
-
 
       <p class="mechanism">
 
@@ -392,23 +334,17 @@
 
       </p>
 
-
     </div>
-
 
   </section>
 
 
-
-  <!-- =========================
-       ARCHIVE VIEW
-  ========================== -->
+  <!-- ARCHIVE -->
 
   <section
     id="archiveView"
     class="view"
   >
-
 
     <div class="archive-heading">
 
@@ -423,19 +359,15 @@
 
     </div>
 
-
     <div
       id="archiveList"
       class="archive-list"
     >
     </div>
 
-
   </section>
 
-
 </main>
-
 
 
 <footer>
@@ -456,4 +388,5 @@
 <script src="cluecards.js"></script>
 
 </body>
+
 </html>
