@@ -1,4 +1,5 @@
 :root {
+
   --cream: #fff8e8;
   --paper: #fffdf6;
   --ink: #29261f;
@@ -6,17 +7,11 @@
   --red: #9d2d28;
   --blue: #245c96;
 
-  --dark-red: #761b1b;
-  --dark-blue: #123d70;
-
   --gold: #d2a23c;
-  --purple: #5d3b76;
   --brown: #755234;
 
-  --light-red: #f4dfda;
-  --light-blue: #e2edf7;
-
-  --shadow: rgba(45, 35, 20, 0.16);
+  --shadow:
+    rgba(45, 35, 20, 0.16);
 }
 
 
@@ -28,15 +23,15 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
+
   margin: 0;
 
-  background: var(--cream);
-  color: var(--ink);
+  background:
+    var(--cream);
+
+  color:
+    var(--ink);
 
   font-family:
     Georgia,
@@ -49,67 +44,49 @@ input {
   font: inherit;
 }
 
-button {
-  -webkit-tap-highlight-color: transparent;
-}
-
 
 /* ==========================================================
    HEADER
 ========================================================== */
 
 header {
+
   text-align: center;
 
   padding:
-    30px
-    18px
-    15px;
+    30px 18px 15px;
 }
 
 .lab-link {
+
   display: inline-block;
 
   text-decoration: none;
 
   border:
-    2px solid
-    var(--brown);
+    2px solid var(--brown);
 
   color:
     var(--brown);
-
-  background:
-    transparent;
 
   border-radius:
     10px;
 
   padding:
-    8px
-    13px;
+    8px 13px;
 
-  font-weight:
-    bold;
+  font-weight: bold;
 
   margin-bottom:
     20px;
 }
 
-.lab-link:hover {
-  background:
-    rgba(117, 82, 52, 0.08);
-}
-
-
-/* ==========================================================
-   KOAN~KAON LOGO
-========================================================== */
-
 .koan-logo {
+
   display: flex;
 
   justify-content: center;
+
   align-items: center;
 
   gap: 10px;
@@ -117,55 +94,43 @@ header {
   font-weight: 900;
 
   font-size:
-    clamp(
-      2.2rem,
-      9vw,
-      4.5rem
-    );
+    clamp(2.2rem, 9vw, 4.5rem);
 
-  letter-spacing: 2px;
+  letter-spacing:
+    2px;
+
   line-height: 1;
 }
 
 .koan {
-  color:
-    var(--red);
+  color: var(--red);
 }
 
 .kaon {
-  color:
-    var(--blue);
+  color: var(--blue);
 }
 
 .tilde {
-  color:
-    var(--ink);
-
-  font-weight:
-    normal;
+  color: var(--ink);
+  font-weight: normal;
 }
 
 header h1 {
+
   margin:
-    18px
-    0
-    5px;
+    18px 0 5px;
 
   font-size:
-    clamp(
-      1.4rem,
-      5vw,
-      2.3rem
-    );
+    clamp(1.4rem, 5vw, 2.3rem);
 
   letter-spacing:
     3px;
 }
 
 .tagline {
+
   margin:
-    5px
-    0;
+    5px 0;
 
   color:
     var(--brown);
@@ -183,14 +148,11 @@ header h1 {
 ========================================================== */
 
 main {
-  width:
-    min(
-      900px,
-      94%
-    );
 
-  margin:
-    auto;
+  width:
+    min(900px, 94%);
+
+  margin: auto;
 
   padding-bottom:
     60px;
@@ -198,28 +160,27 @@ main {
 
 
 /* ==========================================================
-   TOP NAVIGATION
+   TOP NAV
 ========================================================== */
 
 .top-nav {
+
   display: flex;
 
   justify-content: center;
 
-  flex-wrap: wrap;
-
   gap: 10px;
 
+  flex-wrap: wrap;
+
   margin:
-    15px
-    0
-    25px;
+    15px 0 25px;
 }
 
 .nav-button {
+
   border:
-    2px solid
-    var(--brown);
+    2px solid var(--brown);
 
   background:
     var(--paper);
@@ -228,25 +189,23 @@ main {
     var(--brown);
 
   padding:
-    10px
-    18px;
+    10px 18px;
 
   border-radius:
     10px;
 
-  cursor:
-    pointer;
+  cursor: pointer;
 
-  font-weight:
-    bold;
+  font-weight: bold;
 }
 
 .nav-button.active {
-  color:
-    white;
 
   background:
     var(--brown);
+
+  color:
+    white;
 }
 
 
@@ -255,32 +214,11 @@ main {
 ========================================================== */
 
 .view {
-  display:
-    none;
+  display: none;
 }
 
 .view.active {
-  display:
-    block;
-
-  animation:
-    fadeIn
-    0.2s
-    ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform:
-      translateY(5px);
-  }
-
-  to {
-    opacity: 1;
-    transform:
-      translateY(0);
-  }
+  display: block;
 }
 
 
@@ -289,12 +227,12 @@ main {
 ========================================================== */
 
 .clue-heading {
+
   background:
     var(--paper);
 
   border:
-    2px solid
-    var(--brown);
+    2px solid var(--brown);
 
   border-radius:
     18px;
@@ -306,16 +244,14 @@ main {
     center;
 
   box-shadow:
-    0
-    6px
-    18px
-    var(--shadow);
+    0 6px 18px var(--shadow);
 
   margin-bottom:
     18px;
 }
 
 .clue-number {
+
   color:
     var(--red);
 
@@ -329,58 +265,15 @@ main {
     2px;
 }
 
-.clue-text {
-  font-style:
-    italic;
-
-  font-size:
-    clamp(
-      1.15rem,
-      4vw,
-      1.45rem
-    );
-
-  line-height:
-    1.45;
-
-  margin:
-    16px
-    auto
-    8px;
-
-  max-width:
-    650px;
-}
-
-.enumeration {
-  color:
-    var(--red);
-
-  font-weight:
-    bold;
-
-  font-size:
-    1.1rem;
-
-  margin-top:
-    4px;
-}
-
-
-/* ==========================================================
-   HIDDEN ANSWER PLACEHOLDER
-========================================================== */
-
 .answer-placeholder {
+
   margin:
-    12px
-    auto
-    8px;
+    12px auto 8px;
 }
 
 .answer-label {
-  display:
-    block;
+
+  display: block;
 
   color:
     #777;
@@ -399,180 +292,48 @@ main {
 }
 
 .answer-placeholder h2 {
-  margin:
-    5px
-    0;
 
   font-family:
     monospace;
 
-  font-size:
-    clamp(
-      1.6rem,
-      6vw,
-      2.3rem
-    );
-
   letter-spacing:
     4px;
 
-  color:
-    var(--ink);
-}
-
-
-/* ==========================================================
-   GUESS PANEL
-========================================================== */
-
-.guess-panel {
-  margin-top:
-    20px;
-
-  padding-top:
-    18px;
-
-  border-top:
-    1px solid
-    #ddd1bd;
-}
-
-.guess-counter {
-  margin-bottom:
-    9px;
-
-  font-size:
-    0.85rem;
-
-  color:
-    #666;
-
-  font-weight:
-    bold;
-}
-
-.guess-row {
-  display: flex;
-
-  gap:
-    8px;
-
-  max-width:
-    520px;
-
   margin:
-    auto;
+    5px 0;
+
+  font-size:
+    clamp(1.5rem, 6vw, 2.2rem);
 }
 
-#guessInput {
-  flex:
-    1;
-
-  min-width:
-    0;
-
-  border:
-    2px solid
-    var(--brown);
-
-  border-radius:
-    10px;
-
-  background:
-    white;
+.enumeration {
 
   color:
-    var(--ink);
-
-  padding:
-    11px
-    12px;
-
-  text-align:
-    center;
-
-  text-transform:
-    uppercase;
-
-  outline:
-    none;
-}
-
-#guessInput:focus {
-  border-color:
-    var(--gold);
-
-  box-shadow:
-    0
-    0
-    0
-    3px
-    rgba(210, 162, 60, 0.15);
-}
-
-#guessInput:disabled {
-  background:
-    #eee8dc;
-
-  opacity:
-    0.75;
-}
-
-.guess-button {
-  border:
-    none;
-
-  border-radius:
-    10px;
-
-  background:
-    var(--brown);
-
-  color:
-    white;
-
-  padding:
-    11px
-    15px;
+    var(--red);
 
   font-weight:
     bold;
 
-  cursor:
-    pointer;
-}
-
-.guess-button:disabled {
-  opacity:
-    0.45;
-
-  cursor:
-    default;
-}
-
-.guess-feedback {
-  min-height:
-    28px;
-
-  margin-top:
-    10px;
-
   font-size:
-    0.9rem;
+    1.1rem;
+}
+
+.clue-text {
 
   font-style:
     italic;
 
-  color:
-    var(--red);
-}
+  font-size:
+    clamp(1.15rem, 4vw, 1.45rem);
 
-.guess-feedback.correct {
-  color:
-    #49723e;
+  line-height:
+    1.45;
 
-  font-weight:
-    bold;
+  margin:
+    15px auto 5px;
+
+  max-width:
+    650px;
 }
 
 
@@ -581,24 +342,22 @@ main {
 ========================================================== */
 
 .phase-row {
-  display:
-    grid;
+
+  display: grid;
 
   grid-template-columns:
-    1fr
-    1fr;
+    1fr 1fr;
 
-  gap:
-    10px;
+  gap: 10px;
 
   margin-bottom:
     12px;
 }
 
 .phase-button {
+
   border:
-    2px solid
-    var(--red);
+    2px solid var(--red);
 
   color:
     var(--red);
@@ -620,6 +379,7 @@ main {
 }
 
 .phase-button.solution {
+
   border-color:
     var(--blue);
 
@@ -628,6 +388,7 @@ main {
 }
 
 .phase-button.active {
+
   color:
     white;
 
@@ -636,6 +397,7 @@ main {
 }
 
 .phase-button.solution.active {
+
   color:
     white;
 
@@ -649,12 +411,12 @@ main {
 ========================================================== */
 
 .viewer {
+
   background:
     var(--paper);
 
   border:
-    2px solid
-    var(--brown);
+    2px solid var(--brown);
 
   border-radius:
     20px;
@@ -663,15 +425,12 @@ main {
     hidden;
 
   box-shadow:
-    0
-    8px
-    22px
-    var(--shadow);
+    0 8px 22px var(--shadow);
 }
 
 .viewer-label {
-  display:
-    flex;
+
+  display: flex;
 
   justify-content:
     space-between;
@@ -679,12 +438,10 @@ main {
   align-items:
     center;
 
-  gap:
-    10px;
+  gap: 10px;
 
   padding:
-    12px
-    16px;
+    12px 16px;
 
   background:
     #eee3cd;
@@ -700,52 +457,35 @@ main {
 }
 
 .image-frame {
-  width:
-    100%;
+
+  width: 100%;
 
   min-height:
-    300px;
+    250px;
 
   background:
     #ede6d8;
 
-  display:
-    flex;
+  display: flex;
 
-  align-items:
-    center;
+  align-items: center;
 
-  justify-content:
-    center;
-
-  overflow:
-    hidden;
-
-  touch-action:
-    pan-y;
+  justify-content: center;
 }
 
 .image-frame img {
-  display:
-    block;
 
-  width:
-    100%;
+  display: block;
 
-  height:
-    auto;
+  width: 100%;
+
+  height: auto;
 
   max-height:
     1050px;
 
   object-fit:
     contain;
-
-  user-select:
-    none;
-
-  -webkit-user-drag:
-    none;
 }
 
 
@@ -754,24 +494,22 @@ main {
 ========================================================== */
 
 .viewer-controls {
-  display:
-    grid;
+
+  display: grid;
 
   grid-template-columns:
-    1fr
-    1fr;
+    1fr 1fr;
 
-  gap:
-    10px;
+  gap: 10px;
 
   padding:
     14px;
 }
 
 .viewer-button {
+
   border:
-    2px solid
-    var(--brown);
+    2px solid var(--brown);
 
   background:
     white;
@@ -793,6 +531,7 @@ main {
 }
 
 .viewer-button.primary {
+
   background:
     var(--brown);
 
@@ -801,6 +540,7 @@ main {
 }
 
 .viewer-button:disabled {
+
   opacity:
     0.35;
 
@@ -810,12 +550,12 @@ main {
 
 
 /* ==========================================================
-   DOT NAVIGATION
+   DOTS
 ========================================================== */
 
 .dots {
-  display:
-    flex;
+
+  display: flex;
 
   justify-content:
     center;
@@ -827,12 +567,11 @@ main {
     8px;
 
   padding:
-    0
-    12px
-    16px;
+    0 12px 16px;
 }
 
 .dot {
+
   width:
     10px;
 
@@ -856,6 +595,7 @@ main {
 }
 
 .dot.active {
+
   background:
     var(--gold);
 
@@ -865,10 +605,191 @@ main {
 
 
 /* ==========================================================
-   REVEAL BOX
+   GUESS AREA
+========================================================== */
+
+.guess-panel {
+
+  margin-top:
+    20px;
+
+  background:
+    var(--paper);
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    17px;
+
+  padding:
+    20px;
+
+  text-align:
+    center;
+
+  box-shadow:
+    0 5px 15px var(--shadow);
+}
+
+.guess-panel h3 {
+
+  margin:
+    0 0 10px;
+}
+
+.guess-counter {
+
+  font-size:
+    0.85rem;
+
+  color:
+    #666;
+
+  font-weight:
+    bold;
+
+  margin-bottom:
+    10px;
+}
+
+.guess-row {
+
+  display: flex;
+
+  gap:
+    8px;
+
+  max-width:
+    520px;
+
+  margin:
+    auto;
+}
+
+#guessInput {
+
+  flex: 1;
+
+  min-width: 0;
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    10px;
+
+  background:
+    white;
+
+  padding:
+    11px 12px;
+
+  text-align:
+    center;
+
+  text-transform:
+    uppercase;
+}
+
+.guess-button {
+
+  border:
+    none;
+
+  border-radius:
+    10px;
+
+  background:
+    var(--brown);
+
+  color:
+    white;
+
+  padding:
+    11px 15px;
+
+  font-weight:
+    bold;
+
+  cursor:
+    pointer;
+}
+
+.guess-feedback {
+
+  min-height:
+    28px;
+
+  margin-top:
+    10px;
+
+  font-size:
+    0.9rem;
+
+  font-style:
+    italic;
+
+  color:
+    var(--red);
+}
+
+.guess-feedback.correct {
+
+  color:
+    #49723e;
+
+  font-weight:
+    bold;
+}
+
+
+/* ==========================================================
+   SHARE
+========================================================== */
+
+.share-row {
+
+  display: flex;
+
+  justify-content:
+    center;
+
+  margin-top:
+    5px;
+}
+
+.share-button {
+
+  border:
+    2px solid var(--blue);
+
+  background:
+    white;
+
+  color:
+    var(--blue);
+
+  padding:
+    11px 18px;
+
+  border-radius:
+    11px;
+
+  font-weight:
+    bold;
+
+  cursor:
+    pointer;
+}
+
+
+/* ==========================================================
+   REVEAL
 ========================================================== */
 
 .reveal-box {
+
   margin-top:
     22px;
 
@@ -885,16 +806,16 @@ main {
     #f1e9d8;
 
   border:
-    2px dashed
-    var(--gold);
+    2px dashed var(--gold);
 }
 
 .reveal-box h3 {
-  margin-top:
-    0;
+
+  margin-top: 0;
 }
 
 .reveal-box p {
+
   line-height:
     1.5;
 
@@ -902,26 +823,11 @@ main {
     620px;
 
   margin:
-    10px
-    auto
-    18px;
-}
-
-.reveal-actions {
-  display:
-    flex;
-
-  justify-content:
-    center;
-
-  flex-wrap:
-    wrap;
-
-  gap:
-    10px;
+    10px auto 18px;
 }
 
 .reveal-answer-button {
+
   border:
     none;
 
@@ -932,33 +838,7 @@ main {
     white;
 
   padding:
-    13px
-    22px;
-
-  border-radius:
-    12px;
-
-  font-weight:
-    bold;
-
-  cursor:
-    pointer;
-}
-
-.share-button {
-  border:
-    2px solid
-    var(--blue);
-
-  background:
-    white;
-
-  color:
-    var(--blue);
-
-  padding:
-    13px
-    22px;
+    13px 22px;
 
   border-radius:
     12px;
@@ -972,10 +852,11 @@ main {
 
 
 /* ==========================================================
-   SOLUTION INFORMATION
+   SOLUTION
 ========================================================== */
 
 .solution-info {
+
   display:
     none;
 
@@ -986,8 +867,7 @@ main {
     var(--paper);
 
   border:
-    2px solid
-    var(--gold);
+    2px solid var(--gold);
 
   border-radius:
     18px;
@@ -997,20 +877,14 @@ main {
 
   text-align:
     center;
-
-  box-shadow:
-    0
-    5px
-    16px
-    var(--shadow);
 }
 
 .solution-info.visible {
-  display:
-    block;
+  display: block;
 }
 
 .solution-badge {
+
   display:
     inline-block;
 
@@ -1018,8 +892,7 @@ main {
     var(--gold);
 
   padding:
-    7px
-    15px;
+    7px 15px;
 
   border-radius:
     999px;
@@ -1035,28 +908,46 @@ main {
 }
 
 .solution-info h2 {
+
   font-size:
     2rem;
 
   margin:
-    13px
-    0
-    18px;
+    13px 0 10px;
+}
+
+.solution-intro {
+
+  max-width:
+    620px;
+
+  margin:
+    0 auto 18px;
+
+  color:
+    #665846;
+
+  font-style:
+    italic;
+
+  line-height:
+    1.5;
 }
 
 .solution-grid {
+
   display:
     grid;
 
   grid-template-columns:
-    1fr
-    1fr;
+    1fr 1fr;
 
   gap:
     12px;
 }
 
 .solution-card {
+
   border-radius:
     12px;
 
@@ -1065,15 +956,18 @@ main {
 
   background:
     #f7f2e8;
+
+  line-height:
+    1.5;
 }
 
 .mini-label {
+
   display:
     inline-block;
 
   padding:
-    5px
-    10px;
+    5px 10px;
 
   border-radius:
     999px;
@@ -1089,19 +983,17 @@ main {
 }
 
 .mini-label.red {
-  background:
-    var(--red);
+  background: var(--red);
 }
 
 .mini-label.blue {
-  background:
-    var(--blue);
+  background: var(--blue);
 }
 
 .mechanism {
+
   border-top:
-    1px solid
-    #ddd1bd;
+    1px solid #ddd1bd;
 
   margin-top:
     18px;
@@ -1119,6 +1011,7 @@ main {
 ========================================================== */
 
 .archive-heading {
+
   text-align:
     center;
 
@@ -1127,6 +1020,7 @@ main {
 }
 
 .archive-heading p {
+
   color:
     #666;
 
@@ -1135,6 +1029,7 @@ main {
 }
 
 .archive-list {
+
   display:
     grid;
 
@@ -1143,12 +1038,12 @@ main {
 }
 
 .archive-card {
+
   background:
     var(--paper);
 
   border:
-    2px solid
-    var(--brown);
+    2px solid var(--brown);
 
   border-radius:
     16px;
@@ -1157,27 +1052,23 @@ main {
     18px;
 
   box-shadow:
-    0
-    5px
-    15px
-    var(--shadow);
+    0 5px 15px var(--shadow);
 }
 
 .archive-top {
+
   display:
     flex;
 
   justify-content:
     space-between;
 
-  align-items:
-    center;
-
   gap:
     10px;
 }
 
 .archive-number {
+
   color:
     var(--red);
 
@@ -1186,19 +1077,19 @@ main {
 }
 
 .archive-clue {
+
   font-style:
     italic;
 
   line-height:
-    1.45;
+    1.4;
 
   margin:
-    12px
-    0
-    14px;
+    12px 0 14px;
 }
 
 .archive-play-button {
+
   border:
     none;
 
@@ -1209,8 +1100,7 @@ main {
     white;
 
   padding:
-    10px
-    15px;
+    10px 15px;
 
   border-radius:
     10px;
@@ -1223,6 +1113,7 @@ main {
 }
 
 .empty-archive {
+
   text-align:
     center;
 
@@ -1233,8 +1124,7 @@ main {
     var(--paper);
 
   border:
-    1px solid
-    #ddd;
+    1px solid #ddd;
 
   border-radius:
     15px;
@@ -1252,12 +1142,12 @@ main {
 ========================================================== */
 
 footer {
+
   text-align:
     center;
 
   padding:
-    30px
-    15px;
+    30px 15px;
 
   color:
     #665846;
@@ -1274,36 +1164,16 @@ footer {
    MOBILE
 ========================================================== */
 
-@media
-(max-width: 600px) {
+@media (max-width: 600px) {
 
-  header {
-    padding-top:
-      22px;
+  .phase-row {
+    grid-template-columns:
+      1fr;
   }
 
-  .koan-logo {
-    gap:
-      7px;
-  }
-
-  main {
-    width:
-      min(
-        96%,
-        900px
-      );
-  }
-
-  .clue-heading {
-    padding:
-      18px
-      14px;
-  }
-
-  .answer-placeholder h2 {
-    letter-spacing:
-      2px;
+  .solution-grid {
+    grid-template-columns:
+      1fr;
   }
 
   .guess-row {
@@ -1316,51 +1186,9 @@ footer {
       100%;
   }
 
-  .phase-row {
-    grid-template-columns:
-      1fr;
-  }
-
-  .solution-grid {
-    grid-template-columns:
-      1fr;
-  }
-
-  .viewer-controls {
-    grid-template-columns:
-      1fr
-      1fr;
-  }
-
   .image-frame {
     min-height:
       200px;
-  }
-
-  .reveal-actions {
-    flex-direction:
-      column;
-  }
-
-  .reveal-answer-button,
-  .share-button {
-    width:
-      100%;
-  }
-}
-
-
-@media
-(max-width: 380px) {
-
-  .viewer-controls {
-    grid-template-columns:
-      1fr;
-  }
-
-  .koan-logo {
-    font-size:
-      2rem;
   }
 
 }
