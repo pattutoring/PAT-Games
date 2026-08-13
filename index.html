@@ -131,6 +131,18 @@ main {
   filter: brightness(.95);
 }
 
+/* MOLECULAR FARM */
+
+.molecular-farm {
+  border-color: var(--green);
+}
+
+.molecular-farm .card-button {
+  background: var(--green);
+}
+
+/* CONTRONYM */
+
 .contronym {
   border-color: var(--blue);
 }
@@ -138,6 +150,8 @@ main {
 .contronym .card-button {
   background: var(--blue);
 }
+
+/* CLUE CARDS */
 
 .clue-card {
   border-color: var(--purple);
@@ -232,6 +246,7 @@ footer {
 
   <div class="section-title">
     <h2>Choose a Learning World</h2>
+
     <p>
       Explore chemistry, language, mathematics and critical thinking.
     </p>
@@ -243,7 +258,7 @@ footer {
 
     <!-- MOLECULAR FARM -->
 
-    <article class="lab-card">
+    <article class="lab-card molecular-farm">
 
       <div class="lab-icon">
         🌾
@@ -258,9 +273,12 @@ footer {
         families and transformations are based on real chemical behavior.
       </p>
 
-      <div class="coming-button">
-        Interactive Farm Growing Soon
-      </div>
+      <a
+        class="card-button"
+        href="molecularfarm.html"
+      >
+        Enter Molecular Farm
+      </a>
 
     </article>
 
@@ -393,7 +411,6 @@ footer {
 
     </article>
 
-
   </div>
 
 
@@ -434,7 +451,6 @@ footer {
 
   </section>
 
-
 </main>
 
 
@@ -443,4 +459,4 @@ footer {
 </footer>
 
 </body>
-</html></html>
+</html>
