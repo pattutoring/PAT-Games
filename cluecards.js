@@ -75,28 +75,33 @@ const currentClue =
     clueCards.length - 1
   ];
 
+
 let activeClue =
   currentClue;
+
 
 let phase =
   "clue";
 
+
 let slideIndex =
   0;
+
 
 let solutionUnlocked =
   false;
 
+
 let guesses =
   0;
+
 
 let solved =
   false;
 
 
 /*
-  THE MAIN CLUE IMAGE IS PRELOADED
-  AND STORED HERE FOR SHARING.
+  Prepared version of the first clue image.
 */
 
 let shareImageFile =
@@ -179,9 +184,6 @@ const bigRevealButton =
 const shareButton =
   document.getElementById("shareButton");
 
-const shareSolvedButton =
-  document.getElementById("shareSolvedButton");
-
 const solutionInfo =
   document.getElementById("solutionInfo");
 
@@ -213,8 +215,10 @@ function buildAnswerPlaceholder(text) {
   const clean =
     text.replace(/[()]/g, "");
 
+
   return clean.replace(
     /\d+/g,
+
     number =>
       "_".repeat(
         Number(number)
@@ -256,13 +260,14 @@ function getSlides() {
 
   }
 
+
   return activeClue.clueSlides;
 
 }
 
 
 /* ==========================================================
-   PRELOAD MAIN CLUE IMAGE FOR SHARING
+   PREPARE FIRST CLUE IMAGE FOR SHARING
 ========================================================== */
 
 async function prepareShareImage() {
@@ -318,7 +323,7 @@ async function prepareShareImage() {
   catch(error) {
 
     console.log(
-      "Could not prepare share image:",
+      "Share image preparation failed:",
       error
     );
 
@@ -336,17 +341,22 @@ function loadClue(card) {
   activeClue =
     card;
 
+
   phase =
     "clue";
+
 
   slideIndex =
     0;
 
+
   solutionUnlocked =
     false;
 
+
   guesses =
     0;
+
 
   solved =
     false;
@@ -424,6 +434,10 @@ function loadClue(card) {
     "block";
 
 
+  shareButton.textContent =
+    "📤 Share Clue";
+
+
   cluePhaseButton.classList.add(
     "active"
   );
@@ -441,11 +455,6 @@ function loadClue(card) {
   renderSlide();
 
 
-  /*
-    PREPARE SHARE IMAGE NOW,
-    BEFORE THE USER EVER PRESSES SHARE.
-  */
-
   prepareShareImage();
 
 }
@@ -459,16 +468,6 @@ function renderSlide() {
 
   const slides =
     getSlides();
-
-
-  if (
-    !slides ||
-    slides.length === 0
-  ) {
-
-    return;
-
-  }
 
 
   clueImage.src =
@@ -540,10 +539,12 @@ function buildDots() {
 
       dot.addEventListener(
         "click",
+
         () => {
 
           slideIndex =
             index;
+
 
           renderSlide();
 
@@ -567,6 +568,7 @@ function buildDots() {
 
 previousButton.addEventListener(
   "click",
+
   () => {
 
     if (
@@ -574,6 +576,7 @@ previousButton.addEventListener(
     ) {
 
       slideIndex--;
+
 
       renderSlide();
 
@@ -585,6 +588,7 @@ previousButton.addEventListener(
 
 nextButton.addEventListener(
   "click",
+
   () => {
 
     const slides =
@@ -598,6 +602,7 @@ nextButton.addEventListener(
 
       slideIndex++;
 
+
       renderSlide();
 
     }
@@ -607,11 +612,12 @@ nextButton.addEventListener(
 
 
 /* ==========================================================
-   CLUE TAB
+   CLUE PHASE
 ========================================================== */
 
 cluePhaseButton.addEventListener(
   "click",
+
   () => {
 
     phase =
@@ -691,6 +697,15 @@ function revealSolution() {
     "none";
 
 
+  /*
+    SAME WORKING SHARE BUTTON,
+    JUST CHANGE ITS LABEL.
+  */
+
+  shareButton.textContent =
+    "📤 Share Result";
+
+
   renderSlide();
 
 }
@@ -702,6 +717,7 @@ function revealSolution() {
 
 solutionPhaseButton.addEventListener(
   "click",
+
   () => {
 
     if (
@@ -709,6 +725,7 @@ solutionPhaseButton.addEventListener(
     ) {
 
       revealSolution();
+
 
       return;
 
@@ -741,6 +758,7 @@ solutionPhaseButton.addEventListener(
 
 bigRevealButton.addEventListener(
   "click",
+
   revealSolution
 );
 
@@ -774,6 +792,7 @@ function submitGuess() {
     guessFeedback.textContent =
       "Type an answer first.";
 
+
     return;
 
   }
@@ -793,7 +812,8 @@ function submitGuess() {
 
 
   if (
-    guess === answer
+    guess ===
+    answer
   ) {
 
     solved =
@@ -835,12 +855,14 @@ function submitGuess() {
 
 guessButton.addEventListener(
   "click",
+
   submitGuess
 );
 
 
 guessInput.addEventListener(
   "keydown",
+
   event => {
 
     if (
@@ -849,6 +871,7 @@ guessInput.addEventListener(
     ) {
 
       event.preventDefault();
+
 
       submitGuess();
 
@@ -867,10 +890,6 @@ function buildShareText() {
   let resultLine;
 
 
-  /*
-    AFTER A CORRECT SOLVE
-  */
-
   if (
     solved
   ) {
@@ -881,27 +900,28 @@ function buildShareText() {
   }
 
 
-  /*
-    MANUAL REVEAL
-  */
-
   else if (
     solutionUnlocked
   ) {
 
-    resultLine =
+    if (
       guesses === 0
+    ) {
 
-        ? "Answer revealed"
+      resultLine =
+        "Answer revealed";
 
-        : `Answer revealed after ${guesses} ${guesses === 1 ? "guess" : "guesses"}`;
+    }
+
+    else {
+
+      resultLine =
+        `Answer revealed after ${guesses} ${guesses === 1 ? "guess" : "guesses"}`;
+
+    }
 
   }
 
-
-  /*
-    STILL UNSOLVED
-  */
 
   else {
 
@@ -925,11 +945,7 @@ PAT Learning Lab`;
 
 
 /* ==========================================================
-   SHARE FUNCTION
-
-   BOTH SHARE BUTTONS USE THIS.
-
-   ALWAYS SHARES THE ORIGINAL MAIN CLUE IMAGE.
+   ONE PERSISTENT SHARE FUNCTION
 ========================================================== */
 
 async function shareCurrentClue() {
@@ -939,9 +955,7 @@ async function shareCurrentClue() {
 
 
   /*
-    IMAGE IS ALREADY PREPARED,
-    SO SAFARI CAN OPEN THE SHARE SHEET
-    IMMEDIATELY FROM THE BUTTON TAP.
+    IMAGE SHARE
   */
 
   if (
@@ -989,8 +1003,7 @@ async function shareCurrentClue() {
 
 
   /*
-    FALLBACK:
-    SHARE TEXT + LINK
+    TEXT + URL FALLBACK
   */
 
   if (
@@ -1030,8 +1043,7 @@ async function shareCurrentClue() {
 
 
   /*
-    FINAL FALLBACK:
-    COPY TEXT
+    COPY FALLBACK
   */
 
   try {
@@ -1045,14 +1057,30 @@ ${window.location.href}`
       );
 
 
-    showCopiedMessage();
+    const originalText =
+      shareButton.textContent;
+
+
+    shareButton.textContent =
+      "Copied!";
+
+
+    setTimeout(
+      () => {
+
+        shareButton.textContent =
+          originalText;
+
+      },
+
+      1400
+    );
 
   }
 
   catch(error) {
 
     console.log(
-      "Clipboard unavailable:",
       error
     );
 
@@ -1061,50 +1089,14 @@ ${window.location.href}`
 }
 
 
-/* ==========================================================
-   SHARE BUTTON FEEDBACK
-========================================================== */
-
-function showCopiedMessage() {
-
-  shareButton.textContent =
-    "Copied!";
-
-
-  shareSolvedButton.textContent =
-    "Copied!";
-
-
-  setTimeout(
-    () => {
-
-      shareButton.textContent =
-        "📤 Share Clue";
-
-
-      shareSolvedButton.textContent =
-        "📤 Share Result";
-
-    },
-
-    1400
-  );
-
-}
-
-
-/* ==========================================================
-   CONNECT BOTH SHARE BUTTONS
-========================================================== */
+/*
+  ONE BUTTON.
+  ONE EVENT LISTENER.
+*/
 
 shareButton.addEventListener(
   "click",
-  shareCurrentClue
-);
 
-
-shareSolvedButton.addEventListener(
-  "click",
   shareCurrentClue
 );
 
@@ -1121,7 +1113,10 @@ function buildArchive() {
 
   const oldClues =
     clueCards
-      .slice(0, -1)
+      .slice(
+        0,
+        -1
+      )
       .reverse();
 
 
@@ -1199,10 +1194,14 @@ function buildArchive() {
           ".archive-play-button"
         )
         .addEventListener(
+
           "click",
+
           () => {
 
-            loadClue(card);
+            loadClue(
+              card
+            );
 
 
             playView.classList.add(
@@ -1225,6 +1224,7 @@ function buildArchive() {
             );
 
           }
+
         );
 
 
@@ -1239,11 +1239,12 @@ function buildArchive() {
 
 
 /* ==========================================================
-   MAIN NAVIGATION
+   NAVIGATION
 ========================================================== */
 
 currentTab.addEventListener(
   "click",
+
   () => {
 
     loadClue(
@@ -1276,6 +1277,7 @@ currentTab.addEventListener(
 
 archiveTab.addEventListener(
   "click",
+
   () => {
 
     buildArchive();
@@ -1314,20 +1316,24 @@ let touchStartX =
 
 imageFrame.addEventListener(
   "touchstart",
+
   event => {
 
     touchStartX =
       event.changedTouches[0].screenX;
 
   },
+
   {
-    passive: true
+    passive:
+      true
   }
 );
 
 
 imageFrame.addEventListener(
   "touchend",
+
   event => {
 
     const touchEndX =
@@ -1340,7 +1346,9 @@ imageFrame.addEventListener(
 
 
     if (
-      Math.abs(difference) < 50
+      Math.abs(
+        difference
+      ) < 50
     ) {
 
       return;
@@ -1360,6 +1368,7 @@ imageFrame.addEventListener(
 
       slideIndex++;
 
+
       renderSlide();
 
     }
@@ -1372,13 +1381,16 @@ imageFrame.addEventListener(
 
       slideIndex--;
 
+
       renderSlide();
 
     }
 
   },
+
   {
-    passive: true
+    passive:
+      true
   }
 );
 
