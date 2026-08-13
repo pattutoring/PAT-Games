@@ -2,7 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 /* ==========================================================
-   CLUE DATABASE
+   CLUE-CARD DATABASE
+
+   ADD NEW CLUES HERE.
+
+   The LAST clue automatically becomes the current clue.
+   Earlier clues automatically move into the archive.
 ========================================================== */
 
 const clueCards = [
@@ -37,18 +42,34 @@ const clueCards = [
     difficulty:
       "Easy",
 
+
+    /* ORIGINAL CLUE RELEASE */
+
     clueSlides: [
-      "images/cluecards/001/IMG_0202.jpeg",
-      "images/cluecards/001/IMG_0200.jpeg",
-      "images/cluecards/001/IMG_0201.jpeg",
-      "images/cluecards/001/IMG_0203.jpeg"
+
+      "/PAT-Games/images/cluecards/001/IMG_0202.jpeg",
+
+      "/PAT-Games/images/cluecards/001/IMG_0200.jpeg",
+
+      "/PAT-Games/images/cluecards/001/IMG_0201.jpeg",
+
+      "/PAT-Games/images/cluecards/001/IMG_0203.jpeg"
+
     ],
 
+
+    /* ANSWER RELEASE */
+
     solutionSlides: [
-      "images/cluecards/001/IMG_0202.jpeg",
-      "images/cluecards/001/IMG_0204.jpeg",
-      "images/cluecards/001/IMG_0206.jpeg",
-      "images/cluecards/001/IMG_0205.jpeg"
+
+      "/PAT-Games/images/cluecards/001/IMG_0202.jpeg",
+
+      "/PAT-Games/images/cluecards/001/IMG_0204.jpeg",
+
+      "/PAT-Games/images/cluecards/001/IMG_0206.jpeg",
+
+      "/PAT-Games/images/cluecards/001/IMG_0205.jpeg"
+
     ]
   }
 
@@ -60,7 +81,9 @@ const clueCards = [
 ========================================================== */
 
 const currentClue =
-  clueCards[clueCards.length - 1];
+  clueCards[
+    clueCards.length - 1
+  ];
 
 let activeClue =
   currentClue;
@@ -80,12 +103,9 @@ let solved =
 let solutionUnlocked =
   false;
 
-let shareImageFile =
-  null;
-
 
 /* ==========================================================
-   GET ELEMENTS
+   ELEMENTS
 ========================================================== */
 
 const currentTab =
@@ -176,7 +196,9 @@ const mechanism =
   document.getElementById("mechanism");
 
 const mechanismDescription =
-  document.getElementById("mechanismDescription");
+  document.getElementById(
+    "mechanismDescription"
+  );
 
 const archiveList =
   document.getElementById("archiveList");
@@ -186,23 +208,28 @@ const archiveList =
    ANSWER PLACEHOLDER
 ========================================================== */
 
-function makePlaceholder(enumerationText) {
+function buildAnswerPlaceholder(
+  enumerationText
+) {
 
   const clean =
     enumerationText
-      .replace("(", "")
-      .replace(")", "");
+      .replace(/[()]/g, "");
 
-  const pieces =
+  const parts =
     clean.split("-");
 
-  return pieces
-    .map(function (piece) {
+  return parts
+    .map(function (part) {
 
-      const number =
-        parseInt(piece, 10);
+      const amount =
+        parseInt(part, 10);
 
-      return "_".repeat(number);
+      if (isNaN(amount)) {
+        return "";
+      }
+
+      return "_".repeat(amount);
 
     })
     .join("-");
@@ -211,7 +238,13 @@ function makePlaceholder(enumerationText) {
 
 
 /* ==========================================================
-   ANSWER NORMALIZATION
+   NORMALIZE ANSWERS
+
+   HAT-TRICK
+   hat trick
+   HATTRICK
+
+   will all be accepted.
 ========================================================== */
 
 function normalizeAnswer(text) {
@@ -225,12 +258,14 @@ function normalizeAnswer(text) {
 
 
 /* ==========================================================
-   GET SLIDES
+   GET ACTIVE SLIDES
 ========================================================== */
 
 function getSlides() {
 
-  if (phase === "solution") {
+  if (
+    phase === "solution"
+  ) {
 
     return activeClue.solutionSlides;
 
@@ -242,7 +277,7 @@ function getSlides() {
 
 
 /* ==========================================================
-   LOAD CLUE
+   LOAD A CLUE
 ========================================================== */
 
 function loadClue(card) {
@@ -266,58 +301,69 @@ function loadClue(card) {
     false;
 
 
-  /* HEADER */
-
   clueNumber.textContent =
-    "CLUE-CARD #" + card.number;
+    "CLUE-CARD #" +
+    card.number;
+
 
   clueTitle.textContent =
-    makePlaceholder(card.enumeration);
+    buildAnswerPlaceholder(
+      card.enumeration
+    );
+
 
   enumeration.textContent =
     card.enumeration;
 
+
   clueText.textContent =
-    '"' + card.clue + '"';
+    "“" +
+    card.clue +
+    "”";
 
-
-  /* GUESSING */
 
   guessCounter.textContent =
     "Guesses: 0";
 
+
   guessInput.value =
     "";
+
 
   guessInput.disabled =
     false;
 
+
   guessButton.disabled =
     false;
 
+
   guessFeedback.textContent =
     "";
+
 
   guessFeedback.classList.remove(
     "correct"
   );
 
 
-  /* SOLUTION INFO */
-
   answerTitle.textContent =
     card.answer;
+
 
   senseA.textContent =
     card.senseA;
 
+
   senseB.textContent =
     card.senseB;
+
 
   mechanism.textContent =
     card.type +
     " • " +
     card.mechanism;
+
 
   mechanismDescription.textContent =
     card.mechanismDescription;
@@ -327,22 +373,24 @@ function loadClue(card) {
     "visible"
   );
 
+
   revealBox.style.display =
     "block";
+
 
   shareButton.textContent =
     "📤 Share Clue";
 
 
-  /* PHASE BUTTONS */
-
   cluePhaseButton.classList.add(
     "active"
   );
 
+
   solutionPhaseButton.classList.remove(
     "active"
   );
+
 
   solutionPhaseButton.textContent =
     "🔒 Reveal Solution";
@@ -350,13 +398,11 @@ function loadClue(card) {
 
   renderSlide();
 
-  prepareShareImage();
-
 }
 
 
 /* ==========================================================
-   RENDER SLIDE
+   RENDER CURRENT IMAGE
 ========================================================== */
 
 function renderSlide() {
@@ -364,41 +410,71 @@ function renderSlide() {
   const slides =
     getSlides();
 
-  if (!slides || slides.length === 0) {
+
+  if (
+    !slides ||
+    slides.length === 0
+  ) {
+
     return;
+
   }
 
-  if (slideIndex < 0) {
-    slideIndex = 0;
+
+  if (
+    slideIndex < 0
+  ) {
+
+    slideIndex =
+      0;
+
   }
 
-  if (slideIndex >= slides.length) {
-    slideIndex = slides.length - 1;
+
+  if (
+    slideIndex >=
+    slides.length
+  ) {
+
+    slideIndex =
+      slides.length - 1;
+
   }
 
 
   clueImage.src =
-    slides[slideIndex];
+    slides[
+      slideIndex
+    ];
+
 
   clueImage.alt =
-    "Clue-Card #" +
+    "Koan~Kaon Clue-Card #" +
     activeClue.number +
     " slide " +
-    (slideIndex + 1);
+    (
+      slideIndex + 1
+    );
 
 
   slideCounter.textContent =
-    (slideIndex + 1) +
+    (
+      slideIndex + 1
+    ) +
     " / " +
     slides.length;
 
 
-  if (phase === "clue") {
+  if (
+    phase === "clue"
+  ) {
 
     phaseLabel.textContent =
       "CLUE RELEASE";
 
-  } else {
+  }
+
+  else {
 
     phaseLabel.textContent =
       "SOLUTION RELEASE";
@@ -408,6 +484,7 @@ function renderSlide() {
 
   previousButton.disabled =
     slideIndex === 0;
+
 
   nextButton.disabled =
     slideIndex ===
@@ -420,7 +497,7 @@ function renderSlide() {
 
 
 /* ==========================================================
-   DOTS
+   DOT NAVIGATION
 ========================================================== */
 
 function buildDots() {
@@ -428,44 +505,62 @@ function buildDots() {
   dots.innerHTML =
     "";
 
+
   const slides =
     getSlides();
 
 
-  slides.forEach(function (slide, index) {
+  slides.forEach(
+    function (
+      slide,
+      index
+    ) {
 
-    const dot =
-      document.createElement("button");
+      const dot =
+        document.createElement(
+          "button"
+        );
 
-    dot.className =
-      "dot";
+
+      dot.type =
+        "button";
 
 
-    if (index === slideIndex) {
+      dot.className =
+        "dot";
 
-      dot.classList.add(
-        "active"
+
+      if (
+        index ===
+        slideIndex
+      ) {
+
+        dot.classList.add(
+          "active"
+        );
+
+      }
+
+
+      dot.addEventListener(
+        "click",
+        function () {
+
+          slideIndex =
+            index;
+
+          renderSlide();
+
+        }
+      );
+
+
+      dots.appendChild(
+        dot
       );
 
     }
-
-
-    dot.addEventListener(
-      "click",
-      function () {
-
-        slideIndex =
-          index;
-
-        renderSlide();
-
-      }
-    );
-
-
-    dots.appendChild(dot);
-
-  });
+  );
 
 }
 
@@ -478,7 +573,9 @@ previousButton.addEventListener(
   "click",
   function () {
 
-    if (slideIndex > 0) {
+    if (
+      slideIndex > 0
+    ) {
 
       slideIndex--;
 
@@ -497,6 +594,7 @@ nextButton.addEventListener(
     const slides =
       getSlides();
 
+
     if (
       slideIndex <
       slides.length - 1
@@ -513,7 +611,7 @@ nextButton.addEventListener(
 
 
 /* ==========================================================
-   CLUE RELEASE TAB
+   CLUE TAB
 ========================================================== */
 
 cluePhaseButton.addEventListener(
@@ -526,13 +624,16 @@ cluePhaseButton.addEventListener(
     slideIndex =
       0;
 
+
     cluePhaseButton.classList.add(
       "active"
     );
 
+
     solutionPhaseButton.classList.remove(
       "active"
     );
+
 
     renderSlide();
 
@@ -549,8 +650,10 @@ function revealSolution() {
   solutionUnlocked =
     true;
 
+
   phase =
     "solution";
+
 
   slideIndex =
     0;
@@ -563,6 +666,7 @@ function revealSolution() {
   guessInput.disabled =
     true;
 
+
   guessButton.disabled =
     true;
 
@@ -570,9 +674,11 @@ function revealSolution() {
   solutionPhaseButton.textContent =
     "🔓 Solution";
 
+
   solutionPhaseButton.classList.add(
     "active"
   );
+
 
   cluePhaseButton.classList.remove(
     "active"
@@ -582,6 +688,7 @@ function revealSolution() {
   solutionInfo.classList.add(
     "visible"
   );
+
 
   revealBox.style.display =
     "none";
@@ -604,7 +711,9 @@ solutionPhaseButton.addEventListener(
   "click",
   function () {
 
-    if (!solutionUnlocked) {
+    if (
+      !solutionUnlocked
+    ) {
 
       revealSolution();
 
@@ -616,16 +725,20 @@ solutionPhaseButton.addEventListener(
     phase =
       "solution";
 
+
     slideIndex =
       0;
+
 
     solutionPhaseButton.classList.add(
       "active"
     );
 
+
     cluePhaseButton.classList.remove(
       "active"
     );
+
 
     renderSlide();
 
@@ -661,10 +774,12 @@ function submitGuess() {
     );
 
 
-  if (guess === "") {
+  if (
+    guess === ""
+  ) {
 
     guessFeedback.textContent =
-      "Type an answer first.";
+      "Enter an answer first.";
 
     return;
 
@@ -673,8 +788,10 @@ function submitGuess() {
 
   guesses++;
 
+
   guessCounter.textContent =
-    "Guesses: " + guesses;
+    "Guesses: " +
+    guesses;
 
 
   const correctAnswer =
@@ -683,25 +800,28 @@ function submitGuess() {
     );
 
 
-  if (guess === correctAnswer) {
+  if (
+    guess ===
+    correctAnswer
+  ) {
 
     solved =
       true;
+
 
     guessFeedback.textContent =
       "Correct — " +
       activeClue.answer +
       "!";
 
+
     guessFeedback.classList.add(
       "correct"
     );
 
 
-    setTimeout(
-      revealSolution,
-      400
-    );
+    revealSolution();
+
 
     return;
 
@@ -709,12 +829,10 @@ function submitGuess() {
 
 
   guessFeedback.textContent =
-    "Not quite — try another interpretation.";
+    "Not quite. Re-examine the clue from both senses.";
 
-  guessInput.value =
-    "";
 
-  guessInput.focus();
+  guessInput.select();
 
 }
 
@@ -729,7 +847,9 @@ guessInput.addEventListener(
   "keydown",
   function (event) {
 
-    if (event.key === "Enter") {
+    if (
+      event.key === "Enter"
+    ) {
 
       event.preventDefault();
 
@@ -742,75 +862,20 @@ guessInput.addEventListener(
 
 
 /* ==========================================================
-   PREPARE SHARE IMAGE
-========================================================== */
-
-async function prepareShareImage() {
-
-  shareImageFile =
-    null;
-
-  const imageUrl =
-    activeClue.clueSlides[0];
-
-
-  try {
-
-    const response =
-      await fetch(imageUrl);
-
-    if (!response.ok) {
-
-      throw new Error(
-        "Share image did not load."
-      );
-
-    }
-
-
-    const blob =
-      await response.blob();
-
-
-    shareImageFile =
-      new File(
-        [blob],
-        "Koan-Kaon-Clue-" +
-        activeClue.number +
-        ".jpeg",
-        {
-          type:
-            blob.type ||
-            "image/jpeg"
-        }
-      );
-
-  }
-
-  catch (error) {
-
-    console.log(
-      "Share image error:",
-      error
-    );
-
-  }
-
-}
-
-
-/* ==========================================================
    SHARE TEXT
 ========================================================== */
 
 function buildShareText() {
 
-  let result;
+  let resultText =
+    "";
 
 
-  if (solved) {
+  if (
+    solved
+  ) {
 
-    result =
+    resultText =
       "Solved in " +
       guesses +
       " " +
@@ -823,20 +888,33 @@ function buildShareText() {
 
   }
 
-  else if (solutionUnlocked) {
+  else if (
+    solutionUnlocked
+  ) {
 
-    result =
+    if (
       guesses === 0
-        ? "Answer revealed"
-        : "Answer revealed after " +
-          guesses +
-          " guesses";
+    ) {
+
+      resultText =
+        "Answer revealed";
+
+    }
+
+    else {
+
+      resultText =
+        "Answer revealed after " +
+        guesses +
+        " guesses";
+
+    }
 
   }
 
   else {
 
-    result =
+    resultText =
       guesses +
       " " +
       (
@@ -853,14 +931,15 @@ function buildShareText() {
     "KOAN~KAON • Clue-Card #" +
     activeClue.number +
     "\n\n" +
-    '"' +
+    "“" +
     activeClue.clue +
-    '" ' +
+    "” " +
     activeClue.enumeration +
     "\n\n" +
-    result +
+    resultText +
     "\n\n" +
-    "Can you collapse the clue?\n\n" +
+    "Can you collapse the clue?" +
+    "\n\n" +
     "PAT Learning Lab"
   );
 
@@ -869,55 +948,115 @@ function buildShareText() {
 
 /* ==========================================================
    SHARE
+
+   Always shares the FIRST CLUE IMAGE,
+   even when viewing the solution.
 ========================================================== */
 
-async function shareCurrentClue() {
+async function shareClue() {
 
   const text =
     buildShareText();
 
 
+  const imageUrl =
+    activeClue.clueSlides[0];
+
+
   try {
 
+    const response =
+      await fetch(
+        imageUrl
+      );
+
+
     if (
-      shareImageFile &&
-      navigator.share &&
-      navigator.canShare &&
-      navigator.canShare({
-        files: [shareImageFile]
-      })
+      !response.ok
     ) {
 
-      await navigator.share({
-        title:
-          "Koan~Kaon Clue-Card #" +
-          activeClue.number,
+      throw new Error(
+        "Could not load share image."
+      );
 
-        text:
-          text,
+    }
 
-        files:
-          [shareImageFile]
-      });
+
+    const blob =
+      await response.blob();
+
+
+    const file =
+      new File(
+
+        [blob],
+
+        "Koan-Kaon-Clue-" +
+        activeClue.number +
+        ".jpeg",
+
+        {
+          type:
+            blob.type ||
+            "image/jpeg"
+        }
+
+      );
+
+
+    if (
+      navigator.share &&
+      navigator.canShare &&
+      navigator.canShare(
+        {
+          files:
+            [file]
+        }
+      )
+    ) {
+
+      await navigator.share(
+        {
+
+          title:
+            "Koan~Kaon Clue-Card #" +
+            activeClue.number,
+
+          text:
+            text,
+
+          files:
+            [file]
+
+        }
+      );
+
 
       return;
 
     }
 
 
-    if (navigator.share) {
+    if (
+      navigator.share
+    ) {
 
-      await navigator.share({
-        title:
-          "Koan~Kaon Clue-Card #" +
-          activeClue.number,
+      await navigator.share(
+        {
 
-        text:
-          text,
+          title:
+            "Koan~Kaon Clue-Card #" +
+            activeClue.number,
 
-        url:
-          window.location.href
-      });
+          text:
+            text,
+
+          url:
+            window.location.href
+
+        }
+      );
+
 
       return;
 
@@ -933,6 +1072,7 @@ async function shareCurrentClue() {
 
     const oldText =
       shareButton.textContent;
+
 
     shareButton.textContent =
       "Copied!";
@@ -952,10 +1092,46 @@ async function shareCurrentClue() {
 
   catch (error) {
 
-    console.log(
-      "Share cancelled:",
-      error
-    );
+    /*
+      If Safari sharing fails,
+      try text-only sharing.
+    */
+
+    try {
+
+      if (
+        navigator.share
+      ) {
+
+        await navigator.share(
+          {
+
+            title:
+              "Koan~Kaon Clue-Card #" +
+              activeClue.number,
+
+            text:
+              text,
+
+            url:
+              window.location.href
+
+          }
+        );
+
+      }
+
+    }
+
+    catch (
+      secondError
+    ) {
+
+      console.log(
+        "Share cancelled."
+      );
+
+    }
 
   }
 
@@ -964,7 +1140,7 @@ async function shareCurrentClue() {
 
 shareButton.addEventListener(
   "click",
-  shareCurrentClue
+  shareClue
 );
 
 
@@ -978,13 +1154,18 @@ function buildArchive() {
     "";
 
 
-  const oldClues =
+  const archivedClues =
     clueCards
-      .slice(0, -1)
+      .slice(
+        0,
+        -1
+      )
       .reverse();
 
 
-  if (oldClues.length === 0) {
+  if (
+    archivedClues.length === 0
+  ) {
 
     archiveList.innerHTML =
       '<div class="empty-archive">' +
@@ -993,90 +1174,110 @@ function buildArchive() {
       'When #002 is released, #001 will automatically move here.' +
       '</div>';
 
+
     return;
 
   }
 
 
-  oldClues.forEach(function (card) {
+  archivedClues.forEach(
+    function (card) {
 
-    const box =
-      document.createElement(
-        "div"
+      const archiveCard =
+        document.createElement(
+          "div"
+        );
+
+
+      archiveCard.className =
+        "archive-card";
+
+
+      archiveCard.innerHTML =
+
+        '<div class="archive-top">' +
+
+          '<span class="archive-number">' +
+            'CLUE-CARD #' +
+            card.number +
+          '</span>' +
+
+          '<span>' +
+            card.difficulty +
+          '</span>' +
+
+        '</div>' +
+
+        '<div class="archive-clue">' +
+
+          '“' +
+          card.clue +
+          '” ' +
+          card.enumeration +
+
+        '</div>' +
+
+        '<button type="button" class="archive-play-button">' +
+          'Play Archived Clue' +
+        '</button>';
+
+
+      archiveCard
+        .querySelector(
+          ".archive-play-button"
+        )
+        .addEventListener(
+          "click",
+          function () {
+
+            loadClue(
+              card
+            );
+
+
+            playView.classList.add(
+              "active"
+            );
+
+
+            archiveView.classList.remove(
+              "active"
+            );
+
+
+            currentTab.classList.add(
+              "active"
+            );
+
+
+            archiveTab.classList.remove(
+              "active"
+            );
+
+
+            window.scrollTo(
+              {
+                top: 0,
+                behavior: "smooth"
+              }
+            );
+
+          }
+        );
+
+
+      archiveList.appendChild(
+        archiveCard
       );
 
-
-    box.className =
-      "archive-card";
-
-
-    box.innerHTML =
-      '<div class="archive-top">' +
-
-        '<span class="archive-number">' +
-          'CLUE-CARD #' +
-          card.number +
-        '</span>' +
-
-        '<span>' +
-          card.difficulty +
-        '</span>' +
-
-      '</div>' +
-
-      '<div class="archive-clue">' +
-        '"' +
-        card.clue +
-        '" ' +
-        card.enumeration +
-      '</div>' +
-
-      '<button class="archive-play-button">' +
-        'Play Archived Clue' +
-      '</button>';
-
-
-    box
-      .querySelector(
-        ".archive-play-button"
-      )
-      .addEventListener(
-        "click",
-        function () {
-
-          loadClue(card);
-
-          playView.classList.add(
-            "active"
-          );
-
-          archiveView.classList.remove(
-            "active"
-          );
-
-          currentTab.classList.add(
-            "active"
-          );
-
-          archiveTab.classList.remove(
-            "active"
-          );
-
-        }
-      );
-
-
-    archiveList.appendChild(
-      box
-    );
-
-  });
+    }
+  );
 
 }
 
 
 /* ==========================================================
-   MAIN NAVIGATION
+   CURRENT CLUE NAVIGATION
 ========================================================== */
 
 currentTab.addEventListener(
@@ -1087,17 +1288,21 @@ currentTab.addEventListener(
       currentClue
     );
 
+
     playView.classList.add(
       "active"
     );
+
 
     archiveView.classList.remove(
       "active"
     );
 
+
     currentTab.classList.add(
       "active"
     );
+
 
     archiveTab.classList.remove(
       "active"
@@ -1107,23 +1312,31 @@ currentTab.addEventListener(
 );
 
 
+/* ==========================================================
+   ARCHIVE NAVIGATION
+========================================================== */
+
 archiveTab.addEventListener(
   "click",
   function () {
 
     buildArchive();
 
+
     playView.classList.remove(
       "active"
     );
+
 
     archiveView.classList.add(
       "active"
     );
 
+
     currentTab.classList.remove(
       "active"
     );
+
 
     archiveTab.classList.add(
       "active"
@@ -1134,7 +1347,7 @@ archiveTab.addEventListener(
 
 
 /* ==========================================================
-   SWIPE
+   SWIPE SUPPORT
 ========================================================== */
 
 let touchStartX =
@@ -1173,7 +1386,9 @@ imageFrame.addEventListener(
 
 
     if (
-      Math.abs(difference) < 50
+      Math.abs(
+        difference
+      ) < 50
     ) {
 
       return;
@@ -1217,7 +1432,7 @@ imageFrame.addEventListener(
 
 
 /* ==========================================================
-   START
+   START GAME
 ========================================================== */
 
 loadClue(
