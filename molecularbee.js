@@ -107,11 +107,8 @@ function showScreen(
 
   window.scrollTo(
     {
-      top:
-        0,
-
-      behavior:
-        "smooth"
+      top: 0,
+      behavior: "smooth"
     }
   );
 
@@ -254,8 +251,7 @@ function formulaFromSequence(
 
 
       if (
-        count >
-        1
+        count > 1
       ) {
 
         output +=
@@ -286,12 +282,6 @@ function formulaFromSequence(
 
 /* ==========================================================
    UNIVERSAL DRAG ENGINE
-
-   This is pointer based so it works on:
-   mouse
-   iPhone
-   iPad
-   touchscreens
 ========================================================== */
 
 let activeDrag =
@@ -361,12 +351,12 @@ function registerDrag(
 
     },
     {
-      passive:
-        false
+      passive: false
     }
   );
 
 }
+
 
 
 document.addEventListener(
@@ -399,8 +389,7 @@ document.addEventListener(
     if (
       !activeDrag.moving
       &&
-      distance <
-      6
+      distance < 6
     ) {
 
       return;
@@ -500,10 +489,10 @@ document.addEventListener(
 
   },
   {
-    passive:
-      false
+    passive: false
   }
 );
+
 
 
 document.addEventListener(
@@ -590,6 +579,7 @@ document.addEventListener(
 );
 
 
+
 document.addEventListener(
   "pointercancel",
   function () {
@@ -623,6 +613,7 @@ document.addEventListener(
 );
 
 
+
 function clearDragHover() {
 
   document
@@ -642,6 +633,7 @@ function clearDragHover() {
     );
 
 }
+
 
 
 function pointInside(
@@ -667,11 +659,19 @@ function pointInside(
 }
 
 
+
+/* ==========================================================
+   FIND DROP TARGET
+========================================================== */
+
 function findDropTarget(
   x,
   y,
   payload
 ) {
+
+
+  /* SPELLING BEE */
 
   if (
     payload.game ===
@@ -707,6 +707,9 @@ function findDropTarget(
   }
 
 
+
+  /* QUEEN BEE — NEW FREE BUILD GRID */
+
   if (
     payload.game ===
     "queen"
@@ -715,7 +718,7 @@ function findDropTarget(
     const slots =
       Array.from(
         document.querySelectorAll(
-          ".queen-slot.available-next:not(.filled):not(.locked)"
+          ".queen-free-slot.available-next"
         )
       );
 
@@ -740,6 +743,9 @@ function findDropTarget(
 
   }
 
+
+
+  /* WORKER BEE */
 
   if (
     payload.game ===
@@ -815,6 +821,9 @@ function findDropTarget(
   }
 
 
+
+  /* POLLINATION */
+
   if (
     payload.game ===
     "pollination"
@@ -853,6 +862,11 @@ function findDropTarget(
 
 }
 
+
+
+/* ==========================================================
+   HANDLE DROP
+========================================================== */
 
 function handleDrop(
   source,
@@ -917,10 +931,16 @@ function handleDrop(
 }
 
 
+
+/* ==========================================================
+   TAP FALLBACK
+========================================================== */
+
 function handleTap(
   source,
   payload
 ) {
+
 
   if (
     payload.game ===
@@ -948,6 +968,7 @@ function handleTap(
   }
 
 
+
   if (
     payload.game ===
     "queen"
@@ -955,7 +976,7 @@ function handleTap(
 
     const target =
       document.querySelector(
-        ".queen-slot.available-next:not(.filled):not(.locked)"
+        ".queen-free-slot.available-next"
       );
 
 
@@ -974,6 +995,7 @@ function handleTap(
   }
 
 
+
   if (
     payload.game ===
     "worker"
@@ -985,8 +1007,7 @@ function handleTap(
     ) {
 
       const target =
-        workerElectrons <
-        2
+        workerElectrons < 2
         ?
           document.getElementById(
             "innerShell"
@@ -1016,6 +1037,7 @@ function handleTap(
     }
 
   }
+
 
 
   if (
@@ -1327,6 +1349,7 @@ document
   );
 
 
+
 function renderBuzz() {
 
   const formula =
@@ -1399,6 +1422,7 @@ function renderBuzz() {
 }
 
 
+
 document
   .getElementById(
     "buzzUndo"
@@ -1409,10 +1433,12 @@ document
 
       buzzSequence.pop();
 
+
       renderBuzz();
 
     }
   );
+
 
 
 document
@@ -1426,10 +1452,12 @@ document
       buzzSequence =
         [];
 
+
       renderBuzz();
 
     }
   );
+
 
 
 document
@@ -1592,6 +1620,7 @@ document
   );
 
 
+
 function renderBuzzFound() {
 
   const list =
@@ -1668,11 +1697,6 @@ function renderBuzzFound() {
 
 /* ==========================================================
    SPELLING BEE
-
-   Eight slots are always shown.
-
-   This leaves room for longer formulas
-   without changing the board.
 ========================================================== */
 
 const spellingChallenges =
@@ -1782,6 +1806,7 @@ const SPELLING_SLOT_COUNT =
   8;
 
 
+
 function loadSpelling() {
 
   const challenge =
@@ -1822,8 +1847,7 @@ function loadSpelling() {
 
   for (
     let index = 0;
-    index <
-    SPELLING_SLOT_COUNT;
+    index < SPELLING_SLOT_COUNT;
     index++
   ) {
 
@@ -1911,6 +1935,7 @@ function loadSpelling() {
 }
 
 
+
 function placeSpelling(
   source,
   symbol,
@@ -1952,6 +1977,7 @@ function placeSpelling(
   updateSpellingFormula();
 
 }
+
 
 
 function returnSpelling(
@@ -2000,6 +2026,7 @@ function returnSpelling(
 }
 
 
+
 function getSpellingSequence() {
 
   return Array
@@ -2026,6 +2053,7 @@ function getSpellingSequence() {
     );
 
 }
+
 
 
 function updateSpellingFormula() {
@@ -2072,6 +2100,7 @@ function updateSpellingFormula() {
 }
 
 
+
 document
   .getElementById(
     "spellingUndo"
@@ -2105,6 +2134,7 @@ document
   );
 
 
+
 document
   .getElementById(
     "spellingReset"
@@ -2113,6 +2143,7 @@ document
     "click",
     loadSpelling
   );
+
 
 
 document
@@ -2199,80 +2230,57 @@ document
 
 
 /* ==========================================================
-   QUEEN BEE
-
-   Each successful molecule stays in the hive.
-
-   One newly placed atom becomes the next Queen,
-   allowing the molecular structure to grow.
+   QUEEN BEE — FREE BUILD SANDBOX
 ========================================================== */
 
-const queenBuilds =
+
+/*
+   There is NO assigned molecule.
+
+   Student:
+   - begins with Carbon
+   - drags reusable atoms around it
+   - self-checks the structure
+   - valid builds lock into the hive
+   - taps any locked atom to make it
+     the next active Queen
+   - continues growing
+*/
+
+
+const queenAtomBank =
+  [
+    "H",
+    "C",
+    "N",
+    "O",
+    "F",
+    "Cl",
+    "S",
+    "Na",
+    "Mg"
+  ];
+
+
+
+/* ==========================================================
+   VALID QUEEN-BEE BUILDS
+========================================================== */
+
+const queenMolecules =
   [
 
     {
-      center:
-        "O",
-
       name:
-        "water",
-
-      formula:
-        "H₂O",
-
-      answer:
-        [
-          "H",
-          "H"
-        ],
-
-      bank:
-        [
-          "H",
-          "H",
-          "C",
-          "N",
-          "Na"
-        ]
-    },
-
-
-    {
-      center:
-        "H",
-
-      name:
-        "hydrogen chloride",
-
-      formula:
-        "HCl",
-
-      answer:
-        [
-          "Cl"
-        ],
-
-      bank:
-        [
-          "Cl",
-          "O",
-          "C",
-          "N"
-        ]
-    },
-
-
-    {
-      center:
-        "C",
-
-      name:
-        "methane",
+        "Methane",
 
       formula:
         "CH₄",
 
-      answer:
+      center:
+        "C",
+
+      neighbors:
         [
           "H",
           "H",
@@ -2280,227 +2288,627 @@ const queenBuilds =
           "H"
         ],
 
-      bank:
-        [
-          "H",
-          "H",
-          "H",
-          "H",
-          "O",
-          "N"
-        ]
+      info:
+        "Carbon forms four single bonds to hydrogen."
     },
 
 
     {
-      center:
-        "N",
-
       name:
-        "ammonia",
+        "Carbon Dioxide",
+
+      formula:
+        "CO₂",
+
+      center:
+        "C",
+
+      neighbors:
+        [
+          "O",
+          "O"
+        ],
+
+      info:
+        "Carbon dioxide contains one carbon and two oxygen atoms."
+    },
+
+
+    {
+      name:
+        "Carbon Disulfide",
+
+      formula:
+        "CS₂",
+
+      center:
+        "C",
+
+      neighbors:
+        [
+          "S",
+          "S"
+        ],
+
+      info:
+        "Carbon disulfide contains carbon bonded to two sulfur atoms."
+    },
+
+
+    {
+      name:
+        "Carbon Tetrachloride",
+
+      formula:
+        "CCl₄",
+
+      center:
+        "C",
+
+      neighbors:
+        [
+          "Cl",
+          "Cl",
+          "Cl",
+          "Cl"
+        ],
+
+      info:
+        "Carbon tetrachloride contains carbon bonded to four chlorine atoms."
+    },
+
+
+    {
+      name:
+        "Water",
+
+      formula:
+        "H₂O",
+
+      center:
+        "O",
+
+      neighbors:
+        [
+          "H",
+          "H"
+        ],
+
+      info:
+        "Water contains one oxygen bonded to two hydrogen atoms."
+    },
+
+
+    {
+      name:
+        "Ammonia",
 
       formula:
         "NH₃",
 
-      answer:
+      center:
+        "N",
+
+      neighbors:
         [
           "H",
           "H",
           "H"
         ],
 
-      bank:
-        [
-          "H",
-          "H",
-          "H",
-          "O",
-          "C"
-        ]
+      info:
+        "Ammonia contains nitrogen bonded to three hydrogen atoms."
     },
 
 
     {
-      center:
-        "O",
-
       name:
-        "oxygen molecule",
+        "Hydrogen Chloride",
+
+      formula:
+        "HCl",
+
+      center:
+        "H",
+
+      neighbors:
+        [
+          "Cl"
+        ],
+
+      info:
+        "Hydrogen chloride contains one hydrogen and one chlorine atom."
+    },
+
+
+    {
+      name:
+        "Hydrogen Chloride",
+
+      formula:
+        "HCl",
+
+      center:
+        "Cl",
+
+      neighbors:
+        [
+          "H"
+        ],
+
+      info:
+        "Hydrogen chloride contains one chlorine and one hydrogen atom."
+    },
+
+
+    {
+      name:
+        "Hydrogen Fluoride",
+
+      formula:
+        "HF",
+
+      center:
+        "H",
+
+      neighbors:
+        [
+          "F"
+        ],
+
+      info:
+        "Hydrogen fluoride contains hydrogen bonded to fluorine."
+    },
+
+
+    {
+      name:
+        "Hydrogen Fluoride",
+
+      formula:
+        "HF",
+
+      center:
+        "F",
+
+      neighbors:
+        [
+          "H"
+        ],
+
+      info:
+        "Hydrogen fluoride contains fluorine bonded to hydrogen."
+    },
+
+
+    {
+      name:
+        "Hydrogen Sulfide",
+
+      formula:
+        "H₂S",
+
+      center:
+        "S",
+
+      neighbors:
+        [
+          "H",
+          "H"
+        ],
+
+      info:
+        "Hydrogen sulfide contains sulfur bonded to two hydrogen atoms."
+    },
+
+
+    {
+      name:
+        "Molecular Hydrogen",
+
+      formula:
+        "H₂",
+
+      center:
+        "H",
+
+      neighbors:
+        [
+          "H"
+        ],
+
+      info:
+        "Elemental hydrogen normally exists as the diatomic molecule H₂."
+    },
+
+
+    {
+      name:
+        "Molecular Oxygen",
 
       formula:
         "O₂",
 
-      answer:
+      center:
+        "O",
+
+      neighbors:
         [
           "O"
         ],
 
-      bank:
+      info:
+        "Elemental oxygen normally exists as O₂."
+    },
+
+
+    {
+      name:
+        "Molecular Nitrogen",
+
+      formula:
+        "N₂",
+
+      center:
+        "N",
+
+      neighbors:
         [
-          "O",
-          "H",
-          "C",
           "N"
-        ]
+        ],
+
+      info:
+        "Elemental nitrogen normally exists as N₂."
     }
 
   ];
 
 
-let queenBuildIndex =
-  0;
 
+/* ==========================================================
+   QUEEN STATE
+========================================================== */
 
 let queenCorrectCount =
   0;
 
 
-let queenActiveSlot =
-  document.getElementById(
-    "queenCenter"
-  );
+let queenActiveCell =
+  null;
 
 
-function getQueenChallenge() {
+/*
+   Each occupied coordinate stores:
 
-  return queenBuilds[
-    queenBuildIndex %
-    queenBuilds.length
-  ];
+   {
+      symbol: "C",
+      locked: true
+   }
+*/
+
+const queenCells =
+  new Map();
+
+
+
+/* ==========================================================
+   37-CELL HEXAGON GRID
+========================================================== */
+
+const queenCoordinates =
+  [];
+
+
+/*
+   Radius 3 hex grid:
+
+   center = 1
+   ring 1 = 6
+   ring 2 = 12
+   ring 3 = 18
+
+   TOTAL = 37
+*/
+
+for (
+  let q = -3;
+  q <= 3;
+  q++
+) {
+
+  for (
+    let r = -3;
+    r <= 3;
+    r++
+  ) {
+
+    const s =
+      -q - r;
+
+
+    if (
+      Math.abs(
+        s
+      ) <=
+      3
+    ) {
+
+      queenCoordinates.push(
+        {
+          q: q,
+          r: r
+        }
+      );
+
+    }
+
+  }
 
 }
 
 
-function loadQueen() {
 
-  queenBuildIndex =
-    0;
+/* ==========================================================
+   QUEEN GRID HELPERS
+========================================================== */
+
+function queenKey(
+  q,
+  r
+) {
+
+  return (
+    q +
+    "," +
+    r
+  );
+
+}
+
+
+const queenDirections =
+  [
+
+    [1, 0],
+
+    [1, -1],
+
+    [0, -1],
+
+    [-1, 0],
+
+    [-1, 1],
+
+    [0, 1]
+
+  ];
+
+
+function getQueenNeighborKeys(
+  q,
+  r
+) {
+
+  return queenDirections
+    .map(
+      function (
+        direction
+      ) {
+
+        return queenKey(
+
+          q +
+          direction[0],
+
+          r +
+          direction[1]
+
+        );
+
+      }
+    );
+
+}
+
+
+
+/* ==========================================================
+   BUILD QUEEN BOARD
+========================================================== */
+
+function buildQueenBoard() {
+
+  const hive =
+    document.getElementById(
+      "queenHive"
+    );
+
+
+  if (
+    !hive
+  ) {
+
+    return;
+
+  }
+
+
+  hive.innerHTML =
+    "";
+
+
+  queenCells.clear();
 
 
   queenCorrectCount =
     0;
 
 
-  queenActiveSlot =
-    document.getElementById(
-      "queenCenter"
-    );
+  /*
+    Flat-top honeycomb dimensions.
+  */
+
+  const hexWidth =
+    88;
 
 
-  document
-    .querySelectorAll(
-      ".queen-slot"
-    )
-    .forEach(
-      function (
-        slot
-      ) {
+  const hexHeight =
+    78;
 
-        slot.classList.remove(
-          "filled",
-          "locked",
-          "active-queen",
-          "available-next",
-          "drag-hover"
+
+  const horizontalStep =
+    66;
+
+
+  const verticalStep =
+    78;
+
+
+  const centerX =
+    360;
+
+
+  const centerY =
+    325;
+
+
+  queenCoordinates.forEach(
+    function (
+      coordinate
+    ) {
+
+      const q =
+        coordinate.q;
+
+
+      const r =
+        coordinate.r;
+
+
+      const key =
+        queenKey(
+          q,
+          r
         );
 
 
-        slot.dataset.symbol =
-          "";
+      const slot =
+        document.createElement(
+          "button"
+        );
 
 
-        slot.dataset.sourceId =
-          "";
+      slot.type =
+        "button";
 
 
-        slot.innerHTML =
-          "";
+      slot.className =
+        "queen-free-slot empty";
 
-      }
+
+      slot.dataset.q =
+        q;
+
+
+      slot.dataset.r =
+        r;
+
+
+      slot.dataset.key =
+        key;
+
+
+      /*
+        Axial coordinate → screen position.
+      */
+
+      const left =
+        centerX
+        +
+        q *
+        horizontalStep
+        -
+        hexWidth /
+        2;
+
+
+      const top =
+        centerY
+        +
+        (
+          r +
+          q /
+          2
+        )
+        *
+        verticalStep
+        -
+        hexHeight /
+        2;
+
+
+      slot.style.left =
+        left +
+        "px";
+
+
+      slot.style.top =
+        top +
+        "px";
+
+
+      slot.addEventListener(
+        "click",
+        function () {
+
+          handleQueenCellClick(
+            slot
+          );
+
+        }
+      );
+
+
+      hive.appendChild(
+        slot
+      );
+
+    }
+  );
+
+
+  /*
+    Initial Queen = Carbon.
+  */
+
+  queenCells.set(
+    "0,0",
+    {
+      symbol:
+        "C",
+
+      locked:
+        true
+    }
+  );
+
+
+  queenActiveCell =
+    hive.querySelector(
+      '[data-key="0,0"]'
     );
 
 
-  queenActiveSlot
-    .classList
-    .add(
-      "locked",
-      "active-queen"
-    );
+  buildQueenAtomBank();
 
 
-  loadQueenBuild();
-
-}
+  renderQueenBoard();
 
 
-function loadQueenBuild() {
-
-  const challenge =
-    getQueenChallenge();
+  updateQueenStatus();
 
 
-  queenActiveSlot.dataset.symbol =
-    challenge.center;
-
-
-  queenActiveSlot.innerHTML =
-    "<span>👑</span>"
-    +
-    "<strong>"
-    +
-    challenge.center
-    +
-    "</strong>";
-
-
-  document
-    .getElementById(
-      "queenPrompt"
-    )
-    .textContent =
-      "Build "
-      +
-      challenge.name
-      +
-      " around the active "
-      +
-      (
-        elementNames[
-          challenge.center
-        ]
-        ||
-        challenge.center
-      )
-      +
-      ".";
-
-
-  document
-    .getElementById(
-      "queenActiveAtom"
-    )
-    .textContent =
-      challenge.center;
-
-
-  document
-    .getElementById(
-      "queenCorrectCount"
-    )
-    .textContent =
-      queenCorrectCount;
-
-
-  document
-    .getElementById(
-      "queenBuildMessage"
-    )
-    .textContent =
-      "Complete "
-      +
-      challenge.formula
-      +
-      " around the gold Queen atom.";
+  updateQueenFormula();
 
 
   document
@@ -2512,50 +2920,23 @@ function loadQueenBuild() {
 
 
   document
-    .querySelectorAll(
-      ".queen-slot.filled:not(.locked)"
+    .getElementById(
+      "queenDiscovery"
     )
-    .forEach(
-      function (
-        slot
-      ) {
-
-        slot.classList.remove(
-          "filled"
-        );
-
-
-        slot.dataset.symbol =
-          "";
-
-
-        slot.dataset.sourceId =
-          "";
-
-
-        slot.textContent =
-          "";
-
-      }
+    .classList
+    .remove(
+      "visible"
     );
-
-
-  updateQueenAvailableSlots();
-
-
-  buildQueenBank(
-    challenge.bank
-  );
-
-
-  updateQueenFormula();
 
 }
 
 
-function buildQueenBank(
-  atoms
-) {
+
+/* ==========================================================
+   REUSABLE QUEEN ATOM BANK
+========================================================== */
+
+function buildQueenAtomBank() {
 
   const bank =
     document.getElementById(
@@ -2567,24 +2948,39 @@ function buildQueenBank(
     "";
 
 
-  atoms.forEach(
+  queenAtomBank.forEach(
     function (
       symbol,
       index
     ) {
 
-      bank.appendChild(
+      const tile =
         createAtomTile(
+
           symbol,
+
           "queen",
-          "queen-"
-          +
-          queenBuildIndex
-          +
-          "-"
+
+          "queen-unlimited-"
           +
           index
-        )
+
+        );
+
+
+      /*
+        Important:
+        Queen tiles are reusable.
+
+        They NEVER disappear after being placed.
+      */
+
+      tile.dataset.queenReusable =
+        "true";
+
+
+      bank.appendChild(
+        tile
       );
 
     }
@@ -2593,11 +2989,136 @@ function buildQueenBank(
 }
 
 
-function updateQueenAvailableSlots() {
 
-  document
+/* ==========================================================
+   RENDER QUEEN GRID
+========================================================== */
+
+function renderQueenBoard() {
+
+  const hive =
+    document.getElementById(
+      "queenHive"
+    );
+
+
+  hive
     .querySelectorAll(
-      ".queen-slot"
+      ".queen-free-slot"
+    )
+    .forEach(
+      function (
+        slot
+      ) {
+
+        const key =
+          slot.dataset.key;
+
+
+        const cell =
+          queenCells.get(
+            key
+          );
+
+
+        slot.className =
+          "queen-free-slot";
+
+
+        slot.innerHTML =
+          "";
+
+
+        if (
+          !cell
+        ) {
+
+          slot.classList.add(
+            "empty"
+          );
+
+        }
+
+        else {
+
+          slot.classList.add(
+            "occupied"
+          );
+
+
+          if (
+            cell.locked
+          ) {
+
+            slot.classList.add(
+              "locked"
+            );
+
+          }
+
+
+          slot.innerHTML =
+            "<strong>"
+            +
+            cell.symbol
+            +
+            "</strong>"
+            +
+            "<small>"
+            +
+            (
+              elementNames[
+                cell.symbol
+              ]
+              ||
+              cell.symbol
+            )
+            +
+            "</small>";
+
+        }
+
+      }
+    );
+
+
+  if (
+    queenActiveCell
+  ) {
+
+    queenActiveCell
+      .classList
+      .add(
+        "active-queen"
+      );
+
+  }
+
+
+  updateQueenAvailableCells();
+
+}
+
+
+
+/* ==========================================================
+   AVAILABLE CELLS
+
+   Only honeycombs directly touching the
+   current Queen can receive atoms.
+========================================================== */
+
+function updateQueenAvailableCells() {
+
+  const hive =
+    document.getElementById(
+      "queenHive"
+    );
+
+
+  hive
+    .querySelectorAll(
+      ".queen-free-slot"
     )
     .forEach(
       function (
@@ -2608,37 +3129,84 @@ function updateQueenAvailableSlots() {
           "available-next"
         );
 
-
-        if (
-          slot ===
-          queenActiveSlot
-        ) {
-
-          return;
-
-        }
+      }
+    );
 
 
-        if (
-          slot.classList.contains(
-            "locked"
-          )
-        ) {
+  if (
+    !queenActiveCell
+  ) {
 
-          return;
+    return;
 
-        }
+  }
 
+
+  const q =
+    Number(
+      queenActiveCell.dataset.q
+    );
+
+
+  const r =
+    Number(
+      queenActiveCell.dataset.r
+    );
+
+
+  const neighborKeys =
+    getQueenNeighborKeys(
+      q,
+      r
+    );
+
+
+  neighborKeys.forEach(
+    function (
+      key
+    ) {
+
+      if (
+        queenCells.has(
+          key
+        )
+      ) {
+
+        return;
+
+      }
+
+
+      const slot =
+        hive.querySelector(
+          '[data-key="'
+          +
+          key
+          +
+          '"]'
+        );
+
+
+      if (
+        slot
+      ) {
 
         slot.classList.add(
           "available-next"
         );
 
       }
-    );
+
+    }
+  );
 
 }
 
+
+
+/* ==========================================================
+   PLACE QUEEN ATOM
+========================================================== */
 
 function placeQueen(
   source,
@@ -2647,12 +3215,17 @@ function placeQueen(
 ) {
 
   if (
-    target.classList.contains(
-      "filled"
-    )
-    ||
-    target.classList.contains(
-      "locked"
+    !target
+  ) {
+
+    return;
+
+  }
+
+
+  if (
+    !target.classList.contains(
+      "available-next"
     )
   ) {
 
@@ -2661,70 +3234,265 @@ function placeQueen(
   }
 
 
-  target.classList.add(
-    "filled"
+  const key =
+    target.dataset.key;
+
+
+  if (
+    queenCells.has(
+      key
+    )
+  ) {
+
+    return;
+
+  }
+
+
+  queenCells.set(
+    key,
+    {
+      symbol:
+        symbol,
+
+      locked:
+        false
+    }
   );
 
 
-  target.dataset.symbol =
-    symbol;
+  /*
+    DO NOT hide source.
+
+    Queen atom bank is unlimited.
+  */
 
 
-  target.dataset.sourceId =
-    source.dataset.sourceId;
-
-
-  target.textContent =
-    symbol;
-
-
-  source.style.visibility =
-    "hidden";
+  renderQueenBoard();
 
 
   updateQueenFormula();
 
+
+  document
+    .getElementById(
+      "queenFeedback"
+    )
+    .textContent =
+      "";
+
 }
 
 
-function getCurrentQueenSlots() {
 
-  return Array.from(
-    document.querySelectorAll(
-      ".queen-slot.filled:not(.locked)"
+/* ==========================================================
+   TAP A QUEEN GRID ATOM
+========================================================== */
+
+function handleQueenCellClick(
+  slot
+) {
+
+  const key =
+    slot.dataset.key;
+
+
+  const cell =
+    queenCells.get(
+      key
+    );
+
+
+  if (
+    !cell
+  ) {
+
+    return;
+
+  }
+
+
+  /*
+    Temporary atom:
+    tapping removes it.
+  */
+
+  if (
+    !cell.locked
+  ) {
+
+    queenCells.delete(
+      key
+    );
+
+
+    renderQueenBoard();
+
+
+    updateQueenFormula();
+
+
+    return;
+
+  }
+
+
+  /*
+    Locked atom:
+    make it the new active Queen.
+  */
+
+  queenActiveCell =
+    slot;
+
+
+  renderQueenBoard();
+
+
+  updateQueenStatus();
+
+
+  updateQueenFormula();
+
+
+  document
+    .getElementById(
+      "queenFeedback"
     )
-  );
+    .textContent =
+      "👑 "
+      +
+      (
+        elementNames[
+          cell.symbol
+        ]
+        ||
+        cell.symbol
+      )
+      +
+      " is now the active Queen. Build outward from it.";
 
-}
 
-
-function getCurrentQueenAtoms() {
-
-  return getCurrentQueenSlots()
-    .map(
-      function (
-        slot
-      ) {
-
-        return slot.dataset.symbol;
-
-      }
+  document
+    .getElementById(
+      "queenDiscovery"
     )
-    .filter(
-      Boolean
+    .classList
+    .remove(
+      "visible"
     );
 
 }
 
 
+
+/* ==========================================================
+   GET ACTIVE QUEEN
+========================================================== */
+
+function getQueenActiveData() {
+
+  if (
+    !queenActiveCell
+  ) {
+
+    return null;
+
+  }
+
+
+  const key =
+    queenActiveCell.dataset.key;
+
+
+  return (
+    queenCells.get(
+      key
+    )
+    ||
+    null
+  );
+
+}
+
+
+
+/* ==========================================================
+   GET CURRENT NEW ATOMS
+========================================================== */
+
+function getQueenTemporaryNeighbors() {
+
+  if (
+    !queenActiveCell
+  ) {
+
+    return [];
+
+  }
+
+
+  const q =
+    Number(
+      queenActiveCell.dataset.q
+    );
+
+
+  const r =
+    Number(
+      queenActiveCell.dataset.r
+    );
+
+
+  return getQueenNeighborKeys(
+    q,
+    r
+  )
+    .map(
+      function (
+        key
+      ) {
+
+        return {
+
+          key:
+            key,
+
+          cell:
+            queenCells.get(
+              key
+            )
+
+        };
+
+      }
+    )
+    .filter(
+      function (
+        item
+      ) {
+
+        return (
+          item.cell
+          &&
+          !item.cell.locked
+        );
+
+      }
+    );
+
+}
+
+
+
+/* ==========================================================
+   QUEEN FORMULA PREVIEW
+========================================================== */
+
 function updateQueenFormula() {
 
-  const challenge =
-    getQueenChallenge();
-
-
-  const atoms =
-    getCurrentQueenAtoms();
+  const active =
+    getQueenActiveData();
 
 
   const preview =
@@ -2734,14 +3502,11 @@ function updateQueenFormula() {
 
 
   if (
-    atoms.length ===
-    0
+    !active
   ) {
 
     preview.textContent =
-      "Build around "
-      +
-      challenge.center;
+      "Choose an active atom";
 
 
     preview.classList.add(
@@ -2754,13 +3519,61 @@ function updateQueenFormula() {
   }
 
 
+  const neighbors =
+    getQueenTemporaryNeighbors();
+
+
+  if (
+    neighbors.length ===
+    0
+  ) {
+
+    preview.textContent =
+      "Grow outward from "
+      +
+      active.symbol;
+
+
+    preview.classList.add(
+      "empty"
+    );
+
+
+    return;
+
+  }
+
+
+  const neighborSymbols =
+    neighbors.map(
+      function (
+        item
+      ) {
+
+        return item.cell.symbol;
+
+      }
+    );
+
+
+  /*
+    Sort matching atoms together so:
+    C + H H H H becomes CH₄
+  */
+
+  neighborSymbols.sort();
+
+
+  const sequence =
+    [
+      active.symbol,
+      ...neighborSymbols
+    ];
+
+
   preview.textContent =
-    challenge.center
-    +
-    " + "
-    +
-    atoms.join(
-      " • "
+    formulaFromSequence(
+      sequence
     );
 
 
@@ -2771,14 +3584,24 @@ function updateQueenFormula() {
 }
 
 
-document
-  .getElementById(
-    "queenReset"
-  )
-  .addEventListener(
-    "click",
-    loadQueen
-  );
+
+/* ==========================================================
+   QUEEN SELF-CHECK
+========================================================== */
+
+function normalizeAtomList(
+  atoms
+) {
+
+  return atoms
+    .slice()
+    .sort()
+    .join(
+      "|"
+    );
+
+}
+
 
 
 document
@@ -2789,54 +3612,28 @@ document
     "click",
     function () {
 
-      const challenge =
-        getQueenChallenge();
+      const active =
+        getQueenActiveData();
 
 
-      const currentSlots =
-        getCurrentQueenSlots();
+      const feedback =
+        document.getElementById(
+          "queenFeedback"
+        );
 
 
-      const actual =
-        currentSlots
-          .map(
-            function (
-              slot
-            ) {
-
-              return slot.dataset.symbol;
-
-            }
-          )
-          .sort();
-
-
-      const expected =
-        challenge.answer
-          .slice()
-          .sort();
+      const discovery =
+        document.getElementById(
+          "queenDiscovery"
+        );
 
 
       if (
-        actual.join(
-          "|"
-        )
-        !==
-        expected.join(
-          "|"
-        )
+        !active
       ) {
 
-        document
-          .getElementById(
-            "queenFeedback"
-          )
-          .textContent =
-            "Not quite. Finish "
-            +
-            challenge.formula
-            +
-            " before growing farther.";
+        feedback.textContent =
+          "Choose an active atom first.";
 
 
         return;
@@ -2844,19 +3641,90 @@ document
       }
 
 
-      currentSlots.forEach(
+      const temporary =
+        getQueenTemporaryNeighbors();
+
+
+      if (
+        temporary.length ===
+        0
+      ) {
+
+        feedback.textContent =
+          "Build something around the Queen before checking it.";
+
+
+        return;
+
+      }
+
+
+      const neighborAtoms =
+        temporary.map(
+          function (
+            item
+          ) {
+
+            return item.cell.symbol;
+
+          }
+        );
+
+
+      const match =
+        queenMolecules.find(
+          function (
+            molecule
+          ) {
+
+            return (
+              molecule.center ===
+              active.symbol
+              &&
+              normalizeAtomList(
+                molecule.neighbors
+              )
+              ===
+              normalizeAtomList(
+                neighborAtoms
+              )
+            );
+
+          }
+        );
+
+
+      if (
+        !match
+      ) {
+
+        feedback.textContent =
+          "🐝 That is not a recognized molecule yet. Rearrange the atoms or keep experimenting.";
+
+
+        discovery.classList.remove(
+          "visible"
+        );
+
+
+        return;
+
+      }
+
+
+      /*
+        SUCCESS
+
+        Lock the newly-added atoms.
+      */
+
+      temporary.forEach(
         function (
-          slot
+          item
         ) {
 
-          slot.classList.add(
-            "locked"
-          );
-
-
-          slot.classList.remove(
-            "available-next"
-          );
+          item.cell.locked =
+            true;
 
         }
       );
@@ -2865,17 +3733,157 @@ document
       queenCorrectCount++;
 
 
-      document
-        .getElementById(
-          "queenCorrectCount"
-        )
-        .textContent =
-          queenCorrectCount;
-
-
       reward(
         15
       );
+
+
+      feedback.textContent =
+        "👑 Correct — "
+        +
+        match.name
+        +
+        " • "
+        +
+        match.formula
+        +
+        "!";
+
+
+      discovery.innerHTML =
+        "<strong>"
+        +
+        match.name
+        +
+        " • "
+        +
+        match.formula
+        +
+        "</strong>"
+        +
+        "<br><br>"
+        +
+        match.info
+        +
+        "<br><br>"
+        +
+        "Your atoms are now part of the hive."
+        +
+        "<br>"
+        +
+        "Tap any completed atom to make it the new Queen and continue growing.";
+
+
+      discovery.classList.add(
+        "visible"
+      );
+
+
+      renderQueenBoard();
+
+
+      updateQueenStatus();
+
+
+      updateQueenFormula();
+
+    }
+  );
+
+
+
+/* ==========================================================
+   QUEEN STATUS
+========================================================== */
+
+function updateQueenStatus() {
+
+  const active =
+    getQueenActiveData();
+
+
+  document
+    .getElementById(
+      "queenCorrectCount"
+    )
+    .textContent =
+      queenCorrectCount;
+
+
+  document
+    .getElementById(
+      "queenActiveAtom"
+    )
+    .textContent =
+      active
+      ?
+        active.symbol
+      :
+        "—";
+
+
+  if (
+    active
+  ) {
+
+    document
+      .getElementById(
+        "queenBuildMessage"
+      )
+      .textContent =
+        "Build freely around "
+        +
+        (
+          elementNames[
+            active.symbol
+          ]
+          ||
+          active.symbol
+        )
+        +
+        ". Self-check whenever you think you've made a valid molecule.";
+
+  }
+
+}
+
+
+
+/* ==========================================================
+   CLEAR CURRENT QUEEN ATTEMPT
+
+   Keeps completed hive intact.
+========================================================== */
+
+document
+  .getElementById(
+    "queenClearBuild"
+  )
+  .addEventListener(
+    "click",
+    function () {
+
+      const temporary =
+        getQueenTemporaryNeighbors();
+
+
+      temporary.forEach(
+        function (
+          item
+        ) {
+
+          queenCells.delete(
+            item.key
+          );
+
+        }
+      );
+
+
+      renderQueenBoard();
+
+
+      updateQueenFormula();
 
 
       document
@@ -2883,132 +3891,36 @@ document
           "queenFeedback"
         )
         .textContent =
-          "👑 Correct — "
-          +
-          challenge.formula
-          +
-          "! The molecular hive grows.";
+          "Current attempt cleared. Your completed hive remains.";
 
 
-      let nextQueen =
-        null;
-
-
-      const nextChallenge =
-        queenBuilds[
-          (
-            queenBuildIndex +
-            1
-          )
-          %
-          queenBuilds.length
-        ];
-
-
-      nextQueen =
-        currentSlots.find(
-          function (
-            slot
-          ) {
-
-            return (
-              slot.dataset.symbol ===
-              nextChallenge.center
-            );
-
-          }
-        );
-
-
-      if (
-        !nextQueen
-      ) {
-
-        nextQueen =
-          currentSlots[0];
-
-      }
-
-
-      queenActiveSlot
+      document
+        .getElementById(
+          "queenDiscovery"
+        )
         .classList
         .remove(
-          "active-queen"
+          "visible"
         );
 
-
-      queenActiveSlot.innerHTML =
-        "<strong>"
-        +
-        queenActiveSlot.dataset.symbol
-        +
-        "</strong>";
+    }
+  );
 
 
-      queenActiveSlot =
-        nextQueen;
 
+/* ==========================================================
+   RESET WHOLE QUEEN HIVE
+========================================================== */
 
-      queenActiveSlot
-        .classList
-        .add(
-          "active-queen"
-        );
+document
+  .getElementById(
+    "queenReset"
+  )
+  .addEventListener(
+    "click",
+    function () {
 
-
-      queenBuildIndex++;
-
-
-      /*
-        Adapt the next challenge's central
-        element to the atom actually chosen.
-      */
-
-      const upcoming =
-        getQueenChallenge();
-
-
-      if (
-        upcoming.center !==
-        queenActiveSlot.dataset.symbol
-      ) {
-
-        const matching =
-          queenBuilds.findIndex(
-            function (
-              build
-            ) {
-
-              return (
-                build.center ===
-                queenActiveSlot.dataset.symbol
-              );
-
-            }
-          );
-
-
-        if (
-          matching >=
-          0
-        ) {
-
-          queenBuildIndex =
-            matching;
-
-        }
-
-      }
-
-
-      setTimeout(
-        function () {
-
-          loadQueenBuild();
-
-        },
-        850
-      );
+      buildQueenBoard();
 
     }
   );
@@ -3100,6 +4012,7 @@ let workerElectrons =
   0;
 
 
+
 document
   .querySelectorAll(
     ".particle-source"
@@ -3122,6 +4035,7 @@ document
 
     }
   );
+
 
 
 function loadWorker() {
@@ -3189,6 +4103,7 @@ function loadWorker() {
 }
 
 
+
 function updateWorkerCounts() {
 
   document
@@ -3207,6 +4122,7 @@ function updateWorkerCounts() {
       workerNeutrons;
 
 }
+
 
 
 function placeWorkerParticle(
@@ -3286,6 +4202,7 @@ function placeWorkerParticle(
 }
 
 
+
 function addNucleusParticle(
   text,
   className
@@ -3361,6 +4278,7 @@ function addNucleusParticle(
 }
 
 
+
 function addElectronParticle(
   shell
 ) {
@@ -3390,8 +4308,7 @@ function addElectronParticle(
 
 
   const angle =
-    index
-    *
+    index *
     (
       Math.PI /
       3
@@ -3446,6 +4363,7 @@ function addElectronParticle(
 }
 
 
+
 document
   .getElementById(
     "workerReset"
@@ -3454,6 +4372,7 @@ document
     "click",
     loadWorker
   );
+
 
 
 document
@@ -3693,6 +4612,7 @@ let cationDelivered =
 
 let anionDelivered =
   0;
+
 
 
 function loadPollination() {
@@ -3936,6 +4856,7 @@ function loadPollination() {
 }
 
 
+
 function pollinate(
   source,
   ion,
@@ -4032,6 +4953,7 @@ function pollinate(
 }
 
 
+
 function updatePollinationFormula() {
 
   const challenge =
@@ -4086,6 +5008,7 @@ function updatePollinationFormula() {
 }
 
 
+
 document
   .getElementById(
     "pollinationReset"
@@ -4094,6 +5017,7 @@ document
     "click",
     loadPollination
   );
+
 
 
 document
@@ -4255,15 +5179,26 @@ document
 
 updatePlayer();
 
+
 renderBuzz();
+
 
 renderBuzzFound();
 
+
 loadSpelling();
 
-loadQueen();
+
+/*
+   NEW Queen-Bee generates its own
+   37-cell board and atom bank.
+*/
+
+buildQueenBoard();
+
 
 loadWorker();
+
 
 loadPollination();
 
