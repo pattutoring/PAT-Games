@@ -14,7 +14,7 @@
 
   <link
     rel="stylesheet"
-    href="koankaon.css?v=20260813-3"
+    href="koankaon.css?v=20260813-4"
   >
 
 </head>
@@ -153,7 +153,7 @@
 
 
 
-    <!-- SU(2) -->
+    <!-- SU(2) MINI -->
 
     <button
       id="miniModeButton"
@@ -496,7 +496,7 @@
 
 
       <p id="miniPuzzleSubtitle">
-        Fold in one.
+        Fold in One
       </p>
 
     </div>
@@ -542,6 +542,8 @@
         >
 
 
+          <!-- AXES -->
+
           <div class="mini-axis vertical-axis">
           </div>
 
@@ -558,84 +560,89 @@
           </div>
 
 
-          <!-- TOP -->
 
-          <div class="lattice-letter top-a">
+          <!-- ===================================================
+               ORIGINAL SU(2) MINI LATTICE
+
+                             K
+                             |
+                       K A O N
+                       |     |
+                       O [ ] A
+                       |     |
+                     K A O N
+                       |
+                       N
+
+               Shared letters are rendered only once.
+          ==================================================== -->
+
+
+          <!-- TOP TRANSVERSE: KAON -->
+
+          <span class="lattice-letter lt-top-k">
             K
-          </div>
+          </span>
 
-          <div class="lattice-letter top-b">
+          <span class="lattice-letter lt-top-a">
             A
-          </div>
+          </span>
 
-          <div class="lattice-letter top-c">
+          <span class="lattice-letter lt-top-o">
             O
-          </div>
+          </span>
 
-          <div class="lattice-letter top-d">
+          <span class="lattice-letter lt-top-n">
             N
-          </div>
+          </span>
 
 
-          <!-- LEFT -->
 
-          <div class="lattice-letter left-a">
+          <!-- LEFT CONJUGATE: KOAN -->
+
+          <span class="lattice-letter lt-left-o">
+            O
+          </span>
+
+          <span class="lattice-letter lt-left-a">
+            A
+          </span>
+
+          <span class="lattice-letter lt-left-n">
+            N
+          </span>
+
+
+
+          <!-- BOTTOM TRANSVERSE: KAON -->
+
+          <span class="lattice-letter lt-bottom-k">
             K
-          </div>
+          </span>
 
-          <div class="lattice-letter left-b">
+          <span class="lattice-letter lt-bottom-o">
             O
-          </div>
+          </span>
 
-          <div class="lattice-letter left-c">
-            A
-          </div>
-
-          <div class="lattice-letter left-d">
+          <span class="lattice-letter lt-bottom-n">
             N
-          </div>
+          </span>
 
 
-          <!-- RIGHT -->
 
-          <div class="lattice-letter right-a">
+          <!-- RIGHT CONJUGATE: KOAN -->
+
+          <span class="lattice-letter lt-right-k">
             K
-          </div>
+          </span>
 
-          <div class="lattice-letter right-b">
-            O
-          </div>
-
-          <div class="lattice-letter right-c">
+          <span class="lattice-letter lt-right-a">
             A
-          </div>
-
-          <div class="lattice-letter right-d">
-            N
-          </div>
-
-
-          <!-- BOTTOM -->
-
-          <div class="lattice-letter bottom-a">
-            K
-          </div>
-
-          <div class="lattice-letter bottom-b">
-            A
-          </div>
-
-          <div class="lattice-letter bottom-c">
-            O
-          </div>
-
-          <div class="lattice-letter bottom-d">
-            N
-          </div>
+          </span>
 
 
 
-          <!-- ONE UNKNOWN -->
+          <!-- ONE UNKNOWN CENTER -->
 
           <div
             id="miniCenter"
@@ -852,7 +859,7 @@
 
       <button
         id="archiveGeneralTab"
-        class="archive-tab active"
+        class="archive-tab archive-tab-general active"
         type="button"
       >
         SU(1)
@@ -861,7 +868,7 @@
 
       <button
         id="archiveMiniTab"
-        class="archive-tab"
+        class="archive-tab archive-tab-mini"
         type="button"
       >
         SU(2) Mini
