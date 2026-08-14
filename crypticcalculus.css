@@ -55,7 +55,8 @@ body {
 
 
 button,
-select {
+select,
+input {
 
   font:
     inherit;
@@ -68,6 +69,12 @@ button {
     transparent;
 }
 
+
+input {
+
+  min-width:
+    0;
+}
 
 
 /* ==========================================================
@@ -183,7 +190,6 @@ header h1 {
 }
 
 
-
 /* ==========================================================
    MAIN
 ========================================================== */
@@ -204,6 +210,39 @@ main {
 }
 
 
+/* ==========================================================
+   SHARED SECTIONS
+========================================================== */
+
+.intro-card,
+.lab-shell,
+.composer-shell,
+.challenge-shell,
+.reference-shell {
+
+  margin-bottom:
+    30px;
+
+  padding:
+    clamp(
+      18px,
+      4vw,
+      28px
+    );
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    20px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0 6px 18px var(--shadow);
+}
+
 
 /* ==========================================================
    INTRO
@@ -216,21 +255,6 @@ main {
 
   margin:
     0 auto 28px;
-
-  padding:
-    24px;
-
-  border:
-    2px solid var(--brown);
-
-  border-radius:
-    18px;
-
-  background:
-    var(--paper);
-
-  box-shadow:
-    0 6px 18px var(--shadow);
 
   text-align:
     center;
@@ -358,38 +382,9 @@ main {
 }
 
 
-
 /* ==========================================================
-   SECTIONS
+   HEADINGS
 ========================================================== */
-
-.lab-shell,
-.composer-shell,
-.reference-shell {
-
-  margin-bottom:
-    30px;
-
-  padding:
-    clamp(
-      18px,
-      4vw,
-      28px
-    );
-
-  border:
-    2px solid var(--brown);
-
-  border-radius:
-    20px;
-
-  background:
-    var(--paper);
-
-  box-shadow:
-    0 6px 18px var(--shadow);
-}
-
 
 .section-heading {
 
@@ -440,9 +435,27 @@ main {
 }
 
 
+.mini-heading {
+
+  margin-bottom:
+    7px;
+
+  color:
+    var(--brown);
+
+  font-size:
+    .68rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    1.6px;
+}
+
 
 /* ==========================================================
-   MAIN LAB LAYOUT
+   LAB LAYOUT
 ========================================================== */
 
 .lab-layout {
@@ -463,7 +476,6 @@ main {
   align-items:
     start;
 }
-
 
 
 /* ==========================================================
@@ -517,18 +529,6 @@ main {
 
   text-align:
     left;
-
-  transition:
-    transform .15s ease,
-    border-color .15s ease,
-    background .15s ease;
-}
-
-
-.operation-card:hover {
-
-  transform:
-    translateY(-1px);
 }
 
 
@@ -600,7 +600,6 @@ main {
   line-height:
     1.35;
 }
-
 
 
 /* ==========================================================
@@ -682,9 +681,6 @@ main {
   background:
     #fff6d5;
 
-  color:
-    var(--ink);
-
   text-align:
     center;
 
@@ -696,12 +692,11 @@ main {
 }
 
 
-
 /* ==========================================================
-   MASCOT PLACEHOLDER
+   OPERATION VISUAL
 ========================================================== */
 
-.mascot-placeholder {
+.operation-visual {
 
   max-width:
     420px;
@@ -710,10 +705,10 @@ main {
     0 auto 18px;
 
   padding:
-    16px;
+    17px;
 
   border:
-    2px dashed #c9b68f;
+    2px solid #c9b68f;
 
   border-radius:
     14px;
@@ -725,12 +720,11 @@ main {
     center;
 
   font-size:
-    2.4rem;
+    2.5rem;
 
   line-height:
     1.35;
 }
-
 
 
 /* ==========================================================
@@ -751,25 +745,6 @@ main {
 
   background:
     #f7f1e7;
-}
-
-
-.mini-heading {
-
-  margin-bottom:
-    7px;
-
-  color:
-    var(--brown);
-
-  font-size:
-    .68rem;
-
-  font-weight:
-    bold;
-
-  letter-spacing:
-    1.6px;
 }
 
 
@@ -794,9 +769,6 @@ main {
 
   line-height:
     1.45;
-
-  overflow-wrap:
-    anywhere;
 }
 
 
@@ -805,13 +777,12 @@ main {
   margin:
     0;
 
-  line-height:
-    1.5;
-
   color:
     #625647;
-}
 
+  line-height:
+    1.5;
+}
 
 
 /* ==========================================================
@@ -827,7 +798,7 @@ main {
     18px;
 
   border:
-    2px solid #dacdaF;
+    2px solid #dacdaf;
 
   border-radius:
     15px;
@@ -882,6 +853,9 @@ main {
 
   line-height:
     1.4;
+
+  white-space:
+    pre-line;
 }
 
 
@@ -949,6 +923,286 @@ main {
 }
 
 
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+.primary-button,
+.secondary-button {
+
+  padding:
+    10px 15px;
+
+  border-radius:
+    10px;
+
+  cursor:
+    pointer;
+
+  font-weight:
+    bold;
+}
+
+
+.primary-button {
+
+  border:
+    2px solid var(--purple);
+
+  background:
+    var(--purple);
+
+  color:
+    white;
+}
+
+
+.secondary-button {
+
+  border:
+    2px solid var(--brown);
+
+  background:
+    white;
+
+  color:
+    var(--brown);
+}
+
+
+/* ==========================================================
+   MINI PRACTICE
+========================================================== */
+
+.practice-panel {
+
+  margin-top:
+    22px;
+
+  padding:
+    18px;
+
+  border:
+    3px solid var(--blue);
+
+  border-radius:
+    16px;
+
+  background:
+    #f8fbfe;
+}
+
+
+.practice-top {
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  gap:
+    12px;
+}
+
+
+.practice-top h3 {
+
+  margin:
+    2px 0 10px;
+}
+
+
+.practice-symbol {
+
+  color:
+    var(--blue);
+
+  font-size:
+    1.8rem;
+
+  font-weight:
+    bold;
+}
+
+
+.practice-clue {
+
+  padding:
+    15px;
+
+  border-radius:
+    12px;
+
+  background:
+    white;
+
+  font-size:
+    1.08rem;
+
+  font-style:
+    italic;
+
+  line-height:
+    1.5;
+}
+
+
+.practice-visual {
+
+  display:
+    none;
+
+  margin-top:
+    12px;
+
+  padding:
+    18px;
+
+  border:
+    1px solid #c9d9e7;
+
+  border-radius:
+    10px;
+
+  background:
+    white;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    1.3rem;
+
+  font-weight:
+    bold;
+
+  white-space:
+    pre-line;
+}
+
+
+.practice-visual.visible {
+
+  display:
+    block;
+}
+
+
+.practice-answer-row {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr auto;
+
+  gap:
+    9px;
+
+  margin-top:
+    14px;
+}
+
+
+.practice-answer-row input,
+.challenge-input-row input {
+
+  width:
+    100%;
+
+  padding:
+    11px 12px;
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    10px;
+
+  background:
+    white;
+
+  text-transform:
+    uppercase;
+}
+
+
+.practice-actions,
+.challenge-actions {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    8px;
+
+  margin-top:
+    10px;
+}
+
+
+.practice-feedback {
+
+  min-height:
+    26px;
+
+  margin-top:
+    12px;
+
+  color:
+    var(--brown);
+
+  font-weight:
+    bold;
+}
+
+
+.practice-feedback.correct {
+
+  color:
+    var(--green);
+}
+
+
+.practice-solution {
+
+  display:
+    none;
+
+  margin-top:
+    10px;
+
+  padding:
+    12px;
+
+  border-radius:
+    10px;
+
+  background:
+    var(--green-light);
+
+  line-height:
+    1.45;
+}
+
+
+.practice-solution.visible {
+
+  display:
+    block;
+}
+
 
 /* ==========================================================
    COMPOSITION
@@ -996,9 +1250,6 @@ main {
 
   font-weight:
     bold;
-
-  letter-spacing:
-    1px;
 }
 
 
@@ -1018,9 +1269,6 @@ main {
 
   background:
     white;
-
-  color:
-    var(--ink);
 }
 
 
@@ -1041,9 +1289,6 @@ main {
 
   grid-column:
     1 / -1;
-
-  margin-top:
-    4px;
 
   padding:
     18px;
@@ -1081,8 +1326,8 @@ main {
 
 .composition-explanation {
 
-  margin:
-    9px 0 0;
+  margin-bottom:
+    0;
 
   color:
     #625647;
@@ -1092,9 +1337,244 @@ main {
 }
 
 
+/* ==========================================================
+   CHALLENGE
+========================================================== */
+
+.challenge-shell {
+
+  border-color:
+    var(--gold);
+}
+
+
+.challenge-progress {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    10px;
+
+  margin-bottom:
+    18px;
+}
+
+
+.challenge-progress span {
+
+  padding:
+    8px 13px;
+
+  border-radius:
+    999px;
+
+  background:
+    #fff5cf;
+
+  color:
+    #705717;
+
+  font-weight:
+    bold;
+}
+
+
+.challenge-card {
+
+  max-width:
+    760px;
+
+  margin:
+    auto;
+
+  padding:
+    22px;
+
+  border:
+    3px solid var(--gold);
+
+  border-radius:
+    18px;
+
+  background:
+    #fffdfa;
+
+  text-align:
+    center;
+}
+
+
+.challenge-badge {
+
+  display:
+    inline-block;
+
+  padding:
+    6px 12px;
+
+  border-radius:
+    999px;
+
+  background:
+    var(--purple);
+
+  color:
+    white;
+
+  font-size:
+    .7rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    1.5px;
+}
+
+
+.challenge-clue {
+
+  margin:
+    18px auto 5px;
+
+  font-size:
+    clamp(
+      1.15rem,
+      4vw,
+      1.4rem
+    );
+
+  font-style:
+    italic;
+
+  line-height:
+    1.5;
+}
+
+
+.challenge-enumeration {
+
+  color:
+    var(--red);
+
+  font-weight:
+    bold;
+}
+
+
+.challenge-input-row {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr auto;
+
+  gap:
+    9px;
+
+  max-width:
+    540px;
+
+  margin:
+    18px auto 0;
+}
+
+
+.challenge-feedback {
+
+  min-height:
+    30px;
+
+  margin-top:
+    14px;
+
+  color:
+    var(--brown);
+
+  font-weight:
+    bold;
+}
+
+
+.challenge-feedback.correct {
+
+  color:
+    var(--green);
+}
+
+
+.challenge-breakdown {
+
+  display:
+    none;
+
+  margin-top:
+    18px;
+
+  padding:
+    17px;
+
+  border:
+    2px solid var(--purple);
+
+  border-radius:
+    13px;
+
+  background:
+    var(--purple-light);
+
+  text-align:
+    left;
+}
+
+
+.challenge-breakdown.visible {
+
+  display:
+    block;
+}
+
+
+.challenge-formula {
+
+  margin-bottom:
+    12px;
+
+  color:
+    var(--purple);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    1.2rem;
+
+  font-weight:
+    bold;
+
+  text-align:
+    center;
+}
+
+
+.challenge-steps {
+
+  line-height:
+    1.6;
+}
+
 
 /* ==========================================================
-   REFERENCE GRID
+   REFERENCE
 ========================================================== */
 
 .reference-grid {
@@ -1168,7 +1648,6 @@ main {
 }
 
 
-
 /* ==========================================================
    FOOTER
 ========================================================== */
@@ -1190,7 +1669,6 @@ footer {
   line-height:
     1.6;
 }
-
 
 
 /* ==========================================================
@@ -1220,7 +1698,6 @@ footer {
   }
 
 }
-
 
 
 /* ==========================================================
@@ -1254,20 +1731,18 @@ footer {
   }
 
 
+  .practice-answer-row,
+  .challenge-input-row {
+
+    grid-template-columns:
+      1fr;
+  }
+
+
   .board-top {
 
     align-items:
       center;
-  }
-
-
-  .operation-symbol {
-
-    min-width:
-      64px;
-
-    font-size:
-      1.7rem;
   }
 
 }
