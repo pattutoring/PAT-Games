@@ -1,31 +1,40 @@
 :root {
-
   --cream: #fff8e8;
   --paper: #fffdf6;
   --ink: #29261f;
 
   --honey: #d8a72f;
-  --light-honey: #f7df91;
-  --dark-honey: #99711f;
+  --honey-light: #f7df91;
+  --honey-pale: #fff1ba;
+  --honey-dark: #99711f;
 
   --brown: #765638;
   --green: #5c7d50;
   --blue: #477ca8;
   --red: #b6544d;
 
-  --shadow:
-    rgba(54,42,24,.15);
+  --proton: #db665f;
+  --neutron: #d2c9b9;
+  --electron: #7da8d2;
 
+  --shadow: rgba(54, 42, 24, .15);
 }
 
+
+/* ==========================================================
+   GLOBAL
+========================================================== */
 
 * {
   box-sizing: border-box;
 }
 
+html,
+body {
+  overscroll-behavior-y: contain;
+}
 
 body {
-
   margin: 0;
 
   background:
@@ -38,9 +47,7 @@ body {
     Georgia,
     "Times New Roman",
     serif;
-
 }
-
 
 button {
   font: inherit;
@@ -52,80 +59,63 @@ button {
 ========================================================== */
 
 header {
-
-  text-align: center;
-
   padding:
     28px 18px 16px;
 
+  text-align: center;
 }
 
-
 .lab-link {
-
   display: inline-block;
 
-  text-decoration: none;
+  margin-bottom:
+    14px;
+
+  padding:
+    8px 13px;
 
   color:
     var(--brown);
 
+  text-decoration: none;
+
   border:
     2px solid var(--brown);
-
-  padding:
-    8px 13px;
 
   border-radius:
     10px;
 
   font-weight: bold;
-
-  margin-bottom:
-    16px;
-
 }
-
 
 .bee-mark {
   font-size: 4rem;
 }
 
-
 header h1 {
-
   margin:
-    8px 0 3px;
+    7px 0 2px;
 
   font-size:
     clamp(
-      2rem,
-      8vw,
-      4.4rem
+      2.2rem,
+      9vw,
+      4.5rem
     );
 
   letter-spacing:
     3px;
-
 }
-
 
 .tagline {
-
   color:
-    var(--dark-honey);
+    var(--honey-dark);
 
-  font-style:
-    italic;
-
-  font-weight:
-    bold;
-
+  font-style: italic;
+  font-weight: bold;
 }
 
-
 .player-bar {
-
   width:
     min(
       500px,
@@ -135,6 +125,9 @@ header h1 {
   margin:
     18px auto 0;
 
+  padding:
+    10px 16px;
+
   display: flex;
 
   justify-content:
@@ -143,28 +136,22 @@ header h1 {
   gap:
     12px;
 
-  padding:
-    11px 16px;
+  border:
+    2px solid var(--honey);
 
   border-radius:
     999px;
 
   background:
     #f3e4b7;
-
-  border:
-    2px solid
-    var(--honey);
-
 }
 
 
 /* ==========================================================
-   LAYOUT
+   MAIN
 ========================================================== */
 
 main {
-
   width:
     min(
       1000px,
@@ -176,40 +163,32 @@ main {
 
   padding-bottom:
     60px;
-
 }
-
 
 .screen {
   display: none;
 }
 
-
 .screen.active {
   display: block;
 }
 
-
 .section-heading {
+  margin:
+    30px auto 24px;
 
   text-align: center;
-
-  margin:
-    30px 0 25px;
-
 }
 
-
 .game-card {
-
   max-width:
-    820px;
+    850px;
 
   margin:
     auto;
 
   padding:
-    26px;
+    25px;
 
   text-align:
     center;
@@ -218,47 +197,40 @@ main {
     var(--paper);
 
   border:
-    2px solid
-    var(--brown);
+    2px solid var(--brown);
 
   border-radius:
     20px;
 
   box-shadow:
-    0 7px 20px
-    var(--shadow);
-
+    0 7px 20px var(--shadow);
 }
 
-
-.game-label {
-
+.game-label,
+.sub-label,
+.panel-label {
   color:
-    var(--dark-honey);
+    var(--honey-dark);
 
   font-size:
-    .8rem;
+    .78rem;
 
   font-weight:
     bold;
 
   letter-spacing:
     2px;
-
 }
 
+.prompt {
+  font-size:
+    1.12rem;
 
-.prompt,
-.instruction-note {
-
-  line-height:
-    1.5;
-
+  font-weight:
+    bold;
 }
 
-
 .instruction-note {
-
   max-width:
     650px;
 
@@ -266,22 +238,35 @@ main {
     12px auto 20px;
 
   color:
-    #706351;
+    #726452;
+
+  line-height:
+    1.5;
 
   font-size:
     .9rem;
 
   font-style:
     italic;
-
 }
 
 
+/* ==========================================================
+   NAV
+========================================================== */
+
 .back-button {
+  margin-bottom:
+    18px;
+
+  padding:
+    9px 14px;
 
   border:
-    2px solid
-    var(--brown);
+    2px solid var(--brown);
+
+  border-radius:
+    10px;
 
   background:
     transparent;
@@ -289,46 +274,39 @@ main {
   color:
     var(--brown);
 
-  padding:
-    9px 14px;
-
-  border-radius:
-    10px;
-
-  margin-bottom:
-    18px;
-
   font-weight:
     bold;
 
+  cursor: pointer;
 }
 
 
 /* ==========================================================
-   HOME CARDS
+   HOME MODES
 ========================================================== */
 
 .mode-grid {
-
   display: grid;
 
   grid-template-columns:
     repeat(
       auto-fit,
-      minmax(220px,1fr)
+      minmax(220px, 1fr)
     );
 
   gap:
     18px;
-
 }
 
-
 .mode-card {
+  min-height:
+    215px;
+
+  padding:
+    23px;
 
   border:
-    2px solid
-    var(--brown);
+    2px solid var(--brown);
 
   border-radius:
     18px;
@@ -339,23 +317,16 @@ main {
   color:
     var(--ink);
 
-  padding:
-    24px;
-
-  min-height:
-    220px;
-
   box-shadow:
-    0 6px 16px
-    var(--shadow);
+    0 6px 16px var(--shadow);
 
+  cursor:
+    pointer;
 }
-
 
 .mode-icon {
   font-size: 3rem;
 }
-
 
 .locked-card {
   opacity: .7;
@@ -363,13 +334,15 @@ main {
 
 
 /* ==========================================================
-   WEEKLY BUZZWORD FEATURE
+   HOMEPAGE BUZZWORD
 ========================================================== */
 
 .buzzword-feature {
-
   width:
-    min(780px,100%);
+    min(
+      780px,
+      100%
+    );
 
   display: block;
 
@@ -379,61 +352,55 @@ main {
   padding:
     24px;
 
-  color:
-    var(--ink);
-
-  background:
-    linear-gradient(
-      145deg,
-      #fff7d2,
-      var(--paper)
-    );
-
   border:
-    3px solid
-    var(--honey);
+    3px solid var(--honey);
 
   border-radius:
     22px;
 
+  background:
+    linear-gradient(
+      145deg,
+      #fff6cd,
+      var(--paper)
+    );
+
+  color:
+    var(--ink);
+
   box-shadow:
-    0 8px 22px
-    var(--shadow);
+    0 8px 22px var(--shadow);
 
-  cursor: pointer;
-
+  cursor:
+    pointer;
 }
-
 
 .buzzword-feature * {
   pointer-events: none;
 }
 
-
 .buzz-feature-label {
-
   color:
-    var(--dark-honey);
-
-  font-weight:
-    bold;
+    var(--honey-dark);
 
   letter-spacing:
     2px;
 
+  font-size:
+    .8rem;
+
+  font-weight:
+    bold;
 }
 
-
-.buzzword-play {
-
-  display:
-    inline-block;
+.buzz-play {
+  display: inline-block;
 
   margin-top:
     8px;
 
   padding:
-    10px 18px;
+    10px 17px;
 
   border-radius:
     10px;
@@ -446,45 +413,45 @@ main {
 
   font-weight:
     bold;
-
 }
 
 
 /* ==========================================================
-   MINI HIVE
-   PERFECT EDGE ALIGNMENT
+   PERFECT MINI HIVE
 ========================================================== */
 
-.mini-buzz-hive {
-
+.mini-hive {
   position: relative;
 
-  width: 176px;
+  width:
+    188px;
 
-  height: 166px;
+  height:
+    174px;
 
   margin:
-    12px auto;
-
+    10px auto;
 }
 
-
-.mini-buzz-cell {
-
+.mini-hex {
   position: absolute;
 
-  width: 58px;
+  width:
+    60px;
 
-  height: 66px;
+  height:
+    69px;
 
   display: flex;
 
-  justify-content: center;
+  align-items:
+    center;
 
-  align-items: center;
+  justify-content:
+    center;
 
   background:
-    #fff1ba;
+    var(--honey-pale);
 
   clip-path:
     polygon(
@@ -493,219 +460,100 @@ main {
       100% 50%,
       75% 93.3%,
       25% 93.3%,
-      0% 50%
+      0 50%
     );
 
   font-weight:
     bold;
-
 }
 
+/*
+  shared edge geometry
+*/
 
-.mini-center {
+.mh-center {
+  left: 64px;
+  top: 52px;
 
   background:
     var(--honey);
-
 }
 
-
-/*
-  Shared-edge geometry:
-  center = x 59 / y 50
-  horizontal center offset = 43.5
-  vertical center offset = 49.5
-*/
-
-
-.mini-1 {
-
-  left: 15.5px;
-
-  top: 25.25px;
-
+.mh-top {
+  left: 64px;
+  top: 0;
 }
 
-
-.mini-2 {
-
-  left: 102.5px;
-
-  top: 25.25px;
-
+.mh-ul {
+  left: 19px;
+  top: 26px;
 }
 
-
-.mini-3 {
-
-  left: 15.5px;
-
-  top: 74.75px;
-
+.mh-ur {
+  left: 109px;
+  top: 26px;
 }
 
-
-.mini-center {
-
-  left: 59px;
-
-  top: 50px;
-
+.mh-left {
+  left: 19px;
+  top: 78px;
 }
 
-
-.mini-4 {
-
-  left: 102.5px;
-
-  top: 74.75px;
-
+.mh-right {
+  left: 109px;
+  top: 78px;
 }
 
-
-.mini-5 {
-
-  left: 59px;
-
-  top: 99.5px;
-
-}
-
-
-.mini-6 {
-
-  left: 59px;
-
-  top: 0.5px;
-
+.mh-bl {
+  left: 64px;
+  top: 104px;
 }
 
 
 /* ==========================================================
-   BUZZWORD
+   SEVEN CELL BUZZWORD HIVE
 ========================================================== */
 
-.buzzword-card {
-
+.buzz-card {
   border-color:
     var(--honey);
-
 }
 
-
-.buzz-brand {
-
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  gap:
-    14px;
-
-}
-
-
-.buzz-brand-bee {
-  font-size: 3.5rem;
-}
-
-
-.buzz-brand h2 {
-
-  margin:
-    2px 0;
-
-  font-size:
-    2.8rem;
-
-}
-
-
-.buzz-number {
-
-  color:
-    var(--dark-honey);
-
-  font-size:
-    .8rem;
-
-  font-weight:
-    bold;
-
-}
-
-
-.weekly-heading {
-
-  margin-top:
-    25px;
-
-  color:
-    var(--brown);
-
-}
-
-
-/* ==========================================================
-   MAIN BUZZ HIVE
-   PERFECT EDGE ALIGNMENT
-========================================================== */
-
-.buzz-hive {
-
+.seven-hive {
   position: relative;
 
   width:
-    345px;
+    360px;
 
   height:
-    330px;
+    345px;
 
   margin:
-    20px auto 5px;
-
+    20px auto 0;
 }
 
-
-/*
-  MAIN HEX:
-  width 106
-  height 120
-
-  Shared-edge center spacing:
-  horizontal = 79.5
-  vertical   = 90
-*/
-
-
-.buzz-cell {
-
+.seven-hex {
   position: absolute;
 
   width:
-    106px;
+    108px;
 
   height:
-    120px;
+    124px;
 
   border:
     none;
 
   display: flex;
 
-  flex-direction:
-    column;
+  align-items:
+    center;
 
   justify-content:
     center;
 
-  align-items:
-    center;
-
   background:
-    #fff1ba;
+    var(--honey-pale);
 
   color:
     var(--ink);
@@ -717,517 +565,205 @@ main {
       100% 50%,
       75% 93.3%,
       25% 93.3%,
-      0% 50%
+      0 50%
     );
+
+  font-size:
+    1.3rem;
 
   font-weight:
     bold;
 
-  font-size:
-    1.25rem;
-
   cursor:
     pointer;
-
-  transition:
-    transform .12s ease,
-    background .12s ease;
-
 }
 
-
-.buzz-cell:hover {
-
-  transform:
-    scale(1.03);
-
-}
-
-
-/* CENTER */
-
-.buzz-center-cell {
-
-  left:
-    119.5px;
-
-  top:
-    105px;
+.seven-center {
+  left: 126px;
+  top: 111px;
 
   background:
     var(--honey);
 
   font-size:
-    1.5rem;
-
-  z-index:
-    2;
-
+    1.6rem;
 }
 
-
-/* UPPER LEFT */
-
-.buzz-cell-1 {
-
-  left:
-    40px;
-
-  top:
-    60px;
-
+.seven-top {
+  left: 126px;
+  top: 18px;
 }
 
-
-/* UPPER RIGHT */
-
-.buzz-cell-2 {
-
-  left:
-    199px;
-
-  top:
-    60px;
-
+.seven-ul {
+  left: 45px;
+  top: 64.5px;
 }
 
-
-/* LOWER LEFT */
-
-.buzz-cell-3 {
-
-  left:
-    40px;
-
-  top:
-    150px;
-
+.seven-ur {
+  left: 207px;
+  top: 64.5px;
 }
 
-
-/* LOWER RIGHT */
-
-.buzz-cell-4 {
-
-  left:
-    199px;
-
-  top:
-    150px;
-
+.seven-left {
+  left: 45px;
+  top: 157.5px;
 }
 
-
-/* BOTTOM */
-
-.buzz-cell-5 {
-
-  left:
-    119.5px;
-
-  top:
-    195px;
-
+.seven-right {
+  left: 207px;
+  top: 157.5px;
 }
 
-
-/* TOP */
-
-.buzz-cell-6 {
-
-  left:
-    119.5px;
-
-  top:
-    15px;
-
+.seven-bottom {
+  left: 126px;
+  top: 204px;
 }
 
-
-.buzz-center-cell::after {
-
-  content:
-    "REQUIRED";
-
-  display: block;
-
-  margin-top:
-    4px;
-
-  font-size:
-    .52rem;
-
-  letter-spacing:
-    1px;
-
-}
-
-
-.buzz-cell.pressed {
-
+.seven-hex.flash {
   background:
-    #f1c34d;
+    #efc247;
 
   transform:
-    scale(.95);
-
+    scale(.96);
 }
 
-
-.center-rule {
-
-  margin-top:
-    5px;
-
+.center-key {
   color:
-    var(--dark-honey);
+    var(--honey-dark);
 
   font-size:
-    .8rem;
+    .82rem;
 
   font-weight:
     bold;
-
 }
 
 
 /* ==========================================================
-   FORMULA BUILDER
+   FORMULAS
 ========================================================== */
 
-.formula-builder {
-
+.formula-panel {
   max-width:
     620px;
 
   margin:
-    28px auto 12px;
+    20px auto;
 
   padding:
-    20px;
+    18px;
 
   border:
-    2px solid
-    var(--honey);
+    2px solid var(--honey);
 
   border-radius:
-    16px;
+    15px;
 
   background:
     #fffaf0;
-
 }
 
+.big-formula,
+.formula-preview {
+  width:
+    fit-content;
 
-.formula-label {
+  min-width:
+    150px;
 
-  color:
-    var(--dark-honey);
+  margin:
+    10px auto;
 
-  font-size:
-    .7rem;
+  padding:
+    10px 18px;
 
-  font-weight:
-    bold;
+  border:
+    2px solid var(--honey);
 
-  letter-spacing:
-    2px;
+  border-radius:
+    12px;
 
-}
-
-
-.buzz-formula-builder {
-
-  min-height:
-    55px;
-
-  display: flex;
-
-  justify-content:
-    center;
-
-  align-items:
-    center;
-
-  margin-top:
-    8px;
+  background:
+    var(--paper);
 
   font-size:
     clamp(
-      2rem,
-      8vw,
-      3.5rem
+      1.9rem,
+      7vw,
+      3rem
     );
 
   font-weight:
     bold;
-
 }
 
-
-.buzz-formula-builder.empty {
-
+.big-formula.empty,
+.formula-preview.empty {
   color:
-    #938773;
+    #8f826f;
 
   font-size:
-    .95rem;
+    .9rem;
 
   font-style:
     italic;
 
   font-weight:
     normal;
-
 }
 
-
-.buzz-spelled-out {
-
+.formula-words {
   min-height:
-    30px;
-
-  margin-top:
-    10px;
+    28px;
 
   color:
     var(--brown);
 
-  font-size:
-    .88rem;
-
   line-height:
     1.5;
 
-}
-
-
-/* ==========================================================
-   FOUND ANSWERS
-========================================================== */
-
-.found-section {
-
-  margin-top:
-    30px;
-
-  padding:
-    18px;
-
-  border-radius:
-    16px;
-
-  background:
-    #f8f0de;
-
-}
-
-
-.found-heading {
-
-  display: flex;
-
-  justify-content:
-    space-between;
-
-  align-items:
-    center;
-
-  color:
-    var(--dark-honey);
-
-  font-size:
-    .8rem;
-
-  font-weight:
-    bold;
-
-  letter-spacing:
-    1px;
-
-}
-
-
-.buzz-found-list {
-
-  display: grid;
-
-  gap:
-    8px;
-
-  margin-top:
-    14px;
-
-}
-
-
-.found-compound {
-
-  display: flex;
-
-  justify-content:
-    space-between;
-
-  align-items:
-    center;
-
-  gap:
-    12px;
-
-  padding:
-    11px 14px;
-
-  border-radius:
-    10px;
-
-  background:
-    white;
-
-  border:
-    1px solid
-    #e8d9bc;
-
-}
-
-
-.found-formula {
-
-  font-size:
-    1.2rem;
-
-  font-weight:
-    bold;
-
-}
-
-
-.found-name {
-
-  color:
-    #74644f;
-
   font-size:
     .85rem;
-
-}
-
-
-.nothing-found {
-
-  color:
-    #817563;
-
-  font-style:
-    italic;
-
-  font-size:
-    .85rem;
-
 }
 
 
 /* ==========================================================
-   MOLECULARGRAM
-========================================================== */
-
-.moleculargram-card {
-
-  display: none;
-
-  margin-top:
-    20px;
-
-  padding:
-    20px;
-
-  border:
-    3px solid
-    var(--honey);
-
-  border-radius:
-    18px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #fff1a8,
-      #fffaf0
-    );
-
-  text-align:
-    left;
-
-  align-items:
-    center;
-
-  gap:
-    16px;
-
-}
-
-
-.moleculargram-card.visible {
-
-  display: flex;
-
-}
-
-
-.moleculargram-card strong {
-
-  color:
-    var(--dark-honey);
-
-  letter-spacing:
-    2px;
-
-}
-
-
-.moleculargram-card p {
-
-  margin-bottom:
-    0;
-
-  line-height:
-    1.45;
-
-}
-
-
-.moleculargram-bee {
-
-  font-size:
-    3rem;
-
-}
-
-
-/* ==========================================================
-   GENERIC BUTTONS
+   BUTTONS
 ========================================================== */
 
 .button-row {
-
   display: flex;
-
-  justify-content:
-    center;
 
   flex-wrap:
     wrap;
+
+  justify-content:
+    center;
 
   gap:
     9px;
 
   margin-top:
     18px;
-
 }
 
+.primary-button,
+.secondary-button,
+.share-button {
+  padding:
+    11px 17px;
+
+  border-radius:
+    11px;
+
+  font-weight:
+    bold;
+
+  cursor:
+    pointer;
+}
 
 .primary-button {
-
   border:
     none;
 
@@ -1236,44 +772,22 @@ main {
 
   color:
     white;
-
-  padding:
-    11px 18px;
-
-  border-radius:
-    11px;
-
-  font-weight:
-    bold;
-
 }
 
-
 .secondary-button {
-
   border:
-    2px solid
-    var(--brown);
+    2px solid var(--brown);
 
   background:
     white;
 
   color:
     var(--brown);
-
-  padding:
-    10px 16px;
-
-  border-radius:
-    11px;
-
-  font-weight:
-    bold;
-
 }
 
-
-.share-buzz-button {
+.share-button {
+  margin-top:
+    20px;
 
   border:
     none;
@@ -1283,80 +797,160 @@ main {
 
   color:
     white;
-
-  padding:
-    13px 22px;
-
-  border-radius:
-    12px;
-
-  font-weight:
-    bold;
-
 }
 
-
 .feedback {
-
   min-height:
-    40px;
+    42px;
 
   margin-top:
-    15px;
+    14px;
 
   font-weight:
     bold;
 
+  line-height:
+    1.45;
 }
 
 
 /* ==========================================================
-   EXISTING MODES
+   BUZZ FOUND
 ========================================================== */
 
-.honeycomb-bank {
+.found-panel {
+  margin-top:
+    25px;
 
+  padding:
+    17px;
+
+  border-radius:
+    15px;
+
+  background:
+    #f8f0de;
+}
+
+.found-title {
   display: flex;
 
-  flex-wrap:
-    wrap;
+  justify-content:
+    space-between;
+
+  color:
+    var(--honey-dark);
+
+  font-size:
+    .8rem;
+
+  font-weight:
+    bold;
+}
+
+.found-list {
+  display: grid;
+
+  gap:
+    8px;
+
+  margin-top:
+    12px;
+}
+
+.found-row {
+  display: flex;
 
   justify-content:
-    center;
+    space-between;
 
   gap:
     10px;
 
-  margin:
-    18px 0;
+  padding:
+    10px 13px;
 
+  border:
+    1px solid #e4d5b9;
+
+  border-radius:
+    9px;
+
+  background:
+    white;
+}
+
+.moleculargram {
+  display: none;
+
+  margin-top:
+    20px;
+
+  padding:
+    18px;
+
+  align-items:
+    center;
+
+  gap:
+    15px;
+
+  text-align:
+    left;
+
+  border:
+    3px solid var(--honey);
+
+  border-radius:
+    16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffe991,
+      #fffdf6
+    );
+}
+
+.moleculargram.visible {
+  display: flex;
+}
+
+.moleculargram-icon {
+  font-size: 3rem;
 }
 
 
-.hex {
+/* ==========================================================
+   UNIVERSAL HEX
+========================================================== */
 
+.hex {
   width:
-    74px;
+    78px;
 
   height:
-    86px;
+    90px;
+
+  flex:
+    0 0 78px;
 
   border:
     none;
 
   display: flex;
 
-  justify-content:
-    center;
+  flex-direction:
+    column;
 
   align-items:
     center;
 
-  flex-direction:
-    column;
+  justify-content:
+    center;
 
   background:
-    var(--light-honey);
+    var(--honey-light);
 
   clip-path:
     polygon(
@@ -1365,269 +959,47 @@ main {
       100% 50%,
       75% 93.3%,
       25% 93.3%,
-      0% 50%
+      0 50%
     );
+
+  color:
+    var(--ink);
 
   font-weight:
     bold;
 
+  cursor:
+    grab;
+
+  touch-action:
+    none;
+
+  user-select:
+    none;
+
+  -webkit-user-select:
+    none;
 }
 
-
-.honeycomb-build {
-
-  min-height:
-    160px;
-
-  padding:
-    18px;
-
-  border:
-    3px dashed
-    var(--honey);
-
-  border-radius:
-    18px;
-
-  background:
-    #f8efd7;
-
+.hex strong {
+  font-size:
+    1.25rem;
 }
 
-
-.formula-preview {
-
-  width:
-    fit-content;
-
-  margin:
-    15px auto;
-
-  padding:
-    12px 18px;
-
-  border:
-    2px solid
-    var(--honey);
-
-  border-radius:
-    12px;
+.hex small {
+  margin-top:
+    3px;
 
   font-size:
-    2rem;
-
+    .55rem;
 }
 
 
-.formula-preview.empty {
-
-  color:
-    #877967;
-
-  font-size:
-    .9rem;
-
-}
-
-
-.queen-hive {
-
-  min-height:
-    250px;
-
-  padding:
-    20px;
-
-  border:
-    3px dashed
-    var(--honey);
-
-  border-radius:
-    18px;
-
-  background:
-    #f8efd7;
-
-}
-
-
-.atom-builder {
-
-  position: relative;
-
-  height:
-    350px;
-
-  margin:
-    20px auto;
-
-}
-
-
-.nucleus {
-
-  position: absolute;
-
-  left: 50%;
-
-  top: 50%;
-
-  transform:
-    translate(-50%,-50%);
-
-  width:
-    130px;
-
-  height:
-    130px;
-
-  display: grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
-  place-items:
-    center;
-
-  border:
-    3px solid
-    var(--brown);
-
-  border-radius:
-    50%;
-
-  background:
-    #efd9a3;
-
-  z-index:
-    3;
-
-}
-
-
-.shell {
-
-  position: absolute;
-
-  left: 50%;
-
-  top: 50%;
-
-  transform:
-    translate(-50%,-50%);
-
-  border:
-    3px dashed
-    var(--blue);
-
-  border-radius:
-    50%;
-
-  padding-top:
-    15px;
-
-}
-
-
-.shell-one {
-
-  width: 220px;
-
-  height: 220px;
-
-}
-
-
-.shell-two {
-
-  width: 340px;
-
-  height: 340px;
-
-}
-
-
-.particle-controls {
-
-  display: flex;
-
-  flex-wrap: wrap;
-
-  justify-content:
-    center;
-
-  gap:
-    8px;
-
-}
-
-
-.particle-button {
-
-  padding:
-    10px 15px;
-
-  border:
-    2px solid
-    var(--brown);
-
-  border-radius:
-    10px;
-
-  background:
-    white;
-
-}
-
-
-.pollination-board {
-
-  display: grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
-  gap:
-    18px;
-
-}
-
-
-.pollen-meadow,
-.flower-target {
-
-  padding:
-    18px;
-
-  border-radius:
-    17px;
-
-}
-
-
-.pollen-meadow {
-
-  background:
-    #fff5d6;
-
-}
-
-
-.flower-target {
-
-  background:
-    #faedf0;
-
-  border:
-    3px dashed
-    var(--red);
-
-}
-
-
-.pollen-bank,
-.delivered-pollen {
-
+/* ==========================================================
+   ACTUAL DRAGGING
+========================================================== */
+
+.drag-bank {
   display: flex;
 
   flex-wrap:
@@ -1637,110 +1009,747 @@ main {
     center;
 
   gap:
-    8px;
+    10px;
 
+  min-height:
+    105px;
+
+  padding:
+    8px;
+}
+
+.draggable-item {
+  touch-action:
+    none;
+
+  user-select:
+    none;
+
+  -webkit-user-select:
+    none;
+}
+
+.drag-ghost {
+  position: fixed !important;
+
+  z-index:
+    100000 !important;
+
+  pointer-events:
+    none !important;
+
+  opacity:
+    .92;
+
+  transform:
+    scale(1.08);
+
+  filter:
+    drop-shadow(
+      0 8px 7px rgba(0,0,0,.23)
+    );
+}
+
+.drop-target {
+  outline:
+    4px solid var(--honey);
+
+  outline-offset:
+    3px;
 }
 
 
-.pollen-piece {
+/* ==========================================================
+   SPELLING BEE
+========================================================== */
 
-  width:
-    74px;
+.formula-hive {
+  min-height:
+    125px;
 
-  height:
-    74px;
+  display: flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    4px;
+
+  margin:
+    20px auto;
+
+  padding:
+    14px;
 
   border:
-    3px solid
-    var(--dark-honey);
+    3px dashed var(--honey);
+
+  border-radius:
+    18px;
+
+  background:
+    #f8efd7;
+}
+
+.formula-slot {
+  width:
+    78px;
+
+  height:
+    90px;
+
+  border:
+    none;
+
+  display: flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  background:
+    rgba(216,167,47,.15);
+
+  clip-path:
+    polygon(
+      25% 6.7%,
+      75% 6.7%,
+      100% 50%,
+      75% 93.3%,
+      25% 93.3%,
+      0 50%
+    );
+
+  font-size:
+    1.2rem;
+
+  font-weight:
+    bold;
+}
+
+.formula-slot.filled {
+  background:
+    var(--honey-light);
+}
+
+
+/* ==========================================================
+   QUEEN BEE
+========================================================== */
+
+.queen-board {
+  overflow-x:
+    auto;
+
+  padding:
+    10px 0;
+}
+
+.queen-grid {
+  position: relative;
+
+  width:
+    520px;
+
+  height:
+    455px;
+
+  margin:
+    auto;
+}
+
+.queen-slot {
+  position: absolute;
+
+  width:
+    90px;
+
+  height:
+    104px;
+
+  border:
+    none;
+
+  display: flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  background:
+    rgba(216,167,47,.14);
+
+  color:
+    #8e7b50;
+
+  clip-path:
+    polygon(
+      25% 6.7%,
+      75% 6.7%,
+      100% 50%,
+      75% 93.3%,
+      25% 93.3%,
+      0 50%
+    );
+
+  font-weight:
+    bold;
+}
+
+.queen-slot.filled {
+  background:
+    var(--honey-light);
+
+  color:
+    var(--ink);
+}
+
+.queen-slot.queen-center {
+  background:
+    var(--honey);
+
+  color:
+    var(--ink);
+
+  font-size:
+    1.35rem;
+}
+
+/*
+  Larger hexagonal grid around center.
+*/
+
+.q-center {
+  left: 215px;
+  top: 175px;
+}
+
+.q-top {
+  left: 215px;
+  top: 97px;
+}
+
+.q-ul {
+  left: 147.5px;
+  top: 136px;
+}
+
+.q-ur {
+  left: 282.5px;
+  top: 136px;
+}
+
+.q-left {
+  left: 147.5px;
+  top: 214px;
+}
+
+.q-right {
+  left: 282.5px;
+  top: 214px;
+}
+
+.q-bottom {
+  left: 215px;
+  top: 253px;
+}
+
+/* second ring */
+
+.q-top2 {
+  left: 215px;
+  top: 19px;
+}
+
+.q-ul2 {
+  left: 80px;
+  top: 97px;
+}
+
+.q-ur2 {
+  left: 350px;
+  top: 97px;
+}
+
+.q-left2 {
+  left: 80px;
+  top: 253px;
+}
+
+.q-right2 {
+  left: 350px;
+  top: 253px;
+}
+
+.q-bottom2 {
+  left: 215px;
+  top: 331px;
+}
+
+
+/* ==========================================================
+   WORKER BEE
+========================================================== */
+
+.atom-board {
+  position: relative;
+
+  width:
+    min(
+      500px,
+      92vw
+    );
+
+  height:
+    460px;
+
+  margin:
+    20px auto;
+}
+
+.electron-shell {
+  position: absolute;
+
+  left:
+    50%;
+
+  top:
+    50%;
+
+  transform:
+    translate(-50%,-50%);
+
+  border:
+    3px dashed var(--blue);
+
+  border-radius:
+    50%;
+}
+
+.outer-shell {
+  width:
+    430px;
+
+  height:
+    430px;
+
+  border-color:
+    var(--green);
+}
+
+.inner-shell {
+  width:
+    285px;
+
+  height:
+    285px;
+}
+
+.shell-label {
+  position: absolute;
+
+  left:
+    50%;
+
+  top:
+    8px;
+
+  transform:
+    translateX(-50%);
+
+  padding:
+    3px 7px;
+
+  border-radius:
+    8px;
+
+  background:
+    var(--paper);
+
+  font-size:
+    .7rem;
+
+  font-weight:
+    bold;
+}
+
+.worker-nucleus {
+  position: absolute;
+
+  left:
+    50%;
+
+  top:
+    50%;
+
+  transform:
+    translate(-50%,-50%);
+
+  width:
+    145px;
+
+  height:
+    145px;
+
+  display: flex;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    center;
+
+  align-items:
+    center;
+
+  border:
+    3px solid var(--brown);
 
   border-radius:
     50%;
 
   background:
-    #f4ca52;
+    #edd39b;
 
-  font-weight:
-    bold;
-
+  z-index:
+    4;
 }
 
+.nucleus-counts {
+  display: flex;
 
-.pollen-piece.used {
-
-  opacity:
-    .3;
-
-}
-
-
-.flower-icon {
-
-  font-size:
-    4rem;
-
-}
-
-
-#flowerIon {
-
-  display: block;
-
-  margin:
-    8px;
-
-  font-size:
-    1.8rem;
-
-}
-
-
-.delivered-token {
-
-  padding:
-    7px 10px;
-
-  border-radius:
-    999px;
-
-  background:
-    var(--light-honey);
-
-}
-
-
-.compound-result {
+  gap:
+    12px;
 
   margin-top:
-    15px;
+    5px;
+}
+
+.placed-particles {
+  position: absolute;
+
+  inset:
+    0;
+
+  pointer-events:
+    none;
+}
+
+.particle-dot {
+  position: absolute;
+
+  width:
+    28px;
+
+  height:
+    28px;
+
+  display: flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border-radius:
+    50%;
 
   font-size:
-    1.7rem;
+    .65rem;
+
+  font-weight:
+    bold;
+}
+
+.proton-dot {
+  background:
+    var(--proton);
+}
+
+.neutron-dot {
+  background:
+    var(--neutron);
+}
+
+.electron-dot {
+  background:
+    var(--electron);
+}
+
+.particle-bank {
+  display: flex;
+
+  flex-wrap:
+    wrap;
+
+  justify-content:
+    center;
+
+  gap:
+    12px;
+}
+
+.particle-source {
+  width:
+    90px;
+
+  height:
+    90px;
+
+  border:
+    3px solid var(--brown);
+
+  border-radius:
+    50%;
+
+  display: flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  font-size:
+    1.3rem;
 
   font-weight:
     bold;
 
+  cursor:
+    grab;
+
+  touch-action:
+    none;
+
+  user-select:
+    none;
+}
+
+.particle-source small {
+  font-size:
+    .65rem;
+}
+
+.proton-source {
+  background:
+    var(--proton);
+}
+
+.neutron-source {
+  background:
+    var(--neutron);
+}
+
+.electron-source {
+  background:
+    var(--electron);
 }
 
 
-.coming-soon {
+/* ==========================================================
+   POLLINATION
+========================================================== */
 
+.pollination-field {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1.2fr;
+
+  gap:
+    18px;
+
+  margin:
+    20px 0;
+}
+
+.pollen-side,
+.flower-garden {
+  padding:
+    16px;
+
+  border-radius:
+    17px;
+}
+
+.pollen-side {
+  background:
+    #fff5d6;
+
+  border:
+    2px solid var(--honey);
+}
+
+.flower-garden {
+  background:
+    #f7efe5;
+
+  border:
+    2px solid #d9c09a;
+}
+
+.pollen-bank {
+  display: flex;
+
+  flex-wrap:
+    wrap;
+
+  justify-content:
+    center;
+
+  gap:
+    10px;
+}
+
+.pollen {
+  width:
+    72px;
+
+  height:
+    72px;
+
+  border:
+    3px solid var(--honey-dark);
+
+  border-radius:
+    50%;
+
+  background:
+    #f0c949;
+
+  display: flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  font-weight:
+    bold;
+
+  cursor:
+    grab;
+
+  touch-action:
+    none;
+
+  user-select:
+    none;
+}
+
+.flower-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(120px, 1fr)
+    );
+
+  gap:
+    12px;
+}
+
+.flower {
+  min-height:
+    155px;
+
+  padding:
+    12px 8px;
+
+  border:
+    3px dashed var(--red);
+
+  border-radius:
+    20px;
+
+  background:
+    #faedf0;
+
+  display: flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+}
+
+.flower-symbol {
+  font-size:
+    3.5rem;
+}
+
+.flower-ion {
+  margin-top:
+    -5px;
+
+  font-size:
+    1.25rem;
+
+  font-weight:
+    bold;
+}
+
+.flower-delivery {
+  min-height:
+    26px;
+
+  margin-top:
+    6px;
+
+  color:
+    var(--brown);
+
+  font-size:
+    .75rem;
+
+  font-weight:
+    bold;
+}
+
+
+/* ==========================================================
+   COMING SOON
+========================================================== */
+
+.coming-soon {
   padding:
     30px;
 
   font-size:
     3rem;
-
 }
-
 
 .coming-soon p {
   font-size: 1rem;
 }
 
 
-footer {
+/* ==========================================================
+   FOOTER
+========================================================== */
 
+footer {
   padding:
     30px;
 
@@ -1750,6 +1759,8 @@ footer {
   color:
     #756651;
 
+  font-size:
+    .83rem;
 }
 
 
@@ -1758,37 +1769,22 @@ footer {
 ========================================================== */
 
 @media
-(max-width:600px) {
+(max-width: 620px) {
 
   .player-bar {
-
     flex-direction:
       column;
 
     align-items:
       center;
-
   }
-
 
   .game-card {
-
     padding:
-      20px 12px;
-
+      20px 10px;
   }
 
-
-  .buzz-brand {
-
-    flex-direction:
-      column;
-
-  }
-
-
-  .buzz-hive {
-
+  .seven-hive {
     transform:
       scale(.88);
 
@@ -1797,15 +1793,60 @@ footer {
 
     margin-bottom:
       -30px;
-
   }
 
-
-  .pollination-board {
-
+  .pollination-field {
     grid-template-columns:
       1fr;
+  }
 
+  .formula-hive {
+    gap:
+      2px;
+  }
+
+  .formula-slot,
+  .hex {
+    width:
+      66px;
+
+    height:
+      76px;
+
+    flex-basis:
+      66px;
+  }
+
+  .queen-grid {
+    transform:
+      scale(.78);
+
+    transform-origin:
+      top center;
+
+    margin-bottom:
+      -80px;
+  }
+
+  .outer-shell {
+    width:
+      350px;
+
+    height:
+      350px;
+  }
+
+  .inner-shell {
+    width:
+      235px;
+
+    height:
+      235px;
+  }
+
+  .atom-board {
+    height:
+      385px;
   }
 
 }
