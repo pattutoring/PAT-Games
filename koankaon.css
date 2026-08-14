@@ -1,1 +1,2024 @@
+:root {
 
+  --cream: #fff8e8;
+  --paper: #fffdf6;
+  --ink: #29261f;
+
+  --red: #a44945;
+  --red-dark: #7e2f2b;
+  --red-light: #f4dfda;
+
+  --blue: #477ca8;
+  --blue-dark: #2f5e87;
+  --blue-light: #e2edf7;
+
+  --gold: #d2a23c;
+  --gold-light: #f4e3ae;
+
+  --brown: #755234;
+  --brown-light: #e8dcc7;
+
+  --shadow:
+    rgba(45, 35, 20, 0.16);
+}
+
+
+/* ==========================================================
+   GLOBAL
+========================================================== */
+
+* {
+  box-sizing:
+    border-box;
+}
+
+
+body {
+
+  margin:
+    0;
+
+  background:
+    var(--cream);
+
+  color:
+    var(--ink);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+}
+
+
+button,
+input {
+
+  font:
+    inherit;
+}
+
+
+button {
+
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+header {
+
+  text-align:
+    center;
+
+  padding:
+    30px 18px 18px;
+}
+
+
+.lab-link {
+
+  display:
+    inline-block;
+
+  margin-bottom:
+    18px;
+
+  padding:
+    8px 13px;
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    10px;
+
+  color:
+    var(--brown);
+
+  background:
+    var(--paper);
+
+  text-decoration:
+    none;
+
+  font-weight:
+    bold;
+}
+
+
+.koan-brand {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  font-size:
+    clamp(
+      2.5rem,
+      9vw,
+      4.8rem
+    );
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    2px;
+
+  line-height:
+    1;
+}
+
+
+.koan-word {
+
+  color:
+    var(--red);
+}
+
+
+.kaon-word {
+
+  color:
+    var(--blue);
+}
+
+
+.tilde {
+
+  color:
+    var(--gold);
+
+  font-weight:
+    normal;
+}
+
+
+header h1 {
+
+  margin:
+    18px 0 6px;
+
+  font-size:
+    clamp(
+      1.25rem,
+      5vw,
+      2.2rem
+    );
+
+  letter-spacing:
+    2px;
+}
+
+
+.tagline {
+
+  margin:
+    5px auto;
+
+  color:
+    var(--brown);
+
+  font-style:
+    italic;
+
+  font-weight:
+    bold;
+
+  max-width:
+    700px;
+}
+
+
+
+/* ==========================================================
+   MAIN
+========================================================== */
+
+main {
+
+  width:
+    min(
+      1100px,
+      94%
+    );
+
+  margin:
+    auto;
+
+  padding-bottom:
+    60px;
+}
+
+
+.screen {
+
+  display:
+    none;
+}
+
+
+.screen.active {
+
+  display:
+    block;
+}
+
+
+
+/* ==========================================================
+   HOME INTRO
+========================================================== */
+
+.intro-card {
+
+  max-width:
+    850px;
+
+  margin:
+    0 auto 22px;
+
+  padding:
+    24px;
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    18px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0 6px 18px var(--shadow);
+
+  text-align:
+    center;
+}
+
+
+.intro-badge {
+
+  display:
+    inline-block;
+
+  margin-bottom:
+    8px;
+
+  padding:
+    6px 12px;
+
+  border-radius:
+    999px;
+
+  background:
+    var(--gold);
+
+  color:
+    #3f2c07;
+
+  font-size:
+    .72rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    1.5px;
+}
+
+
+.intro-card h2 {
+
+  margin:
+    8px 0 12px;
+}
+
+
+.intro-card p {
+
+  max-width:
+    700px;
+
+  margin:
+    10px auto;
+
+  line-height:
+    1.55;
+
+  color:
+    #625647;
+}
+
+
+.conjugate-text {
+
+  color:
+    var(--red);
+}
+
+
+.transverse-text {
+
+  color:
+    var(--blue);
+}
+
+
+
+/* ==========================================================
+   MODE CARDS
+========================================================== */
+
+.mode-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    16px;
+
+  max-width:
+    900px;
+
+  margin:
+    auto;
+}
+
+
+.mode-card {
+
+  min-height:
+    260px;
+
+  padding:
+    24px;
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    18px;
+
+  background:
+    var(--paper);
+
+  color:
+    var(--ink);
+
+  cursor:
+    pointer;
+
+  box-shadow:
+    0 6px 18px var(--shadow);
+
+  text-align:
+    center;
+}
+
+
+.mode-card:hover {
+
+  transform:
+    translateY(-2px);
+}
+
+
+.mode-symbol {
+
+  font-size:
+    3.5rem;
+
+  line-height:
+    1;
+
+  margin-bottom:
+    10px;
+}
+
+
+.mode-kicker {
+
+  margin-bottom:
+    5px;
+
+  font-size:
+    .72rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    2px;
+}
+
+
+.general-card {
+
+  border-color:
+    var(--blue);
+}
+
+
+.general-card .mode-symbol,
+.general-card .mode-kicker {
+
+  color:
+    var(--blue);
+}
+
+
+.mini-card {
+
+  border-color:
+    var(--red);
+}
+
+
+.mini-card .mode-symbol,
+.mini-card .mode-kicker {
+
+  color:
+    var(--red);
+}
+
+
+.mode-card h2 {
+
+  margin:
+    8px 0;
+}
+
+
+.mode-card p {
+
+  line-height:
+    1.5;
+
+  color:
+    #665846;
+}
+
+
+.home-actions {
+
+  text-align:
+    center;
+
+  margin-top:
+    22px;
+}
+
+
+.archive-main-button {
+
+  padding:
+    11px 18px;
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    11px;
+
+  background:
+    var(--paper);
+
+  color:
+    var(--brown);
+
+  cursor:
+    pointer;
+
+  font-weight:
+    bold;
+}
+
+
+
+/* ==========================================================
+   SCREEN NAV
+========================================================== */
+
+.screen-nav {
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  margin-bottom:
+    14px;
+}
+
+
+.back-button,
+.archive-shortcut {
+
+  padding:
+    9px 14px;
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    10px;
+
+  background:
+    var(--paper);
+
+  color:
+    var(--brown);
+
+  cursor:
+    pointer;
+
+  font-weight:
+    bold;
+}
+
+
+
+/* ==========================================================
+   PUZZLE SHELL
+========================================================== */
+
+.puzzle-shell,
+.archive-shell {
+
+  background:
+    var(--paper);
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    20px;
+
+  padding:
+    clamp(
+      18px,
+      4vw,
+      30px
+    );
+
+  box-shadow:
+    0 7px 20px var(--shadow);
+}
+
+
+.puzzle-heading,
+.archive-heading {
+
+  text-align:
+    center;
+
+  margin-bottom:
+    20px;
+}
+
+
+.puzzle-type {
+
+  display:
+    inline-block;
+
+  margin-bottom:
+    5px;
+
+  padding:
+    6px 12px;
+
+  border-radius:
+    999px;
+
+  background:
+    var(--gold);
+
+  color:
+    #3e2c08;
+
+  font-size:
+    .72rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    1.5px;
+}
+
+
+.puzzle-heading h2,
+.archive-heading h2 {
+
+  margin:
+    8px 0 4px;
+}
+
+
+.puzzle-heading p,
+.archive-heading p {
+
+  margin:
+    4px 0;
+
+  color:
+    #685b4b;
+}
+
+
+
+/* ==========================================================
+   AXIS KEY
+========================================================== */
+
+.axis-key {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr auto 1fr;
+
+  align-items:
+    center;
+
+  gap:
+    12px;
+
+  max-width:
+    650px;
+
+  margin:
+    0 auto 24px;
+}
+
+
+.axis-item {
+
+  padding:
+    10px 14px;
+
+  border-radius:
+    12px;
+
+  line-height:
+    1.4;
+
+  font-size:
+    .85rem;
+}
+
+
+.axis-item strong {
+
+  display:
+    block;
+}
+
+
+.conjugate-axis {
+
+  background:
+    var(--red-light);
+
+  color:
+    var(--red-dark);
+
+  text-align:
+    right;
+}
+
+
+.transverse-axis {
+
+  background:
+    var(--blue-light);
+
+  color:
+    var(--blue-dark);
+
+  text-align:
+    left;
+}
+
+
+.axis-center {
+
+  color:
+    var(--gold);
+
+  font-size:
+    1.6rem;
+}
+
+
+
+/* ==========================================================
+   GENERAL LAYOUT
+========================================================== */
+
+.general-layout {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      320px,
+      430px
+    )
+    1fr;
+
+  gap:
+    28px;
+
+  align-items:
+    start;
+}
+
+
+.board-column {
+
+  text-align:
+    center;
+}
+
+
+
+/* ==========================================================
+   GENERAL 4x4 GRID
+========================================================== */
+
+.general-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      1fr
+    );
+
+  width:
+    min(
+      380px,
+      90vw
+    );
+
+  aspect-ratio:
+    1 / 1;
+
+  margin:
+    auto;
+
+  border:
+    4px solid var(--ink);
+
+  background:
+    var(--ink);
+}
+
+
+.crossword-cell {
+
+  position:
+    relative;
+
+  border:
+    1px solid var(--ink);
+
+  background:
+    white;
+
+  overflow:
+    hidden;
+}
+
+
+.crossword-cell input {
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  border:
+    none;
+
+  outline:
+    none;
+
+  background:
+    transparent;
+
+  color:
+    var(--ink);
+
+  text-align:
+    center;
+
+  text-transform:
+    uppercase;
+
+  font-size:
+    clamp(
+      1.6rem,
+      8vw,
+      2.5rem
+    );
+
+  font-weight:
+    bold;
+
+  caret-color:
+    transparent;
+}
+
+
+.cell-number {
+
+  position:
+    absolute;
+
+  top:
+    3px;
+
+  left:
+    5px;
+
+  z-index:
+    2;
+
+  font-size:
+    .62rem;
+
+  font-weight:
+    bold;
+
+  color:
+    #51483c;
+
+  pointer-events:
+    none;
+}
+
+
+.crossword-cell.active {
+
+  background:
+    var(--gold-light);
+}
+
+
+.crossword-cell.transverse-highlight {
+
+  background:
+    var(--blue-light);
+}
+
+
+.crossword-cell.conjugate-highlight {
+
+  background:
+    var(--red-light);
+}
+
+
+.crossword-cell.active.transverse-highlight,
+.crossword-cell.active.conjugate-highlight {
+
+  background:
+    var(--gold-light);
+}
+
+
+.crossword-cell.correct {
+
+  box-shadow:
+    inset 0 0 0 3px
+    rgba(88, 120, 75, .55);
+}
+
+
+.crossword-cell.incorrect {
+
+  box-shadow:
+    inset 0 0 0 3px
+    rgba(164, 73, 69, .7);
+}
+
+
+.direction-label {
+
+  min-height:
+    26px;
+
+  margin-top:
+    12px;
+
+  color:
+    var(--brown);
+
+  font-size:
+    .85rem;
+
+  font-style:
+    italic;
+}
+
+
+
+/* ==========================================================
+   CLUE PANELS
+========================================================== */
+
+.clues-column {
+
+  display:
+    grid;
+
+  gap:
+    16px;
+}
+
+
+.clue-panel {
+
+  border:
+    2px solid;
+
+  border-radius:
+    16px;
+
+  overflow:
+    hidden;
+
+  background:
+    #fffdf8;
+}
+
+
+.transverse-panel {
+
+  border-color:
+    var(--blue);
+}
+
+
+.conjugate-panel {
+
+  border-color:
+    var(--red);
+}
+
+
+.clue-panel-heading {
+
+  padding:
+    10px 14px;
+
+  font-size:
+    .78rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    1.5px;
+}
+
+
+.transverse-panel
+.clue-panel-heading {
+
+  background:
+    var(--blue);
+
+  color:
+    white;
+}
+
+
+.conjugate-panel
+.clue-panel-heading {
+
+  background:
+    var(--red);
+
+  color:
+    white;
+}
+
+
+.clue-list {
+
+  display:
+    grid;
+}
+
+
+.clue-button {
+
+  width:
+    100%;
+
+  padding:
+    13px 14px;
+
+  border:
+    none;
+
+  border-bottom:
+    1px solid #ddd2bf;
+
+  background:
+    white;
+
+  color:
+    var(--ink);
+
+  cursor:
+    pointer;
+
+  text-align:
+    left;
+
+  line-height:
+    1.45;
+}
+
+
+.clue-button:last-child {
+
+  border-bottom:
+    none;
+}
+
+
+.clue-button:hover {
+
+  background:
+    #f7f1e6;
+}
+
+
+.clue-button.active.transverse-clue {
+
+  background:
+    var(--blue-light);
+
+  color:
+    var(--blue-dark);
+
+  font-weight:
+    bold;
+}
+
+
+.clue-button.active.conjugate-clue {
+
+  background:
+    var(--red-light);
+
+  color:
+    var(--red-dark);
+
+  font-weight:
+    bold;
+}
+
+
+.clue-number {
+
+  display:
+    inline-block;
+
+  min-width:
+    24px;
+
+  font-weight:
+    bold;
+}
+
+
+
+/* ==========================================================
+   CONTROLS / FEEDBACK
+========================================================== */
+
+.control-row {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    9px;
+
+  margin-top:
+    16px;
+}
+
+
+.primary-button,
+.secondary-button,
+.danger-button {
+
+  padding:
+    10px 15px;
+
+  border-radius:
+    10px;
+
+  cursor:
+    pointer;
+
+  font-weight:
+    bold;
+}
+
+
+.primary-button {
+
+  border:
+    2px solid var(--blue-dark);
+
+  background:
+    var(--blue-dark);
+
+  color:
+    white;
+}
+
+
+.secondary-button {
+
+  border:
+    2px solid var(--brown);
+
+  background:
+    white;
+
+  color:
+    var(--brown);
+}
+
+
+.danger-button {
+
+  border:
+    2px solid var(--red-dark);
+
+  background:
+    white;
+
+  color:
+    var(--red-dark);
+}
+
+
+.feedback {
+
+  min-height:
+    30px;
+
+  margin-top:
+    12px;
+
+  color:
+    var(--brown);
+
+  font-weight:
+    bold;
+
+  line-height:
+    1.4;
+}
+
+
+
+/* ==========================================================
+   SOLVED PANEL
+========================================================== */
+
+.solved-panel {
+
+  display:
+    none;
+
+  max-width:
+    620px;
+
+  margin:
+    28px auto 0;
+
+  padding:
+    22px;
+
+  border:
+    3px solid var(--gold);
+
+  border-radius:
+    18px;
+
+  background:
+    #fff5cf;
+
+  text-align:
+    center;
+}
+
+
+.solved-panel.visible {
+
+  display:
+    block;
+}
+
+
+.solved-symbol {
+
+  color:
+    var(--gold);
+
+  font-size:
+    2.5rem;
+}
+
+
+.solved-panel h3 {
+
+  margin:
+    8px 0;
+}
+
+
+.solved-panel p {
+
+  margin:
+    8px auto;
+
+  line-height:
+    1.5;
+
+  color:
+    #665846;
+}
+
+
+
+/* ==========================================================
+   MINI RULE CARD
+========================================================== */
+
+.mini-rule-card {
+
+  max-width:
+    650px;
+
+  margin:
+    0 auto 22px;
+
+  padding:
+    14px 16px;
+
+  border:
+    1px solid #d8cab3;
+
+  border-radius:
+    14px;
+
+  background:
+    #f7f0e3;
+
+  text-align:
+    center;
+
+  line-height:
+    1.6;
+
+  color:
+    #665846;
+}
+
+
+
+/* ==========================================================
+   MINI LAYOUT
+========================================================== */
+
+.mini-layout {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      320px,
+      470px
+    )
+    1fr;
+
+  gap:
+    28px;
+
+  align-items:
+    start;
+}
+
+
+.mini-board-column {
+
+  text-align:
+    center;
+}
+
+
+.mini-clues-column {
+
+  display:
+    grid;
+
+  gap:
+    16px;
+}
+
+
+
+/* ==========================================================
+   MINI CROSS
+========================================================== */
+
+.mini-cross {
+
+  position:
+    relative;
+
+  width:
+    min(
+      420px,
+      90vw
+    );
+
+  height:
+    420px;
+
+  margin:
+    auto;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(210, 162, 60, .08),
+      transparent 65%
+    );
+
+  border-radius:
+    22px;
+}
+
+
+.mini-cell {
+
+  position:
+    absolute;
+
+  width:
+    82px;
+
+  height:
+    82px;
+
+  border:
+    2px solid var(--ink);
+
+  background:
+    white;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+}
+
+
+.mini-cell input {
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  border:
+    none;
+
+  outline:
+    none;
+
+  background:
+    transparent;
+
+  text-align:
+    center;
+
+  text-transform:
+    uppercase;
+
+  font-size:
+    2rem;
+
+  font-weight:
+    bold;
+
+  caret-color:
+    transparent;
+}
+
+
+.mini-cell.transverse-cell {
+
+  border-color:
+    var(--blue);
+}
+
+
+.mini-cell.conjugate-cell {
+
+  border-color:
+    var(--red);
+}
+
+
+.mini-cell.shared-cell {
+
+  border:
+    4px solid var(--gold);
+
+  background:
+    var(--gold-light);
+
+  z-index:
+    4;
+}
+
+
+.mini-cell.active {
+
+  box-shadow:
+    0 0 0 4px
+    rgba(210, 162, 60, .2);
+}
+
+
+.mini-cell.correct {
+
+  box-shadow:
+    inset 0 0 0 3px
+    rgba(88, 120, 75, .55);
+}
+
+
+.mini-cell.incorrect {
+
+  box-shadow:
+    inset 0 0 0 3px
+    rgba(164, 73, 69, .7);
+}
+
+
+
+/* ==========================================================
+   MINI AXIS LABELS
+========================================================== */
+
+.mini-axis-label {
+
+  position:
+    absolute;
+
+  font-size:
+    .7rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    1.3px;
+
+  pointer-events:
+    none;
+}
+
+
+.mini-axis-label.transverse {
+
+  color:
+    var(--blue);
+
+  transform:
+    translateX(-50%);
+}
+
+
+.mini-axis-label.conjugate {
+
+  color:
+    var(--red);
+
+  writing-mode:
+    vertical-rl;
+
+  transform:
+    translateY(-50%);
+}
+
+
+
+/* ==========================================================
+   ARCHIVE
+========================================================== */
+
+.archive-tabs {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  gap:
+    10px;
+
+  flex-wrap:
+    wrap;
+
+  margin-bottom:
+    20px;
+}
+
+
+.archive-tab {
+
+  padding:
+    10px 17px;
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    10px;
+
+  background:
+    white;
+
+  color:
+    var(--brown);
+
+  cursor:
+    pointer;
+
+  font-weight:
+    bold;
+}
+
+
+.archive-tab.active {
+
+  background:
+    var(--brown);
+
+  color:
+    white;
+}
+
+
+.archive-list {
+
+  display:
+    none;
+
+  gap:
+    14px;
+}
+
+
+.archive-list.active {
+
+  display:
+    grid;
+}
+
+
+.archive-card {
+
+  padding:
+    18px;
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    15px;
+
+  background:
+    white;
+
+  box-shadow:
+    0 4px 13px
+    rgba(45, 35, 20, .09);
+}
+
+
+.archive-top {
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  margin-bottom:
+    8px;
+}
+
+
+.archive-number {
+
+  color:
+    var(--gold);
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    1px;
+}
+
+
+.archive-type {
+
+  padding:
+    5px 9px;
+
+  border-radius:
+    999px;
+
+  font-size:
+    .72rem;
+
+  font-weight:
+    bold;
+}
+
+
+.archive-type.general {
+
+  background:
+    var(--blue-light);
+
+  color:
+    var(--blue-dark);
+}
+
+
+.archive-type.mini {
+
+  background:
+    var(--red-light);
+
+  color:
+    var(--red-dark);
+}
+
+
+.archive-title {
+
+  margin:
+    6px 0;
+
+  font-size:
+    1.25rem;
+
+  font-weight:
+    bold;
+}
+
+
+.archive-description {
+
+  margin-bottom:
+    13px;
+
+  color:
+    #665846;
+
+  line-height:
+    1.45;
+}
+
+
+.archive-play-button {
+
+  padding:
+    9px 14px;
+
+  border:
+    none;
+
+  border-radius:
+    9px;
+
+  background:
+    var(--brown);
+
+  color:
+    white;
+
+  cursor:
+    pointer;
+
+  font-weight:
+    bold;
+}
+
+
+.empty-archive {
+
+  padding:
+    24px;
+
+  border:
+    1px dashed #cdbb9c;
+
+  border-radius:
+    14px;
+
+  background:
+    #fbf7ef;
+
+  color:
+    #786b5a;
+
+  text-align:
+    center;
+
+  font-style:
+    italic;
+}
+
+
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+footer {
+
+  text-align:
+    center;
+
+  padding:
+    30px 15px;
+
+  color:
+    #665846;
+
+  font-size:
+    .82rem;
+
+  line-height:
+    1.6;
+}
+
+
+
+/* ==========================================================
+   TABLET / MOBILE
+========================================================== */
+
+@media
+(max-width: 850px) {
+
+  .general-layout,
+  .mini-layout {
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .clues-column,
+  .mini-clues-column {
+
+    max-width:
+      650px;
+
+    width:
+      100%;
+
+    margin:
+      auto;
+  }
+
+}
+
+
+
+@media
+(max-width: 700px) {
+
+  .mode-grid {
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .screen-nav {
+
+    align-items:
+      stretch;
+  }
+
+
+  .axis-key {
+
+    grid-template-columns:
+      1fr;
+
+    text-align:
+      center;
+  }
+
+
+  .conjugate-axis,
+  .transverse-axis {
+
+    text-align:
+      center;
+  }
+
+
+  .axis-center {
+
+    display:
+      none;
+  }
+
+
+  .general-grid {
+
+    width:
+      min(
+        340px,
+        88vw
+      );
+  }
+
+
+  .mini-cross {
+
+    transform:
+      scale(.9);
+
+    transform-origin:
+      top center;
+
+    margin-bottom:
+      -35px;
+  }
+
+}
+
+
+
+@media
+(max-width: 480px) {
+
+  .koan-brand {
+
+    gap:
+      6px;
+  }
+
+
+  .general-grid {
+
+    width:
+      min(
+        310px,
+        88vw
+      );
+  }
+
+
+  .crossword-cell input {
+
+    font-size:
+      1.8rem;
+  }
+
+
+  .mini-cross {
+
+    width:
+      420px;
+
+    max-width:
+      none;
+
+    margin-left:
+      50%;
+
+    transform:
+      translateX(-50%)
+      scale(.76);
+
+    transform-origin:
+      top center;
+
+    margin-bottom:
+      -95px;
+  }
+
+
+  .mini-cell {
+
+    width:
+      82px;
+
+    height:
+      82px;
+  }
+
+
+  .control-row {
+
+    gap:
+      7px;
+  }
+
+
+  .primary-button,
+  .secondary-button,
+  .danger-button {
+
+    padding:
+      9px 12px;
+
+    font-size:
+      .9rem;
+  }
+
+}
