@@ -14,7 +14,7 @@
 
   <link
     rel="stylesheet"
-    href="crypticcalculus.css?v=20260813-1"
+    href="crypticcalculus.css?v=20260813-3"
   >
 
 </head>
@@ -61,376 +61,648 @@
 <main>
 
 
-  <!-- =====================================================
-       INTRO
-  ====================================================== -->
+<!-- =====================================================
+     INTRO
+====================================================== -->
 
-  <section class="intro-card">
+<section class="intro-card">
 
-    <div class="intro-badge">
-      OPERATIONS OF MEANING
+  <div class="intro-badge">
+    OPERATIONS OF MEANING
+  </div>
+
+  <h2>
+    The Cryptic-Calculus Principle
+  </h2>
+
+  <p>
+    A cryptic clue can be treated as a chain of operations.
+    Letters, sounds, words and meanings can be inserted,
+    removed, reversed, approximated, permuted,
+    composed or shifted until the surface
+    collapses into an answer.
+  </p>
+
+
+  <div class="equation-strip">
+
+    <span class="equation-box">
+      CLUE
+    </span>
+
+    <span class="equation-arrow">
+      →
+    </span>
+
+    <span class="equation-box">
+      OPERATION
+    </span>
+
+    <span class="equation-arrow">
+      →
+    </span>
+
+    <span class="equation-box">
+      TRANSFORMATION
+    </span>
+
+    <span class="equation-arrow">
+      →
+    </span>
+
+    <span class="equation-box answer-box">
+      ANSWER
+    </span>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     OPERATION LAB
+====================================================== -->
+
+<section class="lab-shell">
+
+
+  <div class="section-heading">
+
+    <div class="section-kicker">
+      OPERATION LAB
     </div>
 
     <h2>
-      The Cryptic-Calculus Principle
+      Choose an Operation
     </h2>
 
     <p>
-      A cryptic clue can be read as a chain of operations.
-      Words are inserted, removed, reversed, approximated,
-      composed, shifted or superposed until the surface
-      collapses into an answer.
+      Select an operator to inspect its notation,
+      meaning, worked example and mini-clue.
     </p>
 
-    <div class="equation-strip">
+  </div>
 
-      <span class="equation-box">
-        CLUE
-      </span>
 
-      <span class="equation-arrow">
-        →
-      </span>
 
-      <span class="equation-box">
-        OPERATION
-      </span>
+  <div class="lab-layout">
 
-      <span class="equation-arrow">
-        →
-      </span>
 
-      <span class="equation-box">
-        TRANSFORMATION
-      </span>
+    <!-- OPERATION BANK -->
 
-      <span class="equation-arrow">
-        →
-      </span>
-
-      <span class="equation-box answer-box">
-        ANSWER
-      </span>
-
+    <div
+      id="operationBank"
+      class="operation-bank"
+    >
     </div>
 
-  </section>
 
 
+    <!-- CALCULATION BOARD -->
 
-  <!-- =====================================================
-       OPERATION LAB
-  ====================================================== -->
-
-  <section class="lab-shell">
+    <div class="calculation-board">
 
 
-    <div class="section-heading">
+      <div class="board-top">
 
-      <div class="section-kicker">
-        OPERATION LAB
+        <div>
+
+          <div
+            id="operationCategory"
+            class="operation-category"
+          >
+            OPERATION
+          </div>
+
+          <h2
+            id="operationTitle"
+            class="operation-title"
+          >
+          </h2>
+
+        </div>
+
+
+        <div
+          id="operationSymbol"
+          class="operation-symbol"
+        >
+        </div>
+
       </div>
 
-      <h2>
-        Choose an Operation
-      </h2>
-
-      <p>
-        Tap any operation to inspect its symbolic form,
-        interpretation and worked example.
-      </p>
-
-    </div>
 
 
-
-    <div class="lab-layout">
-
-
-      <!-- OPERATION BANK -->
+      <!-- OPERATION VISUAL -->
 
       <div
-        id="operationBank"
-        class="operation-bank"
+        id="operationVisual"
+        class="operation-visual"
       >
       </div>
 
 
 
-      <!-- CALCULATION BOARD -->
+      <!-- SYMBOLIC FORM -->
 
-      <div class="calculation-board">
-
-
-        <div class="board-top">
-
-          <div>
-
-            <div
-              id="operationCategory"
-              class="operation-category"
-            >
-              OPERATION
-            </div>
-
-            <h2
-              id="operationTitle"
-              class="operation-title"
-            >
-            </h2>
-
-          </div>
-
-
-          <div
-            id="operationSymbol"
-            class="operation-symbol"
-          >
-          </div>
-
-        </div>
-
-
-
-        <div
-          id="mascotPlaceholder"
-          class="mascot-placeholder"
-        >
-        </div>
-
-
-
-        <div class="math-panel">
-
-          <div class="mini-heading">
-            SYMBOLIC FORM
-          </div>
-
-          <div
-            id="operationFormula"
-            class="operation-formula"
-          >
-          </div>
-
-        </div>
-
-
-
-        <div class="description-panel">
-
-          <div class="mini-heading">
-            WHAT IT DOES
-          </div>
-
-          <p
-            id="operationDescription"
-          >
-          </p>
-
-        </div>
-
-
-
-        <div class="worked-example">
-
-          <div class="mini-heading">
-            WORKED EXAMPLE
-          </div>
-
-
-          <div class="example-stage">
-
-            <span>
-              CLUE INPUT
-            </span>
-
-            <strong id="exampleInput">
-            </strong>
-
-          </div>
-
-
-          <div class="calc-arrow">
-            ↓
-          </div>
-
-
-          <div class="example-stage operation-stage">
-
-            <span>
-              APPLY
-            </span>
-
-            <strong id="exampleOperation">
-            </strong>
-
-          </div>
-
-
-          <div class="calc-arrow">
-            ↓
-          </div>
-
-
-          <div class="example-stage">
-
-            <span>
-              TRANSFORMED FORM
-            </span>
-
-            <strong id="exampleMiddle">
-            </strong>
-
-          </div>
-
-
-          <div class="calc-arrow">
-            ↓
-          </div>
-
-
-          <div class="example-stage result-stage">
-
-            <span>
-              RESULT
-            </span>
-
-            <strong id="exampleResult">
-            </strong>
-
-          </div>
-
-        </div>
-
-
-        <div
-          id="operationNote"
-          class="operation-note"
-        >
-        </div>
-
-
-      </div>
-
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =====================================================
-       OPERATION COMPOSITION
-  ====================================================== -->
-
-  <section class="composer-shell">
-
-
-    <div class="section-heading">
-
-      <div class="section-kicker">
-        COMPOSITION LAB
-      </div>
-
-      <h2>
-        Stack Operations
-      </h2>
-
-      <p>
-        Cryptic clues often require more than one move.
-        Build a symbolic operation chain below.
-      </p>
-
-    </div>
-
-
-
-    <div class="composer-card">
-
-
-      <div class="composer-row">
-
-        <label for="firstOperation">
-          First operation
-        </label>
-
-        <select id="firstOperation">
-        </select>
-
-      </div>
-
-
-      <div class="composition-symbol">
-        ∘
-      </div>
-
-
-      <div class="composer-row">
-
-        <label for="secondOperation">
-          Second operation
-        </label>
-
-        <select id="secondOperation">
-        </select>
-
-      </div>
-
-
-
-      <div class="composition-output">
+      <div class="math-panel">
 
         <div class="mini-heading">
-          COMPOSED FORM
+          SYMBOLIC FORM
         </div>
 
         <div
-          id="compositionFormula"
-          class="composition-formula"
+          id="operationFormula"
+          class="operation-formula"
         >
         </div>
 
-        <p
-          id="compositionExplanation"
-          class="composition-explanation"
-        >
+      </div>
+
+
+
+      <!-- EXPLANATION -->
+
+      <div class="description-panel">
+
+        <div class="mini-heading">
+          WHAT IT DOES
+        </div>
+
+        <p id="operationDescription">
         </p>
 
       </div>
 
 
-    </div>
 
-  </section>
+      <!-- WORKED EXAMPLE -->
+
+      <div class="worked-example">
+
+        <div class="mini-heading">
+          WORKED EXAMPLE
+        </div>
 
 
+        <div class="example-stage">
 
-  <!-- =====================================================
-       QUICK REFERENCE
-  ====================================================== -->
+          <span>
+            CLUE INPUT
+          </span>
 
-  <section class="reference-shell">
+          <strong id="exampleInput">
+          </strong>
 
-    <div class="section-heading">
+        </div>
 
-      <div class="section-kicker">
-        QUICK REFERENCE
+
+        <div class="calc-arrow">
+          ↓
+        </div>
+
+
+        <div class="example-stage operation-stage">
+
+          <span>
+            APPLY
+          </span>
+
+          <strong id="exampleOperation">
+          </strong>
+
+        </div>
+
+
+        <div class="calc-arrow">
+          ↓
+        </div>
+
+
+        <div class="example-stage">
+
+          <span>
+            TRANSFORMED FORM
+          </span>
+
+          <strong id="exampleMiddle">
+          </strong>
+
+        </div>
+
+
+        <div class="calc-arrow">
+          ↓
+        </div>
+
+
+        <div class="example-stage result-stage">
+
+          <span>
+            RESULT
+          </span>
+
+          <strong id="exampleResult">
+          </strong>
+
+        </div>
+
       </div>
 
-      <h2>
-        Cryptic-Calculus Operators
-      </h2>
 
+
+      <div
+        id="operationNote"
+        class="operation-note"
+      >
+      </div>
+
+
+
+      <!-- =================================================
+           MINI PRACTICE
+      ================================================== -->
+
+      <div class="practice-panel">
+
+        <div class="practice-top">
+
+          <div>
+
+            <div class="mini-heading">
+              TRY THE OPERATION
+            </div>
+
+            <h3>
+              Mini Clue
+            </h3>
+
+          </div>
+
+          <span
+            id="practiceSymbol"
+            class="practice-symbol"
+          >
+          </span>
+
+        </div>
+
+
+        <div
+          id="practiceClue"
+          class="practice-clue"
+        >
+        </div>
+
+
+        <div
+          id="practiceVisual"
+          class="practice-visual"
+        >
+        </div>
+
+
+        <div class="practice-answer-row">
+
+          <input
+            id="practiceInput"
+            type="text"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Enter answer"
+          >
+
+          <button
+            id="practiceCheck"
+            class="primary-button"
+            type="button"
+          >
+            Check
+          </button>
+
+        </div>
+
+
+        <div class="practice-actions">
+
+          <button
+            id="practiceHint"
+            class="secondary-button"
+            type="button"
+          >
+            Hint
+          </button>
+
+          <button
+            id="practiceReveal"
+            class="secondary-button"
+            type="button"
+          >
+            Reveal
+          </button>
+
+        </div>
+
+
+        <div
+          id="practiceFeedback"
+          class="practice-feedback"
+        >
+        </div>
+
+
+        <div
+          id="practiceSolution"
+          class="practice-solution"
+        >
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     COMPOSITION LAB
+====================================================== -->
+
+<section class="composer-shell">
+
+
+  <div class="section-heading">
+
+    <div class="section-kicker">
+      COMPOSITION LAB
+    </div>
+
+    <h2>
+      Stack Operations
+    </h2>
+
+    <p>
+      Some clues require multiple transformations.
+      Build a symbolic chain and see how one
+      operation feeds the next.
+    </p>
+
+  </div>
+
+
+
+  <div class="composer-card">
+
+
+    <div class="composer-row">
+
+      <label for="firstOperation">
+        First operation
+      </label>
+
+      <select id="firstOperation">
+      </select>
+
+    </div>
+
+
+    <div class="composition-symbol">
+      ∘
+    </div>
+
+
+    <div class="composer-row">
+
+      <label for="secondOperation">
+        Second operation
+      </label>
+
+      <select id="secondOperation">
+      </select>
+
+    </div>
+
+
+
+    <div class="composition-output">
+
+      <div class="mini-heading">
+        COMPOSED FORM
+      </div>
+
+      <div
+        id="compositionFormula"
+        class="composition-formula"
+      >
+      </div>
+
+      <p
+        id="compositionExplanation"
+        class="composition-explanation"
+      >
+      </p>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CALCULUS CHALLENGE
+====================================================== -->
+
+<section class="challenge-shell">
+
+
+  <div class="section-heading">
+
+    <div class="section-kicker">
+      CALCULUS CHALLENGE
+    </div>
+
+    <h2>
+      Solve the Operation Chain
+    </h2>
+
+    <p>
+      These clues combine multiple moves.
+      Determine the answer first.
+      The operation chain is revealed after you solve it.
+    </p>
+
+  </div>
+
+
+
+  <div class="challenge-progress">
+
+    <span>
+      Solved:
+      <strong id="challengeSolved">
+        0
+      </strong>
+    </span>
+
+    <span>
+      Challenge:
+      <strong id="challengeNumber">
+        1
+      </strong>
+    </span>
+
+  </div>
+
+
+
+  <div class="challenge-card">
+
+
+    <div class="challenge-badge">
+      MULTI-OPERATION
     </div>
 
 
     <div
-      id="referenceGrid"
-      class="reference-grid"
+      id="challengeClue"
+      class="challenge-clue"
     >
     </div>
 
-  </section>
+
+    <div
+      id="challengeEnumeration"
+      class="challenge-enumeration"
+    >
+    </div>
+
+
+
+    <div class="challenge-input-row">
+
+      <input
+        id="challengeInput"
+        type="text"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="Solve the clue"
+      >
+
+      <button
+        id="challengeCheck"
+        class="primary-button"
+        type="button"
+      >
+        Check
+      </button>
+
+    </div>
+
+
+
+    <div class="challenge-actions">
+
+      <button
+        id="challengeHint"
+        class="secondary-button"
+        type="button"
+      >
+        Operation Hint
+      </button>
+
+      <button
+        id="challengeReveal"
+        class="secondary-button"
+        type="button"
+      >
+        Reveal
+      </button>
+
+      <button
+        id="challengeNext"
+        class="secondary-button"
+        type="button"
+      >
+        Next Challenge →
+      </button>
+
+    </div>
+
+
+
+    <div
+      id="challengeFeedback"
+      class="challenge-feedback"
+    >
+    </div>
+
+
+
+    <div
+      id="challengeBreakdown"
+      class="challenge-breakdown"
+    >
+
+      <div class="mini-heading">
+        OPERATION CHAIN
+      </div>
+
+      <div
+        id="challengeFormula"
+        class="challenge-formula"
+      >
+      </div>
+
+      <div
+        id="challengeSteps"
+        class="challenge-steps"
+      >
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     QUICK REFERENCE
+====================================================== -->
+
+<section class="reference-shell">
+
+  <div class="section-heading">
+
+    <div class="section-kicker">
+      QUICK REFERENCE
+    </div>
+
+    <h2>
+      Cryptic-Calculus Operators
+    </h2>
+
+  </div>
+
+
+  <div
+    id="referenceGrid"
+    class="reference-grid"
+  >
+  </div>
+
+</section>
 
 
 </main>
@@ -454,7 +726,7 @@
 
 
 
-<script src="crypticcalculus.js?v=20260813-2"></script>
+<script src="crypticcalculus.js?v=20260813-3"></script>
 
 
 </body>
