@@ -452,15 +452,16 @@ main {
 
 /* ==========================================================
    MINI HIVE
+   PERFECT EDGE ALIGNMENT
 ========================================================== */
 
 .mini-buzz-hive {
 
   position: relative;
 
-  width: 190px;
+  width: 176px;
 
-  height: 160px;
+  height: 166px;
 
   margin:
     12px auto;
@@ -509,45 +510,74 @@ main {
 }
 
 
+/*
+  Shared-edge geometry:
+  center = x 59 / y 50
+  horizontal center offset = 43.5
+  vertical center offset = 49.5
+*/
+
+
 .mini-1 {
-  left: 38px;
-  top: 4px;
+
+  left: 15.5px;
+
+  top: 25.25px;
+
 }
 
 
 .mini-2 {
-  left: 94px;
-  top: 4px;
+
+  left: 102.5px;
+
+  top: 25.25px;
+
 }
 
 
 .mini-3 {
-  left: 10px;
-  top: 52px;
+
+  left: 15.5px;
+
+  top: 74.75px;
+
 }
 
 
 .mini-center {
-  left: 66px;
-  top: 52px;
+
+  left: 59px;
+
+  top: 50px;
+
 }
 
 
 .mini-4 {
-  left: 122px;
-  top: 52px;
+
+  left: 102.5px;
+
+  top: 74.75px;
+
 }
 
 
 .mini-5 {
-  left: 38px;
-  top: 100px;
+
+  left: 59px;
+
+  top: 99.5px;
+
 }
 
 
 .mini-6 {
-  left: 94px;
-  top: 100px;
+
+  left: 59px;
+
+  top: 0.5px;
+
 }
 
 
@@ -619,7 +649,8 @@ main {
 
 
 /* ==========================================================
-   PERFECT SEVEN-CELL HIVE
+   MAIN BUZZ HIVE
+   PERFECT EDGE ALIGNMENT
 ========================================================== */
 
 .buzz-hive {
@@ -627,7 +658,7 @@ main {
   position: relative;
 
   width:
-    360px;
+    345px;
 
   height:
     330px;
@@ -639,11 +670,15 @@ main {
 
 
 /*
-  106 x 120 cells.
+  MAIN HEX:
+  width 106
+  height 120
 
-  These offsets make the sides of the
-  six outer hexagons meet the center hex.
+  Shared-edge center spacing:
+  horizontal = 79.5
+  vertical   = 90
 */
+
 
 .buzz-cell {
 
@@ -704,51 +739,20 @@ main {
 .buzz-cell:hover {
 
   transform:
-    scale(1.04);
+    scale(1.03);
 
 }
 
 
-.buzz-cell-1 {
-
-  left:
-    74px;
-
-  top:
-    16px;
-
-}
-
-
-.buzz-cell-2 {
-
-  left:
-    180px;
-
-  top:
-    16px;
-
-}
-
-
-.buzz-cell-3 {
-
-  left:
-    21px;
-
-  top:
-    108px;
-
-}
-
+/* CENTER */
 
 .buzz-center-cell {
 
   left:
-    127px;
+    119.5px;
 
   top:
-    108px;
+    105px;
 
   background:
     var(--honey);
@@ -762,35 +766,80 @@ main {
 }
 
 
-.buzz-cell-4 {
+/* UPPER LEFT */
+
+.buzz-cell-1 {
 
   left:
-    233px;
+    40px;
 
   top:
-    108px;
+    60px;
 
 }
 
+
+/* UPPER RIGHT */
+
+.buzz-cell-2 {
+
+  left:
+    199px;
+
+  top:
+    60px;
+
+}
+
+
+/* LOWER LEFT */
+
+.buzz-cell-3 {
+
+  left:
+    40px;
+
+  top:
+    150px;
+
+}
+
+
+/* LOWER RIGHT */
+
+.buzz-cell-4 {
+
+  left:
+    199px;
+
+  top:
+    150px;
+
+}
+
+
+/* BOTTOM */
 
 .buzz-cell-5 {
 
   left:
-    74px;
+    119.5px;
 
   top:
-    200px;
+    195px;
 
 }
 
 
+/* TOP */
+
 .buzz-cell-6 {
 
   left:
-    180px;
+    119.5px;
 
   top:
-    200px;
+    15px;
 
 }
 
@@ -1581,7 +1630,8 @@ main {
 
   display: flex;
 
-  flex-wrap: wrap;
+  flex-wrap:
+    wrap;
 
   justify-content:
     center;
