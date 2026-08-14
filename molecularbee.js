@@ -1,6 +1,75 @@
-document.addEventListener(
-  "DOMContentLoaded",
-  function () {
+document.addEventListener("DOMContentLoaded", function () {
+
+
+/* ==========================================================
+   GOOGLE ANALYTICS
+========================================================== */
+
+function trackBeeEvent(
+  eventName,
+  mode,
+  extraData
+) {
+
+  if (
+    typeof gtag !==
+    "function"
+  ) {
+    return;
+  }
+
+
+  gtag(
+    "event",
+    eventName,
+    {
+      game_name:
+        "molecular_bee",
+
+      mode:
+        mode,
+
+      ...(extraData || {})
+    }
+  );
+
+}
+
+
+/*
+  Prevent repeated navigation clicks
+  from inflating mode-start numbers.
+*/
+
+const startedModes =
+  new Set();
+
+
+function trackModeStart(
+  mode
+) {
+
+  if (
+    startedModes.has(
+      mode
+    )
+  ) {
+    return;
+  }
+
+
+  startedModes.add(
+    mode
+  );
+
+
+  trackBeeEvent(
+    "game_mode_started",
+    mode
+  );
+
+}
+
 
 
 /* ==========================================================
@@ -107,12 +176,41 @@ function showScreen(
 
   window.scrollTo(
     {
-      top: 0,
-      behavior: "smooth"
+      top:
+        0,
+
+      behavior:
+        "smooth"
     }
   );
 
 }
+
+
+
+/*
+  Maps screen IDs to analytics mode names.
+*/
+
+const screenModes = {
+
+  spellingScreen:
+    "spelling_bee",
+
+  queenScreen:
+    "queen_bee",
+
+  workerScreen:
+    "worker_bee",
+
+  pollinationScreen:
+    "pollination",
+
+  hiveScreen:
+    "hive_mind"
+
+};
+
 
 
 document
@@ -128,15 +226,35 @@ document
         "click",
         function () {
 
+          const screen =
+            button.dataset.screen;
+
+
           showScreen(
-            button.dataset.screen
+            screen
           );
+
+
+          if (
+            screenModes[
+              screen
+            ]
+          ) {
+
+            trackModeStart(
+              screenModes[
+                screen
+              ]
+            );
+
+          }
 
         }
       );
 
     }
   );
+
 
 
 document
@@ -151,6 +269,11 @@ document
         "buzzwordScreen"
       );
 
+
+      trackModeStart(
+        "buzzword"
+      );
+
     }
   );
 
@@ -162,38 +285,79 @@ document
 
 const elementNames = {
 
-  H: "Hydrogen",
-  C: "Carbon",
-  N: "Nitrogen",
-  O: "Oxygen",
+  H:
+    "Hydrogen",
 
-  Na: "Sodium",
-  K: "Potassium",
-  Li: "Lithium",
+  C:
+    "Carbon",
 
-  Mg: "Magnesium",
-  Ca: "Calcium",
-  Al: "Aluminum",
+  N:
+    "Nitrogen",
 
-  S: "Sulfur",
-  Cl: "Chlorine",
-  F: "Fluorine",
-  Br: "Bromine",
-  I: "Iodine"
+  O:
+    "Oxygen",
+
+  Na:
+    "Sodium",
+
+  K:
+    "Potassium",
+
+  Li:
+    "Lithium",
+
+  Mg:
+    "Magnesium",
+
+  Ca:
+    "Calcium",
+
+  Al:
+    "Aluminum",
+
+  S:
+    "Sulfur",
+
+  Cl:
+    "Chlorine",
+
+  F:
+    "Fluorine",
+
+  Br:
+    "Bromine",
+
+  I:
+    "Iodine"
 
 };
 
 
 const subscripts = {
 
-  2: "₂",
-  3: "₃",
-  4: "₄",
-  5: "₅",
-  6: "₆",
-  7: "₇",
-  8: "₈",
-  9: "₉"
+  2:
+    "₂",
+
+  3:
+    "₃",
+
+  4:
+    "₄",
+
+  5:
+    "₅",
+
+  6:
+    "₆",
+
+  7:
+    "₇",
+
+  8:
+    "₈",
+
+  9:
+    "₉"
 
 };
 
@@ -351,7 +515,8 @@ function registerDrag(
 
     },
     {
-      passive: false
+      passive:
+        false
     }
   );
 
@@ -368,9 +533,7 @@ document.addEventListener(
     if (
       !activeDrag
     ) {
-
       return;
-
     }
 
 
@@ -389,7 +552,8 @@ document.addEventListener(
     if (
       !activeDrag.moving
       &&
-      distance < 6
+      distance <
+      6
     ) {
 
       return;
@@ -489,7 +653,8 @@ document.addEventListener(
 
   },
   {
-    passive: false
+    passive:
+      false
   }
 );
 
@@ -504,9 +669,7 @@ document.addEventListener(
     if (
       !activeDrag
     ) {
-
       return;
-
     }
 
 
@@ -671,7 +834,7 @@ function findDropTarget(
 ) {
 
 
-  /* SPELLING BEE */
+  /* SPELLING */
 
   if (
     payload.game ===
@@ -708,7 +871,7 @@ function findDropTarget(
 
 
 
-  /* QUEEN BEE — NEW FREE BUILD GRID */
+  /* QUEEN */
 
   if (
     payload.game ===
@@ -745,7 +908,7 @@ function findDropTarget(
 
 
 
-  /* WORKER BEE */
+  /* WORKER */
 
   if (
     payload.game ===
@@ -1007,7 +1170,8 @@ function handleTap(
     ) {
 
       const target =
-        workerElectrons < 2
+        workerElectrons <
+        2
         ?
           document.getElementById(
             "innerShell"
@@ -1305,6 +1469,11 @@ let buzzFound =
   [];
 
 
+let moleculargramTracked =
+  false;
+
+
+
 document
   .querySelectorAll(
     "[data-buzz]"
@@ -1317,6 +1486,11 @@ document
       button.addEventListener(
         "click",
         function () {
+
+          trackModeStart(
+            "buzzword"
+          );
+
 
           buzzSequence.push(
             button.dataset.buzz
@@ -1468,6 +1642,11 @@ document
     "click",
     function () {
 
+      trackModeStart(
+        "buzzword"
+      );
+
+
       const feedback =
         document.getElementById(
           "buzzFeedback"
@@ -1559,6 +1738,22 @@ document
       );
 
 
+      trackBeeEvent(
+        "compound_found",
+        "buzzword",
+        {
+          compound_name:
+            answer.name,
+
+          formula:
+            answer.formula,
+
+          compounds_found:
+            buzzFound.length
+        }
+      );
+
+
       feedback.textContent =
         "🐝 "
         +
@@ -1598,6 +1793,26 @@ document
 
         feedback.textContent =
           "🐝👑 MOLECULARGRAM! Every hive element was used!";
+
+
+        if (
+          !moleculargramTracked
+        ) {
+
+          moleculargramTracked =
+            true;
+
+
+          trackBeeEvent(
+            "moleculargram_earned",
+            "buzzword",
+            {
+              compounds_found:
+                buzzFound.length
+            }
+          );
+
+        }
 
 
         reward(
@@ -1847,7 +2062,8 @@ function loadSpelling() {
 
   for (
     let index = 0;
-    index < SPELLING_SLOT_COUNT;
+    index <
+    SPELLING_SLOT_COUNT;
     index++
   ) {
 
@@ -1941,6 +2157,11 @@ function placeSpelling(
   symbol,
   target
 ) {
+
+  trackModeStart(
+    "spelling_bee"
+  );
+
 
   if (
     target.classList.contains(
@@ -2154,6 +2375,11 @@ document
     "click",
     function () {
 
+      trackModeStart(
+        "spelling_bee"
+      );
+
+
       const challenge =
         spellingChallenges[
           spellingIndex
@@ -2186,6 +2412,25 @@ document
             )
             +
             "!";
+
+
+        trackBeeEvent(
+          "challenge_completed",
+          "spelling_bee",
+          {
+            challenge_name:
+              challenge.name,
+
+            formula:
+              formulaFromSequence(
+                challenge.answer
+              ),
+
+            challenge_index:
+              spellingIndex +
+              1
+          }
+        );
 
 
         reward(
@@ -2233,21 +2478,6 @@ document
    QUEEN BEE — FREE BUILD SANDBOX
 ========================================================== */
 
-
-/*
-   There is NO assigned molecule.
-
-   Student:
-   - begins with Carbon
-   - drags reusable atoms around it
-   - self-checks the structure
-   - valid builds lock into the hive
-   - taps any locked atom to make it
-     the next active Queen
-   - continues growing
-*/
-
-
 const queenAtomBank =
   [
     "H",
@@ -2262,10 +2492,6 @@ const queenAtomBank =
   ];
 
 
-
-/* ==========================================================
-   VALID QUEEN-BEE BUILDS
-========================================================== */
 
 const queenMolecules =
   [
@@ -2565,10 +2791,6 @@ const queenMolecules =
 
 
 
-/* ==========================================================
-   QUEEN STATE
-========================================================== */
-
 let queenCorrectCount =
   0;
 
@@ -2577,38 +2799,13 @@ let queenActiveCell =
   null;
 
 
-/*
-   Each occupied coordinate stores:
-
-   {
-      symbol: "C",
-      locked: true
-   }
-*/
-
 const queenCells =
   new Map();
 
 
-
-/* ==========================================================
-   37-CELL HEXAGON GRID
-========================================================== */
-
 const queenCoordinates =
   [];
 
-
-/*
-   Radius 3 hex grid:
-
-   center = 1
-   ring 1 = 6
-   ring 2 = 12
-   ring 3 = 18
-
-   TOTAL = 37
-*/
 
 for (
   let q = -3;
@@ -2623,20 +2820,25 @@ for (
   ) {
 
     const s =
-      -q - r;
+      -q -
+      r;
 
 
     if (
       Math.abs(
         s
-      ) <=
+      )
+      <=
       3
     ) {
 
       queenCoordinates.push(
         {
-          q: q,
-          r: r
+          q:
+            q,
+
+          r:
+            r
         }
       );
 
@@ -2647,10 +2849,6 @@ for (
 }
 
 
-
-/* ==========================================================
-   QUEEN GRID HELPERS
-========================================================== */
 
 function queenKey(
   q,
@@ -2666,22 +2864,17 @@ function queenKey(
 }
 
 
+
 const queenDirections =
   [
-
     [1, 0],
-
     [1, -1],
-
     [0, -1],
-
     [-1, 0],
-
     [-1, 1],
-
     [0, 1]
-
   ];
+
 
 
 function getQueenNeighborKeys(
@@ -2696,13 +2889,11 @@ function getQueenNeighborKeys(
       ) {
 
         return queenKey(
-
           q +
           direction[0],
 
           r +
           direction[1]
-
         );
 
       }
@@ -2743,10 +2934,6 @@ function buildQueenBoard() {
   queenCorrectCount =
     0;
 
-
-  /*
-    Flat-top honeycomb dimensions.
-  */
 
   const hexWidth =
     88;
@@ -2818,10 +3005,6 @@ function buildQueenBoard() {
         key;
 
 
-      /*
-        Axial coordinate → screen position.
-      */
-
       const left =
         centerX
         +
@@ -2877,10 +3060,6 @@ function buildQueenBoard() {
   );
 
 
-  /*
-    Initial Queen = Carbon.
-  */
-
   queenCells.set(
     "0,0",
     {
@@ -2933,7 +3112,7 @@ function buildQueenBoard() {
 
 
 /* ==========================================================
-   REUSABLE QUEEN ATOM BANK
+   QUEEN ATOM BANK
 ========================================================== */
 
 function buildQueenAtomBank() {
@@ -2956,24 +3135,13 @@ function buildQueenAtomBank() {
 
       const tile =
         createAtomTile(
-
           symbol,
-
           "queen",
-
           "queen-unlimited-"
           +
           index
-
         );
 
-
-      /*
-        Important:
-        Queen tiles are reusable.
-
-        They NEVER disappear after being placed.
-      */
 
       tile.dataset.queenReusable =
         "true";
@@ -3102,10 +3270,7 @@ function renderQueenBoard() {
 
 
 /* ==========================================================
-   AVAILABLE CELLS
-
-   Only honeycombs directly touching the
-   current Queen can receive atoms.
+   AVAILABLE QUEEN CELLS
 ========================================================== */
 
 function updateQueenAvailableCells() {
@@ -3214,6 +3379,11 @@ function placeQueen(
   target
 ) {
 
+  trackModeStart(
+    "queen_bee"
+  );
+
+
   if (
     !target
   ) {
@@ -3261,13 +3431,6 @@ function placeQueen(
   );
 
 
-  /*
-    DO NOT hide source.
-
-    Queen atom bank is unlimited.
-  */
-
-
   renderQueenBoard();
 
 
@@ -3286,7 +3449,7 @@ function placeQueen(
 
 
 /* ==========================================================
-   TAP A QUEEN GRID ATOM
+   QUEEN CELL CLICK
 ========================================================== */
 
 function handleQueenCellClick(
@@ -3312,11 +3475,6 @@ function handleQueenCellClick(
   }
 
 
-  /*
-    Temporary atom:
-    tapping removes it.
-  */
-
   if (
     !cell.locked
   ) {
@@ -3336,11 +3494,6 @@ function handleQueenCellClick(
 
   }
 
-
-  /*
-    Locked atom:
-    make it the new active Queen.
-  */
 
   queenActiveCell =
     slot;
@@ -3387,7 +3540,7 @@ function handleQueenCellClick(
 
 
 /* ==========================================================
-   GET ACTIVE QUEEN
+   QUEEN HELPERS
 ========================================================== */
 
 function getQueenActiveData() {
@@ -3416,10 +3569,6 @@ function getQueenActiveData() {
 }
 
 
-
-/* ==========================================================
-   GET CURRENT NEW ATOMS
-========================================================== */
 
 function getQueenTemporaryNeighbors() {
 
@@ -3486,7 +3635,7 @@ function getQueenTemporaryNeighbors() {
 
 
 /* ==========================================================
-   QUEEN FORMULA PREVIEW
+   QUEEN FORMULA
 ========================================================== */
 
 function updateQueenFormula() {
@@ -3556,11 +3705,6 @@ function updateQueenFormula() {
     );
 
 
-  /*
-    Sort matching atoms together so:
-    C + H H H H becomes CH₄
-  */
-
   neighborSymbols.sort();
 
 
@@ -3585,10 +3729,6 @@ function updateQueenFormula() {
 
 
 
-/* ==========================================================
-   QUEEN SELF-CHECK
-========================================================== */
-
 function normalizeAtomList(
   atoms
 ) {
@@ -3604,6 +3744,10 @@ function normalizeAtomList(
 
 
 
+/* ==========================================================
+   QUEEN SELF CHECK
+========================================================== */
+
 document
   .getElementById(
     "queenCheck"
@@ -3611,6 +3755,11 @@ document
   .addEventListener(
     "click",
     function () {
+
+      trackModeStart(
+        "queen_bee"
+      );
+
 
       const active =
         getQueenActiveData();
@@ -3712,12 +3861,6 @@ document
       }
 
 
-      /*
-        SUCCESS
-
-        Lock the newly-added atoms.
-      */
-
       temporary.forEach(
         function (
           item
@@ -3731,6 +3874,25 @@ document
 
 
       queenCorrectCount++;
+
+
+      trackBeeEvent(
+        "challenge_completed",
+        "queen_bee",
+        {
+          molecule_name:
+            match.name,
+
+          formula:
+            match.formula,
+
+          correct_builds:
+            queenCorrectCount,
+
+          center_atom:
+            active.symbol
+        }
+      );
 
 
       reward(
@@ -3850,9 +4012,7 @@ function updateQueenStatus() {
 
 
 /* ==========================================================
-   CLEAR CURRENT QUEEN ATTEMPT
-
-   Keeps completed hive intact.
+   CLEAR QUEEN ATTEMPT
 ========================================================== */
 
 document
@@ -3907,10 +4067,6 @@ document
   );
 
 
-
-/* ==========================================================
-   RESET WHOLE QUEEN HIVE
-========================================================== */
 
 document
   .getElementById(
@@ -4129,6 +4285,11 @@ function placeWorkerParticle(
   particle,
   target
 ) {
+
+  trackModeStart(
+    "worker_bee"
+  );
+
 
   if (
     particle ===
@@ -4383,6 +4544,11 @@ document
     "click",
     function () {
 
+      trackModeStart(
+        "worker_bee"
+      );
+
+
       const challenge =
         workerChallenges[
           workerIndex
@@ -4410,6 +4576,20 @@ document
             challenge.name
             +
             "!";
+
+
+        trackBeeEvent(
+          "challenge_completed",
+          "worker_bee",
+          {
+            challenge_name:
+              challenge.name,
+
+            challenge_index:
+              workerIndex +
+              1
+          }
+        );
 
 
         reward(
@@ -4857,11 +5037,20 @@ function loadPollination() {
 
 
 
+/* ==========================================================
+   POLLINATE
+========================================================== */
+
 function pollinate(
   source,
   ion,
   flower
 ) {
+
+  trackModeStart(
+    "pollination"
+  );
+
 
   if (
     flower.dataset.flowerIon !==
@@ -4954,6 +5143,10 @@ function pollinate(
 
 
 
+/* ==========================================================
+   POLLINATION FORMULA
+========================================================== */
+
 function updatePollinationFormula() {
 
   const challenge =
@@ -5028,6 +5221,11 @@ document
     "click",
     function () {
 
+      trackModeStart(
+        "pollination"
+      );
+
+
       const challenge =
         pollinationChallenges[
           pollinationIndex
@@ -5052,6 +5250,23 @@ document
             challenge.name
             +
             "!";
+
+
+        trackBeeEvent(
+          "challenge_completed",
+          "pollination",
+          {
+            challenge_name:
+              challenge.name,
+
+            formula:
+              challenge.formula,
+
+            challenge_index:
+              pollinationIndex +
+              1
+          }
+        );
 
 
         reward(
@@ -5107,6 +5322,11 @@ document
     "click",
     async function () {
 
+      trackModeStart(
+        "buzzword"
+      );
+
+
       const text =
         "🐝 MOLECULAR BEE • WEEKLY BUZZWORD #001"
         +
@@ -5142,6 +5362,25 @@ document
             }
           );
 
+
+          trackBeeEvent(
+            "puzzle_shared",
+            "buzzword",
+            {
+              puzzle_number:
+                "001",
+
+              compounds_found:
+                buzzFound.length,
+
+              moleculargram:
+                moleculargramTracked,
+
+              share_method:
+                "native"
+            }
+          );
+
         }
 
         else {
@@ -5152,6 +5391,25 @@ document
             "\n"
             +
             window.location.href
+          );
+
+
+          trackBeeEvent(
+            "puzzle_shared",
+            "buzzword",
+            {
+              puzzle_number:
+                "001",
+
+              compounds_found:
+                buzzFound.length,
+
+              moleculargram:
+                moleculargramTracked,
+
+              share_method:
+                "clipboard"
+            }
           );
 
         }
@@ -5188,11 +5446,6 @@ renderBuzzFound();
 
 loadSpelling();
 
-
-/*
-   NEW Queen-Bee generates its own
-   37-cell board and atom bank.
-*/
 
 buildQueenBoard();
 
