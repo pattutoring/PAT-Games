@@ -23,27 +23,37 @@ let player =
 function updatePlayer() {
 
   document
-    .getElementById("xpText")
+    .getElementById(
+      "xpText"
+    )
     .textContent =
-      player.xp + " XP";
+      player.xp +
+      " XP";
 
 
   document
-    .getElementById("streakText")
+    .getElementById(
+      "streakText"
+    )
     .textContent =
       player.streak;
 
 }
 
 
-function reward(amount) {
+function reward(
+  amount
+) {
 
-  player.xp += amount;
+  player.xp +=
+    amount;
 
 
   localStorage.setItem(
     "molecularBeePlayer",
-    JSON.stringify(player)
+    JSON.stringify(
+      player
+    )
   );
 
 
@@ -57,12 +67,18 @@ function reward(amount) {
    NAVIGATION
 ========================================================== */
 
-function showScreen(id) {
+function showScreen(
+  id
+) {
 
   document
-    .querySelectorAll(".screen")
+    .querySelectorAll(
+      ".screen"
+    )
     .forEach(
-      function (screen) {
+      function (
+        screen
+      ) {
 
         screen.classList.remove(
           "active"
@@ -73,10 +89,14 @@ function showScreen(id) {
 
 
   const target =
-    document.getElementById(id);
+    document.getElementById(
+      id
+    );
 
 
-  if (target) {
+  if (
+    target
+  ) {
 
     target.classList.add(
       "active"
@@ -87,8 +107,11 @@ function showScreen(id) {
 
   window.scrollTo(
     {
-      top: 0,
-      behavior: "smooth"
+      top:
+        0,
+
+      behavior:
+        "smooth"
     }
   );
 
@@ -96,9 +119,13 @@ function showScreen(id) {
 
 
 document
-  .querySelectorAll("[data-screen]")
+  .querySelectorAll(
+    "[data-screen]"
+  )
   .forEach(
-    function (button) {
+    function (
+      button
+    ) {
 
       button.addEventListener(
         "click",
@@ -116,7 +143,9 @@ document
 
 
 document
-  .getElementById("buzzwordFeature")
+  .getElementById(
+    "buzzwordFeature"
+  )
   .addEventListener(
     "click",
     function () {
@@ -131,60 +160,109 @@ document
 
 
 /* ==========================================================
-   HELPERS
+   CHEMISTRY HELPERS
 ========================================================== */
 
 const elementNames = {
 
-  H: "Hydrogen",
-  C: "Carbon",
-  N: "Nitrogen",
-  O: "Oxygen",
+  H:
+    "Hydrogen",
 
-  Na: "Sodium",
-  K: "Potassium",
-  Li: "Lithium",
+  C:
+    "Carbon",
 
-  Mg: "Magnesium",
-  Ca: "Calcium",
-  Al: "Aluminum",
+  N:
+    "Nitrogen",
 
-  S: "Sulfur",
-  Cl: "Chlorine",
-  F: "Fluorine",
-  Br: "Bromine",
-  I: "Iodine"
+  O:
+    "Oxygen",
+
+  Na:
+    "Sodium",
+
+  K:
+    "Potassium",
+
+  Li:
+    "Lithium",
+
+  Mg:
+    "Magnesium",
+
+  Ca:
+    "Calcium",
+
+  Al:
+    "Aluminum",
+
+  S:
+    "Sulfur",
+
+  Cl:
+    "Chlorine",
+
+  F:
+    "Fluorine",
+
+  Br:
+    "Bromine",
+
+  I:
+    "Iodine"
 
 };
 
 
 const subscripts = {
 
-  2: "₂",
-  3: "₃",
-  4: "₄",
-  5: "₅",
-  6: "₆",
-  7: "₇",
-  8: "₈",
-  9: "₉"
+  2:
+    "₂",
+
+  3:
+    "₃",
+
+  4:
+    "₄",
+
+  5:
+    "₅",
+
+  6:
+    "₆",
+
+  7:
+    "₇",
+
+  8:
+    "₈",
+
+  9:
+    "₉"
 
 };
 
 
-function formulaFromSequence(sequence) {
+function formulaFromSequence(
+  sequence
+) {
 
-  if (!sequence.length) {
+  if (
+    sequence.length ===
+    0
+  ) {
 
     return "";
 
   }
 
 
-  let output = "";
+  let output =
+    "";
+
 
   let current =
     sequence[0];
+
 
   let count =
     1;
@@ -197,7 +275,8 @@ function formulaFromSequence(sequence) {
   ) {
 
     if (
-      sequence[i] === current
+      sequence[i] ===
+      current
     ) {
 
       count++;
@@ -206,10 +285,13 @@ function formulaFromSequence(sequence) {
 
     else {
 
-      output += current;
+      output +=
+        current;
 
 
-      if (count > 1) {
+      if (
+        count > 1
+      ) {
 
         output +=
           subscripts[count]
@@ -222,7 +304,9 @@ function formulaFromSequence(sequence) {
       current =
         sequence[i];
 
-      count = 1;
+
+      count =
+        1;
 
     }
 
@@ -236,106 +320,93 @@ function formulaFromSequence(sequence) {
 
 
 /* ==========================================================
-   ACTUAL POINTER DRAG ENGINE
+   DRAG ENGINE
 ========================================================== */
 
-let activeDrag = null;
+let activeDrag =
+  null;
 
 
-function startDrag(
-  event,
-  element
+function registerDrag(
+  element,
+  payload
 ) {
 
-  if (
-    event.pointerType === "mouse"
-    &&
-    event.button !== 0
-  ) {
+  element.addEventListener(
+    "pointerdown",
+    function (
+      event
+    ) {
 
-    return;
+      if (
+        event.pointerType ===
+        "mouse"
+        &&
+        event.button !==
+        0
+      ) {
 
-  }
+        return;
+
+      }
 
 
-  event.preventDefault();
+      event.preventDefault();
 
 
-  const rect =
-    element.getBoundingClientRect();
+      const rect =
+        element.getBoundingClientRect();
 
 
-  activeDrag = {
+      activeDrag = {
 
-    source:
-      element,
+        source:
+          element,
 
-    game:
-      element.dataset.game,
+        payload:
+          payload,
 
-    symbol:
-      element.dataset.symbol,
+        startX:
+          event.clientX,
 
-    ion:
-      element.dataset.ion,
+        startY:
+          event.clientY,
 
-    particle:
-      element.dataset.particle,
+        offsetX:
+          event.clientX -
+          rect.left,
 
-    startX:
-      event.clientX,
+        offsetY:
+          event.clientY -
+          rect.top,
 
-    startY:
-      event.clientY,
+        moving:
+          false,
 
-    offsetX:
-      event.clientX -
-      rect.left,
+        ghost:
+          null
 
-    offsetY:
-      event.clientY -
-      rect.top,
+      };
 
-    moving:
-      false,
-
-    ghost:
-      null
-
-  };
+    },
+    {
+      passive:
+        false
+    }
+  );
 
 }
 
 
-document
-  .querySelectorAll(".draggable")
-  .forEach(
-    function (element) {
-
-      element.addEventListener(
-        "pointerdown",
-        function (event) {
-
-          startDrag(
-            event,
-            element
-          );
-
-        },
-        {
-          passive: false
-        }
-      );
-
-    }
-  );
-
-
 document.addEventListener(
   "pointermove",
-  function (event) {
+  function (
+    event
+  ) {
 
-    if (!activeDrag) {
+    if (
+      !activeDrag
+    ) {
 
       return;
 
@@ -357,7 +428,8 @@ document.addEventListener(
     if (
       !activeDrag.moving
       &&
-      distance < 6
+      distance <
+      6
     ) {
 
       return;
@@ -368,19 +440,26 @@ document.addEventListener(
     event.preventDefault();
 
 
-    if (!activeDrag.moving) {
+    if (
+      !activeDrag.moving
+    ) {
 
-      activeDrag.moving = true;
+      activeDrag.moving =
+        true;
 
 
       activeDrag.ghost =
         activeDrag.source
-          .cloneNode(true);
+          .cloneNode(
+            true
+          );
 
 
       activeDrag.ghost
         .classList
-        .add("drag-ghost");
+        .add(
+          "drag-ghost"
+        );
 
 
       const rect =
@@ -389,11 +468,13 @@ document.addEventListener(
 
 
       activeDrag.ghost.style.width =
-        rect.width + "px";
+        rect.width +
+        "px";
 
 
       activeDrag.ghost.style.height =
-        rect.height + "px";
+        rect.height +
+        "px";
 
 
       document.body.appendChild(
@@ -425,17 +506,20 @@ document.addEventListener(
       "px";
 
 
-    clearHover();
+    clearDragHover();
 
 
     const target =
-      findTarget(
+      findDropTarget(
         event.clientX,
-        event.clientY
+        event.clientY,
+        activeDrag.payload
       );
 
 
-    if (target) {
+    if (
+      target
+    ) {
 
       target.classList.add(
         "drag-hover"
@@ -445,62 +529,72 @@ document.addEventListener(
 
   },
   {
-    passive: false
+    passive:
+      false
   }
 );
 
 
 document.addEventListener(
   "pointerup",
-  function (event) {
+  function (
+    event
+  ) {
 
-    if (!activeDrag) {
+    if (
+      !activeDrag
+    ) {
 
       return;
 
     }
 
 
-    const oldDrag =
+    const drag =
       activeDrag;
 
 
     const target =
-      oldDrag.moving
+      drag.moving
       ?
-        findTarget(
+        findDropTarget(
           event.clientX,
-          event.clientY
+          event.clientY,
+          drag.payload
         )
       :
         null;
 
 
-    if (oldDrag.ghost) {
+    if (
+      drag.ghost
+    ) {
 
-      oldDrag.ghost.remove();
+      drag.ghost.remove();
 
     }
 
 
-    oldDrag.source.style.opacity =
+    drag.source.style.opacity =
       "";
 
 
-    clearHover();
+    clearDragHover();
 
 
-    activeDrag = null;
+    activeDrag =
+      null;
 
 
     if (
-      oldDrag.moving
+      drag.moving
       &&
       target
     ) {
 
-      completeDrop(
-        oldDrag,
+      handleDrop(
+        drag.source,
+        drag.payload,
         target
       );
 
@@ -510,24 +604,64 @@ document.addEventListener(
     }
 
 
-    /*
-      TAP FALLBACK
-    */
+    if (
+      !drag.moving
+    ) {
 
-    tapFallback(oldDrag);
+      handleTap(
+        drag.source,
+        drag.payload
+      );
+
+    }
 
   }
 );
 
 
-function clearHover() {
+document.addEventListener(
+  "pointercancel",
+  function () {
+
+    if (
+      activeDrag
+    ) {
+
+      if (
+        activeDrag.ghost
+      ) {
+
+        activeDrag.ghost.remove();
+
+      }
+
+
+      activeDrag.source.style.opacity =
+        "";
+
+    }
+
+
+    activeDrag =
+      null;
+
+
+    clearDragHover();
+
+  }
+);
+
+
+function clearDragHover() {
 
   document
     .querySelectorAll(
       ".drag-hover"
     )
     .forEach(
-      function (item) {
+      function (
+        item
+      ) {
 
         item.classList.remove(
           "drag-hover"
@@ -539,104 +673,210 @@ function clearHover() {
 }
 
 
+function pointInside(
+  x,
+  y,
+  element
+) {
 
-/* ==========================================================
-   DROP TARGET DETECTION
-========================================================== */
-
-function findTarget(x,y) {
-
-  const element =
-    document.elementFromPoint(
-      x,
-      y
-    );
+  const rect =
+    element.getBoundingClientRect();
 
 
-  if (!element) {
+  return (
+    x >=
+    rect.left
+    &&
+    x <=
+    rect.right
+    &&
+    y >=
+    rect.top
+    &&
+    y <=
+    rect.bottom
+  );
 
-    return null;
-
-  }
+}
 
 
-  /*
-    SPELLING
-  */
+function findDropTarget(
+  x,
+  y,
+  payload
+) {
 
   if (
-    activeDrag.game ===
+    payload.game ===
     "spelling"
   ) {
 
-    return element.closest(
-      ".spelling-drop:not(.filled)"
+    const slots =
+      Array.from(
+        document.querySelectorAll(
+          ".spelling-drop:not(.filled)"
+        )
+      );
+
+
+    return (
+      slots.find(
+        function (
+          slot
+        ) {
+
+          return pointInside(
+            x,
+            y,
+            slot
+          );
+
+        }
+      )
+      ||
+      null
     );
 
   }
 
 
-  /*
-    QUEEN
-  */
-
   if (
-    activeDrag.game ===
+    payload.game ===
     "queen"
   ) {
 
-    return element.closest(
-      ".queen-slot:not(.queen-center):not(.filled)"
+    const slots =
+      Array.from(
+        document.querySelectorAll(
+          ".queen-slot:not(.queen-center):not(.filled)"
+        )
+      );
+
+
+    return (
+      slots.find(
+        function (
+          slot
+        ) {
+
+          return pointInside(
+            x,
+            y,
+            slot
+          );
+
+        }
+      )
+      ||
+      null
     );
 
   }
 
 
-  /*
-    POLLINATION
-  */
-
   if (
-    activeDrag.game ===
-    "pollination"
-  ) {
-
-    return element.closest(
-      ".flower"
-    );
-
-  }
-
-
-  /*
-    WORKER
-  */
-
-  if (
-    activeDrag.game ===
+    payload.game ===
     "worker"
   ) {
 
     if (
-      activeDrag.particle ===
+      payload.particle ===
       "electron"
     ) {
 
-      return (
-        element.closest(
-          "#innerShell"
+      const inner =
+        document.getElementById(
+          "innerShell"
+        );
+
+
+      const outer =
+        document.getElementById(
+          "outerShell"
+        );
+
+
+      if (
+        pointInside(
+          x,
+          y,
+          inner
         )
-        ||
-        element.closest(
-          "#outerShell"
+      ) {
+
+        return inner;
+
+      }
+
+
+      if (
+        pointInside(
+          x,
+          y,
+          outer
         )
-      );
+      ) {
+
+        return outer;
+
+      }
 
     }
 
+    else {
 
-    return element.closest(
-      "#nucleus"
+      const nucleus =
+        document.getElementById(
+          "nucleus"
+        );
+
+
+      if (
+        pointInside(
+          x,
+          y,
+          nucleus
+        )
+      ) {
+
+        return nucleus;
+
+      }
+
+    }
+
+  }
+
+
+  if (
+    payload.game ===
+    "pollination"
+  ) {
+
+    const flowers =
+      Array.from(
+        document.querySelectorAll(
+          ".flower"
+        )
+      );
+
+
+    return (
+      flowers.find(
+        function (
+          flower
+        ) {
+
+          return pointInside(
+            x,
+            y,
+            flower
+          );
+
+        }
+      )
+      ||
+      null
     );
 
   }
@@ -647,65 +887,61 @@ function findTarget(x,y) {
 }
 
 
-
-/* ==========================================================
-   DROP ROUTING
-========================================================== */
-
-function completeDrop(
-  drag,
+function handleDrop(
+  source,
+  payload,
   target
 ) {
 
   if (
-    drag.game ===
+    payload.game ===
     "spelling"
   ) {
 
     placeSpelling(
-      drag.source,
-      drag.symbol,
+      source,
+      payload.symbol,
       target
     );
 
   }
 
 
-  else if (
-    drag.game ===
+  if (
+    payload.game ===
     "queen"
   ) {
 
     placeQueen(
-      drag.source,
-      drag.symbol,
+      source,
+      payload.symbol,
       target
     );
 
   }
 
 
-  else if (
-    drag.game ===
+  if (
+    payload.game ===
+    "worker"
+  ) {
+
+    placeWorkerParticle(
+      payload.particle,
+      target
+    );
+
+  }
+
+
+  if (
+    payload.game ===
     "pollination"
   ) {
 
     pollinate(
-      drag.source,
-      drag.ion,
-      target
-    );
-
-  }
-
-
-  else if (
-    drag.game ===
-    "worker"
-  ) {
-
-    placeParticle(
-      drag.particle,
+      source,
+      payload.ion,
       target
     );
 
@@ -714,15 +950,13 @@ function completeDrop(
 }
 
 
-
-/* ==========================================================
-   TAP FALLBACK
-========================================================== */
-
-function tapFallback(drag) {
+function handleTap(
+  source,
+  payload
+) {
 
   if (
-    drag.game ===
+    payload.game ===
     "spelling"
   ) {
 
@@ -732,11 +966,13 @@ function tapFallback(drag) {
       );
 
 
-    if (target) {
+    if (
+      target
+    ) {
 
       placeSpelling(
-        drag.source,
-        drag.symbol,
+        source,
+        payload.symbol,
         target
       );
 
@@ -745,8 +981,8 @@ function tapFallback(drag) {
   }
 
 
-  else if (
-    drag.game ===
+  if (
+    payload.game ===
     "queen"
   ) {
 
@@ -756,11 +992,13 @@ function tapFallback(drag) {
       );
 
 
-    if (target) {
+    if (
+      target
+    ) {
 
       placeQueen(
-        drag.source,
-        drag.symbol,
+        source,
+        payload.symbol,
         target
       );
 
@@ -769,29 +1007,40 @@ function tapFallback(drag) {
   }
 
 
-  else if (
-    drag.game ===
+  if (
+    payload.game ===
     "worker"
   ) {
 
     if (
-      drag.particle ===
+      payload.particle ===
       "electron"
     ) {
 
-      placeParticle(
+      const target =
+        workerElectrons <
+        2
+        ?
+          document.getElementById(
+            "innerShell"
+          )
+        :
+          document.getElementById(
+            "outerShell"
+          );
+
+
+      placeWorkerParticle(
         "electron",
-        document.getElementById(
-          "innerShell"
-        )
+        target
       );
 
     }
 
     else {
 
-      placeParticle(
-        drag.particle,
+      placeWorkerParticle(
+        payload.particle,
         document.getElementById(
           "nucleus"
         )
@@ -802,27 +1051,29 @@ function tapFallback(drag) {
   }
 
 
-  else if (
-    drag.game ===
+  if (
+    payload.game ===
     "pollination"
   ) {
 
-    const target =
+    const flower =
       document.querySelector(
-        '.flower[data-flower-ion="'
+        '[data-flower-ion="'
         +
-        drag.ion
+        payload.ion
         +
         '"]'
       );
 
 
-    if (target) {
+    if (
+      flower
+    ) {
 
       pollinate(
-        drag.source,
-        drag.ion,
-        target
+        source,
+        payload.ion,
+        flower
       );
 
     }
@@ -837,115 +1088,176 @@ function tapFallback(drag) {
    BUZZWORD
 ========================================================== */
 
-let buzzSequence = [];
-
-let buzzFound = [];
-
-
-const buzzAnswers = [
-
-  {
-    sequence:
-      ["C","O"],
-
-    formula:
-      "CO",
-
-    name:
-      "Carbon Monoxide"
-  },
+const buzzHiveElements =
+  [
+    "Cl",
+    "H",
+    "O",
+    "N",
+    "C",
+    "S",
+    "Na"
+  ];
 
 
-  {
-    sequence:
-      ["C","O","O"],
+const buzzAnswers =
+  [
 
-    formula:
-      "CO₂",
+    {
+      sequence:
+        [
+          "C",
+          "O"
+        ],
 
-    name:
-      "Carbon Dioxide"
-  },
+      formula:
+        "CO",
 
-
-  {
-    sequence:
-      ["C","H","H","H","H"],
-
-    formula:
-      "CH₄",
-
-    name:
-      "Methane"
-  },
+      name:
+        "Carbon Monoxide"
+    },
 
 
-  {
-    sequence:
-      ["C","S","S"],
+    {
+      sequence:
+        [
+          "C",
+          "O",
+          "O"
+        ],
 
-    formula:
-      "CS₂",
+      formula:
+        "CO₂",
 
-    name:
-      "Carbon Disulfide"
-  },
-
-
-  {
-    sequence:
-      ["C","Cl","Cl","Cl","Cl"],
-
-    formula:
-      "CCl₄",
-
-    name:
-      "Carbon Tetrachloride"
-  },
+      name:
+        "Carbon Dioxide"
+    },
 
 
-  {
-    sequence:
-      ["H","C","N"],
+    {
+      sequence:
+        [
+          "C",
+          "H",
+          "H",
+          "H",
+          "H"
+        ],
 
-    formula:
-      "HCN",
+      formula:
+        "CH₄",
 
-    name:
-      "Hydrogen Cyanide"
-  },
-
-
-  {
-    sequence:
-      ["H","H","C","O","O","O"],
-
-    formula:
-      "H₂CO₃",
-
-    name:
-      "Carbonic Acid"
-  },
+      name:
+        "Methane"
+    },
 
 
-  {
-    sequence:
-      ["Na","Na","C","O","O","O"],
+    {
+      sequence:
+        [
+          "C",
+          "S",
+          "S"
+        ],
 
-    formula:
-      "Na₂CO₃",
+      formula:
+        "CS₂",
 
-    name:
-      "Sodium Carbonate"
-  }
+      name:
+        "Carbon Disulfide"
+    },
 
-];
+
+    {
+      sequence:
+        [
+          "C",
+          "Cl",
+          "Cl",
+          "Cl",
+          "Cl"
+        ],
+
+      formula:
+        "CCl₄",
+
+      name:
+        "Carbon Tetrachloride"
+    },
+
+
+    {
+      sequence:
+        [
+          "H",
+          "C",
+          "N"
+        ],
+
+      formula:
+        "HCN",
+
+      name:
+        "Hydrogen Cyanide"
+    },
+
+
+    {
+      sequence:
+        [
+          "H",
+          "H",
+          "C",
+          "O",
+          "O",
+          "O"
+        ],
+
+      formula:
+        "H₂CO₃",
+
+      name:
+        "Carbonic Acid"
+    },
+
+
+    {
+      sequence:
+        [
+          "Na",
+          "Na",
+          "C",
+          "O",
+          "O",
+          "O"
+        ],
+
+      formula:
+        "Na₂CO₃",
+
+      name:
+        "Sodium Carbonate"
+    }
+
+  ];
+
+
+let buzzSequence =
+  [];
+
+
+let buzzFound =
+  [];
 
 
 document
-  .querySelectorAll("[data-buzz]")
+  .querySelectorAll(
+    "[data-buzz]"
+  )
   .forEach(
-    function (button) {
+    function (
+      button
+    ) {
 
       button.addEventListener(
         "click",
@@ -996,7 +1308,10 @@ function renderBuzz() {
     );
 
 
-  if (!buzzSequence.length) {
+  if (
+    buzzSequence.length ===
+    0
+  ) {
 
     formula.textContent =
       "Tap an element to begin";
@@ -1030,29 +1345,38 @@ function renderBuzz() {
   words.textContent =
     buzzSequence
       .map(
-        function (symbol) {
+        function (
+          symbol
+        ) {
 
           return (
-            elementNames[symbol]
+            elementNames[
+              symbol
+            ]
             ||
             symbol
           );
 
         }
       )
-      .join(" → ");
+      .join(
+        " → "
+      );
 
 }
 
 
 document
-  .getElementById("buzzUndo")
+  .getElementById(
+    "buzzUndo"
+  )
   .addEventListener(
     "click",
     function () {
 
       buzzSequence.pop();
 
+
       renderBuzz();
 
     }
@@ -1060,12 +1384,16 @@ document
 
 
 document
-  .getElementById("buzzClear")
+  .getElementById(
+    "buzzClear"
+  )
   .addEventListener(
     "click",
     function () {
 
-      buzzSequence = [];
+      buzzSequence =
+        [];
+
 
       renderBuzz();
 
@@ -1074,7 +1402,9 @@ document
 
 
 document
-  .getElementById("buzzSubmit")
+  .getElementById(
+    "buzzSubmit"
+  )
   .addEventListener(
     "click",
     function () {
@@ -1086,11 +1416,13 @@ document
 
 
       if (
-        !buzzSequence.includes("C")
+        !buzzSequence.includes(
+          "C"
+        )
       ) {
 
         feedback.textContent =
-          "Every answer must use Carbon, the gold center element.";
+          "👑 Every Buzzword compound must use Carbon, the gold center element.";
 
 
         return;
@@ -1100,22 +1432,30 @@ document
 
       const answer =
         buzzAnswers.find(
-          function (item) {
+          function (
+            item
+          ) {
 
             return (
-              item.sequence.join("|")
+              item.sequence.join(
+                "|"
+              )
               ===
-              buzzSequence.join("|")
+              buzzSequence.join(
+                "|"
+              )
             );
 
           }
         );
 
 
-      if (!answer) {
+      if (
+        !answer
+      ) {
 
         feedback.textContent =
-          "That combination is not one of this week's compounds.";
+          "That combination is not one of this week's accepted compounds.";
 
 
         return;
@@ -1123,9 +1463,11 @@ document
       }
 
 
-      if (
+      const duplicate =
         buzzFound.some(
-          function (item) {
+          function (
+            item
+          ) {
 
             return (
               item.formula ===
@@ -1133,7 +1475,11 @@ document
             );
 
           }
-        )
+        );
+
+
+      if (
+        duplicate
       ) {
 
         feedback.textContent =
@@ -1159,24 +1505,67 @@ document
         +
         answer.name
         +
-        "!";
+        " found!";
 
 
-      reward(10);
+      reward(
+        10
+      );
 
 
-      renderFoundBuzz();
+      const moleculargram =
+        buzzHiveElements.every(
+          function (
+            symbol
+          ) {
+
+            return buzzSequence.includes(
+              symbol
+            );
+
+          }
+        );
 
 
-      buzzSequence = [];
+      if (
+        moleculargram
+      ) {
+
+        document
+          .getElementById(
+            "moleculargram"
+          )
+          .classList
+          .add(
+            "visible"
+          );
+
+
+        feedback.textContent =
+          "🐝👑 MOLECULARGRAM! Every hive element was used!";
+
+
+        reward(
+          25
+        );
+
+      }
+
+
+      buzzSequence =
+        [];
+
 
       renderBuzz();
+
+
+      renderBuzzFound();
 
     }
   );
 
 
-function renderFoundBuzz() {
+function renderBuzzFound() {
 
   const list =
     document.getElementById(
@@ -1184,7 +1573,8 @@ function renderFoundBuzz() {
     );
 
 
-  list.innerHTML = "";
+  list.innerHTML =
+    "";
 
 
   document
@@ -1195,8 +1585,24 @@ function renderFoundBuzz() {
       buzzFound.length;
 
 
+  if (
+    buzzFound.length ===
+    0
+  ) {
+
+    list.innerHTML =
+      "<em>Your discoveries will appear here.</em>";
+
+
+    return;
+
+  }
+
+
   buzzFound.forEach(
-    function (answer) {
+    function (
+      answer
+    ) {
 
       const row =
         document.createElement(
@@ -1222,7 +1628,9 @@ function renderFoundBuzz() {
         "</span>";
 
 
-      list.appendChild(row);
+      list.appendChild(
+        row
+      );
 
     }
   );
@@ -1235,47 +1643,297 @@ function renderFoundBuzz() {
    SPELLING BEE
 ========================================================== */
 
-const spellingChallenges = [
+const spellingChallenges =
+  [
 
-  {
-    name:
-      "water",
+    {
+      name:
+        "water",
 
-    answer:
-      ["H","H","O"],
+      answer:
+        [
+          "H",
+          "H",
+          "O"
+        ],
 
-    bank:
-      ["H","H","O","C","N"]
-  },
-
-
-  {
-    name:
-      "carbon dioxide",
-
-    answer:
-      ["C","O","O"],
-
-    bank:
-      ["C","O","O","H","N"]
-  },
-
-
-  {
-    name:
-      "ammonia",
-
-    answer:
-      ["N","H","H","H"],
-
-    bank:
-      ["N","H","H","H","O","C"]
-  }
-
-];
+      bank:
+        [
+          "H",
+          "H",
+          "O",
+          "C",
+          "N"
+        ]
+    },
 
 
-let spellingIndex = 0;
+    {
+      name:
+        "carbon dioxide",
+
+      answer:
+        [
+          "C",
+          "O",
+          "O"
+        ],
+
+      bank:
+        [
+          "C",
+          "O",
+          "O",
+          "H",
+          "N"
+        ]
+    },
+
+
+    {
+      name:
+        "ammonia",
+
+      answer:
+        [
+          "N",
+          "H",
+          "H",
+          "H"
+        ],
+
+      bank:
+        [
+          "N",
+          "H",
+          "H",
+          "H",
+          "O",
+          "C"
+        ]
+    },
+
+
+    {
+      name:
+        "methane",
+
+      answer:
+        [
+          "C",
+          "H",
+          "H",
+          "H",
+          "H"
+        ],
+
+      bank:
+        [
+          "C",
+          "H",
+          "H",
+          "H",
+          "H",
+          "O",
+          "N"
+        ]
+    }
+
+  ];
+
+
+let spellingIndex =
+  0;
+
+
+function createAtomTile(
+  symbol,
+  game,
+  sourceId
+) {
+
+  const tile =
+    document.createElement(
+      "button"
+    );
+
+
+  tile.type =
+    "button";
+
+
+  tile.className =
+    "atom-hex";
+
+
+  tile.dataset.sourceId =
+    sourceId;
+
+
+  tile.innerHTML =
+    "<strong>"
+    +
+    symbol
+    +
+    "</strong>"
+    +
+    "<small>"
+    +
+    (
+      elementNames[
+        symbol
+      ]
+      ||
+      symbol
+    )
+    +
+    "</small>";
+
+
+  registerDrag(
+    tile,
+    {
+      game:
+        game,
+
+      symbol:
+        symbol
+    }
+  );
+
+
+  return tile;
+
+}
+
+
+function loadSpelling() {
+
+  const challenge =
+    spellingChallenges[
+      spellingIndex
+    ];
+
+
+  document
+    .getElementById(
+      "spellingPrompt"
+    )
+    .textContent =
+      "Build "
+      +
+      challenge.name
+      +
+      ".";
+
+
+  document
+    .getElementById(
+      "spellingFeedback"
+    )
+    .textContent =
+      "";
+
+
+  const slots =
+    document.getElementById(
+      "spellingSlots"
+    );
+
+
+  slots.innerHTML =
+    "";
+
+
+  challenge.answer.forEach(
+    function (
+      unused,
+      index
+    ) {
+
+      const slot =
+        document.createElement(
+          "button"
+        );
+
+
+      slot.type =
+        "button";
+
+
+      slot.className =
+        "spelling-drop";
+
+
+      slot.dataset.slot =
+        index;
+
+
+      slot.dataset.symbol =
+        "";
+
+
+      slot.addEventListener(
+        "click",
+        function () {
+
+          if (
+            slot.classList.contains(
+              "filled"
+            )
+          ) {
+
+            returnSpelling(
+              slot
+            );
+
+          }
+
+        }
+      );
+
+
+      slots.appendChild(
+        slot
+      );
+
+    }
+  );
+
+
+  const bank =
+    document.getElementById(
+      "spellingBank"
+    );
+
+
+  bank.innerHTML =
+    "";
+
+
+  challenge.bank.forEach(
+    function (
+      symbol,
+      index
+    ) {
+
+      bank.appendChild(
+        createAtomTile(
+          symbol,
+          "spelling",
+          "spelling-"
+          +
+          index
+        )
+      );
+
+    }
+  );
+
+
+  updateSpellingFormula();
+
+}
 
 
 function placeSpelling(
@@ -1304,8 +1962,8 @@ function placeSpelling(
     symbol;
 
 
-  target.dataset.source =
-    source.dataset.source;
+  target.dataset.sourceId =
+    source.dataset.sourceId;
 
 
   target.textContent =
@@ -1321,7 +1979,53 @@ function placeSpelling(
 }
 
 
-function spellingSequence() {
+function returnSpelling(
+  slot
+) {
+
+  const source =
+    document.querySelector(
+      '[data-source-id="'
+      +
+      slot.dataset.sourceId
+      +
+      '"]'
+    );
+
+
+  if (
+    source
+  ) {
+
+    source.style.visibility =
+      "";
+
+  }
+
+
+  slot.classList.remove(
+    "filled"
+  );
+
+
+  slot.dataset.symbol =
+    "";
+
+
+  slot.dataset.sourceId =
+    "";
+
+
+  slot.textContent =
+    "";
+
+
+  updateSpellingFormula();
+
+}
+
+
+function getSpellingSequence() {
 
   return Array
     .from(
@@ -1330,7 +2034,9 @@ function spellingSequence() {
       )
     )
     .map(
-      function (slot) {
+      function (
+        slot
+      ) {
 
         return slot.dataset.symbol
           ||
@@ -1338,7 +2044,9 @@ function spellingSequence() {
 
       }
     )
-    .filter(Boolean);
+    .filter(
+      Boolean
+    );
 
 }
 
@@ -1346,7 +2054,7 @@ function spellingSequence() {
 function updateSpellingFormula() {
 
   const sequence =
-    spellingSequence();
+    getSpellingSequence();
 
 
   const preview =
@@ -1355,7 +2063,10 @@ function updateSpellingFormula() {
     );
 
 
-  if (!sequence.length) {
+  if (
+    sequence.length ===
+    0
+  ) {
 
     preview.textContent =
       "Chemical formula";
@@ -1371,198 +2082,15 @@ function updateSpellingFormula() {
   }
 
 
-  preview.classList.remove(
-    "empty"
-  );
-
-
   preview.textContent =
     formulaFromSequence(
       sequence
     );
 
-}
 
-
-function resetSpelling() {
-
-  loadSpellingChallenge(
-    spellingIndex
+  preview.classList.remove(
+    "empty"
   );
-
-}
-
-
-function loadSpellingChallenge(index) {
-
-  const challenge =
-    spellingChallenges[index];
-
-
-  document
-    .getElementById(
-      "spellingPrompt"
-    )
-    .textContent =
-      "Build "
-      +
-      challenge.name
-      +
-      ".";
-
-
-  const slots =
-    document.getElementById(
-      "spellingSlots"
-    );
-
-
-  slots.innerHTML = "";
-
-
-  challenge.answer.forEach(
-    function (
-      unused,
-      slotIndex
-    ) {
-
-      const slot =
-        document.createElement(
-          "button"
-        );
-
-
-      slot.type =
-        "button";
-
-
-      slot.className =
-        "drop-hex spelling-drop";
-
-
-      slot.dataset.slot =
-        slotIndex;
-
-
-      slots.appendChild(
-        slot
-      );
-
-    }
-  );
-
-
-  const bank =
-    document.getElementById(
-      "spellingBank"
-    );
-
-
-  bank.innerHTML = "";
-
-
-  challenge.bank.forEach(
-    function (
-      symbol,
-      bankIndex
-    ) {
-
-      const tile =
-        buildAtomTile(
-          symbol,
-          "spelling",
-          "s"
-          +
-          bankIndex
-        );
-
-
-      bank.appendChild(tile);
-
-    }
-  );
-
-
-  document
-    .getElementById(
-      "spellingFeedback"
-    )
-    .textContent =
-      "";
-
-
-  updateSpellingFormula();
-
-}
-
-
-function buildAtomTile(
-  symbol,
-  game,
-  sourceId
-) {
-
-  const tile =
-    document.createElement(
-      "button"
-    );
-
-
-  tile.type =
-    "button";
-
-
-  tile.className =
-    "atom-hex draggable";
-
-
-  tile.dataset.game =
-    game;
-
-
-  tile.dataset.symbol =
-    symbol;
-
-
-  tile.dataset.source =
-    sourceId;
-
-
-  tile.innerHTML =
-    "<strong>"
-    +
-    symbol
-    +
-    "</strong>"
-    +
-    "<small>"
-    +
-    (
-      elementNames[symbol]
-      ||
-      symbol
-    )
-    +
-    "</small>";
-
-
-  tile.addEventListener(
-    "pointerdown",
-    function (event) {
-
-      startDrag(
-        event,
-        tile
-      );
-
-    },
-    {
-      passive: false
-    }
-  );
-
-
-  return tile;
 
 }
 
@@ -1583,52 +2111,18 @@ document
         );
 
 
-      if (!filled.length) {
+      if (
+        filled.length
+      ) {
 
-        return;
-
-      }
-
-
-      const slot =
-        filled[
-          filled.length - 1
-        ];
-
-
-      const source =
-        document.querySelector(
-          '[data-source="'
-          +
-          slot.dataset.source
-          +
-          '"]'
+        returnSpelling(
+          filled[
+            filled.length -
+            1
+          ]
         );
 
-
-      if (source) {
-
-        source.style.visibility =
-          "";
-
       }
-
-
-      slot.classList.remove(
-        "filled"
-      );
-
-
-      slot.textContent =
-        "";
-
-
-      delete slot.dataset.symbol;
-
-      delete slot.dataset.source;
-
-
-      updateSpellingFormula();
 
     }
   );
@@ -1640,7 +2134,7 @@ document
   )
   .addEventListener(
     "click",
-    resetSpelling
+    loadSpelling
   );
 
 
@@ -1659,11 +2153,15 @@ document
 
 
       if (
-        spellingSequence()
-          .join("|")
+        getSpellingSequence()
+          .join(
+            "|"
+          )
         ===
         challenge.answer
-          .join("|")
+          .join(
+            "|"
+          )
       ) {
 
         document
@@ -1680,7 +2178,9 @@ document
             "!";
 
 
-        reward(10);
+        reward(
+          10
+        );
 
 
         setTimeout(
@@ -1688,18 +2188,17 @@ document
 
             spellingIndex =
               (
-                spellingIndex + 1
+                spellingIndex +
+                1
               )
               %
               spellingChallenges.length;
 
 
-            loadSpellingChallenge(
-              spellingIndex
-            );
+            loadSpelling();
 
           },
-          1100
+          1000
         );
 
       }
@@ -1711,7 +2210,7 @@ document
             "spellingFeedback"
           )
           .textContent =
-            "Not quite. Move the atoms into the correct formula order.";
+            "Not quite. Rearrange the atom honeycombs and try again.";
 
       }
 
@@ -1724,56 +2223,241 @@ document
    QUEEN BEE
 ========================================================== */
 
-const queenChallenges = [
+const queenChallenges =
+  [
 
-  {
-    center:
-      "O",
+    {
+      center:
+        "O",
 
-    name:
-      "water",
+      name:
+        "water",
 
-    answer:
-      ["H","H"],
+      formula:
+        "H₂O",
 
-    bank:
-      ["H","H","C","N","Na"]
-  },
+      answer:
+        [
+          "H",
+          "H"
+        ],
 
-
-  {
-    center:
-      "C",
-
-    name:
-      "carbon dioxide",
-
-    answer:
-      ["O","O"],
-
-    bank:
-      ["O","O","H","N","Cl"]
-  },
+      bank:
+        [
+          "H",
+          "H",
+          "C",
+          "N",
+          "Na"
+        ]
+    },
 
 
-  {
-    center:
-      "N",
+    {
+      center:
+        "C",
 
-    name:
-      "ammonia",
+      name:
+        "carbon dioxide",
 
-    answer:
-      ["H","H","H"],
+      formula:
+        "CO₂",
 
-    bank:
-      ["H","H","H","O","C"]
-  }
+      answer:
+        [
+          "O",
+          "O"
+        ],
 
-];
+      bank:
+        [
+          "O",
+          "O",
+          "H",
+          "N",
+          "Cl"
+        ]
+    },
 
 
-let queenIndex = 0;
+    {
+      center:
+        "N",
+
+      name:
+        "ammonia",
+
+      formula:
+        "NH₃",
+
+      answer:
+        [
+          "H",
+          "H",
+          "H"
+        ],
+
+      bank:
+        [
+          "H",
+          "H",
+          "H",
+          "O",
+          "C"
+        ]
+    },
+
+
+    {
+      center:
+        "C",
+
+      name:
+        "methane",
+
+      formula:
+        "CH₄",
+
+      answer:
+        [
+          "H",
+          "H",
+          "H",
+          "H"
+        ],
+
+      bank:
+        [
+          "H",
+          "H",
+          "H",
+          "H",
+          "O",
+          "N"
+        ]
+    }
+
+  ];
+
+
+let queenIndex =
+  0;
+
+
+function loadQueen() {
+
+  const challenge =
+    queenChallenges[
+      queenIndex
+    ];
+
+
+  document
+    .getElementById(
+      "queenPrompt"
+    )
+    .textContent =
+      "Build "
+      +
+      challenge.name
+      +
+      " around Queen "
+      +
+      (
+        elementNames[
+          challenge.center
+        ]
+        ||
+        challenge.center
+      )
+      +
+      ".";
+
+
+  document
+    .getElementById(
+      "queenFeedback"
+    )
+    .textContent =
+      "";
+
+
+  document
+    .querySelectorAll(
+      ".queen-slot:not(.queen-center)"
+    )
+    .forEach(
+      function (
+        slot
+      ) {
+
+        slot.classList.remove(
+          "filled"
+        );
+
+
+        slot.dataset.symbol =
+          "";
+
+
+        slot.dataset.sourceId =
+          "";
+
+
+        slot.textContent =
+          "";
+
+      }
+    );
+
+
+  document
+    .getElementById(
+      "queenCenter"
+    )
+    .innerHTML =
+      "<span>👑</span>"
+      +
+      "<strong>"
+      +
+      challenge.center
+      +
+      "</strong>";
+
+
+  const bank =
+    document.getElementById(
+      "queenBank"
+    );
+
+
+  bank.innerHTML =
+    "";
+
+
+  challenge.bank.forEach(
+    function (
+      symbol,
+      index
+    ) {
+
+      bank.appendChild(
+        createAtomTile(
+          symbol,
+          "queen",
+          "queen-"
+          +
+          index
+        )
+      );
+
+    }
+  );
+
+
+  updateQueenFormula();
+
+}
 
 
 function placeQueen(
@@ -1802,8 +2486,8 @@ function placeQueen(
     symbol;
 
 
-  target.dataset.source =
-    source.dataset.source;
+  target.dataset.sourceId =
+    source.dataset.sourceId;
 
 
   target.textContent =
@@ -1819,7 +2503,77 @@ function placeQueen(
 }
 
 
-function queenAtoms() {
+document
+  .querySelectorAll(
+    ".queen-slot:not(.queen-center)"
+  )
+  .forEach(
+    function (
+      slot
+    ) {
+
+      slot.addEventListener(
+        "click",
+        function () {
+
+          if (
+            !slot.classList.contains(
+              "filled"
+            )
+          ) {
+
+            return;
+
+          }
+
+
+          const source =
+            document.querySelector(
+              '[data-source-id="'
+              +
+              slot.dataset.sourceId
+              +
+              '"]'
+            );
+
+
+          if (
+            source
+          ) {
+
+            source.style.visibility =
+              "";
+
+          }
+
+
+          slot.classList.remove(
+            "filled"
+          );
+
+
+          slot.dataset.symbol =
+            "";
+
+
+          slot.dataset.sourceId =
+            "";
+
+
+          slot.textContent =
+            "";
+
+
+          updateQueenFormula();
+
+        }
+      );
+
+    }
+  );
+
+
+function getQueenAtoms() {
 
   return Array
     .from(
@@ -1828,13 +2582,17 @@ function queenAtoms() {
       )
     )
     .map(
-      function (slot) {
+      function (
+        slot
+      ) {
 
         return slot.dataset.symbol;
 
       }
     )
-    .filter(Boolean);
+    .filter(
+      Boolean
+    );
 
 }
 
@@ -1848,7 +2606,7 @@ function updateQueenFormula() {
 
 
   const atoms =
-    queenAtoms();
+    getQueenAtoms();
 
 
   const preview =
@@ -1857,10 +2615,13 @@ function updateQueenFormula() {
     );
 
 
-  if (!atoms.length) {
+  if (
+    atoms.length ===
+    0
+  ) {
 
     preview.textContent =
-      "Grow outward from "
+      "Build around Queen "
       +
       challenge.center;
 
@@ -1875,122 +2636,19 @@ function updateQueenFormula() {
   }
 
 
-  preview.classList.remove(
-    "empty"
-  );
-
-
   preview.textContent =
     challenge.center
     +
     " + "
     +
-    atoms.join(" • ");
-
-}
-
-
-function loadQueenChallenge(index) {
-
-  const challenge =
-    queenChallenges[index];
-
-
-  document
-    .getElementById(
-      "queenPrompt"
-    )
-    .textContent =
-      "Build "
-      +
-      challenge.name
-      +
-      " around the Queen "
-      +
-      challenge.center
-      +
-      ".";
-
-
-  document
-    .querySelectorAll(
-      ".queen-slot:not(.queen-center)"
-    )
-    .forEach(
-      function (slot) {
-
-        slot.classList.remove(
-          "filled"
-        );
-
-
-        slot.textContent =
-          "";
-
-
-        delete slot.dataset.symbol;
-
-        delete slot.dataset.source;
-
-      }
+    atoms.join(
+      " • "
     );
 
 
-  const center =
-    document.querySelector(
-      ".queen-center"
-    );
-
-
-  center.innerHTML =
-    "<span>👑</span>"
-    +
-    "<strong>"
-    +
-    challenge.center
-    +
-    "</strong>";
-
-
-  const bank =
-    document.getElementById(
-      "queenBank"
-    );
-
-
-  bank.innerHTML =
-    "";
-
-
-  challenge.bank.forEach(
-    function (
-      symbol,
-      bankIndex
-    ) {
-
-      bank.appendChild(
-        buildAtomTile(
-          symbol,
-          "queen",
-          "q"
-          +
-          bankIndex
-        )
-      );
-
-    }
+  preview.classList.remove(
+    "empty"
   );
-
-
-  document
-    .getElementById(
-      "queenFeedback"
-    )
-    .textContent =
-      "";
-
-
-  updateQueenFormula();
 
 }
 
@@ -2001,13 +2659,7 @@ document
   )
   .addEventListener(
     "click",
-    function () {
-
-      loadQueenChallenge(
-        queenIndex
-      );
-
-    }
+    loadQueen
   );
 
 
@@ -2020,7 +2672,7 @@ document
     function () {
 
       const actual =
-        queenAtoms()
+        getQueenAtoms()
           .slice()
           .sort();
 
@@ -2034,9 +2686,13 @@ document
 
 
       if (
-        actual.join("|")
+        actual.join(
+          "|"
+        )
         ===
-        expected.join("|")
+        expected.join(
+          "|"
+        )
       ) {
 
         document
@@ -2044,10 +2700,18 @@ document
             "queenFeedback"
           )
           .textContent =
-            "👑 Molecular hive complete!";
+            "👑 Correct — "
+            +
+            queenChallenges[
+              queenIndex
+            ].formula
+            +
+            "!";
 
 
-        reward(15);
+        reward(
+          15
+        );
 
 
         setTimeout(
@@ -2055,18 +2719,17 @@ document
 
             queenIndex =
               (
-                queenIndex + 1
+                queenIndex +
+                1
               )
               %
               queenChallenges.length;
 
 
-            loadQueenChallenge(
-              queenIndex
-            );
+            loadQueen();
 
           },
-          1100
+          1000
         );
 
       }
@@ -2078,7 +2741,7 @@ document
             "queenFeedback"
           )
           .textContent =
-            "The molecular hive is not complete yet.";
+            "The Queen's molecular hive is not complete yet.";
 
       }
 
@@ -2091,263 +2754,145 @@ document
    WORKER BEE
 ========================================================== */
 
-let workerProtons = 0;
+const workerChallenges =
+  [
 
-let workerNeutrons = 0;
+    {
+      name:
+        "Helium-4",
 
-let workerElectrons = 0;
+      protons:
+        2,
+
+      neutrons:
+        2,
+
+      electrons:
+        2
+    },
 
 
-function placeParticle(
-  particle,
-  target
-) {
+    {
+      name:
+        "Lithium-7",
 
-  if (
-    particle === "proton"
-  ) {
+      protons:
+        3,
 
-    if (
-      target.id !== "nucleus"
-    ) {
+      neutrons:
+        4,
 
-      return;
+      electrons:
+        3
+    },
 
+
+    {
+      name:
+        "Beryllium-9",
+
+      protons:
+        4,
+
+      neutrons:
+        5,
+
+      electrons:
+        4
+    },
+
+
+    {
+      name:
+        "Carbon-12",
+
+      protons:
+        6,
+
+      neutrons:
+        6,
+
+      electrons:
+        6
     }
 
-
-    workerProtons++;
-
-
-    addNuclearParticle(
-      "p⁺",
-      "proton"
-    );
-
-  }
+  ];
 
 
-  else if (
-    particle === "neutron"
-  ) {
+let workerIndex =
+  0;
 
-    if (
-      target.id !== "nucleus"
+
+let workerProtons =
+  0;
+
+
+let workerNeutrons =
+  0;
+
+
+let workerElectrons =
+  0;
+
+
+document
+  .querySelectorAll(
+    ".particle-source"
+  )
+  .forEach(
+    function (
+      source
     ) {
 
-      return;
+      registerDrag(
+        source,
+        {
+          game:
+            "worker",
+
+          particle:
+            source.dataset.particle
+        }
+      );
 
     }
-
-
-    workerNeutrons++;
-
-
-    addNuclearParticle(
-      "n⁰",
-      "neutron"
-    );
-
-  }
-
-
-  else if (
-    particle === "electron"
-  ) {
-
-    workerElectrons++;
-
-
-    addElectron(
-      target
-    );
-
-  }
-
-
-  document
-    .getElementById(
-      "protonCount"
-    )
-    .textContent =
-      workerProtons;
-
-
-  document
-    .getElementById(
-      "neutronCount"
-    )
-    .textContent =
-      workerNeutrons;
-
-}
-
-
-function addNuclearParticle(
-  text,
-  type
-) {
-
-  const layer =
-    document.getElementById(
-      "nucleusParticles"
-    );
-
-
-  const particle =
-    document.createElement(
-      "span"
-    );
-
-
-  particle.className =
-    "placed-particle "
-    +
-    type;
-
-
-  particle.textContent =
-    text;
-
-
-  const count =
-    layer.children.length;
-
-
-  const angle =
-    count * 2.3;
-
-
-  particle.style.left =
-    (
-      57
-      +
-      Math.cos(angle)
-      *
-      34
-    )
-    +
-    "px";
-
-
-  particle.style.top =
-    (
-      57
-      +
-      Math.sin(angle)
-      *
-      34
-    )
-    +
-    "px";
-
-
-  layer.appendChild(
-    particle
   );
 
-}
+
+function loadWorker() {
+
+  workerProtons =
+    0;
 
 
-function addElectron(target) {
-
-  const layer =
-    target.querySelector(
-      ".particle-layer"
-    );
+  workerNeutrons =
+    0;
 
 
-  const particle =
-    document.createElement(
-      "span"
-    );
-
-
-  particle.className =
-    "placed-particle electron";
-
-
-  particle.textContent =
-    "e⁻";
-
-
-  const count =
-    layer.children.length;
-
-
-  const angle =
-    count *
-    Math.PI /
-    3;
-
-
-  const radius =
-    target.clientWidth /
-    2
-    -
-    22;
-
-
-  particle.style.left =
-    (
-      target.clientWidth /
-      2
-      +
-      Math.cos(angle)
-      *
-      radius
-      -
-      14
-    )
-    +
-    "px";
-
-
-  particle.style.top =
-    (
-      target.clientHeight /
-      2
-      +
-      Math.sin(angle)
-      *
-      radius
-      -
-      14
-    )
-    +
-    "px";
-
-
-  layer.appendChild(
-    particle
-  );
-
-}
-
-
-function resetWorker() {
-
-  workerProtons = 0;
-
-  workerNeutrons = 0;
-
-  workerElectrons = 0;
+  workerElectrons =
+    0;
 
 
   document
     .getElementById(
-      "protonCount"
+      "workerPrompt"
     )
     .textContent =
-      "0";
+      "Build "
+      +
+      workerChallenges[
+        workerIndex
+      ].name
+      +
+      ".";
 
 
   document
     .getElementById(
-      "neutronCount"
+      "workerFeedback"
     )
     .textContent =
-      "0";
+      "";
 
 
   document
@@ -2374,12 +2919,264 @@ function resetWorker() {
       "";
 
 
+  updateWorkerCounts();
+
+}
+
+
+function updateWorkerCounts() {
+
   document
     .getElementById(
-      "workerFeedback"
+      "protonCount"
     )
     .textContent =
-      "";
+      workerProtons;
+
+
+  document
+    .getElementById(
+      "neutronCount"
+    )
+    .textContent =
+      workerNeutrons;
+
+}
+
+
+function placeWorkerParticle(
+  particle,
+  target
+) {
+
+  if (
+    particle ===
+    "proton"
+  ) {
+
+    if (
+      target.id !==
+      "nucleus"
+    ) {
+
+      return;
+
+    }
+
+
+    workerProtons++;
+
+
+    addNucleusParticle(
+      "p⁺",
+      "proton-particle"
+    );
+
+  }
+
+
+  if (
+    particle ===
+    "neutron"
+  ) {
+
+    if (
+      target.id !==
+      "nucleus"
+    ) {
+
+      return;
+
+    }
+
+
+    workerNeutrons++;
+
+
+    addNucleusParticle(
+      "n⁰",
+      "neutron-particle"
+    );
+
+  }
+
+
+  if (
+    particle ===
+    "electron"
+  ) {
+
+    workerElectrons++;
+
+
+    addElectronParticle(
+      target
+    );
+
+  }
+
+
+  updateWorkerCounts();
+
+}
+
+
+function addNucleusParticle(
+  text,
+  className
+) {
+
+  const layer =
+    document.getElementById(
+      "nucleusParticles"
+    );
+
+
+  const particle =
+    document.createElement(
+      "span"
+    );
+
+
+  particle.className =
+    "placed-particle "
+    +
+    className;
+
+
+  particle.textContent =
+    text;
+
+
+  const index =
+    layer.children.length;
+
+
+  const angle =
+    index *
+    2.3;
+
+
+  const radius =
+    35;
+
+
+  particle.style.left =
+    (
+      58
+      +
+      Math.cos(
+        angle
+      )
+      *
+      radius
+    )
+    +
+    "px";
+
+
+  particle.style.top =
+    (
+      58
+      +
+      Math.sin(
+        angle
+      )
+      *
+      radius
+    )
+    +
+    "px";
+
+
+  layer.appendChild(
+    particle
+  );
+
+}
+
+
+function addElectronParticle(
+  shell
+) {
+
+  const layer =
+    shell.querySelector(
+      ".particle-layer"
+    );
+
+
+  const particle =
+    document.createElement(
+      "span"
+    );
+
+
+  particle.className =
+    "placed-particle electron-particle";
+
+
+  particle.textContent =
+    "e⁻";
+
+
+  const index =
+    layer.children.length;
+
+
+  const angle =
+    index
+    *
+    (
+      Math.PI /
+      3
+    );
+
+
+  const radius =
+    shell.clientWidth /
+    2
+    -
+    22;
+
+
+  particle.style.left =
+    (
+      shell.clientWidth /
+      2
+      +
+      Math.cos(
+        angle
+      )
+      *
+      radius
+      -
+      14
+    )
+    +
+    "px";
+
+
+  particle.style.top =
+    (
+      shell.clientHeight /
+      2
+      +
+      Math.sin(
+        angle
+      )
+      *
+      radius
+      -
+      14
+    )
+    +
+    "px";
+
+
+  layer.appendChild(
+    particle
+  );
 
 }
 
@@ -2390,7 +3187,7 @@ document
   )
   .addEventListener(
     "click",
-    resetWorker
+    loadWorker
   );
 
 
@@ -2402,12 +3199,21 @@ document
     "click",
     function () {
 
+      const challenge =
+        workerChallenges[
+          workerIndex
+        ];
+
+
       if (
-        workerProtons === 2
+        workerProtons ===
+        challenge.protons
         &&
-        workerNeutrons === 2
+        workerNeutrons ===
+        challenge.neutrons
         &&
-        workerElectrons === 2
+        workerElectrons ===
+        challenge.electrons
       ) {
 
         document
@@ -2415,10 +3221,35 @@ document
             "workerFeedback"
           )
           .textContent =
-            "🔧 Correct — Helium-4!";
+            "🔧 Correct — "
+            +
+            challenge.name
+            +
+            "!";
 
 
-        reward(15);
+        reward(
+          15
+        );
+
+
+        setTimeout(
+          function () {
+
+            workerIndex =
+              (
+                workerIndex +
+                1
+              )
+              %
+              workerChallenges.length;
+
+
+            loadWorker();
+
+          },
+          1000
+        );
 
       }
 
@@ -2429,7 +3260,21 @@ document
             "workerFeedback"
           )
           .textContent =
-            "Helium-4 needs 2 protons, 2 neutrons and 2 electrons.";
+            challenge.name
+            +
+            " needs "
+            +
+            challenge.protons
+            +
+            " protons, "
+            +
+            challenge.neutrons
+            +
+            " neutrons and "
+            +
+            challenge.electrons
+            +
+            " electrons.";
 
       }
 
@@ -2442,9 +3287,400 @@ document
    POLLINATION
 ========================================================== */
 
-let sodiumPollen = 0;
+const pollinationChallenges =
+  [
 
-let chloridePollen = 0;
+    {
+      name:
+        "Sodium Chloride",
+
+      formula:
+        "NaCl",
+
+      cation:
+        "Na⁺",
+
+      anion:
+        "Cl⁻",
+
+      cationCount:
+        1,
+
+      anionCount:
+        1
+    },
+
+
+    {
+      name:
+        "Magnesium Chloride",
+
+      formula:
+        "MgCl₂",
+
+      cation:
+        "Mg²⁺",
+
+      anion:
+        "Cl⁻",
+
+      cationCount:
+        1,
+
+      anionCount:
+        2
+    },
+
+
+    {
+      name:
+        "Sodium Oxide",
+
+      formula:
+        "Na₂O",
+
+      cation:
+        "Na⁺",
+
+      anion:
+        "O²⁻",
+
+      cationCount:
+        2,
+
+      anionCount:
+        1
+    },
+
+
+    {
+      name:
+        "Calcium Fluoride",
+
+      formula:
+        "CaF₂",
+
+      cation:
+        "Ca²⁺",
+
+      anion:
+        "F⁻",
+
+      cationCount:
+        1,
+
+      anionCount:
+        2
+    },
+
+
+    {
+      name:
+        "Aluminum Oxide",
+
+      formula:
+        "Al₂O₃",
+
+      cation:
+        "Al³⁺",
+
+      anion:
+        "O²⁻",
+
+      cationCount:
+        2,
+
+      anionCount:
+        3
+    },
+
+
+    {
+      name:
+        "Lithium Nitride",
+
+      formula:
+        "Li₃N",
+
+      cation:
+        "Li⁺",
+
+      anion:
+        "N³⁻",
+
+      cationCount:
+        3,
+
+      anionCount:
+        1
+    }
+
+  ];
+
+
+let pollinationIndex =
+  0;
+
+
+let cationDelivered =
+  0;
+
+
+let anionDelivered =
+  0;
+
+
+function loadPollination() {
+
+  const challenge =
+    pollinationChallenges[
+      pollinationIndex
+    ];
+
+
+  cationDelivered =
+    0;
+
+
+  anionDelivered =
+    0;
+
+
+  document
+    .getElementById(
+      "pollinationPrompt"
+    )
+    .textContent =
+      "Grow "
+      +
+      challenge.name
+      +
+      ".";
+
+
+  document
+    .getElementById(
+      "pollinationFeedback"
+    )
+    .textContent =
+      "";
+
+
+  const pollenBank =
+    document.getElementById(
+      "pollenBank"
+    );
+
+
+  pollenBank.innerHTML =
+    "";
+
+
+  const pollenOptions =
+    [
+
+      challenge.cation,
+      challenge.cation,
+      challenge.cation,
+
+      challenge.anion,
+      challenge.anion,
+      challenge.anion,
+
+      "K⁺",
+      "Br⁻"
+
+    ];
+
+
+  pollenOptions.forEach(
+    function (
+      ion,
+      index
+    ) {
+
+      const pollen =
+        document.createElement(
+          "button"
+        );
+
+
+      pollen.type =
+        "button";
+
+
+      pollen.className =
+        "pollen";
+
+
+      pollen.textContent =
+        ion;
+
+
+      pollen.dataset.sourceId =
+        "pollen-"
+        +
+        index;
+
+
+      registerDrag(
+        pollen,
+        {
+          game:
+            "pollination",
+
+          ion:
+            ion
+        }
+      );
+
+
+      pollenBank.appendChild(
+        pollen
+      );
+
+    }
+  );
+
+
+  const garden =
+    document.getElementById(
+      "flowerGarden"
+    );
+
+
+  garden.innerHTML =
+    "";
+
+
+  const flowers =
+    [
+
+      {
+        ion:
+          challenge.cation,
+
+        role:
+          "cation",
+
+        name:
+          challenge.cation
+      },
+
+
+      {
+        ion:
+          challenge.anion,
+
+        role:
+          "anion",
+
+        name:
+          challenge.anion
+      },
+
+
+      {
+        ion:
+          "K⁺",
+
+        role:
+          "distractor",
+
+        name:
+          "K⁺"
+      },
+
+
+      {
+        ion:
+          "Br⁻",
+
+        role:
+          "distractor",
+
+        name:
+          "Br⁻"
+      }
+
+    ];
+
+
+  flowers.forEach(
+    function (
+      data,
+      index
+    ) {
+
+      const flower =
+        document.createElement(
+          "div"
+        );
+
+
+      flower.className =
+        "flower";
+
+
+      flower.dataset.flowerIon =
+        data.ion;
+
+
+      flower.dataset.role =
+        data.role;
+
+
+      flower.innerHTML =
+        '<div class="flower-emoji">'
+        +
+        (
+          index %
+          2 ===
+          0
+          ?
+            "🌼"
+          :
+            "🌸"
+        )
+        +
+        '</div>'
+        +
+        '<strong>'
+        +
+        data.name
+        +
+        '</strong>'
+        +
+        '<div class="flower-count">'
+        +
+        '0 pollen'
+        +
+        '</div>';
+
+
+      garden.appendChild(
+        flower
+      );
+
+    }
+  );
+
+
+  const preview =
+    document.getElementById(
+      "pollinationFormula"
+    );
+
+
+  preview.textContent =
+    "Grow an ionic compound";
+
+
+  preview.classList.add(
+    "empty"
+  );
+
+}
 
 
 function pollinate(
@@ -2454,8 +3690,7 @@ function pollinate(
 ) {
 
   if (
-    flower.dataset.flowerIon
-    !==
+    flower.dataset.flowerIon !==
     ion
   ) {
 
@@ -2488,7 +3723,7 @@ function pollinate(
         "pollinationFeedback"
       )
       .textContent =
-        "That flower is not part of sodium chloride.";
+        "That flower is not part of this compound.";
 
 
     return;
@@ -2497,19 +3732,21 @@ function pollinate(
 
 
   if (
-    ion === "Na⁺"
+    flower.dataset.role ===
+    "cation"
   ) {
 
-    sodiumPollen++;
+    cationDelivered++;
 
   }
 
 
   if (
-    ion === "Cl⁻"
+    flower.dataset.role ===
+    "anion"
   ) {
 
-    chloridePollen++;
+    anionDelivered++;
 
   }
 
@@ -2524,16 +3761,15 @@ function pollinate(
     );
 
 
-  const amount =
-    ion === "Na⁺"
-    ?
-      sodiumPollen
-    :
-      chloridePollen;
-
-
   count.textContent =
-    amount
+    (
+      flower.dataset.role ===
+      "cation"
+      ?
+        cationDelivered
+      :
+        anionDelivered
+    )
     +
     " pollen";
 
@@ -2545,6 +3781,12 @@ function pollinate(
 
 function updatePollinationFormula() {
 
+  const challenge =
+    pollinationChallenges[
+      pollinationIndex
+    ];
+
+
   const preview =
     document.getElementById(
       "pollinationFormula"
@@ -2552,98 +3794,41 @@ function updatePollinationFormula() {
 
 
   if (
-    sodiumPollen === 1
+    cationDelivered ===
+    challenge.cationCount
     &&
-    chloridePollen === 1
+    anionDelivered ===
+    challenge.anionCount
   ) {
 
     preview.textContent =
-      "NaCl";
-
-
-    preview.classList.remove(
-      "empty"
-    );
+      challenge.formula;
 
   }
 
   else {
 
     preview.textContent =
-      sodiumPollen
+      cationDelivered
       +
-      " × Na⁺ + "
+      " × "
       +
-      chloridePollen
+      challenge.cation
       +
-      " × Cl⁻";
-
-
-    preview.classList.remove(
-      "empty"
-    );
+      "   +   "
+      +
+      anionDelivered
+      +
+      " × "
+      +
+      challenge.anion;
 
   }
 
-}
 
-
-function resetPollination() {
-
-  sodiumPollen = 0;
-
-  chloridePollen = 0;
-
-
-  document
-    .querySelectorAll(
-      "#pollenBank .pollen"
-    )
-    .forEach(
-      function (pollen) {
-
-        pollen.style.visibility =
-          "";
-
-      }
-    );
-
-
-  document
-    .querySelectorAll(
-      ".flower-count"
-    )
-    .forEach(
-      function (counter) {
-
-        counter.textContent =
-          "0 pollen";
-
-      }
-    );
-
-
-  const preview =
-    document.getElementById(
-      "pollinationFormula"
-    );
-
-
-  preview.textContent =
-    "Grow an ionic compound";
-
-
-  preview.classList.add(
+  preview.classList.remove(
     "empty"
   );
-
-
-  document
-    .getElementById(
-      "pollinationFeedback"
-    )
-    .textContent =
-      "";
 
 }
 
@@ -2654,7 +3839,7 @@ document
   )
   .addEventListener(
     "click",
-    resetPollination
+    loadPollination
   );
 
 
@@ -2666,10 +3851,18 @@ document
     "click",
     function () {
 
+      const challenge =
+        pollinationChallenges[
+          pollinationIndex
+        ];
+
+
       if (
-        sodiumPollen === 1
+        cationDelivered ===
+        challenge.cationCount
         &&
-        chloridePollen === 1
+        anionDelivered ===
+        challenge.anionCount
       ) {
 
         document
@@ -2677,10 +3870,35 @@ document
             "pollinationFeedback"
           )
           .textContent =
-            "🌼🐝 Charges balanced — Sodium Chloride!";
+            "🌼🐝 Charges balanced — "
+            +
+            challenge.name
+            +
+            "!";
 
 
-        reward(15);
+        reward(
+          15
+        );
+
+
+        setTimeout(
+          function () {
+
+            pollinationIndex =
+              (
+                pollinationIndex +
+                1
+              )
+              %
+              pollinationChallenges.length;
+
+
+            loadPollination();
+
+          },
+          1200
+        );
 
       }
 
@@ -2691,7 +3909,7 @@ document
             "pollinationFeedback"
           )
           .textContent =
-            "You need one Na⁺ and one Cl⁻ to make neutral NaCl.";
+            "The ion ratio does not balance the charge yet.";
 
       }
 
@@ -2701,7 +3919,7 @@ document
 
 
 /* ==========================================================
-   SHARE
+   BUZZWORD SHARE
 ========================================================== */
 
 document
@@ -2734,6 +3952,7 @@ document
 
           await navigator.share(
             {
+
               title:
                 "Molecular Bee Weekly Buzzword",
 
@@ -2742,6 +3961,7 @@ document
 
               url:
                 window.location.href
+
             }
           );
 
@@ -2751,13 +3971,19 @@ document
 
           await navigator.clipboard.writeText(
             text
+            +
+            "\n"
+            +
+            window.location.href
           );
 
         }
 
       }
 
-      catch (error) {
+      catch (
+        error
+      ) {
 
         console.log(
           "Share cancelled."
@@ -2771,20 +3997,28 @@ document
 
 
 /* ==========================================================
-   INITIALIZE
+   START
 ========================================================== */
 
 updatePlayer();
 
+
 renderBuzz();
 
-updateSpellingFormula();
 
-updateQueenFormula();
+renderBuzzFound();
 
-resetWorker();
 
-resetPollination();
+loadSpelling();
+
+
+loadQueen();
+
+
+loadWorker();
+
+
+loadPollination();
 
 
 });
