@@ -14,7 +14,7 @@
 
   <link
     rel="stylesheet"
-    href="molecularbee.css?v=20260813-40"
+    href="molecularbee.css?v=20260813-41"
   >
 
 </head>
@@ -57,7 +57,6 @@
       </strong>
     </span>
 
-
     <span>
       🔥 Streak:
       <strong id="streakText">
@@ -74,14 +73,29 @@
 <main>
 
 
-<!-- ======================================================
+<!-- =====================================================
      HOME
-======================================================= -->
+====================================================== -->
 
 <section
   id="homeScreen"
   class="screen active"
 >
+
+
+  <div class="section-heading">
+
+    <h2>
+      Choose a Hive
+    </h2>
+
+    <p>
+      Recognize chemistry, construct it,
+      then explain why the structure works.
+    </p>
+
+  </div>
+
 
 
   <!-- WEEKLY BUZZWORD -->
@@ -92,75 +106,61 @@
     type="button"
   >
 
-    <div class="buzz-feature-label">
-      🐝 WEEKLY BUZZWORD
-    </div>
+    <div class="buzz-mini-hive">
 
-
-    <div class="mini-hive">
-
-      <span class="mini-hex mini-top">
-        Cl
-      </span>
-
-      <span class="mini-hex mini-upper-left">
+      <div class="mini-hex mini-top">
         H
-      </span>
+      </div>
 
-      <span class="mini-hex mini-upper-right">
+      <div class="mini-hex mini-upper-right">
         O
-      </span>
+      </div>
 
-      <span class="mini-hex mini-left">
+      <div class="mini-hex mini-lower-right">
         N
-      </span>
+      </div>
 
-      <span class="mini-hex mini-center">
-        C
-      </span>
-
-      <span class="mini-hex mini-right">
-        S
-      </span>
-
-      <span class="mini-hex mini-bottom">
+      <div class="mini-hex mini-bottom">
         Na
-      </span>
+      </div>
+
+      <div class="mini-hex mini-lower-left">
+        S
+      </div>
+
+      <div class="mini-hex mini-upper-left">
+        Cl
+      </div>
+
+      <div class="mini-hex mini-center">
+        C
+      </div>
 
     </div>
 
 
-    <h2>
-      Complete This Week’s Buzzword
-    </h2>
+    <div class="buzz-feature-copy">
 
+      <span class="buzz-kicker">
+        🐝 WEEKLY CHALLENGE
+      </span>
 
-    <p>
-      Use the seven-element hive to discover
-      as many valid compounds as you can.
-    </p>
+      <h2>
+        Complete This Week's Buzzword
+      </h2>
 
+      <p>
+        Every compound must use the center atom.
+        Find as many compounds as you can.
+      </p>
 
-    <span class="buzz-enter">
-      Enter the Hive →
-    </span>
+      <strong>
+        Play Weekly Buzzword →
+      </strong>
+
+    </div>
 
   </button>
-
-
-
-  <div class="section-heading">
-
-    <h2>
-      Choose a Hive
-    </h2>
-
-    <p>
-      Chemistry becomes something you can
-      spell, move, build and connect.
-    </p>
-
-  </div>
 
 
 
@@ -182,7 +182,8 @@
       </h2>
 
       <p>
-        Drag atom honeycombs into a chemical formula.
+        Drag atoms into the honeycomb
+        to spell chemical formulas.
       </p>
 
     </button>
@@ -204,7 +205,8 @@
       </h2>
 
       <p>
-        Grow molecules around one central Queen element.
+        Build a molecule around the Queen,
+        then keep growing your molecular hive.
       </p>
 
     </button>
@@ -226,7 +228,8 @@
       </h2>
 
       <p>
-        Drag protons, neutrons and electrons into an atom.
+        Drag protons, neutrons and electrons
+        into an atom.
       </p>
 
     </button>
@@ -248,7 +251,8 @@
       </h2>
 
       <p>
-        Carry charged pollen to charged element flowers.
+        Carry charged pollen to matching flowers
+        and grow neutral ionic compounds.
       </p>
 
     </button>
@@ -257,7 +261,7 @@
 
     <button
       class="mode-card locked-card"
-      data-screen="hiveMindScreen"
+      data-screen="hiveScreen"
       type="button"
     >
 
@@ -270,7 +274,7 @@
       </h2>
 
       <p>
-        Multiplayer molecular construction.
+        Multiplayer chemistry construction.
       </p>
 
       <small>
@@ -286,9 +290,9 @@
 
 
 
-<!-- ======================================================
+<!-- =====================================================
      BUZZWORD
-======================================================= -->
+====================================================== -->
 
 <section
   id="buzzwordScreen"
@@ -306,129 +310,127 @@
 
   <div class="game-card buzzword-card">
 
-
     <div class="game-label">
-      MOLECULAR BEE™
+      WEEKLY BUZZWORD
     </div>
 
-
-    <h2 class="big-mode-title">
-      BUZZWORD
+    <h2>
+      Complete This Week's Buzzword
     </h2>
 
-
-    <div class="week-label">
-      Weekly Hive • #001
-    </div>
-
-
-    <h3>
-      Complete This Week’s Buzzword
-    </h3>
-
-
-    <p class="instruction-note">
-      Tap the elements in formula order.
-      Every answer must use the gold center element.
-      You may use an element more than once.
+    <p class="prompt">
+      Build compounds using the hive.
+      Every valid compound must contain
+      the gold center atom.
     </p>
+
+
+    <div class="buzz-rule">
+      👑 Center atom required in every answer
+    </div>
 
 
 
     <div class="buzz-hive">
 
-
       <button
+        type="button"
         class="buzz-hex buzz-top"
-        data-buzz="Cl"
-        type="button"
-      >
-        Cl
-      </button>
-
-
-      <button
-        class="buzz-hex buzz-upper-left"
         data-buzz="H"
-        type="button"
       >
-        H
+        <strong>H</strong>
+        <small>Hydrogen</small>
       </button>
 
 
       <button
+        type="button"
         class="buzz-hex buzz-upper-right"
         data-buzz="O"
-        type="button"
       >
-        O
+        <strong>O</strong>
+        <small>Oxygen</small>
       </button>
 
 
       <button
-        class="buzz-hex buzz-left"
+        type="button"
+        class="buzz-hex buzz-lower-right"
         data-buzz="N"
-        type="button"
       >
-        N
+        <strong>N</strong>
+        <small>Nitrogen</small>
       </button>
 
 
       <button
-        id="buzzCenter"
-        class="buzz-hex buzz-center"
-        data-buzz="C"
         type="button"
-      >
-        C
-      </button>
-
-
-      <button
-        class="buzz-hex buzz-right"
-        data-buzz="S"
-        type="button"
-      >
-        S
-      </button>
-
-
-      <button
         class="buzz-hex buzz-bottom"
         data-buzz="Na"
-        type="button"
       >
-        Na
+        <strong>Na</strong>
+        <small>Sodium</small>
       </button>
 
 
-    </div>
+      <button
+        type="button"
+        class="buzz-hex buzz-lower-left"
+        data-buzz="S"
+      >
+        <strong>S</strong>
+        <small>Sulfur</small>
+      </button>
 
 
-    <div class="center-rule">
-      👑 Gold Center = Carbon Required
+      <button
+        type="button"
+        class="buzz-hex buzz-upper-left"
+        data-buzz="Cl"
+      >
+        <strong>Cl</strong>
+        <small>Chlorine</small>
+      </button>
+
+
+      <button
+        type="button"
+        class="buzz-hex buzz-center"
+        data-buzz="C"
+      >
+        <span class="queen-crown">
+          👑
+        </span>
+
+        <strong>
+          C
+        </strong>
+
+        <small>
+          Carbon
+        </small>
+      </button>
+
     </div>
 
 
 
     <div class="formula-panel">
 
-      <div class="panel-label">
-        YOUR COMPOUND
-      </div>
-
+      <span class="formula-label">
+        YOUR MOLECULE
+      </span>
 
       <div
         id="buzzFormula"
-        class="big-formula empty"
+        class="formula-preview empty"
       >
         Tap an element to begin
       </div>
 
-
       <div
         id="buzzWords"
-        class="formula-words"
+        class="element-words"
       >
       </div>
 
@@ -443,9 +445,8 @@
         class="secondary-button"
         type="button"
       >
-        ← Remove Last
+        ← Undo
       </button>
-
 
       <button
         id="buzzSubmit"
@@ -454,7 +455,6 @@
       >
         Submit Compound
       </button>
-
 
       <button
         id="buzzClear"
@@ -475,57 +475,42 @@
 
 
 
-    <div class="found-panel">
-
-      <div class="found-title">
-
-        <span>
-          COMPOUNDS FOUND
-        </span>
-
-        <strong id="buzzFoundCount">
-          0
-        </strong>
-
-      </div>
-
-
-      <div
-        id="buzzFound"
-        class="found-list"
-      >
-
-        <em>
-          Your discoveries will appear here.
-        </em>
-
-      </div>
-
-    </div>
-
-
-
     <div
       id="moleculargram"
       class="moleculargram"
     >
 
-      <div class="moleculargram-icon">
-        🐝👑
-      </div>
+      🐝👑
+
+      <strong>
+        MOLECULARGRAM!
+      </strong>
+
+      <span>
+        You used every element in the hive.
+      </span>
+
+    </div>
 
 
-      <div>
 
-        <strong>
-          MOLECULARGRAM!
+    <div class="found-panel">
+
+      <h3>
+        Your Molecular Swarm
+      </h3>
+
+      <p>
+        Compounds Found:
+        <strong id="buzzFoundCount">
+          0
         </strong>
+      </p>
 
-        <p>
-          You found a valid compound using
-          every element in the hive.
-        </p>
-
+      <div
+        id="buzzFound"
+        class="buzz-found"
+      >
       </div>
 
     </div>
@@ -537,9 +522,8 @@
       class="share-button"
       type="button"
     >
-      🐝 Share My Buzz
+      📤 Share Your Molecular Swarm
     </button>
-
 
   </div>
 
@@ -547,9 +531,9 @@
 
 
 
-<!-- ======================================================
+<!-- =====================================================
      SPELLING BEE
-======================================================= -->
+====================================================== -->
 
 <section
   id="spellingScreen"
@@ -567,11 +551,9 @@
 
   <div class="game-card">
 
-
     <div class="game-label">
       SPELLING-BEE
     </div>
-
 
     <h2>
       Spell the Molecule
@@ -582,19 +564,15 @@
       id="spellingPrompt"
       class="prompt"
     >
-      Build water.
     </p>
 
 
-    <p class="instruction-note">
-      Drag the atom honeycombs into the empty honeycombs
-      in the order they belong in the formula.
-      You can also tap an atom to place it.
-    </p>
+    <div class="instruction-note">
+      Drag an atom into an empty honeycomb.
+      Tap a filled honeycomb to return it.
+    </div>
 
 
-
-    <!-- EMPTY ANSWER HONEYCOMBS -->
 
     <div
       id="spellingSlots"
@@ -604,23 +582,31 @@
 
 
 
-    <div
-      id="spellingFormula"
-      class="formula-preview empty"
-    >
-      Chemical formula
+    <div class="formula-panel">
+
+      <span class="formula-label">
+        CHEMICAL FORMULA
+      </span>
+
+      <div
+        id="spellingFormula"
+        class="formula-preview empty"
+      >
+        Chemical formula
+      </div>
+
     </div>
 
 
 
-    <h3>
+    <h3 class="bank-title">
       Atom Bank
     </h3>
 
 
     <div
       id="spellingBank"
-      class="element-bank"
+      class="atom-bank"
     >
     </div>
 
@@ -636,7 +622,6 @@
         ← Remove Last
       </button>
 
-
       <button
         id="spellingCheck"
         class="primary-button"
@@ -644,7 +629,6 @@
       >
         Check Molecule
       </button>
-
 
       <button
         id="spellingReset"
@@ -663,16 +647,15 @@
     >
     </div>
 
-
   </div>
 
 </section>
 
 
 
-<!-- ======================================================
+<!-- =====================================================
      QUEEN BEE
-======================================================= -->
+====================================================== -->
 
 <section
   id="queenScreen"
@@ -690,7 +673,6 @@
 
   <div class="game-card">
 
-
     <div class="game-label">
       QUEEN-BEE
     </div>
@@ -705,121 +687,30 @@
       id="queenPrompt"
       class="prompt"
     >
-      Build water around Queen Oxygen.
-    </p>
-
-
-    <p class="instruction-note">
-      The Queen stays fixed in the center.
-      Drag worker atoms into any open honeycomb
-      around her and build outward.
     </p>
 
 
 
-    <div class="queen-board">
+    <div class="queen-progress">
 
-      <div
-        id="queenGrid"
-        class="queen-grid"
-      >
+      <div class="queen-progress-badge">
 
+        🐝 Correct Builds:
 
-        <!-- INNER RING -->
+        <strong id="queenCorrectCount">
+          0
+        </strong>
 
-        <button
-          class="queen-slot q-top"
-          data-qslot="0"
-          type="button"
-        ></button>
-
-        <button
-          class="queen-slot q-upper-left"
-          data-qslot="1"
-          type="button"
-        ></button>
-
-        <button
-          class="queen-slot q-upper-right"
-          data-qslot="2"
-          type="button"
-        ></button>
-
-        <button
-          class="queen-slot q-lower-left"
-          data-qslot="3"
-          type="button"
-        ></button>
-
-        <button
-          class="queen-slot q-lower-right"
-          data-qslot="4"
-          type="button"
-        ></button>
-
-        <button
-          class="queen-slot q-bottom"
-          data-qslot="5"
-          type="button"
-        ></button>
+      </div>
 
 
-        <!-- QUEEN -->
+      <div class="queen-progress-badge">
 
-        <div
-          id="queenCenter"
-          class="queen-slot queen-center q-center"
-        >
+        👑 Active Atom:
 
-          <span>
-            👑
-          </span>
-
-          <strong>
-            O
-          </strong>
-
-        </div>
-
-
-        <!-- SECOND RING -->
-
-        <button
-          class="queen-slot q-top-2"
-          data-qslot="6"
-          type="button"
-        ></button>
-
-        <button
-          class="queen-slot q-left-2"
-          data-qslot="7"
-          type="button"
-        ></button>
-
-        <button
-          class="queen-slot q-right-2"
-          data-qslot="8"
-          type="button"
-        ></button>
-
-        <button
-          class="queen-slot q-bottom-left-2"
-          data-qslot="9"
-          type="button"
-        ></button>
-
-        <button
-          class="queen-slot q-bottom-right-2"
-          data-qslot="10"
-          type="button"
-        ></button>
-
-        <button
-          class="queen-slot q-bottom-2"
-          data-qslot="11"
-          type="button"
-        ></button>
-
+        <strong id="queenActiveAtom">
+          O
+        </strong>
 
       </div>
 
@@ -828,22 +719,140 @@
 
 
     <div
-      id="queenFormula"
-      class="formula-preview empty"
+      id="queenBuildMessage"
+      class="queen-build-message"
     >
-      Build around the Queen
+      Complete a molecule around the gold atom,
+      then continue growing the hive.
     </div>
 
 
 
-    <h3>
+    <div
+      id="queenHive"
+      class="queen-hive"
+    >
+
+      <button
+        type="button"
+        id="queenCenter"
+        class="queen-slot queen-center locked active-queen"
+        data-symbol="O"
+      >
+
+        <span>
+          👑
+        </span>
+
+        <strong>
+          O
+        </strong>
+
+      </button>
+
+
+      <button
+        type="button"
+        class="queen-slot q1"
+      >
+      </button>
+
+      <button
+        type="button"
+        class="queen-slot q2"
+      >
+      </button>
+
+      <button
+        type="button"
+        class="queen-slot q3"
+      >
+      </button>
+
+      <button
+        type="button"
+        class="queen-slot q4"
+      >
+      </button>
+
+      <button
+        type="button"
+        class="queen-slot q5"
+      >
+      </button>
+
+      <button
+        type="button"
+        class="queen-slot q6"
+      >
+      </button>
+
+
+      <button
+        type="button"
+        class="queen-slot q7"
+      >
+      </button>
+
+      <button
+        type="button"
+        class="queen-slot q8"
+      >
+      </button>
+
+      <button
+        type="button"
+        class="queen-slot q9"
+      >
+      </button>
+
+      <button
+        type="button"
+        class="queen-slot q10"
+      >
+      </button>
+
+      <button
+        type="button"
+        class="queen-slot q11"
+      >
+      </button>
+
+      <button
+        type="button"
+        class="queen-slot q12"
+      >
+      </button>
+
+    </div>
+
+
+
+    <div class="formula-panel">
+
+      <span class="formula-label">
+        CURRENT BUILD
+      </span>
+
+      <div
+        id="queenFormula"
+        class="formula-preview empty"
+      >
+        Build around the Queen
+      </div>
+
+    </div>
+
+
+
+    <h3 class="bank-title">
       Worker Atom Bank
     </h3>
 
 
     <div
       id="queenBank"
-      class="element-bank"
+      class="atom-bank"
     >
     </div>
 
@@ -859,13 +868,12 @@
         Check Molecule
       </button>
 
-
       <button
         id="queenReset"
         class="secondary-button"
         type="button"
       >
-        Reset Hive
+        Restart Hive
       </button>
 
     </div>
@@ -877,16 +885,15 @@
     >
     </div>
 
-
   </div>
 
 </section>
 
 
 
-<!-- ======================================================
+<!-- =====================================================
      WORKER BEE
-======================================================= -->
+====================================================== -->
 
 <section
   id="workerScreen"
@@ -904,11 +911,9 @@
 
   <div class="game-card">
 
-
     <div class="game-label">
-      WORKER-BEE
+      WORKER BEE
     </div>
-
 
     <h2>
       Build the Atom
@@ -919,128 +924,25 @@
       id="workerPrompt"
       class="prompt"
     >
-      Build Helium-4.
     </p>
 
 
-    <p class="instruction-note">
+    <div class="instruction-note">
       Drag protons and neutrons into the nucleus.
-      Drag electrons onto the electron shells.
-      The pieces can be reused as many times as needed.
-    </p>
-
-
-
-    <div
-      id="atomBoard"
-      class="atom-board"
-    >
-
-
-      <div
-        id="outerShell"
-        class="electron-shell outer-shell worker-drop"
-        data-worker-drop="electron"
-      >
-
-        <span class="shell-label">
-          Outer Shell
-        </span>
-
-        <div
-          id="outerParticles"
-          class="particle-layer"
-        >
-        </div>
-
-      </div>
-
-
-
-      <div
-        id="innerShell"
-        class="electron-shell inner-shell worker-drop"
-        data-worker-drop="electron"
-      >
-
-        <span class="shell-label">
-          Inner Shell
-        </span>
-
-        <div
-          id="innerParticles"
-          class="particle-layer"
-        >
-        </div>
-
-      </div>
-
-
-
-      <div
-        id="nucleus"
-        class="nucleus worker-drop"
-        data-worker-drop="nucleus"
-      >
-
-        <strong>
-          NUCLEUS
-        </strong>
-
-
-        <div class="nucleus-counters">
-
-          <span>
-            p⁺
-            <b id="protonCount">
-              0
-            </b>
-          </span>
-
-
-          <span>
-            n⁰
-            <b id="neutronCount">
-              0
-            </b>
-          </span>
-
-        </div>
-
-
-        <div
-          id="nucleusParticles"
-          class="particle-layer"
-        >
-        </div>
-
-      </div>
-
-
+      Drag electrons onto either shell.
     </div>
 
 
 
-    <h3>
-      Particle Bank
-    </h3>
-
-
     <div class="particle-bank">
-
 
       <button
         class="particle-source proton-source"
         data-particle="proton"
         type="button"
       >
-
         p⁺
-
-        <small>
-          Proton
-        </small>
-
+        <small>Proton</small>
       </button>
 
 
@@ -1049,13 +951,8 @@
         data-particle="neutron"
         type="button"
       >
-
         n⁰
-
-        <small>
-          Neutron
-        </small>
-
+        <small>Neutron</small>
       </button>
 
 
@@ -1064,15 +961,80 @@
         data-particle="electron"
         type="button"
       >
-
         e⁻
-
-        <small>
-          Electron
-        </small>
-
+        <small>Electron</small>
       </button>
 
+    </div>
+
+
+
+    <div class="atom-stage">
+
+      <div
+        id="outerShell"
+        class="electron-shell outer-shell"
+      >
+
+        <div
+          id="outerParticles"
+          class="particle-layer"
+        >
+        </div>
+
+
+        <div
+          id="innerShell"
+          class="electron-shell inner-shell"
+        >
+
+          <div
+            id="innerParticles"
+            class="particle-layer"
+          >
+          </div>
+
+
+          <div
+            id="nucleus"
+            class="nucleus"
+          >
+
+            <div
+              id="nucleusParticles"
+              class="particle-layer"
+            >
+            </div>
+
+            <span>
+              NUCLEUS
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="worker-counts">
+
+      <span>
+        Protons:
+        <strong id="protonCount">
+          0
+        </strong>
+      </span>
+
+      <span>
+        Neutrons:
+        <strong id="neutronCount">
+          0
+        </strong>
+      </span>
 
     </div>
 
@@ -1088,13 +1050,12 @@
         Check Atom
       </button>
 
-
       <button
         id="workerReset"
         class="secondary-button"
         type="button"
       >
-        Reset Atom
+        Reset
       </button>
 
     </div>
@@ -1106,16 +1067,15 @@
     >
     </div>
 
-
   </div>
 
 </section>
 
 
 
-<!-- ======================================================
+<!-- =====================================================
      POLLINATION
-======================================================= -->
+====================================================== -->
 
 <section
   id="pollinationScreen"
@@ -1133,11 +1093,9 @@
 
   <div class="game-card">
 
-
     <div class="game-label">
       POLLINATION
     </div>
-
 
     <h2>
       Carry the Charge
@@ -1148,63 +1106,51 @@
       id="pollinationPrompt"
       class="prompt"
     >
-      Grow sodium chloride.
     </p>
 
 
-    <p class="instruction-note">
-      Drag the charged pollen particles onto the matching
-      charged element flowers. Build the ratio that creates
-      a neutral ionic compound.
-    </p>
+    <div class="instruction-note">
+      Drag charged pollen to its matching flower.
+      Deliver the correct ion ratio to create
+      a neutral compound.
+    </div>
 
 
 
-    <div class="pollination-field">
+    <h3 class="bank-title">
+      Charged Pollen
+    </h3>
 
 
-      <div class="pollen-meadow">
-
-        <h3>
-          Charged Pollen
-        </h3>
-
-
-        <div
-          id="pollenBank"
-          class="pollen-bank"
-        >
-        </div>
-
-      </div>
-
-
-
-      <div class="flower-meadow">
-
-        <h3>
-          Element Flowers
-        </h3>
-
-
-        <div
-          id="flowerGarden"
-          class="flower-grid"
-        >
-        </div>
-
-      </div>
-
-
+    <div
+      id="pollenBank"
+      class="pollen-bank"
+    >
     </div>
 
 
 
     <div
-      id="pollinationFormula"
-      class="formula-preview empty"
+      id="flowerGarden"
+      class="flower-garden"
     >
-      Grow an ionic compound
+    </div>
+
+
+
+    <div class="formula-panel">
+
+      <span class="formula-label">
+        GROWING COMPOUND
+      </span>
+
+      <div
+        id="pollinationFormula"
+        class="formula-preview empty"
+      >
+        Grow an ionic compound
+      </div>
+
     </div>
 
 
@@ -1216,16 +1162,15 @@
         class="primary-button"
         type="button"
       >
-        Check Pollination
+        Grow Compound
       </button>
-
 
       <button
         id="pollinationReset"
         class="secondary-button"
         type="button"
       >
-        Reset Field
+        Reset
       </button>
 
     </div>
@@ -1237,19 +1182,18 @@
     >
     </div>
 
-
   </div>
 
 </section>
 
 
 
-<!-- ======================================================
+<!-- =====================================================
      HIVE MIND
-======================================================= -->
+====================================================== -->
 
 <section
-  id="hiveMindScreen"
+  id="hiveScreen"
   class="screen"
 >
 
@@ -1264,11 +1208,9 @@
 
   <div class="game-card">
 
-
     <div class="game-label">
       HIVE-MIND
     </div>
-
 
     <h2>
       Multiplayer Chemistry
@@ -1281,11 +1223,10 @@
 
       <p>
         Cooperative and competitive
-        chemistry construction is coming soon.
+        chemistry building is coming soon.
       </p>
 
     </div>
-
 
   </div>
 
@@ -1298,12 +1239,21 @@
 
 <footer>
 
-  Molecular Bee™ • PAT Learning Lab
+  <strong>
+    Molecular Bee™
+  </strong>
+
+  • PAT Learning Lab
+
+  <br>
+
+  Spell it. Build it. Bond it.
 
 </footer>
 
 
-<script src="molecularbee.js?v=20260813-40"></script>
+
+<script src="molecularbee.js?v=20260813-41"></script>
 
 
 </body>
