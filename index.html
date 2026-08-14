@@ -1,222 +1,575 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
 <title>PAT Learning Lab</title>
 
+
+<!-- =====================================================
+     GOOGLE ANALYTICS
+====================================================== -->
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-QCEPJP202V"
+></script>
+
+<script>
+
+  window.dataLayer =
+    window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
+  gtag(
+    "js",
+    new Date()
+  );
+
+  gtag(
+    "config",
+    "G-QCEPJP202V"
+  );
+
+</script>
+
+
+
 <style>
+
 :root {
+
   --cream: #fff7e8;
   --paper: #fffdf7;
   --ink: #29261f;
+
   --green: #59784c;
   --light-green: #e5eddc;
+
   --brown: #8b633e;
   --gold: #d6aa44;
+
   --red: #b6534d;
   --blue: #467dad;
   --purple: #71558e;
+
   --shadow: rgba(50,40,25,.14);
 }
+
 
 * {
   box-sizing: border-box;
 }
 
+
 body {
+
   margin: 0;
+
   background: var(--cream);
   color: var(--ink);
-  font-family: Georgia, "Times New Roman", serif;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 }
+
+
+
+/* =====================================================
+   HEADER
+====================================================== */
 
 header {
-  padding: 42px 20px 25px;
-  text-align: center;
+
+  padding:
+    42px 20px 25px;
+
+  text-align:
+    center;
 }
+
 
 .brand-small {
-  color: var(--green);
-  font-weight: bold;
-  letter-spacing: 3px;
-  margin-bottom: 4px;
+
+  color:
+    var(--green);
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    3px;
+
+  margin-bottom:
+    4px;
 }
+
 
 h1 {
-  margin: 4px 0;
-  font-size: clamp(2.3rem, 9vw, 4.6rem);
-  letter-spacing: 2px;
+
+  margin:
+    4px 0;
+
+  font-size:
+    clamp(
+      2.3rem,
+      9vw,
+      4.6rem
+    );
+
+  letter-spacing:
+    2px;
 }
+
 
 .tagline {
-  margin-top: 8px;
-  color: var(--brown);
-  font-weight: bold;
+
+  margin-top:
+    8px;
+
+  color:
+    var(--brown);
+
+  font-weight:
+    bold;
 }
+
 
 .intro {
-  max-width: 680px;
-  margin: 24px auto 0;
-  line-height: 1.6;
-  font-size: 1.05rem;
+
+  max-width:
+    680px;
+
+  margin:
+    24px auto 0;
+
+  line-height:
+    1.6;
+
+  font-size:
+    1.05rem;
 }
+
+
+
+/* =====================================================
+   MAIN
+====================================================== */
 
 main {
-  width: min(1050px, 92%);
-  margin: auto;
-  padding-bottom: 70px;
+
+  width:
+    min(
+      1050px,
+      92%
+    );
+
+  margin:
+    auto;
+
+  padding-bottom:
+    70px;
 }
+
 
 .section-title {
-  text-align: center;
-  margin: 30px 0 25px;
+
+  text-align:
+    center;
+
+  margin:
+    30px 0 25px;
 }
+
 
 .section-title h2 {
-  margin-bottom: 7px;
+
+  margin-bottom:
+    7px;
 }
+
+
+
+/* =====================================================
+   LEARNING LAB GRID
+====================================================== */
 
 .lab-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(
+        240px,
+        1fr
+      )
+    );
+
+  gap:
+    20px;
 }
+
 
 .lab-card {
-  background: var(--paper);
-  border: 2px solid var(--brown);
-  border-radius: 20px;
-  padding: 25px 22px;
-  min-height: 255px;
-  box-shadow: 0 7px 18px var(--shadow);
-  display: flex;
-  flex-direction: column;
-  transition: transform .2s ease, box-shadow .2s ease;
+
+  background:
+    var(--paper);
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    20px;
+
+  padding:
+    25px 22px;
+
+  min-height:
+    255px;
+
+  box-shadow:
+    0 7px 18px
+    var(--shadow);
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
 }
+
 
 .lab-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px var(--shadow);
+
+  transform:
+    translateY(-4px);
+
+  box-shadow:
+    0 10px 24px
+    var(--shadow);
 }
+
 
 .lab-icon {
-  font-size: 3rem;
-  margin-bottom: 7px;
+
+  font-size:
+    3rem;
+
+  margin-bottom:
+    7px;
 }
+
 
 .lab-card h2 {
-  margin: 5px 0 7px;
+
+  margin:
+    5px 0 7px;
 }
+
 
 .lab-card p {
-  line-height: 1.5;
-  flex-grow: 1;
+
+  line-height:
+    1.5;
+
+  flex-grow:
+    1;
 }
+
+
+
+/* =====================================================
+   BUTTONS
+====================================================== */
 
 .card-button {
-  display: block;
-  text-decoration: none;
-  text-align: center;
-  background: var(--green);
-  color: white;
-  padding: 13px 15px;
-  border-radius: 12px;
-  font-weight: bold;
-  margin-top: 12px;
+
+  display:
+    block;
+
+  text-decoration:
+    none;
+
+  text-align:
+    center;
+
+  background:
+    var(--green);
+
+  color:
+    white;
+
+  padding:
+    13px 15px;
+
+  border-radius:
+    12px;
+
+  font-weight:
+    bold;
+
+  margin-top:
+    12px;
 }
+
 
 .card-button:hover {
-  filter: brightness(.95);
+
+  filter:
+    brightness(.95);
 }
 
-/* MOLECULAR FARM */
+
+
+/* =====================================================
+   MOLECULAR FARM
+====================================================== */
 
 .molecular-farm {
-  border-color: var(--green);
+
+  border-color:
+    var(--green);
 }
 
-.molecular-farm .card-button {
-  background: var(--green);
+
+.molecular-farm
+.card-button {
+
+  background:
+    var(--green);
 }
 
-/* CONTRONYM */
+
+
+/* =====================================================
+   CONTRONYM
+====================================================== */
 
 .contronym {
-  border-color: var(--blue);
+
+  border-color:
+    var(--blue);
 }
 
-.contronym .card-button {
-  background: var(--blue);
+
+.contronym
+.card-button {
+
+  background:
+    var(--blue);
 }
 
-/* CLUE CARDS */
+
+
+/* =====================================================
+   CLUE CARDS
+====================================================== */
 
 .clue-card {
-  border-color: var(--purple);
+
+  border-color:
+    var(--purple);
 }
+
+
+
+/* =====================================================
+   KOAN KAON
+====================================================== */
+
+.koan-kaon {
+
+  border-color:
+    var(--red);
+}
+
+
+.koan-kaon
+.card-button {
+
+  background:
+    var(--red);
+}
+
+
+
+/* =====================================================
+   COMING SOON
+====================================================== */
 
 .coming-button {
-  display: block;
-  text-align: center;
-  background: #ddd5c7;
-  color: #736b61;
-  padding: 13px;
-  border-radius: 12px;
-  font-weight: bold;
-  margin-top: 12px;
+
+  display:
+    block;
+
+  text-align:
+    center;
+
+  background:
+    #ddd5c7;
+
+  color:
+    #736b61;
+
+  padding:
+    13px;
+
+  border-radius:
+    12px;
+
+  font-weight:
+    bold;
+
+  margin-top:
+    12px;
 }
+
+
+
+/* =====================================================
+   PHILOSOPHY
+====================================================== */
 
 .philosophy {
-  background: var(--paper);
-  border-left: 7px solid var(--gold);
-  padding: 25px;
-  border-radius: 15px;
-  margin: 40px 0;
-  box-shadow: 0 5px 15px var(--shadow);
+
+  background:
+    var(--paper);
+
+  border-left:
+    7px solid
+    var(--gold);
+
+  padding:
+    25px;
+
+  border-radius:
+    15px;
+
+  margin:
+    40px 0;
+
+  box-shadow:
+    0 5px 15px
+    var(--shadow);
 }
+
 
 .philosophy h2 {
-  margin-top: 0;
+
+  margin-top:
+    0;
 }
+
 
 .philosophy strong {
-  color: var(--green);
+
+  color:
+    var(--green);
 }
+
+
+
+/* =====================================================
+   GROWING SECTION
+====================================================== */
 
 .growing {
-  background: var(--light-green);
-  padding: 23px;
-  border-radius: 16px;
-  text-align: center;
-  margin-top: 35px;
+
+  background:
+    var(--light-green);
+
+  padding:
+    23px;
+
+  border-radius:
+    16px;
+
+  text-align:
+    center;
+
+  margin-top:
+    35px;
 }
+
+
+
+/* =====================================================
+   FOOTER
+====================================================== */
 
 footer {
-  text-align: center;
-  padding: 30px 20px;
-  opacity: .65;
-  font-size: .85rem;
+
+  text-align:
+    center;
+
+  padding:
+    30px 20px;
+
+  opacity:
+    .65;
+
+  font-size:
+    .85rem;
 }
 
-@media (max-width: 600px) {
+
+
+/* =====================================================
+   MOBILE
+====================================================== */
+
+@media
+(max-width: 600px) {
+
   header {
-    padding-top: 30px;
+
+    padding-top:
+      30px;
   }
+
 
   .intro {
-    font-size: 1rem;
+
+    font-size:
+      1rem;
   }
+
 
   .lab-card {
-    min-height: auto;
+
+    min-height:
+      auto;
   }
+
 }
+
 </style>
+
 </head>
 
+
+
 <body>
+
 
 <header>
 
@@ -224,58 +577,88 @@ footer {
     PAT TUTORING
   </div>
 
-  <h1>LEARNING LAB</h1>
+
+  <h1>
+    LEARNING LAB
+  </h1>
+
 
   <div class="tagline">
     Learn it. See it. Rebuild it.
   </div>
 
+
   <p class="intro">
-    A growing collection of visual games, puzzles and learning systems
-    built around one idea:
+
+    A growing collection of visual games,
+    puzzles and learning systems built around
+    one idea:
+
     <strong>
-      don't just memorize an answer — learn enough of the structure
+      don't just memorize an answer —
+      learn enough of the structure
       to reconstruct it.
     </strong>
+
   </p>
 
 </header>
 
 
+
 <main>
 
+
   <div class="section-title">
-    <h2>Choose a Learning World</h2>
+
+    <h2>
+      Choose a Learning World
+    </h2>
 
     <p>
-      Explore chemistry, language, mathematics and critical thinking.
+      Explore chemistry, language,
+      mathematics and critical thinking.
     </p>
+
   </div>
+
 
 
   <div class="lab-grid">
 
 
-    <!-- MOLECULAR FARM -->
+    <!-- =====================================================
+         MOLECULAR FARM
+    ====================================================== -->
 
-    <article class="lab-card molecular-farm">
+    <article
+      class="lab-card molecular-farm"
+    >
 
       <div class="lab-icon">
         🌾
       </div>
 
+
       <h2>
         Molecular Farm
       </h2>
 
+
       <p>
-        Explore chemistry through memorable species whose structures,
-        families and transformations are based on real chemical behavior.
+
+        Explore chemistry through memorable
+        species whose structures, families
+        and transformations are based on
+        real chemical behavior.
+
       </p>
 
+
       <a
-        class="card-button"
+        class="card-button game-link"
         href="molecularfarm.html"
+        data-game="molecular_farm"
       >
         Enter Molecular Farm
       </a>
@@ -284,26 +667,39 @@ footer {
 
 
 
-    <!-- CONTRONYM -->
+    <!-- =====================================================
+         CONTRONYM
+    ====================================================== -->
 
-    <article class="lab-card contronym">
+    <article
+      class="lab-card contronym"
+    >
 
       <div class="lab-icon">
         ±
       </div>
 
+
       <h2>
         Contronym
       </h2>
 
+
       <p>
-        Explore words capable of carrying opposing meanings.
-        Use hints, polarity and context to reverse-engineer the word.
+
+        Explore words capable of carrying
+        opposing meanings.
+
+        Use hints, polarity and context
+        to reverse-engineer the word.
+
       </p>
 
+
       <a
-        class="card-button"
+        class="card-button game-link"
         href="contronym.html"
+        data-game="contronym"
       >
         Play Contronym
       </a>
@@ -312,167 +708,348 @@ footer {
 
 
 
-    <!-- CLUE CARDS -->
+    <!-- =====================================================
+         CRYPTIC CLUE CARDS
+    ====================================================== -->
 
-    <article class="lab-card clue-card">
+    <article
+      class="lab-card clue-card"
+    >
 
       <div class="lab-icon">
         🧩
       </div>
 
+
       <h2>
         Cryptic Clue-Cards
       </h2>
 
+
       <p>
-        Reverse-engineer wordplay through double definitions,
-        homophones, transformations, Meaning Graphs and
-        Cryptic-Calculus.
+
+        Reverse-engineer wordplay through
+        double definitions, homophones,
+        transformations, Meaning Graphs
+        and Cryptic-Calculus.
+
       </p>
 
+
       <a
-  class="card-button"
-  href="cluecards.html"
->
-  Play Clue-Card #001
-</a>
+        class="card-button game-link"
+        href="cluecards.html"
+        data-game="clue_cards"
+      >
+        Play Clue-Card #001
+      </a>
 
     </article>
 
 
 
-    <!-- MOLECULAR BEE -->
+    <!-- =====================================================
+         MOLECULAR BEE
+    ====================================================== -->
 
-<article class="lab-card">
+    <article
+      class="lab-card"
+    >
 
-  <div class="lab-icon">
-    🐝
+      <div class="lab-icon">
+        🐝
+      </div>
+
+
+      <h2>
+        Molecular Bee
+      </h2>
+
+
+      <p>
+
+        Spell compounds, build atoms,
+        balance charges, and explore
+        chemistry through multiple
+        hive challenges.
+
+      </p>
+
+
+      <a
+        class="card-button game-link"
+        href="molecularbee.html"
+        data-game="molecular_bee"
+      >
+        Enter Molecular Bee
+      </a>
+
+    </article>
+
+
+
+    <!-- =====================================================
+         KOAN KAON
+    ====================================================== -->
+
+    <article
+      class="lab-card koan-kaon"
+    >
+
+      <div class="lab-icon">
+        ✣
+      </div>
+
+
+      <h2>
+        KOAN~KAON
+      </h2>
+
+
+      <p>
+
+        Solve symmetry-bending crosswords
+        where Transverse and Conjugate clues
+        intersect through a shared
+        lexical structure.
+
+      </p>
+
+
+      <a
+        class="card-button game-link"
+        href="koankaon.html"
+        data-game="koan_kaon"
+      >
+        Play KOAN~KAON
+      </a>
+
+    </article>
+
+
+
+    <!-- =====================================================
+         CRYPTIC CALCULUS
+    ====================================================== -->
+
+    <article
+      class="lab-card"
+    >
+
+      <div class="lab-icon">
+        ∫
+      </div>
+
+
+      <h2>
+        Cryptic-Calculus
+      </h2>
+
+
+      <p>
+
+        Treat wordplay like mathematics:
+        identify the transformation,
+        apply operations, compose functions
+        and reconstruct the answer.
+
+      </p>
+
+
+      <a
+        class="card-button game-link"
+        href="crypticcalculus.html"
+        data-game="cryptic_calculus"
+      >
+        Enter Cryptic-Calculus
+      </a>
+
+    </article>
+
+
   </div>
 
-  <h2>
-    Molecular Bee
-  </h2>
-
-  <p>
-    Spell compounds, build atoms, balance charges,
-    and explore chemistry through multiple hive challenges.
-  </p>
-
-  <a
-    class="card-button"
-    href="molecularbee.html"
-  >
-    Enter Molecular Bee
-  </a>
-
-</article>
 
 
-
-    <!-- KOAN -->
-
-    <!-- KOAN~KAON -->
-
-<article class="lab-card koan-kaon">
-
-  <div class="lab-icon">
-    ✣
-  </div>
-
-  <h2>
-    KOAN~KAON
-  </h2>
-
-  <p>
-    Solve symmetry-bending crosswords where
-    Transverse and Conjugate clues intersect
-    through a shared lexical structure.
-  </p>
-
-  <a
-    class="card-button"
-    href="koankaon.html"
-  >
-    Play KOAN~KAON
-  </a>
-
-</article>
-
-
-
-    <!-- CRYPTIC CALCULUS -->
-
- <!-- CRYPTIC CALCULUS -->
-
-<article class="lab-card">
-
-  <div class="lab-icon">
-    ∫
-  </div>
-
-  <h2>
-    Cryptic-Calculus
-  </h2>
-
-  <p>
-    Treat wordplay like mathematics: identify the transformation,
-    apply operations, compose functions and reconstruct the answer.
-  </p>
-
-  <a
-    class="card-button"
-    href="crypticcalculus.html"
-  >
-    Enter Cryptic-Calculus
-  </a>
-
-</article>
-  </div>
-
-
+  <!-- =====================================================
+       PHILOSOPHY
+  ====================================================== -->
 
   <section class="philosophy">
+
 
     <h2>
       The Reverse-Engineering Principle
     </h2>
 
-    <p>
-      Memorization can give you an answer.
-      Understanding gives you a way to find it again.
-    </p>
 
     <p>
-      PAT Learning Lab is built around
-      <strong>
-        observing structure, finding relationships,
-        reconstructing solutions and explaining why they work.
-      </strong>
+
+      Memorization can give you an answer.
+
+      Understanding gives you a way
+      to find it again.
+
     </p>
+
+
+    <p>
+
+      PAT Learning Lab is built around
+
+      <strong>
+        observing structure,
+        finding relationships,
+        reconstructing solutions
+        and explaining why they work.
+      </strong>
+
+    </p>
+
 
   </section>
 
 
 
+  <!-- =====================================================
+       LAB GROWTH
+  ====================================================== -->
+
   <section class="growing">
+
 
     <h2>
       🧪 The Lab Is Growing
     </h2>
 
+
     <p>
-      New puzzles, Molecular Farm species, Clue-Cards,
-      games and interactive experiments are being added over time.
+
+      New puzzles, Molecular Farm species,
+      Clue-Cards, games and interactive
+      experiments are being added over time.
+
     </p>
 
+
   </section>
+
 
 </main>
 
 
+
 <footer>
+
   PAT Tutoring • Learning Lab Prototype
+
 </footer>
 
+
+
+<!-- =====================================================
+     GAME CLICK ANALYTICS
+
+     Every link with class="game-link"
+     automatically sends:
+
+     game_play
+     game_name
+     destination
+
+====================================================== -->
+
+<script>
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
+
+
+    document
+      .querySelectorAll(
+        ".game-link"
+      )
+      .forEach(
+        function (link) {
+
+
+          link.addEventListener(
+            "click",
+            function () {
+
+
+              const game =
+                link.dataset.game;
+
+
+              if (
+                typeof gtag ===
+                "function"
+              ) {
+
+
+                gtag(
+                  "event",
+                  "game_play",
+                  {
+
+                    game_name:
+                      game,
+
+                    destination:
+                      link.getAttribute(
+                        "href"
+                      )
+
+                  }
+                );
+
+
+                /*
+                  Also record a unique event
+                  for each individual game.
+
+                  Examples:
+
+                  play_molecular_farm
+                  play_contronym
+                  play_clue_cards
+                  play_molecular_bee
+                  play_koan_kaon
+                  play_cryptic_calculus
+                */
+
+
+                gtag(
+                  "event",
+                  "play_" + game,
+                  {
+
+                    game_name:
+                      game
+
+                  }
+                );
+
+
+              }
+
+
+            }
+          );
+
+
+        }
+      );
+
+
+  }
+);
+
+</script>
+
+
 </body>
+
 </html>
