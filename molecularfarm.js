@@ -3,14 +3,46 @@
    PAT LEARNING LAB
 
    SPECIES DATA + GAME ENGINE
+   + GOOGLE ANALYTICS EVENTS
 ========================================================== */
 
 
 /* ==========================================================
-   SPECIES DATABASE
+   ANALYTICS
+========================================================== */
 
-   Eventually this is where we can add your actual
-   Molecular Farm artwork, formulas, lessons and evolutions.
+function trackFarmEvent(
+  eventName,
+  extraData
+) {
+
+  if (
+    typeof gtag !==
+    "function"
+  ) {
+
+    return;
+
+  }
+
+
+  gtag(
+    "event",
+    eventName,
+    {
+      game_name:
+        "molecular_farm",
+
+      ...(extraData || {})
+    }
+  );
+
+}
+
+
+
+/* ==========================================================
+   SPECIES DATABASE
 ========================================================== */
 
 
@@ -236,9 +268,6 @@ const species = [
 
 /* ==========================================================
    PLAYER DATA
-
-   localStorage means progress remains on the device
-   between visits.
 ========================================================== */
 
 
@@ -270,13 +299,24 @@ let currentQuestion =
   0;
 
 
+/*
+  Prevents a species completion event from being
+  counted more than once during the same page visit.
+*/
+
+const cataloguedThisSession =
+  new Set();
+
+
 
 /* ==========================================================
    NAVIGATION
 ========================================================== */
 
 
-function showScreen(id) {
+function showScreen(
+  id
+) {
 
   document
     .querySelectorAll(
@@ -284,22 +324,49 @@ function showScreen(id) {
     )
 
     .forEach(
-      screen =>
+      function (
+        screen
+      ) {
+
         screen
           .classList
           .remove(
             "active"
-          )
+          );
+
+      }
     );
 
 
   document
-    .getElementById(id)
+    .getElementById(
+      id
+    )
 
     .classList
     .add(
       "active"
     );
+
+
+  /*
+    Track entry into the Chemical-Period.
+  */
+
+  if (
+    id ===
+    "periodScreen"
+  ) {
+
+    trackFarmEvent(
+      "chemical_period_opened",
+      {
+        discovered_species:
+          player.unlocked.length
+      }
+    );
+
+  }
 
 
   window.scrollTo(
@@ -329,7 +396,9 @@ function buildPeriod() {
 
 
   species.forEach(
-    item => {
+    function (
+      item
+    ) {
 
 
       const discovered =
@@ -347,11 +416,14 @@ function buildPeriod() {
 
 
       box.className =
-        "element " +
+        "element "
+        +
         (
           discovered
-            ? "unlocked"
-            : "locked"
+            ?
+              "unlocked"
+            :
+              "locked"
         );
 
 
@@ -379,10 +451,13 @@ function buildPeriod() {
 
 
       box.onclick =
-        () =>
+        function () {
+
           openSpecies(
             item
           );
+
+        };
 
 
       period.appendChild(
@@ -401,7 +476,9 @@ function buildPeriod() {
 ========================================================== */
 
 
-function openSpecies(item) {
+function openSpecies(
+  item
+) {
 
   currentSpecies =
     item;
@@ -409,6 +486,39 @@ function openSpecies(item) {
 
   currentQuestion =
     0;
+
+
+  const alreadyDiscovered =
+    player
+      .unlocked
+      .includes(
+        item.atomicNumber
+      );
+
+
+  trackFarmEvent(
+    "species_viewed",
+    {
+      species_name:
+        item.name,
+
+      element_symbol:
+        item.symbol,
+
+      atomic_number:
+        item.atomicNumber,
+
+      already_discovered:
+        alreadyDiscovered,
+
+      has_questions:
+        Boolean(
+          item.questions
+          &&
+          item.questions.length
+        )
+    }
+  );
 
 
   document
@@ -530,7 +640,9 @@ function loadQuestion() {
 
 
   q.answers.forEach(
-    answer => {
+    function (
+      answer
+    ) {
 
 
       const button =
@@ -548,10 +660,13 @@ function loadQuestion() {
 
 
       button.onclick =
-        () =>
+        function () {
+
           checkAnswer(
             answer
           );
+
+        };
 
 
       answers.appendChild(
@@ -570,7 +685,9 @@ function loadQuestion() {
 ========================================================== */
 
 
-function checkAnswer(answer) {
+function checkAnswer(
+  answer
+) {
 
   const q =
     currentSpecies
@@ -585,13 +702,40 @@ function checkAnswer(answer) {
     );
 
 
-  if (
+  const correct =
     answer ===
-    q.correct
+    q.correct;
+
+
+  trackFarmEvent(
+    "species_answered",
+    {
+      species_name:
+        currentSpecies.name,
+
+      element_symbol:
+        currentSpecies.symbol,
+
+      atomic_number:
+        currentSpecies.atomicNumber,
+
+      question_number:
+        currentQuestion +
+        1,
+
+      answer_correct:
+        correct
+    }
+  );
+
+
+  if (
+    correct
   ) {
 
     feedback.innerHTML =
-      "✓ " +
+      "✓ "
+      +
       q.explanation;
 
 
@@ -601,7 +745,7 @@ function checkAnswer(answer) {
 
 
     setTimeout(
-      () => {
+      function () {
 
 
         currentQuestion++;
@@ -650,13 +794,17 @@ function checkAnswer(answer) {
 
 function completeSpecies() {
 
-  if (
-    !player
+  const wasAlreadyUnlocked =
+    player
       .unlocked
       .includes(
         currentSpecies
           .atomicNumber
-      )
+      );
+
+
+  if (
+    !wasAlreadyUnlocked
   ) {
 
     player
@@ -669,6 +817,49 @@ function completeSpecies() {
 
     addXP(
       25
+    );
+
+  }
+
+
+  /*
+    Only log a first-time catalogue event.
+
+    This prevents already-completed species from
+    inflating completion numbers.
+  */
+
+  if (
+    !wasAlreadyUnlocked
+    &&
+    !cataloguedThisSession.has(
+      currentSpecies.atomicNumber
+    )
+  ) {
+
+    cataloguedThisSession.add(
+      currentSpecies.atomicNumber
+    );
+
+
+    trackFarmEvent(
+      "species_catalogued",
+      {
+        species_name:
+          currentSpecies.name,
+
+        element_symbol:
+          currentSpecies.symbol,
+
+        atomic_number:
+          currentSpecies.atomicNumber,
+
+        total_discovered:
+          player.unlocked.length,
+
+        xp:
+          player.xp
+      }
     );
 
   }
@@ -736,7 +927,9 @@ function completeSpecies() {
 ========================================================== */
 
 
-function addXP(amount) {
+function addXP(
+  amount
+) {
 
   player.xp +=
     amount;
@@ -759,7 +952,8 @@ function updateXP() {
     )
 
     .textContent =
-      player.xp +
+      player.xp
+      +
       " XP";
 
 
@@ -775,7 +969,8 @@ function updateXP() {
     )
 
     .style.width =
-      percent +
+      percent
+      +
       "%";
 
 }
@@ -801,17 +996,35 @@ function showPeriodex() {
 
   const discovered =
     species.filter(
-      item =>
-        player
+      function (
+        item
+      ) {
+
+        return player
           .unlocked
           .includes(
             item.atomicNumber
-          )
+          );
+
+      }
     );
 
 
+  trackFarmEvent(
+    "periodex_opened",
+    {
+      discovered_species:
+        discovered.length,
+
+      total_species:
+        species.length
+    }
+  );
+
+
   if (
-    discovered.length === 0
+    discovered.length ===
+    0
   ) {
 
     catalogue.innerHTML =
@@ -822,7 +1035,9 @@ function showPeriodex() {
   else {
 
     discovered.forEach(
-      item => {
+      function (
+        item
+      ) {
 
         catalogue.innerHTML += `
 
@@ -890,4 +1105,17 @@ function savePlayer() {
 
 buildPeriod();
 
+
 updateXP();
+
+
+trackFarmEvent(
+  "world_entered",
+  {
+    discovered_species:
+      player.unlocked.length,
+
+    xp:
+      player.xp
+  }
+);
