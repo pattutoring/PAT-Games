@@ -4,8 +4,7 @@ document.addEventListener(
 
 
 /* ==========================================================
-   CRYPTIC-CALCULUS
-   OPERATION DATABASE
+   CRYPTIC-CALCULUS OPERATIONS
 ========================================================== */
 
 const operations = [
@@ -24,8 +23,8 @@ const operations = [
     category:
       "SOUND OPERATION",
 
-    mascot:
-      "🔈 ≈",
+    visual:
+      "🔈  ≈  🔈",
 
     subtitle:
       "Different spelling. Similar sound.",
@@ -34,13 +33,13 @@ const operations = [
       "sound(A) ≈ sound(B)",
 
     description:
-      "Treat one spoken form as approximately equivalent to another. The written forms differ, but the clue permits a collapse through sound.",
+      "Treat one spoken form as approximately equivalent to another. The spelling changes while the sound remains close enough to carry the transformation.",
 
     exampleInput:
       "SOX",
 
     exampleOperation:
-      "Homophone / Approximation",
+      "Approximation",
 
     exampleMiddle:
       "SOX ≈ SOCKS",
@@ -49,7 +48,20 @@ const operations = [
       "SOCKS",
 
     note:
-      "Approximation does not claim literal equality. It represents a sound-near equivalence useful for homophone wordplay."
+      "The approximation sign represents near-equivalence rather than literal identity.",
+
+
+    practiceClue:
+      "Reportedly, a pair of fruit. (4)",
+
+    practiceAnswer:
+      "PEAR",
+
+    practiceHint:
+      "Say PAIR aloud.",
+
+    practiceExplanation:
+      "PAIR ≈ PEAR. The sound supplies PEAR, defined by fruit."
 
   },
 
@@ -68,23 +80,23 @@ const operations = [
     category:
       "MEANING OPERATION",
 
-    mascot:
-      "🔴 ↔ 🔵",
+    visual:
+      "MEANING A  ⊕  MEANING B",
 
     subtitle:
       "Two meanings. One answer.",
 
     formula:
-      "meaning₁(x) ⊕ meaning₂(x) → answer",
+      "M₁(x) ⊕ M₂(x) → x",
 
     description:
-      "Hold two valid meanings in play at the same time until one answer satisfies both. This is the Cryptic-Calculus model for a double definition.",
+      "Keep two definitions active simultaneously until one lexical state satisfies both.",
 
     exampleInput:
       "Pulling a rabbit out three times is the goal.",
 
     exampleOperation:
-      "Magic meaning ⊕ Sport meaning",
+      "Magic ⊕ Sport",
 
     exampleMiddle:
       "hat trick ⊕ hat trick",
@@ -93,7 +105,20 @@ const operations = [
       "HAT-TRICK",
 
     note:
-      "The answer behaves like the shared state where both meanings are simultaneously valid."
+      "Double definitions become a superposition of meanings that collapse onto one answer.",
+
+
+    practiceClue:
+      "Season or coil. (6)",
+
+    practiceAnswer:
+      "SPRING",
+
+    practiceHint:
+      "One word names both a season and a coil.",
+
+    practiceExplanation:
+      "SPRING satisfies both definitions simultaneously."
 
   },
 
@@ -112,32 +137,45 @@ const operations = [
     category:
       "STRUCTURE OPERATION",
 
-    mascot:
-      "📦 ⊂",
+    visual:
+      "OUTER ⟦ INNER ⟧",
 
     subtitle:
       "Put one unit inside another.",
 
     formula:
-      "Container(outer, inner) = outer(inner)",
+      "C(outer, inner) = outer(inner)",
 
     description:
-      "One letter or word is placed inside another. Indicators can include around, holding, containing, swallowing, embracing or housing.",
+      "Place one piece of clue material inside another. Words such as around, holding, containing and swallowing can signal the operation.",
 
     exampleInput:
-      "A holds B",
+      "SING holds T",
 
     exampleOperation:
-      "Container(A, B)",
+      "Container(SING, T)",
 
     exampleMiddle:
-      "A(B)",
+      "S(T)ING",
 
     exampleResult:
-      "B inserted inside A",
+      "STING",
 
     note:
-      "Container indicators encode spatial structure. The clue tells you which material becomes the outside and which becomes the inside."
+      "Container notation preserves which material acts as the shell and which acts as the inserted object.",
+
+
+    practiceClue:
+      "Pain from SING holding T. (5)",
+
+    practiceAnswer:
+      "STING",
+
+    practiceHint:
+      "Put T inside SING.",
+
+    practiceExplanation:
+      "SING contains T → S(T)ING → STING."
 
   },
 
@@ -156,32 +194,45 @@ const operations = [
     category:
       "FUNCTION OPERATION",
 
-    mascot:
-      "f ∘ g",
+    visual:
+      "x → g(x) → f(g(x))",
 
     subtitle:
-      "Apply one transformation after another.",
+      "Apply one operation after another.",
 
     formula:
       "(f ∘ g)(x) = f(g(x))",
 
     description:
-      "Many cryptic clues require chained operations. First transform the clue material with one function, then feed the result into another.",
+      "Feed the output of one wordplay operation into another. This lets a multi-step cryptic clue behave like composed functions.",
 
     exampleInput:
-      "WORD",
+      "DRAWERS",
 
     exampleOperation:
-      "Reverse ∘ Delete",
+      "Reverse ∘ Delete(S)",
 
     exampleMiddle:
-      "Delete(WORD) → Reverse(result)",
+      "DRAWERS − S = DRAWER",
 
     exampleResult:
-      "A two-step transformation",
+      "DRAWER ↔ REWARD",
 
     note:
-      "Composition lets the clue be modeled as a sequence rather than a single operation."
+      "Order matters: f ∘ g means apply g first and f second.",
+
+
+    practiceClue:
+      "Prize from DRAWERS losing S, returned. (6)",
+
+    practiceAnswer:
+      "REWARD",
+
+    practiceHint:
+      "Delete S first. Then reverse what remains.",
+
+    practiceExplanation:
+      "DRAWERS − S = DRAWER. Reverse DRAWER → REWARD."
 
   },
 
@@ -200,8 +251,8 @@ const operations = [
     category:
       "LETTER OPERATION",
 
-    mascot:
-      "✂️ −",
+    visual:
+      "WHOLE − PART",
 
     subtitle:
       "Remove specified material.",
@@ -210,22 +261,35 @@ const operations = [
       "A − B",
 
     description:
-      "Subtract a letter, sound, prefix, suffix or other specified unit from the source material.",
+      "Subtract a specified letter, sound, beginning, ending or other unit from the clue material.",
 
     exampleInput:
-      "SPEED − E",
+      "PLANE − P",
 
     exampleOperation:
       "Deletion",
 
     exampleMiddle:
-      "SPD",
+      "PLANE − P",
 
     exampleResult:
-      "Remaining material",
+      "LANE",
 
     note:
-      "Indicators can include losing, without, headless, tailless, dropping, minus or removing."
+      "Indicators can include without, losing, headless, tailless, dropping or minus.",
+
+
+    practiceClue:
+      "Narrow passage from PLANE without P. (4)",
+
+    practiceAnswer:
+      "LANE",
+
+    practiceHint:
+      "Remove the first letter of PLANE.",
+
+    practiceExplanation:
+      "PLANE − P = LANE."
 
   },
 
@@ -244,32 +308,45 @@ const operations = [
     category:
       "ORDER OPERATION",
 
-    mascot:
-      "↩️ ↔",
+    visual:
+      "A B C  ↔  C B A",
 
     subtitle:
       "Reverse the sequence.",
 
     formula:
-      "R(A₁A₂...Aₙ) = Aₙ...A₂A₁",
+      "R(a₁a₂...aₙ) = aₙ...a₂a₁",
 
     description:
-      "Reverse the order of letters or another lexical sequence. Directional indicators determine when the operation applies.",
+      "Reverse the order of letters or another sequence supplied by the clue.",
 
     exampleInput:
-      "NO",
+      "DON",
 
     exampleOperation:
       "Reverse",
 
     exampleMiddle:
-      "NO → ON",
+      "DON ↔ NOD",
 
     exampleResult:
-      "ON",
+      "NOD",
 
     note:
-      "Common indicators include back, reversed, returned, rising or reflected depending on clue orientation."
+      "Indicators can include back, returned, reflected, reversed or turned.",
+
+
+    practiceClue:
+      "Consent when DON turns back. (3)",
+
+    practiceAnswer:
+      "NOD",
+
+    practiceHint:
+      "Reverse DON.",
+
+    practiceExplanation:
+      "DON reversed gives NOD, meaning consent."
 
   },
 
@@ -288,8 +365,8 @@ const operations = [
     category:
       "PERMUTATION OPERATION",
 
-    mascot:
-      "🔀 ⟳",
+    visual:
+      "A B C D  ⟳  B D A C",
 
     subtitle:
       "Rearrange the components.",
@@ -298,22 +375,35 @@ const operations = [
       "Permute(A) → A′",
 
     description:
-      "Reorder the letters of the supplied material while preserving the same component set.",
+      "Rearrange a supplied set of letters while preserving the same components.",
 
     exampleInput:
-      "LISTEN",
-
-    exampleOperation:
-      "Anagram",
-
-    exampleMiddle:
-      "Permute(LISTEN)",
-
-    exampleResult:
       "SILENT",
 
+    exampleOperation:
+      "Permutation",
+
+    exampleMiddle:
+      "⟳ SILENT",
+
+    exampleResult:
+      "LISTEN",
+
     note:
-      "Anagram indicators often suggest disorder, movement, corruption, mixing or change."
+      "Anagram indicators often suggest mixing, disorder, movement or transformation.",
+
+
+    practiceClue:
+      "Attend to SILENT mixed. (6)",
+
+    practiceAnswer:
+      "LISTEN",
+
+    practiceHint:
+      "Rearrange every letter in SILENT.",
+
+    practiceExplanation:
+      "SILENT ⟳ LISTEN."
 
   },
 
@@ -332,32 +422,48 @@ const operations = [
     category:
       "VISUAL OPERATION",
 
-    mascot:
-      "🚌 ABC",
+    visual:
+      "🚌  LAYOUT → LANGUAGE",
 
     subtitle:
       "Read arrangement as meaning.",
 
     formula:
-      "layout(x) → lexical interpretation",
+      "layout(x) → lexical meaning",
 
     description:
-      "Treat spatial arrangement itself as clue information. Position, enclosure, repetition or direction becomes part of the operation.",
+      "Position itself becomes information. Read above, below, inside, outside, repeated or displaced material as part of the answer.",
 
     exampleInput:
-      "MAN\nBOARD",
+      "HEAD\n\nHEELS",
 
     exampleOperation:
-      "Read vertical arrangement",
+      "Read vertical relation",
 
     exampleMiddle:
-      "MAN over BOARD",
+      "HEAD over HEELS",
 
     exampleResult:
-      "MAN OVERBOARD",
+      "HEAD OVER HEELS",
 
     note:
-      "The Rebus Bus carries visual structure into language. Placement is part of the clue rather than decoration."
+      "The arrangement is an operator: visual position becomes lexical structure.",
+
+
+    practiceClue:
+      "Read the arrangement.",
+
+    practiceVisual:
+      "HEAD\n\nHEELS",
+
+    practiceAnswer:
+      "HEAD OVER HEELS",
+
+    practiceHint:
+      "Where is HEAD relative to HEELS?",
+
+    practiceExplanation:
+      "HEAD is physically over HEELS → HEAD OVER HEELS."
 
   },
 
@@ -376,8 +482,8 @@ const operations = [
     category:
       "SEMANTIC SHIFT",
 
-    mascot:
-      "🔴🐟🔵",
+    visual:
+      "RED ⇠ 🐟 ⇢ BLUE",
 
     subtitle:
       "Shift interpretation toward or away.",
@@ -386,26 +492,201 @@ const operations = [
       "Shift(m, ±Δcontext)",
 
     description:
-      "Move interpretation through semantic space. A blue-shift compresses toward a target meaning; a red-shift expands or moves away into a broader interpretation.",
+      "Move an interpretation through semantic space. A blue-shift pulls it toward a target relation; a red-shift moves it away into a broader or more displaced reading.",
 
     exampleInput:
-      "SOX / SOCKS",
+      "SOX",
 
     exampleOperation:
-      "Blue-shift toward sound identity",
+      "Blue-shift toward clothing through sound",
 
     exampleMiddle:
-      "Spelling difference decreases",
+      "SOX ≈ SOCKS",
 
     exampleResult:
-      "Homophone relation",
+      "SOCKS",
 
     note:
-      "Red-Fish Blue-Shift models how context can pull two interpretations closer together or push them farther apart in semantic space."
+      "The shift visualizes movement between interpretations rather than treating lexical meaning as fixed.",
+
+
+    practiceClue:
+      "Blue-shift SOX toward something worn on your feet. (5)",
+
+    practiceAnswer:
+      "SOCKS",
+
+    practiceHint:
+      "Shift by sound rather than spelling.",
+
+    practiceExplanation:
+      "SOX blue-shifts toward the sound-equivalent SOCKS."
 
   }
 
 ];
+
+
+
+/* ==========================================================
+   MULTI-OPERATION CHALLENGES
+========================================================== */
+
+const challenges = [
+
+  {
+
+    clue:
+      "Prize from DRAWERS losing S, returned.",
+
+    enumeration:
+      "(6)",
+
+    answer:
+      "REWARD",
+
+    operations:
+      [
+        "Deletion",
+        "Reversal"
+      ],
+
+    formula:
+      "R(DRAWERS − S)",
+
+    hint:
+      "Use Deletion first, then Reversal.",
+
+    steps:
+      [
+        "Start with DRAWERS.",
+        "Delete S → DRAWER.",
+        "Reverse DRAWER → REWARD.",
+        "REWARD = prize."
+      ]
+
+  },
+
+
+  {
+
+    clue:
+      "Pain from SIGN mixed around T.",
+
+    enumeration:
+      "(5)",
+
+    answer:
+      "STING",
+
+    operations:
+      [
+        "Anagram",
+        "Container"
+      ],
+
+    formula:
+      "Container(⟳SIGN, T)",
+
+    hint:
+      "Rearrange SIGN first, then put T inside.",
+
+    steps:
+      [
+        "Anagram SIGN → SING.",
+        "Insert T into SING.",
+        "S(T)ING → STING.",
+        "STING = pain."
+      ]
+
+  },
+
+
+  {
+
+    clue:
+      "Footwear reportedly from baseball team SOX.",
+
+    enumeration:
+      "(5)",
+
+    answer:
+      "SOCKS",
+
+    operations:
+      [
+        "Approximation",
+        "Blue-Shift"
+      ],
+
+    formula:
+      "BlueShift(sound(SOX)) ≈ SOCKS",
+
+    hint:
+      "Move from the written team name toward its spoken clothing equivalent.",
+
+    steps:
+      [
+        "Begin with SOX.",
+        "Use sound rather than spelling.",
+        "SOX ≈ SOCKS.",
+        "Shift toward the clothing meaning → SOCKS."
+      ]
+
+  },
+
+
+  {
+
+    clue:
+      "Prize hidden behind two moves: remove S from DRAWERS, then send it back.",
+
+    enumeration:
+      "(6)",
+
+    answer:
+      "REWARD",
+
+    operations:
+      [
+        "Deletion",
+        "Composition",
+        "Reversal"
+      ],
+
+    formula:
+      "(R ∘ Dₛ)(DRAWERS)",
+
+    hint:
+      "This explicitly forms a composition of two functions.",
+
+    steps:
+      [
+        "Dₛ(DRAWERS) = DRAWER.",
+        "R(DRAWER) = REWARD.",
+        "Therefore (R ∘ Dₛ)(DRAWERS) = REWARD."
+      ]
+
+  }
+
+];
+
+
+
+/* ==========================================================
+   STATE
+========================================================== */
+
+let activeOperation =
+  operations[0];
+
+
+let challengeIndex =
+  0;
+
+
+let challengeSolvedCount =
+  0;
 
 
 
@@ -437,9 +718,9 @@ const operationSymbol =
   );
 
 
-const mascotPlaceholder =
+const operationVisual =
   document.getElementById(
-    "mascotPlaceholder"
+    "operationVisual"
   );
 
 
@@ -485,6 +766,42 @@ const operationNote =
   );
 
 
+const practiceSymbol =
+  document.getElementById(
+    "practiceSymbol"
+  );
+
+
+const practiceClue =
+  document.getElementById(
+    "practiceClue"
+  );
+
+
+const practiceVisual =
+  document.getElementById(
+    "practiceVisual"
+  );
+
+
+const practiceInput =
+  document.getElementById(
+    "practiceInput"
+  );
+
+
+const practiceFeedback =
+  document.getElementById(
+    "practiceFeedback"
+  );
+
+
+const practiceSolution =
+  document.getElementById(
+    "practiceSolution"
+  );
+
+
 const firstOperation =
   document.getElementById(
     "firstOperation"
@@ -517,7 +834,27 @@ const referenceGrid =
 
 
 /* ==========================================================
-   BUILD OPERATION BANK
+   NORMALIZE ANSWERS
+========================================================== */
+
+function normalizeAnswer(
+  text
+) {
+
+  return text
+    .trim()
+    .toUpperCase()
+    .replace(
+      /[^A-Z0-9]/g,
+      ""
+    );
+
+}
+
+
+
+/* ==========================================================
+   OPERATION BANK
 ========================================================== */
 
 function buildOperationBank() {
@@ -528,8 +865,7 @@ function buildOperationBank() {
 
   operations.forEach(
     function (
-      operation,
-      index
+      operation
     ) {
 
       const button =
@@ -590,17 +926,6 @@ function buildOperationBank() {
         button
       );
 
-
-      if (
-        index === 0
-      ) {
-
-        button.classList.add(
-          "active"
-        );
-
-      }
-
     }
   );
 
@@ -622,9 +947,7 @@ function showOperation(
         item
       ) {
 
-        return (
-          item.id === id
-        );
+        return item.id === id;
 
       }
     );
@@ -637,6 +960,10 @@ function showOperation(
     return;
 
   }
+
+
+  activeOperation =
+    operation;
 
 
   document
@@ -689,12 +1016,8 @@ function showOperation(
     operation.symbol;
 
 
-  mascotPlaceholder.innerHTML =
-    '<div>'
-    +
-    operation.mascot
-    +
-    '</div>';
+  operationVisual.textContent =
+    operation.visual;
 
 
   operationFormula.textContent =
@@ -724,7 +1047,222 @@ function showOperation(
   operationNote.textContent =
     operation.note;
 
+
+  loadPractice(
+    operation
+  );
+
 }
+
+
+
+/* ==========================================================
+   MINI PRACTICE
+========================================================== */
+
+function loadPractice(
+  operation
+) {
+
+  practiceSymbol.textContent =
+    operation.symbol;
+
+
+  practiceClue.textContent =
+    operation.practiceClue;
+
+
+  practiceInput.value =
+    "";
+
+
+  practiceFeedback.textContent =
+    "";
+
+
+  practiceFeedback.classList.remove(
+    "correct"
+  );
+
+
+  practiceSolution.textContent =
+    "";
+
+
+  practiceSolution.classList.remove(
+    "visible"
+  );
+
+
+  if (
+    operation.practiceVisual
+  ) {
+
+    practiceVisual.textContent =
+      operation.practiceVisual;
+
+
+    practiceVisual.classList.add(
+      "visible"
+    );
+
+  }
+
+  else {
+
+    practiceVisual.textContent =
+      "";
+
+
+    practiceVisual.classList.remove(
+      "visible"
+    );
+
+  }
+
+}
+
+
+
+function checkPractice() {
+
+  const guess =
+    normalizeAnswer(
+      practiceInput.value
+    );
+
+
+  const answer =
+    normalizeAnswer(
+      activeOperation.practiceAnswer
+    );
+
+
+  if (
+    !guess
+  ) {
+
+    practiceFeedback.textContent =
+      "Enter an answer first.";
+
+
+    return;
+
+  }
+
+
+  if (
+    guess === answer
+  ) {
+
+    practiceFeedback.textContent =
+      "✓ Correct — "
+      +
+      activeOperation.practiceAnswer;
+
+
+    practiceFeedback.classList.add(
+      "correct"
+    );
+
+
+    practiceSolution.textContent =
+      activeOperation.practiceExplanation;
+
+
+    practiceSolution.classList.add(
+      "visible"
+    );
+
+
+    return;
+
+  }
+
+
+  practiceFeedback.classList.remove(
+    "correct"
+  );
+
+
+  practiceFeedback.textContent =
+    "Not quite. Apply the selected operation again.";
+
+}
+
+
+
+document
+  .getElementById(
+    "practiceCheck"
+  )
+  .addEventListener(
+    "click",
+    checkPractice
+  );
+
+
+practiceInput
+  .addEventListener(
+    "keydown",
+    function (
+      event
+    ) {
+
+      if (
+        event.key ===
+        "Enter"
+      ) {
+
+        checkPractice();
+
+      }
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "practiceHint"
+  )
+  .addEventListener(
+    "click",
+    function () {
+
+      practiceFeedback.textContent =
+        activeOperation.practiceHint;
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "practiceReveal"
+  )
+  .addEventListener(
+    "click",
+    function () {
+
+      practiceInput.value =
+        activeOperation.practiceAnswer;
+
+
+      practiceFeedback.textContent =
+        "Answer revealed.";
+
+
+      practiceSolution.textContent =
+        activeOperation.practiceExplanation;
+
+
+      practiceSolution.classList.add(
+        "visible"
+      );
+
+    }
+  );
 
 
 
@@ -811,7 +1349,7 @@ function buildCompositionSelectors() {
 
 
 /* ==========================================================
-   COMPOSITION OUTPUT
+   COMPOSITION
 ========================================================== */
 
 function updateComposition() {
@@ -847,8 +1385,7 @@ function updateComposition() {
 
 
   if (
-    !first
-    ||
+    !first ||
     !second
   ) {
 
@@ -872,11 +1409,11 @@ function updateComposition() {
     +
     first.title
     +
-    " first, then feed that result into "
+    " first. Its output becomes the input for "
     +
     second.title
     +
-    ". The output of the first operation becomes the input of the second.";
+    ".";
 
 }
 
@@ -893,6 +1430,336 @@ secondOperation
   .addEventListener(
     "change",
     updateComposition
+  );
+
+
+
+/* ==========================================================
+   CHALLENGE
+========================================================== */
+
+const challengeClue =
+  document.getElementById(
+    "challengeClue"
+  );
+
+
+const challengeEnumeration =
+  document.getElementById(
+    "challengeEnumeration"
+  );
+
+
+const challengeInput =
+  document.getElementById(
+    "challengeInput"
+  );
+
+
+const challengeFeedback =
+  document.getElementById(
+    "challengeFeedback"
+  );
+
+
+const challengeBreakdown =
+  document.getElementById(
+    "challengeBreakdown"
+  );
+
+
+const challengeFormula =
+  document.getElementById(
+    "challengeFormula"
+  );
+
+
+const challengeSteps =
+  document.getElementById(
+    "challengeSteps"
+  );
+
+
+
+function loadChallenge() {
+
+  const challenge =
+    challenges[
+      challengeIndex
+    ];
+
+
+  document
+    .getElementById(
+      "challengeNumber"
+    )
+    .textContent =
+      (
+        challengeIndex + 1
+      );
+
+
+  challengeClue.textContent =
+    challenge.clue;
+
+
+  challengeEnumeration.textContent =
+    challenge.enumeration;
+
+
+  challengeInput.value =
+    "";
+
+
+  challengeFeedback.textContent =
+    "";
+
+
+  challengeFeedback.classList.remove(
+    "correct"
+  );
+
+
+  challengeBreakdown.classList.remove(
+    "visible"
+  );
+
+
+  challengeFormula.textContent =
+    "";
+
+
+  challengeSteps.innerHTML =
+    "";
+
+}
+
+
+
+function revealChallengeBreakdown(
+  challenge
+) {
+
+  challengeFormula.textContent =
+    challenge.formula;
+
+
+  challengeSteps.innerHTML =
+    "";
+
+
+  challenge.steps.forEach(
+    function (
+      step,
+      index
+    ) {
+
+      const line =
+        document.createElement(
+          "div"
+        );
+
+
+      line.textContent =
+        (
+          index + 1
+        )
+        +
+        ". "
+        +
+        step;
+
+
+      challengeSteps.appendChild(
+        line
+      );
+
+    }
+  );
+
+
+  challengeBreakdown.classList.add(
+    "visible"
+  );
+
+}
+
+
+
+function checkChallenge() {
+
+  const challenge =
+    challenges[
+      challengeIndex
+    ];
+
+
+  const guess =
+    normalizeAnswer(
+      challengeInput.value
+    );
+
+
+  if (
+    !guess
+  ) {
+
+    challengeFeedback.textContent =
+      "Enter an answer first.";
+
+
+    return;
+
+  }
+
+
+  if (
+    guess ===
+    normalizeAnswer(
+      challenge.answer
+    )
+  ) {
+
+    challengeFeedback.textContent =
+      "✓ Correct — "
+      +
+      challenge.answer;
+
+
+    challengeFeedback.classList.add(
+      "correct"
+    );
+
+
+    challengeSolvedCount++;
+
+
+    document
+      .getElementById(
+        "challengeSolved"
+      )
+      .textContent =
+        challengeSolvedCount;
+
+
+    revealChallengeBreakdown(
+      challenge
+    );
+
+
+    return;
+
+  }
+
+
+  challengeFeedback.classList.remove(
+    "correct"
+  );
+
+
+  challengeFeedback.textContent =
+    "Not quite. Track the transformations in order.";
+
+}
+
+
+
+document
+  .getElementById(
+    "challengeCheck"
+  )
+  .addEventListener(
+    "click",
+    checkChallenge
+  );
+
+
+challengeInput
+  .addEventListener(
+    "keydown",
+    function (
+      event
+    ) {
+
+      if (
+        event.key ===
+        "Enter"
+      ) {
+
+        checkChallenge();
+
+      }
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "challengeHint"
+  )
+  .addEventListener(
+    "click",
+    function () {
+
+      challengeFeedback.textContent =
+        challenges[
+          challengeIndex
+        ].hint;
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "challengeReveal"
+  )
+  .addEventListener(
+    "click",
+    function () {
+
+      const challenge =
+        challenges[
+          challengeIndex
+        ];
+
+
+      challengeInput.value =
+        challenge.answer;
+
+
+      challengeFeedback.textContent =
+        "Answer revealed.";
+
+
+      revealChallengeBreakdown(
+        challenge
+      );
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "challengeNext"
+  )
+  .addEventListener(
+    "click",
+    function () {
+
+      challengeIndex =
+        (
+          challengeIndex + 1
+        )
+        %
+        challenges.length;
+
+
+      loadChallenge();
+
+    }
   );
 
 
@@ -966,6 +1833,8 @@ buildReferenceGrid();
 showOperation(
   operations[0].id
 );
+
+loadChallenge();
 
 
 });
