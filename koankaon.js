@@ -68,7 +68,7 @@ const generalPuzzles = [
         number: 5,
 
         clue:
-          "Core gory goblin?",
+          "Gore gory goblin?",
 
         enumeration:
           "(4)",
@@ -100,7 +100,7 @@ const generalPuzzles = [
         number: 7,
 
         clue:
-          "Cartoony ants cartoonists.",
+          "Cartoony ants cartoonist.",
 
         enumeration:
           "(4)",
