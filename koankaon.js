@@ -4,23 +4,15 @@ document.addEventListener(
 
 
 /* ==========================================================
-   KOAN~KAON
-   PAT LEARNING LAB
+   KOAN~KAON DATABASE
 
-   PUZZLE DATABASE
-
-   IMPORTANT:
-
-   The LAST puzzle in each database becomes
-   the current puzzle automatically.
-
-   Earlier puzzles automatically move
-   into the Archive.
+   LAST ENTRY = CURRENT
+   EARLIER ENTRIES = ARCHIVE
 ========================================================== */
 
 
 /* ==========================================================
-   GENERAL PUZZLES
+   SU(1)
 ========================================================== */
 
 const generalPuzzles = [
@@ -40,22 +32,6 @@ const generalPuzzles = [
       "Foundational",
 
 
-    /*
-      SOLVED GRID
-
-      KAON
-      OGRE
-      ARCS
-      NAST
-
-      Reading vertically:
-
-      KOAN
-      AGRA
-      ORCS
-      NEST
-    */
-
     solution: [
 
       ["K", "A", "O", "N"],
@@ -73,8 +49,7 @@ const generalPuzzles = [
 
       {
 
-        number:
-          1,
+        number: 1,
 
         clue:
           "Koan decays into ‘quark-y’ pairable.",
@@ -82,9 +57,6 @@ const generalPuzzles = [
         enumeration:
           "(4)",
 
-        answer:
-          "KAON",
-
         row:
           0
 
@@ -93,8 +65,7 @@ const generalPuzzles = [
 
       {
 
-        number:
-          5,
+        number: 5,
 
         clue:
           "Core gory goblin?",
@@ -102,9 +73,6 @@ const generalPuzzles = [
         enumeration:
           "(4)",
 
-        answer:
-          "OGRE",
-
         row:
           1
 
@@ -113,17 +81,13 @@ const generalPuzzles = [
 
       {
 
-        number:
-          6,
+        number: 6,
 
         clue:
           "Fight-back, minus head of personal-narratives.",
 
         enumeration:
           "(4)",
-
-        answer:
-          "ARCS",
 
         row:
           2
@@ -133,17 +97,13 @@ const generalPuzzles = [
 
       {
 
-        number:
-          7,
+        number: 7,
 
         clue:
           "Cartoony ants cartoonists.",
 
         enumeration:
           "(4)",
-
-        answer:
-          "NAST",
 
         row:
           3
@@ -157,17 +117,13 @@ const generalPuzzles = [
 
       {
 
-        number:
-          1,
+        number: 1,
 
         clue:
           "Koan symmetry-breakings particle.",
 
         enumeration:
           "(4)",
-
-        answer:
-          "KOAN",
 
         column:
           0
@@ -177,17 +133,13 @@ const generalPuzzles = [
 
       {
 
-        number:
-          2,
+        number: 2,
 
         clue:
           "Indian city lives in the heart of vagrant.",
 
         enumeration:
           "(4)",
-
-        answer:
-          "AGRA",
 
         column:
           1
@@ -197,17 +149,13 @@ const generalPuzzles = [
 
       {
 
-        number:
-          3,
+        number: 3,
 
         clue:
           "Rewound scroll, two fifties taken by trolls.",
 
         enumeration:
           "(4)",
-
-        answer:
-          "ORCS",
 
         column:
           2
@@ -217,17 +165,13 @@ const generalPuzzles = [
 
       {
 
-        number:
-          4,
+        number: 4,
 
         clue:
           "Make your bed from tens, now lie in it.",
 
         enumeration:
           "(4)",
-
-        answer:
-          "NEST",
 
         column:
           3
@@ -238,88 +182,18 @@ const generalPuzzles = [
 
   }
 
-
-  /*
-  ==========================================================
-  FUTURE GENERAL PUZZLE
-
-  When #002 is ready:
-
-  add a comma after Puzzle #001
-  and place the next object here.
-
-  Example:
-
-  ,
-
-  {
-
-    number: "002",
-
-    title: "Puzzle #002",
-
-    subtitle: "Your subtitle",
-
-    difficulty: "Medium",
-
-    solution: [
-
-      ["A","B","C","D"],
-      ["E","F","G","H"],
-      ["I","J","K","L"],
-      ["M","N","O","P"]
-
-    ],
-
-    transverse: [
-
-      {
-        number: 1,
-        clue: "Clue here",
-        enumeration: "(4)",
-        answer: "ABCD",
-        row: 0
-      }
-
-    ],
-
-    conjugate: [
-
-      {
-        number: 1,
-        clue: "Clue here",
-        enumeration: "(4)",
-        answer: "AEIM",
-        column: 0
-      }
-
-    ]
-
-  }
-
-  ==========================================================
-  */
-
 ];
 
 
 
 /* ==========================================================
-   SU(2) MINI PUZZLES
+   SU(2) MINI
 
-   STANDARD MINI GEOMETRY:
+   Only the CENTER is solved.
 
-   4 letters Transverse
-   4 letters Conjugate
+   The surrounding lattice is supplied.
 
-   TRANSVERSE letter #2
-              =
-   CONJUGATE letter #3
-
-   JavaScript indexes:
-
-   transverseIntersection = 1
-   conjugateIntersection = 2
+   Puzzle #001 center = Z.
 ========================================================== */
 
 const miniPuzzles = [
@@ -333,107 +207,28 @@ const miniPuzzles = [
       "Mini #001",
 
     subtitle:
-      "SU(2) Symmetry Mini",
+      "SU(2) Mini • Fold in One",
 
     difficulty:
       "Foundational",
 
 
-    /*
-      This first digital Mini is configured
-      as a four-letter cross so the engine
-      follows the permanent Mini rule.
-
-      We can replace ONLY this data block
-      with the exact first physical Mini
-      once we confirm its four-letter pair.
-
-      Nothing else in the game will need
-      to change.
-    */
-
-
     transverseClue:
-      "A small symmetry puzzle waiting to be collapsed.",
+      "In Hanazono, decapitated major dynasty & did not take no for answer; found throne.",
 
     transverseEnumeration:
-      "(4)",
-
-    transverseAnswer:
-      "NODE",
+      "(3)",
 
 
     conjugateClue:
-      "A crossing point where two directions meet.",
+      "Beginning & end before nothing, N = N.",
 
     conjugateEnumeration:
-      "(4)",
-
-    conjugateAnswer:
-      "AXIS",
+      "(3)",
 
 
-    /*
-      NODE second letter = O
-
-      AXIS third letter = I
-
-      Those do NOT intersect.
-
-      Therefore we use the pair below
-      in the actual starter data.
-    */
-
-
-    across:
-      "KNOT",
-
-    down:
-      "ANON",
-
-
-    acrossClue:
-      "A semantic tangle to be untied.",
-
-    downClue:
-      "Nameless, hidden behind the clue.",
-
-
-    /*
-      KNOT:
-
-      K [N] O T
-         ↑
-      second letter = N
-
-
-      ANON:
-
-      A
-      N
-     [O]
-      N
-
-      Third letter would be O, so this
-      pair also would not satisfy our rule.
-
-      Rather than silently use incorrect
-      geometry, the engine below validates
-      every Mini before loading it.
-
-      Until the exact Mini #001 pair is
-      entered, this puzzle displays a
-      configuration message.
-
-      THIS PREVENTS BAD PUZZLE DATA.
-    */
-
-
-    transverseIntersection:
-      1,
-
-    conjugateIntersection:
-      2
+    answer:
+      "Z"
 
   }
 
@@ -467,7 +262,7 @@ let activeMini =
 
 
 /* ==========================================================
-   SCREEN ELEMENTS
+   NAVIGATION
 ========================================================== */
 
 const screens =
@@ -475,35 +270,6 @@ const screens =
     ".screen"
   );
 
-
-const homeScreen =
-  document.getElementById(
-    "homeScreen"
-  );
-
-
-const generalScreen =
-  document.getElementById(
-    "generalScreen"
-  );
-
-
-const miniScreen =
-  document.getElementById(
-    "miniScreen"
-  );
-
-
-const archiveScreen =
-  document.getElementById(
-    "archiveScreen"
-  );
-
-
-
-/* ==========================================================
-   NAVIGATION
-========================================================== */
 
 function showScreen(
   screenId
@@ -541,11 +307,8 @@ function showScreen(
 
   window.scrollTo(
     {
-      top:
-        0,
-
-      behavior:
-        "smooth"
+      top: 0,
+      behavior: "smooth"
     }
   );
 
@@ -566,12 +329,8 @@ document
         "click",
         function () {
 
-          const destination =
-            button.dataset.screen;
-
-
           if (
-            destination ===
+            button.dataset.screen ===
             "archiveScreen"
           ) {
 
@@ -581,7 +340,7 @@ document
 
 
           showScreen(
-            destination
+            button.dataset.screen
           );
 
         }
@@ -600,12 +359,8 @@ document
     "click",
     function () {
 
-      activeGeneral =
-        currentGeneral;
-
-
       loadGeneralPuzzle(
-        activeGeneral
+        currentGeneral
       );
 
 
@@ -626,12 +381,8 @@ document
     "click",
     function () {
 
-      activeMini =
-        currentMini;
-
-
       loadMiniPuzzle(
-        activeMini
+        currentMini
       );
 
 
@@ -665,7 +416,7 @@ document
 
 
 /* ==========================================================
-   GENERAL GAME STATE
+   SU(1) STATE
 ========================================================== */
 
 let generalSelectedRow =
@@ -680,14 +431,6 @@ let generalDirection =
   "transverse";
 
 
-let generalHintIndex =
-  0;
-
-
-
-/* ==========================================================
-   GENERAL ELEMENTS
-========================================================== */
 
 const generalGrid =
   document.getElementById(
@@ -727,19 +470,7 @@ const generalSolvedPanel =
 
 
 /* ==========================================================
-   GENERAL CELL NUMBERS
-
-   Standard crossword numbering:
-
-   Row 1:
-   1 2 3 4
-
-   Next across starts:
-   5
-
-   then 6
-
-   then 7
+   SU(1) CELL NUMBER
 ========================================================== */
 
 function getCellNumber(
@@ -751,9 +482,7 @@ function getCellNumber(
     row === 0
   ) {
 
-    return (
-      column + 1
-    );
+    return column + 1;
 
   }
 
@@ -762,9 +491,7 @@ function getCellNumber(
     column === 0
   ) {
 
-    return (
-      row + 4
-    );
+    return row + 4;
 
   }
 
@@ -776,7 +503,7 @@ function getCellNumber(
 
 
 /* ==========================================================
-   LOAD GENERAL PUZZLE
+   LOAD SU(1)
 ========================================================== */
 
 function loadGeneralPuzzle(
@@ -797,10 +524,6 @@ function loadGeneralPuzzle(
 
   generalDirection =
     "transverse";
-
-
-  generalHintIndex =
-    0;
 
 
   document
@@ -847,7 +570,7 @@ function loadGeneralPuzzle(
 
 
 /* ==========================================================
-   BUILD GENERAL GRID
+   BUILD GRID
 ========================================================== */
 
 function buildGeneralGrid() {
@@ -894,26 +617,25 @@ function buildGeneralGrid() {
 
 
       if (
-        number !==
-        null
+        number !== null
       ) {
 
-        const numberLabel =
+        const label =
           document.createElement(
             "span"
           );
 
 
-        numberLabel.className =
+        label.className =
           "cell-number";
 
 
-        numberLabel.textContent =
+        label.textContent =
           number;
 
 
         cell.appendChild(
-          numberLabel
+          label
         );
 
       }
@@ -953,22 +675,6 @@ function buildGeneralGrid() {
         column;
 
 
-      input.setAttribute(
-        "aria-label",
-        "Row "
-        +
-        (
-          row + 1
-        )
-        +
-        " column "
-        +
-        (
-          column + 1
-        )
-      );
-
-
       input.addEventListener(
         "focus",
         function () {
@@ -987,25 +693,26 @@ function buildGeneralGrid() {
         function () {
 
           if (
-            generalSelectedRow ===
-            row
+            generalSelectedRow === row
             &&
-            generalSelectedColumn ===
-            column
+            generalSelectedColumn === column
           ) {
 
-            toggleGeneralDirection();
+            generalDirection =
+              generalDirection ===
+              "transverse"
+              ?
+                "conjugate"
+              :
+                "transverse";
 
           }
 
-          else {
 
-            selectGeneralCell(
-              row,
-              column
-            );
-
-          }
+          selectGeneralCell(
+            row,
+            column
+          );
 
         }
       );
@@ -1013,12 +720,10 @@ function buildGeneralGrid() {
 
       input.addEventListener(
         "input",
-        function (
-          event
-        ) {
+        function () {
 
-          const value =
-            event.target.value
+          input.value =
+            input.value
               .toUpperCase()
               .replace(
                 /[^A-Z]/g,
@@ -1026,15 +731,11 @@ function buildGeneralGrid() {
               );
 
 
-          event.target.value =
-            value;
-
-
-          clearGeneralCheckStyles();
+          clearGeneralStyles();
 
 
           if (
-            value
+            input.value
           ) {
 
             moveGeneralForward();
@@ -1051,11 +752,17 @@ function buildGeneralGrid() {
           event
         ) {
 
-          handleGeneralKeydown(
-            event,
-            row,
-            column
-          );
+          if (
+            event.key ===
+            "Backspace"
+            &&
+            input.value ===
+            ""
+          ) {
+
+            moveGeneralBackward();
+
+          }
 
         }
       );
@@ -1079,7 +786,7 @@ function buildGeneralGrid() {
 
 
 /* ==========================================================
-   GENERAL CLUES
+   BUILD CLUES
 ========================================================== */
 
 function buildGeneralClues() {
@@ -1112,10 +819,6 @@ function buildGeneralClues() {
           "clue-button transverse-clue";
 
 
-        button.dataset.direction =
-          "transverse";
-
-
         button.dataset.index =
           clue.row;
 
@@ -1125,7 +828,7 @@ function buildGeneralClues() {
           +
           clue.number
           +
-          '.</span> '
+          '.</span>'
           +
           clue.clue
           +
@@ -1182,10 +885,6 @@ function buildGeneralClues() {
           "clue-button conjugate-clue";
 
 
-        button.dataset.direction =
-          "conjugate";
-
-
         button.dataset.index =
           clue.column;
 
@@ -1195,7 +894,7 @@ function buildGeneralClues() {
           +
           clue.number
           +
-          '.</span> '
+          '.</span>'
           +
           clue.clue
           +
@@ -1236,13 +935,13 @@ function buildGeneralClues() {
 
 
 /* ==========================================================
-   GENERAL SELECTION
+   SU(1) SELECTION
 ========================================================== */
 
 function selectGeneralCell(
   row,
   column,
-  forcedDirection
+  direction
 ) {
 
   generalSelectedRow =
@@ -1254,11 +953,11 @@ function selectGeneralCell(
 
 
   if (
-    forcedDirection
+    direction
   ) {
 
     generalDirection =
-      forcedDirection;
+      direction;
 
   }
 
@@ -1268,27 +967,6 @@ function selectGeneralCell(
 }
 
 
-
-function toggleGeneralDirection() {
-
-  generalDirection =
-    generalDirection ===
-    "transverse"
-    ?
-      "conjugate"
-    :
-      "transverse";
-
-
-  updateGeneralHighlight();
-
-}
-
-
-
-/* ==========================================================
-   GENERAL HIGHLIGHTING
-========================================================== */
 
 function updateGeneralHighlight() {
 
@@ -1355,28 +1033,6 @@ function updateGeneralHighlight() {
 
 
     const clue =
-      generalAcrossClues
-        .querySelector(
-          '[data-index="'
-          +
-          generalSelectedRow
-          +
-          '"]'
-        );
-
-
-    if (
-      clue
-    ) {
-
-      clue.classList.add(
-        "active"
-      );
-
-    }
-
-
-    const data =
       activeGeneral.transverse[
         generalSelectedRow
       ];
@@ -1385,11 +1041,32 @@ function updateGeneralHighlight() {
     generalDirectionLabel.textContent =
       "TRANSVERSE "
       +
-      data.number
+      clue.number
       +
       " • "
       +
-      data.clue;
+      clue.clue;
+
+
+    const button =
+      generalAcrossClues.querySelector(
+        '[data-index="'
+        +
+        generalSelectedRow
+        +
+        '"]'
+      );
+
+
+    if (
+      button
+    ) {
+
+      button.classList.add(
+        "active"
+      );
+
+    }
 
   }
 
@@ -1417,28 +1094,6 @@ function updateGeneralHighlight() {
 
 
     const clue =
-      generalDownClues
-        .querySelector(
-          '[data-index="'
-          +
-          generalSelectedColumn
-          +
-          '"]'
-        );
-
-
-    if (
-      clue
-    ) {
-
-      clue.classList.add(
-        "active"
-      );
-
-    }
-
-
-    const data =
       activeGeneral.conjugate[
         generalSelectedColumn
       ];
@@ -1447,16 +1102,37 @@ function updateGeneralHighlight() {
     generalDirectionLabel.textContent =
       "CONJUGATE "
       +
-      data.number
+      clue.number
       +
       " • "
       +
-      data.clue;
+      clue.clue;
+
+
+    const button =
+      generalDownClues.querySelector(
+        '[data-index="'
+        +
+        generalSelectedColumn
+        +
+        '"]'
+      );
+
+
+    if (
+      button
+    ) {
+
+      button.classList.add(
+        "active"
+      );
+
+    }
 
   }
 
 
-  const selected =
+  const cell =
     generalGrid.querySelector(
       '[data-row="'
       +
@@ -1471,10 +1147,10 @@ function updateGeneralHighlight() {
 
 
   if (
-    selected
+    cell
   ) {
 
-    selected.classList.add(
+    cell.classList.add(
       "active"
     );
 
@@ -1485,7 +1161,7 @@ function updateGeneralHighlight() {
 
 
 /* ==========================================================
-   GENERAL FOCUS / MOVEMENT
+   SU(1) INPUT HELPERS
 ========================================================== */
 
 function getGeneralInput(
@@ -1527,9 +1203,6 @@ function focusGeneralCell(
 
     input.focus();
 
-
-    input.select();
-
   }
 
 }
@@ -1549,27 +1222,23 @@ function moveGeneralForward() {
   if (
     generalDirection ===
     "transverse"
+    &&
+    column < 3
   ) {
 
-    if (
-      column < 3
-    ) {
-
-      column++;
-
-    }
+    column++;
 
   }
 
-  else {
 
-    if (
-      row < 3
-    ) {
+  if (
+    generalDirection ===
+    "conjugate"
+    &&
+    row < 3
+  ) {
 
-      row++;
-
-    }
+    row++;
 
   }
 
@@ -1602,27 +1271,23 @@ function moveGeneralBackward() {
   if (
     generalDirection ===
     "transverse"
+    &&
+    column > 0
   ) {
 
-    if (
-      column > 0
-    ) {
-
-      column--;
-
-    }
+    column--;
 
   }
 
-  else {
 
-    if (
-      row > 0
-    ) {
+  if (
+    generalDirection ===
+    "conjugate"
+    &&
+    row > 0
+  ) {
 
-      row--;
-
-    }
+    row--;
 
   }
 
@@ -1643,187 +1308,10 @@ function moveGeneralBackward() {
 
 
 /* ==========================================================
-   KEYBOARD NAVIGATION
+   SU(1) CHECK
 ========================================================== */
 
-function handleGeneralKeydown(
-  event,
-  row,
-  column
-) {
-
-  if (
-    event.key ===
-    "Backspace"
-  ) {
-
-    const input =
-      event.target;
-
-
-    if (
-      input.value ===
-      ""
-    ) {
-
-      event.preventDefault();
-
-
-      moveGeneralBackward();
-
-    }
-
-
-    return;
-
-  }
-
-
-  if (
-    event.key ===
-    "ArrowRight"
-  ) {
-
-    event.preventDefault();
-
-
-    generalDirection =
-      "transverse";
-
-
-    selectGeneralCell(
-      row,
-      Math.min(
-        3,
-        column + 1
-      )
-    );
-
-
-    focusGeneralCell(
-      row,
-      Math.min(
-        3,
-        column + 1
-      )
-    );
-
-
-    return;
-
-  }
-
-
-  if (
-    event.key ===
-    "ArrowLeft"
-  ) {
-
-    event.preventDefault();
-
-
-    generalDirection =
-      "transverse";
-
-
-    selectGeneralCell(
-      row,
-      Math.max(
-        0,
-        column - 1
-      )
-    );
-
-
-    focusGeneralCell(
-      row,
-      Math.max(
-        0,
-        column - 1
-      )
-    );
-
-
-    return;
-
-  }
-
-
-  if (
-    event.key ===
-    "ArrowDown"
-  ) {
-
-    event.preventDefault();
-
-
-    generalDirection =
-      "conjugate";
-
-
-    selectGeneralCell(
-      Math.min(
-        3,
-        row + 1
-      ),
-      column
-    );
-
-
-    focusGeneralCell(
-      Math.min(
-        3,
-        row + 1
-      ),
-      column
-    );
-
-
-    return;
-
-  }
-
-
-  if (
-    event.key ===
-    "ArrowUp"
-  ) {
-
-    event.preventDefault();
-
-
-    generalDirection =
-      "conjugate";
-
-
-    selectGeneralCell(
-      Math.max(
-        0,
-        row - 1
-      ),
-      column
-    );
-
-
-    focusGeneralCell(
-      Math.max(
-        0,
-        row - 1
-      ),
-      column
-    );
-
-  }
-
-}
-
-
-
-/* ==========================================================
-   GENERAL CHECKING
-========================================================== */
-
-function clearGeneralCheckStyles() {
+function clearGeneralStyles() {
 
   document
     .querySelectorAll(
@@ -1846,33 +1334,6 @@ function clearGeneralCheckStyles() {
 
 
 
-function generalIsComplete() {
-
-  const inputs =
-    Array.from(
-      generalGrid.querySelectorAll(
-        "input"
-      )
-    );
-
-
-  return inputs.every(
-    function (
-      input
-    ) {
-
-      return (
-        input.value !==
-        ""
-      );
-
-    }
-  );
-
-}
-
-
-
 function generalIsSolved() {
 
   for (
@@ -1887,15 +1348,12 @@ function generalIsSolved() {
       column++
     ) {
 
-      const input =
+      if (
         getGeneralInput(
           row,
           column
-        );
-
-
-      if (
-        input.value !==
+        ).value
+        !==
         activeGeneral.solution[
           row
         ][
@@ -1920,7 +1378,7 @@ function generalIsSolved() {
 
 function checkGeneral() {
 
-  clearGeneralCheckStyles();
+  clearGeneralStyles();
 
 
   let correct =
@@ -1950,13 +1408,8 @@ function checkGeneral() {
         );
 
 
-      const cell =
-        input.parentElement;
-
-
       if (
-        input.value ===
-        ""
+        !input.value
       ) {
 
         continue;
@@ -1979,17 +1432,23 @@ function checkGeneral() {
         correct++;
 
 
-        cell.classList.add(
-          "correct"
-        );
+        input
+          .parentElement
+          .classList
+          .add(
+            "correct"
+          );
 
       }
 
       else {
 
-        cell.classList.add(
-          "incorrect"
-        );
+        input
+          .parentElement
+          .classList
+          .add(
+            "incorrect"
+          );
 
       }
 
@@ -2019,27 +1478,11 @@ function checkGeneral() {
 
 
   if (
-    filled ===
-    0
+    filled === 0
   ) {
 
     generalFeedback.textContent =
-      "Enter some letters before checking.";
-
-
-    return;
-
-  }
-
-
-  if (
-    generalIsComplete()
-  ) {
-
-    generalFeedback.textContent =
-      correct
-      +
-      " of 16 cells are currently correct.";
+      "Enter some letters first.";
 
 
     return;
@@ -2061,57 +1504,69 @@ function checkGeneral() {
 
 
 /* ==========================================================
-   GENERAL HINT
+   SU(1) HINT
 ========================================================== */
 
 function hintGeneral() {
 
-  const inputs =
-    Array.from(
-      generalGrid.querySelectorAll(
-        "input"
-      )
-    );
-
-
   const candidates =
-    inputs.filter(
-      function (
-        input
+    [];
+
+
+  for (
+    let row = 0;
+    row < 4;
+    row++
+  ) {
+
+    for (
+      let column = 0;
+      column < 4;
+      column++
+    ) {
+
+      const input =
+        getGeneralInput(
+          row,
+          column
+        );
+
+
+      if (
+        input.value !==
+        activeGeneral.solution[
+          row
+        ][
+          column
+        ]
       ) {
 
-        const row =
-          Number(
-            input.dataset.row
-          );
+        candidates.push(
+          {
+            input:
+              input,
 
+            row:
+              row,
 
-        const column =
-          Number(
-            input.dataset.column
-          );
-
-
-        return (
-          input.value !==
-          activeGeneral.solution[
-            row
-          ][
-            column
-          ]
+            column:
+              column
+          }
         );
 
       }
-    );
+
+    }
+
+  }
 
 
   if (
-    candidates.length ===
-    0
+    !candidates.length
   ) {
 
     generalFeedback.textContent =
-      "There are no letters left to reveal.";
+      "No letters remain to reveal.";
 
 
     return;
@@ -2120,42 +1575,15 @@ function hintGeneral() {
 
 
   const target =
-    candidates[
-      generalHintIndex %
-      candidates.length
-    ];
+    candidates[0];
 
 
-  generalHintIndex++;
-
-
-  const row =
-    Number(
-      target.dataset.row
-    );
-
-
-  const column =
-    Number(
-      target.dataset.column
-    );
-
-
-  target.value =
+  target.input.value =
     activeGeneral.solution[
-      row
+      target.row
     ][
-      column
+      target.column
     ];
-
-
-  selectGeneralCell(
-    row,
-    column
-  );
-
-
-  clearGeneralCheckStyles();
 
 
   generalFeedback.textContent =
@@ -2166,7 +1594,7 @@ function hintGeneral() {
 
 
 /* ==========================================================
-   GENERAL CLEAR / REVEAL
+   SU(1) CLEAR / REVEAL
 ========================================================== */
 
 function clearGeneral() {
@@ -2187,7 +1615,7 @@ function clearGeneral() {
     );
 
 
-  clearGeneralCheckStyles();
+  clearGeneralStyles();
 
 
   generalSolvedPanel
@@ -2200,27 +1628,16 @@ function clearGeneral() {
   generalFeedback.textContent =
     "Grid cleared.";
 
-
-  selectGeneralCell(
-    0,
-    0,
-    "transverse"
-  );
-
 }
 
 
 
 function revealGeneral() {
 
-  const confirmed =
-    window.confirm(
-      "Reveal the entire KOAN~KAON solution?"
-    );
-
-
   if (
-    !confirmed
+    !window.confirm(
+      "Reveal the complete SU(1) solution?"
+    )
   ) {
 
     return;
@@ -2255,9 +1672,6 @@ function revealGeneral() {
   }
 
 
-  clearGeneralCheckStyles();
-
-
   generalFeedback.textContent =
     "Solution revealed.";
 
@@ -2271,6 +1685,10 @@ function revealGeneral() {
 }
 
 
+
+/* ==========================================================
+   SU(1) CONTROLS
+========================================================== */
 
 document
   .getElementById(
@@ -2314,12 +1732,18 @@ document
 
 
 /* ==========================================================
-   MINI GAME
+   SU(2) MINI
 ========================================================== */
 
-const miniGrid =
+const miniCenter =
   document.getElementById(
-    "miniGrid"
+    "miniCenter"
+  );
+
+
+const miniCenterInput =
+  document.getElementById(
+    "miniCenterInput"
   );
 
 
@@ -2329,89 +1753,18 @@ const miniFeedback =
   );
 
 
-const miniAcrossClue =
-  document.getElementById(
-    "miniAcrossClue"
-  );
-
-
-const miniDownClue =
-  document.getElementById(
-    "miniDownClue"
-  );
-
-
 const miniSolvedPanel =
   document.getElementById(
     "miniSolvedPanel"
   );
 
 
-let miniSelectedDirection =
-  "transverse";
-
-
-let miniHintCounter =
-  0;
-
-
-/* ==========================================================
-   VALIDATE MINI DATA
-========================================================== */
-
-function miniIsValid(
-  puzzle
-) {
-
-  if (
-    !puzzle.across
-    ||
-    !puzzle.down
-  ) {
-
-    return false;
-
-  }
-
-
-  const acrossIndex =
-    puzzle.transverseIntersection;
-
-
-  const downIndex =
-    puzzle.conjugateIntersection;
-
-
-  if (
-    puzzle.across.length !==
-    4
-    ||
-    puzzle.down.length !==
-    4
-  ) {
-
-    return false;
-
-  }
-
-
-  return (
-    puzzle.across[
-      acrossIndex
-    ]
-    ===
-    puzzle.down[
-      downIndex
-    ]
+const miniSolvedLetter =
+  document.getElementById(
+    "miniSolvedLetter"
   );
 
-}
 
-
-
-/* ==========================================================
-   LOAD MINI
-========================================================== */
 
 function loadMiniPuzzle(
   puzzle
@@ -2419,14 +1772,6 @@ function loadMiniPuzzle(
 
   activeMini =
     puzzle;
-
-
-  miniHintCounter =
-    0;
-
-
-  miniSelectedDirection =
-    "transverse";
 
 
   document
@@ -2445,8 +1790,46 @@ function loadMiniPuzzle(
       puzzle.subtitle;
 
 
+  document
+    .getElementById(
+      "miniAcrossClue"
+    )
+    .textContent =
+      "1. "
+      +
+      puzzle.transverseClue
+      +
+      " "
+      +
+      puzzle.transverseEnumeration;
+
+
+  document
+    .getElementById(
+      "miniDownClue"
+    )
+    .textContent =
+      "1. "
+      +
+      puzzle.conjugateClue
+      +
+      " "
+      +
+      puzzle.conjugateEnumeration;
+
+
+  miniCenterInput.value =
+    "";
+
+
   miniFeedback.textContent =
     "";
+
+
+  miniCenter.classList.remove(
+    "correct",
+    "incorrect"
+  );
 
 
   miniSolvedPanel
@@ -2456,481 +1839,24 @@ function loadMiniPuzzle(
     );
 
 
-  if (
-    !miniIsValid(
-      puzzle
-    )
-  ) {
-
-    buildMiniConfigurationNotice(
-      puzzle
-    );
-
-
-    return;
-
-  }
-
-
-  buildMiniGrid(
-    puzzle
-  );
-
-
-  buildMiniClues(
-    puzzle
-  );
-
-}
-
-
-
-/* ==========================================================
-   MINI CONFIGURATION NOTICE
-
-   Prevents us from displaying an invalid
-   intersection while the exact Mini #001
-   data is being entered.
-========================================================== */
-
-function buildMiniConfigurationNotice(
-  puzzle
-) {
-
-  miniGrid.innerHTML =
+  miniSolvedLetter.textContent =
     "";
 
-
-  const notice =
-    document.createElement(
-      "div"
-    );
-
-
-  notice.style.position =
-    "absolute";
-
-
-  notice.style.left =
-    "50%";
-
-
-  notice.style.top =
-    "50%";
-
-
-  notice.style.transform =
-    "translate(-50%, -50%)";
-
-
-  notice.style.width =
-    "80%";
-
-
-  notice.style.padding =
-    "22px";
-
-
-  notice.style.border =
-    "2px dashed #d2a23c";
-
-
-  notice.style.borderRadius =
-    "16px";
-
-
-  notice.style.background =
-    "#fff8e8";
-
-
-  notice.style.lineHeight =
-    "1.5";
-
-
-  notice.innerHTML =
-    "<strong>SU(2) Mini #"
-    +
-    puzzle.number
-    +
-    "</strong>"
-    +
-    "<br><br>"
-    +
-    "The interactive Mini engine is ready."
-    +
-    "<br>"
-    +
-    "We only need to enter the exact four-letter Transverse and Conjugate answers from your original puzzle.";
-
-
-  miniGrid.appendChild(
-    notice
-  );
-
-
-  miniAcrossClue.textContent =
-    puzzle.acrossClue
-    +
-    " (4)";
-
-
-  miniDownClue.textContent =
-    puzzle.downClue
-    +
-    " (4)";
-
-
-  miniFeedback.textContent =
-    "Mini geometry requires Transverse[2] = Conjugate[3].";
-
 }
 
 
 
 /* ==========================================================
-   BUILD MINI CROSS
+   MINI INPUT
 ========================================================== */
 
-function buildMiniGrid(
-  puzzle
-) {
-
-  miniGrid.innerHTML =
-    "";
-
-
-  /*
-    Cell size = 82px.
-
-    Transverse is positioned as:
-
-        □ □ □ □
-
-    Down intersects through:
-
-          □
-          □
-      □ [□] □ □
-          □
-
-    Shared cell:
-
-    across index 1
-    down index 2
-  */
-
-
-  const cellSize =
-    82;
-
-
-  const centerX =
-    210;
-
-
-  const centerY =
-    210;
-
-
-  const acrossStartX =
-    centerX -
-    cellSize *
-    1.5;
-
-
-  const acrossY =
-    centerY -
-    cellSize /
-    2;
-
-
-  const sharedX =
-    acrossStartX +
-    cellSize;
-
-
-  const downStartY =
-    acrossY -
-    cellSize *
-    2;
-
-
-  /*
-    TRANSVERSE CELLS
-  */
-
-  for (
-    let index = 0;
-    index < 4;
-    index++
-  ) {
-
-    const cell =
-      createMiniCell(
-        "transverse",
-        index
-      );
-
-
-    cell.style.left =
-      (
-        acrossStartX +
-        index *
-        cellSize
-      )
-      +
-      "px";
-
-
-    cell.style.top =
-      acrossY +
-      "px";
-
-
-    if (
-      index ===
-      puzzle.transverseIntersection
-    ) {
-
-      cell.classList.add(
-        "shared-cell"
-      );
-
-
-      cell.dataset.shared =
-        "true";
-
-    }
-
-
-    miniGrid.appendChild(
-      cell
-    );
-
-  }
-
-
-  /*
-    CONJUGATE CELLS
-
-    Do not create a second input
-    at the shared intersection.
-  */
-
-  for (
-    let index = 0;
-    index < 4;
-    index++
-  ) {
-
-    if (
-      index ===
-      puzzle.conjugateIntersection
-    ) {
-
-      continue;
-
-    }
-
-
-    const cell =
-      createMiniCell(
-        "conjugate",
-        index
-      );
-
-
-    cell.style.left =
-      sharedX +
-      "px";
-
-
-    cell.style.top =
-      (
-        downStartY +
-        index *
-        cellSize
-      )
-      +
-      "px";
-
-
-    miniGrid.appendChild(
-      cell
-    );
-
-  }
-
-
-  /*
-    AXIS LABELS
-  */
-
-  const transverseLabel =
-    document.createElement(
-      "div"
-    );
-
-
-  transverseLabel.className =
-    "mini-axis-label transverse";
-
-
-  transverseLabel.textContent =
-    "T • TRANSVERSE";
-
-
-  transverseLabel.style.left =
-    centerX +
-    "px";
-
-
-  transverseLabel.style.top =
-    (
-      acrossY +
-      cellSize +
-      16
-    )
-    +
-    "px";
-
-
-  miniGrid.appendChild(
-    transverseLabel
-  );
-
-
-  const conjugateLabel =
-    document.createElement(
-      "div"
-    );
-
-
-  conjugateLabel.className =
-    "mini-axis-label conjugate";
-
-
-  conjugateLabel.textContent =
-    "C • CONJUGATE";
-
-
-  conjugateLabel.style.left =
-    (
-      sharedX -
-      24
-    )
-    +
-    "px";
-
-
-  conjugateLabel.style.top =
-    centerY +
-    "px";
-
-
-  miniGrid.appendChild(
-    conjugateLabel
-  );
-
-
-  highlightMiniDirection();
-
-}
-
-
-
-/* ==========================================================
-   CREATE MINI CELL
-========================================================== */
-
-function createMiniCell(
-  direction,
-  index
-) {
-
-  const cell =
-    document.createElement(
-      "div"
-    );
-
-
-  cell.className =
-    "mini-cell "
-    +
-    (
-      direction ===
-      "transverse"
-      ?
-        "transverse-cell"
-      :
-        "conjugate-cell"
-    );
-
-
-  cell.dataset.direction =
-    direction;
-
-
-  cell.dataset.index =
-    index;
-
-
-  const input =
-    document.createElement(
-      "input"
-    );
-
-
-  input.type =
-    "text";
-
-
-  input.maxLength =
-    1;
-
-
-  input.autocomplete =
-    "off";
-
-
-  input.autocapitalize =
-    "characters";
-
-
-  input.spellcheck =
-    false;
-
-
-  input.dataset.direction =
-    direction;
-
-
-  input.dataset.index =
-    index;
-
-
-  input.addEventListener(
-    "focus",
+miniCenterInput
+  .addEventListener(
+    "input",
     function () {
 
-      miniSelectedDirection =
-        direction;
-
-
-      highlightMiniDirection();
-
-    }
-  );
-
-
-  input.addEventListener(
-    "input",
-    function (
-      event
-    ) {
-
-      event.target.value =
-        event.target.value
+      miniCenterInput.value =
+        miniCenterInput.value
           .toUpperCase()
           .replace(
             /[^A-Z]/g,
@@ -2938,232 +1864,38 @@ function createMiniCell(
           );
 
 
-      clearMiniCheckStyles();
+      miniCenter.classList.remove(
+        "correct",
+        "incorrect"
+      );
+
+
+      miniFeedback.textContent =
+        "";
 
     }
   );
 
 
-  cell.appendChild(
-    input
-  );
 
+miniCenterInput
+  .addEventListener(
+    "keydown",
+    function (
+      event
+    ) {
 
-  return cell;
-
-}
-
-
-
-/* ==========================================================
-   MINI CLUES
-========================================================== */
-
-function buildMiniClues(
-  puzzle
-) {
-
-  miniAcrossClue.textContent =
-    puzzle.acrossClue
-    +
-    " (4)";
-
-
-  miniDownClue.textContent =
-    puzzle.downClue
-    +
-    " (4)";
-
-
-  miniAcrossClue.onclick =
-    function () {
-
-      miniSelectedDirection =
-        "transverse";
-
-
-      highlightMiniDirection();
-
-    };
-
-
-  miniDownClue.onclick =
-    function () {
-
-      miniSelectedDirection =
-        "conjugate";
-
-
-      highlightMiniDirection();
-
-    };
-
-}
-
-
-
-/* ==========================================================
-   MINI INPUT HELPERS
-========================================================== */
-
-function getMiniSharedInput() {
-
-  const shared =
-    miniGrid.querySelector(
-      ".shared-cell input"
-    );
-
-
-  return shared;
-
-}
-
-
-
-function getMiniInput(
-  direction,
-  index
-) {
-
-  if (
-    direction ===
-    "conjugate"
-    &&
-    index ===
-    activeMini.conjugateIntersection
-  ) {
-
-    return getMiniSharedInput();
-
-  }
-
-
-  return miniGrid.querySelector(
-    'input[data-direction="'
-    +
-    direction
-    +
-    '"][data-index="'
-    +
-    index
-    +
-    '"]'
-  );
-
-}
-
-
-
-/* ==========================================================
-   MINI HIGHLIGHT
-========================================================== */
-
-function highlightMiniDirection() {
-
-  miniGrid
-    .querySelectorAll(
-      ".mini-cell"
-    )
-    .forEach(
-      function (
-        cell
+      if (
+        event.key ===
+        "Enter"
       ) {
 
-        cell.classList.remove(
-          "active"
-        );
+        checkMini();
 
       }
-    );
 
-
-  miniGrid
-    .querySelectorAll(
-      '.mini-cell.'
-      +
-      (
-        miniSelectedDirection ===
-        "transverse"
-        ?
-          "transverse-cell"
-        :
-          "conjugate-cell"
-      )
-    )
-    .forEach(
-      function (
-        cell
-      ) {
-
-        cell.classList.add(
-          "active"
-        );
-
-      }
-    );
-
-
-  const shared =
-    miniGrid.querySelector(
-      ".shared-cell"
-    );
-
-
-  if (
-    shared
-  ) {
-
-    shared.classList.add(
-      "active"
-    );
-
-  }
-
-
-  miniAcrossClue.classList.remove(
-    "active",
-    "transverse-clue",
-    "conjugate-clue"
+    }
   );
-
-
-  miniDownClue.classList.remove(
-    "active",
-    "transverse-clue",
-    "conjugate-clue"
-  );
-
-
-  miniAcrossClue.classList.add(
-    "transverse-clue"
-  );
-
-
-  miniDownClue.classList.add(
-    "conjugate-clue"
-  );
-
-
-  if (
-    miniSelectedDirection ===
-    "transverse"
-  ) {
-
-    miniAcrossClue.classList.add(
-      "active"
-    );
-
-  }
-
-  else {
-
-    miniDownClue.classList.add(
-      "active"
-    );
-
-  }
-
-}
 
 
 
@@ -3171,76 +1903,20 @@ function highlightMiniDirection() {
    MINI CHECK
 ========================================================== */
 
-function clearMiniCheckStyles() {
-
-  miniGrid
-    .querySelectorAll(
-      ".mini-cell"
-    )
-    .forEach(
-      function (
-        cell
-      ) {
-
-        cell.classList.remove(
-          "correct",
-          "incorrect"
-        );
-
-      }
-    );
-
-}
-
-
-
-function getMiniWord(
-  direction
-) {
-
-  let word =
-    "";
-
-
-  for (
-    let index = 0;
-    index < 4;
-    index++
-  ) {
-
-    const input =
-      getMiniInput(
-        direction,
-        index
-      );
-
-
-    word +=
-      input
-      ?
-        input.value
-        :
-        "";
-
-  }
-
-
-  return word;
-
-}
-
-
-
 function checkMini() {
 
+  const guess =
+    miniCenterInput.value
+      .trim()
+      .toUpperCase();
+
+
   if (
-    !miniIsValid(
-      activeMini
-    )
+    !guess
   ) {
 
     miniFeedback.textContent =
-      "Mini #001 needs its final four-letter answer pair entered first.";
+      "Enter the missing center letter first.";
 
 
     return;
@@ -3248,39 +1924,27 @@ function checkMini() {
   }
 
 
-  clearMiniCheckStyles();
-
-
-  const across =
-    getMiniWord(
-      "transverse"
-    );
-
-
-  const down =
-    getMiniWord(
-      "conjugate"
-    );
-
-
-  const acrossCorrect =
-    across ===
-    activeMini.across;
-
-
-  const downCorrect =
-    down ===
-    activeMini.down;
-
-
   if (
-    acrossCorrect
-    &&
-    downCorrect
+    guess ===
+    activeMini.answer
   ) {
 
+    miniCenter.classList.remove(
+      "incorrect"
+    );
+
+
+    miniCenter.classList.add(
+      "correct"
+    );
+
+
     miniFeedback.textContent =
-      "✣ Both directions collapse through the shared letter.";
+      "✣ Correct — the symmetry closes at the center.";
+
+
+    miniSolvedLetter.textContent =
+      activeMini.answer;
 
 
     miniSolvedPanel
@@ -3290,30 +1954,23 @@ function checkMini() {
       );
 
 
-    miniGrid
-      .querySelectorAll(
-        ".mini-cell"
-      )
-      .forEach(
-        function (
-          cell
-        ) {
-
-          cell.classList.add(
-            "correct"
-          );
-
-        }
-      );
-
-
     return;
 
   }
 
 
+  miniCenter.classList.remove(
+    "correct"
+  );
+
+
+  miniCenter.classList.add(
+    "incorrect"
+  );
+
+
   miniFeedback.textContent =
-    "The symmetry has not closed yet. Re-examine both clues.";
+    "Not quite. Read the Transverse and Conjugate clues together.";
 
 }
 
@@ -3325,153 +1982,8 @@ function checkMini() {
 
 function hintMini() {
 
-  if (
-    !miniIsValid(
-      activeMini
-    )
-  ) {
-
-    miniFeedback.textContent =
-      "Mini puzzle data still needs its exact answer pair.";
-
-
-    return;
-
-  }
-
-
-  const candidates =
-    [];
-
-
-  [
-    "transverse",
-    "conjugate"
-  ]
-    .forEach(
-      function (
-        direction
-      ) {
-
-        for (
-          let index = 0;
-          index < 4;
-          index++
-        ) {
-
-          const input =
-            getMiniInput(
-              direction,
-              index
-            );
-
-
-          const answer =
-            direction ===
-            "transverse"
-            ?
-              activeMini.across
-            :
-              activeMini.down;
-
-
-          if (
-            input
-            &&
-            input.value !==
-            answer[
-              index
-            ]
-          ) {
-
-            if (
-              !candidates.includes(
-                input
-              )
-            ) {
-
-              candidates.push(
-                input
-              );
-
-            }
-
-          }
-
-        }
-
-      }
-    );
-
-
-  if (
-    candidates.length ===
-    0
-  ) {
-
-    miniFeedback.textContent =
-      "No letters left to reveal.";
-
-
-    return;
-
-  }
-
-
-  const input =
-    candidates[
-      miniHintCounter %
-      candidates.length
-    ];
-
-
-  miniHintCounter++;
-
-
-  const direction =
-    input.dataset.direction;
-
-
-  const index =
-    Number(
-      input.dataset.index
-    );
-
-
-  if (
-    input.closest(
-      ".shared-cell"
-    )
-  ) {
-
-    input.value =
-      activeMini.across[
-        activeMini.transverseIntersection
-      ];
-
-  }
-
-  else {
-
-    const answer =
-      direction ===
-      "transverse"
-      ?
-        activeMini.across
-      :
-        activeMini.down;
-
-
-    input.value =
-      answer[
-        index
-      ];
-
-  }
-
-
   miniFeedback.textContent =
-    "✦ One intersection point revealed.";
+    "Hint: the answer is a single letter shared by both clue directions.";
 
 }
 
@@ -3483,23 +1995,18 @@ function hintMini() {
 
 function clearMini() {
 
-  miniGrid
-    .querySelectorAll(
-      "input"
-    )
-    .forEach(
-      function (
-        input
-      ) {
-
-        input.value =
-          "";
-
-      }
-    );
+  miniCenterInput.value =
+    "";
 
 
-  clearMiniCheckStyles();
+  miniCenter.classList.remove(
+    "correct",
+    "incorrect"
+  );
+
+
+  miniFeedback.textContent =
+    "Center cleared.";
 
 
   miniSolvedPanel
@@ -3507,10 +2014,6 @@ function clearMini() {
     .remove(
       "visible"
     );
-
-
-  miniFeedback.textContent =
-    "Mini cleared.";
 
 }
 
@@ -3523,63 +2026,36 @@ function clearMini() {
 function revealMini() {
 
   if (
-    !miniIsValid(
-      activeMini
+    !window.confirm(
+      "Reveal the missing SU(2) center?"
     )
   ) {
 
-    miniFeedback.textContent =
-      "Mini puzzle data still needs its exact answer pair.";
-
-
     return;
 
   }
 
 
-  const confirmed =
-    window.confirm(
-      "Reveal both Mini answers?"
-    );
+  miniCenterInput.value =
+    activeMini.answer;
 
 
-  if (
-    !confirmed
-  ) {
-
-    return;
-
-  }
+  miniCenter.classList.remove(
+    "incorrect"
+  );
 
 
-  for (
-    let index = 0;
-    index < 4;
-    index++
-  ) {
-
-    getMiniInput(
-      "transverse",
-      index
-    ).value =
-      activeMini.across[
-        index
-      ];
-
-
-    getMiniInput(
-      "conjugate",
-      index
-    ).value =
-      activeMini.down[
-        index
-      ];
-
-  }
+  miniCenter.classList.add(
+    "correct"
+  );
 
 
   miniFeedback.textContent =
-    "Mini solution revealed.";
+    "Center revealed.";
+
+
+  miniSolvedLetter.textContent =
+    activeMini.answer;
 
 
   miniSolvedPanel
@@ -3638,6 +2114,247 @@ document
 
 
 /* ==========================================================
+   SHARE
+========================================================== */
+
+async function sharePuzzle(
+  button,
+  title,
+  text
+) {
+
+  try {
+
+    if (
+      navigator.share
+    ) {
+
+      await navigator.share(
+        {
+          title:
+            title,
+
+          text:
+            text,
+
+          url:
+            window.location.href
+        }
+      );
+
+
+      return;
+
+    }
+
+
+    await navigator
+      .clipboard
+      .writeText(
+        text
+        +
+        "\n\n"
+        +
+        window.location.href
+      );
+
+
+    const original =
+      button.textContent;
+
+
+    button.textContent =
+      "Copied!";
+
+
+    setTimeout(
+      function () {
+
+        button.textContent =
+          original;
+
+      },
+      1200
+    );
+
+  }
+
+  catch (
+    error
+  ) {
+
+    console.log(
+      "Share cancelled."
+    );
+
+  }
+
+}
+
+
+
+/* ==========================================================
+   SHARE SU(1)
+========================================================== */
+
+document
+  .getElementById(
+    "generalShare"
+  )
+  .addEventListener(
+    "click",
+    function () {
+
+      let filled =
+        0;
+
+
+      generalGrid
+        .querySelectorAll(
+          "input"
+        )
+        .forEach(
+          function (
+            input
+          ) {
+
+            if (
+              input.value
+            ) {
+
+              filled++;
+
+            }
+
+          }
+        );
+
+
+      let status =
+        filled
+        +
+        "/16 letters entered";
+
+
+      if (
+        generalIsSolved()
+      ) {
+
+        status =
+          "✦ SYMMETRY RESTORED";
+
+      }
+
+
+      const text =
+        "KOAN~KAON • SU(1) Puzzle #"
+        +
+        activeGeneral.number
+        +
+        "\n\n"
+        +
+        status
+        +
+        "\n\n"
+        +
+        "Four Transverse clues."
+        +
+        "\n"
+        +
+        "Four Conjugate clues."
+        +
+        "\n"
+        +
+        "One shared lexical field."
+        +
+        "\n\n"
+        +
+        "Can you restore the symmetry?"
+        +
+        "\n\nPAT Learning Lab";
+
+
+      sharePuzzle(
+        this,
+        "KOAN~KAON SU(1)",
+        text
+      );
+
+    }
+  );
+
+
+
+/* ==========================================================
+   SHARE SU(2)
+========================================================== */
+
+document
+  .getElementById(
+    "miniShare"
+  )
+  .addEventListener(
+    "click",
+    function () {
+
+      const solved =
+        miniCenterInput.value
+          .toUpperCase()
+        ===
+        activeMini.answer;
+
+
+      const status =
+        solved
+        ?
+          "✣ FOLD IN ONE — SOLVED"
+        :
+          "□ CENTER UNSOLVED";
+
+
+      /*
+        Important:
+        never put the answer in the
+        shared text unless the player
+        chooses to type/share it themselves.
+      */
+
+      const text =
+        "KOAN~KAON • SU(2) Mini #"
+        +
+        activeMini.number
+        +
+        "\n\n"
+        +
+        status
+        +
+        "\n\n"
+        +
+        "Two clue directions."
+        +
+        "\n"
+        +
+        "One missing center."
+        +
+        "\n\n"
+        +
+        "Can you fold the symmetry into one letter?"
+        +
+        "\n\nPAT Learning Lab";
+
+
+      sharePuzzle(
+        this,
+        "KOAN~KAON SU(2) Mini",
+        text
+      );
+
+    }
+  );
+
+
+
+/* ==========================================================
    ARCHIVE
 ========================================================== */
 
@@ -3678,7 +2395,7 @@ function buildArchive() {
 
 
 /* ==========================================================
-   GENERAL ARCHIVE
+   SU(1) ARCHIVE
 ========================================================== */
 
 function buildGeneralArchive() {
@@ -3687,7 +2404,7 @@ function buildGeneralArchive() {
     "";
 
 
-  const archived =
+  const archive =
     generalPuzzles
       .slice(
         0,
@@ -3697,19 +2414,17 @@ function buildGeneralArchive() {
 
 
   if (
-    archived.length ===
-    0
+    !archive.length
   ) {
 
     archiveGeneralList.innerHTML =
-
       '<div class="empty-archive">'
       +
-      'General Puzzle #001 is currently live.'
+      'SU(1) Puzzle #001 is currently live.'
       +
       '<br><br>'
       +
-      'When Puzzle #002 is released, #001 will automatically move here.'
+      'When #002 is released, #001 will automatically move here.'
       +
       '</div>';
 
@@ -3719,7 +2434,7 @@ function buildGeneralArchive() {
   }
 
 
-  archived.forEach(
+  archive.forEach(
     function (
       puzzle
     ) {
@@ -3735,53 +2450,39 @@ function buildGeneralArchive() {
 
 
       card.innerHTML =
-
         '<div class="archive-top">'
         +
-
-          '<span class="archive-number">'
-          +
-            'PUZZLE #'
-            +
-            puzzle.number
-          +
-          '</span>'
-          +
-
-          '<span class="archive-type general">'
-          +
-            'GENERAL'
-          +
-          '</span>'
-
+        '<span class="archive-number">'
+        +
+        'PUZZLE #'
+        +
+        puzzle.number
+        +
+        '</span>'
+        +
+        '<span class="archive-type general">'
+        +
+        'SU(1)'
+        +
+        '</span>'
         +
         '</div>'
-
         +
-
         '<div class="archive-title">'
         +
-          puzzle.title
+        puzzle.title
         +
         '</div>'
-
         +
-
         '<div class="archive-description">'
         +
-          puzzle.subtitle
-        +
-          ' • '
-        +
-          puzzle.difficulty
+        puzzle.subtitle
         +
         '</div>'
-
         +
-
         '<button class="archive-play-button" type="button">'
         +
-          'Play Archived Puzzle'
+        'Play Archived SU(1)'
         +
         '</button>';
 
@@ -3793,10 +2494,6 @@ function buildGeneralArchive() {
         .addEventListener(
           "click",
           function () {
-
-            activeGeneral =
-              puzzle;
-
 
             loadGeneralPuzzle(
               puzzle
@@ -3823,7 +2520,7 @@ function buildGeneralArchive() {
 
 
 /* ==========================================================
-   MINI ARCHIVE
+   SU(2) ARCHIVE
 ========================================================== */
 
 function buildMiniArchive() {
@@ -3832,7 +2529,7 @@ function buildMiniArchive() {
     "";
 
 
-  const archived =
+  const archive =
     miniPuzzles
       .slice(
         0,
@@ -3842,12 +2539,10 @@ function buildMiniArchive() {
 
 
   if (
-    archived.length ===
-    0
+    !archive.length
   ) {
 
     archiveMiniList.innerHTML =
-
       '<div class="empty-archive">'
       +
       'SU(2) Mini #001 is currently live.'
@@ -3864,7 +2559,7 @@ function buildMiniArchive() {
   }
 
 
-  archived.forEach(
+  archive.forEach(
     function (
       puzzle
     ) {
@@ -3880,53 +2575,39 @@ function buildMiniArchive() {
 
 
       card.innerHTML =
-
         '<div class="archive-top">'
         +
-
-          '<span class="archive-number">'
-          +
-            'MINI #'
-            +
-            puzzle.number
-          +
-          '</span>'
-          +
-
-          '<span class="archive-type mini">'
-          +
-            'SU(2) MINI'
-          +
-          '</span>'
-
+        '<span class="archive-number">'
+        +
+        'MINI #'
+        +
+        puzzle.number
+        +
+        '</span>'
+        +
+        '<span class="archive-type mini">'
+        +
+        'SU(2) MINI'
+        +
+        '</span>'
         +
         '</div>'
-
         +
-
         '<div class="archive-title">'
         +
-          puzzle.title
+        puzzle.title
         +
         '</div>'
-
         +
-
         '<div class="archive-description">'
         +
-          puzzle.subtitle
-        +
-          ' • '
-        +
-          puzzle.difficulty
+        puzzle.subtitle
         +
         '</div>'
-
         +
-
         '<button class="archive-play-button" type="button">'
         +
-          'Play Archived Mini'
+        'Play Archived Mini'
         +
         '</button>';
 
@@ -3938,10 +2619,6 @@ function buildMiniArchive() {
         .addEventListener(
           "click",
           function () {
-
-            activeMini =
-              puzzle;
-
 
             loadMiniPuzzle(
               puzzle
@@ -3976,32 +2653,24 @@ archiveGeneralTab
     "click",
     function () {
 
-      archiveGeneralTab
-        .classList
-        .add(
-          "active"
-        );
+      archiveGeneralTab.classList.add(
+        "active"
+      );
 
 
-      archiveMiniTab
-        .classList
-        .remove(
-          "active"
-        );
+      archiveMiniTab.classList.remove(
+        "active"
+      );
 
 
-      archiveGeneralList
-        .classList
-        .add(
-          "active"
-        );
+      archiveGeneralList.classList.add(
+        "active"
+      );
 
 
-      archiveMiniList
-        .classList
-        .remove(
-          "active"
-        );
+      archiveMiniList.classList.remove(
+        "active"
+      );
 
     }
   );
@@ -4013,32 +2682,24 @@ archiveMiniTab
     "click",
     function () {
 
-      archiveMiniTab
-        .classList
-        .add(
-          "active"
-        );
+      archiveMiniTab.classList.add(
+        "active"
+      );
 
 
-      archiveGeneralTab
-        .classList
-        .remove(
-          "active"
-        );
+      archiveGeneralTab.classList.remove(
+        "active"
+      );
 
 
-      archiveMiniList
-        .classList
-        .add(
-          "active"
-        );
+      archiveMiniList.classList.add(
+        "active"
+      );
 
 
-      archiveGeneralList
-        .classList
-        .remove(
-          "active"
-        );
+      archiveGeneralList.classList.remove(
+        "active"
+      );
 
     }
   );
@@ -4051,6 +2712,11 @@ archiveMiniTab
 
 loadGeneralPuzzle(
   currentGeneral
+);
+
+
+loadMiniPuzzle(
+  currentMini
 );
 
 
