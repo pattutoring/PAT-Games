@@ -4,6 +4,102 @@ document.addEventListener(
 
 
 /* ==========================================================
+   ANALYTICS
+
+   Sends events to the GA4 tag already loaded
+   in koankaon.html.
+
+   Events:
+   puzzle_started
+   puzzle_solved
+   puzzle_revealed
+   puzzle_shared
+========================================================== */
+
+function trackEvent(
+  eventName,
+  mode,
+  puzzleNumber,
+  extraData
+) {
+
+  if (
+    typeof gtag !==
+    "function"
+  ) {
+
+    return;
+
+  }
+
+
+  const data = {
+
+    game_name:
+      "koan_kaon",
+
+    mode:
+      mode,
+
+    puzzle_number:
+      puzzleNumber
+
+  };
+
+
+  if (
+    extraData
+  ) {
+
+    Object.assign(
+      data,
+      extraData
+    );
+
+  }
+
+
+  gtag(
+    "event",
+    eventName,
+    data
+  );
+
+}
+
+
+
+/* ==========================================================
+   ANALYTICS STATE
+
+   Prevents:
+   - one solve being counted repeatedly
+   - a revealed answer later counting as a solve
+   - repeated reveal clicks counting repeatedly
+========================================================== */
+
+let generalSolveTracked =
+  false;
+
+let generalRevealTracked =
+  false;
+
+let generalWasRevealed =
+  false;
+
+
+let miniSolveTracked =
+  false;
+
+let miniRevealTracked =
+  false;
+
+let miniWasRevealed =
+  false;
+
+
+
+/* ==========================================================
    KOAN~KAON DATABASE
 
    LAST ENTRY = CURRENT
@@ -188,12 +284,6 @@ const generalPuzzles = [
 
 /* ==========================================================
    SU(2) MINI
-
-   Only the CENTER is solved.
-
-   The surrounding lattice is supplied.
-
-   Puzzle #001 center = Z.
 ========================================================== */
 
 const miniPuzzles = [
@@ -351,6 +441,10 @@ document
 
 
 
+/* ==========================================================
+   START CURRENT SU(1)
+========================================================== */
+
 document
   .getElementById(
     "generalModeButton"
@@ -368,10 +462,25 @@ document
         "generalScreen"
       );
 
+
+      trackEvent(
+        "puzzle_started",
+        "su1",
+        currentGeneral.number,
+        {
+          archived:
+            false
+        }
+      );
+
     }
   );
 
 
+
+/* ==========================================================
+   START CURRENT SU(2)
+========================================================== */
 
 document
   .getElementById(
@@ -388,6 +497,17 @@ document
 
       showScreen(
         "miniScreen"
+      );
+
+
+      trackEvent(
+        "puzzle_started",
+        "su2_mini",
+        currentMini.number,
+        {
+          archived:
+            false
+        }
       );
 
     }
@@ -524,6 +644,18 @@ function loadGeneralPuzzle(
 
   generalDirection =
     "transverse";
+
+
+  generalSolveTracked =
+    false;
+
+
+  generalRevealTracked =
+    false;
+
+
+  generalWasRevealed =
+    false;
 
 
   document
@@ -1472,6 +1604,33 @@ function checkGeneral() {
       );
 
 
+    /*
+      Only count a true solve.
+
+      If Reveal was used,
+      filling the grid later does not
+      become a puzzle_solved event.
+    */
+
+    if (
+      !generalSolveTracked
+      &&
+      !generalWasRevealed
+    ) {
+
+      generalSolveTracked =
+        true;
+
+
+      trackEvent(
+        "puzzle_solved",
+        "su1",
+        activeGeneral.number
+      );
+
+    }
+
+
     return;
 
   }
@@ -1594,7 +1753,7 @@ function hintGeneral() {
 
 
 /* ==========================================================
-   SU(1) CLEAR / REVEAL
+   SU(1) CLEAR
 ========================================================== */
 
 function clearGeneral() {
@@ -1632,6 +1791,10 @@ function clearGeneral() {
 
 
 
+/* ==========================================================
+   SU(1) REVEAL
+========================================================== */
+
 function revealGeneral() {
 
   if (
@@ -1641,6 +1804,27 @@ function revealGeneral() {
   ) {
 
     return;
+
+  }
+
+
+  generalWasRevealed =
+    true;
+
+
+  if (
+    !generalRevealTracked
+  ) {
+
+    generalRevealTracked =
+      true;
+
+
+    trackEvent(
+      "puzzle_revealed",
+      "su1",
+      activeGeneral.number
+    );
 
   }
 
@@ -1766,12 +1950,28 @@ const miniSolvedLetter =
 
 
 
+/* ==========================================================
+   LOAD MINI
+========================================================== */
+
 function loadMiniPuzzle(
   puzzle
 ) {
 
   activeMini =
     puzzle;
+
+
+  miniSolveTracked =
+    false;
+
+
+  miniRevealTracked =
+    false;
+
+
+  miniWasRevealed =
+    false;
 
 
   document
@@ -1954,6 +2154,25 @@ function checkMini() {
       );
 
 
+    if (
+      !miniSolveTracked
+      &&
+      !miniWasRevealed
+    ) {
+
+      miniSolveTracked =
+        true;
+
+
+      trackEvent(
+        "puzzle_solved",
+        "su2_mini",
+        activeMini.number
+      );
+
+    }
+
+
     return;
 
   }
@@ -2032,6 +2251,27 @@ function revealMini() {
   ) {
 
     return;
+
+  }
+
+
+  miniWasRevealed =
+    true;
+
+
+  if (
+    !miniRevealTracked
+  ) {
+
+    miniRevealTracked =
+      true;
+
+
+    trackEvent(
+      "puzzle_revealed",
+      "su2_mini",
+      activeMini.number
+    );
 
   }
 
@@ -2115,12 +2355,21 @@ document
 
 /* ==========================================================
    SHARE
+
+   Analytics fires only after:
+   - native share successfully resolves, OR
+   - clipboard copy succeeds.
+
+   Cancelling the native share sheet
+   does NOT count as a share.
 ========================================================== */
 
 async function sharePuzzle(
   button,
   title,
-  text
+  text,
+  mode,
+  puzzleNumber
 ) {
 
   try {
@@ -2143,6 +2392,17 @@ async function sharePuzzle(
       );
 
 
+      trackEvent(
+        "puzzle_shared",
+        mode,
+        puzzleNumber,
+        {
+          share_method:
+            "native"
+        }
+      );
+
+
       return;
 
     }
@@ -2157,6 +2417,17 @@ async function sharePuzzle(
         +
         window.location.href
       );
+
+
+    trackEvent(
+      "puzzle_shared",
+      mode,
+      puzzleNumber,
+      {
+        share_method:
+          "clipboard"
+      }
+    );
 
 
     const original =
@@ -2182,6 +2453,11 @@ async function sharePuzzle(
   catch (
     error
   ) {
+
+    /*
+      If someone cancels the system
+      share sheet, no share event fires.
+    */
 
     console.log(
       "Share cancelled."
@@ -2277,7 +2553,9 @@ document
       sharePuzzle(
         this,
         "KOAN~KAON SU(1)",
-        text
+        text,
+        "su1",
+        activeGeneral.number
       );
 
     }
@@ -2312,13 +2590,6 @@ document
           "□ CENTER UNSOLVED";
 
 
-      /*
-        Important:
-        never put the answer in the
-        shared text unless the player
-        chooses to type/share it themselves.
-      */
-
       const text =
         "KOAN~KAON • SU(2) Mini #"
         +
@@ -2346,7 +2617,9 @@ document
       sharePuzzle(
         this,
         "KOAN~KAON SU(2) Mini",
-        text
+        text,
+        "su2_mini",
+        activeMini.number
       );
 
     }
@@ -2504,6 +2777,17 @@ function buildGeneralArchive() {
               "generalScreen"
             );
 
+
+            trackEvent(
+              "puzzle_started",
+              "su1",
+              puzzle.number,
+              {
+                archived:
+                  true
+              }
+            );
+
           }
         );
 
@@ -2629,6 +2913,17 @@ function buildMiniArchive() {
               "miniScreen"
             );
 
+
+            trackEvent(
+              "puzzle_started",
+              "su2_mini",
+              puzzle.number,
+              {
+                archived:
+                  true
+              }
+            );
+
           }
         );
 
@@ -2708,6 +3003,13 @@ archiveMiniTab
 
 /* ==========================================================
    START
+
+   These initialize the UI only.
+
+   They intentionally DO NOT send
+   puzzle_started, because simply loading
+   koankaon.html is not the same thing as
+   choosing SU(1) or SU(2).
 ========================================================== */
 
 loadGeneralPuzzle(
