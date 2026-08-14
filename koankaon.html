@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>KOAN~KAON | PAT Learning Lab</title>
+
+  <link
+    rel="stylesheet"
+    href="koankaon.css?v=20260813-1"
+  >
+
+</head>
+
+
+<body>
+
+
+<header>
+
+  <a
+    class="lab-link"
+    href="index.html"
+  >
+    ← PAT Learning Lab
+  </a>
+
+
+  <div class="koan-brand">
+
+    <span class="koan-word">
+      KOAN
+    </span>
+
+    <span class="tilde">
+      ~
+    </span>
+
+    <span class="kaon-word">
+      KAON
+    </span>
+
+  </div>
+
+
+  <h1>
+    SYMMETRY-BENDING CROSSWORDS
+  </h1>
+
+
+  <p class="tagline">
+    Two directions. One structure. Meaning meets at the center.
+  </p>
+
+</header>
+
+
+
+<main>
+
+
+  <!-- =====================================================
+       HOME
+  ====================================================== -->
+
+  <section
+    id="homeScreen"
+    class="screen active"
+  >
+
+
+    <div class="intro-card">
+
+      <div class="intro-badge">
+        A PAT TUTORING ORIGINAL
+      </div>
+
+
+      <h2>
+        Choose Your Puzzle
+      </h2>
+
+
+      <p>
+        KOAN~KAON puzzles use two clue directions:
+        <strong class="conjugate-text">
+          Conjugate
+        </strong>
+        clues run vertically,
+        while
+        <strong class="transverse-text">
+          Transverse
+        </strong>
+        clues run horizontally.
+      </p>
+
+
+      <p>
+        Every answer participates in a shared structure.
+        In the General Game, the entire 4×4 grid is symmetric.
+        In the SU(2) Mini, one Transverse answer and one
+        Conjugate answer intersect through a shared letter.
+      </p>
+
+    </div>
+
+
+
+    <div class="mode-grid">
+
+
+      <button
+        id="generalModeButton"
+        class="mode-card general-card"
+        type="button"
+      >
+
+        <div class="mode-symbol">
+          ⊞
+        </div>
+
+        <div class="mode-kicker">
+          FULL PUZZLE
+        </div>
+
+        <h2>
+          General Game
+        </h2>
+
+        <p>
+          Four Transverse answers.
+          Four Conjugate answers.
+          One 4×4 field of shared letters.
+        </p>
+
+        <strong>
+          Play Current 4×4 →
+        </strong>
+
+      </button>
+
+
+
+      <button
+        id="miniModeButton"
+        class="mode-card mini-card"
+        type="button"
+      >
+
+        <div class="mode-symbol">
+          ✣
+        </div>
+
+        <div class="mode-kicker">
+          SU(2) MINI
+        </div>
+
+        <h2>
+          Mini
+        </h2>
+
+        <p>
+          One Transverse answer and one Conjugate answer
+          cross through a single shared letter.
+        </p>
+
+        <strong>
+          Play Current Mini →
+        </strong>
+
+      </button>
+
+
+    </div>
+
+
+
+    <div class="home-actions">
+
+      <button
+        id="archiveButton"
+        class="archive-main-button"
+        type="button"
+      >
+        📚 Puzzle Archive
+      </button>
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =====================================================
+       GENERAL GAME
+  ====================================================== -->
+
+  <section
+    id="generalScreen"
+    class="screen"
+  >
+
+
+    <div class="screen-nav">
+
+      <button
+        class="back-button"
+        data-screen="homeScreen"
+        type="button"
+      >
+        ← Puzzle Select
+      </button>
+
+
+      <button
+        class="archive-shortcut"
+        data-screen="archiveScreen"
+        type="button"
+      >
+        Archive
+      </button>
+
+    </div>
+
+
+
+    <div class="puzzle-shell">
+
+
+      <div class="puzzle-heading">
+
+        <div class="puzzle-type">
+          KOAN~KAON • GENERAL
+        </div>
+
+
+        <h2 id="generalPuzzleTitle">
+          Puzzle #001
+        </h2>
+
+
+        <p id="generalPuzzleSubtitle">
+          Symmetry-Bending Word Game
+        </p>
+
+      </div>
+
+
+
+      <div class="axis-key">
+
+        <div class="axis-item conjugate-axis">
+          ↑↓
+          <strong>
+            CONJUGATE
+          </strong>
+          Vertical
+        </div>
+
+
+        <div class="axis-center">
+          ✦
+        </div>
+
+
+        <div class="axis-item transverse-axis">
+          ←→
+          <strong>
+            TRANSVERSE
+          </strong>
+          Horizontal
+        </div>
+
+      </div>
+
+
+
+      <div class="general-layout">
+
+
+        <!-- GRID SIDE -->
+
+        <div class="board-column">
+
+
+          <div
+            id="generalGrid"
+            class="general-grid"
+            aria-label="KOAN KAON 4 by 4 crossword"
+          >
+          </div>
+
+
+          <div
+            id="generalDirectionLabel"
+            class="direction-label"
+          >
+            Select a clue or square
+          </div>
+
+
+          <div
+            id="generalFeedback"
+            class="feedback"
+          >
+          </div>
+
+
+          <div class="control-row">
+
+            <button
+              id="generalCheck"
+              class="primary-button"
+              type="button"
+            >
+              Check
+            </button>
+
+
+            <button
+              id="generalHint"
+              class="secondary-button"
+              type="button"
+            >
+              Hint
+            </button>
+
+
+            <button
+              id="generalClear"
+              class="secondary-button"
+              type="button"
+            >
+              Clear
+            </button>
+
+
+            <button
+              id="generalReveal"
+              class="danger-button"
+              type="button"
+            >
+              Reveal
+            </button>
+
+          </div>
+
+
+        </div>
+
+
+
+        <!-- CLUES SIDE -->
+
+        <div class="clues-column">
+
+
+          <div class="clue-panel transverse-panel">
+
+            <div class="clue-panel-heading">
+              TRANSVERSE CLUES
+            </div>
+
+
+            <div
+              id="generalAcrossClues"
+              class="clue-list"
+            >
+            </div>
+
+          </div>
+
+
+
+          <div class="clue-panel conjugate-panel">
+
+            <div class="clue-panel-heading">
+              CONJUGATE CLUES
+            </div>
+
+
+            <div
+              id="generalDownClues"
+              class="clue-list"
+            >
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <div
+        id="generalSolvedPanel"
+        class="solved-panel"
+      >
+
+        <div class="solved-symbol">
+          ✦
+        </div>
+
+        <h3>
+          SYMMETRY RESTORED
+        </h3>
+
+        <p>
+          The Transverse and Conjugate answers
+          now occupy the same lexical field.
+        </p>
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =====================================================
+       MINI GAME
+  ====================================================== -->
+
+  <section
+    id="miniScreen"
+    class="screen"
+  >
+
+
+    <div class="screen-nav">
+
+      <button
+        class="back-button"
+        data-screen="homeScreen"
+        type="button"
+      >
+        ← Puzzle Select
+      </button>
+
+
+      <button
+        class="archive-shortcut"
+        data-screen="archiveScreen"
+        type="button"
+      >
+        Archive
+      </button>
+
+    </div>
+
+
+
+    <div class="puzzle-shell mini-shell">
+
+
+      <div class="puzzle-heading">
+
+        <div class="puzzle-type">
+          KOAN~KAON • SU(2) MINI
+        </div>
+
+
+        <h2 id="miniPuzzleTitle">
+          Mini #001
+        </h2>
+
+
+        <p id="miniPuzzleSubtitle">
+          One intersection. Two directions.
+        </p>
+
+      </div>
+
+
+
+      <div class="mini-rule-card">
+
+        <span class="transverse-text">
+          Transverse
+        </span>
+
+        answer runs horizontally.
+
+        <br>
+
+        <span class="conjugate-text">
+          Conjugate
+        </span>
+
+        answer runs vertically.
+
+        <br>
+
+        <strong>
+          Shared rule:
+        </strong>
+
+        2nd Transverse letter =
+        3rd Conjugate letter.
+
+      </div>
+
+
+
+      <div class="mini-layout">
+
+
+        <div class="mini-board-column">
+
+
+          <div
+            id="miniGrid"
+            class="mini-cross"
+          >
+          </div>
+
+
+          <div
+            id="miniFeedback"
+            class="feedback"
+          >
+          </div>
+
+
+          <div class="control-row">
+
+            <button
+              id="miniCheck"
+              class="primary-button"
+              type="button"
+            >
+              Check
+            </button>
+
+
+            <button
+              id="miniHint"
+              class="secondary-button"
+              type="button"
+            >
+              Hint
+            </button>
+
+
+            <button
+              id="miniClear"
+              class="secondary-button"
+              type="button"
+            >
+              Clear
+            </button>
+
+
+            <button
+              id="miniReveal"
+              class="danger-button"
+              type="button"
+            >
+              Reveal
+            </button>
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="mini-clues-column">
+
+
+          <div class="clue-panel transverse-panel">
+
+            <div class="clue-panel-heading">
+              TRANSVERSE CLUE
+            </div>
+
+
+            <button
+              id="miniAcrossClue"
+              class="clue-button"
+              type="button"
+            >
+            </button>
+
+          </div>
+
+
+
+          <div class="clue-panel conjugate-panel">
+
+            <div class="clue-panel-heading">
+              CONJUGATE CLUE
+            </div>
+
+
+            <button
+              id="miniDownClue"
+              class="clue-button"
+              type="button"
+            >
+            </button>
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <div
+        id="miniSolvedPanel"
+        class="solved-panel"
+      >
+
+        <div class="solved-symbol">
+          ✣
+        </div>
+
+        <h3>
+          INTERSECTION FOUND
+        </h3>
+
+        <p>
+          Two directions collapse through
+          one shared letter.
+        </p>
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =====================================================
+       ARCHIVE
+  ====================================================== -->
+
+  <section
+    id="archiveScreen"
+    class="screen"
+  >
+
+
+    <div class="screen-nav">
+
+      <button
+        class="back-button"
+        data-screen="homeScreen"
+        type="button"
+      >
+        ← Puzzle Select
+      </button>
+
+    </div>
+
+
+
+    <div class="archive-shell">
+
+
+      <div class="archive-heading">
+
+        <div class="puzzle-type">
+          KOAN~KAON ARCHIVE
+        </div>
+
+        <h2>
+          Previous Puzzles
+        </h2>
+
+        <p>
+          Archived puzzles always reopen unsolved.
+        </p>
+
+      </div>
+
+
+
+      <div class="archive-tabs">
+
+        <button
+          id="archiveGeneralTab"
+          class="archive-tab active"
+          type="button"
+        >
+          General
+        </button>
+
+
+        <button
+          id="archiveMiniTab"
+          class="archive-tab"
+          type="button"
+        >
+          SU(2) Mini
+        </button>
+
+      </div>
+
+
+
+      <div
+        id="archiveGeneralList"
+        class="archive-list active"
+      >
+      </div>
+
+
+      <div
+        id="archiveMiniList"
+        class="archive-list"
+      >
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+</main>
+
+
+
+<footer>
+
+  <strong>
+    KOAN~KAON
+  </strong>
+
+  • PAT Learning Lab
+
+  <br>
+
+  Physics. Language. Pattern.
+
+</footer>
+
+
+
+<script src="koankaon.js?v=20260813-1"></script>
+
+
+</body>
+
+</html>
