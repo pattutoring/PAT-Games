@@ -679,153 +679,53 @@
 
 
     <h2>
-      Grow the Molecular Hive
+      Grow Your Molecular Hive
     </h2>
 
 
-    <p
-      id="queenPrompt"
-      class="prompt"
-    >
+    <p class="prompt">
+      Build freely. Then self-check your molecule.
     </p>
-
 
 
     <div class="queen-progress">
 
       <div class="queen-progress-badge">
-
         🐝 Correct Builds:
-
         <strong id="queenCorrectCount">
           0
         </strong>
-
       </div>
 
 
       <div class="queen-progress-badge">
-
         👑 Active Atom:
-
         <strong id="queenActiveAtom">
-          O
+          C
         </strong>
-
       </div>
 
     </div>
-
 
 
     <div
       id="queenBuildMessage"
       class="queen-build-message"
     >
-      Complete a molecule around the gold atom,
-      then continue growing the hive.
+      Drag atoms onto the honeycombs touching the gold Queen.
+      When you think you've built a molecule, self-check it.
     </div>
 
 
+    <div class="queen-freebuild-wrap">
 
-    <div
-      id="queenHive"
-      class="queen-hive"
-    >
-
-      <button
-        type="button"
-        id="queenCenter"
-        class="queen-slot queen-center locked active-queen"
-        data-symbol="O"
+      <div
+        id="queenHive"
+        class="queen-freebuild-hive"
       >
-
-        <span>
-          👑
-        </span>
-
-        <strong>
-          O
-        </strong>
-
-      </button>
-
-
-      <button
-        type="button"
-        class="queen-slot q1"
-      >
-      </button>
-
-      <button
-        type="button"
-        class="queen-slot q2"
-      >
-      </button>
-
-      <button
-        type="button"
-        class="queen-slot q3"
-      >
-      </button>
-
-      <button
-        type="button"
-        class="queen-slot q4"
-      >
-      </button>
-
-      <button
-        type="button"
-        class="queen-slot q5"
-      >
-      </button>
-
-      <button
-        type="button"
-        class="queen-slot q6"
-      >
-      </button>
-
-
-      <button
-        type="button"
-        class="queen-slot q7"
-      >
-      </button>
-
-      <button
-        type="button"
-        class="queen-slot q8"
-      >
-      </button>
-
-      <button
-        type="button"
-        class="queen-slot q9"
-      >
-      </button>
-
-      <button
-        type="button"
-        class="queen-slot q10"
-      >
-      </button>
-
-      <button
-        type="button"
-        class="queen-slot q11"
-      >
-      </button>
-
-      <button
-        type="button"
-        class="queen-slot q12"
-      >
-      </button>
+      </div>
 
     </div>
-
 
 
     <div class="formula-panel">
@@ -838,16 +738,20 @@
         id="queenFormula"
         class="formula-preview empty"
       >
-        Build around the Queen
+        Grow outward from the Queen
       </div>
 
     </div>
 
 
-
     <h3 class="bank-title">
-      Worker Atom Bank
+      Reusable Atom Bank
     </h3>
+
+
+    <p class="queen-bank-note">
+      These atoms never run out. Use them as many times as you need.
+    </p>
 
 
     <div
@@ -857,7 +761,6 @@
     </div>
 
 
-
     <div class="button-row">
 
       <button
@@ -865,8 +768,18 @@
         class="primary-button"
         type="button"
       >
-        Check Molecule
+        ✓ Self-Check My Build
       </button>
+
+
+      <button
+        id="queenClearBuild"
+        class="secondary-button"
+        type="button"
+      >
+        Clear Current Build
+      </button>
+
 
       <button
         id="queenReset"
@@ -882,6 +795,13 @@
     <div
       id="queenFeedback"
       class="feedback"
+    >
+    </div>
+
+
+    <div
+      id="queenDiscovery"
+      class="queen-discovery"
     >
     </div>
 
