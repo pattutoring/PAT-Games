@@ -24,7 +24,7 @@ const operations = [
       "SOUND OPERATION",
 
     visual:
-      "🔈  ≈  🔈",
+      "🔈  ≈  ",
 
     subtitle:
       "Different spelling. Similar sound.",
