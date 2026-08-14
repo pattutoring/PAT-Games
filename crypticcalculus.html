@@ -1,1 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Cryptic-Calculus | PAT Learning Lab</title>
+
+  <link
+    rel="stylesheet"
+    href="crypticcalculus.css?v=20260813-1"
+  >
+
+</head>
+
+
+<body>
+
+
+<header>
+
+  <a
+    class="lab-link"
+    href="index.html"
+  >
+    ← PAT Learning Lab
+  </a>
+
+
+  <div class="cc-mark">
+    ∫
+  </div>
+
+
+  <h1>
+    CRYPTIC-CALCULUS
+  </h1>
+
+
+  <p class="tagline">
+    Treat wordplay like an operation.
+  </p>
+
+
+  <p class="header-copy">
+    Identify the transformation,
+    apply it step by step,
+    and reconstruct the answer.
+  </p>
+
+</header>
+
+
+
+<main>
+
+
+  <!-- =====================================================
+       INTRO
+  ====================================================== -->
+
+  <section class="intro-card">
+
+    <div class="intro-badge">
+      OPERATIONS OF MEANING
+    </div>
+
+    <h2>
+      The Cryptic-Calculus Principle
+    </h2>
+
+    <p>
+      A cryptic clue can be read as a chain of operations.
+      Words are inserted, removed, reversed, approximated,
+      composed, shifted or superposed until the surface
+      collapses into an answer.
+    </p>
+
+    <div class="equation-strip">
+
+      <span class="equation-box">
+        CLUE
+      </span>
+
+      <span class="equation-arrow">
+        →
+      </span>
+
+      <span class="equation-box">
+        OPERATION
+      </span>
+
+      <span class="equation-arrow">
+        →
+      </span>
+
+      <span class="equation-box">
+        TRANSFORMATION
+      </span>
+
+      <span class="equation-arrow">
+        →
+      </span>
+
+      <span class="equation-box answer-box">
+        ANSWER
+      </span>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       OPERATION LAB
+  ====================================================== -->
+
+  <section class="lab-shell">
+
+
+    <div class="section-heading">
+
+      <div class="section-kicker">
+        OPERATION LAB
+      </div>
+
+      <h2>
+        Choose an Operation
+      </h2>
+
+      <p>
+        Tap any operation to inspect its symbolic form,
+        interpretation and worked example.
+      </p>
+
+    </div>
+
+
+
+    <div class="lab-layout">
+
+
+      <!-- OPERATION BANK -->
+
+      <div
+        id="operationBank"
+        class="operation-bank"
+      >
+      </div>
+
+
+
+      <!-- CALCULATION BOARD -->
+
+      <div class="calculation-board">
+
+
+        <div class="board-top">
+
+          <div>
+
+            <div
+              id="operationCategory"
+              class="operation-category"
+            >
+              OPERATION
+            </div>
+
+            <h2
+              id="operationTitle"
+              class="operation-title"
+            >
+            </h2>
+
+          </div>
+
+
+          <div
+            id="operationSymbol"
+            class="operation-symbol"
+          >
+          </div>
+
+        </div>
+
+
+
+        <div
+          id="mascotPlaceholder"
+          class="mascot-placeholder"
+        >
+        </div>
+
+
+
+        <div class="math-panel">
+
+          <div class="mini-heading">
+            SYMBOLIC FORM
+          </div>
+
+          <div
+            id="operationFormula"
+            class="operation-formula"
+          >
+          </div>
+
+        </div>
+
+
+
+        <div class="description-panel">
+
+          <div class="mini-heading">
+            WHAT IT DOES
+          </div>
+
+          <p
+            id="operationDescription"
+          >
+          </p>
+
+        </div>
+
+
+
+        <div class="worked-example">
+
+          <div class="mini-heading">
+            WORKED EXAMPLE
+          </div>
+
+
+          <div class="example-stage">
+
+            <span>
+              CLUE INPUT
+            </span>
+
+            <strong id="exampleInput">
+            </strong>
+
+          </div>
+
+
+          <div class="calc-arrow">
+            ↓
+          </div>
+
+
+          <div class="example-stage operation-stage">
+
+            <span>
+              APPLY
+            </span>
+
+            <strong id="exampleOperation">
+            </strong>
+
+          </div>
+
+
+          <div class="calc-arrow">
+            ↓
+          </div>
+
+
+          <div class="example-stage">
+
+            <span>
+              TRANSFORMED FORM
+            </span>
+
+            <strong id="exampleMiddle">
+            </strong>
+
+          </div>
+
+
+          <div class="calc-arrow">
+            ↓
+          </div>
+
+
+          <div class="example-stage result-stage">
+
+            <span>
+              RESULT
+            </span>
+
+            <strong id="exampleResult">
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="operationNote"
+          class="operation-note"
+        >
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       OPERATION COMPOSITION
+  ====================================================== -->
+
+  <section class="composer-shell">
+
+
+    <div class="section-heading">
+
+      <div class="section-kicker">
+        COMPOSITION LAB
+      </div>
+
+      <h2>
+        Stack Operations
+      </h2>
+
+      <p>
+        Cryptic clues often require more than one move.
+        Build a symbolic operation chain below.
+      </p>
+
+    </div>
+
+
+
+    <div class="composer-card">
+
+
+      <div class="composer-row">
+
+        <label for="firstOperation">
+          First operation
+        </label>
+
+        <select id="firstOperation">
+        </select>
+
+      </div>
+
+
+      <div class="composition-symbol">
+        ∘
+      </div>
+
+
+      <div class="composer-row">
+
+        <label for="secondOperation">
+          Second operation
+        </label>
+
+        <select id="secondOperation">
+        </select>
+
+      </div>
+
+
+
+      <div class="composition-output">
+
+        <div class="mini-heading">
+          COMPOSED FORM
+        </div>
+
+        <div
+          id="compositionFormula"
+          class="composition-formula"
+        >
+        </div>
+
+        <p
+          id="compositionExplanation"
+          class="composition-explanation"
+        >
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       QUICK REFERENCE
+  ====================================================== -->
+
+  <section class="reference-shell">
+
+    <div class="section-heading">
+
+      <div class="section-kicker">
+        QUICK REFERENCE
+      </div>
+
+      <h2>
+        Cryptic-Calculus Operators
+      </h2>
+
+    </div>
+
+
+    <div
+      id="referenceGrid"
+      class="reference-grid"
+    >
+    </div>
+
+  </section>
+
+
+</main>
+
+
+
+<footer>
+
+  <strong>
+    Cryptic-Calculus™
+  </strong>
+
+  • PAT Learning Lab
+
+  <br>
+
+  Identify the operation. Reverse the transformation.
+  Reconstruct the answer.
+
+</footer>
+
+
+
+<script src="crypticcalculus.js?v=20260813-1"></script>
+
+
+</body>
+
+</html>
