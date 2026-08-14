@@ -1,11 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+/>
+
 <title>Contronym: The Majorana of Meaning</title>
 
+
+<!-- =========================================================
+     GOOGLE ANALYTICS
+========================================================= -->
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-QCEPJP202V"
+></script>
+
+<script>
+
+  window.dataLayer =
+    window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
+  gtag(
+    "js",
+    new Date()
+  );
+
+  gtag(
+    "config",
+    "G-QCEPJP202V"
+  );
+
+</script>
+
+
+
 <style>
+
 body {
   font-family: system-ui, sans-serif;
   background-color: #f9f7f2;
@@ -18,8 +59,21 @@ body {
   margin: 0;
 }
 
-h1 { font-size: 2.3rem; margin: 0 0 0.2em; }
-h2 { font-style: italic; margin: 0 0 1.2em; text-align: center; }
+h1 {
+  font-size: 2.3rem;
+  margin: 0 0 0.2em;
+}
+
+h2 {
+  font-style: italic;
+  margin: 0 0 1.2em;
+  text-align: center;
+}
+
+
+/* =========================================================
+   TOP NAV
+========================================================= */
 
 .top-nav {
   display: flex;
@@ -40,6 +94,11 @@ h2 { font-style: italic; margin: 0 0 1.2em; text-align: center; }
   font-weight: 700;
 }
 
+
+/* =========================================================
+   VIEWS
+========================================================= */
+
 #play-view {
   width: 100%;
   display: flex;
@@ -51,6 +110,11 @@ h2 { font-style: italic; margin: 0 0 1.2em; text-align: center; }
   display: none;
   width: min(500px, 94vw);
 }
+
+
+/* =========================================================
+   ARCHIVE
+========================================================= */
 
 .archive-heading {
   text-align: center;
@@ -110,6 +174,11 @@ h2 { font-style: italic; margin: 0 0 1.2em; text-align: center; }
   border: 1px solid #ddd;
 }
 
+
+/* =========================================================
+   GAME GRAPH
+========================================================= */
+
 .game-container {
   position: relative;
   width: min(400px, 94vw);
@@ -117,7 +186,10 @@ h2 { font-style: italic; margin: 0 0 1.2em; text-align: center; }
   margin-bottom: 14px;
 }
 
-.axis { position: absolute; background: #000; }
+.axis {
+  position: absolute;
+  background: #000;
+}
 
 .x-axis {
   width: 100%;
@@ -162,8 +234,17 @@ h2 { font-style: italic; margin: 0 0 1.2em; text-align: center; }
   line-height: 1.6;
 }
 
-.x-label { bottom: 20px; right: 10px; color: #0057a8; }
-.y-label { top: 10px; left: 52%; color: #b11b2b; }
+.x-label {
+  bottom: 20px;
+  right: 10px;
+  color: #0057a8;
+}
+
+.y-label {
+  top: 10px;
+  left: 52%;
+  color: #b11b2b;
+}
 
 .parabola-svg {
   position: absolute;
@@ -184,6 +265,11 @@ h2 { font-style: italic; margin: 0 0 1.2em; text-align: center; }
   height: 100px;
   z-index: 4;
 }
+
+
+/* =========================================================
+   ANSWER
+========================================================= */
 
 .answer-boxes {
   display: flex;
@@ -206,7 +292,14 @@ h2 { font-style: italic; margin: 0 0 1.2em; text-align: center; }
   border-radius: 5px;
 }
 
-.revealed { background-color: #e0f7fa; }
+.revealed {
+  background-color: #e0f7fa;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
 
 .button-row {
   display: flex;
@@ -225,10 +318,23 @@ button {
   background-color: #d8ecf3;
 }
 
-#submit-answer { background: #d7e8ff; }
-#reset-puzzle { background: #f3d8d8; }
+#submit-answer {
+  background: #d7e8ff;
+}
 
-#hint-text, #message, #attempts, #result-card {
+#reset-puzzle {
+  background: #f3d8d8;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+#hint-text,
+#message,
+#attempts,
+#result-card {
   max-width: 430px;
   text-align: center;
   padding: 0 12px;
@@ -255,6 +361,11 @@ button {
   margin-top: 10px;
   font-style: italic;
 }
+
+
+/* =========================================================
+   RESULT CARD
+========================================================= */
 
 #result-card {
   display: none;
@@ -288,7 +399,9 @@ button {
   line-height: 1.45;
 }
 
-.definition-box strong { color: #333; }
+.definition-box strong {
+  color: #333;
+}
 
 .share-preview {
   margin-top: 12px;
@@ -325,11 +438,28 @@ sup {
   margin-left: 2px;
 }
 
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
 @media (max-width: 430px) {
-  body { padding-top: 20px; }
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1rem; }
-  .game-container { height: 340px; }
+
+  body {
+    padding-top: 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  .game-container {
+    height: 340px;
+  }
 
   .left-label {
     left: 8px;
@@ -347,38 +477,94 @@ sup {
     width: 31px;
     height: 34px;
   }
+
 }
+
 </style>
+
 </head>
+
+
 
 <body>
 
-<h1>Contronym</h1>
-<h2>The Majorana of Meaning</h2>
+
+<h1>
+  Contronym
+</h1>
+
+<h2>
+  The Majorana of Meaning
+</h2>
+
 
 <div class="top-nav">
-  <button id="current-tab" class="active">Current Puzzle</button>
-  <button id="archive-tab">Archive</button>
-  <button onclick="window.location.href='index.html'">Learning Lab</button>
+
+  <button
+    id="current-tab"
+    class="active"
+  >
+    Current Puzzle
+  </button>
+
+  <button id="archive-tab">
+    Archive
+  </button>
+
+  <button
+    onclick="window.location.href='index.html'"
+  >
+    Learning Lab
+  </button>
+
 </div>
 
 
-<!-- =========================
-     ORIGINAL GAME UI
-========================= -->
+
+<!-- =========================================================
+     PLAY VIEW
+========================================================= -->
 
 <div id="play-view">
 
+
   <div class="game-container">
-    <div class="axis x-axis"></div>
-    <div class="axis y-axis"></div>
 
-    <span class="label left-label" id="left-label"></span>
-    <span class="label right-label" id="right-label"></span>
-    <span class="label x-label">transverse</span>
-    <span class="label y-label">conjugate</span>
+    <div class="axis x-axis">
+    </div>
 
-    <svg class="parabola-svg" width="400" height="340" viewBox="0 0 400 340">
+    <div class="axis y-axis">
+    </div>
+
+
+    <span
+      class="label left-label"
+      id="left-label"
+    >
+    </span>
+
+    <span
+      class="label right-label"
+      id="right-label"
+    >
+    </span>
+
+    <span class="label x-label">
+      transverse
+    </span>
+
+    <span class="label y-label">
+      conjugate
+    </span>
+
+
+    <svg
+      class="parabola-svg"
+      width="400"
+      height="340"
+      viewBox="0 0 400 340"
+    >
+
       <path
         d="M 95 40 Q 200 340 305 40"
         stroke="#00bfff"
@@ -386,9 +572,17 @@ sup {
         stroke-dasharray="6 6"
         fill="none"
       />
+
     </svg>
 
-    <svg class="majorana-trail" width="240" height="100" viewBox="0 0 240 100">
+
+    <svg
+      class="majorana-trail"
+      width="240"
+      height="100"
+      viewBox="0 0 240 100"
+    >
+
       <path
         d="M 10 60 C 40 20, 80 100, 120 60 S 200 0, 230 60"
         stroke="#888"
@@ -396,6 +590,7 @@ sup {
         stroke-dasharray="5 5"
         fill="none"
       />
+
       <text
         x="225"
         y="65"
@@ -403,115 +598,297 @@ sup {
         font-style="italic"
         font-family="serif"
         fill="#333"
-      >ν</text>
+      >
+        ν
+      </text>
+
     </svg>
+
   </div>
 
-  <div class="answer-boxes" id="answer-boxes"></div>
 
-  <p id="attempts"></p>
+
+  <div
+    class="answer-boxes"
+    id="answer-boxes"
+  >
+  </div>
+
+
+  <p id="attempts">
+  </p>
+
 
   <div class="button-row">
-    <button id="submit-answer">Submit Answer</button>
-    <button id="show-hint">Reveal Hint Word</button>
-    <button id="reset-puzzle">Reset Puzzle</button>
+
+    <button id="submit-answer">
+      Submit Answer
+    </button>
+
+    <button id="show-hint">
+      Reveal Hint Word
+    </button>
+
+    <button id="reset-puzzle">
+      Reset Puzzle
+    </button>
+
   </div>
 
-  <p id="hint-text"></p>
-  <p id="message"></p>
+
+  <p id="hint-text">
+  </p>
+
+  <p id="message">
+  </p>
+
+
 
   <div id="result-card">
-    <div class="majorana-logo">Cν</div>
-    <div class="result-title" id="result-title"></div>
-    <div class="definition-box" id="definition-box"></div>
-    <div class="share-preview" id="share-preview"></div>
+
+    <div class="majorana-logo">
+      Cν
+    </div>
+
+    <div
+      class="result-title"
+      id="result-title"
+    >
+    </div>
+
+    <div
+      class="definition-box"
+      id="definition-box"
+    >
+    </div>
+
+    <div
+      class="share-preview"
+      id="share-preview"
+    >
+    </div>
+
 
     <div class="share-buttons">
-      <button id="native-share">Share</button>
-      <button id="copy-share">Copy for Instagram/Facebook</button>
+
+      <button id="native-share">
+        Share
+      </button>
+
+      <button id="copy-share">
+        Copy for Instagram/Facebook
+      </button>
+
     </div>
+
   </div>
+
 
 </div>
 
 
-<!-- =========================
+
+<!-- =========================================================
      ARCHIVE
-========================= -->
+========================================================= -->
 
 <div id="archive-view">
 
   <div class="archive-heading">
-    <h3>Contronym Archive</h3>
-    <p>Return to earlier Majoranas of Meaning.</p>
+
+    <h3>
+      Contronym Archive
+    </h3>
+
+    <p>
+      Return to earlier Majoranas of Meaning.
+    </p>
+
   </div>
 
-  <div id="archive-list"></div>
+
+  <div id="archive-list">
+  </div>
 
 </div>
 
 
-<div class="footer-note" id="footer-note">
+
+<div
+  class="footer-note"
+  id="footer-note"
+>
   Context determines charge. Play again next week at PAT Tutoring.
 </div>
 
 
+
 <script>
+
+
+/* =========================================================
+   ANALYTICS
+========================================================= */
+
+function trackContronymEvent(
+  eventName,
+  puzzle,
+  extraData
+) {
+
+  if (
+    typeof gtag !==
+    "function"
+  ) {
+
+    return;
+
+  }
+
+
+  const data = {
+
+    game_name:
+      "contronym",
+
+    mode:
+      "majorana_of_meaning",
+
+    puzzle_number:
+      puzzle.number
+
+  };
+
+
+  if (
+    extraData
+  ) {
+
+    Object.assign(
+      data,
+      extraData
+    );
+
+  }
+
+
+  gtag(
+    "event",
+    eventName,
+    data
+  );
+
+}
+
+
 
 /* =========================================================
    PUZZLE DATABASE
 
-   THIS IS THE ONLY SECTION YOU NEED TO UPDATE EACH WEEK.
-
    ADD NEW PUZZLES TO THE BOTTOM.
 
-   THE LAST PUZZLE AUTOMATICALLY BECOMES THE CURRENT PUZZLE.
+   THE LAST PUZZLE AUTOMATICALLY BECOMES
+   THE CURRENT PUZZLE.
 ========================================================= */
 
 const puzzles = [
 
   {
-    number: "001",
-    date: "June 2026",
 
-    word: "SANCTION",
+    number:
+      "001",
+
+    date:
+      "June 2026",
+
+    word:
+      "SANCTION",
+
 
     hints: [
-      { word: "restrict", charge: "-" },
-      { word: "permit", charge: "+" },
-      { word: "penalize", charge: "-" },
-      { word: "authorize", charge: "+" },
-      { word: "punish", charge: "-" },
-      { word: "approve", charge: "+" }
+
+      {
+        word:
+          "restrict",
+
+        charge:
+          "-"
+      },
+
+      {
+        word:
+          "permit",
+
+        charge:
+          "+"
+      },
+
+      {
+        word:
+          "penalize",
+
+        charge:
+          "-"
+      },
+
+      {
+        word:
+          "authorize",
+
+        charge:
+          "+"
+      },
+
+      {
+        word:
+          "punish",
+
+        charge:
+          "-"
+      },
+
+      {
+        word:
+          "approve",
+
+        charge:
+          "+"
+      }
+
     ],
+
 
     message:
       "A word that can officially approve or penalize depending on context.",
 
+
     positiveDefinition:
       "to officially approve, permit, or authorize something.",
+
 
     negativeDefinition:
       "to penalize, punish, or place restrictions on someone or something.",
 
+
     positiveExample:
       "The committee sanctioned the proposal.",
+
 
     negativeExample:
       "The league sanctioned the player.",
 
+
     footer:
       "Context determines charge. Play again next week at PAT Tutoring."
+
   }
 
 
   /*
-  ---------------------------------------------------------
-  WHEN YOU HAVE PUZZLE #002:
+  =========================================================
+  PUZZLE #002 TEMPLATE
 
-  Add a comma after the closing } above.
-
-  Then paste:
+  Add a comma after Puzzle #001, then paste:
 
   {
     number: "002",
@@ -546,196 +923,571 @@ const puzzles = [
     footer:
       "Context determines charge. Play again next week at PAT Tutoring."
   }
-
-  ---------------------------------------------------------
+  =========================================================
   */
 
 ];
 
 
+
 /* =========================================================
-   GAME ENGINE
-   YOU SHOULD NOT NEED TO EDIT BELOW HERE
+   GAME STATE
 ========================================================= */
 
-const currentPuzzle = puzzles[puzzles.length - 1];
-
-let puzzle = currentPuzzle;
-let word = puzzle.word.toUpperCase();
-
-let visibleHintCount = 2;
-let attempts = 0;
-let solved = false;
-let hintsUsed = 0;
+const currentPuzzle =
+  puzzles[
+    puzzles.length - 1
+  ];
 
 
-document.addEventListener("DOMContentLoaded", () => {
-
-  const answerBoxes = document.getElementById("answer-boxes");
-  const hintText = document.getElementById("hint-text");
-  const showHintBtn = document.getElementById("show-hint");
-  const submitBtn = document.getElementById("submit-answer");
-  const resetBtn = document.getElementById("reset-puzzle");
-  const message = document.getElementById("message");
-  const attemptsText = document.getElementById("attempts");
-
-  const leftLabel = document.getElementById("left-label");
-  const rightLabel = document.getElementById("right-label");
-
-  const resultCard = document.getElementById("result-card");
-  const resultTitle = document.getElementById("result-title");
-  const definitionBox = document.getElementById("definition-box");
-  const sharePreview = document.getElementById("share-preview");
-
-  const nativeShareBtn = document.getElementById("native-share");
-  const copyShareBtn = document.getElementById("copy-share");
-
-  const currentTab = document.getElementById("current-tab");
-  const archiveTab = document.getElementById("archive-tab");
-
-  const playView = document.getElementById("play-view");
-  const archiveView = document.getElementById("archive-view");
-
-  const archiveList = document.getElementById("archive-list");
-  const footerNote = document.getElementById("footer-note");
+let puzzle =
+  currentPuzzle;
 
 
-  /* -------------------------
+let word =
+  puzzle.word.toUpperCase();
+
+
+let visibleHintCount =
+  2;
+
+
+let attempts =
+  0;
+
+
+let solved =
+  false;
+
+
+let hintsUsed =
+  0;
+
+
+/*
+  ANALYTICS STATE
+
+  Prevents repeated checks or shares
+  from inflating solve/reveal totals.
+*/
+
+let solveTracked =
+  false;
+
+
+let revealTracked =
+  false;
+
+
+let currentPuzzleArchived =
+  false;
+
+
+
+/* =========================================================
+   GAME ENGINE
+========================================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
+
+
+  const answerBoxes =
+    document.getElementById(
+      "answer-boxes"
+    );
+
+
+  const hintText =
+    document.getElementById(
+      "hint-text"
+    );
+
+
+  const showHintBtn =
+    document.getElementById(
+      "show-hint"
+    );
+
+
+  const submitBtn =
+    document.getElementById(
+      "submit-answer"
+    );
+
+
+  const resetBtn =
+    document.getElementById(
+      "reset-puzzle"
+    );
+
+
+  const message =
+    document.getElementById(
+      "message"
+    );
+
+
+  const attemptsText =
+    document.getElementById(
+      "attempts"
+    );
+
+
+  const leftLabel =
+    document.getElementById(
+      "left-label"
+    );
+
+
+  const rightLabel =
+    document.getElementById(
+      "right-label"
+    );
+
+
+  const resultCard =
+    document.getElementById(
+      "result-card"
+    );
+
+
+  const resultTitle =
+    document.getElementById(
+      "result-title"
+    );
+
+
+  const definitionBox =
+    document.getElementById(
+      "definition-box"
+    );
+
+
+  const sharePreview =
+    document.getElementById(
+      "share-preview"
+    );
+
+
+  const nativeShareBtn =
+    document.getElementById(
+      "native-share"
+    );
+
+
+  const copyShareBtn =
+    document.getElementById(
+      "copy-share"
+    );
+
+
+  const currentTab =
+    document.getElementById(
+      "current-tab"
+    );
+
+
+  const archiveTab =
+    document.getElementById(
+      "archive-tab"
+    );
+
+
+  const playView =
+    document.getElementById(
+      "play-view"
+    );
+
+
+  const archiveView =
+    document.getElementById(
+      "archive-view"
+    );
+
+
+  const archiveList =
+    document.getElementById(
+      "archive-list"
+    );
+
+
+  const footerNote =
+    document.getElementById(
+      "footer-note"
+    );
+
+
+
+  /* =======================================================
      HINTS
-  ------------------------- */
+  ======================================================= */
 
   function renderHints() {
 
     const shownHints =
-      puzzle.hints.slice(0, visibleHintCount);
+      puzzle.hints.slice(
+        0,
+        visibleHintCount
+      );
+
 
     leftLabel.innerHTML =
       shownHints
-        .filter(h => h.charge === "-")
-        .map(h => `${h.word}<sup>−</sup>`)
-        .join("<br>")
-      || "negative";
+        .filter(
+          function (hint) {
+
+            return (
+              hint.charge ===
+              "-"
+            );
+
+          }
+        )
+        .map(
+          function (hint) {
+
+            return (
+              hint.word
+              +
+              "<sup>−</sup>"
+            );
+
+          }
+        )
+        .join(
+          "<br>"
+        )
+      ||
+      "negative";
+
 
     rightLabel.innerHTML =
       shownHints
-        .filter(h => h.charge === "+")
-        .map(h => `${h.word}<sup>+</sup>`)
-        .join("<br>")
-      || "positive";
+        .filter(
+          function (hint) {
 
-    hintText.textContent = puzzle.message;
+            return (
+              hint.charge ===
+              "+"
+            );
+
+          }
+        )
+        .map(
+          function (hint) {
+
+            return (
+              hint.word
+              +
+              "<sup>+</sup>"
+            );
+
+          }
+        )
+        .join(
+          "<br>"
+        )
+      ||
+      "positive";
+
+
+    hintText.textContent =
+      puzzle.message;
+
 
     showHintBtn.textContent =
-      visibleHintCount >= puzzle.hints.length
-      ? "Show Full Hint"
-      : "Reveal Hint Word";
+      visibleHintCount >=
+      puzzle.hints.length
+      ?
+        "Show Full Hint"
+      :
+        "Reveal Hint Word";
+
   }
 
 
-  /* -------------------------
+
+  /* =======================================================
      ANSWER BOXES
-  ------------------------- */
+  ======================================================= */
 
   function createBoxes() {
 
-    answerBoxes.innerHTML = "";
+    answerBoxes.innerHTML =
+      "";
 
-    word = puzzle.word.toUpperCase();
 
-    for (let i = 0; i < word.length; i++) {
+    word =
+      puzzle.word.toUpperCase();
 
-      const box = document.createElement("input");
 
-      box.type = "text";
-      box.maxLength = 1;
-      box.className = "letter-box";
-      box.dataset.index = i;
-      box.autocomplete = "off";
-      box.inputMode = "text";
+    for (
+      let i = 0;
+      i < word.length;
+      i++
+    ) {
 
-      answerBoxes.appendChild(box);
+      const box =
+        document.createElement(
+          "input"
+        );
+
+
+      box.type =
+        "text";
+
+
+      box.maxLength =
+        1;
+
+
+      box.className =
+        "letter-box";
+
+
+      box.dataset.index =
+        i;
+
+
+      box.autocomplete =
+        "off";
+
+
+      box.inputMode =
+        "text";
+
+
+      answerBoxes.appendChild(
+        box
+      );
+
     }
+
   }
+
 
 
   function getGuess() {
 
-    return Array.from(answerBoxes.children)
-      .map(box => box.value.toUpperCase())
-      .join("");
+    return Array
+      .from(
+        answerBoxes.children
+      )
+      .map(
+        function (box) {
+
+          return box.value
+            .toUpperCase();
+
+        }
+      )
+      .join(
+        ""
+      );
+
   }
 
 
-  /* -------------------------
+
+  /* =======================================================
      STATUS
-  ------------------------- */
+  ======================================================= */
 
   function updateAttempts() {
 
     attemptsText.textContent =
-      `Contronym #${puzzle.number} • Attempts: ${attempts} / 3 • Hints used: ${hintsUsed}`;
+      "Contronym #"
+      +
+      puzzle.number
+      +
+      " • Attempts: "
+      +
+      attempts
+      +
+      " / 3 • Hints used: "
+      +
+      hintsUsed;
+
   }
+
 
 
   function lockGame() {
 
-    Array.from(answerBoxes.children)
-      .forEach(box => box.disabled = true);
+    Array
+      .from(
+        answerBoxes.children
+      )
+      .forEach(
+        function (box) {
 
-    submitBtn.disabled = true;
-    showHintBtn.disabled = true;
+          box.disabled =
+            true;
+
+        }
+      );
+
+
+    submitBtn.disabled =
+      true;
+
+
+    showHintBtn.disabled =
+      true;
+
   }
+
 
 
   function resultPhrase() {
 
-    if (!solved) return "No Majorana found";
+    if (
+      !solved
+    ) {
 
-    if (attempts === 1)
-      return "Majorana in One";
+      return (
+        "No Majorana found"
+      );
 
-    if (attempts === 2)
-      return "Majorana in Two";
+    }
 
-    return "Majorana in Three";
+
+    if (
+      attempts ===
+      1
+    ) {
+
+      return (
+        "Majorana in One"
+      );
+
+    }
+
+
+    if (
+      attempts ===
+      2
+    ) {
+
+      return (
+        "Majorana in Two"
+      );
+
+    }
+
+
+    return (
+      "Majorana in Three"
+    );
+
   }
 
 
-  /* -------------------------
-     SHARE
-  ------------------------- */
+
+  /* =======================================================
+     SHARE TEXT
+  ======================================================= */
 
   function shareText() {
 
     const positiveHint =
-      puzzle.hints.find(h => h.charge === "+")?.word
-      || "positive";
+      puzzle.hints.find(
+        function (hint) {
+
+          return (
+            hint.charge ===
+            "+"
+          );
+
+        }
+      )?.word
+      ||
+      "positive";
+
 
     const negativeHint =
-      puzzle.hints.find(h => h.charge === "-")?.word
-      || "negative";
+      puzzle.hints.find(
+        function (hint) {
 
-    return `Cν Contronym #${puzzle.number}
-${resultPhrase()}
-Attempts: ${attempts}/3
-Hints used: ${hintsUsed}
-Word: ${solved ? puzzle.word : "Unsolved"}
+          return (
+            hint.charge ===
+            "-"
+          );
 
-+ ${positiveHint}
-− ${negativeHint}
+        }
+      )?.word
+      ||
+      "negative";
 
-${puzzle.footer}`;
+
+    return (
+      "Cν Contronym #"
+      +
+      puzzle.number
+      +
+      "\n"
+      +
+      resultPhrase()
+      +
+      "\nAttempts: "
+      +
+      attempts
+      +
+      "/3"
+      +
+      "\nHints used: "
+      +
+      hintsUsed
+      +
+      "\nWord: "
+      +
+      (
+        solved
+        ?
+          puzzle.word
+        :
+          "Unsolved"
+      )
+      +
+      "\n\n+ "
+      +
+      positiveHint
+      +
+      "\n− "
+      +
+      negativeHint
+      +
+      "\n\n"
+      +
+      puzzle.footer
+    );
+
   }
 
 
+
+  /* =======================================================
+     RESULT
+  ======================================================= */
+
   function showResult() {
 
-    resultCard.style.display = "block";
+    resultCard.style.display =
+      "block";
+
 
     resultTitle.textContent =
-      `${resultPhrase()} • Contronym #${puzzle.number}`;
+      resultPhrase()
+      +
+      " • Contronym #"
+      +
+      puzzle.number;
 
-    definitionBox.innerHTML = `
+
+    definitionBox.innerHTML =
+      `
       <strong>${puzzle.word}</strong><br>
       <em>${puzzle.date}</em><br><br>
 
@@ -751,263 +1503,681 @@ ${puzzle.footer}`;
 
       <strong>Field Note:</strong>
       ${puzzle.footer}
-    `;
+      `;
 
-    sharePreview.textContent = shareText();
+
+    sharePreview.textContent =
+      shareText();
+
   }
 
 
-  /* -------------------------
+
+  /* =======================================================
      SUBMIT
-  ------------------------- */
+  ======================================================= */
 
   function submitGuess() {
 
-    if (solved || attempts >= 3)
+    if (
+      solved
+      ||
+      attempts >=
+      3
+    ) {
+
       return;
 
-    const guess = getGuess();
+    }
+
+
+    const guess =
+      getGuess();
+
 
     if (
-      Array.from(answerBoxes.children)
-        .some(box => box.value === "")
+      Array
+        .from(
+          answerBoxes.children
+        )
+        .some(
+          function (box) {
+
+            return (
+              box.value ===
+              ""
+            );
+
+          }
+        )
     ) {
 
       message.textContent =
         "Fill in every box before submitting.";
 
+
       return;
+
     }
+
 
     attempts++;
 
+
     updateAttempts();
 
-    if (guess === word) {
 
-      solved = true;
+    /* =====================================================
+       CORRECT
+    ===================================================== */
+
+    if (
+      guess ===
+      word
+    ) {
+
+      solved =
+        true;
+
 
       message.textContent =
-        `${resultPhrase()} — you found the Majorana of Meaning.`;
+        resultPhrase()
+        +
+        " — you found the Majorana of Meaning.";
+
 
       lockGame();
+
+
       showResult();
+
+
+      /*
+        COUNT SOLVE ONCE
+      */
+
+      if (
+        !solveTracked
+      ) {
+
+        solveTracked =
+          true;
+
+
+        trackContronymEvent(
+          "puzzle_solved",
+          puzzle,
+          {
+
+            attempts:
+              attempts,
+
+            hints_used:
+              hintsUsed,
+
+            archived:
+              currentPuzzleArchived
+
+          }
+        );
+
+      }
+
+
+      return;
 
     }
 
-    else if (attempts >= 3) {
+
+
+    /* =====================================================
+       THREE FAILED ATTEMPTS
+
+       This counts as puzzle_revealed,
+       NOT puzzle_solved.
+    ===================================================== */
+
+    if (
+      attempts >=
+      3
+    ) {
 
       message.textContent =
-        `The Majorana was ${word}.`;
+        "The Majorana was "
+        +
+        word
+        +
+        ".";
+
 
       lockGame();
+
+
       showResult();
 
+
+      if (
+        !revealTracked
+      ) {
+
+        revealTracked =
+          true;
+
+
+        trackContronymEvent(
+          "puzzle_revealed",
+          puzzle,
+          {
+
+            attempts:
+              attempts,
+
+            hints_used:
+              hintsUsed,
+
+            reason:
+              "attempts_exhausted",
+
+            archived:
+              currentPuzzleArchived
+
+          }
+        );
+
+      }
+
+
+      return;
+
     }
 
-    else {
 
-      message.textContent =
-        `Not quite — charge mismatch. ${3 - attempts} attempt${3 - attempts === 1 ? "" : "s"} left.`;
-    }
+
+    /* =====================================================
+       WRONG BUT ATTEMPTS REMAIN
+    ===================================================== */
+
+    message.textContent =
+      "Not quite — charge mismatch. "
+      +
+      (
+        3 -
+        attempts
+      )
+      +
+      " attempt"
+      +
+      (
+        (
+          3 -
+          attempts
+        )
+        ===
+        1
+        ?
+          ""
+        :
+          "s"
+      )
+      +
+      " left.";
+
   }
 
 
-  /* -------------------------
-     RESET
-  ------------------------- */
+
+  /* =======================================================
+     RESET PUZZLE
+  ======================================================= */
 
   function resetPuzzle() {
 
-    attempts = 0;
-    solved = false;
-    hintsUsed = 0;
-    visibleHintCount = 2;
+    attempts =
+      0;
+
+
+    solved =
+      false;
+
+
+    hintsUsed =
+      0;
+
+
+    visibleHintCount =
+      2;
+
+
+    solveTracked =
+      false;
+
+
+    revealTracked =
+      false;
+
 
     createBoxes();
 
-    submitBtn.disabled = false;
-    showHintBtn.disabled = false;
+
+    submitBtn.disabled =
+      false;
+
+
+    showHintBtn.disabled =
+      false;
+
 
     renderHints();
+
+
     updateAttempts();
 
-    hintText.style.display = "none";
-    message.textContent = "";
-    resultCard.style.display = "none";
 
-    footerNote.textContent = puzzle.footer;
+    hintText.style.display =
+      "none";
 
-    if (answerBoxes.children[0]) {
-      answerBoxes.children[0].focus();
+
+    message.textContent =
+      "";
+
+
+    resultCard.style.display =
+      "none";
+
+
+    footerNote.textContent =
+      puzzle.footer;
+
+
+    if (
+      answerBoxes.children[0]
+    ) {
+
+      answerBoxes
+        .children[0]
+        .focus();
+
     }
+
   }
 
 
-  /* -------------------------
-     LOAD A PUZZLE
-  ------------------------- */
 
-  function loadPuzzle(selectedPuzzle) {
+  /* =======================================================
+     LOAD PUZZLE
+  ======================================================= */
 
-    puzzle = selectedPuzzle;
-    word = puzzle.word.toUpperCase();
+  function loadPuzzle(
+    selectedPuzzle,
+    archived
+  ) {
+
+    puzzle =
+      selectedPuzzle;
+
+
+    word =
+      puzzle.word.toUpperCase();
+
+
+    currentPuzzleArchived =
+      Boolean(
+        archived
+      );
+
 
     resetPuzzle();
 
-    playView.style.display = "flex";
-    archiveView.style.display = "none";
 
-    currentTab.classList.remove("active");
-    archiveTab.classList.remove("active");
+    playView.style.display =
+      "flex";
 
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+
+    archiveView.style.display =
+      "none";
+
+
+    currentTab
+      .classList
+      .remove(
+        "active"
+      );
+
+
+    archiveTab
+      .classList
+      .remove(
+        "active"
+      );
+
+
+    /*
+      THIS IS A REAL PUZZLE START
+    */
+
+    trackContronymEvent(
+      "puzzle_started",
+      puzzle,
+      {
+
+        archived:
+          currentPuzzleArchived
+
+      }
+    );
+
+
+    window.scrollTo(
+      {
+        top:
+          0,
+
+        behavior:
+          "smooth"
+      }
+    );
+
   }
 
 
-  /* -------------------------
+
+  /* =======================================================
      ARCHIVE
-  ------------------------- */
+  ======================================================= */
 
   function buildArchive() {
 
-    archiveList.innerHTML = "";
+    archiveList.innerHTML =
+      "";
+
 
     const oldPuzzles =
-      puzzles.slice(0, -1).reverse();
+      puzzles
+        .slice(
+          0,
+          -1
+        )
+        .reverse();
 
-    if (oldPuzzles.length === 0) {
 
-      archiveList.innerHTML = `
+    if (
+      oldPuzzles.length ===
+      0
+    ) {
+
+      archiveList.innerHTML =
+        `
         <div class="empty-archive">
-          No past puzzles yet.<br><br>
+          No past puzzles yet.
+          <br><br>
           Puzzle #001 will move here automatically
           when #002 is added.
         </div>
-      `;
+        `;
+
 
       return;
+
     }
 
-    oldPuzzles.forEach(oldPuzzle => {
 
-      const card =
-        document.createElement("div");
+    oldPuzzles.forEach(
+      function (oldPuzzle) {
 
-      card.className = "archive-card";
+        const card =
+          document.createElement(
+            "div"
+          );
 
-      card.innerHTML = `
-        <div class="archive-number">
-          Contronym #${oldPuzzle.number}
-        </div>
 
-        <div class="archive-date">
-          ${oldPuzzle.date}
-        </div>
+        card.className =
+          "archive-card";
 
-        <div class="archive-description">
-          Revisit this Majorana of Meaning.
-          The answer stays hidden until you solve or reveal it.
-        </div>
 
-        <button class="archive-play">
-          Play Puzzle #${oldPuzzle.number}
-        </button>
-      `;
+        card.innerHTML =
+          `
+          <div class="archive-number">
+            Contronym #${oldPuzzle.number}
+          </div>
 
-      card
-        .querySelector(".archive-play")
-        .addEventListener(
-          "click",
-          () => loadPuzzle(oldPuzzle)
+          <div class="archive-date">
+            ${oldPuzzle.date}
+          </div>
+
+          <div class="archive-description">
+            Revisit this Majorana of Meaning.
+            The answer stays hidden until you solve or reveal it.
+          </div>
+
+          <button class="archive-play">
+            Play Puzzle #${oldPuzzle.number}
+          </button>
+          `;
+
+
+        card
+          .querySelector(
+            ".archive-play"
+          )
+          .addEventListener(
+            "click",
+            function () {
+
+              loadPuzzle(
+                oldPuzzle,
+                true
+              );
+
+            }
+          );
+
+
+        archiveList.appendChild(
+          card
         );
 
-      archiveList.appendChild(card);
-    });
+      }
+    );
+
   }
 
 
-  /* -------------------------
-     TOP NAV
-  ------------------------- */
 
-  currentTab.addEventListener("click", () => {
+  /* =======================================================
+     CURRENT PUZZLE TAB
+  ======================================================= */
 
-    puzzle = currentPuzzle;
+  currentTab.addEventListener(
+    "click",
+    function () {
 
-    resetPuzzle();
-
-    playView.style.display = "flex";
-    archiveView.style.display = "none";
-
-    currentTab.classList.add("active");
-    archiveTab.classList.remove("active");
-  });
+      puzzle =
+        currentPuzzle;
 
 
-  archiveTab.addEventListener("click", () => {
-
-    buildArchive();
-
-    playView.style.display = "none";
-    archiveView.style.display = "block";
-
-    archiveTab.classList.add("active");
-    currentTab.classList.remove("active");
-  });
+      currentPuzzleArchived =
+        false;
 
 
-  /* -------------------------
+      resetPuzzle();
+
+
+      playView.style.display =
+        "flex";
+
+
+      archiveView.style.display =
+        "none";
+
+
+      currentTab.classList.add(
+        "active"
+      );
+
+
+      archiveTab.classList.remove(
+        "active"
+      );
+
+
+      trackContronymEvent(
+        "puzzle_started",
+        puzzle,
+        {
+
+          archived:
+            false
+
+        }
+      );
+
+    }
+  );
+
+
+
+  /* =======================================================
+     ARCHIVE TAB
+  ======================================================= */
+
+  archiveTab.addEventListener(
+    "click",
+    function () {
+
+      buildArchive();
+
+
+      playView.style.display =
+        "none";
+
+
+      archiveView.style.display =
+        "block";
+
+
+      archiveTab.classList.add(
+        "active"
+      );
+
+
+      currentTab.classList.remove(
+        "active"
+      );
+
+    }
+  );
+
+
+
+  /* =======================================================
      INPUT BEHAVIOR
-  ------------------------- */
+  ======================================================= */
 
-  answerBoxes.addEventListener("input", e => {
+  answerBoxes.addEventListener(
+    "input",
+    function (event) {
 
-    const target = e.target;
-    const index = parseInt(target.dataset.index);
+      const target =
+        event.target;
 
-    target.value =
-      target.value.toUpperCase();
 
-    if (target.value.length === 1) {
+      const index =
+        parseInt(
+          target.dataset.index
+        );
 
-      const next =
-        answerBoxes.children[index + 1];
 
-      if (next)
-        next.focus();
+      target.value =
+        target.value
+          .toUpperCase()
+          .replace(
+            /[^A-Z]/g,
+            ""
+          );
+
+
+      if (
+        target.value.length ===
+        1
+      ) {
+
+        const next =
+          answerBoxes.children[
+            index + 1
+          ];
+
+
+        if (
+          next
+        ) {
+
+          next.focus();
+
+        }
+
+      }
+
     }
-  });
+  );
 
 
-  answerBoxes.addEventListener("keydown", e => {
 
-    const target = e.target;
-    const index = parseInt(target.dataset.index);
+  answerBoxes.addEventListener(
+    "keydown",
+    function (event) {
 
-    if (
-      e.key === "Backspace"
-      && target.value === ""
-    ) {
+      const target =
+        event.target;
 
-      const previous =
-        answerBoxes.children[index - 1];
 
-      if (previous)
-        previous.focus();
+      const index =
+        parseInt(
+          target.dataset.index
+        );
+
+
+      if (
+        event.key ===
+        "Backspace"
+        &&
+        target.value ===
+        ""
+      ) {
+
+        const previous =
+          answerBoxes.children[
+            index - 1
+          ];
+
+
+        if (
+          previous
+        ) {
+
+          previous.focus();
+
+        }
+
+      }
+
+
+      if (
+        event.key ===
+        "Enter"
+      ) {
+
+        submitGuess();
+
+      }
+
     }
-
-    if (e.key === "Enter")
-      submitGuess();
-  });
+  );
 
 
-  /* -------------------------
-     BUTTON EVENTS
-  ------------------------- */
+
+  /* =======================================================
+     SUBMIT BUTTON
+  ======================================================= */
 
   submitBtn.addEventListener(
     "click",
@@ -1015,9 +2185,14 @@ ${puzzle.footer}`;
   );
 
 
+
+  /* =======================================================
+     HINT BUTTON
+  ======================================================= */
+
   showHintBtn.addEventListener(
     "click",
-    () => {
+    function () {
 
       if (
         visibleHintCount <
@@ -1025,9 +2200,14 @@ ${puzzle.footer}`;
       ) {
 
         visibleHintCount++;
+
+
         hintsUsed++;
 
+
         renderHints();
+
+
         updateAttempts();
 
       }
@@ -1036,106 +2216,318 @@ ${puzzle.footer}`;
 
         hintText.style.display =
           "block";
+
       }
+
     }
   );
 
 
+
+  /* =======================================================
+     RESET BUTTON
+  ======================================================= */
+
   resetBtn.addEventListener(
     "click",
-    resetPuzzle
+    function () {
+
+      resetPuzzle();
+
+
+      /*
+        Reset begins a fresh play session.
+      */
+
+      trackContronymEvent(
+        "puzzle_started",
+        puzzle,
+        {
+
+          archived:
+            currentPuzzleArchived,
+
+          restarted:
+            true
+
+        }
+      );
+
+    }
   );
 
 
-  /* -------------------------
-     SHARING
-  ------------------------- */
+
+  /* =======================================================
+     NATIVE SHARE
+  ======================================================= */
 
   nativeShareBtn.addEventListener(
     "click",
-    async () => {
+    async function () {
 
-      const text = shareText();
+      const text =
+        shareText();
 
-      if (navigator.share) {
+
+      if (
+        navigator.share
+      ) {
 
         try {
 
-          await navigator.share({
-            title:
-              "Contronym: The Majorana of Meaning",
+          await navigator.share(
+            {
 
-            text: text,
+              title:
+                "Contronym: The Majorana of Meaning",
 
-            url: window.location.href
-          });
+              text:
+                text,
 
-        } catch {}
+              url:
+                window.location.href
+
+            }
+          );
+
+
+          /*
+            Only count once the share
+            sheet successfully completes.
+          */
+
+          trackContronymEvent(
+            "puzzle_shared",
+            puzzle,
+            {
+
+              solved:
+                solved,
+
+              attempts:
+                attempts,
+
+              hints_used:
+                hintsUsed,
+
+              share_method:
+                "native",
+
+              archived:
+                currentPuzzleArchived
+
+            }
+          );
+
+        }
+
+        catch (
+          error
+        ) {
+
+          /*
+            User cancelled.
+            Do not count as a share.
+          */
+
+          console.log(
+            "Share cancelled."
+          );
+
+        }
 
       }
 
       else {
 
-        await navigator.clipboard
-          .writeText(text);
+        try {
 
-        nativeShareBtn.textContent =
-          "Copied!";
+          await navigator
+            .clipboard
+            .writeText(
+              text
+              +
+              "\n\n"
+              +
+              window.location.href
+            );
 
-        setTimeout(
-          () =>
-            nativeShareBtn.textContent =
-              "Share",
-          1200
-        );
+
+          trackContronymEvent(
+            "puzzle_shared",
+            puzzle,
+            {
+
+              solved:
+                solved,
+
+              attempts:
+                attempts,
+
+              hints_used:
+                hintsUsed,
+
+              share_method:
+                "clipboard",
+
+              archived:
+                currentPuzzleArchived
+
+            }
+          );
+
+
+          nativeShareBtn.textContent =
+            "Copied!";
+
+
+          setTimeout(
+            function () {
+
+              nativeShareBtn.textContent =
+                "Share";
+
+            },
+            1200
+          );
+
+        }
+
+        catch (
+          error
+        ) {
+
+          console.log(
+            "Copy failed."
+          );
+
+        }
+
       }
+
     }
   );
 
 
+
+  /* =======================================================
+     COPY SHARE
+  ======================================================= */
+
   copyShareBtn.addEventListener(
     "click",
-    async () => {
+    async function () {
 
-      const text = shareText();
+      const text =
+        shareText();
+
 
       try {
 
-        await navigator.clipboard
-          .writeText(text);
+        await navigator
+          .clipboard
+          .writeText(
+            text
+            +
+            "\n\n"
+            +
+            window.location.href
+          );
+
+
+        /*
+          A successful copy counts
+          as a share action.
+        */
+
+        trackContronymEvent(
+          "puzzle_shared",
+          puzzle,
+          {
+
+            solved:
+              solved,
+
+            attempts:
+              attempts,
+
+            hints_used:
+              hintsUsed,
+
+            share_method:
+              "clipboard_social",
+
+            archived:
+              currentPuzzleArchived
+
+          }
+        );
+
 
         copyShareBtn.textContent =
           "Copied!";
 
+
         setTimeout(
-          () =>
+          function () {
+
             copyShareBtn.textContent =
-              "Copy for Instagram/Facebook",
+              "Copy for Instagram/Facebook";
+
+          },
           1200
         );
 
       }
 
-      catch {
+      catch (
+        error
+      ) {
 
-        alert(text);
+        alert(
+          text
+        );
+
       }
+
     }
   );
 
 
-  /* -------------------------
+
+  /* =======================================================
      START
-  ------------------------- */
+
+     Opening contronym.html means the
+     current puzzle has been presented,
+     so we count that as puzzle_started.
+  ======================================================= */
+
+  currentPuzzleArchived =
+    false;
+
 
   resetPuzzle();
+
+
+  trackContronymEvent(
+    "puzzle_started",
+    currentPuzzle,
+    {
+
+      archived:
+        false
+
+    }
+  );
+
 
 });
 
 </script>
 
-</body>
-</html>
 
 </body>
+
 </html>
