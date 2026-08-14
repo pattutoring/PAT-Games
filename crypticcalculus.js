@@ -4,9 +4,8 @@ document.addEventListener(
 
 
 /* ==========================================================
-   CRYPTIC-CALCULUS OPERATION DATABASE
-
-   Later, mascot image paths can be added to each object.
+   CRYPTIC-CALCULUS
+   OPERATION DATABASE
 ========================================================== */
 
 const operations = [
@@ -114,7 +113,7 @@ const operations = [
       "STRUCTURE OPERATION",
 
     mascot:
-      "📦",
+      "📦 ⊂",
 
     subtitle:
       "Put one unit inside another.",
@@ -202,7 +201,7 @@ const operations = [
       "LETTER OPERATION",
 
     mascot:
-      "✂️",
+      "✂️ −",
 
     subtitle:
       "Remove specified material.",
@@ -246,7 +245,7 @@ const operations = [
       "ORDER OPERATION",
 
     mascot:
-      "↩️",
+      "↩️ ↔",
 
     subtitle:
       "Reverse the sequence.",
@@ -290,7 +289,7 @@ const operations = [
       "PERMUTATION OPERATION",
 
     mascot:
-      "🔀",
+      "🔀 ⟳",
 
     subtitle:
       "Rearrange the components.",
@@ -358,7 +357,7 @@ const operations = [
       "MAN OVERBOARD",
 
     note:
-      "The Rebus Bus carries visual structure into language. The placement is part of the clue, not decoration."
+      "The Rebus Bus carries visual structure into language. Placement is part of the clue rather than decoration."
 
   },
 
@@ -402,7 +401,7 @@ const operations = [
       "Homophone relation",
 
     note:
-      "This is a Cryptic-Calculus visualization rather than a conventional cryptic-crossword operator. It models how context can pull two interpretations closer or farther apart."
+      "Red-Fish Blue-Shift models how context can pull two interpretations closer together or push them farther apart in semantic space."
 
   }
 
@@ -624,8 +623,7 @@ function showOperation(
       ) {
 
         return (
-          item.id ===
-          id
+          item.id === id
         );
 
       }
@@ -696,13 +694,7 @@ function showOperation(
     +
     operation.mascot
     +
-    '</div>'
-    +
-    '<small>'
-    +
-    'Mascot artwork can replace this later.'
-    +
-    '</small>';
+    '</div>';
 
 
   operationFormula.textContent =
@@ -737,7 +729,7 @@ function showOperation(
 
 
 /* ==========================================================
-   COMPOSITION SELECTS
+   COMPOSITION SELECTORS
 ========================================================== */
 
 function buildCompositionSelectors() {
