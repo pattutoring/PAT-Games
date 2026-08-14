@@ -160,87 +160,51 @@ document
 
 
 /* ==========================================================
-   CHEMISTRY HELPERS
+   CHEMISTRY DATA
 ========================================================== */
 
 const elementNames = {
 
-  H:
-    "Hydrogen",
+  H: "Hydrogen",
+  C: "Carbon",
+  N: "Nitrogen",
+  O: "Oxygen",
 
-  C:
-    "Carbon",
+  Na: "Sodium",
+  K: "Potassium",
+  Li: "Lithium",
 
-  N:
-    "Nitrogen",
+  Mg: "Magnesium",
+  Ca: "Calcium",
+  Al: "Aluminum",
 
-  O:
-    "Oxygen",
-
-  Na:
-    "Sodium",
-
-  K:
-    "Potassium",
-
-  Li:
-    "Lithium",
-
-  Mg:
-    "Magnesium",
-
-  Ca:
-    "Calcium",
-
-  Al:
-    "Aluminum",
-
-  S:
-    "Sulfur",
-
-  Cl:
-    "Chlorine",
-
-  F:
-    "Fluorine",
-
-  Br:
-    "Bromine",
-
-  I:
-    "Iodine"
+  S: "Sulfur",
+  Cl: "Chlorine",
+  F: "Fluorine",
+  Br: "Bromine",
+  I: "Iodine"
 
 };
 
 
 const subscripts = {
 
-  2:
-    "₂",
-
-  3:
-    "₃",
-
-  4:
-    "₄",
-
-  5:
-    "₅",
-
-  6:
-    "₆",
-
-  7:
-    "₇",
-
-  8:
-    "₈",
-
-  9:
-    "₉"
+  2: "₂",
+  3: "₃",
+  4: "₄",
+  5: "₅",
+  6: "₆",
+  7: "₇",
+  8: "₈",
+  9: "₉"
 
 };
 
+
+
+/* ==========================================================
+   FORMULA BUILDER
+========================================================== */
 
 function formulaFromSequence(
   sequence
@@ -290,7 +254,8 @@ function formulaFromSequence(
 
 
       if (
-        count > 1
+        count >
+        1
       ) {
 
         output +=
@@ -320,7 +285,13 @@ function formulaFromSequence(
 
 
 /* ==========================================================
-   DRAG ENGINE
+   UNIVERSAL DRAG ENGINE
+
+   This is pointer based so it works on:
+   mouse
+   iPhone
+   iPad
+   touchscreens
 ========================================================== */
 
 let activeDrag =
@@ -684,17 +655,13 @@ function pointInside(
 
 
   return (
-    x >=
-    rect.left
+    x >= rect.left
     &&
-    x <=
-    rect.right
+    x <= rect.right
     &&
-    y >=
-    rect.top
+    y >= rect.top
     &&
-    y <=
-    rect.bottom
+    y <= rect.bottom
   );
 
 }
@@ -748,7 +715,7 @@ function findDropTarget(
     const slots =
       Array.from(
         document.querySelectorAll(
-          ".queen-slot:not(.queen-center):not(.filled)"
+          ".queen-slot.available-next:not(.filled):not(.locked)"
         )
       );
 
@@ -988,7 +955,7 @@ function handleTap(
 
     const target =
       document.querySelector(
-        ".queen-slot:not(.queen-center):not(.filled)"
+        ".queen-slot.available-next:not(.filled):not(.locked)"
       );
 
 
@@ -1079,6 +1046,72 @@ function handleTap(
     }
 
   }
+
+}
+
+
+
+/* ==========================================================
+   ATOM TILE CREATOR
+========================================================== */
+
+function createAtomTile(
+  symbol,
+  game,
+  sourceId
+) {
+
+  const tile =
+    document.createElement(
+      "button"
+    );
+
+
+  tile.type =
+    "button";
+
+
+  tile.className =
+    "atom-hex";
+
+
+  tile.dataset.sourceId =
+    sourceId;
+
+
+  tile.innerHTML =
+    "<strong>"
+    +
+    symbol
+    +
+    "</strong>"
+    +
+    "<small>"
+    +
+    (
+      elementNames[
+        symbol
+      ]
+      ||
+      symbol
+    )
+    +
+    "</small>";
+
+
+  registerDrag(
+    tile,
+    {
+      game:
+        game,
+
+      symbol:
+        symbol
+    }
+  );
+
+
+  return tile;
 
 }
 
@@ -1376,7 +1409,6 @@ document
 
       buzzSequence.pop();
 
-
       renderBuzz();
 
     }
@@ -1393,7 +1425,6 @@ document
 
       buzzSequence =
         [];
-
 
       renderBuzz();
 
@@ -1513,7 +1544,7 @@ document
       );
 
 
-      const moleculargram =
+      if (
         buzzHiveElements.every(
           function (
             symbol
@@ -1524,11 +1555,7 @@ document
             );
 
           }
-        );
-
-
-      if (
-        moleculargram
+        )
       ) {
 
         document
@@ -1641,6 +1668,11 @@ function renderBuzzFound() {
 
 /* ==========================================================
    SPELLING BEE
+
+   Eight slots are always shown.
+
+   This leaves room for longer formulas
+   without changing the board.
 ========================================================== */
 
 const spellingChallenges =
@@ -1746,65 +1778,8 @@ let spellingIndex =
   0;
 
 
-function createAtomTile(
-  symbol,
-  game,
-  sourceId
-) {
-
-  const tile =
-    document.createElement(
-      "button"
-    );
-
-
-  tile.type =
-    "button";
-
-
-  tile.className =
-    "atom-hex";
-
-
-  tile.dataset.sourceId =
-    sourceId;
-
-
-  tile.innerHTML =
-    "<strong>"
-    +
-    symbol
-    +
-    "</strong>"
-    +
-    "<small>"
-    +
-    (
-      elementNames[
-        symbol
-      ]
-      ||
-      symbol
-    )
-    +
-    "</small>";
-
-
-  registerDrag(
-    tile,
-    {
-      game:
-        game,
-
-      symbol:
-        symbol
-    }
-  );
-
-
-  return tile;
-
-}
+const SPELLING_SLOT_COUNT =
+  8;
 
 
 function loadSpelling() {
@@ -1845,60 +1820,60 @@ function loadSpelling() {
     "";
 
 
-  challenge.answer.forEach(
-    function (
-      unused,
-      index
-    ) {
+  for (
+    let index = 0;
+    index <
+    SPELLING_SLOT_COUNT;
+    index++
+  ) {
 
-      const slot =
-        document.createElement(
-          "button"
-        );
-
-
-      slot.type =
-        "button";
+    const slot =
+      document.createElement(
+        "button"
+      );
 
 
-      slot.className =
-        "spelling-drop";
+    slot.type =
+      "button";
 
 
-      slot.dataset.slot =
-        index;
+    slot.className =
+      "spelling-drop";
 
 
-      slot.dataset.symbol =
-        "";
+    slot.dataset.slot =
+      index;
 
 
-      slot.addEventListener(
-        "click",
-        function () {
+    slot.dataset.symbol =
+      "";
 
-          if (
-            slot.classList.contains(
-              "filled"
-            )
-          ) {
 
-            returnSpelling(
-              slot
-            );
+    slot.addEventListener(
+      "click",
+      function () {
 
-          }
+        if (
+          slot.classList.contains(
+            "filled"
+          )
+        ) {
+
+          returnSpelling(
+            slot
+          );
 
         }
-      );
+
+      }
+    );
 
 
-      slots.appendChild(
-        slot
-      );
+    slots.appendChild(
+      slot
+    );
 
-    }
-  );
+  }
 
 
   const bank =
@@ -2038,9 +2013,11 @@ function getSpellingSequence() {
         slot
       ) {
 
-        return slot.dataset.symbol
+        return (
+          slot.dataset.symbol
           ||
-          "";
+          ""
+        );
 
       }
     )
@@ -2152,16 +2129,18 @@ document
         ];
 
 
+      const answer =
+        getSpellingSequence();
+
+
       if (
-        getSpellingSequence()
-          .join(
-            "|"
-          )
+        answer.join(
+          "|"
+        )
         ===
-        challenge.answer
-          .join(
-            "|"
-          )
+        challenge.answer.join(
+          "|"
+        )
       ) {
 
         document
@@ -2221,9 +2200,14 @@ document
 
 /* ==========================================================
    QUEEN BEE
+
+   Each successful molecule stays in the hive.
+
+   One newly placed atom becomes the next Queen,
+   allowing the molecular structure to grow.
 ========================================================== */
 
-const queenChallenges =
+const queenBuilds =
   [
 
     {
@@ -2255,27 +2239,55 @@ const queenChallenges =
 
     {
       center:
-        "C",
+        "H",
 
       name:
-        "carbon dioxide",
+        "hydrogen chloride",
 
       formula:
-        "CO₂",
+        "HCl",
 
       answer:
         [
-          "O",
-          "O"
+          "Cl"
         ],
 
       bank:
         [
+          "Cl",
           "O",
-          "O",
+          "C",
+          "N"
+        ]
+    },
+
+
+    {
+      center:
+        "C",
+
+      name:
+        "methane",
+
+      formula:
+        "CH₄",
+
+      answer:
+        [
           "H",
-          "N",
-          "Cl"
+          "H",
+          "H",
+          "H"
+        ],
+
+      bank:
+        [
+          "H",
+          "H",
+          "H",
+          "H",
+          "O",
+          "N"
         ]
     },
 
@@ -2310,29 +2322,24 @@ const queenChallenges =
 
     {
       center:
-        "C",
+        "O",
 
       name:
-        "methane",
+        "oxygen molecule",
 
       formula:
-        "CH₄",
+        "O₂",
 
       answer:
         [
-          "H",
-          "H",
-          "H",
-          "H"
+          "O"
         ],
 
       bank:
         [
-          "H",
-          "H",
-          "H",
-          "H",
           "O",
+          "H",
+          "C",
           "N"
         ]
     }
@@ -2340,16 +2347,110 @@ const queenChallenges =
   ];
 
 
-let queenIndex =
+let queenBuildIndex =
   0;
+
+
+let queenCorrectCount =
+  0;
+
+
+let queenActiveSlot =
+  document.getElementById(
+    "queenCenter"
+  );
+
+
+function getQueenChallenge() {
+
+  return queenBuilds[
+    queenBuildIndex %
+    queenBuilds.length
+  ];
+
+}
 
 
 function loadQueen() {
 
+  queenBuildIndex =
+    0;
+
+
+  queenCorrectCount =
+    0;
+
+
+  queenActiveSlot =
+    document.getElementById(
+      "queenCenter"
+    );
+
+
+  document
+    .querySelectorAll(
+      ".queen-slot"
+    )
+    .forEach(
+      function (
+        slot
+      ) {
+
+        slot.classList.remove(
+          "filled",
+          "locked",
+          "active-queen",
+          "available-next",
+          "drag-hover"
+        );
+
+
+        slot.dataset.symbol =
+          "";
+
+
+        slot.dataset.sourceId =
+          "";
+
+
+        slot.innerHTML =
+          "";
+
+      }
+    );
+
+
+  queenActiveSlot
+    .classList
+    .add(
+      "locked",
+      "active-queen"
+    );
+
+
+  loadQueenBuild();
+
+}
+
+
+function loadQueenBuild() {
+
   const challenge =
-    queenChallenges[
-      queenIndex
-    ];
+    getQueenChallenge();
+
+
+  queenActiveSlot.dataset.symbol =
+    challenge.center;
+
+
+  queenActiveSlot.innerHTML =
+    "<span>👑</span>"
+    +
+    "<strong>"
+    +
+    challenge.center
+    +
+    "</strong>";
 
 
   document
@@ -2361,7 +2462,7 @@ function loadQueen() {
       +
       challenge.name
       +
-      " around Queen "
+      " around the active "
       +
       (
         elementNames[
@@ -2376,6 +2477,34 @@ function loadQueen() {
 
   document
     .getElementById(
+      "queenActiveAtom"
+    )
+    .textContent =
+      challenge.center;
+
+
+  document
+    .getElementById(
+      "queenCorrectCount"
+    )
+    .textContent =
+      queenCorrectCount;
+
+
+  document
+    .getElementById(
+      "queenBuildMessage"
+    )
+    .textContent =
+      "Complete "
+      +
+      challenge.formula
+      +
+      " around the gold Queen atom.";
+
+
+  document
+    .getElementById(
       "queenFeedback"
     )
     .textContent =
@@ -2384,7 +2513,7 @@ function loadQueen() {
 
   document
     .querySelectorAll(
-      ".queen-slot:not(.queen-center)"
+      ".queen-slot.filled:not(.locked)"
     )
     .forEach(
       function (
@@ -2411,19 +2540,22 @@ function loadQueen() {
     );
 
 
-  document
-    .getElementById(
-      "queenCenter"
-    )
-    .innerHTML =
-      "<span>👑</span>"
-      +
-      "<strong>"
-      +
-      challenge.center
-      +
-      "</strong>";
+  updateQueenAvailableSlots();
 
+
+  buildQueenBank(
+    challenge.bank
+  );
+
+
+  updateQueenFormula();
+
+}
+
+
+function buildQueenBank(
+  atoms
+) {
 
   const bank =
     document.getElementById(
@@ -2435,7 +2567,7 @@ function loadQueen() {
     "";
 
 
-  challenge.bank.forEach(
+  atoms.forEach(
     function (
       symbol,
       index
@@ -2447,6 +2579,10 @@ function loadQueen() {
           "queen",
           "queen-"
           +
+          queenBuildIndex
+          +
+          "-"
+          +
           index
         )
       );
@@ -2454,8 +2590,52 @@ function loadQueen() {
     }
   );
 
+}
 
-  updateQueenFormula();
+
+function updateQueenAvailableSlots() {
+
+  document
+    .querySelectorAll(
+      ".queen-slot"
+    )
+    .forEach(
+      function (
+        slot
+      ) {
+
+        slot.classList.remove(
+          "available-next"
+        );
+
+
+        if (
+          slot ===
+          queenActiveSlot
+        ) {
+
+          return;
+
+        }
+
+
+        if (
+          slot.classList.contains(
+            "locked"
+          )
+        ) {
+
+          return;
+
+        }
+
+
+        slot.classList.add(
+          "available-next"
+        );
+
+      }
+    );
 
 }
 
@@ -2469,6 +2649,10 @@ function placeQueen(
   if (
     target.classList.contains(
       "filled"
+    )
+    ||
+    target.classList.contains(
+      "locked"
     )
   ) {
 
@@ -2503,84 +2687,20 @@ function placeQueen(
 }
 
 
-document
-  .querySelectorAll(
-    ".queen-slot:not(.queen-center)"
-  )
-  .forEach(
-    function (
-      slot
-    ) {
+function getCurrentQueenSlots() {
 
-      slot.addEventListener(
-        "click",
-        function () {
-
-          if (
-            !slot.classList.contains(
-              "filled"
-            )
-          ) {
-
-            return;
-
-          }
-
-
-          const source =
-            document.querySelector(
-              '[data-source-id="'
-              +
-              slot.dataset.sourceId
-              +
-              '"]'
-            );
-
-
-          if (
-            source
-          ) {
-
-            source.style.visibility =
-              "";
-
-          }
-
-
-          slot.classList.remove(
-            "filled"
-          );
-
-
-          slot.dataset.symbol =
-            "";
-
-
-          slot.dataset.sourceId =
-            "";
-
-
-          slot.textContent =
-            "";
-
-
-          updateQueenFormula();
-
-        }
-      );
-
-    }
+  return Array.from(
+    document.querySelectorAll(
+      ".queen-slot.filled:not(.locked)"
+    )
   );
 
+}
 
-function getQueenAtoms() {
 
-  return Array
-    .from(
-      document.querySelectorAll(
-        ".queen-slot.filled:not(.queen-center)"
-      )
-    )
+function getCurrentQueenAtoms() {
+
+  return getCurrentQueenSlots()
     .map(
       function (
         slot
@@ -2600,13 +2720,11 @@ function getQueenAtoms() {
 function updateQueenFormula() {
 
   const challenge =
-    queenChallenges[
-      queenIndex
-    ];
+    getQueenChallenge();
 
 
   const atoms =
-    getQueenAtoms();
+    getCurrentQueenAtoms();
 
 
   const preview =
@@ -2621,7 +2739,7 @@ function updateQueenFormula() {
   ) {
 
     preview.textContent =
-      "Build around Queen "
+      "Build around "
       +
       challenge.center;
 
@@ -2671,25 +2789,39 @@ document
     "click",
     function () {
 
+      const challenge =
+        getQueenChallenge();
+
+
+      const currentSlots =
+        getCurrentQueenSlots();
+
+
       const actual =
-        getQueenAtoms()
-          .slice()
+        currentSlots
+          .map(
+            function (
+              slot
+            ) {
+
+              return slot.dataset.symbol;
+
+            }
+          )
           .sort();
 
 
       const expected =
-        queenChallenges[
-          queenIndex
-        ].answer
-        .slice()
-        .sort();
+        challenge.answer
+          .slice()
+          .sort();
 
 
       if (
         actual.join(
           "|"
         )
-        ===
+        !==
         expected.join(
           "|"
         )
@@ -2700,50 +2832,183 @@ document
             "queenFeedback"
           )
           .textContent =
-            "👑 Correct — "
+            "Not quite. Finish "
             +
-            queenChallenges[
-              queenIndex
-            ].formula
+            challenge.formula
             +
-            "!";
+            " before growing farther.";
 
 
-        reward(
-          15
-        );
-
-
-        setTimeout(
-          function () {
-
-            queenIndex =
-              (
-                queenIndex +
-                1
-              )
-              %
-              queenChallenges.length;
-
-
-            loadQueen();
-
-          },
-          1000
-        );
+        return;
 
       }
 
-      else {
 
-        document
-          .getElementById(
-            "queenFeedback"
+      currentSlots.forEach(
+        function (
+          slot
+        ) {
+
+          slot.classList.add(
+            "locked"
+          );
+
+
+          slot.classList.remove(
+            "available-next"
+          );
+
+        }
+      );
+
+
+      queenCorrectCount++;
+
+
+      document
+        .getElementById(
+          "queenCorrectCount"
+        )
+        .textContent =
+          queenCorrectCount;
+
+
+      reward(
+        15
+      );
+
+
+      document
+        .getElementById(
+          "queenFeedback"
+        )
+        .textContent =
+          "👑 Correct — "
+          +
+          challenge.formula
+          +
+          "! The molecular hive grows.";
+
+
+      let nextQueen =
+        null;
+
+
+      const nextChallenge =
+        queenBuilds[
+          (
+            queenBuildIndex +
+            1
           )
-          .textContent =
-            "The Queen's molecular hive is not complete yet.";
+          %
+          queenBuilds.length
+        ];
+
+
+      nextQueen =
+        currentSlots.find(
+          function (
+            slot
+          ) {
+
+            return (
+              slot.dataset.symbol ===
+              nextChallenge.center
+            );
+
+          }
+        );
+
+
+      if (
+        !nextQueen
+      ) {
+
+        nextQueen =
+          currentSlots[0];
 
       }
+
+
+      queenActiveSlot
+        .classList
+        .remove(
+          "active-queen"
+        );
+
+
+      queenActiveSlot.innerHTML =
+        "<strong>"
+        +
+        queenActiveSlot.dataset.symbol
+        +
+        "</strong>";
+
+
+      queenActiveSlot =
+        nextQueen;
+
+
+      queenActiveSlot
+        .classList
+        .add(
+          "active-queen"
+        );
+
+
+      queenBuildIndex++;
+
+
+      /*
+        Adapt the next challenge's central
+        element to the atom actually chosen.
+      */
+
+      const upcoming =
+        getQueenChallenge();
+
+
+      if (
+        upcoming.center !==
+        queenActiveSlot.dataset.symbol
+      ) {
+
+        const matching =
+          queenBuilds.findIndex(
+            function (
+              build
+            ) {
+
+              return (
+                build.center ===
+                queenActiveSlot.dataset.symbol
+              );
+
+            }
+          );
+
+
+        if (
+          matching >=
+          0
+        ) {
+
+          queenBuildIndex =
+            matching;
+
+        }
+
+      }
+
+
+      setTimeout(
+        function () {
+
+          loadQueenBuild();
+
+        },
+        850
+      );
 
     }
   );
@@ -3561,10 +3826,7 @@ function loadPollination() {
           challenge.cation,
 
         role:
-          "cation",
-
-        name:
-          challenge.cation
+          "cation"
       },
 
 
@@ -3573,10 +3835,7 @@ function loadPollination() {
           challenge.anion,
 
         role:
-          "anion",
-
-        name:
-          challenge.anion
+          "anion"
       },
 
 
@@ -3585,10 +3844,7 @@ function loadPollination() {
           "K⁺",
 
         role:
-          "distractor",
-
-        name:
-          "K⁺"
+          "distractor"
       },
 
 
@@ -3597,10 +3853,7 @@ function loadPollination() {
           "Br⁻",
 
         role:
-          "distractor",
-
-        name:
-          "Br⁻"
+          "distractor"
       }
 
     ];
@@ -3647,7 +3900,7 @@ function loadPollination() {
         +
         '<strong>'
         +
-        data.name
+        data.ion
         +
         '</strong>'
         +
@@ -4002,21 +4255,15 @@ document
 
 updatePlayer();
 
-
 renderBuzz();
-
 
 renderBuzzFound();
 
-
 loadSpelling();
-
 
 loadQueen();
 
-
 loadWorker();
-
 
 loadPollination();
 
