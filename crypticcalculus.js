@@ -4,6 +4,61 @@ document.addEventListener(
 
 
 /* ==========================================================
+   GOOGLE ANALYTICS
+========================================================== */
+
+function trackCrypticEvent(
+  eventName,
+  extraData
+) {
+
+  if (
+    typeof gtag !==
+    "function"
+  ) {
+
+    return;
+
+  }
+
+
+  gtag(
+    "event",
+    eventName,
+    {
+      game_name:
+        "cryptic_calculus",
+
+      ...(extraData || {})
+    }
+  );
+
+}
+
+
+/*
+  Prevent duplicate solve/reveal events
+  during the same page visit.
+*/
+
+const solvedPractices =
+  new Set();
+
+
+const revealedPractices =
+  new Set();
+
+
+const solvedChallenges =
+  new Set();
+
+
+const revealedChallenges =
+  new Set();
+
+
+
+/* ==========================================================
    CRYPTIC-CALCULUS OPERATIONS
 ========================================================== */
 
@@ -689,6 +744,10 @@ let challengeSolvedCount =
   0;
 
 
+let compositionInitialized =
+  false;
+
+
 
 /* ==========================================================
    ELEMENTS
@@ -915,7 +974,8 @@ function buildOperationBank() {
         function () {
 
           showOperation(
-            operation.id
+            operation.id,
+            true
           );
 
         }
@@ -938,7 +998,8 @@ function buildOperationBank() {
 ========================================================== */
 
 function showOperation(
-  id
+  id,
+  trackView
 ) {
 
   const operation =
@@ -964,6 +1025,27 @@ function showOperation(
 
   activeOperation =
     operation;
+
+
+  if (
+    trackView
+  ) {
+
+    trackCrypticEvent(
+      "operation_viewed",
+      {
+        operation_id:
+          operation.id,
+
+        operation_name:
+          operation.title,
+
+        operation_category:
+          operation.category
+      }
+    );
+
+  }
 
 
   document
@@ -1124,6 +1206,10 @@ function loadPractice(
 
 
 
+/* ==========================================================
+   MINI PRACTICE CHECK
+========================================================== */
+
 function checkPractice() {
 
   const guess =
@@ -1151,8 +1237,21 @@ function checkPractice() {
   }
 
 
+  trackCrypticEvent(
+    "mini_clue_attempted",
+    {
+      operation_id:
+        activeOperation.id,
+
+      operation_name:
+        activeOperation.title
+    }
+  );
+
+
   if (
-    guess === answer
+    guess ===
+    answer
   ) {
 
     practiceFeedback.textContent =
@@ -1173,6 +1272,34 @@ function checkPractice() {
     practiceSolution.classList.add(
       "visible"
     );
+
+
+    if (
+      !solvedPractices.has(
+        activeOperation.id
+      )
+    ) {
+
+      solvedPractices.add(
+        activeOperation.id
+      );
+
+
+      trackCrypticEvent(
+        "mini_clue_solved",
+        {
+          operation_id:
+            activeOperation.id,
+
+          operation_name:
+            activeOperation.title,
+
+          answer:
+            activeOperation.practiceAnswer
+        }
+      );
+
+    }
 
 
     return;
@@ -1214,6 +1341,9 @@ practiceInput
         "Enter"
       ) {
 
+        event.preventDefault();
+
+
         checkPractice();
 
       }
@@ -1221,6 +1351,11 @@ practiceInput
     }
   );
 
+
+
+/* ==========================================================
+   PRACTICE HINT
+========================================================== */
 
 document
   .getElementById(
@@ -1233,9 +1368,26 @@ document
       practiceFeedback.textContent =
         activeOperation.practiceHint;
 
+
+      trackCrypticEvent(
+        "mini_clue_hint",
+        {
+          operation_id:
+            activeOperation.id,
+
+          operation_name:
+            activeOperation.title
+        }
+      );
+
     }
   );
 
+
+
+/* ==========================================================
+   PRACTICE REVEAL
+========================================================== */
 
 document
   .getElementById(
@@ -1260,6 +1412,35 @@ document
       practiceSolution.classList.add(
         "visible"
       );
+
+
+      if (
+        !revealedPractices.has(
+          activeOperation.id
+        )
+        &&
+        !solvedPractices.has(
+          activeOperation.id
+        )
+      ) {
+
+        revealedPractices.add(
+          activeOperation.id
+        );
+
+
+        trackCrypticEvent(
+          "mini_clue_revealed",
+          {
+            operation_id:
+              activeOperation.id,
+
+            operation_name:
+              activeOperation.title
+          }
+        );
+
+      }
 
     }
   );
@@ -1342,7 +1523,13 @@ function buildCompositionSelectors() {
     "reversal";
 
 
-  updateComposition();
+  updateComposition(
+    false
+  );
+
+
+  compositionInitialized =
+    true;
 
 }
 
@@ -1352,7 +1539,9 @@ function buildCompositionSelectors() {
    COMPOSITION
 ========================================================== */
 
-function updateComposition() {
+function updateComposition(
+  shouldTrack
+) {
 
   const first =
     operations.find(
@@ -1415,6 +1604,32 @@ function updateComposition() {
     +
     ".";
 
+
+  if (
+    shouldTrack
+    &&
+    compositionInitialized
+  ) {
+
+    trackCrypticEvent(
+      "operation_composed",
+      {
+        first_operation:
+          first.id,
+
+        first_operation_name:
+          first.title,
+
+        second_operation:
+          second.id,
+
+        second_operation_name:
+          second.title
+      }
+    );
+
+  }
+
 }
 
 
@@ -1422,20 +1637,32 @@ function updateComposition() {
 firstOperation
   .addEventListener(
     "change",
-    updateComposition
+    function () {
+
+      updateComposition(
+        true
+      );
+
+    }
   );
 
 
 secondOperation
   .addEventListener(
     "change",
-    updateComposition
+    function () {
+
+      updateComposition(
+        true
+      );
+
+    }
   );
 
 
 
 /* ==========================================================
-   CHALLENGE
+   CHALLENGE ELEMENTS
 ========================================================== */
 
 const challengeClue =
@@ -1481,6 +1708,10 @@ const challengeSteps =
 
 
 
+/* ==========================================================
+   LOAD CHALLENGE
+========================================================== */
+
 function loadChallenge() {
 
   const challenge =
@@ -1495,7 +1726,8 @@ function loadChallenge() {
     )
     .textContent =
       (
-        challengeIndex + 1
+        challengeIndex +
+        1
       );
 
 
@@ -1536,6 +1768,10 @@ function loadChallenge() {
 
 
 
+/* ==========================================================
+   CHALLENGE BREAKDOWN
+========================================================== */
+
 function revealChallengeBreakdown(
   challenge
 ) {
@@ -1562,7 +1798,8 @@ function revealChallengeBreakdown(
 
       line.textContent =
         (
-          index + 1
+          index +
+          1
         )
         +
         ". "
@@ -1585,6 +1822,10 @@ function revealChallengeBreakdown(
 }
 
 
+
+/* ==========================================================
+   CHECK CHALLENGE
+========================================================== */
 
 function checkChallenge() {
 
@@ -1613,6 +1854,21 @@ function checkChallenge() {
   }
 
 
+  trackCrypticEvent(
+    "challenge_attempted",
+    {
+      challenge_number:
+        challengeIndex +
+        1,
+
+      operations:
+        challenge.operations.join(
+          " + "
+        )
+    }
+  );
+
+
   if (
     guess ===
     normalizeAnswer(
@@ -1631,15 +1887,54 @@ function checkChallenge() {
     );
 
 
-    challengeSolvedCount++;
+    /*
+      Only increase the displayed solve count
+      the first time this challenge is solved.
+    */
 
-
-    document
-      .getElementById(
-        "challengeSolved"
+    if (
+      !solvedChallenges.has(
+        challengeIndex
       )
-      .textContent =
-        challengeSolvedCount;
+    ) {
+
+      solvedChallenges.add(
+        challengeIndex
+      );
+
+
+      challengeSolvedCount++;
+
+
+      document
+        .getElementById(
+          "challengeSolved"
+        )
+        .textContent =
+          challengeSolvedCount;
+
+
+      trackCrypticEvent(
+        "challenge_solved",
+        {
+          challenge_number:
+            challengeIndex +
+            1,
+
+          answer:
+            challenge.answer,
+
+          operations:
+            challenge.operations.join(
+              " + "
+            ),
+
+          total_challenges_solved:
+            challengeSolvedCount
+        }
+      );
+
+    }
 
 
     revealChallengeBreakdown(
@@ -1686,6 +1981,9 @@ challengeInput
         "Enter"
       ) {
 
+        event.preventDefault();
+
+
         checkChallenge();
 
       }
@@ -1693,6 +1991,11 @@ challengeInput
     }
   );
 
+
+
+/* ==========================================================
+   CHALLENGE HINT
+========================================================== */
 
 document
   .getElementById(
@@ -1702,14 +2005,38 @@ document
     "click",
     function () {
 
-      challengeFeedback.textContent =
+      const challenge =
         challenges[
           challengeIndex
-        ].hint;
+        ];
+
+
+      challengeFeedback.textContent =
+        challenge.hint;
+
+
+      trackCrypticEvent(
+        "challenge_hint",
+        {
+          challenge_number:
+            challengeIndex +
+            1,
+
+          operations:
+            challenge.operations.join(
+              " + "
+            )
+        }
+      );
 
     }
   );
 
+
+
+/* ==========================================================
+   CHALLENGE REVEAL
+========================================================== */
 
 document
   .getElementById(
@@ -1737,9 +2064,46 @@ document
         challenge
       );
 
+
+      if (
+        !revealedChallenges.has(
+          challengeIndex
+        )
+        &&
+        !solvedChallenges.has(
+          challengeIndex
+        )
+      ) {
+
+        revealedChallenges.add(
+          challengeIndex
+        );
+
+
+        trackCrypticEvent(
+          "challenge_revealed",
+          {
+            challenge_number:
+              challengeIndex +
+              1,
+
+            operations:
+              challenge.operations.join(
+                " + "
+              )
+          }
+        );
+
+      }
+
     }
   );
 
+
+
+/* ==========================================================
+   NEXT CHALLENGE
+========================================================== */
 
 document
   .getElementById(
@@ -1751,10 +2115,28 @@ document
 
       challengeIndex =
         (
-          challengeIndex + 1
+          challengeIndex +
+          1
         )
         %
         challenges.length;
+
+
+      trackCrypticEvent(
+        "challenge_viewed",
+        {
+          challenge_number:
+            challengeIndex +
+            1,
+
+          operations:
+            challenges[
+              challengeIndex
+            ].operations.join(
+              " + "
+            )
+        }
+      );
 
 
       loadChallenge();
@@ -1826,15 +2208,32 @@ function buildReferenceGrid() {
 
 buildOperationBank();
 
+
 buildCompositionSelectors();
+
 
 buildReferenceGrid();
 
+
 showOperation(
-  operations[0].id
+  operations[0].id,
+  false
 );
 
+
 loadChallenge();
+
+
+trackCrypticEvent(
+  "world_entered",
+  {
+    operation_count:
+      operations.length,
+
+    challenge_count:
+      challenges.length
+  }
+);
 
 
 });
