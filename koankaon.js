@@ -52,7 +52,7 @@ const generalPuzzles = [
         number: 1,
 
         clue:
-          "Koan decays into ‘quark-y’ pairable.",
+          "Koan decays into ‘quark-y’ parable.",
 
         enumeration:
           "(4)",
@@ -120,7 +120,7 @@ const generalPuzzles = [
         number: 1,
 
         clue:
-          "Koan symmetry-breakings particle.",
+          "Koan symmetry-breaking particle.",
 
         enumeration:
           "(4)",
