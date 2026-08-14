@@ -1,1 +1,1273 @@
+:root {
 
+  --cream: #fff8e8;
+  --paper: #fffdf6;
+  --ink: #29261f;
+
+  --brown: #755234;
+
+  --gold: #d2a23c;
+  --gold-light: #f4e3ae;
+
+  --red: #a44945;
+  --red-light: #f4dfda;
+
+  --blue: #477ca8;
+  --blue-light: #e2edf7;
+
+  --purple: #71558e;
+  --purple-light: #ece4f3;
+
+  --green: #58784b;
+  --green-light: #e4eddf;
+
+  --shadow:
+    rgba(45,35,20,.16);
+}
+
+
+/* ==========================================================
+   GLOBAL
+========================================================== */
+
+* {
+  box-sizing:
+    border-box;
+}
+
+
+body {
+
+  margin:
+    0;
+
+  background:
+    var(--cream);
+
+  color:
+    var(--ink);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+}
+
+
+button,
+select {
+
+  font:
+    inherit;
+}
+
+
+button {
+
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+header {
+
+  padding:
+    30px 18px 22px;
+
+  text-align:
+    center;
+}
+
+
+.lab-link {
+
+  display:
+    inline-block;
+
+  margin-bottom:
+    16px;
+
+  padding:
+    8px 13px;
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    10px;
+
+  background:
+    var(--paper);
+
+  color:
+    var(--brown);
+
+  text-decoration:
+    none;
+
+  font-weight:
+    bold;
+}
+
+
+.cc-mark {
+
+  margin:
+    4px 0;
+
+  color:
+    var(--purple);
+
+  font-size:
+    4rem;
+
+  line-height:
+    1;
+}
+
+
+header h1 {
+
+  margin:
+    8px 0 4px;
+
+  font-size:
+    clamp(
+      2rem,
+      8vw,
+      4rem
+    );
+
+  letter-spacing:
+    2px;
+}
+
+
+.tagline {
+
+  margin:
+    6px 0;
+
+  color:
+    var(--brown);
+
+  font-size:
+    1.1rem;
+
+  font-weight:
+    bold;
+
+  font-style:
+    italic;
+}
+
+
+.header-copy {
+
+  max-width:
+    650px;
+
+  margin:
+    12px auto 0;
+
+  color:
+    #665846;
+
+  line-height:
+    1.5;
+}
+
+
+
+/* ==========================================================
+   MAIN
+========================================================== */
+
+main {
+
+  width:
+    min(
+      1100px,
+      94%
+    );
+
+  margin:
+    auto;
+
+  padding-bottom:
+    60px;
+}
+
+
+
+/* ==========================================================
+   INTRO
+========================================================== */
+
+.intro-card {
+
+  max-width:
+    900px;
+
+  margin:
+    0 auto 28px;
+
+  padding:
+    24px;
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    18px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0 6px 18px var(--shadow);
+
+  text-align:
+    center;
+}
+
+
+.intro-badge {
+
+  display:
+    inline-block;
+
+  margin-bottom:
+    8px;
+
+  padding:
+    6px 12px;
+
+  border-radius:
+    999px;
+
+  background:
+    var(--gold);
+
+  color:
+    #3e2c08;
+
+  font-size:
+    .72rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    1.5px;
+}
+
+
+.intro-card h2 {
+
+  margin:
+    8px 0;
+}
+
+
+.intro-card p {
+
+  max-width:
+    720px;
+
+  margin:
+    10px auto 18px;
+
+  color:
+    #665846;
+
+  line-height:
+    1.55;
+}
+
+
+.equation-strip {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  align-items:
+    center;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    8px;
+}
+
+
+.equation-box {
+
+  padding:
+    8px 11px;
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    9px;
+
+  background:
+    white;
+
+  font-size:
+    .8rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    1px;
+}
+
+
+.answer-box {
+
+  border-color:
+    var(--gold);
+
+  background:
+    #fff6d5;
+}
+
+
+.equation-arrow {
+
+  color:
+    var(--gold);
+
+  font-size:
+    1.3rem;
+
+  font-weight:
+    bold;
+}
+
+
+
+/* ==========================================================
+   SECTIONS
+========================================================== */
+
+.lab-shell,
+.composer-shell,
+.reference-shell {
+
+  margin-bottom:
+    30px;
+
+  padding:
+    clamp(
+      18px,
+      4vw,
+      28px
+    );
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    20px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0 6px 18px var(--shadow);
+}
+
+
+.section-heading {
+
+  margin-bottom:
+    22px;
+
+  text-align:
+    center;
+}
+
+
+.section-kicker {
+
+  color:
+    var(--purple);
+
+  font-size:
+    .72rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    2px;
+}
+
+
+.section-heading h2 {
+
+  margin:
+    6px 0;
+}
+
+
+.section-heading p {
+
+  max-width:
+    680px;
+
+  margin:
+    auto;
+
+  color:
+    #665846;
+
+  line-height:
+    1.5;
+}
+
+
+
+/* ==========================================================
+   MAIN LAB LAYOUT
+========================================================== */
+
+.lab-layout {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      260px,
+      340px
+    )
+    1fr;
+
+  gap:
+    22px;
+
+  align-items:
+    start;
+}
+
+
+
+/* ==========================================================
+   OPERATION BANK
+========================================================== */
+
+.operation-bank {
+
+  display:
+    grid;
+
+  gap:
+    10px;
+}
+
+
+.operation-card {
+
+  width:
+    100%;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    54px 1fr;
+
+  align-items:
+    center;
+
+  gap:
+    12px;
+
+  padding:
+    13px;
+
+  border:
+    2px solid #d8cab3;
+
+  border-radius:
+    13px;
+
+  background:
+    white;
+
+  color:
+    var(--ink);
+
+  cursor:
+    pointer;
+
+  text-align:
+    left;
+
+  transition:
+    transform .15s ease,
+    border-color .15s ease,
+    background .15s ease;
+}
+
+
+.operation-card:hover {
+
+  transform:
+    translateY(-1px);
+}
+
+
+.operation-card.active {
+
+  border-color:
+    var(--gold);
+
+  background:
+    #fff8de;
+}
+
+
+.operation-card-symbol {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  width:
+    54px;
+
+  height:
+    54px;
+
+  border-radius:
+    12px;
+
+  background:
+    var(--purple-light);
+
+  color:
+    var(--purple);
+
+  font-size:
+    1.7rem;
+
+  font-weight:
+    bold;
+}
+
+
+.operation-card-title {
+
+  display:
+    block;
+
+  margin-bottom:
+    3px;
+
+  font-weight:
+    bold;
+}
+
+
+.operation-card-subtitle {
+
+  color:
+    #706454;
+
+  font-size:
+    .78rem;
+
+  line-height:
+    1.35;
+}
+
+
+
+/* ==========================================================
+   CALCULATION BOARD
+========================================================== */
+
+.calculation-board {
+
+  padding:
+    22px;
+
+  border:
+    3px solid var(--purple);
+
+  border-radius:
+    18px;
+
+  background:
+    #fffdfa;
+}
+
+
+.board-top {
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    start;
+
+  gap:
+    16px;
+
+  margin-bottom:
+    16px;
+}
+
+
+.operation-category {
+
+  color:
+    var(--purple);
+
+  font-size:
+    .7rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    2px;
+}
+
+
+.operation-title {
+
+  margin:
+    5px 0;
+}
+
+
+.operation-symbol {
+
+  min-width:
+    78px;
+
+  padding:
+    10px;
+
+  border:
+    2px solid var(--gold);
+
+  border-radius:
+    13px;
+
+  background:
+    #fff6d5;
+
+  color:
+    var(--ink);
+
+  text-align:
+    center;
+
+  font-size:
+    2.2rem;
+
+  font-weight:
+    bold;
+}
+
+
+
+/* ==========================================================
+   MASCOT PLACEHOLDER
+========================================================== */
+
+.mascot-placeholder {
+
+  max-width:
+    420px;
+
+  margin:
+    0 auto 18px;
+
+  padding:
+    16px;
+
+  border:
+    2px dashed #c9b68f;
+
+  border-radius:
+    14px;
+
+  background:
+    #faf3e4;
+
+  text-align:
+    center;
+
+  font-size:
+    2.4rem;
+
+  line-height:
+    1.35;
+}
+
+
+
+/* ==========================================================
+   INFO PANELS
+========================================================== */
+
+.math-panel,
+.description-panel {
+
+  margin-bottom:
+    14px;
+
+  padding:
+    15px;
+
+  border-radius:
+    13px;
+
+  background:
+    #f7f1e7;
+}
+
+
+.mini-heading {
+
+  margin-bottom:
+    7px;
+
+  color:
+    var(--brown);
+
+  font-size:
+    .68rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    1.6px;
+}
+
+
+.operation-formula {
+
+  color:
+    var(--purple);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    clamp(
+      1.15rem,
+      4vw,
+      1.5rem
+    );
+
+  font-weight:
+    bold;
+
+  line-height:
+    1.45;
+
+  overflow-wrap:
+    anywhere;
+}
+
+
+.description-panel p {
+
+  margin:
+    0;
+
+  line-height:
+    1.5;
+
+  color:
+    #625647;
+}
+
+
+
+/* ==========================================================
+   WORKED EXAMPLE
+========================================================== */
+
+.worked-example {
+
+  margin-top:
+    18px;
+
+  padding:
+    18px;
+
+  border:
+    2px solid #dacdaF;
+
+  border-radius:
+    15px;
+
+  background:
+    white;
+}
+
+
+.example-stage {
+
+  padding:
+    12px 14px;
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    10px;
+
+  text-align:
+    center;
+}
+
+
+.example-stage span {
+
+  display:
+    block;
+
+  margin-bottom:
+    5px;
+
+  color:
+    #776957;
+
+  font-size:
+    .65rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    1.5px;
+}
+
+
+.example-stage strong {
+
+  font-size:
+    1.1rem;
+
+  line-height:
+    1.4;
+}
+
+
+.operation-stage {
+
+  border-color:
+    var(--purple);
+
+  background:
+    var(--purple-light);
+}
+
+
+.result-stage {
+
+  border-color:
+    var(--gold);
+
+  background:
+    #fff6d5;
+}
+
+
+.calc-arrow {
+
+  padding:
+    6px 0;
+
+  color:
+    var(--gold);
+
+  text-align:
+    center;
+
+  font-size:
+    1.5rem;
+
+  font-weight:
+    bold;
+}
+
+
+.operation-note {
+
+  margin-top:
+    14px;
+
+  padding:
+    11px 13px;
+
+  border-left:
+    5px solid var(--gold);
+
+  background:
+    #fff9e8;
+
+  color:
+    #665846;
+
+  font-size:
+    .85rem;
+
+  line-height:
+    1.45;
+}
+
+
+
+/* ==========================================================
+   COMPOSITION
+========================================================== */
+
+.composer-card {
+
+  max-width:
+    750px;
+
+  margin:
+    auto;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr auto 1fr;
+
+  align-items:
+    center;
+
+  gap:
+    16px;
+}
+
+
+.composer-row {
+
+  display:
+    grid;
+
+  gap:
+    7px;
+}
+
+
+.composer-row label {
+
+  color:
+    var(--brown);
+
+  font-size:
+    .75rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    1px;
+}
+
+
+.composer-row select {
+
+  width:
+    100%;
+
+  padding:
+    11px;
+
+  border:
+    2px solid var(--brown);
+
+  border-radius:
+    10px;
+
+  background:
+    white;
+
+  color:
+    var(--ink);
+}
+
+
+.composition-symbol {
+
+  color:
+    var(--purple);
+
+  font-size:
+    2.4rem;
+
+  font-weight:
+    bold;
+}
+
+
+.composition-output {
+
+  grid-column:
+    1 / -1;
+
+  margin-top:
+    4px;
+
+  padding:
+    18px;
+
+  border:
+    2px solid var(--purple);
+
+  border-radius:
+    14px;
+
+  background:
+    var(--purple-light);
+
+  text-align:
+    center;
+}
+
+
+.composition-formula {
+
+  color:
+    var(--purple);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    1.3rem;
+
+  font-weight:
+    bold;
+}
+
+
+.composition-explanation {
+
+  margin:
+    9px 0 0;
+
+  color:
+    #625647;
+
+  line-height:
+    1.5;
+}
+
+
+
+/* ==========================================================
+   REFERENCE GRID
+========================================================== */
+
+.reference-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(
+        200px,
+        1fr
+      )
+    );
+
+  gap:
+    12px;
+}
+
+
+.reference-card {
+
+  padding:
+    14px;
+
+  border:
+    2px solid #d8cab3;
+
+  border-radius:
+    13px;
+
+  background:
+    white;
+}
+
+
+.reference-symbol {
+
+  color:
+    var(--purple);
+
+  font-size:
+    1.6rem;
+
+  font-weight:
+    bold;
+}
+
+
+.reference-card h3 {
+
+  margin:
+    6px 0;
+}
+
+
+.reference-card p {
+
+  margin:
+    0;
+
+  color:
+    #665846;
+
+  font-size:
+    .82rem;
+
+  line-height:
+    1.4;
+}
+
+
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+footer {
+
+  padding:
+    30px 15px;
+
+  text-align:
+    center;
+
+  color:
+    #665846;
+
+  font-size:
+    .82rem;
+
+  line-height:
+    1.6;
+}
+
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media
+(max-width: 850px) {
+
+  .lab-layout {
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .operation-bank {
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+}
+
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media
+(max-width: 600px) {
+
+  .operation-bank {
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .composer-card {
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .composition-symbol {
+
+    transform:
+      rotate(90deg);
+
+    text-align:
+      center;
+  }
+
+
+  .board-top {
+
+    align-items:
+      center;
+  }
+
+
+  .operation-symbol {
+
+    min-width:
+      64px;
+
+    font-size:
+      1.7rem;
+  }
+
+}
