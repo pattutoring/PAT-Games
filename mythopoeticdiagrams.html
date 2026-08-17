@@ -1,1 +1,5161 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>Mythopoetic Diagrams | PAT Learning Lab</title>
+
+
+<!-- =====================================================
+     GOOGLE ANALYTICS
+====================================================== -->
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-QCEPJP202V"
+></script>
+
+<script>
+
+window.dataLayer =
+  window.dataLayer || [];
+
+function gtag() {
+  dataLayer.push(arguments);
+}
+
+gtag(
+  "js",
+  new Date()
+);
+
+gtag(
+  "config",
+  "G-QCEPJP202V"
+);
+
+</script>
+
+
+
+<style>
+
+:root {
+
+  --cream: #fff8e8;
+  --paper: #fffdf7;
+  --ink: #29261f;
+
+  --green: #58784b;
+  --light-green: #dfe9d7;
+
+  --gold: #d5a83e;
+  --gold-light: #f5e7b8;
+
+  --brown: #8b633e;
+
+  --red: #b9574e;
+  --red-light: #f4dfdc;
+
+  --blue: #477ca8;
+  --blue-light: #dfeaf4;
+
+  --purple: #71558e;
+  --purple-light: #eee6f4;
+
+  --shadow:
+    rgba(
+      52,
+      43,
+      29,
+      .14
+    );
+
+}
+
+
+
+/* =====================================================
+   GLOBAL
+====================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+
+  margin: 0;
+
+  background:
+    var(--cream);
+
+  color:
+    var(--ink);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+}
+
+
+button,
+input,
+textarea,
+select {
+
+  font: inherit;
+
+}
+
+
+button {
+
+  cursor: pointer;
+
+}
+
+
+
+/* =====================================================
+   HEADER
+====================================================== */
+
+header {
+
+  padding:
+    30px 20px 24px;
+
+  text-align: center;
+
+}
+
+
+.lab-link {
+
+  display:
+    inline-block;
+
+  margin-bottom:
+    16px;
+
+  padding:
+    8px 13px;
+
+  border:
+    2px solid
+    var(--brown);
+
+  border-radius:
+    10px;
+
+  background:
+    var(--paper);
+
+  color:
+    var(--brown);
+
+  font-weight:
+    bold;
+
+  text-decoration:
+    none;
+
+}
+
+
+.header-mark {
+
+  margin-bottom:
+    3px;
+
+  color:
+    var(--gold);
+
+  font-size:
+    3rem;
+
+}
+
+
+header h1 {
+
+  margin:
+    3px 0;
+
+  font-size:
+    clamp(
+      2.1rem,
+      8vw,
+      4.3rem
+    );
+
+  letter-spacing:
+    1px;
+
+}
+
+
+.tagline {
+
+  margin-top:
+    8px;
+
+  color:
+    var(--purple);
+
+  font-weight:
+    bold;
+
+}
+
+
+.header-copy {
+
+  max-width:
+    780px;
+
+  margin:
+    17px auto 0;
+
+  color:
+    #675849;
+
+  line-height:
+    1.6;
+
+}
+
+
+
+/* =====================================================
+   MAIN
+====================================================== */
+
+main {
+
+  width:
+    min(
+      1140px,
+      94%
+    );
+
+  margin:
+    auto;
+
+  padding-bottom:
+    75px;
+
+}
+
+
+.section-heading {
+
+  max-width:
+    800px;
+
+  margin:
+    38px auto 22px;
+
+  text-align:
+    center;
+
+}
+
+
+.section-heading h2 {
+
+  margin:
+    5px 0 8px;
+
+}
+
+
+.section-heading p {
+
+  margin:
+    auto;
+
+  color:
+    #685949;
+
+  line-height:
+    1.55;
+
+}
+
+
+.kicker {
+
+  color:
+    var(--purple);
+
+  font-size:
+    .72rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    2px;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+
+/* =====================================================
+   INTRO
+====================================================== */
+
+.intro-card {
+
+  max-width:
+    900px;
+
+  margin:
+    10px auto 32px;
+
+  padding:
+    26px;
+
+  border:
+    2px solid
+    var(--gold);
+
+  border-radius:
+    20px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0 7px 18px
+    var(--shadow);
+
+  text-align:
+    center;
+
+}
+
+
+.intro-card h2 {
+
+  margin:
+    6px 0 10px;
+
+}
+
+
+.intro-card p {
+
+  line-height:
+    1.6;
+
+}
+
+
+.class-row {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  gap:
+    12px;
+
+  flex-wrap:
+    wrap;
+
+  margin-top:
+    18px;
+
+}
+
+
+.class-chip {
+
+  padding:
+    10px 14px;
+
+  border-radius:
+    999px;
+
+  font-weight:
+    bold;
+
+}
+
+
+.meson-chip {
+
+  border:
+    2px solid
+    var(--red);
+
+  background:
+    var(--red-light);
+
+  color:
+    var(--red);
+
+}
+
+
+.baryon-chip {
+
+  border:
+    2px solid
+    var(--blue);
+
+  background:
+    var(--blue-light);
+
+  color:
+    var(--blue);
+
+}
+
+
+
+/* =====================================================
+   CANONICAL FORMS
+====================================================== */
+
+.form-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(
+        190px,
+        1fr
+      )
+    );
+
+  gap:
+    12px;
+
+}
+
+
+.form-card {
+
+  min-height:
+    190px;
+
+  padding:
+    17px;
+
+  border:
+    2px solid
+    #d6c5a5;
+
+  border-radius:
+    16px;
+
+  background:
+    var(--paper);
+
+  color:
+    var(--ink);
+
+  text-align:
+    center;
+
+  box-shadow:
+    0 4px 11px
+    rgba(
+      52,
+      43,
+      29,
+      .08
+    );
+
+  transition:
+    transform .15s ease,
+    border-color .15s ease,
+    background .15s ease;
+
+}
+
+
+.form-card:hover {
+
+  transform:
+    translateY(
+      -3px
+    );
+
+}
+
+
+.form-card.active {
+
+  border-color:
+    var(--gold);
+
+  background:
+    #fff4d8;
+
+}
+
+
+.form-icon {
+
+  min-height:
+    55px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  font-size:
+    2.5rem;
+
+}
+
+
+.form-card strong {
+
+  display:
+    block;
+
+  margin:
+    6px 0;
+
+}
+
+
+.form-card small {
+
+  color:
+    #6d604f;
+
+  line-height:
+    1.35;
+
+}
+
+
+
+/* =====================================================
+   FORM LAB
+====================================================== */
+
+.form-lab {
+
+  margin-top:
+    22px;
+
+  padding:
+    25px;
+
+  border:
+    3px solid
+    var(--purple);
+
+  border-radius:
+    20px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0 7px 20px
+    var(--shadow);
+
+}
+
+
+.form-lab-top {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    110px 1fr;
+
+  gap:
+    18px;
+
+  align-items:
+    center;
+
+}
+
+
+.form-large-icon {
+
+  width:
+    105px;
+
+  height:
+    105px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border:
+    3px solid
+    var(--gold);
+
+  border-radius:
+    50%;
+
+  background:
+    var(--cream);
+
+  font-size:
+    3rem;
+
+}
+
+
+.form-title h2 {
+
+  margin:
+    5px 0;
+
+}
+
+
+.form-description {
+
+  color:
+    #675949;
+
+  line-height:
+    1.5;
+
+}
+
+
+.form-equation {
+
+  margin-top:
+    8px;
+
+  color:
+    var(--purple);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-weight:
+    bold;
+
+}
+
+
+
+/* =====================================================
+   CANVAS
+====================================================== */
+
+.diagram-board {
+
+  position:
+    relative;
+
+  width:
+    100%;
+
+  min-height:
+    430px;
+
+  margin-top:
+    22px;
+
+  overflow:
+    hidden;
+
+  border:
+    2px solid
+    #cfbea0;
+
+  border-radius:
+    18px;
+
+  background:
+
+    linear-gradient(
+      rgba(71,124,168,.045) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(185,87,78,.045) 1px,
+      transparent 1px
+    ),
+
+    #fffdf7;
+
+  background-size:
+    34px 34px;
+
+}
+
+
+.diagram-svg {
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+}
+
+
+.axis-horizontal {
+
+  stroke:
+    var(--blue);
+
+  stroke-width:
+    3;
+
+}
+
+
+.axis-vertical {
+
+  stroke:
+    var(--red);
+
+  stroke-width:
+    3;
+
+}
+
+
+.axis-symmetry {
+
+  stroke:
+    var(--gold);
+
+  stroke-width:
+    3;
+
+  stroke-dasharray:
+    7 7;
+
+}
+
+
+.story-curve {
+
+  fill:
+    none;
+
+  stroke:
+    var(--ink);
+
+  stroke-width:
+    4;
+
+}
+
+
+.story-curve.red {
+
+  stroke:
+    var(--red);
+
+}
+
+
+.story-curve.blue {
+
+  stroke:
+    var(--blue);
+
+}
+
+
+.story-curve.gold {
+
+  stroke:
+    var(--gold);
+
+}
+
+
+.story-node {
+
+  cursor:
+    pointer;
+
+}
+
+
+.story-node circle {
+
+  stroke:
+    white;
+
+  stroke-width:
+    3;
+
+}
+
+
+.story-node text {
+
+  pointer-events:
+    none;
+
+  font-size:
+    12px;
+
+  font-weight:
+    bold;
+
+  text-anchor:
+    middle;
+
+}
+
+
+.node-label {
+
+  font-size:
+    11px;
+
+}
+
+
+.story-tooltip {
+
+  position:
+    absolute;
+
+  z-index:
+    20;
+
+  display:
+    none;
+
+  max-width:
+    240px;
+
+  padding:
+    11px 13px;
+
+  border:
+    2px solid
+    var(--gold);
+
+  border-radius:
+    11px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0 5px 15px
+    var(--shadow);
+
+  font-size:
+    .83rem;
+
+  line-height:
+    1.4;
+
+}
+
+
+.story-tooltip.visible {
+
+  display:
+    block;
+
+}
+
+
+
+/* =====================================================
+   LAYERS
+====================================================== */
+
+.layer-controls {
+
+  display:
+    flex;
+
+  gap:
+    8px;
+
+  flex-wrap:
+    wrap;
+
+  justify-content:
+    center;
+
+  margin-top:
+    17px;
+
+}
+
+
+.layer-button {
+
+  padding:
+    9px 12px;
+
+  border:
+    2px solid
+    #c8b590;
+
+  border-radius:
+    999px;
+
+  background:
+    white;
+
+  color:
+    var(--ink);
+
+  font-size:
+    .82rem;
+
+  font-weight:
+    bold;
+
+}
+
+
+.layer-button.active {
+
+  border-color:
+    var(--gold);
+
+  background:
+    var(--gold-light);
+
+}
+
+
+
+/* =====================================================
+   STORY LIBRARY
+====================================================== */
+
+.story-library {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    250px 1fr;
+
+  gap:
+    17px;
+
+}
+
+
+.story-list {
+
+  display:
+    grid;
+
+  gap:
+    9px;
+
+  align-content:
+    start;
+
+}
+
+
+.story-button {
+
+  padding:
+    13px;
+
+  border:
+    2px solid
+    #d6c4a3;
+
+  border-radius:
+    12px;
+
+  background:
+    var(--paper);
+
+  color:
+    var(--ink);
+
+  text-align:
+    left;
+
+}
+
+
+.story-button.active {
+
+  border-color:
+    var(--purple);
+
+  background:
+    var(--purple-light);
+
+}
+
+
+.story-button strong {
+
+  display:
+    block;
+
+  margin-bottom:
+    3px;
+
+}
+
+
+.story-button small {
+
+  color:
+    #6a5d4e;
+
+}
+
+
+
+/* =====================================================
+   STORY INFO
+====================================================== */
+
+.story-info {
+
+  padding:
+    20px;
+
+  border:
+    2px solid
+    #d8c8aa;
+
+  border-radius:
+    15px;
+
+  background:
+    var(--paper);
+
+}
+
+
+.story-info-top {
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  gap:
+    15px;
+
+  flex-wrap:
+    wrap;
+
+  margin-bottom:
+    12px;
+
+}
+
+
+.story-class {
+
+  padding:
+    7px 10px;
+
+  border-radius:
+    999px;
+
+  font-size:
+    .75rem;
+
+  font-weight:
+    bold;
+
+}
+
+
+.story-class.meson {
+
+  background:
+    var(--red-light);
+
+  color:
+    var(--red);
+
+}
+
+
+.story-class.baryon {
+
+  background:
+    var(--blue-light);
+
+  color:
+    var(--blue);
+
+}
+
+
+.story-summary {
+
+  color:
+    #675949;
+
+  line-height:
+    1.55;
+
+}
+
+
+.relation-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(
+        200px,
+        1fr
+      )
+    );
+
+  gap:
+    10px;
+
+  margin-top:
+    15px;
+
+}
+
+
+.relation-card {
+
+  padding:
+    13px;
+
+  border-radius:
+    11px;
+
+  background:
+    var(--cream);
+
+  line-height:
+    1.4;
+
+}
+
+
+.relation-card strong {
+
+  display:
+    block;
+
+  margin-bottom:
+    4px;
+
+  color:
+    var(--purple);
+
+}
+
+
+
+/* =====================================================
+   ANALYSIS PANEL
+====================================================== */
+
+.analysis-panel {
+
+  margin-top:
+    18px;
+
+  padding:
+    19px;
+
+  border-left:
+    7px solid
+    var(--gold);
+
+  border-radius:
+    14px;
+
+  background:
+    var(--paper);
+
+}
+
+
+.analysis-panel h3 {
+
+  margin-top:
+    0;
+
+}
+
+
+.analysis-row {
+
+  margin:
+    10px 0;
+
+  line-height:
+    1.5;
+
+}
+
+
+
+/* =====================================================
+   STORY MAPPER
+====================================================== */
+
+.mapper-shell {
+
+  margin-top:
+    30px;
+
+  padding:
+    25px;
+
+  border:
+    3px solid
+    var(--green);
+
+  border-radius:
+    20px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0 7px 18px
+    var(--shadow);
+
+}
+
+
+.mapper-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    14px;
+
+}
+
+
+.mapper-field {
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    6px;
+
+}
+
+
+.mapper-field.full {
+
+  grid-column:
+    1 / -1;
+
+}
+
+
+.mapper-field label {
+
+  font-size:
+    .78rem;
+
+  font-weight:
+    bold;
+
+}
+
+
+.mapper-field input,
+.mapper-field select,
+.mapper-field textarea {
+
+  width:
+    100%;
+
+  padding:
+    11px;
+
+  border:
+    2px solid
+    #c8b693;
+
+  border-radius:
+    9px;
+
+  background:
+    white;
+
+}
+
+
+.mapper-field textarea {
+
+  min-height:
+    90px;
+
+  resize:
+    vertical;
+
+}
+
+
+.mapper-buttons {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  gap:
+    9px;
+
+  flex-wrap:
+    wrap;
+
+  margin-top:
+    17px;
+
+}
+
+
+.primary-button,
+.secondary-button {
+
+  padding:
+    11px 16px;
+
+  border-radius:
+    10px;
+
+  font-weight:
+    bold;
+
+}
+
+
+.primary-button {
+
+  border:
+    2px solid
+    var(--green);
+
+  background:
+    var(--green);
+
+  color:
+    white;
+
+}
+
+
+.secondary-button {
+
+  border:
+    2px solid
+    var(--brown);
+
+  background:
+    white;
+
+  color:
+    var(--brown);
+
+}
+
+
+
+/* =====================================================
+   GENERATED ANALYSIS
+====================================================== */
+
+.generated-analysis {
+
+  display:
+    none;
+
+  margin-top:
+    22px;
+
+}
+
+
+.generated-analysis.visible {
+
+  display:
+    block;
+
+}
+
+
+.generated-summary {
+
+  padding:
+    18px;
+
+  border:
+    2px solid
+    var(--gold);
+
+  border-radius:
+    13px;
+
+  background:
+    #fff7d9;
+
+  line-height:
+    1.55;
+
+}
+
+
+
+/* =====================================================
+   LEGEND
+====================================================== */
+
+.legend {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  gap:
+    10px;
+
+  flex-wrap:
+    wrap;
+
+  margin-top:
+    15px;
+
+}
+
+
+.legend-item {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    6px;
+
+  padding:
+    7px 10px;
+
+  border-radius:
+    999px;
+
+  background:
+    var(--paper);
+
+  border:
+    1px solid
+    #d9c9ad;
+
+  font-size:
+    .75rem;
+
+}
+
+
+.legend-dot {
+
+  width:
+    12px;
+
+  height:
+    12px;
+
+  border-radius:
+    50%;
+
+}
+
+
+.legend-dot.red {
+
+  background:
+    var(--red);
+
+}
+
+
+.legend-dot.blue {
+
+  background:
+    var(--blue);
+
+}
+
+
+.legend-dot.gold {
+
+  background:
+    var(--gold);
+
+}
+
+
+.legend-dot.green {
+
+  background:
+    var(--green);
+
+}
+
+
+
+/* =====================================================
+   FOOTER
+====================================================== */
+
+footer {
+
+  padding:
+    34px 20px;
+
+  color:
+    #675949;
+
+  font-size:
+    .82rem;
+
+  line-height:
+    1.6;
+
+  text-align:
+    center;
+
+}
+
+
+
+/* =====================================================
+   MOBILE
+====================================================== */
+
+@media
+(max-width: 760px) {
+
+  .form-lab-top {
+
+    grid-template-columns:
+      1fr;
+
+    text-align:
+      center;
+
+  }
+
+
+  .form-large-icon {
+
+    margin:
+      auto;
+
+  }
+
+
+  .story-library {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .story-list {
+
+    grid-template-columns:
+      repeat(
+        2,
+        1fr
+      );
+
+  }
+
+
+  .mapper-grid {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .mapper-field.full {
+
+    grid-column:
+      auto;
+
+  }
+
+}
+
+
+@media
+(max-width: 480px) {
+
+  .story-list {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .diagram-board {
+
+    min-height:
+      380px;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+<header>
+
+<a
+  class="lab-link"
+  href="index.html"
+>
+  ← PAT Learning Lab
+</a>
+
+
+<div class="header-mark">
+  ✦
+</div>
+
+
+<h1>
+  MYTHOPOETIC DIAGRAMS
+</h1>
+
+
+<div class="tagline">
+  When the function becomes the form.
+</div>
+
+
+<p class="header-copy">
+
+  Stories do not merely contain events.
+
+  They contain relationships:
+  oppositions, repetitions, transformations,
+  convergences, absences, exaggerations
+  and continuous character development.
+
+  Mythopoetic Diagrams maps those structures
+  as mathematical forms.
+
+</p>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =====================================================
+     INTRO
+====================================================== -->
+
+<section class="intro-card">
+
+<div class="kicker">
+  NARRATIVE GEOMETRY
+</div>
+
+<h2>
+  Stories Have Shape
+</h2>
+
+<p>
+
+  A narrative can be treated as a relational system.
+
+  Characters can act as
+  <strong>FOILs</strong>,
+  moments can behave as
+  <strong>zeroes</strong>,
+  reversals can create an
+  <strong>Ironic Axis of Symmetry</strong>,
+  and continuous development can be tracked
+  as a function through narrative space.
+
+</p>
+
+
+<div class="class-row">
+
+<div class="class-chip meson-chip">
+  🔴 EVEN • MESON
+</div>
+
+<div class="class-chip baryon-chip">
+  🔵 ODD • BARYON
+</div>
+
+</div>
+
+
+<p>
+
+  <strong>Even forms</strong>
+  emphasize paired or dichotomous relations.
+
+  <strong>Odd forms</strong>
+  emphasize continuous development through
+  multiple narrative identities or states.
+
+</p>
+
+</section>
+
+
+
+<!-- =====================================================
+     CANONICAL FORMS
+====================================================== -->
+
+<div class="section-heading">
+
+<div class="kicker">
+  CANONICAL FORMS
+</div>
+
+<h2>
+  Choose a Narrative Geometry
+</h2>
+
+<p>
+
+  Each form represents a different kind
+  of relationship between narrative objects.
+
+</p>
+
+</div>
+
+
+<div
+  id="formGrid"
+  class="form-grid"
+>
+</div>
+
+
+
+<section class="form-lab">
+
+
+<div class="form-lab-top">
+
+<div
+  id="formLargeIcon"
+  class="form-large-icon"
+>
+  ∪
+</div>
+
+
+<div class="form-title">
+
+<div
+  id="formClass"
+  class="kicker"
+>
+  EVEN • MESON
+</div>
+
+<h2 id="formTitle">
+  Parabolic-Parable
+</h2>
+
+<p
+  id="formDescription"
+  class="form-description"
+>
+</p>
+
+<div
+  id="formEquation"
+  class="form-equation"
+>
+</div>
+
+</div>
+
+</div>
+
+
+
+<div
+  id="canonicalBoard"
+  class="diagram-board"
+>
+</div>
+
+
+<div class="legend">
+
+<div class="legend-item">
+  <span class="legend-dot red"></span>
+  Meson / Dichotomy
+</div>
+
+<div class="legend-item">
+  <span class="legend-dot blue"></span>
+  Baryon / Development
+</div>
+
+<div class="legend-item">
+  <span class="legend-dot gold"></span>
+  IoS / Invariant
+</div>
+
+<div class="legend-item">
+  <span class="legend-dot green"></span>
+  Narrative State
+</div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     STORY LIBRARY
+====================================================== -->
+
+<div class="section-heading">
+
+<div class="kicker">
+  CASE STUDIES
+</div>
+
+<h2>
+  Interactive Story Maps
+</h2>
+
+<p>
+
+  Choose a story, then turn analytical
+  layers on and off.
+
+  Tap narrative points inside the graph
+  to inspect what they represent.
+
+</p>
+
+</div>
+
+
+
+<div class="story-library">
+
+
+<div
+  id="storyList"
+  class="story-list"
+>
+</div>
+
+
+
+<div>
+
+
+<div
+  id="storyInfo"
+  class="story-info"
+>
+</div>
+
+
+<div
+  id="storyBoard"
+  class="diagram-board"
+>
+</div>
+
+
+<div class="layer-controls">
+
+<button
+  class="layer-button active"
+  data-layer="curve"
+  type="button"
+>
+  Narrative Form
+</button>
+
+<button
+  class="layer-button active"
+  data-layer="foil"
+  type="button"
+>
+  Character FOILs
+</button>
+
+<button
+  class="layer-button active"
+  data-layer="ios"
+  type="button"
+>
+  Ironic Axis of Symmetry
+</button>
+
+<button
+  class="layer-button active"
+  data-layer="turning"
+  type="button"
+>
+  Turning Points
+</button>
+
+<button
+  class="layer-button active"
+  data-layer="development"
+  type="button"
+>
+  Character Development
+</button>
+
+</div>
+
+
+<div
+  id="analysisPanel"
+  class="analysis-panel"
+>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     STORY MAPPER
+====================================================== -->
+
+<div class="section-heading">
+
+<div class="kicker">
+  BUILD YOUR OWN
+</div>
+
+<h2>
+  Map a Story or Piece of Writing
+</h2>
+
+<p>
+
+  Enter the major relational pieces of your own
+  narrative.
+
+  The mapper will generate a first-pass
+  Mythopoetic Diagram and analysis.
+
+</p>
+
+</div>
+
+
+
+<section class="mapper-shell">
+
+
+<div class="mapper-grid">
+
+
+<div class="mapper-field full">
+
+<label for="mapTitle">
+  Story / Writing Title
+</label>
+
+<input
+  id="mapTitle"
+  type="text"
+  placeholder="Example: The Last Lantern"
+>
+
+</div>
+
+
+
+<div class="mapper-field">
+
+<label for="mapForm">
+  Canonical Form
+</label>
+
+<select id="mapForm">
+
+<option value="parabolic">
+  Parabolic-Parable
+</option>
+
+<option value="linear">
+  Logical-Linear
+</option>
+
+<option value="simultaneous">
+  Simultaneous Simile
+</option>
+
+<option value="elliptic">
+  Elliptical-Ellipsis
+</option>
+
+<option value="hyperbolic">
+  Hyperbolic-Hyperbole
+</option>
+
+<option value="odd">
+  Odd Baryon Development
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="mapper-field">
+
+<label for="mapTheme">
+  Central Theme
+</label>
+
+<input
+  id="mapTheme"
+  type="text"
+  placeholder="identity, ambition, grief..."
+>
+
+</div>
+
+
+
+<div class="mapper-field">
+
+<label for="mapA">
+  Character / Force A
+</label>
+
+<input
+  id="mapA"
+  type="text"
+  placeholder="Character A"
+>
+
+</div>
+
+
+
+<div class="mapper-field">
+
+<label for="mapB">
+  Character / Force B
+</label>
+
+<input
+  id="mapB"
+  type="text"
+  placeholder="Character B"
+>
+
+</div>
+
+
+
+<div class="mapper-field">
+
+<label for="mapZeroA">
+  First Turning Point / Zero
+</label>
+
+<input
+  id="mapZeroA"
+  type="text"
+  placeholder="Initial rupture"
+>
+
+</div>
+
+
+
+<div class="mapper-field">
+
+<label for="mapZeroB">
+  Second Turning Point / Zero
+</label>
+
+<input
+  id="mapZeroB"
+  type="text"
+  placeholder="Mirrored consequence"
+>
+
+</div>
+
+
+
+<div class="mapper-field full">
+
+<label for="mapVertex">
+  Vertex / Central Transformation
+</label>
+
+<input
+  id="mapVertex"
+  type="text"
+  placeholder="The moment both trajectories become inseparable"
+>
+
+</div>
+
+
+
+<div class="mapper-field full">
+
+<label for="mapNotes">
+  Narrative Notes
+</label>
+
+<textarea
+  id="mapNotes"
+  placeholder="Describe the conflict, reversal, parallel, irony or development you want to analyze."
+></textarea>
+
+</div>
+
+
+</div>
+
+
+
+<div class="mapper-buttons">
+
+<button
+  id="generateMap"
+  class="primary-button"
+  type="button"
+>
+  ✦ Generate Diagram
+</button>
+
+
+<button
+  id="clearMap"
+  class="secondary-button"
+  type="button"
+>
+  Clear
+</button>
+
+</div>
+
+
+
+<div
+  id="generatedAnalysis"
+  class="generated-analysis"
+>
+
+<div
+  id="generatedBoard"
+  class="diagram-board"
+>
+</div>
+
+
+<div
+  id="generatedSummary"
+  class="generated-summary"
+>
+</div>
+
+</div>
+
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+<strong>
+  Mythopoetic Diagrams™
+</strong>
+
+• PAT Learning Lab
+
+<br>
+
+Find the relation.
+Map the form.
+Reconstruct the story.
+
+</footer>
+
+
+
+<script>
+
+
+/* =====================================================
+   ANALYTICS
+====================================================== */
+
+function trackMythoEvent(
+  eventName,
+  data
+) {
+
+  if (
+    typeof gtag !==
+    "function"
+  ) {
+
+    return;
+
+  }
+
+
+  gtag(
+    "event",
+    eventName,
+    {
+
+      game_name:
+        "mythopoetic_diagrams",
+
+      ...(data || {})
+
+    }
+  );
+
+}
+
+
+
+/* =====================================================
+   CANONICAL FORMS
+====================================================== */
+
+const forms = [
+
+
+{
+  id:
+    "linear",
+
+  icon:
+    "／",
+
+  title:
+    "Logical-Linear",
+
+  className:
+    "ODD • BARYON",
+
+  family:
+    "baryon",
+
+  equation:
+    "y = mx + b",
+
+  description:
+    "A directed narrative progression in which development follows a relatively continuous causal or logical trajectory.",
+
+  graphic:
+    "linear"
+},
+
+
+{
+  id:
+    "parabolic",
+
+  icon:
+    "∪",
+
+  title:
+    "Parabolic-Parable",
+
+  className:
+    "EVEN • MESON",
+
+  family:
+    "meson",
+
+  equation:
+    "y = ax² + bx + c",
+
+  description:
+    "A dichotomous narrative relation in which two characters, values or trajectories behave as mirrored FOILs around a central transformation.",
+
+  graphic:
+    "parabolic"
+},
+
+
+{
+  id:
+    "simultaneous",
+
+  icon:
+    "≋",
+
+  title:
+    "Simultaneous Simile",
+
+  className:
+    "RELATIONAL PAIR",
+
+  family:
+    "meson",
+
+  equation:
+    "A(t) ∥ B(t)",
+
+  description:
+    "Two narrative objects evolve simultaneously so that comparison itself becomes the primary structural relation.",
+
+  graphic:
+    "simultaneous"
+},
+
+
+{
+  id:
+    "elliptic",
+
+  icon:
+    "◯",
+
+  title:
+    "Elliptical-Ellipsis",
+
+  className:
+    "EVEN • MESON",
+
+  family:
+    "meson",
+
+  equation:
+    "x²/a² + y²/b² = 1",
+
+  description:
+    "Meaning circles an absent, suppressed or omitted center. What is missing becomes structurally active.",
+
+  graphic:
+    "elliptic"
+},
+
+
+{
+  id:
+    "hyperbolic",
+
+  icon:
+    ")( ",
+
+  title:
+    "Hyperbolic-Hyperbole",
+
+  className:
+    "RELATIONAL DIVERGENCE",
+
+  family:
+    "meson",
+
+  equation:
+    "x²/a² − y²/b² = 1",
+
+  description:
+    "Narrative forces exaggerate, diverge or accelerate away from a common relational center.",
+
+  graphic:
+    "hyperbolic"
+},
+
+
+{
+  id:
+    "odd",
+
+  icon:
+    "∿",
+
+  title:
+    "Odd Baryon Development",
+
+  className:
+    "ODD • BARYON",
+
+  family:
+    "baryon",
+
+  equation:
+    "P(x) = aₙxⁿ + ... , n odd",
+
+  description:
+    "A single developing object moves continuously through multiple identities or states rather than resolving into a simple binary opposition.",
+
+  graphic:
+    "odd"
+}
+
+];
+
+
+
+/* =====================================================
+   CASE STUDIES
+====================================================== */
+
+const stories = [
+
+
+{
+  id:
+    "lionking",
+
+  title:
+    "The Lion King",
+
+  form:
+    "parabolic",
+
+  className:
+    "EVEN • MESON",
+
+  family:
+    "meson",
+
+  summary:
+    "Simba and Scar can be treated as contrasting trajectories organized around inheritance, responsibility and the meaning of kingship.",
+
+  foil:
+    "Simba ↔ Scar",
+
+  ios:
+    "The ironic axis of symmetry passes through kingship itself: both are related to the throne, but their relation to responsibility is inverted.",
+
+  vertex:
+    "Simba's decision to return converts inherited identity into chosen responsibility.",
+
+  development:
+    "Simba moves from exile and avoidance toward ownership of identity.",
+
+  points:
+    [
+
+      {
+        x: 18,
+        y: 32,
+        label: "Scar",
+        type: "foil",
+        note: "Kingship pursued through possession and domination."
+      },
+
+      {
+        x: 82,
+        y: 32,
+        label: "Simba",
+        type: "foil",
+        note: "Kingship ultimately accepted through responsibility."
+      },
+
+      {
+        x: 33,
+        y: 56,
+        label: "Fall",
+        type: "turning",
+        note: "The kingdom collapses under Scar's rule."
+      },
+
+      {
+        x: 50,
+        y: 78,
+        label: "Return",
+        type: "vertex",
+        note: "The central transformation: Simba returns."
+      },
+
+      {
+        x: 67,
+        y: 56,
+        label: "Restoration",
+        type: "turning",
+        note: "The mirrored side of the parabola reconstructs order."
+      }
+
+    ]
+},
+
+
+
+{
+  id:
+    "orpheus",
+
+  title:
+    "Orpheus & Eurydice",
+
+  form:
+    "parabolic",
+
+  className:
+    "EVEN • MESON",
+
+  family:
+    "meson",
+
+  summary:
+    "Descent and return create a mirrored narrative relation, with the crucial reversal concentrated at the act of looking back.",
+
+  foil:
+    "Descent ↔ Ascent",
+
+  ios:
+    "The IoS lies at the boundary between trust and doubt.",
+
+  vertex:
+    "The backward glance acts as the narrative vertex where successful return collapses.",
+
+  development:
+    "The story maps less as personal growth than as a symmetrical journey broken by a single relational reversal.",
+
+  points:
+    [
+
+      {
+        x: 20,
+        y: 34,
+        label: "Loss",
+        type: "turning",
+        note: "Eurydice is lost."
+      },
+
+      {
+        x: 34,
+        y: 58,
+        label: "Descent",
+        type: "development",
+        note: "Orpheus moves downward into the underworld."
+      },
+
+      {
+        x: 50,
+        y: 80,
+        label: "Look Back",
+        type: "vertex",
+        note: "Trust changes into doubt."
+      },
+
+      {
+        x: 66,
+        y: 58,
+        label: "Ascent",
+        type: "development",
+        note: "The intended mirrored return fails."
+      },
+
+      {
+        x: 80,
+        y: 34,
+        label: "Loss Again",
+        type: "turning",
+        note: "The ending echoes the opening loss."
+      }
+
+    ]
+},
+
+
+
+{
+  id:
+    "wicked",
+
+  title:
+    "Wicked",
+
+  form:
+    "parabolic",
+
+  className:
+    "EVEN • MESON",
+
+  family:
+    "meson",
+
+  summary:
+    "Elphaba and Glinda operate as strong character FOILs whose identities are constructed through opposing relationships to power, reputation and moral action.",
+
+  foil:
+    "Elphaba ↔ Glinda",
+
+  ios:
+    "The Ironic Axis of Symmetry lies between public appearance and moral reality.",
+
+  vertex:
+    "Their relationship becomes most revealing when the social labels 'good' and 'wicked' cease to map cleanly onto actual moral action.",
+
+  development:
+    "Both characters acquire meaning through their divergence from and continued relation to one another.",
+
+  points:
+    [
+
+      {
+        x: 18,
+        y: 35,
+        label: "Elphaba",
+        type: "foil",
+        note: "Socially coded as wicked while increasingly acting from moral conviction."
+      },
+
+      {
+        x: 82,
+        y: 35,
+        label: "Glinda",
+        type: "foil",
+        note: "Socially coded as good while navigating institutional power."
+      },
+
+      {
+        x: 34,
+        y: 58,
+        label: "Defiance",
+        type: "development",
+        note: "Elphaba breaks with the official social narrative."
+      },
+
+      {
+        x: 50,
+        y: 79,
+        label: "Good / Wicked?",
+        type: "vertex",
+        note: "The labels invert against the moral structure."
+      },
+
+      {
+        x: 66,
+        y: 58,
+        label: "Complicity",
+        type: "development",
+        note: "Glinda's position becomes more structurally complex."
+      }
+
+    ]
+},
+
+
+
+{
+  id:
+    "genericBaryon",
+
+  title:
+    "Character Development Model",
+
+  form:
+    "odd",
+
+  className:
+    "ODD • BARYON",
+
+  family:
+    "baryon",
+
+  summary:
+    "A continuous character arc can be treated as an odd-degree developmental function passing through multiple states rather than merely opposing two endpoints.",
+
+  foil:
+    "Not required: the primary object is one developing identity.",
+
+  ios:
+    "The center can function as an inflection rather than a mirror axis.",
+
+  vertex:
+    "A baryon model privileges transformation and inflection over a single parabolic minimum.",
+
+  development:
+    "Identity₁ → Identity₂ → Identity₃ → Identity₄",
+
+  points:
+    [
+
+      {
+        x: 14,
+        y: 72,
+        label: "Self₁",
+        type: "development",
+        note: "Initial identity."
+      },
+
+      {
+        x: 33,
+        y: 58,
+        label: "Crisis",
+        type: "turning",
+        note: "The old model of self begins to fail."
+      },
+
+      {
+        x: 50,
+        y: 50,
+        label: "Inflection",
+        type: "vertex",
+        note: "The rate and direction of development changes."
+      },
+
+      {
+        x: 68,
+        y: 39,
+        label: "Self₃",
+        type: "development",
+        note: "A reconstructed identity begins to stabilize."
+      },
+
+      {
+        x: 86,
+        y: 22,
+        label: "Self₄",
+        type: "development",
+        note: "Later identity preserves some invariants while changing form."
+      }
+
+    ]
+}
+
+];
+
+
+
+/* =====================================================
+   STATE
+====================================================== */
+
+let activeForm =
+  forms[1];
+
+
+let activeStory =
+  stories[0];
+
+
+const activeLayers =
+  {
+
+    curve:
+      true,
+
+    foil:
+      true,
+
+    ios:
+      true,
+
+    turning:
+      true,
+
+    development:
+      true
+
+  };
+
+
+
+/* =====================================================
+   ELEMENTS
+====================================================== */
+
+const formGrid =
+  document.getElementById(
+    "formGrid"
+  );
+
+
+const formLargeIcon =
+  document.getElementById(
+    "formLargeIcon"
+  );
+
+
+const formClass =
+  document.getElementById(
+    "formClass"
+  );
+
+
+const formTitle =
+  document.getElementById(
+    "formTitle"
+  );
+
+
+const formDescription =
+  document.getElementById(
+    "formDescription"
+  );
+
+
+const formEquation =
+  document.getElementById(
+    "formEquation"
+  );
+
+
+const canonicalBoard =
+  document.getElementById(
+    "canonicalBoard"
+  );
+
+
+const storyList =
+  document.getElementById(
+    "storyList"
+  );
+
+
+const storyInfo =
+  document.getElementById(
+    "storyInfo"
+  );
+
+
+const storyBoard =
+  document.getElementById(
+    "storyBoard"
+  );
+
+
+const analysisPanel =
+  document.getElementById(
+    "analysisPanel"
+  );
+
+
+
+/* =====================================================
+   BUILD FORM CARDS
+====================================================== */
+
+function buildForms() {
+
+  formGrid.innerHTML =
+    "";
+
+
+  forms.forEach(
+    function (
+      form
+    ) {
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+
+      button.type =
+        "button";
+
+
+      button.className =
+        "form-card";
+
+
+      if (
+        form.id ===
+        activeForm.id
+      ) {
+
+        button.classList.add(
+          "active"
+        );
+
+      }
+
+
+      button.innerHTML = `
+
+        <div class="form-icon">
+          ${form.icon}
+        </div>
+
+        <strong>
+          ${form.title}
+        </strong>
+
+        <small>
+          ${form.className}
+        </small>
+
+      `;
+
+
+      button.addEventListener(
+        "click",
+        function () {
+
+          activeForm =
+            form;
+
+
+          buildForms();
+
+
+          renderCanonicalForm();
+
+
+          trackMythoEvent(
+            "canonical_form_opened",
+            {
+              form:
+                form.id
+            }
+          );
+
+        }
+      );
+
+
+      formGrid.appendChild(
+        button
+      );
+
+    }
+  );
+
+}
+
+
+
+/* =====================================================
+   CANONICAL FORM RENDERER
+====================================================== */
+
+function renderCanonicalForm() {
+
+  formLargeIcon.textContent =
+    activeForm.icon;
+
+
+  formClass.textContent =
+    activeForm.className;
+
+
+  formTitle.textContent =
+    activeForm.title;
+
+
+  formDescription.textContent =
+    activeForm.description;
+
+
+  formEquation.textContent =
+    activeForm.equation;
+
+
+  canonicalBoard.innerHTML =
+    canonicalSVG(
+      activeForm.graphic
+    );
+
+}
+
+
+
+/* =====================================================
+   SVG FORM GENERATOR
+====================================================== */
+
+function canonicalSVG(
+  type
+) {
+
+
+  if (
+    type ===
+    "linear"
+  ) {
+
+    return `
+
+      <svg
+        class="diagram-svg"
+        viewBox="0 0 800 430"
+      >
+
+        <line
+          x1="70"
+          y1="350"
+          x2="730"
+          y2="350"
+          class="axis-horizontal"
+        />
+
+        <line
+          x1="400"
+          y1="50"
+          x2="400"
+          y2="385"
+          class="axis-vertical"
+        />
+
+        <path
+          d="M 100 330 L 700 90"
+          class="story-curve blue"
+        />
+
+        <circle
+          cx="165"
+          cy="304"
+          r="11"
+          fill="#58784b"
+        />
+
+        <circle
+          cx="400"
+          cy="210"
+          r="11"
+          fill="#d5a83e"
+        />
+
+        <circle
+          cx="640"
+          cy="114"
+          r="11"
+          fill="#58784b"
+        />
+
+        <text
+          x="165"
+          y="285"
+          text-anchor="middle"
+        >
+          Cause
+        </text>
+
+        <text
+          x="400"
+          y="190"
+          text-anchor="middle"
+        >
+          Development
+        </text>
+
+        <text
+          x="640"
+          y="95"
+          text-anchor="middle"
+        >
+          Consequence
+        </text>
+
+      </svg>
+
+    `;
+
+  }
+
+
+
+  if (
+    type ===
+    "parabolic"
+  ) {
+
+    return `
+
+      <svg
+        class="diagram-svg"
+        viewBox="0 0 800 430"
+      >
+
+        <line
+          x1="70"
+          y1="210"
+          x2="730"
+          y2="210"
+          class="axis-horizontal"
+        />
+
+        <line
+          x1="400"
+          y1="55"
+          x2="400"
+          y2="385"
+          class="axis-vertical"
+        />
+
+        <line
+          x1="400"
+          y1="45"
+          x2="400"
+          y2="390"
+          class="axis-symmetry"
+        />
+
+        <path
+          d="M 110 80 Q 400 620 690 80"
+          class="story-curve red"
+        />
+
+        <circle
+          cx="245"
+          cy="210"
+          r="12"
+          fill="#b9574e"
+        />
+
+        <circle
+          cx="555"
+          cy="210"
+          r="12"
+          fill="#477ca8"
+        />
+
+        <circle
+          cx="400"
+          cy="345"
+          r="13"
+          fill="#d5a83e"
+        />
+
+        <text
+          x="245"
+          y="190"
+          text-anchor="middle"
+        >
+          FOIL A
+        </text>
+
+        <text
+          x="555"
+          y="190"
+          text-anchor="middle"
+        >
+          FOIL B
+        </text>
+
+        <text
+          x="414"
+          y="80"
+          fill="#9a7528"
+        >
+          IoS
+        </text>
+
+        <text
+          x="400"
+          y="375"
+          text-anchor="middle"
+        >
+          Vertex / Transformation
+        </text>
+
+      </svg>
+
+    `;
+
+  }
+
+
+
+  if (
+    type ===
+    "simultaneous"
+  ) {
+
+    return `
+
+      <svg
+        class="diagram-svg"
+        viewBox="0 0 800 430"
+      >
+
+        <line
+          x1="70"
+          y1="350"
+          x2="730"
+          y2="350"
+          class="axis-horizontal"
+        />
+
+        <path
+          d="M 100 315 C 240 250, 340 160, 700 110"
+          class="story-curve red"
+        />
+
+        <path
+          d="M 100 275 C 240 210, 340 120, 700 70"
+          class="story-curve blue"
+        />
+
+        <text
+          x="630"
+          y="92"
+          fill="#477ca8"
+        >
+          Narrative B
+        </text>
+
+        <text
+          x="630"
+          y="135"
+          fill="#b9574e"
+        >
+          Narrative A
+        </text>
+
+        <text
+          x="400"
+          y="390"
+          text-anchor="middle"
+        >
+          Simultaneous comparison across time
+        </text>
+
+      </svg>
+
+    `;
+
+  }
+
+
+
+  if (
+    type ===
+    "elliptic"
+  ) {
+
+    return `
+
+      <svg
+        class="diagram-svg"
+        viewBox="0 0 800 430"
+      >
+
+        <line
+          x1="70"
+          y1="215"
+          x2="730"
+          y2="215"
+          class="axis-horizontal"
+        />
+
+        <line
+          x1="400"
+          y1="50"
+          x2="400"
+          y2="385"
+          class="axis-vertical"
+        />
+
+        <ellipse
+          cx="400"
+          cy="215"
+          rx="250"
+          ry="125"
+          class="story-curve red"
+        />
+
+        <circle
+          cx="320"
+          cy="215"
+          r="8"
+          fill="#d5a83e"
+        />
+
+        <circle
+          cx="480"
+          cy="215"
+          r="8"
+          fill="#d5a83e"
+        />
+
+        <text
+          x="400"
+          y="205"
+          text-anchor="middle"
+        >
+          OMITTED / UNSPOKEN CENTER
+        </text>
+
+        <text
+          x="320"
+          y="195"
+          text-anchor="middle"
+        >
+          Focus
+        </text>
+
+        <text
+          x="480"
+          y="195"
+          text-anchor="middle"
+        >
+          Focus
+        </text>
+
+      </svg>
+
+    `;
+
+  }
+
+
+
+  if (
+    type ===
+    "hyperbolic"
+  ) {
+
+    return `
+
+      <svg
+        class="diagram-svg"
+        viewBox="0 0 800 430"
+      >
+
+        <line
+          x1="70"
+          y1="215"
+          x2="730"
+          y2="215"
+          class="axis-horizontal"
+        />
+
+        <line
+          x1="400"
+          y1="50"
+          x2="400"
+          y2="385"
+          class="axis-vertical"
+        />
+
+        <path
+          d="M 80 70 C 210 100, 280 145, 340 205"
+          class="story-curve red"
+        />
+
+        <path
+          d="M 80 360 C 210 330, 280 285, 340 225"
+          class="story-curve red"
+        />
+
+        <path
+          d="M 720 70 C 590 100, 520 145, 460 205"
+          class="story-curve blue"
+        />
+
+        <path
+          d="M 720 360 C 590 330, 520 285, 460 225"
+          class="story-curve blue"
+        />
+
+        <text
+          x="170"
+          y="205"
+          text-anchor="middle"
+        >
+          Exaggeration A
+        </text>
+
+        <text
+          x="630"
+          y="205"
+          text-anchor="middle"
+        >
+          Exaggeration B
+        </text>
+
+      </svg>
+
+    `;
+
+  }
+
+
+
+  return `
+
+    <svg
+      class="diagram-svg"
+      viewBox="0 0 800 430"
+    >
+
+      <line
+        x1="70"
+        y1="350"
+        x2="730"
+        y2="350"
+        class="axis-horizontal"
+      />
+
+      <line
+        x1="400"
+        y1="50"
+        x2="400"
+        y2="385"
+        class="axis-vertical"
+      />
+
+      <path
+        d="M 90 330
+           C 180 330, 230 280, 300 250
+           S 390 210, 420 210
+           S 500 170, 545 125
+           S 640 65, 710 70"
+        class="story-curve blue"
+      />
+
+      <circle
+        cx="120"
+        cy="325"
+        r="10"
+        fill="#58784b"
+      />
+
+      <circle
+        cx="300"
+        cy="250"
+        r="10"
+        fill="#58784b"
+      />
+
+      <circle
+        cx="420"
+        cy="210"
+        r="12"
+        fill="#d5a83e"
+      />
+
+      <circle
+        cx="570"
+        cy="105"
+        r="10"
+        fill="#58784b"
+      />
+
+      <text
+        x="120"
+        y="305"
+        text-anchor="middle"
+      >
+        Identity₁
+      </text>
+
+      <text
+        x="300"
+        y="230"
+        text-anchor="middle"
+      >
+        Identity₂
+      </text>
+
+      <text
+        x="420"
+        y="190"
+        text-anchor="middle"
+      >
+        Inflection
+      </text>
+
+      <text
+        x="570"
+        y="85"
+        text-anchor="middle"
+      >
+        Identity₃
+      </text>
+
+    </svg>
+
+  `;
+
+}
+
+
+
+/* =====================================================
+   STORY LIST
+====================================================== */
+
+function buildStoryList() {
+
+  storyList.innerHTML =
+    "";
+
+
+  stories.forEach(
+    function (
+      story
+    ) {
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+
+      button.type =
+        "button";
+
+
+      button.className =
+        "story-button";
+
+
+      if (
+        story.id ===
+        activeStory.id
+      ) {
+
+        button.classList.add(
+          "active"
+        );
+
+      }
+
+
+      button.innerHTML = `
+
+        <strong>
+          ${story.title}
+        </strong>
+
+        <small>
+          ${
+            forms.find(
+              function (
+                form
+              ) {
+                return form.id === story.form;
+              }
+            )?.title
+            ||
+            story.form
+          }
+        </small>
+
+      `;
+
+
+      button.addEventListener(
+        "click",
+        function () {
+
+          activeStory =
+            story;
+
+
+          buildStoryList();
+
+
+          renderStory();
+
+
+          trackMythoEvent(
+            "story_case_opened",
+            {
+              story:
+                story.id
+            }
+          );
+
+        }
+      );
+
+
+      storyList.appendChild(
+        button
+      );
+
+    }
+  );
+
+}
+
+
+
+/* =====================================================
+   STORY INFO
+====================================================== */
+
+function renderStoryInfo() {
+
+  const familyClass =
+    activeStory.family ===
+    "baryon"
+    ?
+      "baryon"
+    :
+      "meson";
+
+
+  storyInfo.innerHTML = `
+
+    <div class="story-info-top">
+
+      <div>
+
+        <div class="kicker">
+          CASE STUDY
+        </div>
+
+        <h2>
+          ${activeStory.title}
+        </h2>
+
+      </div>
+
+
+      <div
+        class="story-class ${familyClass}"
+      >
+        ${activeStory.className}
+      </div>
+
+    </div>
+
+
+    <p class="story-summary">
+
+      ${activeStory.summary}
+
+    </p>
+
+
+    <div class="relation-grid">
+
+
+      <div class="relation-card">
+
+        <strong>
+          Character FOIL
+        </strong>
+
+        ${activeStory.foil}
+
+      </div>
+
+
+      <div class="relation-card">
+
+        <strong>
+          Ironic Axis of Symmetry
+        </strong>
+
+        ${activeStory.ios}
+
+      </div>
+
+
+      <div class="relation-card">
+
+        <strong>
+          Vertex / Inflection
+        </strong>
+
+        ${activeStory.vertex}
+
+      </div>
+
+
+      <div class="relation-card">
+
+        <strong>
+          Character Development
+        </strong>
+
+        ${activeStory.development}
+
+      </div>
+
+
+    </div>
+
+  `;
+
+}
+
+
+
+/* =====================================================
+   STORY BOARD
+====================================================== */
+
+function renderStory() {
+
+  renderStoryInfo();
+
+
+  const form =
+    forms.find(
+      function (
+        item
+      ) {
+
+        return (
+          item.id ===
+          activeStory.form
+        );
+
+      }
+    );
+
+
+  storyBoard.innerHTML =
+    createStorySVG(
+      activeStory,
+      form
+    );
+
+
+  renderAnalysis();
+
+
+  bindStoryNodes();
+
+}
+
+
+
+/* =====================================================
+   CREATE STORY SVG
+====================================================== */
+
+function createStorySVG(
+  story,
+  form
+) {
+
+  let curve =
+    "";
+
+
+  if (
+    activeLayers.curve
+  ) {
+
+    if (
+      form.graphic ===
+      "parabolic"
+    ) {
+
+      curve = `
+
+        <path
+          d="M 90 75 Q 400 620 710 75"
+          class="story-curve red"
+        />
+
+      `;
+
+    }
+
+    else {
+
+      curve = `
+
+        <path
+          d="M 80 330
+             C 190 320, 245 280, 310 250
+             S 410 210, 455 195
+             S 590 115, 720 80"
+          class="story-curve blue"
+        />
+
+      `;
+
+    }
+
+  }
+
+
+  const ios =
+    activeLayers.ios
+    ?
+      `
+
+        <line
+          x1="400"
+          y1="45"
+          x2="400"
+          y2="390"
+          class="axis-symmetry"
+        />
+
+        <text
+          x="413"
+          y="65"
+          fill="#9a7528"
+          font-size="12"
+        >
+          IoS
+        </text>
+
+      `
+    :
+      "";
+
+
+  let nodes =
+    "";
+
+
+  story.points.forEach(
+    function (
+      point,
+      index
+    ) {
+
+      let visible =
+        true;
+
+
+      if (
+        point.type ===
+        "foil"
+        &&
+        !activeLayers.foil
+      ) {
+
+        visible =
+          false;
+
+      }
+
+
+      if (
+        point.type ===
+        "turning"
+        &&
+        !activeLayers.turning
+      ) {
+
+        visible =
+          false;
+
+      }
+
+
+      if (
+        point.type ===
+        "development"
+        &&
+        !activeLayers.development
+      ) {
+
+        visible =
+          false;
+
+      }
+
+
+      if (
+        !visible
+      ) {
+
+        return;
+
+      }
+
+
+      let color =
+        "#58784b";
+
+
+      if (
+        point.type ===
+        "foil"
+      ) {
+
+        color =
+          index %
+          2 ===
+          0
+          ?
+            "#b9574e"
+          :
+            "#477ca8";
+
+      }
+
+
+      if (
+        point.type ===
+        "vertex"
+      ) {
+
+        color =
+          "#d5a83e";
+
+      }
+
+
+      const svgX =
+        point.x *
+        8;
+
+
+      const svgY =
+        point.y *
+        4.3;
+
+
+      nodes += `
+
+        <g
+          class="story-node"
+          data-index="${index}"
+          transform="translate(${svgX} ${svgY})"
+        >
+
+          <circle
+            r="13"
+            fill="${color}"
+          ></circle>
+
+          <text
+            y="-20"
+          >
+            ${escapeHTML(point.label)}
+          </text>
+
+        </g>
+
+      `;
+
+    }
+  );
+
+
+  return `
+
+    <svg
+      class="diagram-svg"
+      viewBox="0 0 800 430"
+    >
+
+      <line
+        x1="55"
+        y1="215"
+        x2="745"
+        y2="215"
+        class="axis-horizontal"
+      />
+
+      <line
+        x1="400"
+        y1="40"
+        x2="400"
+        y2="390"
+        class="axis-vertical"
+      />
+
+      ${curve}
+
+      ${ios}
+
+      ${nodes}
+
+    </svg>
+
+
+    <div
+      id="storyTooltip"
+      class="story-tooltip"
+    >
+    </div>
+
+  `;
+
+}
+
+
+
+/* =====================================================
+   STORY TOOLTIP
+====================================================== */
+
+function bindStoryNodes() {
+
+  const tooltip =
+    document.getElementById(
+      "storyTooltip"
+    );
+
+
+  document
+    .querySelectorAll(
+      "#storyBoard .story-node"
+    )
+    .forEach(
+      function (
+        node
+      ) {
+
+        node.addEventListener(
+          "click",
+          function (
+            event
+          ) {
+
+            const index =
+              Number(
+                node.dataset.index
+              );
+
+
+            const point =
+              activeStory.points[
+                index
+              ];
+
+
+            tooltip.innerHTML = `
+
+              <strong>
+                ${escapeHTML(point.label)}
+              </strong>
+
+              <br>
+
+              ${escapeHTML(point.note)}
+
+            `;
+
+
+            const boardRect =
+              storyBoard
+                .getBoundingClientRect();
+
+
+            const clickX =
+              event.clientX
+              -
+              boardRect.left;
+
+
+            const clickY =
+              event.clientY
+              -
+              boardRect.top;
+
+
+            tooltip.style.left =
+              Math.min(
+                clickX + 10,
+                boardRect.width - 250
+              )
+              +
+              "px";
+
+
+            tooltip.style.top =
+              Math.max(
+                10,
+                clickY - 10
+              )
+              +
+              "px";
+
+
+            tooltip
+              .classList
+              .add(
+                "visible"
+              );
+
+
+            trackMythoEvent(
+              "story_point_opened",
+              {
+                story:
+                  activeStory.id,
+
+                point:
+                  point.label
+              }
+            );
+
+          }
+        );
+
+      }
+    );
+
+}
+
+
+
+/* =====================================================
+   LAYER CONTROLS
+====================================================== */
+
+document
+  .querySelectorAll(
+    ".layer-button"
+  )
+  .forEach(
+    function (
+      button
+    ) {
+
+      button.addEventListener(
+        "click",
+        function () {
+
+          const layer =
+            button.dataset.layer;
+
+
+          activeLayers[
+            layer
+          ] =
+            !activeLayers[
+              layer
+            ];
+
+
+          button.classList.toggle(
+            "active",
+            activeLayers[
+              layer
+            ]
+          );
+
+
+          renderStory();
+
+        }
+      );
+
+    }
+  );
+
+
+
+/* =====================================================
+   ANALYSIS
+====================================================== */
+
+function renderAnalysis() {
+
+  const form =
+    forms.find(
+      function (
+        item
+      ) {
+
+        return (
+          item.id ===
+          activeStory.form
+        );
+
+      }
+    );
+
+
+  analysisPanel.innerHTML = `
+
+    <h3>
+      Structural Analysis
+    </h3>
+
+
+    <div class="analysis-row">
+
+      <strong>
+        Canonical form:
+      </strong>
+
+      ${form.title}
+
+    </div>
+
+
+    <div class="analysis-row">
+
+      <strong>
+        Symmetry class:
+      </strong>
+
+      ${activeStory.className}
+
+    </div>
+
+
+    <div class="analysis-row">
+
+      <strong>
+        Primary relation:
+      </strong>
+
+      ${
+        activeStory.family ===
+        "meson"
+        ?
+          "A paired or dichotomous relation is carrying the narrative structure."
+        :
+          "A continuous developmental trajectory is carrying the narrative structure."
+      }
+
+    </div>
+
+
+    <div class="analysis-row">
+
+      <strong>
+        Interpretation:
+      </strong>
+
+      The mathematics is not claiming that the story
+      literally is an equation.
+
+      The diagram acts as a relational model:
+      it makes structural correspondences visible
+      so that narrative parallels, oppositions,
+      invariants and transformations can be analyzed.
+
+    </div>
+
+  `;
+
+}
+
+
+
+/* =====================================================
+   STORY MAPPER
+====================================================== */
+
+document
+  .getElementById(
+    "generateMap"
+  )
+  .addEventListener(
+    "click",
+    function () {
+
+      const title =
+        valueOf(
+          "mapTitle",
+          "Untitled Story"
+        );
+
+
+      const formId =
+        document
+          .getElementById(
+            "mapForm"
+          )
+          .value;
+
+
+      const theme =
+        valueOf(
+          "mapTheme",
+          "central relation"
+        );
+
+
+      const charA =
+        valueOf(
+          "mapA",
+          "Force A"
+        );
+
+
+      const charB =
+        valueOf(
+          "mapB",
+          "Force B"
+        );
+
+
+      const zeroA =
+        valueOf(
+          "mapZeroA",
+          "Turning Point A"
+        );
+
+
+      const zeroB =
+        valueOf(
+          "mapZeroB",
+          "Turning Point B"
+        );
+
+
+      const vertex =
+        valueOf(
+          "mapVertex",
+          "Central Transformation"
+        );
+
+
+      const notes =
+        valueOf(
+          "mapNotes",
+          "No additional notes supplied."
+        );
+
+
+      const form =
+        forms.find(
+          function (
+            item
+          ) {
+
+            return (
+              item.id ===
+              formId
+            );
+
+          }
+        )
+        ||
+        forms[1];
+
+
+      const board =
+        document.getElementById(
+          "generatedBoard"
+        );
+
+
+      const summary =
+        document.getElementById(
+          "generatedSummary"
+        );
+
+
+      board.innerHTML =
+        generateCustomSVG(
+          form,
+          charA,
+          charB,
+          zeroA,
+          zeroB,
+          vertex
+        );
+
+
+      const familyText =
+        form.family ===
+        "meson"
+        ?
+          "This first-pass map treats the narrative primarily as a relational pair: the meaning emerges from the structured relation between its two major forces."
+        :
+          "This first-pass map treats the narrative primarily as continuous development: the identity of the narrative object changes across successive states.";
+
+
+      summary.innerHTML = `
+
+        <div class="kicker">
+          GENERATED ANALYSIS
+        </div>
+
+        <h2>
+          ${escapeHTML(title)}
+        </h2>
+
+        <p>
+
+          <strong>
+            Canonical form:
+          </strong>
+
+          ${form.title}
+
+        </p>
+
+        <p>
+
+          <strong>
+            Theme:
+          </strong>
+
+          ${escapeHTML(theme)}
+
+        </p>
+
+        <p>
+
+          ${familyText}
+
+        </p>
+
+        <p>
+
+          <strong>
+            Main relation:
+          </strong>
+
+          ${escapeHTML(charA)}
+          ↔
+          ${escapeHTML(charB)}
+
+        </p>
+
+        <p>
+
+          <strong>
+            Narrative zeroes / turning points:
+          </strong>
+
+          ${escapeHTML(zeroA)}
+          and
+          ${escapeHTML(zeroB)}
+
+        </p>
+
+        <p>
+
+          <strong>
+            Vertex / inflection:
+          </strong>
+
+          ${escapeHTML(vertex)}
+
+        </p>
+
+        <p>
+
+          <strong>
+            Notes:
+          </strong>
+
+          ${escapeHTML(notes)}
+
+        </p>
+
+      `;
+
+
+      document
+        .getElementById(
+          "generatedAnalysis"
+        )
+        .classList
+        .add(
+          "visible"
+        );
+
+
+      document
+        .getElementById(
+          "generatedAnalysis"
+        )
+        .scrollIntoView(
+          {
+            behavior:
+              "smooth",
+
+            block:
+              "start"
+          }
+        );
+
+
+      trackMythoEvent(
+        "custom_story_mapped",
+        {
+          form:
+            form.id
+        }
+      );
+
+    }
+  );
+
+
+
+/* =====================================================
+   CUSTOM SVG
+====================================================== */
+
+function generateCustomSVG(
+  form,
+  charA,
+  charB,
+  zeroA,
+  zeroB,
+  vertex
+) {
+
+
+  if (
+    form.id ===
+    "parabolic"
+  ) {
+
+    return `
+
+      <svg
+        class="diagram-svg"
+        viewBox="0 0 800 430"
+      >
+
+        <line
+          x1="55"
+          y1="215"
+          x2="745"
+          y2="215"
+          class="axis-horizontal"
+        />
+
+        <line
+          x1="400"
+          y1="40"
+          x2="400"
+          y2="390"
+          class="axis-vertical"
+        />
+
+        <line
+          x1="400"
+          y1="35"
+          x2="400"
+          y2="395"
+          class="axis-symmetry"
+        />
+
+        <path
+          d="M 90 75 Q 400 620 710 75"
+          class="story-curve red"
+        />
+
+        <circle
+          cx="245"
+          cy="215"
+          r="13"
+          fill="#b9574e"
+        />
+
+        <circle
+          cx="555"
+          cy="215"
+          r="13"
+          fill="#477ca8"
+        />
+
+        <circle
+          cx="400"
+          cy="345"
+          r="14"
+          fill="#d5a83e"
+        />
+
+        <text
+          x="245"
+          y="190"
+          text-anchor="middle"
+        >
+          ${svgEscape(charA)}
+        </text>
+
+        <text
+          x="555"
+          y="190"
+          text-anchor="middle"
+        >
+          ${svgEscape(charB)}
+        </text>
+
+        <text
+          x="245"
+          y="245"
+          text-anchor="middle"
+          font-size="11"
+        >
+          ${svgEscape(zeroA)}
+        </text>
+
+        <text
+          x="555"
+          y="245"
+          text-anchor="middle"
+          font-size="11"
+        >
+          ${svgEscape(zeroB)}
+        </text>
+
+        <text
+          x="400"
+          y="375"
+          text-anchor="middle"
+          font-size="11"
+        >
+          ${svgEscape(vertex)}
+        </text>
+
+        <text
+          x="414"
+          y="65"
+          fill="#9a7528"
+          font-size="12"
+        >
+          IoS
+        </text>
+
+      </svg>
+
+    `;
+
+  }
+
+
+
+  if (
+    form.id ===
+    "elliptic"
+  ) {
+
+    return `
+
+      <svg
+        class="diagram-svg"
+        viewBox="0 0 800 430"
+      >
+
+        <ellipse
+          cx="400"
+          cy="215"
+          rx="260"
+          ry="125"
+          class="story-curve red"
+        />
+
+        <circle
+          cx="320"
+          cy="215"
+          r="10"
+          fill="#b9574e"
+        />
+
+        <circle
+          cx="480"
+          cy="215"
+          r="10"
+          fill="#477ca8"
+        />
+
+        <text
+          x="320"
+          y="190"
+          text-anchor="middle"
+        >
+          ${svgEscape(charA)}
+        </text>
+
+        <text
+          x="480"
+          y="190"
+          text-anchor="middle"
+        >
+          ${svgEscape(charB)}
+        </text>
+
+        <text
+          x="400"
+          y="220"
+          text-anchor="middle"
+        >
+          ${svgEscape(vertex)}
+        </text>
+
+      </svg>
+
+    `;
+
+  }
+
+
+
+  if (
+    form.id ===
+    "hyperbolic"
+  ) {
+
+    return `
+
+      <svg
+        class="diagram-svg"
+        viewBox="0 0 800 430"
+      >
+
+        <line
+          x1="400"
+          y1="40"
+          x2="400"
+          y2="390"
+          class="axis-vertical"
+        />
+
+        <path
+          d="M 70 80 C 210 110, 270 160, 340 210"
+          class="story-curve red"
+        />
+
+        <path
+          d="M 70 350 C 210 320, 270 270, 340 220"
+          class="story-curve red"
+        />
+
+        <path
+          d="M 730 80 C 590 110, 530 160, 460 210"
+          class="story-curve blue"
+        />
+
+        <path
+          d="M 730 350 C 590 320, 530 270, 460 220"
+          class="story-curve blue"
+        />
+
+        <text
+          x="170"
+          y="205"
+          text-anchor="middle"
+        >
+          ${svgEscape(charA)}
+        </text>
+
+        <text
+          x="630"
+          y="205"
+          text-anchor="middle"
+        >
+          ${svgEscape(charB)}
+        </text>
+
+        <text
+          x="400"
+          y="235"
+          text-anchor="middle"
+          font-size="11"
+        >
+          ${svgEscape(vertex)}
+        </text>
+
+      </svg>
+
+    `;
+
+  }
+
+
+
+  if (
+    form.id ===
+    "simultaneous"
+  ) {
+
+    return `
+
+      <svg
+        class="diagram-svg"
+        viewBox="0 0 800 430"
+      >
+
+        <path
+          d="M 90 315 C 240 265, 420 150, 710 110"
+          class="story-curve red"
+        />
+
+        <path
+          d="M 90 275 C 240 225, 420 110, 710 70"
+          class="story-curve blue"
+        />
+
+        <text
+          x="625"
+          y="92"
+          text-anchor="middle"
+        >
+          ${svgEscape(charB)}
+        </text>
+
+        <text
+          x="625"
+          y="135"
+          text-anchor="middle"
+        >
+          ${svgEscape(charA)}
+        </text>
+
+        <text
+          x="400"
+          y="365"
+          text-anchor="middle"
+          font-size="11"
+        >
+          ${svgEscape(vertex)}
+        </text>
+
+      </svg>
+
+    `;
+
+  }
+
+
+
+  return `
+
+    <svg
+      class="diagram-svg"
+      viewBox="0 0 800 430"
+    >
+
+      <line
+        x1="60"
+        y1="350"
+        x2="740"
+        y2="350"
+        class="axis-horizontal"
+      />
+
+      <path
+        d="M 80 325
+           C 190 315, 250 285, 320 245
+           S 440 190, 500 145
+           S 620 80, 720 70"
+        class="story-curve blue"
+      />
+
+      <circle
+        cx="115"
+        cy="318"
+        r="11"
+        fill="#58784b"
+      />
+
+      <circle
+        cx="320"
+        cy="245"
+        r="11"
+        fill="#58784b"
+      />
+
+      <circle
+        cx="500"
+        cy="145"
+        r="13"
+        fill="#d5a83e"
+      />
+
+      <circle
+        cx="680"
+        cy="78"
+        r="11"
+        fill="#58784b"
+      />
+
+      <text
+        x="115"
+        y="295"
+        text-anchor="middle"
+      >
+        ${svgEscape(charA)}
+      </text>
+
+      <text
+        x="320"
+        y="220"
+        text-anchor="middle"
+        font-size="11"
+      >
+        ${svgEscape(zeroA)}
+      </text>
+
+      <text
+        x="500"
+        y="120"
+        text-anchor="middle"
+        font-size="11"
+      >
+        ${svgEscape(vertex)}
+      </text>
+
+      <text
+        x="680"
+        y="55"
+        text-anchor="middle"
+      >
+        ${svgEscape(charB)}
+      </text>
+
+    </svg>
+
+  `;
+
+}
+
+
+
+/* =====================================================
+   CLEAR MAPPER
+====================================================== */
+
+document
+  .getElementById(
+    "clearMap"
+  )
+  .addEventListener(
+    "click",
+    function () {
+
+      [
+        "mapTitle",
+        "mapTheme",
+        "mapA",
+        "mapB",
+        "mapZeroA",
+        "mapZeroB",
+        "mapVertex",
+        "mapNotes"
+      ]
+      .forEach(
+        function (
+          id
+        ) {
+
+          document
+            .getElementById(
+              id
+            )
+            .value =
+              "";
+
+        }
+      );
+
+
+      document
+        .getElementById(
+          "generatedAnalysis"
+        )
+        .classList
+        .remove(
+          "visible"
+        );
+
+    }
+  );
+
+
+
+/* =====================================================
+   HELPERS
+====================================================== */
+
+function valueOf(
+  id,
+  fallback
+) {
+
+  const value =
+    document
+      .getElementById(
+        id
+      )
+      .value
+      .trim();
+
+
+  return (
+    value
+    ||
+    fallback
+  );
+
+}
+
+
+
+function escapeHTML(
+  text
+) {
+
+  return String(
+    text
+  )
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+
+
+
+function svgEscape(
+  text
+) {
+
+  return escapeHTML(
+    text
+  );
+
+}
+
+
+
+/* =====================================================
+   START
+====================================================== */
+
+buildForms();
+
+renderCanonicalForm();
+
+buildStoryList();
+
+renderStory();
+
+
+trackMythoEvent(
+  "mythopoetic_diagrams_opened",
+  {
+    prototype:
+      "canonical_forms_001"
+  }
+);
+
+</script>
+
+
+</body>
+
+</html>
