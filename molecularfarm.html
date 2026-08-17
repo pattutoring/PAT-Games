@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -22,32 +23,49 @@
   ></script>
 
   <script>
+
     window.dataLayer =
       window.dataLayer || [];
 
+
     function gtag() {
-      dataLayer.push(arguments);
+
+      dataLayer.push(
+        arguments
+      );
+
     }
+
 
     gtag(
       "js",
       new Date()
     );
 
+
     gtag(
       "config",
       "G-QCEPJP202V"
     );
+
   </script>
 
 
   <link
     rel="stylesheet"
-    href="molecularfarm.css"
+    href="molecularfarm.css?v=20260816-2"
   >
+
 </head>
 
+
+
 <body>
+
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
 
 <header>
 
@@ -58,130 +76,315 @@
     ← PAT Learning Lab
   </a>
 
-  <h1>🌾 MOLECULAR FARM</h1>
 
-  <p>Grow Your Chemistry</p>
-
-  <div class="xp-bar">
-    <div id="xpFill"></div>
+  <div class="farm-mark">
+    🌾
   </div>
 
-  <small id="xpText">
-    0 XP
-  </small>
+
+  <h1>
+    MOLECULAR FARM
+  </h1>
+
+
+  <p class="farm-tagline">
+    Grow Your Chemistry
+  </p>
+
+
+  <p class="farm-subtitle">
+    Find it. Build it. Evolve it.
+  </p>
+
+
+  <div class="xp-wrap">
+
+    <div class="xp-bar">
+
+      <div id="xpFill">
+      </div>
+
+    </div>
+
+
+    <small id="xpText">
+      0 XP
+    </small>
+
+  </div>
 
 </header>
 
 
+
 <main>
 
-  <!-- ==============================
-       FARM HOME
-  =============================== -->
 
-  <section
-    id="farmHome"
-    class="screen active"
-  >
+<!-- =====================================================
+     FARM HOME
+====================================================== -->
 
-    <div class="section-title">
+<section
+  id="farmHome"
+  class="screen active"
+>
+
+
+  <div class="section-title">
+
+    <div class="section-kicker">
+      WELCOME TO THE FARM
+    </div>
+
+    <h2>
+      Explore Molecular Farm
+    </h2>
+
+    <p>
+      Chemistry is an ecosystem.
+      Discover the elemental species,
+      combine them into molecular animals,
+      and follow how those species transform
+      when their environment changes.
+    </p>
+
+  </div>
+
+
+
+  <div class="world-grid">
+
+
+    <!-- CHEMICAL PERIOD -->
+
+    <button
+      class="world-card period-world"
+      type="button"
+      onclick="showScreen('periodScreen')"
+    >
+
+      <div class="icon">
+        🌱
+      </div>
+
+      <div class="world-label">
+        ELEMENTAL SPECIES
+      </div>
 
       <h2>
-        Welcome to Molecular Farm
+        Chemical-Period
       </h2>
 
       <p>
-        Don't just memorize chemistry.
-        Reconstruct it.
+        Explore the periodic table through
+        Hydrogen Hippos, Oxygen Owls,
+        Sodium Snails and other elemental species.
       </p>
 
+      <strong>
+        Explore the Chemical-Period →
+      </strong>
+
+    </button>
+
+
+
+    <!-- MOLECULAR WORLD -->
+
+    <button
+      class="world-card molecular-world"
+      type="button"
+      onclick="showScreen('habitatScreen')"
+    >
+
+      <div class="icon">
+        🐾
+      </div>
+
+      <div class="world-label">
+        MOLECULAR SPECIES
+      </div>
+
+      <h2>
+        Explore the Farm
+      </h2>
+
+      <p>
+        Use elemental species to build
+        molecular animals on the Farm,
+        in the Wild and Under the Sea.
+      </p>
+
+      <strong>
+        Search for Molecular Species →
+      </strong>
+
+    </button>
+
+
+
+    <!-- EVOLUTION -->
+
+    <button
+      class="world-card evolution-world"
+      type="button"
+      onclick="showScreen('evolutionScreen')"
+    >
+
+      <div class="icon">
+        🧬
+      </div>
+
+      <div class="world-label">
+        CHEMICAL EVOLUTION
+      </div>
+
+      <h2>
+        Evolution Lines
+      </h2>
+
+      <p>
+        Follow molecular families through
+        protonation, pH, equilibrium and
+        changing chemical environments.
+      </p>
+
+      <strong>
+        Follow the Evolution Lines →
+      </strong>
+
+    </button>
+
+
+
+    <!-- PERIOD EX -->
+
+    <button
+      class="world-card periodex-world"
+      type="button"
+      onclick="showPeriodex()"
+    >
+
+      <div class="icon">
+        📖
+      </div>
+
+      <div class="world-label">
+        SPECIES CATALOGUE
+      </div>
+
+      <h2>
+        Period-ex
+      </h2>
+
+      <p>
+        View every elemental species,
+        molecular animal and evolution
+        family you have discovered.
+      </p>
+
+      <strong>
+        Open Your Period-ex →
+      </strong>
+
+    </button>
+
+
+  </div>
+
+
+
+  <section class="farm-loop">
+
+    <div class="section-kicker">
+      THE MOLECULAR FARM LOOP
     </div>
 
-
-    <div class="world-grid">
-
-
-      <div
-        class="world-card"
-        onclick="showScreen('periodScreen')"
-      >
-
-        <div class="icon">
-          🌱
-        </div>
-
-        <h2>
-          Chemical-Period
-        </h2>
-
-        <p>
-          Explore the elemental species
-          of Molecular Farm.
-        </p>
-
-      </div>
+    <h2>
+      Observe → Build → Discover → Evolve
+    </h2>
 
 
-      <div
-        class="world-card"
-        onclick="showPeriodex()"
-      >
+    <div class="loop-row">
 
-        <div class="icon">
-          📖
-        </div>
+      <div class="loop-step">
 
-        <h2>
-          Period-ex
-        </h2>
+        <span>
+          👀
+        </span>
 
-        <p>
-          View the species you have
-          identified and catalogued.
-        </p>
-
-      </div>
-
-
-      <div class="world-card">
-
-        <div class="icon">
-          ⚗️
-        </div>
-
-        <h2>
-          Reactions
-        </h2>
-
-        <p>
-          Balance equations and discover
-          interactions between species.
-        </p>
+        <strong>
+          Observe
+        </strong>
 
         <small>
-          Coming Soon
+          Study an elemental species.
         </small>
 
       </div>
 
 
-      <div class="world-card">
+      <div class="loop-arrow">
+        →
+      </div>
 
-        <div class="icon">
-          🐙
-        </div>
 
-        <h2>
-          Evolution Lines
-        </h2>
+      <div class="loop-step">
 
-        <p>
-          Follow families across pH,
-          protonation and chemical environments.
-        </p>
+        <span>
+          ⚛️
+        </span>
+
+        <strong>
+          Build
+        </strong>
 
         <small>
-          Coming Soon
+          Combine its chemical pieces.
+        </small>
+
+      </div>
+
+
+      <div class="loop-arrow">
+        →
+      </div>
+
+
+      <div class="loop-step">
+
+        <span>
+          🐾
+        </span>
+
+        <strong>
+          Discover
+        </strong>
+
+        <small>
+          Reveal a molecular animal.
+        </small>
+
+      </div>
+
+
+      <div class="loop-arrow">
+        →
+      </div>
+
+
+      <div class="loop-step">
+
+        <span>
+          🧬
+        </span>
+
+        <strong>
+          Evolve
+        </strong>
+
+        <small>
+          Change its chemical environment.
         </small>
 
       </div>
@@ -191,142 +394,1127 @@
   </section>
 
 
-  <!-- ==============================
-       CHEMICAL PERIOD
-  =============================== -->
+</section>
 
-  <section
-    id="periodScreen"
-    class="screen"
+
+
+<!-- =====================================================
+     CHEMICAL PERIOD
+====================================================== -->
+
+<section
+  id="periodScreen"
+  class="screen"
+>
+
+  <button
+    class="back-button"
+    type="button"
+    onclick="showScreen('farmHome')"
   >
-
-    <button
-      class="back-button"
-      onclick="showScreen('farmHome')"
-    >
-      ← Farm
-    </button>
+    ← Molecular Farm
+  </button>
 
 
-    <div class="section-title">
 
-      <h1>
-        The Chemical-Period
-      </h1>
+  <div class="section-title">
 
-      <p>
-        Observe the structure.
-        Reconstruct the species.
-      </p>
-
+    <div class="section-kicker">
+      ELEMENTAL SPECIES
     </div>
 
+    <h1>
+      The Chemical-Period
+    </h1>
+
+    <p>
+      Each elemental animal encodes part of
+      the chemistry of the element it represents.
+      Discover them and catalogue them in your Period-ex.
+    </p>
+
+  </div>
+
+
+
+  <div class="period-key">
+
+    <span>
+      🌱 Discovered
+    </span>
+
+    <span>
+      ❓ Undiscovered
+    </span>
+
+  </div>
+
+
+
+  <div class="period-scroll">
 
     <div
       id="period"
       class="period"
-    ></div>
-
-  </section>
-
-
-  <!-- ==============================
-       SPECIES SCREEN
-  =============================== -->
-
-  <section
-    id="speciesScreen"
-    class="screen"
-  >
-
-    <button
-      class="back-button"
-      onclick="showScreen('periodScreen')"
     >
-      ← Chemical-Period
-    </button>
-
-
-    <div class="species-card">
-
-      <h1 id="speciesName"></h1>
-
-
-      <div
-        id="speciesImage"
-        class="species-placeholder"
-      >
-        ⚛️
-      </div>
-
-
-      <div class="clue">
-
-        <strong>
-          Observe first.
-        </strong>
-
-        <p id="speciesClue"></p>
-
-      </div>
-
-
-      <h3 id="questionText"></h3>
-
-
-      <div id="answers"></div>
-
-
-      <div id="feedback"></div>
-
     </div>
 
-  </section>
+  </div>
 
 
-  <!-- ==============================
-       PERIOD-EX
-  =============================== -->
 
-  <section
-    id="periodex"
-    class="screen"
+  <div class="period-note">
+
+    <strong>
+      Chemical-Period Species
+    </strong>
+
+    <p>
+      Hydrogen Hippo • Helium Hyena •
+      Lithium Lightning-Bug • Boron Butterfly •
+      Carbon Clam • Oxygen Owl • Fluorine Fire Ant •
+      Sodium Snail • Magnesium Moth •
+      Aluminum Army Ant • Silicon Stick Bug •
+      Phosphorus Pill Bug • Chlorine Cicada
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ELEMENTAL SPECIES SCREEN
+====================================================== -->
+
+<section
+  id="speciesScreen"
+  class="screen"
+>
+
+  <button
+    class="back-button"
+    type="button"
+    onclick="showScreen('periodScreen')"
   >
+    ← Chemical-Period
+  </button>
 
-    <button
-      class="back-button"
-      onclick="showScreen('farmHome')"
+
+
+  <div class="species-card">
+
+
+    <div class="species-card-label">
+      ELEMENTAL SPECIES
+    </div>
+
+
+    <h1 id="speciesName">
+    </h1>
+
+
+
+    <div
+      id="speciesImage"
+      class="species-placeholder"
     >
-      ← Farm
-    </button>
+      ⚛️
+    </div>
 
 
-    <div class="section-title">
 
-      <h1>
-        📖 Period-ex
-      </h1>
+    <div class="clue">
 
-      <p>
-        Your catalogue of discovered species.
+      <strong>
+        🔎 Observe First
+      </strong>
+
+      <p id="speciesClue">
       </p>
 
     </div>
 
 
-    <div id="catalogue"></div>
 
-  </section>
+    <div class="reconstruction-panel">
+
+      <div class="mini-heading">
+        RECONSTRUCTION CHALLENGE
+      </div>
+
+      <h3 id="questionText">
+      </h3>
+
+
+      <div
+        id="answers"
+        class="answer-grid"
+      >
+      </div>
+
+
+      <div
+        id="feedback"
+        class="species-feedback"
+      >
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     HABITAT SELECT
+====================================================== -->
+
+<section
+  id="habitatScreen"
+  class="screen"
+>
+
+  <button
+    class="back-button"
+    type="button"
+    onclick="showScreen('farmHome')"
+  >
+    ← Molecular Farm
+  </button>
+
+
+
+  <div class="section-title">
+
+    <div class="section-kicker">
+      MOLECULAR SPECIES
+    </div>
+
+    <h1>
+      Where Will You Explore?
+    </h1>
+
+    <p>
+      Molecular animals are not simply given to you.
+      Find their chemistry by assembling elemental species
+      in the environment where they live.
+    </p>
+
+  </div>
+
+
+
+  <div class="habitat-grid">
+
+
+    <!-- FARM -->
+
+    <button
+      class="habitat-card farm-habitat"
+      type="button"
+      onclick="showScreen('farmBuildScreen')"
+    >
+
+      <div class="habitat-scene">
+        🌾 🐔 🐄 🐷 🐴
+      </div>
+
+      <div class="habitat-kicker">
+        HABITAT 01
+      </div>
+
+      <h2>
+        On the Farm
+      </h2>
+
+      <p>
+        Search for Methane Chickens,
+        Ammonium Horses, Chromate Crows,
+        Hydrogen Phosphate Pigs,
+        M(n)OOOO! Cows and more.
+      </p>
+
+      <strong>
+        Enter the Farm →
+      </strong>
+
+    </button>
+
+
+
+    <!-- WILD -->
+
+    <button
+      class="habitat-card wild-habitat"
+      type="button"
+      onclick="showScreen('wildBuildScreen')"
+    >
+
+      <div class="habitat-scene">
+        🌲 🦋 🐜 🪲 🦔
+      </div>
+
+      <div class="habitat-kicker">
+        HABITAT 02
+      </div>
+
+      <h2>
+        In the Wild
+      </h2>
+
+      <p>
+        Search among insects and elemental wildlife
+        for species such as the H-PO(rcupine)
+        and other molecular creatures.
+      </p>
+
+      <strong>
+        Search the Wild →
+      </strong>
+
+    </button>
+
+
+
+    <!-- SEA -->
+
+    <button
+      class="habitat-card sea-habitat"
+      type="button"
+      onclick="showScreen('seaBuildScreen')"
+    >
+
+      <div class="habitat-scene">
+        🌊 🐙 🦈 🐠 🐚
+      </div>
+
+      <div class="habitat-kicker">
+        HABITAT 03
+      </div>
+
+      <h2>
+        Under the Sea
+      </h2>
+
+      <p>
+        Dive for H-O(ctopi),
+        Sulfuric Sharks,
+        H-CLO(wn)-Fish
+        and other aquatic molecular species.
+      </p>
+
+      <strong>
+        Dive Under the Sea →
+      </strong>
+
+    </button>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FARM BUILD SCREEN
+====================================================== -->
+
+<section
+  id="farmBuildScreen"
+  class="screen"
+>
+
+  <button
+    class="back-button"
+    type="button"
+    onclick="showScreen('habitatScreen')"
+  >
+    ← Habitats
+  </button>
+
+
+
+  <div class="habitat-game-heading">
+
+    <div class="habitat-big-icon">
+      🌾
+    </div>
+
+    <div>
+
+      <div class="section-kicker">
+        ON THE FARM
+      </div>
+
+      <h1>
+        Build a Farm Species
+      </h1>
+
+      <p>
+        Combine elemental species and see
+        what molecular animal you discover.
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="builder-shell">
+
+
+    <div class="builder-panel">
+
+      <div class="mini-heading">
+        ELEMENT BANK
+      </div>
+
+      <p>
+        Select elemental species to bring onto the farm.
+      </p>
+
+      <div
+        id="farmElementBank"
+        class="builder-element-bank"
+      >
+      </div>
+
+    </div>
+
+
+
+    <div class="build-zone">
+
+      <div class="mini-heading">
+        YOUR SPECIES
+      </div>
+
+      <div
+        id="farmBuildTray"
+        class="build-tray"
+      >
+
+        <div class="empty-build-message">
+          Add elements to begin building.
+        </div>
+
+      </div>
+
+
+      <div
+        id="farmFormula"
+        class="build-formula"
+      >
+        ?
+      </div>
+
+
+      <div class="builder-buttons">
+
+        <button
+          id="farmBuildButton"
+          class="primary-button"
+          type="button"
+        >
+          🌱 Discover Species
+        </button>
+
+
+        <button
+          id="farmClearButton"
+          class="secondary-button"
+          type="button"
+        >
+          Clear
+        </button>
+
+      </div>
+
+
+      <div
+        id="farmBuildFeedback"
+        class="builder-feedback"
+      >
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+  <div
+    id="farmDiscoveryCard"
+    class="discovery-card"
+  >
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     WILD BUILD SCREEN
+====================================================== -->
+
+<section
+  id="wildBuildScreen"
+  class="screen"
+>
+
+  <button
+    class="back-button"
+    type="button"
+    onclick="showScreen('habitatScreen')"
+  >
+    ← Habitats
+  </button>
+
+
+
+  <div class="habitat-game-heading">
+
+    <div class="habitat-big-icon">
+      🌲
+    </div>
+
+    <div>
+
+      <div class="section-kicker">
+        IN THE WILD
+      </div>
+
+      <h1>
+        Build a Wild Species
+      </h1>
+
+      <p>
+        Combine elemental wildlife and search
+        for molecular creatures hiding in the ecosystem.
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="builder-shell">
+
+
+    <div class="builder-panel">
+
+      <div class="mini-heading">
+        ELEMENT BANK
+      </div>
+
+      <p>
+        Select elemental species from the Wild.
+      </p>
+
+      <div
+        id="wildElementBank"
+        class="builder-element-bank"
+      >
+      </div>
+
+    </div>
+
+
+
+    <div class="build-zone">
+
+      <div class="mini-heading">
+        YOUR SPECIES
+      </div>
+
+      <div
+        id="wildBuildTray"
+        class="build-tray"
+      >
+
+        <div class="empty-build-message">
+          Add elements to begin building.
+        </div>
+
+      </div>
+
+
+      <div
+        id="wildFormula"
+        class="build-formula"
+      >
+        ?
+      </div>
+
+
+      <div class="builder-buttons">
+
+        <button
+          id="wildBuildButton"
+          class="primary-button"
+          type="button"
+        >
+          🌲 Discover Species
+        </button>
+
+
+        <button
+          id="wildClearButton"
+          class="secondary-button"
+          type="button"
+        >
+          Clear
+        </button>
+
+      </div>
+
+
+      <div
+        id="wildBuildFeedback"
+        class="builder-feedback"
+      >
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+  <div
+    id="wildDiscoveryCard"
+    class="discovery-card"
+  >
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SEA BUILD SCREEN
+====================================================== -->
+
+<section
+  id="seaBuildScreen"
+  class="screen"
+>
+
+  <button
+    class="back-button"
+    type="button"
+    onclick="showScreen('habitatScreen')"
+  >
+    ← Habitats
+  </button>
+
+
+
+  <div class="habitat-game-heading">
+
+    <div class="habitat-big-icon">
+      🌊
+    </div>
+
+    <div>
+
+      <div class="section-kicker">
+        UNDER THE SEA
+      </div>
+
+      <h1>
+        Build an Aquatic Species
+      </h1>
+
+      <p>
+        Combine elemental species and dive
+        for molecular animals beneath the surface.
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="builder-shell">
+
+
+    <div class="builder-panel">
+
+      <div class="mini-heading">
+        ELEMENT BANK
+      </div>
+
+      <p>
+        Select the elemental species you need.
+      </p>
+
+      <div
+        id="seaElementBank"
+        class="builder-element-bank"
+      >
+      </div>
+
+    </div>
+
+
+
+    <div class="build-zone">
+
+      <div class="mini-heading">
+        YOUR SPECIES
+      </div>
+
+      <div
+        id="seaBuildTray"
+        class="build-tray"
+      >
+
+        <div class="empty-build-message">
+          Add elements to begin building.
+        </div>
+
+      </div>
+
+
+      <div
+        id="seaFormula"
+        class="build-formula"
+      >
+        ?
+      </div>
+
+
+      <div class="builder-buttons">
+
+        <button
+          id="seaBuildButton"
+          class="primary-button"
+          type="button"
+        >
+          🌊 Discover Species
+        </button>
+
+
+        <button
+          id="seaClearButton"
+          class="secondary-button"
+          type="button"
+        >
+          Clear
+        </button>
+
+      </div>
+
+
+      <div
+        id="seaBuildFeedback"
+        class="builder-feedback"
+      >
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+  <div
+    id="seaDiscoveryCard"
+    class="discovery-card"
+  >
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EVOLUTION LINES
+====================================================== -->
+
+<section
+  id="evolutionScreen"
+  class="screen"
+>
+
+  <button
+    class="back-button"
+    type="button"
+    onclick="showScreen('farmHome')"
+  >
+    ← Molecular Farm
+  </button>
+
+
+
+  <div class="section-title">
+
+    <div class="section-kicker">
+      CHEMICAL EVOLUTION
+    </div>
+
+    <h1>
+      Evolution Lines
+    </h1>
+
+    <p>
+      Molecular species can change when
+      the surrounding chemical environment changes.
+      Follow the family instead of memorizing isolated formulas.
+    </p>
+
+  </div>
+
+
+
+  <div class="evolution-intro">
+
+    <div>
+      ACIDIC
+    </div>
+
+    <div class="evolution-axis">
+      ← changing environment →
+    </div>
+
+    <div>
+      BASIC
+    </div>
+
+  </div>
+
+
+
+  <div
+    id="evolutionList"
+    class="evolution-list"
+  >
+
+
+    <!-- PHOSPHATE -->
+
+    <article class="evolution-card">
+
+      <div class="evolution-card-top">
+
+        <span class="evolution-animal">
+          🦔 → 🐷
+        </span>
+
+        <div>
+
+          <div class="mini-heading">
+            EVOLUTION LINE
+          </div>
+
+          <h2>
+            Phosphate Evolution
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <p>
+        Successive deprotonation removes hydrogen
+        as the environment becomes more basic.
+      </p>
+
+
+      <div class="evolution-formulas">
+
+        <span>
+          H₃PO₄
+        </span>
+
+        <strong>
+          →
+        </strong>
+
+        <span>
+          H₂PO₄⁻
+        </span>
+
+        <strong>
+          →
+        </strong>
+
+        <span>
+          HPO₄²⁻
+        </span>
+
+        <strong>
+          →
+        </strong>
+
+        <span>
+          PO₄³⁻
+        </span>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- WATER -->
+
+    <article class="evolution-card">
+
+      <div class="evolution-card-top">
+
+        <span class="evolution-animal">
+          🐙
+        </span>
+
+        <div>
+
+          <div class="mini-heading">
+            EVOLUTION LINE
+          </div>
+
+          <h2>
+            Water Evolution
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <p>
+        Gain or lose protons and the hydrogen-oxygen
+        species changes identity.
+      </p>
+
+
+      <div class="evolution-formulas">
+
+        <span>
+          H₃O⁺
+        </span>
+
+        <strong>
+          ⇌
+        </strong>
+
+        <span>
+          H₂O
+        </span>
+
+        <strong>
+          ⇌
+        </strong>
+
+        <span>
+          OH⁻
+        </span>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- CHROMATE -->
+
+    <article class="evolution-card">
+
+      <div class="evolution-card-top">
+
+        <span class="evolution-animal">
+          🐦‍⬛ → 🌾
+        </span>
+
+        <div>
+
+          <div class="mini-heading">
+            EVOLUTION LINE
+          </div>
+
+          <h2>
+            Crow → Scarecrow
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <p>
+        Chromate and dichromate move through
+        an equilibrium as their chemical environment changes.
+      </p>
+
+
+      <div class="evolution-formulas">
+
+        <span>
+          CrO₄²⁻
+        </span>
+
+        <strong>
+          ⇌
+        </strong>
+
+        <span>
+          Cr₂O₇²⁻
+        </span>
+
+      </div>
+
+    </article>
+
+
+  </div>
+
+
+  <div class="evolution-note">
+
+    <strong>
+      🧬 Evolution is chemistry in motion.
+    </strong>
+
+    <p>
+      These are not unrelated formulas.
+      Each family shows how one chemical structure
+      transforms into another as its environment changes.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PERIOD-EX
+====================================================== -->
+
+<section
+  id="periodex"
+  class="screen"
+>
+
+  <button
+    class="back-button"
+    type="button"
+    onclick="showScreen('farmHome')"
+  >
+    ← Molecular Farm
+  </button>
+
+
+
+  <div class="section-title">
+
+    <div class="section-kicker">
+      SPECIES CATALOGUE
+    </div>
+
+    <h1>
+      📖 Period-ex
+    </h1>
+
+    <p>
+      Your growing field guide to
+      Molecular Farm.
+    </p>
+
+  </div>
+
+
+
+  <div class="periodex-summary">
+
+    <div class="periodex-summary-card">
+
+      <span>
+        🌱
+      </span>
+
+      <strong>
+        Elemental Species
+      </strong>
+
+    </div>
+
+
+    <div class="periodex-summary-card">
+
+      <span>
+        🐾
+      </span>
+
+      <strong>
+        Molecular Species
+      </strong>
+
+    </div>
+
+
+    <div class="periodex-summary-card">
+
+      <span>
+        🧬
+      </span>
+
+      <strong>
+        Evolution Lines
+      </strong>
+
+    </div>
+
+  </div>
+
+
+
+  <div
+    id="catalogue"
+    class="catalogue"
+  >
+  </div>
+
+</section>
+
 
 </main>
 
 
+
 <footer>
-  PAT Learning Lab • Molecular Farm Prototype
+
+  <strong>
+    Molecular Farm™
+  </strong>
+
+  • PAT Learning Lab
+
+  <br>
+
+  Find it. Build it. Evolve it.
+
 </footer>
 
 
-<script src="molecularfarm.js"></script>
+
+<script src="molecularfarm.js?v=20260816-2"></script>
+
 
 </body>
+
 </html>
