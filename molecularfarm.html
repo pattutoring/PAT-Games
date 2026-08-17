@@ -25,21 +25,14 @@
     window.dataLayer =
       window.dataLayer || [];
 
-
     function gtag() {
-
-      dataLayer.push(
-        arguments
-      );
-
+      dataLayer.push(arguments);
     }
-
 
     gtag(
       "js",
       new Date()
     );
-
 
     gtag(
       "config",
@@ -49,9 +42,11 @@
   </script>
 
 
+  <!-- MOLECULAR FARM STYLES -->
+
   <link
     rel="stylesheet"
-    href="molecularfarm.css"
+    href="https://pattutoring.github.io/PAT-Games/molecularfarm.css"
   >
 
 </head>
@@ -59,6 +54,10 @@
 
 <body>
 
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
 
 <header>
 
@@ -69,21 +68,17 @@
     ← PAT Learning Lab
   </a>
 
-
   <div class="farm-mark">
     🌾
   </div>
-
 
   <h1>
     MOLECULAR FARM
   </h1>
 
-
   <p class="farm-tagline">
     Grow Your Chemistry
   </p>
-
 
   <p class="farm-subtitle">
     Find it. Build it. Capture it. Evolve it.
@@ -105,19 +100,17 @@
 </header>
 
 
-
 <main>
 
 
 <!-- =====================================================
-     HOME
+     FARM HOME
 ====================================================== -->
 
 <section
   id="farmHome"
   class="screen active"
 >
-
 
   <div class="section-title">
 
@@ -141,9 +134,10 @@
   </div>
 
 
-
   <div class="world-grid">
 
+
+    <!-- CHEMICAL PERIOD -->
 
     <button
       class="world-card period-world"
@@ -176,6 +170,7 @@
     </button>
 
 
+    <!-- DISCOVERY HABITATS -->
 
     <button
       class="world-card molecular-world"
@@ -208,6 +203,7 @@
     </button>
 
 
+    <!-- EVOLUTION -->
 
     <button
       class="world-card evolution-world"
@@ -240,6 +236,7 @@
     </button>
 
 
+    <!-- PERIOD EX -->
 
     <button
       class="world-card periodex-world"
@@ -271,10 +268,10 @@
 
     </button>
 
-
   </div>
 
 
+  <!-- FARM LOOP -->
 
   <section class="farm-loop">
 
@@ -283,12 +280,11 @@
     </div>
 
     <h2>
-      Observe → Build → Discover → Capture → Evolve
+      Observe → Build → Capture → Evolve
     </h2>
 
 
     <div class="loop-row">
-
 
       <div class="loop-step">
 
@@ -301,7 +297,7 @@
         </strong>
 
         <small>
-          Study chemical structure.
+          Study an elemental species.
         </small>
 
       </div>
@@ -323,7 +319,7 @@
         </strong>
 
         <small>
-          Reconstruct atoms or molecules.
+          Reconstruct atoms or combine elements.
         </small>
 
       </div>
@@ -341,33 +337,11 @@
         </span>
 
         <strong>
-          Discover
-        </strong>
-
-        <small>
-          Reveal the hidden species.
-        </small>
-
-      </div>
-
-
-      <div class="loop-arrow">
-        →
-      </div>
-
-
-      <div class="loop-step">
-
-        <span>
-          📸
-        </span>
-
-        <strong>
           Capture
         </strong>
 
         <small>
-          Add it to your Period-ex.
+          Capture your new chemical species.
         </small>
 
       </div>
@@ -389,19 +363,16 @@
         </strong>
 
         <small>
-          Change its environment.
+          Change its chemical environment.
         </small>
 
       </div>
-
 
     </div>
 
   </section>
 
-
 </section>
-
 
 
 <!-- =====================================================
@@ -435,7 +406,7 @@
     <p>
       Each elemental animal encodes part of
       the chemistry of the element it represents.
-      Build and capture them to complete your Period-ex.
+      Reconstruct them and catalogue them in your Period-ex.
     </p>
 
   </div>
@@ -444,7 +415,7 @@
   <div class="period-key">
 
     <span>
-      🌱 Captured
+      🌱 Discovered
     </span>
 
     <span>
@@ -459,8 +430,7 @@
     <div
       id="period"
       class="period"
-    >
-    </div>
+    ></div>
 
   </div>
 
@@ -485,9 +455,8 @@
 </section>
 
 
-
 <!-- =====================================================
-     ELEMENTAL SPECIES
+     ELEMENTAL SPECIES SCREEN
 ====================================================== -->
 
 <section
@@ -510,9 +479,7 @@
       ELEMENTAL SPECIES
     </div>
 
-
-    <h1 id="speciesName">
-    </h1>
+    <h1 id="speciesName"></h1>
 
 
     <div
@@ -529,8 +496,7 @@
         🔎 Observe First
       </strong>
 
-      <p id="speciesClue">
-      </p>
+      <p id="speciesClue"></p>
 
     </div>
 
@@ -541,29 +507,23 @@
         RECONSTRUCTION CHALLENGE
       </div>
 
-      <h3 id="questionText">
-      </h3>
-
+      <h3 id="questionText"></h3>
 
       <div
         id="answers"
         class="answer-grid"
-      >
-      </div>
-
+      ></div>
 
       <div
         id="feedback"
         class="species-feedback"
-      >
-      </div>
+      ></div>
 
     </div>
 
   </div>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -587,7 +547,7 @@
   <div class="section-title">
 
     <div class="section-kicker">
-      SPECIES DISCOVERY
+      DISCOVERY HABITATS
     </div>
 
     <h1>
@@ -595,10 +555,8 @@
     </h1>
 
     <p>
-      Choose an environment,
-      reconstruct an atom or assemble a molecule,
-      identify what appears,
-      then capture it for your Period-ex.
+      Build chemical species and capture
+      the animals hiding throughout Molecular Farm.
     </p>
 
   </div>
@@ -606,6 +564,8 @@
 
   <div class="habitat-grid">
 
+
+    <!-- FARM -->
 
     <button
       class="habitat-card farm-habitat"
@@ -639,6 +599,7 @@
     </button>
 
 
+    <!-- WILD -->
 
     <button
       class="habitat-card wild-habitat"
@@ -659,9 +620,9 @@
       </h2>
 
       <p>
-        Reconstruct elemental wildlife
-        and search for species such as
-        the H-PO(rcupine).
+        Search among insects and elemental wildlife
+        for the H-PO(rcupine)
+        and other chemical creatures.
       </p>
 
       <strong>
@@ -671,6 +632,7 @@
     </button>
 
 
+    <!-- SEA -->
 
     <button
       class="habitat-card sea-habitat"
@@ -693,8 +655,8 @@
       <p>
         Dive for H-O(ctopi),
         Sulfuric Sharks,
-        H-CLO(wn)-Fish,
-        Carbon Clams and other aquatic species.
+        H-CLO(wn)-Fish
+        and other aquatic molecular species.
       </p>
 
       <strong>
@@ -703,11 +665,9 @@
 
     </button>
 
-
   </div>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -741,12 +701,12 @@
       </div>
 
       <h1>
-        Discover a Farm Species
+        Build a Farm Species
       </h1>
 
       <p>
-        Build an atom from subatomic particles
-        or combine elements into a molecular animal.
+        Combine elemental species and see
+        what molecular animal you can capture.
       </p>
 
     </div>
@@ -760,19 +720,17 @@
     <div class="builder-panel">
 
       <div class="mini-heading">
-        BUILDING MATERIALS
+        ELEMENT BANK
       </div>
 
       <p>
-        Choose Atom or Molecule,
-        then construct the chemistry.
+        Select elemental species to bring onto the farm.
       </p>
 
       <div
         id="farmElementBank"
         class="builder-element-bank"
-      >
-      </div>
+      ></div>
 
     </div>
 
@@ -780,7 +738,7 @@
     <div class="build-zone">
 
       <div class="mini-heading">
-        YOUR BUILD
+        YOUR SPECIES
       </div>
 
       <div
@@ -789,7 +747,7 @@
       >
 
         <div class="empty-build-message">
-          Add chemical pieces to begin building.
+          Add elements to begin building.
         </div>
 
       </div>
@@ -810,7 +768,7 @@
           class="primary-button"
           type="button"
         >
-          🔎 Identify Species
+          🌱 Capture Species
         </button>
 
         <button
@@ -827,11 +785,9 @@
       <div
         id="farmBuildFeedback"
         class="builder-feedback"
-      >
-      </div>
+      ></div>
 
     </div>
-
 
   </div>
 
@@ -839,11 +795,9 @@
   <div
     id="farmDiscoveryCard"
     class="discovery-card"
-  >
-  </div>
+  ></div>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -877,13 +831,12 @@
       </div>
 
       <h1>
-        Discover a Wild Species
+        Build a Wild Species
       </h1>
 
       <p>
-        Reconstruct elemental wildlife
-        or combine atoms into molecular creatures
-        hiding in the ecosystem.
+        Combine elemental wildlife and search
+        for molecular creatures hiding in the ecosystem.
       </p>
 
     </div>
@@ -897,19 +850,17 @@
     <div class="builder-panel">
 
       <div class="mini-heading">
-        BUILDING MATERIALS
+        ELEMENT BANK
       </div>
 
       <p>
-        Choose Atom or Molecule,
-        then construct the chemistry.
+        Select elemental species from the Wild.
       </p>
 
       <div
         id="wildElementBank"
         class="builder-element-bank"
-      >
-      </div>
+      ></div>
 
     </div>
 
@@ -917,7 +868,7 @@
     <div class="build-zone">
 
       <div class="mini-heading">
-        YOUR BUILD
+        YOUR SPECIES
       </div>
 
       <div
@@ -926,7 +877,7 @@
       >
 
         <div class="empty-build-message">
-          Add chemical pieces to begin building.
+          Add elements to begin building.
         </div>
 
       </div>
@@ -947,7 +898,7 @@
           class="primary-button"
           type="button"
         >
-          🔎 Identify Species
+          🌲 Capture Species
         </button>
 
         <button
@@ -964,11 +915,9 @@
       <div
         id="wildBuildFeedback"
         class="builder-feedback"
-      >
-      </div>
+      ></div>
 
     </div>
-
 
   </div>
 
@@ -976,11 +925,9 @@
   <div
     id="wildDiscoveryCard"
     class="discovery-card"
-  >
-  </div>
+  ></div>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -1014,12 +961,12 @@
       </div>
 
       <h1>
-        Discover an Aquatic Species
+        Build an Aquatic Species
       </h1>
 
       <p>
-        Reconstruct an elemental species
-        or assemble molecular animals beneath the surface.
+        Combine elemental species and dive
+        for molecular animals beneath the surface.
       </p>
 
     </div>
@@ -1033,19 +980,17 @@
     <div class="builder-panel">
 
       <div class="mini-heading">
-        BUILDING MATERIALS
+        ELEMENT BANK
       </div>
 
       <p>
-        Choose Atom or Molecule,
-        then construct the chemistry.
+        Select the elemental species you need.
       </p>
 
       <div
         id="seaElementBank"
         class="builder-element-bank"
-      >
-      </div>
+      ></div>
 
     </div>
 
@@ -1053,7 +998,7 @@
     <div class="build-zone">
 
       <div class="mini-heading">
-        YOUR BUILD
+        YOUR SPECIES
       </div>
 
       <div
@@ -1062,7 +1007,7 @@
       >
 
         <div class="empty-build-message">
-          Add chemical pieces to begin building.
+          Add elements to begin building.
         </div>
 
       </div>
@@ -1083,7 +1028,7 @@
           class="primary-button"
           type="button"
         >
-          🔎 Identify Species
+          🌊 Capture Species
         </button>
 
         <button
@@ -1100,11 +1045,9 @@
       <div
         id="seaBuildFeedback"
         class="builder-feedback"
-      >
-      </div>
+      ></div>
 
     </div>
-
 
   </div>
 
@@ -1112,15 +1055,13 @@
   <div
     id="seaDiscoveryCard"
     class="discovery-card"
-  >
-  </div>
+  ></div>
 
 </section>
 
 
-
 <!-- =====================================================
-     EVOLUTION
+     EVOLUTION LINES
 ====================================================== -->
 
 <section
@@ -1150,8 +1091,7 @@
     <p>
       Molecular species can change when
       the surrounding chemical environment changes.
-      Follow one chemical family through its transformations
-      instead of memorizing isolated formulas.
+      Follow the family instead of memorizing isolated formulas.
     </p>
 
   </div>
@@ -1180,6 +1120,8 @@
   >
 
 
+    <!-- PHOSPHATE / PORCUPINE -->
+
     <article class="evolution-card">
 
       <div class="evolution-card-top">
@@ -1195,7 +1137,7 @@
           </div>
 
           <h2>
-            Porcupine Phosphate Evolution
+            Phosphate Porcupine Evolution
           </h2>
 
         </div>
@@ -1204,22 +1146,10 @@
 
 
       <p>
-        The same H-PO(rcupine) changes protonation state
-        as the environment becomes more basic.
+        The same Porcupine family changes charge
+        as hydrogen is progressively removed
+        in increasingly basic environments.
       </p>
-
-
-      <div class="evolution-species-line">
-
-        <span>🦔</span>
-        <strong>→</strong>
-        <span>🦔</span>
-        <strong>→</strong>
-        <span>🦔</span>
-        <strong>→</strong>
-        <span>🦔</span>
-
-      </div>
 
 
       <div class="evolution-formulas">
@@ -1229,7 +1159,7 @@
         </span>
 
         <strong>
-          ⇌
+          →
         </strong>
 
         <span>
@@ -1237,7 +1167,7 @@
         </span>
 
         <strong>
-          ⇌
+          →
         </strong>
 
         <span>
@@ -1245,7 +1175,7 @@
         </span>
 
         <strong>
-          ⇌
+          →
         </strong>
 
         <span>
@@ -1254,14 +1184,10 @@
 
       </div>
 
-
-      <div class="evolution-caption">
-        Same Porcupine • changing protonation state
-      </div>
-
     </article>
 
 
+    <!-- WATER -->
 
     <article class="evolution-card">
 
@@ -1278,7 +1204,7 @@
           </div>
 
           <h2>
-            Octopus Water Evolution
+            Water Evolution
           </h2>
 
         </div>
@@ -1288,20 +1214,8 @@
 
       <p>
         Gain or lose protons and the hydrogen-oxygen
-        family shifts through hydronium,
-        water and hydroxide.
+        species changes identity.
       </p>
-
-
-      <div class="evolution-species-line">
-
-        <span>🐙</span>
-        <strong>→</strong>
-        <span>🐙</span>
-        <strong>→</strong>
-        <span>🐙</span>
-
-      </div>
 
 
       <div class="evolution-formulas">
@@ -1331,6 +1245,7 @@
     </article>
 
 
+    <!-- CHROMATE -->
 
     <article class="evolution-card">
 
@@ -1379,7 +1294,6 @@
 
     </article>
 
-
   </div>
 
 
@@ -1390,16 +1304,14 @@
     </strong>
 
     <p>
-      Molecular Farm treats related chemical species
-      as transformations of a family.
-      The changing formula tells the story
-      of what happened to the structure.
+      These are not unrelated formulas.
+      Each family shows how one chemical structure
+      transforms into another as its environment changes.
     </p>
 
   </div>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -1431,16 +1343,13 @@
     </h1>
 
     <p>
-      Your growing field guide
-      to everything you have captured
-      across Molecular Farm.
+      Your growing field guide to Molecular Farm.
     </p>
 
   </div>
 
 
   <div class="periodex-summary">
-
 
     <div class="periodex-summary-card">
 
@@ -1480,15 +1389,13 @@
 
     </div>
 
-
   </div>
 
 
   <div
     id="catalogue"
     class="catalogue"
-  >
-  </div>
+  ></div>
 
 </section>
 
@@ -1496,6 +1403,9 @@
 </main>
 
 
+<!-- =====================================================
+     FOOTER
+====================================================== -->
 
 <footer>
 
@@ -1512,7 +1422,11 @@
 </footer>
 
 
-<script src="molecularfarm.js"></script>
+<!-- MOLECULAR FARM GAME ENGINE -->
+
+<script
+  src="https://pattutoring.github.io/PAT-Games/molecularfarm.js"
+></script>
 
 
 </body>
