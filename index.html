@@ -63,6 +63,11 @@
   --blue: #467dad;
   --purple: #71558e;
 
+  --orange: #c47a36;
+  --rose: #a95d67;
+  --teal: #4e7f78;
+  --slate: #485565;
+
   --shadow: rgba(50,40,25,.14);
 }
 
@@ -150,7 +155,7 @@ h1 {
 .intro {
 
   max-width:
-    680px;
+    700px;
 
   margin:
     24px auto 0;
@@ -172,7 +177,7 @@ main {
 
   width:
     min(
-      1050px,
+      1120px,
       92%
     );
 
@@ -240,7 +245,7 @@ main {
     25px 22px;
 
   min-height:
-    255px;
+    270px;
 
   box-shadow:
     0 7px 18px
@@ -341,7 +346,7 @@ main {
 
 
 /* =====================================================
-   MOLECULAR FARM
+   EXISTING WORLDS
 ====================================================== */
 
 .molecular-farm {
@@ -359,11 +364,6 @@ main {
 }
 
 
-
-/* =====================================================
-   CONTRONYM
-====================================================== */
-
 .contronym {
 
   border-color:
@@ -379,11 +379,6 @@ main {
 }
 
 
-
-/* =====================================================
-   CLUE CARDS
-====================================================== */
-
 .clue-card {
 
   border-color:
@@ -391,10 +386,28 @@ main {
 }
 
 
+.clue-card
+.card-button {
 
-/* =====================================================
-   KOAN KAON
-====================================================== */
+  background:
+    var(--purple);
+}
+
+
+.molecular-bee {
+
+  border-color:
+    var(--gold);
+}
+
+
+.molecular-bee
+.card-button {
+
+  background:
+    #aa8229;
+}
+
 
 .koan-kaon {
 
@@ -411,36 +424,164 @@ main {
 }
 
 
+.cryptic-calculus {
+
+  border-color:
+    var(--brown);
+}
+
+
+.cryptic-calculus
+.card-button {
+
+  background:
+    var(--brown);
+}
+
+
 
 /* =====================================================
-   COMING SOON
+   NEW WORLDS
 ====================================================== */
 
-.coming-button {
+/* CANDY-CALCULUS */
 
-  display:
-    block;
+.candy-calculus {
+
+  border-color:
+    var(--orange);
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--paper),
+      #fff2df
+    );
+}
+
+
+.candy-calculus
+.card-button {
+
+  background:
+    var(--orange);
+}
+
+
+
+/* MEANING GRAPHS */
+
+.meaning-graphs {
+
+  border-color:
+    var(--blue);
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--paper),
+      #edf5fa
+    );
+}
+
+
+.meaning-graphs
+.card-button {
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--red),
+      var(--blue)
+    );
+}
+
+
+
+/* MYTHOPOETIC */
+
+.mythopoetic {
+
+  border-color:
+    var(--rose);
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--paper),
+      #f7edf0
+    );
+}
+
+
+.mythopoetic
+.card-button {
+
+  background:
+    var(--rose);
+}
+
+
+
+/* SENTENCE STANDARD MODEL */
+
+.sentence-model {
+
+  border-color:
+    var(--slate);
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--paper),
+      #edf0f3
+    );
+}
+
+
+.sentence-model
+.card-button {
+
+  background:
+    var(--slate);
+}
+
+
+
+/* =====================================================
+   SECTION DIVIDER
+====================================================== */
+
+.world-divider {
+
+  margin:
+    42px 0 24px;
 
   text-align:
     center;
+}
 
-  background:
-    #ddd5c7;
+
+.world-divider h2 {
+
+  margin-bottom:
+    6px;
+}
+
+
+.world-divider p {
+
+  max-width:
+    700px;
+
+  margin:
+    auto;
 
   color:
-    #736b61;
+    var(--brown);
 
-  padding:
-    13px;
-
-  border-radius:
-    12px;
-
-  font-weight:
-    bold;
-
-  margin-top:
-    12px;
+  line-height:
+    1.5;
 }
 
 
@@ -617,7 +758,7 @@ footer {
 
     <p>
       Explore chemistry, language,
-      mathematics and critical thinking.
+      mathematics, meaning and critical thinking.
     </p>
 
   </div>
@@ -661,6 +802,46 @@ footer {
         data-game="molecular_farm"
       >
         Enter Molecular Farm
+      </a>
+
+    </article>
+
+
+
+    <!-- =====================================================
+         MOLECULAR BEE
+    ====================================================== -->
+
+    <article
+      class="lab-card molecular-bee"
+    >
+
+      <div class="lab-icon">
+        🐝
+      </div>
+
+
+      <h2>
+        Molecular Bee
+      </h2>
+
+
+      <p>
+
+        Spell compounds, build atoms,
+        balance charges, and explore
+        chemistry through multiple
+        hive challenges.
+
+      </p>
+
+
+      <a
+        class="card-button game-link"
+        href="molecularbee.html"
+        data-game="molecular_bee"
+      >
+        Enter Molecular Bee
       </a>
 
     </article>
@@ -749,46 +930,6 @@ footer {
 
 
     <!-- =====================================================
-         MOLECULAR BEE
-    ====================================================== -->
-
-    <article
-      class="lab-card"
-    >
-
-      <div class="lab-icon">
-        🐝
-      </div>
-
-
-      <h2>
-        Molecular Bee
-      </h2>
-
-
-      <p>
-
-        Spell compounds, build atoms,
-        balance charges, and explore
-        chemistry through multiple
-        hive challenges.
-
-      </p>
-
-
-      <a
-        class="card-button game-link"
-        href="molecularbee.html"
-        data-game="molecular_bee"
-      >
-        Enter Molecular Bee
-      </a>
-
-    </article>
-
-
-
-    <!-- =====================================================
          KOAN KAON
     ====================================================== -->
 
@@ -833,7 +974,7 @@ footer {
     ====================================================== -->
 
     <article
-      class="lab-card"
+      class="lab-card cryptic-calculus"
     >
 
       <div class="lab-icon">
@@ -862,6 +1003,198 @@ footer {
         data-game="cryptic_calculus"
       >
         Enter Cryptic-Calculus
+      </a>
+
+    </article>
+
+
+  </div>
+
+
+
+  <!-- =====================================================
+       NEW SYSTEMS
+  ====================================================== -->
+
+  <div class="world-divider">
+
+    <h2>
+      New Experimental Systems
+    </h2>
+
+    <p>
+      Explore mathematical, semantic,
+      narrative and linguistic models
+      built around the same
+      reverse-engineering principle.
+    </p>
+
+  </div>
+
+
+
+  <div class="lab-grid">
+
+
+    <!-- =====================================================
+         CANDY CALCULUS
+    ====================================================== -->
+
+    <article
+      class="lab-card candy-calculus"
+    >
+
+      <div class="lab-icon">
+        🍬
+      </div>
+
+
+      <h2>
+        Oberlander! Candy-Calculus
+      </h2>
+
+
+      <p>
+
+        Turn algebra into something you can
+        unwrap. Explore Candy-Coated Functions,
+        FOIL, factoring, inequalities
+        and visual equation structure.
+
+      </p>
+
+
+      <a
+        class="card-button game-link"
+        href="candyalgebra.html"
+        data-game="candy_calculus"
+      >
+        Enter Candy-Calculus
+      </a>
+
+    </article>
+
+
+
+    <!-- =====================================================
+         MEANING GRAPHS
+    ====================================================== -->
+
+    <article
+      class="lab-card meaning-graphs"
+    >
+
+      <div class="lab-icon">
+        📈
+      </div>
+
+
+      <h2>
+        Meaning Graphs
+      </h2>
+
+
+      <p>
+
+        Map meaning across Transverse
+        and Conjugate axes.
+
+        Explore polarity, zeroes,
+        vertices, symmetry and
+        contextual transformations.
+
+      </p>
+
+
+      <a
+        class="card-button game-link"
+        href="meaninggraphs.html"
+        data-game="meaning_graphs"
+      >
+        Explore Meaning Graphs
+      </a>
+
+    </article>
+
+
+
+    <!-- =====================================================
+         MYTHOPOETIC DIAGRAMS
+    ====================================================== -->
+
+    <article
+      class="lab-card mythopoetic"
+    >
+
+      <div class="lab-icon">
+        📖
+      </div>
+
+
+      <h2>
+        Mythopoetic Diagrams
+      </h2>
+
+
+      <p>
+
+        Model stories with mathematics.
+
+        Explore Parabolic-Parables,
+        character development,
+        oppositions, similes
+        and narrative geometry.
+
+      </p>
+
+
+      <a
+        class="card-button game-link"
+        href="mythopoetic.html"
+        data-game="mythopoetic_diagrams"
+      >
+        Enter Mythopoetic Diagrams
+      </a>
+
+    </article>
+
+
+
+    <!-- =====================================================
+         SENTENCE STANDARD MODEL
+    ====================================================== -->
+
+    <article
+      class="lab-card sentence-model"
+    >
+
+      <div class="lab-icon">
+        ⚛️
+      </div>
+
+
+      <h2>
+        Sentence Standard Model
+      </h2>
+
+
+      <p>
+
+        Explore language as a system
+        of interacting structures:
+        semantic mass, syntactic charge,
+        context fields and
+        sentence transformations.
+
+      </p>
+
+
+      <a
+        class="card-button game-link"
+        href="sentencestandardmodel.html"
+        data-game="sentence_standard_model"
+      >
+        Enter the Standard Model
       </a>
 
     </article>
@@ -925,8 +1258,9 @@ footer {
 
     <p>
 
-      New puzzles, Molecular Farm species,
-      Clue-Cards, games and interactive
+      New puzzles, chemistry species,
+      mathematical worlds, Meaning Graphs,
+      narrative diagrams and interactive
       experiments are being added over time.
 
     </p>
@@ -949,14 +1283,6 @@ footer {
 
 <!-- =====================================================
      GAME CLICK ANALYTICS
-
-     Every link with class="game-link"
-     automatically sends:
-
-     game_play
-     game_name
-     destination
-
 ====================================================== -->
 
 <script>
@@ -1004,21 +1330,6 @@ document.addEventListener(
 
                   }
                 );
-
-
-                /*
-                  Also record a unique event
-                  for each individual game.
-
-                  Examples:
-
-                  play_molecular_farm
-                  play_contronym
-                  play_clue_cards
-                  play_molecular_bee
-                  play_koan_kaon
-                  play_cryptic_calculus
-                */
 
 
                 gtag(
