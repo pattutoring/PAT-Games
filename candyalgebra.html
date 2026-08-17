@@ -1,1 +1,3232 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>Oberlander! Candy-Calculus | PAT Learning Lab</title>
+
+
+<!-- =====================================================
+     GOOGLE ANALYTICS
+====================================================== -->
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-QCEPJP202V"
+></script>
+
+<script>
+
+window.dataLayer =
+  window.dataLayer || [];
+
+function gtag() {
+  dataLayer.push(arguments);
+}
+
+gtag("js", new Date());
+
+gtag(
+  "config",
+  "G-QCEPJP202V"
+);
+
+</script>
+
+
+
+<style>
+
+:root {
+
+  --cream: #fff8e8;
+  --paper: #fffdf7;
+  --ink: #29261f;
+
+  --brown: #8b633e;
+  --brown-dark: #604229;
+
+  --gold: #d6aa44;
+  --orange: #d47b38;
+  --pink: #d6728b;
+  --red: #bb514c;
+  --purple: #775691;
+  --green: #628154;
+  --blue: #4e82ad;
+  --yellow: #f0c84d;
+
+  --shadow: rgba(60,43,24,.14);
+}
+
+
+
+/* =====================================================
+   GLOBAL
+====================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+
+  margin: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fff8e8,
+      #fff4dc
+    );
+
+  color: var(--ink);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+
+/* =====================================================
+   HEADER
+====================================================== */
+
+header {
+
+  padding:
+    28px 20px 22px;
+
+  text-align: center;
+}
+
+.lab-link {
+
+  display: inline-block;
+
+  margin-bottom: 17px;
+
+  padding: 8px 13px;
+
+  border:
+    2px solid
+    var(--brown);
+
+  border-radius: 10px;
+
+  background:
+    var(--paper);
+
+  color:
+    var(--brown);
+
+  font-weight: bold;
+
+  text-decoration: none;
+}
+
+.oberlander {
+
+  color:
+    var(--orange);
+
+  font-size:
+    clamp(
+      2.1rem,
+      8vw,
+      4.4rem
+    );
+
+  font-weight: 900;
+
+  letter-spacing: 1px;
+}
+
+header h1 {
+
+  margin:
+    4px 0 7px;
+
+  font-size:
+    clamp(
+      1.8rem,
+      6vw,
+      3.2rem
+    );
+}
+
+.tagline {
+
+  color:
+    var(--purple);
+
+  font-weight: bold;
+
+  font-size: 1.05rem;
+}
+
+.header-copy {
+
+  max-width: 720px;
+
+  margin:
+    14px auto 0;
+
+  color:
+    #695846;
+
+  line-height: 1.55;
+}
+
+
+
+/* =====================================================
+   MAIN
+====================================================== */
+
+main {
+
+  width:
+    min(
+      1120px,
+      94%
+    );
+
+  margin: auto;
+
+  padding-bottom: 70px;
+}
+
+.section-heading {
+
+  max-width: 760px;
+
+  margin:
+    34px auto 21px;
+
+  text-align: center;
+}
+
+.section-heading h2 {
+
+  margin:
+    5px 0 7px;
+}
+
+.section-heading p {
+
+  margin: auto;
+
+  color:
+    #6d604e;
+
+  line-height: 1.5;
+}
+
+.kicker {
+
+  color:
+    var(--orange);
+
+  font-size: .72rem;
+
+  font-weight: 900;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+
+
+/* =====================================================
+   INTRO
+====================================================== */
+
+.intro-card {
+
+  max-width: 860px;
+
+  margin:
+    10px auto 30px;
+
+  padding:
+    24px;
+
+  border:
+    2px solid
+    var(--gold);
+
+  border-radius: 20px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0 7px 18px
+    var(--shadow);
+
+  text-align: center;
+}
+
+.intro-card h2 {
+  margin: 7px 0;
+}
+
+.intro-card p {
+  line-height: 1.55;
+}
+
+.wrapper-demo {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+
+  margin-top: 18px;
+}
+
+.wrapper-piece {
+
+  padding:
+    10px 14px;
+
+  border:
+    2px solid
+    var(--pink);
+
+  border-radius:
+    999px;
+
+  background:
+    #fff0f4;
+
+  font-weight: bold;
+}
+
+.wrapper-arrow {
+
+  color:
+    var(--orange);
+
+  font-size: 1.4rem;
+
+  font-weight: bold;
+}
+
+
+
+/* =====================================================
+   CANDY MAP
+====================================================== */
+
+.candy-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(
+        170px,
+        1fr
+      )
+    );
+
+  gap: 12px;
+}
+
+.candy-card {
+
+  min-height: 170px;
+
+  padding:
+    15px 12px;
+
+  border:
+    2px solid
+    #dac8a9;
+
+  border-radius: 16px;
+
+  background:
+    var(--paper);
+
+  color:
+    var(--ink);
+
+  box-shadow:
+    0 4px 11px
+    rgba(60,43,24,.08);
+
+  text-align: center;
+
+  transition:
+    transform .15s ease,
+    border-color .15s ease,
+    background .15s ease;
+}
+
+.candy-card:hover {
+
+  transform:
+    translateY(-3px);
+}
+
+.candy-card.active {
+
+  border-color:
+    var(--orange);
+
+  background:
+    #fff1da;
+}
+
+.candy-graphic {
+
+  min-height: 58px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 2.6rem;
+}
+
+.candy-card strong {
+
+  display: block;
+
+  margin:
+    6px 0 5px;
+}
+
+.candy-card small {
+
+  color:
+    #6d604e;
+
+  line-height: 1.3;
+}
+
+
+
+/* =====================================================
+   PLAY LAB
+====================================================== */
+
+.play-lab {
+
+  margin-top: 25px;
+
+  padding:
+    clamp(
+      18px,
+      4vw,
+      28px
+    );
+
+  border:
+    3px solid
+    var(--orange);
+
+  border-radius: 22px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0 8px 22px
+    var(--shadow);
+}
+
+.lab-top {
+
+  display: grid;
+
+  grid-template-columns:
+    100px 1fr;
+
+  gap: 18px;
+
+  align-items: center;
+}
+
+.big-candy {
+
+  width: 96px;
+  height: 96px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border:
+    3px solid
+    var(--gold);
+
+  border-radius: 50%;
+
+  background:
+    #fff3ce;
+
+  font-size: 3.7rem;
+}
+
+.lab-title h2 {
+
+  margin:
+    4px 0;
+}
+
+.lab-description {
+
+  color:
+    #655848;
+
+  line-height: 1.5;
+}
+
+
+
+/* =====================================================
+   VISUAL BOARD
+====================================================== */
+
+.visual-board {
+
+  min-height: 170px;
+
+  margin:
+    22px 0 18px;
+
+  padding: 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border:
+    2px dashed
+    #d3be94;
+
+  border-radius: 16px;
+
+  background:
+    var(--cream);
+
+  overflow: hidden;
+
+  text-align: center;
+}
+
+.visual-board-inner {
+
+  width: 100%;
+}
+
+.visual-symbol {
+
+  font-size:
+    clamp(
+      2rem,
+      8vw,
+      4rem
+    );
+
+  font-weight: 900;
+}
+
+.visual-equation {
+
+  margin-top: 10px;
+
+  color:
+    var(--purple);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    clamp(
+      1rem,
+      4vw,
+      1.35rem
+    );
+
+  font-weight: bold;
+}
+
+
+
+/* =====================================================
+   GENERIC GAME
+====================================================== */
+
+.game-panel {
+
+  max-width: 720px;
+
+  margin: auto;
+
+  padding: 20px;
+
+  border:
+    2px solid
+    #ded0b6;
+
+  border-radius: 16px;
+
+  background:
+    #fffef9;
+
+}
+
+.game-question {
+
+  margin-bottom: 15px;
+
+  font-size: 1.08rem;
+
+  font-weight: bold;
+
+  line-height: 1.45;
+
+  text-align: center;
+}
+
+.game-input-row {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+}
+
+.game-input-row input,
+.game-input-row select {
+
+  min-width: 170px;
+
+  padding:
+    11px 12px;
+
+  border:
+    2px solid
+    #c7b38e;
+
+  border-radius: 9px;
+
+  background:
+    white;
+
+  text-align: center;
+}
+
+.primary-button,
+.secondary-button {
+
+  padding:
+    11px 15px;
+
+  border-radius: 9px;
+
+  font-weight: bold;
+}
+
+.primary-button {
+
+  border:
+    2px solid
+    var(--orange);
+
+  background:
+    var(--orange);
+
+  color:
+    white;
+}
+
+.secondary-button {
+
+  border:
+    2px solid
+    var(--brown);
+
+  background:
+    white;
+
+  color:
+    var(--brown);
+}
+
+.feedback {
+
+  min-height: 33px;
+
+  margin-top: 13px;
+
+  font-weight: bold;
+
+  line-height: 1.4;
+
+  text-align: center;
+}
+
+
+
+/* =====================================================
+   COORDINATE PLANE
+====================================================== */
+
+.coordinate-plane {
+
+  position: relative;
+
+  width:
+    min(
+      320px,
+      90vw
+    );
+
+  height: 260px;
+
+  margin: auto;
+
+  border:
+    2px solid
+    #c9b792;
+
+  border-radius: 10px;
+
+  background-color:
+    #fffdf7;
+
+  background-image:
+
+    linear-gradient(
+      #e7ded0 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      #e7ded0 1px,
+      transparent 1px
+    );
+
+  background-size:
+    26px 26px;
+}
+
+.x-axis-line {
+
+  position: absolute;
+
+  left: 0;
+
+  top: 50%;
+
+  width: 100%;
+
+  height: 2px;
+
+  background:
+    var(--blue);
+}
+
+.y-axis-line {
+
+  position: absolute;
+
+  left: 50%;
+
+  top: 0;
+
+  width: 2px;
+
+  height: 100%;
+
+  background:
+    var(--red);
+}
+
+.dot {
+
+  position: absolute;
+
+  width: 22px;
+
+  height: 22px;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  border:
+    3px solid white;
+
+  border-radius: 50%;
+
+  background:
+    var(--pink);
+
+  box-shadow:
+    0 0 0 2px
+    var(--red);
+}
+
+
+
+/* =====================================================
+   LICORICE LINE
+====================================================== */
+
+.licorice-line {
+
+  position: relative;
+
+  width:
+    min(
+      420px,
+      92%
+    );
+
+  height: 170px;
+
+  margin: auto;
+}
+
+.licorice-stick {
+
+  position: absolute;
+
+  left: 8%;
+  bottom: 22%;
+
+  width: 84%;
+  height: 12px;
+
+  transform:
+    rotate(-18deg);
+
+  border-radius:
+    999px;
+
+  background:
+    #332d2b;
+
+  box-shadow:
+    0 5px 7px
+    rgba(0,0,0,.18);
+}
+
+
+
+/* =====================================================
+   TAFFY
+====================================================== */
+
+.taffy-shape {
+
+  width: 130px;
+  height: 55px;
+
+  margin: auto;
+
+  border-radius:
+    60% 40% 55% 45%;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff9fb6,
+      #f3c570
+    );
+
+  transition:
+    transform .4s ease;
+}
+
+
+
+/* =====================================================
+   ANGLES
+====================================================== */
+
+.angle-graphic {
+
+  position: relative;
+
+  width: 210px;
+  height: 160px;
+
+  margin: auto;
+}
+
+.angle-ray {
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 20%;
+
+  width: 100px;
+  height: 4px;
+
+  transform-origin:
+    left center;
+
+  border-radius:
+    999px;
+
+  background:
+    var(--purple);
+}
+
+.angle-one {
+  transform:
+    rotate(0deg);
+}
+
+.angle-two {
+  transform:
+    rotate(-55deg);
+}
+
+
+
+/* =====================================================
+   WAFER
+====================================================== */
+
+.wafer {
+
+  width:
+    min(
+      300px,
+      90%
+    );
+
+  margin: auto;
+
+  overflow: hidden;
+
+  border:
+    3px solid
+    var(--brown);
+
+  border-radius: 10px;
+}
+
+.wafer-layer {
+
+  height: 28px;
+
+  border-bottom:
+    2px solid
+    var(--brown);
+
+  background:
+    #dfb47a;
+}
+
+.wafer-layer:nth-child(even) {
+
+  background:
+    #6f442e;
+}
+
+.wafer-layer:last-child {
+
+  border-bottom: 0;
+}
+
+
+
+/* =====================================================
+   EGG
+====================================================== */
+
+.candy-egg {
+
+  width: 140px;
+  height: 180px;
+
+  margin: auto;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border:
+    5px solid
+    var(--pink);
+
+  border-radius:
+    50% 50% 46% 46%;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ffd7e0,
+      #fff1bc
+    );
+
+  color:
+    var(--purple);
+
+  font-size: 1.3rem;
+
+  font-weight: bold;
+}
+
+
+
+/* =====================================================
+   LOLLIPOP
+====================================================== */
+
+.lollipop {
+
+  position: relative;
+
+  width: 150px;
+  height: 210px;
+
+  margin: auto;
+}
+
+.lollipop-head {
+
+  position: absolute;
+
+  top: 8px;
+  left: 25px;
+
+  width: 100px;
+  height: 100px;
+
+  border:
+    7px solid
+    white;
+
+  border-radius: 50%;
+
+  background:
+    conic-gradient(
+      var(--pink),
+      white,
+      var(--blue),
+      white,
+      var(--pink)
+    );
+
+  box-shadow:
+    0 0 0 3px
+    var(--pink);
+}
+
+.lollipop-stick {
+
+  position: absolute;
+
+  top: 105px;
+  left: 71px;
+
+  width: 9px;
+  height: 100px;
+
+  background:
+    #d5c4a6;
+}
+
+
+
+/* =====================================================
+   SOUR PATCH
+====================================================== */
+
+.inverse-row {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+}
+
+.inverse-box {
+
+  padding:
+    11px 13px;
+
+  border-radius: 12px;
+
+  font-weight: bold;
+}
+
+.sour {
+
+  background:
+    #d8ee8d;
+}
+
+.sweet {
+
+  background:
+    #f4afc5;
+}
+
+
+
+/* =====================================================
+   POP ROCKS
+====================================================== */
+
+.pop-rocks {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+}
+
+.rock {
+
+  width: 22px;
+  height: 22px;
+
+  transform:
+    rotate(23deg);
+
+  background:
+    var(--red);
+}
+
+.rock:nth-child(2n) {
+
+  background:
+    var(--blue);
+}
+
+.rock:nth-child(3n) {
+
+  background:
+    var(--yellow);
+}
+
+
+
+/* =====================================================
+   GUMBALLS
+====================================================== */
+
+.gumball-machine {
+
+  max-width: 320px;
+
+  margin: auto;
+
+  padding:
+    18px;
+
+  border:
+    4px solid
+    var(--red);
+
+  border-radius:
+    90px 90px 25px 25px;
+
+  background:
+    #fff5f5;
+}
+
+.gumballs {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  flex-wrap: wrap;
+}
+
+.gumball {
+
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    var(--pink);
+
+  font-size: .8rem;
+
+  font-weight: bold;
+}
+
+
+
+/* =====================================================
+   FORTUNE COOKIE
+====================================================== */
+
+.cookie {
+
+  position: relative;
+
+  width: 190px;
+  height: 110px;
+
+  margin: auto;
+
+  border-radius:
+    60% 60% 45% 45%;
+
+  background:
+    #dda45b;
+
+  box-shadow:
+    inset 0 -12px 0
+    rgba(150,91,34,.15);
+}
+
+.fortune-slip {
+
+  position: absolute;
+
+  left: 30px;
+  top: 43px;
+
+  width: 130px;
+
+  padding: 6px;
+
+  border:
+    1px solid
+    #aaa;
+
+  background:
+    white;
+
+  font-size: .75rem;
+}
+
+
+
+/* =====================================================
+   CHOCOLATE BOX
+====================================================== */
+
+.chocolate-box {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      52px
+    );
+
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 15px;
+
+  border:
+    5px solid
+    #8b3f3f;
+
+  border-radius: 16px;
+
+  background:
+    #c86c6c;
+}
+
+.chocolate {
+
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border:
+    4px solid
+    #704331;
+
+  border-radius:
+    8px 14px 8px 14px;
+
+  background:
+    #986348;
+}
+
+
+
+/* =====================================================
+   PROGRESS
+====================================================== */
+
+.progress-box {
+
+  margin:
+    34px auto 0;
+
+  padding:
+    20px;
+
+  border:
+    2px solid
+    var(--green);
+
+  border-radius: 16px;
+
+  background:
+    #eef5e9;
+
+  text-align: center;
+}
+
+.progress-row {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  flex-wrap: wrap;
+
+  margin-top: 12px;
+}
+
+.progress-dot {
+
+  width: 22px;
+  height: 22px;
+
+  border:
+    2px solid
+    var(--green);
+
+  border-radius: 50%;
+
+  background:
+    white;
+}
+
+.progress-dot.solved {
+
+  background:
+    var(--green);
+}
+
+
+
+/* =====================================================
+   FOOTER
+====================================================== */
+
+footer {
+
+  padding:
+    34px 20px;
+
+  color:
+    #695a48;
+
+  font-size: .82rem;
+
+  line-height: 1.6;
+
+  text-align: center;
+}
+
+
+
+/* =====================================================
+   MOBILE
+====================================================== */
+
+@media
+(max-width: 650px) {
+
+  .lab-top {
+
+    grid-template-columns:
+      1fr;
+
+    text-align: center;
+  }
+
+  .big-candy {
+
+    margin: auto;
+  }
+
+  .candy-grid {
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+  .candy-card {
+
+    min-height: 155px;
+  }
+
+}
+
+
+@media
+(max-width: 390px) {
+
+  .candy-grid {
+
+    grid-template-columns:
+      1fr;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+<header>
+
+<a
+  class="lab-link"
+  href="index.html"
+>
+  ← PAT Learning Lab
+</a>
+
+
+<div class="oberlander">
+  OBERLANDER!
+</div>
+
+
+<h1>
+  🍬 CANDY-CALCULUS
+</h1>
+
+
+<div class="tagline">
+  Unwrap the operation.
+</div>
+
+
+<p class="header-copy">
+
+  Every candy hides a mathematical structure.
+
+  Pick a flavor, manipulate the model,
+  and reconstruct the mathematics underneath.
+
+</p>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =====================================================
+     INTRO
+====================================================== -->
+
+<section class="intro-card">
+
+<div class="kicker">
+  THE CANDY-COATED PRINCIPLE
+</div>
+
+<h2>
+  The wrapper changes. The structure remains.
+</h2>
+
+<p>
+
+  Functions, coordinates, equations,
+  transformations and probability
+  can all be treated as things you can
+  unwrap, stretch, crack, reverse,
+  layer or recombine.
+
+</p>
+
+
+<div class="wrapper-demo">
+
+<span class="wrapper-piece">
+  INPUT
+</span>
+
+<span class="wrapper-arrow">
+  →
+</span>
+
+<span class="wrapper-piece">
+  🍬 STRUCTURE
+</span>
+
+<span class="wrapper-arrow">
+  →
+</span>
+
+<span class="wrapper-piece">
+  OUTPUT
+</span>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CANDY MAP
+====================================================== -->
+
+<div class="section-heading">
+
+<div class="kicker">
+  THE CANDY COUNTER
+</div>
+
+<h2>
+  Choose a Mathematical Flavor
+</h2>
+
+<p>
+  Every candy below already contains
+  a small playable prototype.
+</p>
+
+</div>
+
+
+<div
+  id="candyGrid"
+  class="candy-grid"
+></div>
+
+
+
+<!-- =====================================================
+     PLAY LAB
+====================================================== -->
+
+<section
+  id="playLab"
+  class="play-lab"
+>
+
+<div class="lab-top">
+
+<div
+  id="bigCandy"
+  class="big-candy"
+>
+  🍬
+</div>
+
+
+<div class="lab-title">
+
+<div
+  id="conceptCategory"
+  class="kicker"
+>
+  FUNCTION OPERATIONS
+</div>
+
+<h2 id="conceptTitle">
+  Candy-Coated Composition
+</h2>
+
+<p
+  id="conceptDescription"
+  class="lab-description"
+>
+</p>
+
+</div>
+
+</div>
+
+
+<div
+  id="visualBoard"
+  class="visual-board"
+></div>
+
+
+<div
+  id="gamePanel"
+  class="game-panel"
+></div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROGRESS
+====================================================== -->
+
+<section class="progress-box">
+
+<div class="kicker">
+  CANDY BAG
+</div>
+
+<h2>
+  Mathematical Flavors Tried
+</h2>
+
+<p>
+
+  Complete each mini-game to fill your
+  Candy-Calculus bag.
+
+</p>
+
+
+<strong id="progressText">
+  0 / 15 completed
+</strong>
+
+
+<div
+  id="progressRow"
+  class="progress-row"
+></div>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+<strong>
+  Oberlander! Candy-Calculus™
+</strong>
+
+• PAT Learning Lab
+
+<br>
+
+Unwrap it.
+Manipulate it.
+Reconstruct it.
+
+</footer>
+
+
+
+<script>
+
+
+/* =====================================================
+   ANALYTICS
+====================================================== */
+
+function trackCandyEvent(
+  eventName,
+  data
+) {
+
+  if (
+    typeof gtag !==
+    "function"
+  ) {
+
+    return;
+
+  }
+
+  gtag(
+    "event",
+    eventName,
+    {
+      game_name:
+        "candy_calculus",
+
+      ...(data || {})
+    }
+  );
+
+}
+
+
+
+/* =====================================================
+   STATE
+====================================================== */
+
+let activeIndex =
+  0;
+
+
+const completed =
+  new Set();
+
+
+
+/* =====================================================
+   CONCEPTS
+====================================================== */
+
+const concepts = [
+
+
+/* 01 COMPOSITION */
+
+{
+  id:
+    "composition",
+
+  icon:
+    "🍬",
+
+  title:
+    "Candy-Coated Composition",
+
+  category:
+    "FUNCTION COMPOSITION",
+
+  short:
+    "Functions wrapped inside functions.",
+
+  description:
+    "Evaluate the inside wrapper first, then feed that output into the outside wrapper.",
+
+  visual:
+    function () {
+
+      return `
+
+        <div class="visual-board-inner">
+
+          <div class="visual-symbol">
+            🍬( 🍭( x ) )
+          </div>
+
+          <div class="visual-equation">
+            f(g(x))
+          </div>
+
+        </div>
+
+      `;
+
+    },
+
+  question:
+    "If g(x) = 2x and f(x) = x + 3, what is f(g(4))?",
+
+  answer:
+    "11",
+
+  hint:
+    "Do g(4) first.",
+
+  explanation:
+    "g(4) = 8, then f(8) = 11."
+
+},
+
+
+
+/* 02 GOBSTOPPER */
+
+{
+  id:
+    "gobstopper",
+
+  icon:
+    "🔮",
+
+  title:
+    "Everlasting Gobstoppers",
+
+  category:
+    "ITERATED FUNCTIONS",
+
+  short:
+    "Layer after layer of the same function.",
+
+  description:
+    "An Everlasting Gobstopper models repeated composition: keep feeding the output back into the same rule.",
+
+  visual:
+    function () {
+
+      return `
+
+        <div class="visual-board-inner">
+
+          <div class="visual-symbol">
+            🔴🟠🟡🟢🔵
+          </div>
+
+          <div class="visual-equation">
+            f(f(f(x)))
+          </div>
+
+        </div>
+
+      `;
+
+    },
+
+  question:
+    "Start with 1. Apply f(x) = x + 2 three times. What value remains at the center?",
+
+  answer:
+    "7",
+
+  hint:
+    "1 → 3 → 5 → ?",
+
+  explanation:
+    "Three layers give 1 → 3 → 5 → 7."
+
+},
+
+
+
+/* 03 FOIL */
+
+{
+  id:
+    "foil",
+
+  icon:
+    "🍫",
+
+  title:
+    "FOILing Candy Wrappers",
+
+  category:
+    "BINOMIAL MULTIPLICATION",
+
+  short:
+    "Unwrap every term.",
+
+  description:
+    "Every term in one wrapper must interact with every term in the other wrapper.",
+
+  visual:
+    function () {
+
+      return `
+
+        <div class="visual-board-inner">
+
+          <div class="visual-symbol">
+            🍫 + 🍬 &nbsp; × &nbsp; 🍫 + 🍭
+          </div>
+
+          <div class="visual-equation">
+            (x + 2)(x + 3)
+          </div>
+
+        </div>
+
+      `;
+
+    },
+
+  question:
+    "Expand (x + 2)(x + 3). What is the coefficient of x?",
+
+  answer:
+    "5",
+
+  hint:
+    "The Outside and Inside products are 3x and 2x.",
+
+  explanation:
+    "x² + 3x + 2x + 6 = x² + 5x + 6."
+
+},
+
+
+
+/* 04 CANDY DOTS */
+
+{
+  id:
+    "dots",
+
+  icon:
+    "🔴",
+
+  title:
+    "Candy Dots",
+
+  category:
+    "COORDINATE PLANE",
+
+  short:
+    "Ordered pairs become candy positions.",
+
+  description:
+    "Every candy dot has an x-position and a y-position. Together they form an ordered pair.",
+
+  visual:
+    function () {
+
+      return `
+
+        <div class="coordinate-plane">
+
+          <div class="x-axis-line"></div>
+          <div class="y-axis-line"></div>
+
+          <div
+            class="dot"
+            style="
+              left: 75%;
+              top: 25%;
+            "
+          ></div>
+
+        </div>
+
+        <div class="visual-equation">
+          Find the dot's ordered pair.
+        </div>
+
+      `;
+
+    },
+
+  question:
+    "The candy is 2 units right and 2 units up from the origin. Enter the ordered pair without parentheses, like 2,3.",
+
+  answer:
+    "2,2",
+
+  hint:
+    "x comes first, then y.",
+
+  explanation:
+    "Right 2 gives x = 2 and up 2 gives y = 2."
+
+},
+
+
+
+/* 05 LICORICE */
+
+{
+  id:
+    "licorice",
+
+  icon:
+    "➖",
+
+  title:
+    "Licorice Linear Functions",
+
+  category:
+    "LINEAR FUNCTIONS",
+
+  short:
+    "Slope stretches the licorice line.",
+
+  description:
+    "A straight strip of licorice models a linear function. Its tilt is the slope and its starting height is the y-intercept.",
+
+  visual:
+    function () {
+
+      return `
+
+        <div class="licorice-line">
+          <div class="licorice-stick"></div>
+        </div>
+
+        <div class="visual-equation">
+          y = 2x + 1
+        </div>
+
+      `;
+
+    },
+
+  question:
+    "For y = 2x + 1, what is y when x = 3?",
+
+  answer:
+    "7",
+
+  hint:
+    "Multiply 3 by 2, then add 1.",
+
+  explanation:
+    "2(3) + 1 = 7."
+
+},
+
+
+
+/* 06 TAFFY */
+
+{
+  id:
+    "taffy",
+
+  icon:
+    "🍥",
+
+  title:
+    "Taffy Transformations",
+
+  category:
+    "FUNCTION TRANSFORMATIONS",
+
+  short:
+    "Stretch, shift and reflect the graph.",
+
+  description:
+    "Taffy can stretch, compress, shift or flip just like the graph of a function.",
+
+  visual:
+    function () {
+
+      return `
+
+        <div class="taffy-shape"></div>
+
+        <div class="visual-equation">
+          f(x) → 2f(x)
+        </div>
+
+      `;
+
+    },
+
+  question:
+    "If y = f(x) becomes y = 2f(x), what type of transformation occurs?",
+
+  answer:
+    "vertical stretch",
+
+  hint:
+    "All y-values are doubled.",
+
+  explanation:
+    "Multiplying the output by 2 creates a vertical stretch."
+
+},
+
+
+
+/* 07 ANGLES */
+
+{
+  id:
+    "angles",
+
+  icon:
+    "📐",
+
+  title:
+    "Candy Angle Relations",
+
+  category:
+    "GEOMETRY",
+
+  short:
+    "Angles fit together like candy pieces.",
+
+  description:
+    "Complementary, supplementary and vertical relationships allow one angle to reconstruct another.",
+
+  visual:
+    function () {
+
+      return `
+
+        <div class="angle-graphic">
+
+          <div class="angle-ray angle-one"></div>
+
+          <div class="angle-ray angle-two"></div>
+
+        </div>
+
+        <div class="visual-equation">
+          55° + ? = 90°
+        </div>
+
+      `;
+
+    },
+
+  question:
+    "What angle is complementary to 55°?",
+
+  answer:
+    "35",
+
+  hint:
+    "Complementary angles total 90°.",
+
+  explanation:
+    "90 − 55 = 35°."
+
+},
+
+
+
+/* 08 WAFER */
+
+{
+  id:
+    "wafer",
+
+  icon:
+    "🍫",
+
+  title:
+    "Wafer Bars",
+
+  category:
+    "FRACTIONS & RATIOS",
+
+  short:
+    "Layers reveal part-to-whole relationships.",
+
+  description:
+    "A wafer bar can be separated into equal layers, making fractions and ratios visible.",
+
+  visual:
+    function () {
+
+      return `
+
+        <div class="wafer">
+
+          <div class="wafer-layer"></div>
+          <div class="wafer-layer"></div>
+          <div class="wafer-layer"></div>
+          <div class="wafer-layer"></div>
+
+        </div>
+
+        <div class="visual-equation">
+          2 chocolate layers out of 4 total
+        </div>
+
+      `;
+
+    },
+
+  question:
+    "Two of four equal wafer layers are chocolate. What fraction of the bar is chocolate?",
+
+  answer:
+    "1/2",
+
+  hint:
+    "2/4 simplifies.",
+
+  explanation:
+    "2/4 = 1/2."
+
+},
+
+
+
+/* 09 EGG */
+
+{
+  id:
+    "egg",
+
+  icon:
+    "🥚",
+
+  title:
+    "Candy Egg Equations",
+
+  category:
+    "ORDER OF OPERATIONS",
+
+  short:
+    "Crack one mathematical layer at a time.",
+
+  description:
+    "Nested candy eggs model nested operations. Work from the innermost structure outward.",
+
+  visual:
+    function () {
+
+      return `
+
+        <div class="candy-egg">
+          3(2 + 4)
+        </div>
+
+        <div class="visual-equation">
+          Crack the parentheses first.
+        </div>
+
+      `;
+
+    },
+
+  question:
+    "Evaluate 3(2 + 4) − 5.",
+
+  answer:
+    "13",
+
+  hint:
+    "First crack open 2 + 4.",
+
+  explanation:
+    "2 + 4 = 6, then 3×6 = 18, then 18 − 5 = 13."
+
+},
+
+
+
+/* 10 LOLLIPOP */
+
+{
+  id:
+    "limits",
+
+  icon:
+    "🍭",
+
+  title:
+    "Lollipop Limits",
+
+  category:
+    "CALCULUS",
+
+  short:
+    "Approach the center.",
+
+  description:
+    "A limit asks where the function is heading as the input gets closer and closer to a target.",
+
+  visual:
+    function () {
+
+      return `
+
+        <div class="lollipop">
+
+          <div class="lollipop-head"></div>
+          <div class="lollipop-stick"></div>
+
+        </div>
+
+        <div class="visual-equation">
+          lim x→2 (x + 3)
+        </div>
+
+      `;
+
+    },
+
+  question:
+    "What is lim x→2 (x + 3)?",
+
+  answer:
+    "5",
+
+  hint:
+    "This function is continuous, so substitute x = 2.",
+
+  explanation:
+    "2 + 3 = 5."
+
+},
+
+
+
+/* 11 SOUR PATCH */
+
+{
+  id:
+    "inverse",
+
+  icon:
+    "😖",
+
+  title:
+    "Sour Patch Inverses",
+
+  category:
+    "INVERSE FUNCTIONS",
+
+  short:
+    "Sour then sweet: undo the operation.",
+
+  description:
+    "An inverse reverses what the original function did, returning you to the starting input.",
+
+  visual:
+    function () {
+
+      return `
+
+        <div class="inverse-row">
+
+          <span class="inverse-box sour">
+            x + 5
+          </span>
+
+          <strong>
+            →
+          </strong>
+
+          <span class="inverse-box sweet">
+            x − 5
+          </span>
+
+        </div>
+
+        <div class="visual-equation">
+          f⁻¹(f(x)) = x
+        </div>
+
+      `;
+
+    },
+
+  question:
+    "If f(x) = x + 5, what operation does f⁻¹ use?",
+
+  answer:
+    "subtract 5",
+
+  hint:
+    "Undo addition.",
+
+  explanation:
+    "The inverse of adding 5 is subtracting 5."
+
+},
+
+
+
+/* 12 POP ROCKS */
+
+{
+  id:
+    "powers",
+
+  icon:
+    "💥",
+
+  title:
+    "Pop Rocks Powers",
+
+  category:
+    "EXPONENTS",
+
+  short:
+    "Repeated multiplication pops into powers.",
+
+  description:
+    "An exponent compresses repeated multiplication into a compact mathematical burst.",
+
+  visual:
+    function () {
+
+      return `
+
+        <div class="pop-rocks">
+
+          <div class="rock"></div>
+          <div class="rock"></div>
+          <div class="rock"></div>
+          <div class="rock"></div>
+          <div class="rock"></div>
+          <div class="rock"></div>
+          <div class="rock"></div>
+          <div class="rock"></div>
+
+        </div>
+
+        <div class="visual-equation">
+          2 × 2 × 2 = 2³
+        </div>
+
+      `;
+
+    },
+
+  question:
+    "What is 3⁴?",
+
+  answer:
+    "81",
+
+  hint:
+    "3 × 3 × 3 × 3.",
+
+  explanation:
+    "3⁴ = 81."
+
+},
+
+
+
+/* 13 GUMBALL */
+
+{
+  id:
+    "sequences",
+
+  icon:
+    "🔵",
+
+  title:
+    "Gumball Sequences",
+
+  category:
+    "SEQUENCES",
+
+  short:
+    "Each gumball follows a dispensing rule.",
+
+  description:
+    "Sequences are generated term by term. Discover the machine rule and predict what comes next.",
+
+  visual:
+    function () {
+
+      return `
+
+        <div class="gumball-machine">
+
+          <div class="gumballs">
+
+            <div class="gumball">
+              2
+            </div>
+
+            <div class="gumball">
+              5
+            </div>
+
+            <div class="gumball">
+              8
+            </div>
+
+            <div class="gumball">
+              11
+            </div>
+
+            <div class="gumball">
+              ?
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="visual-equation">
+          2, 5, 8, 11, ...
+        </div>
+
+      `;
+
+    },
+
+  question:
+    "What is the next gumball in the sequence 2, 5, 8, 11, ...?",
+
+  answer:
+    "14",
+
+  hint:
+    "Each term increases by the same amount.",
+
+  explanation:
+    "The common difference is +3, so the next term is 14."
+
+},
+
+
+
+/* 14 FORTUNE COOKIE */
+
+{
+  id:
+    "fortune",
+
+  icon:
+    "🥠",
+
+  title:
+    "Fortune Cookie Functions",
+
+  category:
+    "FUNCTION MACHINES",
+
+  short:
+    "Input goes in. A fortune comes out.",
+
+  description:
+    "A function takes an input and follows exactly one rule to produce an output.",
+
+  visual:
+    function () {
+
+      return `
+
+        <div class="cookie">
+
+          <div class="fortune-slip">
+            f(x) = 3x − 1
+          </div>
+
+        </div>
+
+        <div class="visual-equation">
+          Input 4 → ?
+        </div>
+
+      `;
+
+    },
+
+  question:
+    "The fortune says f(x) = 3x − 1. What fortune comes out when x = 4?",
+
+  answer:
+    "11",
+
+  hint:
+    "3(4) − 1.",
+
+  explanation:
+    "12 − 1 = 11."
+
+},
+
+
+
+/* 15 CHOCOLATE BOX */
+
+{
+  id:
+    "probability",
+
+  icon:
+    "🎁",
+
+  title:
+    "Chocolate Box Probability",
+
+  category:
+    "PROBABILITY",
+
+  short:
+    "You never know what you're gonna get.",
+
+  description:
+    "Probability compares the number of favorable chocolates to the total number of possible chocolates.",
+
+  visual:
+    function () {
+
+      return `
+
+        <div class="chocolate-box">
+
+          <div class="chocolate">
+            🍓
+          </div>
+
+          <div class="chocolate">
+            🍓
+          </div>
+
+          <div class="chocolate">
+            🍒
+          </div>
+
+          <div class="chocolate">
+            🍒
+          </div>
+
+          <div class="chocolate">
+            🍒
+          </div>
+
+          <div class="chocolate">
+            🍫
+          </div>
+
+          <div class="chocolate">
+            🍫
+          </div>
+
+          <div class="chocolate">
+            🍫
+          </div>
+
+        </div>
+
+        <div class="visual-equation">
+          2 strawberry chocolates / 8 total
+        </div>
+
+      `;
+
+    },
+
+  question:
+    "What is the probability of randomly choosing a strawberry chocolate? Enter as a simplified fraction.",
+
+  answer:
+    "1/4",
+
+  hint:
+    "There are 2 strawberries out of 8 chocolates.",
+
+  explanation:
+    "2/8 simplifies to 1/4."
+
+}
+
+];
+
+
+
+/* =====================================================
+   ELEMENTS
+====================================================== */
+
+const candyGrid =
+  document.getElementById(
+    "candyGrid"
+  );
+
+
+const bigCandy =
+  document.getElementById(
+    "bigCandy"
+  );
+
+
+const conceptCategory =
+  document.getElementById(
+    "conceptCategory"
+  );
+
+
+const conceptTitle =
+  document.getElementById(
+    "conceptTitle"
+  );
+
+
+const conceptDescription =
+  document.getElementById(
+    "conceptDescription"
+  );
+
+
+const visualBoard =
+  document.getElementById(
+    "visualBoard"
+  );
+
+
+const gamePanel =
+  document.getElementById(
+    "gamePanel"
+  );
+
+
+const progressText =
+  document.getElementById(
+    "progressText"
+  );
+
+
+const progressRow =
+  document.getElementById(
+    "progressRow"
+  );
+
+
+
+/* =====================================================
+   NORMALIZE
+====================================================== */
+
+function normalize(
+  value
+) {
+
+  return String(
+    value
+  )
+    .trim()
+    .toLowerCase()
+    .replace(
+      /\s+/g,
+      " "
+    )
+    .replace(
+      /°/g,
+      ""
+    );
+
+}
+
+
+
+/* =====================================================
+   BUILD CARDS
+====================================================== */
+
+function buildCandyGrid() {
+
+  candyGrid.innerHTML =
+    "";
+
+
+  concepts.forEach(
+    function (
+      concept,
+      index
+    ) {
+
+      const card =
+        document.createElement(
+          "button"
+        );
+
+
+      card.type =
+        "button";
+
+
+      card.className =
+        "candy-card";
+
+
+      if (
+        index ===
+        activeIndex
+      ) {
+
+        card.classList.add(
+          "active"
+        );
+
+      }
+
+
+      card.innerHTML = `
+
+        <span class="candy-graphic">
+          ${concept.icon}
+        </span>
+
+        <strong>
+          ${concept.title}
+        </strong>
+
+        <small>
+          ${concept.short}
+        </small>
+
+      `;
+
+
+      card.addEventListener(
+        "click",
+        function () {
+
+          activeIndex =
+            index;
+
+
+          renderActiveConcept();
+
+
+          buildCandyGrid();
+
+
+          document
+            .getElementById(
+              "playLab"
+            )
+            .scrollIntoView(
+              {
+                behavior:
+                  "smooth",
+
+                block:
+                  "start"
+              }
+            );
+
+
+          trackCandyEvent(
+            "candy_concept_opened",
+            {
+              concept:
+                concept.id
+            }
+          );
+
+        }
+      );
+
+
+      candyGrid.appendChild(
+        card
+      );
+
+    }
+  );
+
+}
+
+
+
+/* =====================================================
+   ACTIVE CONCEPT
+====================================================== */
+
+function renderActiveConcept() {
+
+  const concept =
+    concepts[
+      activeIndex
+    ];
+
+
+  bigCandy.textContent =
+    concept.icon;
+
+
+  conceptCategory.textContent =
+    concept.category;
+
+
+  conceptTitle.textContent =
+    concept.title;
+
+
+  conceptDescription.textContent =
+    concept.description;
+
+
+  visualBoard.innerHTML =
+    concept.visual();
+
+
+  buildGame(
+    concept
+  );
+
+}
+
+
+
+/* =====================================================
+   MINI GAME
+====================================================== */
+
+function buildGame(
+  concept
+) {
+
+  gamePanel.innerHTML = `
+
+    <div class="game-question">
+
+      ${concept.question}
+
+    </div>
+
+
+    <div class="game-input-row">
+
+      <input
+        id="gameAnswer"
+        type="text"
+        autocomplete="off"
+        placeholder="Your answer"
+      >
+
+
+      <button
+        id="checkAnswer"
+        class="primary-button"
+        type="button"
+      >
+        Check
+      </button>
+
+
+      <button
+        id="hintButton"
+        class="secondary-button"
+        type="button"
+      >
+        Hint
+      </button>
+
+    </div>
+
+
+    <div
+      id="gameFeedback"
+      class="feedback"
+    ></div>
+
+  `;
+
+
+  const input =
+    document.getElementById(
+      "gameAnswer"
+    );
+
+
+  const feedback =
+    document.getElementById(
+      "gameFeedback"
+    );
+
+
+  function check() {
+
+    const guess =
+      normalize(
+        input.value
+      );
+
+
+    const answer =
+      normalize(
+        concept.answer
+      );
+
+
+    if (
+      !guess
+    ) {
+
+      feedback.textContent =
+        "Enter an answer first.";
+
+
+      feedback.style.color =
+        varColor(
+          "--brown"
+        );
+
+
+      return;
+
+    }
+
+
+    if (
+      guess === answer
+    ) {
+
+      feedback.innerHTML =
+
+        "🍬 Correct! "
+        +
+        concept.explanation;
+
+
+      feedback.style.color =
+        "#58784b";
+
+
+      completed.add(
+        concept.id
+      );
+
+
+      updateProgress();
+
+
+      trackCandyEvent(
+        "candy_minigame_solved",
+        {
+          concept:
+            concept.id
+        }
+      );
+
+    }
+
+    else {
+
+      feedback.textContent =
+        "Not quite. Try unwrapping the structure again.";
+
+
+      feedback.style.color =
+        "#b6534d";
+
+    }
+
+  }
+
+
+  document
+    .getElementById(
+      "checkAnswer"
+    )
+    .addEventListener(
+      "click",
+      check
+    );
+
+
+  document
+    .getElementById(
+      "hintButton"
+    )
+    .addEventListener(
+      "click",
+      function () {
+
+        feedback.textContent =
+          "Hint: "
+          +
+          concept.hint;
+
+
+        feedback.style.color =
+          "#71558e";
+
+      }
+    );
+
+
+  input.addEventListener(
+    "keydown",
+    function (
+      event
+    ) {
+
+      if (
+        event.key ===
+        "Enter"
+      ) {
+
+        check();
+
+      }
+
+    }
+  );
+
+}
+
+
+
+/* =====================================================
+   CSS VARIABLE HELPER
+====================================================== */
+
+function varColor(
+  variable
+) {
+
+  return getComputedStyle(
+    document.documentElement
+  )
+    .getPropertyValue(
+      variable
+    );
+
+}
+
+
+
+/* =====================================================
+   PROGRESS
+====================================================== */
+
+function updateProgress() {
+
+  progressText.textContent =
+    completed.size
+    +
+    " / "
+    +
+    concepts.length
+    +
+    " completed";
+
+
+  progressRow.innerHTML =
+    "";
+
+
+  concepts.forEach(
+    function (
+      concept
+    ) {
+
+      const dot =
+        document.createElement(
+          "span"
+        );
+
+
+      dot.className =
+        "progress-dot";
+
+
+      if (
+        completed.has(
+          concept.id
+        )
+      ) {
+
+        dot.classList.add(
+          "solved"
+        );
+
+      }
+
+
+      dot.title =
+        concept.title;
+
+
+      progressRow.appendChild(
+        dot
+      );
+
+    }
+  );
+
+}
+
+
+
+/* =====================================================
+   START
+====================================================== */
+
+buildCandyGrid();
+
+renderActiveConcept();
+
+updateProgress();
+
+
+trackCandyEvent(
+  "candy_calculus_opened",
+  {
+    prototype_version:
+      "all_flavors_001"
+  }
+);
+
+</script>
+
+
+</body>
+
+</html>
