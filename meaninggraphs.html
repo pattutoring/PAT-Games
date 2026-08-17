@@ -1,1 +1,2916 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>Meaning Graphs | PAT Learning Lab</title>
+
+
+<!-- =====================================================
+     GOOGLE ANALYTICS
+====================================================== -->
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-QCEPJP202V"
+></script>
+
+<script>
+
+window.dataLayer =
+  window.dataLayer || [];
+
+function gtag() {
+  dataLayer.push(arguments);
+}
+
+gtag(
+  "js",
+  new Date()
+);
+
+gtag(
+  "config",
+  "G-QCEPJP202V"
+);
+
+</script>
+
+
+
+<style>
+
+:root {
+
+  --cream: #fff8e8;
+  --paper: #fffdf7;
+  --ink: #29261f;
+
+  --green: #58784b;
+  --light-green: #dfe9d7;
+
+  --gold: #d5a83e;
+  --gold-light: #f5e7b8;
+
+  --brown: #8b633e;
+
+  --red: #b9574e;
+  --red-light: #f3dddd;
+
+  --blue: #477ca8;
+  --blue-light: #ddebf5;
+
+  --purple: #71558e;
+
+  --shadow:
+    rgba(
+      52,
+      43,
+      29,
+      .14
+    );
+
+}
+
+
+
+/* =====================================================
+   GLOBAL
+====================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+
+  margin: 0;
+
+  background:
+    var(--cream);
+
+  color:
+    var(--ink);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+}
+
+
+button,
+input,
+select {
+
+  font: inherit;
+
+}
+
+
+button {
+
+  cursor: pointer;
+
+}
+
+
+
+/* =====================================================
+   HEADER
+====================================================== */
+
+header {
+
+  padding:
+    30px 20px 24px;
+
+  text-align: center;
+
+}
+
+
+.lab-link {
+
+  display:
+    inline-block;
+
+  margin-bottom:
+    17px;
+
+  padding:
+    8px 13px;
+
+  border:
+    2px solid
+    var(--brown);
+
+  border-radius:
+    10px;
+
+  background:
+    var(--paper);
+
+  color:
+    var(--brown);
+
+  font-weight:
+    bold;
+
+  text-decoration:
+    none;
+
+}
+
+
+.meaning-symbol {
+
+  position: relative;
+
+  width: 115px;
+  height: 78px;
+
+  margin:
+    0 auto 7px;
+
+}
+
+
+.meaning-symbol::before {
+
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 0;
+
+  width: 3px;
+  height: 100%;
+
+  transform:
+    translateX(-50%);
+
+  background:
+    var(--red);
+
+}
+
+
+.meaning-symbol::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 50%;
+
+  width: 100%;
+  height: 3px;
+
+  transform:
+    translateY(-50%);
+
+  background:
+    var(--blue);
+
+}
+
+
+.meaning-star {
+
+  position: absolute;
+
+  z-index: 2;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  color:
+    var(--gold);
+
+  font-size: 2.3rem;
+
+  text-shadow:
+    0 1px 0
+    #6f5626;
+
+}
+
+
+header h1 {
+
+  margin:
+    4px 0;
+
+  font-size:
+    clamp(
+      2.4rem,
+      9vw,
+      4.7rem
+    );
+
+  letter-spacing:
+    2px;
+
+}
+
+
+.tagline {
+
+  color:
+    var(--green);
+
+  font-size: 1.08rem;
+
+  font-weight: bold;
+
+}
+
+
+.header-copy {
+
+  max-width: 760px;
+
+  margin:
+    16px auto 0;
+
+  color:
+    #685949;
+
+  line-height: 1.6;
+
+}
+
+
+
+/* =====================================================
+   MAIN
+====================================================== */
+
+main {
+
+  width:
+    min(
+      1100px,
+      94%
+    );
+
+  margin: auto;
+
+  padding-bottom: 75px;
+
+}
+
+
+.section-heading {
+
+  max-width: 780px;
+
+  margin:
+    38px auto 22px;
+
+  text-align: center;
+
+}
+
+
+.section-heading h2 {
+
+  margin:
+    6px 0 8px;
+
+}
+
+
+.section-heading p {
+
+  margin: auto;
+
+  color:
+    #685949;
+
+  line-height: 1.55;
+
+}
+
+
+.kicker {
+
+  color:
+    var(--green);
+
+  font-size: .72rem;
+
+  font-weight: bold;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+}
+
+
+
+/* =====================================================
+   PHILOSOPHY
+====================================================== */
+
+.philosophy-card {
+
+  max-width: 900px;
+
+  margin:
+    10px auto 35px;
+
+  padding:
+    26px;
+
+  border:
+    2px solid
+    var(--gold);
+
+  border-radius:
+    20px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0 7px 18px
+    var(--shadow);
+
+}
+
+
+.philosophy-card h2 {
+
+  margin:
+    5px 0 12px;
+
+  text-align: center;
+
+}
+
+
+.philosophy-lead {
+
+  max-width: 760px;
+
+  margin:
+    0 auto 23px;
+
+  font-size: 1.08rem;
+
+  line-height: 1.6;
+
+  text-align: center;
+
+}
+
+
+.axiom-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(
+        220px,
+        1fr
+      )
+    );
+
+  gap: 12px;
+
+}
+
+
+.axiom {
+
+  padding: 17px;
+
+  border-radius: 14px;
+
+  background:
+    var(--cream);
+
+  line-height: 1.45;
+
+}
+
+
+.axiom strong {
+
+  display: block;
+
+  margin-bottom: 5px;
+
+  color:
+    var(--green);
+
+}
+
+
+.axiom-symbol {
+
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 1.7rem;
+
+}
+
+
+
+/* =====================================================
+   FIELD DIAGRAM
+====================================================== */
+
+.field-shell {
+
+  margin-top: 25px;
+
+  padding:
+    22px;
+
+  border:
+    2px solid
+    #d8cab0;
+
+  border-radius:
+    20px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0 6px 17px
+    var(--shadow);
+
+}
+
+
+.field {
+
+  position: relative;
+
+  width:
+    min(
+      680px,
+      100%
+    );
+
+  height:
+    430px;
+
+  margin: auto;
+
+  overflow: hidden;
+
+  border:
+    2px solid
+    #cdbd9e;
+
+  border-radius:
+    18px;
+
+  background:
+
+    linear-gradient(
+      rgba(71,124,168,.06) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(185,87,78,.06) 1px,
+      transparent 1px
+    ),
+
+    #fffdf7;
+
+  background-size:
+    34px 34px;
+
+}
+
+
+/* TRANSVERSE */
+
+.field-x {
+
+  position: absolute;
+
+  z-index: 1;
+
+  left: 5%;
+  top: 50%;
+
+  width: 90%;
+  height: 4px;
+
+  background:
+    var(--blue);
+
+}
+
+
+/* CONJUGATE */
+
+.field-y {
+
+  position: absolute;
+
+  z-index: 1;
+
+  left: 50%;
+  top: 5%;
+
+  width: 4px;
+  height: 90%;
+
+  background:
+    var(--red);
+
+}
+
+
+/* ARROWS */
+
+.field-x::after {
+
+  content: "→";
+
+  position: absolute;
+
+  right: -10px;
+  top: -17px;
+
+  color:
+    var(--blue);
+
+  font-size: 1.8rem;
+
+}
+
+
+.field-y::before {
+
+  content: "↑";
+
+  position: absolute;
+
+  left: -11px;
+  top: -19px;
+
+  color:
+    var(--red);
+
+  font-size: 1.8rem;
+
+}
+
+
+/* LABELS */
+
+.axis-label {
+
+  position: absolute;
+
+  z-index: 3;
+
+  padding:
+    4px 7px;
+
+  border-radius: 7px;
+
+  background:
+    rgba(
+      255,
+      253,
+      247,
+      .9
+    );
+
+  font-size: .78rem;
+
+  font-weight: bold;
+
+}
+
+
+.transverse-label {
+
+  right: 5%;
+  top: calc(50% + 10px);
+
+  color:
+    var(--blue);
+
+}
+
+
+.conjugate-label {
+
+  left: calc(50% + 10px);
+  top: 5%;
+
+  color:
+    var(--red);
+
+}
+
+
+/* PARABOLA */
+
+.parabola {
+
+  position: absolute;
+
+  z-index: 2;
+
+  left: 14%;
+  top: 12%;
+
+  width: 72%;
+  height: 77%;
+
+  pointer-events: none;
+
+}
+
+
+.vertex-star {
+
+  position: absolute;
+
+  z-index: 6;
+
+  left: 50%;
+  top: 76%;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  color:
+    var(--gold);
+
+  font-size: 2.4rem;
+
+  text-shadow:
+    0 1px 1px
+    #745e2c;
+
+}
+
+
+.vertex-label {
+
+  position: absolute;
+
+  z-index: 4;
+
+  left: 50%;
+  top: 83%;
+
+  transform:
+    translateX(-50%);
+
+  color:
+    #856515;
+
+  font-size: .73rem;
+
+  font-weight: bold;
+
+  text-align: center;
+
+}
+
+
+/* ZEROES */
+
+.zero-label {
+
+  position: absolute;
+
+  z-index: 5;
+
+  top: 47%;
+
+  padding:
+    5px 8px;
+
+  border-radius: 9px;
+
+  background:
+    var(--paper);
+
+  font-size: .73rem;
+
+  font-weight: bold;
+
+}
+
+
+.zero-left {
+
+  left: 23%;
+
+  color:
+    var(--red);
+
+}
+
+
+.zero-right {
+
+  right: 23%;
+
+  color:
+    var(--blue);
+
+}
+
+
+
+/* =====================================================
+   MOVING MEANING PARTICLE
+====================================================== */
+
+.meaning-particle {
+
+  position: absolute;
+
+  z-index: 10;
+
+  left: 50%;
+  top: 50%;
+
+  width: 78px;
+  height: 78px;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  display: flex;
+
+  flex-direction:
+    column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border:
+    3px solid
+    var(--gold);
+
+  border-radius:
+    50%;
+
+  background:
+    #fff8cf;
+
+  box-shadow:
+    0 5px 14px
+    rgba(
+      60,
+      43,
+      24,
+      .16
+    );
+
+  transition:
+    left .55s ease,
+    top .55s ease,
+    background .4s ease,
+    border-color .4s ease;
+
+  text-align: center;
+
+}
+
+
+.meaning-particle strong {
+
+  font-size: .83rem;
+
+}
+
+
+.meaning-particle span {
+
+  margin-top: 2px;
+
+  font-size: .61rem;
+
+}
+
+
+
+/* =====================================================
+   CONTEXT CONTROL
+====================================================== */
+
+.context-panel {
+
+  max-width: 760px;
+
+  margin:
+    20px auto 0;
+
+  padding: 19px;
+
+  border-radius: 15px;
+
+  background:
+    var(--cream);
+
+  text-align: center;
+
+}
+
+
+.context-buttons {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  flex-wrap: wrap;
+
+  margin-top: 13px;
+
+}
+
+
+.context-button {
+
+  padding:
+    10px 14px;
+
+  border:
+    2px solid
+    var(--brown);
+
+  border-radius: 10px;
+
+  background:
+    white;
+
+  color:
+    var(--ink);
+
+  font-weight: bold;
+
+}
+
+
+.context-button.active {
+
+  border-color:
+    var(--gold);
+
+  background:
+    var(--gold-light);
+
+}
+
+
+.context-reading {
+
+  min-height: 55px;
+
+  margin-top: 15px;
+
+  color:
+    var(--brown);
+
+  font-weight: bold;
+
+  line-height: 1.45;
+
+}
+
+
+
+/* =====================================================
+   PLAY LAB
+====================================================== */
+
+.play-shell {
+
+  margin-top: 25px;
+
+  padding:
+    25px;
+
+  border:
+    3px solid
+    var(--green);
+
+  border-radius:
+    20px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0 7px 19px
+    var(--shadow);
+
+}
+
+
+.challenge-top {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    space-between;
+
+  gap: 15px;
+
+  flex-wrap: wrap;
+
+}
+
+
+.challenge-number {
+
+  padding:
+    6px 11px;
+
+  border-radius:
+    999px;
+
+  background:
+    var(--light-green);
+
+  color:
+    var(--green);
+
+  font-size: .73rem;
+
+  font-weight: bold;
+
+}
+
+
+.challenge-score {
+
+  color:
+    var(--brown);
+
+  font-weight: bold;
+
+}
+
+
+.word-card {
+
+  max-width: 650px;
+
+  margin:
+    22px auto;
+
+  padding:
+    23px;
+
+  border:
+    2px solid
+    #d7c7a8;
+
+  border-radius:
+    17px;
+
+  background:
+    var(--cream);
+
+  text-align: center;
+
+}
+
+
+.challenge-word {
+
+  color:
+    var(--purple);
+
+  font-size:
+    clamp(
+      2rem,
+      8vw,
+      3.6rem
+    );
+
+  font-weight: bold;
+
+}
+
+
+.challenge-context {
+
+  margin-top: 12px;
+
+  color:
+    #645747;
+
+  font-size: 1.05rem;
+
+  line-height: 1.45;
+
+}
+
+
+.charge-buttons {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      1fr
+    );
+
+  gap: 10px;
+
+  max-width: 650px;
+
+  margin: auto;
+
+}
+
+
+.charge-button {
+
+  min-height: 90px;
+
+  padding: 12px;
+
+  border:
+    3px solid;
+
+  border-radius: 13px;
+
+  background:
+    white;
+
+  font-weight: bold;
+
+}
+
+
+.negative-charge {
+
+  border-color:
+    var(--red);
+
+  color:
+    var(--red);
+
+}
+
+
+.neutral-charge {
+
+  border-color:
+    var(--gold);
+
+  color:
+    #8a6a19;
+
+}
+
+
+.positive-charge {
+
+  border-color:
+    var(--blue);
+
+  color:
+    var(--blue);
+
+}
+
+
+.challenge-feedback {
+
+  min-height: 70px;
+
+  max-width: 700px;
+
+  margin:
+    17px auto 0;
+
+  line-height: 1.5;
+
+  text-align: center;
+
+}
+
+
+.next-button {
+
+  display: none;
+
+  margin:
+    14px auto 0;
+
+  padding:
+    11px 18px;
+
+  border:
+    2px solid
+    var(--green);
+
+  border-radius: 10px;
+
+  background:
+    var(--green);
+
+  color:
+    white;
+
+  font-weight: bold;
+
+}
+
+
+.next-button.visible {
+
+  display: block;
+
+}
+
+
+
+/* =====================================================
+   TRANSFORMATION LAB
+====================================================== */
+
+.transform-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(
+        210px,
+        1fr
+      )
+    );
+
+  gap: 12px;
+
+}
+
+
+.transform-card {
+
+  padding: 18px;
+
+  border:
+    2px solid
+    #d3c3a3;
+
+  border-radius: 15px;
+
+  background:
+    var(--paper);
+
+  text-align: center;
+
+}
+
+
+.transform-symbol {
+
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 2.2rem;
+
+}
+
+
+.transform-card strong {
+
+  display: block;
+
+  margin-bottom: 6px;
+
+  color:
+    var(--green);
+
+}
+
+
+.transform-card p {
+
+  margin: 0;
+
+  color:
+    #655849;
+
+  font-size: .87rem;
+
+  line-height: 1.45;
+
+}
+
+
+
+/* =====================================================
+   RELATIONAL PHILOSOPHY
+====================================================== */
+
+.relation-strip {
+
+  margin-top: 35px;
+
+  padding:
+    25px;
+
+  border-left:
+    7px solid
+    var(--gold);
+
+  border-radius: 15px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0 5px 15px
+    var(--shadow);
+
+}
+
+
+.relation-formula {
+
+  margin:
+    18px auto;
+
+  padding:
+    15px;
+
+  border-radius: 12px;
+
+  background:
+    var(--cream);
+
+  color:
+    var(--purple);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    clamp(
+      1rem,
+      4vw,
+      1.3rem
+    );
+
+  font-weight: bold;
+
+  text-align: center;
+
+}
+
+
+.relation-strip p {
+
+  line-height: 1.55;
+
+}
+
+
+
+/* =====================================================
+   FOOTER
+====================================================== */
+
+footer {
+
+  padding:
+    34px 20px;
+
+  color:
+    #685949;
+
+  font-size: .82rem;
+
+  line-height: 1.6;
+
+  text-align: center;
+
+}
+
+
+
+/* =====================================================
+   MOBILE
+====================================================== */
+
+@media
+(max-width: 650px) {
+
+  .field {
+
+    height:
+      390px;
+
+  }
+
+
+  .charge-buttons {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .charge-button {
+
+    min-height:
+      65px;
+
+  }
+
+
+  .zero-left {
+
+    left: 12%;
+
+  }
+
+
+  .zero-right {
+
+    right: 12%;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+<header>
+
+<a
+  class="lab-link"
+  href="index.html"
+>
+  ← PAT Learning Lab
+</a>
+
+
+<div class="meaning-symbol">
+
+  <span class="meaning-star">
+    ✦
+  </span>
+
+</div>
+
+
+<h1>
+  MEANING GRAPHS
+</h1>
+
+
+<div class="tagline">
+  Context determines charge.
+</div>
+
+
+<p class="header-copy">
+
+  Meaning is not merely a label attached
+  to an isolated word.
+
+  It is a relational state:
+  a position produced by context,
+  opposition, similarity, transformation
+  and the surrounding semantic field.
+
+</p>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =====================================================
+     PHILOSOPHY
+====================================================== -->
+
+<section class="philosophy-card">
+
+<div class="kicker" style="text-align:center;">
+  A RELATIONAL MODEL OF MEANING
+</div>
+
+
+<h2>
+  Meaning Exists in Relation
+</h2>
+
+
+<p class="philosophy-lead">
+
+  A word does not carry meaning in isolation
+  like an object carries weight.
+
+  Its semantic identity emerges through
+  the relations that distinguish it,
+  connect it, oppose it and preserve it
+  as context changes.
+
+</p>
+
+
+
+<div class="axiom-grid">
+
+
+<div class="axiom">
+
+<span class="axiom-symbol">
+  ↔
+</span>
+
+<strong>
+  Relations Precede Observers
+</strong>
+
+Meaning can be modeled through the structure
+of relations before asking who happens
+to observe them.
+
+</div>
+
+
+
+<div class="axiom">
+
+<span class="axiom-symbol">
+  ±
+</span>
+
+<strong>
+  Context Determines Charge
+</strong>
+
+The same lexical object can acquire
+different semantic polarity when placed
+inside a different context.
+
+</div>
+
+
+
+<div class="axiom">
+
+<span class="axiom-symbol">
+  ⟳
+</span>
+
+<strong>
+  Identity Through Transformation
+</strong>
+
+To understand a thing is not only to know
+what it is now, but what remains invariant
+as it transforms.
+
+</div>
+
+
+
+<div class="axiom">
+
+<span class="axiom-symbol">
+  ✦
+</span>
+
+<strong>
+  Symmetry Is Selected For
+</strong>
+
+Stable meaning emerges where relations
+can repeatedly reconstruct a coherent
+structure from changing conditions.
+
+</div>
+
+
+
+<div class="axiom">
+
+<span class="axiom-symbol">
+  ∂
+</span>
+
+<strong>
+  Meaning Has Direction
+</strong>
+
+Semantic change can have magnitude,
+direction and rate — not merely
+a before and after.
+
+</div>
+
+
+
+<div class="axiom">
+
+<span class="axiom-symbol">
+  ◌
+</span>
+
+<strong>
+  The Model Is Never the Whole Field
+</strong>
+
+Every system leaves something outside
+its current description: the semantic
+dark matter capable of redirecting
+the structure when context expands.
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FIELD
+====================================================== -->
+
+<div class="section-heading">
+
+<div class="kicker">
+  SEMANTIC SPACE
+</div>
+
+<h2>
+  The Meaning Field
+</h2>
+
+<p>
+
+  The blue
+  <strong>Transverse</strong>
+  axis tracks relational direction across a field.
+
+  The red
+  <strong>Conjugate</strong>
+  axis tracks opposition or semantic charge.
+
+  The graph represents relationships between
+  meanings rather than a dictionary list.
+
+</p>
+
+</div>
+
+
+
+<section class="field-shell">
+
+
+<div
+  id="meaningField"
+  class="field"
+>
+
+
+<div class="field-x">
+</div>
+
+
+<div class="field-y">
+</div>
+
+
+<div class="axis-label transverse-label">
+  TRANSVERSE →
+</div>
+
+
+<div class="axis-label conjugate-label">
+  CONJUGATE ↑
+</div>
+
+
+
+<svg
+  class="parabola"
+  viewBox="0 0 500 350"
+  preserveAspectRatio="none"
+>
+
+<path
+  d="M 30 50 Q 250 500 470 50"
+
+  stroke="#29261f"
+
+  stroke-width="4"
+
+  fill="none"
+/>
+
+</svg>
+
+
+
+<div class="zero-label zero-left">
+  − ZERO
+</div>
+
+
+<div class="zero-label zero-right">
+  + ZERO
+</div>
+
+
+<div class="vertex-star">
+  ★
+</div>
+
+
+<div class="vertex-label">
+  VERTEX • RELATIONAL INVARIANT
+</div>
+
+
+
+<div
+  id="meaningParticle"
+  class="meaning-particle"
+>
+
+<strong id="particleWord">
+  SANCTION
+</strong>
+
+<span id="particleCharge">
+  contextual
+</span>
+
+</div>
+
+
+</div>
+
+
+
+<!-- CONTEXT DEMO -->
+
+<div class="context-panel">
+
+<div class="kicker">
+  CONTEXT FIELD DEMONSTRATION
+</div>
+
+<h3>
+  One Word. Different Charge.
+</h3>
+
+<p>
+
+  Change the context around
+  <strong>SANCTION</strong>
+  and watch its position in semantic space change.
+
+</p>
+
+
+<div class="context-buttons">
+
+
+<button
+  class="context-button"
+  data-context="restrict"
+  type="button"
+>
+  Penalize
+</button>
+
+
+<button
+  class="context-button"
+  data-context="neutral"
+  type="button"
+>
+  No Context
+</button>
+
+
+<button
+  class="context-button"
+  data-context="permit"
+  type="button"
+>
+  Authorize
+</button>
+
+
+</div>
+
+
+<div
+  id="contextReading"
+  class="context-reading"
+>
+
+No context has fixed the charge yet.
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     PLAYABLE CHARGE GAME
+====================================================== -->
+
+<div class="section-heading">
+
+<div class="kicker">
+  PLAYABLE PROTOTYPE
+</div>
+
+<h2>
+  Context Determines Charge
+</h2>
+
+<p>
+
+  Read the lexical object together with its context.
+  Decide where its meaning belongs in the field.
+
+</p>
+
+</div>
+
+
+
+<section class="play-shell">
+
+
+<div class="challenge-top">
+
+<div
+  id="challengeNumber"
+  class="challenge-number"
+>
+  FIELD TEST #001
+</div>
+
+
+<div
+  id="challengeScore"
+  class="challenge-score"
+>
+  0 / 0 correct
+</div>
+
+</div>
+
+
+
+<div class="word-card">
+
+<div
+  id="challengeWord"
+  class="challenge-word"
+>
+  SANCTION
+</div>
+
+
+<div
+  id="challengeContext"
+  class="challenge-context"
+>
+  The committee sanctioned the proposal.
+</div>
+
+</div>
+
+
+
+<div class="charge-buttons">
+
+
+<button
+  class="charge-button negative-charge"
+  data-charge="-1"
+  type="button"
+>
+
+− NEGATIVE
+
+<br>
+
+<small>
+  Restrict / oppose
+</small>
+
+</button>
+
+
+
+<button
+  class="charge-button neutral-charge"
+  data-charge="0"
+  type="button"
+>
+
+★ VERTEX
+
+<br>
+
+<small>
+  Balanced / invariant
+</small>
+
+</button>
+
+
+
+<button
+  class="charge-button positive-charge"
+  data-charge="1"
+  type="button"
+>
+
++ POSITIVE
+
+<br>
+
+<small>
+  Permit / support
+</small>
+
+</button>
+
+
+</div>
+
+
+
+<div
+  id="challengeFeedback"
+  class="challenge-feedback"
+>
+</div>
+
+
+
+<button
+  id="nextChallenge"
+  class="next-button"
+  type="button"
+>
+  Next Field Test →
+</button>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     TRANSFORMATIONS
+====================================================== -->
+
+<div class="section-heading">
+
+<div class="kicker">
+  OPERATIONS OF MEANING
+</div>
+
+<h2>
+  Semantic Transformations
+</h2>
+
+<p>
+
+  Meaning Graphs are not only about where
+  a state sits.
+
+  They also describe how meaning moves.
+
+</p>
+
+</div>
+
+
+
+<div class="transform-grid">
+
+
+<div class="transform-card">
+
+<span class="transform-symbol">
+  ↔
+</span>
+
+<strong>
+  Conjugation
+</strong>
+
+<p>
+  Move between opposed semantic charges
+  while preserving the lexical relation.
+</p>
+
+</div>
+
+
+
+<div class="transform-card">
+
+<span class="transform-symbol">
+  →
+</span>
+
+<strong>
+  Transverse Shift
+</strong>
+
+<p>
+  Move through related meanings,
+  contexts or semantic neighborhoods.
+</p>
+
+</div>
+
+
+
+<div class="transform-card">
+
+<span class="transform-symbol">
+  ≈
+</span>
+
+<strong>
+  Approximation
+</strong>
+
+<p>
+  Preserve enough relational structure
+  for two states to function as near-equivalents.
+</p>
+
+</div>
+
+
+
+<div class="transform-card">
+
+<span class="transform-symbol">
+  ⊕
+</span>
+
+<strong>
+  Superposition
+</strong>
+
+<p>
+  Hold multiple interpretations active
+  until context selects a stable reading.
+</p>
+
+</div>
+
+
+
+<div class="transform-card">
+
+<span class="transform-symbol">
+  ∂
+</span>
+
+<strong>
+  Semantic Derivative
+</strong>
+
+<p>
+  Ask how rapidly meaning changes
+  with respect to another relational variable.
+</p>
+
+</div>
+
+
+
+<div class="transform-card">
+
+<span class="transform-symbol">
+  ∫
+</span>
+
+<strong>
+  Semantic Integration
+</strong>
+
+<p>
+  Reconstruct a broader meaning
+  from accumulated local relations.
+</p>
+
+</div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     PHILOSOPHICAL BRIDGE
+====================================================== -->
+
+<section class="relation-strip">
+
+
+<div class="kicker">
+  FROM OBJECTS TO RELATIONS
+</div>
+
+
+<h2>
+  The Graph Is Not a Picture of the Word
+</h2>
+
+
+<div class="relation-formula">
+
+Object + Context + Relation
+→
+Semantic State
+
+</div>
+
+
+<p>
+
+  Meaning Graphs treats the lexical object
+  as one component of a larger relational event.
+
+  The same object can occupy different semantic
+  positions because the surrounding field changes.
+
+</p>
+
+
+<p>
+
+  What persists through those changes becomes
+  especially important.
+
+  The invariant is not necessarily a hidden
+  dictionary definition underneath every use;
+  it may instead be the
+  <strong>
+    relational structure capable of generating
+    those uses.
+  </strong>
+
+</p>
+
+
+<p>
+
+  In this sense, semantic space itself is lexical:
+  words, relations and contexts do not merely
+  occupy a pre-existing map.
+
+  Their interactions help construct the field
+  being mapped.
+
+</p>
+
+
+<p>
+
+  The goal is therefore not merely to ask
+  <em>“What does this mean?”</em>
+
+  It is to ask:
+
+  <strong>
+    “What relations make this meaning reconstructible?”
+  </strong>
+
+</p>
+
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+<strong>
+  Meaning Graphs™
+</strong>
+
+• PAT Learning Lab
+
+<br>
+
+Relations before labels.
+Context determines charge.
+Reconstruct the field.
+
+</footer>
+
+
+
+<script>
+
+
+/* =====================================================
+   ANALYTICS
+====================================================== */
+
+function trackMeaningEvent(
+  eventName,
+  data
+) {
+
+  if (
+    typeof gtag !==
+    "function"
+  ) {
+
+    return;
+
+  }
+
+
+  gtag(
+    "event",
+    eventName,
+    {
+
+      game_name:
+        "meaning_graphs",
+
+      ...(data || {})
+
+    }
+  );
+
+}
+
+
+
+/* =====================================================
+   FIELD DEMONSTRATION
+====================================================== */
+
+const meaningParticle =
+  document.getElementById(
+    "meaningParticle"
+  );
+
+
+const particleCharge =
+  document.getElementById(
+    "particleCharge"
+  );
+
+
+const contextReading =
+  document.getElementById(
+    "contextReading"
+  );
+
+
+document
+  .querySelectorAll(
+    ".context-button"
+  )
+  .forEach(
+    function (
+      button
+    ) {
+
+      button.addEventListener(
+        "click",
+        function () {
+
+
+          document
+            .querySelectorAll(
+              ".context-button"
+            )
+            .forEach(
+              function (
+                item
+              ) {
+
+                item
+                  .classList
+                  .remove(
+                    "active"
+                  );
+
+              }
+            );
+
+
+          button
+            .classList
+            .add(
+              "active"
+            );
+
+
+          const context =
+            button.dataset.context;
+
+
+          if (
+            context ===
+            "restrict"
+          ) {
+
+            meaningParticle.style.left =
+              "27%";
+
+
+            meaningParticle.style.top =
+              "49%";
+
+
+            meaningParticle.style.background =
+              "#f3dddd";
+
+
+            meaningParticle.style.borderColor =
+              "#b9574e";
+
+
+            particleCharge.textContent =
+              "negative charge";
+
+
+            contextReading.innerHTML =
+
+              "<strong>Negative charge:</strong> "
+              +
+              "SANCTION = penalize, restrict or punish.";
+
+
+          }
+
+
+          if (
+            context ===
+            "neutral"
+          ) {
+
+            meaningParticle.style.left =
+              "50%";
+
+
+            meaningParticle.style.top =
+              "76%";
+
+
+            meaningParticle.style.background =
+              "#fff8cf";
+
+
+            meaningParticle.style.borderColor =
+              "#d5a83e";
+
+
+            particleCharge.textContent =
+              "unresolved field";
+
+
+            contextReading.innerHTML =
+
+              "<strong>Before sufficient context:</strong> "
+              +
+              "the lexical object retains multiple available relational states.";
+
+
+          }
+
+
+          if (
+            context ===
+            "permit"
+          ) {
+
+            meaningParticle.style.left =
+              "73%";
+
+
+            meaningParticle.style.top =
+              "49%";
+
+
+            meaningParticle.style.background =
+              "#ddebf5";
+
+
+            meaningParticle.style.borderColor =
+              "#477ca8";
+
+
+            particleCharge.textContent =
+              "positive charge";
+
+
+            contextReading.innerHTML =
+
+              "<strong>Positive charge:</strong> "
+              +
+              "SANCTION = approve, permit or authorize.";
+
+
+          }
+
+
+          trackMeaningEvent(
+            "context_field_changed",
+            {
+              lexical_object:
+                "sanction",
+
+              context_state:
+                context
+            }
+          );
+
+
+        }
+      );
+
+    }
+  );
+
+
+
+/* =====================================================
+   CHALLENGE DATABASE
+====================================================== */
+
+const challenges = [
+
+
+{
+  word:
+    "SANCTION",
+
+  context:
+    "The committee sanctioned the proposal.",
+
+  charge:
+    1,
+
+  explanation:
+    "Here SANCTION means to approve or authorize the proposal."
+},
+
+
+{
+  word:
+    "SANCTION",
+
+  context:
+    "The league sanctioned the player for violating the rules.",
+
+  charge:
+    -1,
+
+  explanation:
+    "Here SANCTION means to penalize or punish."
+},
+
+
+{
+  word:
+    "DUST",
+
+  context:
+    "She dusted the cake with powdered sugar.",
+
+  charge:
+    1,
+
+  explanation:
+    "Here DUST adds a layer of material."
+},
+
+
+{
+  word:
+    "DUST",
+
+  context:
+    "He dusted the shelf before dinner.",
+
+  charge:
+    -1,
+
+  explanation:
+    "Here DUST removes a layer of material."
+},
+
+
+{
+  word:
+    "SCREEN",
+
+  context:
+    "The fence screens the garden from view.",
+
+  charge:
+    -1,
+
+  explanation:
+    "SCREEN blocks or conceals access to something."
+},
+
+
+{
+  word:
+    "SCREEN",
+
+  context:
+    "The theater screened the film.",
+
+  charge:
+    1,
+
+  explanation:
+    "SCREEN presents or makes the film available for viewing."
+},
+
+
+{
+  word:
+    "BITTERSWEET",
+
+  context:
+    "The graduation felt joyful and sad at once.",
+
+  charge:
+    0,
+
+  explanation:
+    "The opposed states coexist. The combined reading occupies the relational vertex rather than simply choosing one pole."
+}
+
+];
+
+
+
+/* =====================================================
+   GAME STATE
+====================================================== */
+
+let challengeIndex =
+  0;
+
+
+let correctCount =
+  0;
+
+
+let answeredCount =
+  0;
+
+
+let currentAnswered =
+  false;
+
+
+
+/* =====================================================
+   ELEMENTS
+====================================================== */
+
+const challengeNumber =
+  document.getElementById(
+    "challengeNumber"
+  );
+
+
+const challengeScore =
+  document.getElementById(
+    "challengeScore"
+  );
+
+
+const challengeWord =
+  document.getElementById(
+    "challengeWord"
+  );
+
+
+const challengeContext =
+  document.getElementById(
+    "challengeContext"
+  );
+
+
+const challengeFeedback =
+  document.getElementById(
+    "challengeFeedback"
+  );
+
+
+const nextChallenge =
+  document.getElementById(
+    "nextChallenge"
+  );
+
+
+
+/* =====================================================
+   LOAD CHALLENGE
+====================================================== */
+
+function loadChallenge() {
+
+  currentAnswered =
+    false;
+
+
+  const challenge =
+    challenges[
+      challengeIndex
+    ];
+
+
+  challengeNumber.textContent =
+    "FIELD TEST #"
+    +
+    String(
+      challengeIndex + 1
+    )
+      .padStart(
+        3,
+        "0"
+      );
+
+
+  challengeWord.textContent =
+    challenge.word;
+
+
+  challengeContext.textContent =
+    challenge.context;
+
+
+  challengeFeedback.textContent =
+    "";
+
+
+  nextChallenge
+    .classList
+    .remove(
+      "visible"
+    );
+
+
+  document
+    .querySelectorAll(
+      ".charge-button"
+    )
+    .forEach(
+      function (
+        button
+      ) {
+
+        button.disabled =
+          false;
+
+
+        button.style.opacity =
+          "1";
+
+      }
+    );
+
+}
+
+
+
+/* =====================================================
+   ANSWER
+====================================================== */
+
+document
+  .querySelectorAll(
+    ".charge-button"
+  )
+  .forEach(
+    function (
+      button
+    ) {
+
+      button.addEventListener(
+        "click",
+        function () {
+
+
+          if (
+            currentAnswered
+          ) {
+
+            return;
+
+          }
+
+
+          currentAnswered =
+            true;
+
+
+          const guess =
+            Number(
+              button.dataset.charge
+            );
+
+
+          const challenge =
+            challenges[
+              challengeIndex
+            ];
+
+
+          answeredCount++;
+
+
+          if (
+            guess ===
+            challenge.charge
+          ) {
+
+            correctCount++;
+
+
+            challengeFeedback.innerHTML =
+
+              "<strong>✓ Field reconstructed.</strong>"
+              +
+              "<br>"
+              +
+              challenge.explanation;
+
+
+            challengeFeedback.style.color =
+              "#58784b";
+
+
+          }
+
+          else {
+
+            challengeFeedback.innerHTML =
+
+              "<strong>Charge mismatch.</strong>"
+              +
+              "<br>"
+              +
+              challenge.explanation;
+
+
+            challengeFeedback.style.color =
+              "#b9574e";
+
+          }
+
+
+          challengeScore.textContent =
+            correctCount
+            +
+            " / "
+            +
+            answeredCount
+            +
+            " correct";
+
+
+          document
+            .querySelectorAll(
+              ".charge-button"
+            )
+            .forEach(
+              function (
+                item
+              ) {
+
+                item.disabled =
+                  true;
+
+
+                item.style.opacity =
+                  ".55";
+
+              }
+            );
+
+
+          button.style.opacity =
+            "1";
+
+
+          nextChallenge
+            .classList
+            .add(
+              "visible"
+            );
+
+
+          trackMeaningEvent(
+            "meaning_charge_answered",
+            {
+
+              word:
+                challenge.word.toLowerCase(),
+
+              selected_charge:
+                guess,
+
+              correct_charge:
+                challenge.charge,
+
+              answer_correct:
+                guess ===
+                challenge.charge
+
+            }
+          );
+
+
+        }
+      );
+
+    }
+  );
+
+
+
+/* =====================================================
+   NEXT
+====================================================== */
+
+nextChallenge
+  .addEventListener(
+    "click",
+    function () {
+
+
+      challengeIndex =
+        (
+          challengeIndex + 1
+        )
+        %
+        challenges.length;
+
+
+      loadChallenge();
+
+
+    }
+  );
+
+
+
+/* =====================================================
+   START
+====================================================== */
+
+loadChallenge();
+
+
+trackMeaningEvent(
+  "meaning_graphs_opened",
+  {
+    prototype:
+      "semantic_field_001"
+  }
+);
+
+</script>
+
+
+</body>
+
+</html>
