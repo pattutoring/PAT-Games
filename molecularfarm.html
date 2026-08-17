@@ -3,51 +3,1697 @@
 
 <head>
 
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
-  <title>Molecular Farm | PAT Learning Lab</title>
+<title>Molecular Farm | PAT Learning Lab</title>
 
 
-  <!-- GOOGLE ANALYTICS -->
+<!-- GOOGLE ANALYTICS -->
 
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-QCEPJP202V"
-  ></script>
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-QCEPJP202V"
+></script>
 
-  <script>
+<script>
+  window.dataLayer = window.dataLayer || [];
 
-    window.dataLayer =
-      window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+  gtag("js", new Date());
 
-    gtag(
-      "js",
-      new Date()
+  gtag(
+    "config",
+    "G-QCEPJP202V"
+  );
+</script>
+
+
+<!-- =====================================================
+     MOLECULAR FARM STYLES
+     EMBEDDED DIRECTLY SO GITHUB CANNOT MISS THE CSS
+====================================================== -->
+
+<style>
+
+:root {
+  --cream: #fff8e8;
+  --paper: #fffdf6;
+  --ink: #29261f;
+
+  --green: #58784b;
+  --green-dark: #3f6037;
+  --light-green: #dfe9d7;
+
+  --gold: #d5a83e;
+  --gold-light: #f4e2a4;
+
+  --brown: #8b633e;
+  --brown-dark: #65462c;
+
+  --red: #b9574e;
+  --blue: #477ca8;
+  --blue-light: #dcebf4;
+
+  --wild: #6e8151;
+  --farm: #bd9144;
+  --sea: #4f88a6;
+  --evolution: #81649a;
+
+  --shadow: rgba(52, 43, 29, 0.15);
+}
+
+
+/* GLOBAL */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  background: var(--cream);
+
+  color: var(--ink);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* HEADER */
+
+header {
+  padding: 28px 20px 20px;
+
+  text-align: center;
+}
+
+.lab-link {
+  display: inline-block;
+
+  margin-bottom: 14px;
+
+  padding: 8px 13px;
+
+  border: 2px solid var(--brown);
+  border-radius: 10px;
+
+  background: var(--paper);
+
+  color: var(--brown);
+
+  font-weight: bold;
+
+  text-decoration: none;
+}
+
+.farm-mark {
+  margin-top: 4px;
+
+  font-size: 3rem;
+}
+
+header h1 {
+  margin: 5px 0;
+
+  color: var(--green-dark);
+
+  font-size:
+    clamp(
+      2rem,
+      8vw,
+      4rem
     );
 
-    gtag(
-      "config",
-      "G-QCEPJP202V"
+  letter-spacing: 2px;
+}
+
+.farm-tagline {
+  margin: 5px 0;
+
+  color: var(--green);
+
+  font-size: 1.15rem;
+
+  font-weight: bold;
+}
+
+.farm-subtitle {
+  margin: 4px 0 14px;
+
+  color: var(--brown);
+
+  font-style: italic;
+}
+
+
+/* XP */
+
+.xp-wrap {
+  width: min(500px, 90%);
+
+  margin: auto;
+}
+
+.xp-bar {
+  width: 100%;
+  height: 14px;
+
+  margin: 16px auto 6px;
+
+  overflow: hidden;
+
+  border: 1px solid #d6c8a7;
+  border-radius: 999px;
+
+  background: #e7ddc7;
+}
+
+#xpFill {
+  width: 0%;
+  height: 100%;
+
+  background: var(--gold);
+
+  transition: width .4s ease;
+}
+
+#xpText {
+  color: var(--brown);
+
+  font-weight: bold;
+}
+
+
+/* MAIN */
+
+main {
+  width: min(1100px, 94%);
+
+  margin: auto;
+
+  padding-bottom: 70px;
+}
+
+
+/* SCREENS */
+
+.screen {
+  display: none;
+
+  animation: appear .3s ease;
+}
+
+.screen.active {
+  display: block;
+}
+
+@keyframes appear {
+
+  from {
+    opacity: 0;
+
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+
+}
+
+
+/* HEADINGS */
+
+.section-title {
+  max-width: 760px;
+
+  margin: 0 auto 28px;
+
+  text-align: center;
+}
+
+.section-title h1,
+.section-title h2 {
+  margin: 6px 0 8px;
+}
+
+.section-title p {
+  margin: auto;
+
+  color: #665846;
+
+  line-height: 1.55;
+}
+
+.section-kicker,
+.mini-heading,
+.world-label,
+.habitat-kicker,
+.species-card-label {
+  color: var(--green-dark);
+
+  font-size: .72rem;
+
+  font-weight: bold;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+
+/* BUTTONS */
+
+.back-button,
+.farm-button,
+.primary-button,
+.secondary-button,
+.answer-button {
+  border-radius: 11px;
+
+  cursor: pointer;
+
+  font-weight: bold;
+}
+
+.back-button {
+  margin-bottom: 20px;
+
+  padding: 9px 14px;
+
+  border: 2px solid var(--brown);
+
+  background: var(--paper);
+
+  color: var(--brown);
+}
+
+.farm-button,
+.primary-button {
+  padding: 12px 17px;
+
+  border: 2px solid var(--green-dark);
+
+  background: var(--green);
+
+  color: white;
+}
+
+.secondary-button {
+  padding: 12px 17px;
+
+  border: 2px solid var(--brown);
+
+  background: white;
+
+  color: var(--brown);
+}
+
+button:hover {
+  filter: brightness(.97);
+}
+
+
+/* HOME WORLD CARDS */
+
+.world-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
     );
 
-  </script>
+  gap: 18px;
+}
+
+.world-card {
+  min-height: 275px;
+
+  padding: 25px 22px;
+
+  border: 2px solid var(--brown);
+  border-radius: 20px;
+
+  background: var(--paper);
+
+  color: var(--ink);
+
+  box-shadow:
+    0 7px 18px var(--shadow);
+
+  cursor: pointer;
+
+  text-align: center;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.world-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 10px 24px var(--shadow);
+}
+
+.world-card .icon {
+  margin-bottom: 8px;
+
+  font-size: 3rem;
+}
+
+.world-card h2 {
+  margin: 7px 0;
+}
+
+.world-card p {
+  color: #665846;
+
+  line-height: 1.5;
+}
+
+.world-card strong {
+  display: block;
+
+  margin-top: 15px;
+}
+
+.period-world {
+  border-color: var(--green);
+}
+
+.molecular-world {
+  border-color: var(--gold);
+}
+
+.evolution-world {
+  border-color: var(--evolution);
+}
+
+.periodex-world {
+  border-color: var(--blue);
+}
 
 
-  <!-- MOLECULAR FARM STYLES -->
+/* GAME LOOP */
 
-  <link
-    rel="stylesheet"
-    href="https://pattutoring.github.io/PAT-Games/molecularfarm.css"
-  >
+.farm-loop {
+  margin-top: 35px;
+
+  padding: 25px;
+
+  border: 2px solid #d8caaa;
+  border-radius: 18px;
+
+  background: var(--paper);
+
+  box-shadow:
+    0 5px 15px var(--shadow);
+
+  text-align: center;
+}
+
+.farm-loop h2 {
+  margin: 8px 0 22px;
+}
+
+.loop-row {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+}
+
+.loop-step {
+  width: 150px;
+  min-height: 125px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  padding: 13px;
+
+  border-radius: 13px;
+
+  background: var(--cream);
+}
+
+.loop-step span {
+  font-size: 2rem;
+}
+
+.loop-step small {
+  color: #665846;
+
+  line-height: 1.35;
+}
+
+.loop-arrow {
+  color: var(--gold);
+
+  font-size: 1.6rem;
+
+  font-weight: bold;
+}
+
+
+/* CHEMICAL PERIOD */
+
+.period-key {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+
+  margin-bottom: 15px;
+}
+
+.period-key span {
+  padding: 7px 12px;
+
+  border: 1px solid #d8caaa;
+  border-radius: 999px;
+
+  background: var(--paper);
+
+  font-size: .8rem;
+}
+
+.period-scroll {
+  width: 100%;
+
+  overflow-x: auto;
+
+  padding: 8px 0 18px;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.period {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      18,
+      72px
+    );
+
+  grid-template-rows:
+    repeat(
+      3,
+      96px
+    );
+
+  gap: 5px;
+
+  width: max-content;
+
+  min-width: 100%;
+
+  margin: auto;
+
+  align-items: stretch;
+}
+
+.element {
+  position: relative;
+
+  grid-column: var(--group);
+  grid-row: var(--period);
+
+  width: 72px;
+  height: 96px;
+
+  padding: 6px;
+
+  overflow: hidden;
+
+  border: 2px solid var(--green);
+  border-radius: 9px;
+
+  background: var(--paper);
+
+  color: var(--ink);
+
+  cursor: pointer;
+
+  transition:
+    transform .18s,
+    background .18s;
+}
+
+.element:hover {
+  z-index: 10;
+
+  transform: scale(1.08);
+
+  background: var(--light-green);
+}
+
+.atomic-number {
+  font-size: .62rem;
+
+  text-align: left;
+}
+
+.symbol {
+  margin-top: 3px;
+
+  font-size: 1.5rem;
+
+  font-weight: bold;
+
+  text-align: center;
+}
+
+.animal {
+  margin-top: 3px;
+
+  font-size: .56rem;
+
+  line-height: 1.15;
+
+  text-align: center;
+}
+
+.locked {
+  opacity: .52;
+
+  filter: grayscale(.6);
+}
+
+.unlocked::after {
+  content: "✓";
+
+  position: absolute;
+
+  top: 4px;
+  right: 5px;
+
+  color: var(--green);
+
+  font-size: .72rem;
+
+  font-weight: bold;
+}
+
+.period-note {
+  max-width: 850px;
+
+  margin: 18px auto 0;
+
+  padding: 16px;
+
+  border-radius: 13px;
+
+  background: var(--light-green);
+
+  text-align: center;
+}
+
+.period-note p {
+  color: #55604d;
+
+  font-size: .86rem;
+
+  line-height: 1.45;
+}
+
+
+/* SPECIES */
+
+.species-card {
+  max-width: 680px;
+
+  margin: auto;
+
+  padding:
+    clamp(
+      20px,
+      5vw,
+      32px
+    );
+
+  border: 2px solid var(--brown);
+  border-radius: 20px;
+
+  background: var(--paper);
+
+  box-shadow:
+    0 8px 20px var(--shadow);
+
+  text-align: center;
+}
+
+.species-card-label {
+  display: inline-block;
+
+  padding: 6px 11px;
+
+  border-radius: 999px;
+
+  background: var(--light-green);
+}
+
+.species-placeholder {
+  width: 180px;
+  height: 180px;
+
+  margin: 18px auto;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 3px dashed var(--gold);
+  border-radius: 50%;
+
+  background: var(--cream);
+
+  font-size: 4rem;
+}
+
+.clue {
+  margin: 20px 0;
+
+  padding: 16px;
+
+  border-radius: 12px;
+
+  background: var(--light-green);
+
+  line-height: 1.5;
+}
+
+.reconstruction-panel {
+  margin-top: 20px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #d9cdb4;
+}
+
+.answer-grid,
+#answers {
+  display: grid;
+
+  gap: 10px;
+
+  margin-top: 18px;
+}
+
+.answer-button {
+  padding: 12px 15px;
+
+  border: 2px solid var(--green);
+
+  background: white;
+
+  color: var(--ink);
+}
+
+.answer-button:hover {
+  background: var(--light-green);
+}
+
+.species-feedback,
+#feedback {
+  min-height: 48px;
+
+  margin-top: 17px;
+
+  color: var(--brown-dark);
+
+  font-weight: bold;
+
+  line-height: 1.5;
+}
+
+
+/* HABITATS */
+
+.habitat-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap: 18px;
+}
+
+.habitat-card {
+  min-height: 340px;
+
+  padding: 24px 20px;
+
+  border: 3px solid;
+  border-radius: 20px;
+
+  color: var(--ink);
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 18px var(--shadow);
+
+  text-align: center;
+}
+
+.habitat-card h2 {
+  margin: 7px 0;
+}
+
+.habitat-card p {
+  line-height: 1.5;
+}
+
+.habitat-scene {
+  min-height: 80px;
+
+  margin-bottom: 12px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 2.3rem;
+
+  letter-spacing: 5px;
+}
+
+.farm-habitat {
+  border-color: var(--farm);
+
+  background:
+    linear-gradient(
+      180deg,
+      #fffdf6,
+      #f7e9be
+    );
+}
+
+.wild-habitat {
+  border-color: var(--wild);
+
+  background:
+    linear-gradient(
+      180deg,
+      #fffdf6,
+      #dce7cf
+    );
+}
+
+.sea-habitat {
+  border-color: var(--sea);
+
+  background:
+    linear-gradient(
+      180deg,
+      #fffdf6,
+      #dbeaf4
+    );
+}
+
+
+/* HABITAT HEADINGS */
+
+.habitat-game-heading {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 20px;
+
+  margin-bottom: 24px;
+
+  text-align: left;
+}
+
+.habitat-big-icon {
+  font-size: 4rem;
+}
+
+.habitat-game-heading h1 {
+  margin: 4px 0;
+}
+
+.habitat-game-heading p {
+  margin: 4px 0;
+
+  color: #665846;
+}
+
+
+/* BUILDERS */
+
+.builder-shell {
+  display: grid;
+
+  grid-template-columns:
+    minmax(240px, .8fr)
+    minmax(300px, 1.2fr);
+
+  gap: 18px;
+}
+
+.builder-panel,
+.build-zone {
+  padding: 22px;
+
+  border: 2px solid #d7c8aa;
+  border-radius: 18px;
+
+  background: var(--paper);
+
+  box-shadow:
+    0 5px 16px var(--shadow);
+}
+
+.builder-panel p {
+  color: #665846;
+
+  line-height: 1.45;
+}
+
+.builder-element-bank {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(72px, 1fr)
+    );
+
+  gap: 8px;
+
+  margin-top: 15px;
+}
+
+.builder-element {
+  min-height: 72px;
+
+  padding: 8px;
+
+  border: 2px solid var(--green);
+  border-radius: 10px;
+
+  background: var(--cream);
+
+  color: var(--ink);
+
+  cursor: pointer;
+
+  text-align: center;
+
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease;
+}
+
+.builder-element:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 4px 10px
+    rgba(52, 43, 29, .1);
+}
+
+.builder-element strong {
+  display: block;
+
+  font-size: 1.35rem;
+}
+
+.builder-element small {
+  font-size: .62rem;
+}
+
+.build-zone {
+  text-align: center;
+}
+
+.build-tray {
+  min-height: 190px;
+
+  margin: 15px 0;
+
+  padding: 16px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+
+  gap: 9px;
+
+  flex-wrap: wrap;
+
+  border: 3px dashed #c9ae6a;
+  border-radius: 16px;
+
+  background: var(--cream);
+}
+
+.empty-build-message {
+  color: #8a7d69;
+
+  font-style: italic;
+}
+
+.build-atom {
+  min-width: 64px;
+  min-height: 64px;
+
+  padding: 8px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid var(--green);
+  border-radius: 50%;
+
+  background: white;
+
+  cursor: pointer;
+}
+
+.build-atom strong {
+  font-size: 1.35rem;
+}
+
+.build-atom small {
+  font-size: .58rem;
+}
+
+.build-formula {
+  min-height: 55px;
+
+  margin: 12px auto;
+
+  color: var(--green-dark);
+
+  font-size:
+    clamp(
+      2rem,
+      7vw,
+      3rem
+    );
+
+  font-weight: bold;
+}
+
+.builder-buttons {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+
+  margin-top: 15px;
+}
+
+.builder-feedback {
+  min-height: 45px;
+
+  margin-top: 15px;
+
+  color: var(--brown);
+
+  font-weight: bold;
+
+  line-height: 1.45;
+}
+
+
+/* MODE SWITCH */
+
+.discovery-mode-switch {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 8px;
+
+  margin: 16px 0 14px;
+}
+
+.discovery-mode-button {
+  padding: 11px 10px;
+
+  border: 2px solid #c9b999;
+  border-radius: 11px;
+
+  background: #f5efe2;
+
+  color: var(--brown);
+
+  cursor: pointer;
+
+  font-weight: bold;
+}
+
+.discovery-mode-button.active {
+  border-color: var(--green-dark);
+
+  background: var(--light-green);
+
+  color: var(--green-dark);
+}
+
+
+/* PARTICLE BUILDER */
+
+.atom-builder-info {
+  padding: 13px;
+
+  border: 2px solid var(--blue);
+  border-radius: 12px;
+
+  background: var(--blue-light);
+
+  color: #365f77;
+
+  line-height: 1.45;
+
+  text-align: center;
+}
+
+.particle-builder {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap: 10px;
+}
+
+.particle-build-card {
+  min-height: 145px;
+
+  padding: 14px 10px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border: 2px solid #d0c2a8;
+  border-radius: 14px;
+
+  background: white;
+
+  box-shadow:
+    0 3px 9px
+    rgba(52, 43, 29, .08);
+}
+
+.particle-symbol {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--cream);
+
+  color: var(--green-dark);
+
+  font-size: 1.45rem;
+
+  font-weight: bold;
+}
+
+.particle-controls {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+}
+
+.particle-controls button {
+  width: 34px;
+  height: 34px;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid var(--green);
+  border-radius: 50%;
+
+  background: white;
+
+  color: var(--green-dark);
+
+  cursor: pointer;
+
+  font-size: 1.2rem;
+
+  font-weight: bold;
+}
+
+.particle-controls span {
+  min-width: 30px;
+
+  font-size: 1.25rem;
+
+  font-weight: bold;
+}
+
+
+/* DISCOVERY */
+
+.discovery-card {
+  display: none;
+
+  max-width: 700px;
+
+  margin: 25px auto 0;
+
+  padding: 24px;
+
+  border: 3px solid var(--gold);
+  border-radius: 18px;
+
+  background: #fff5c8;
+
+  box-shadow:
+    0 7px 18px var(--shadow);
+
+  text-align: center;
+}
+
+.discovery-card.visible {
+  display: block;
+
+  animation: discoveryPop .35s ease;
+}
+
+@keyframes discoveryPop {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(8px)
+      scale(.98);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+.discovery-icon {
+  font-size: 4rem;
+}
+
+.discovery-formula {
+  margin: 8px 0;
+
+  font-size: 2rem;
+
+  font-weight: bold;
+}
+
+.capture-species-button {
+  margin-top: 12px;
+
+  min-width: 180px;
+}
+
+.capture-success {
+  margin-top: 16px;
+
+  padding: 11px 14px;
+
+  border: 2px solid var(--green);
+  border-radius: 11px;
+
+  background: var(--light-green);
+
+  color: var(--green-dark);
+
+  font-weight: bold;
+}
+
+
+/* EVOLUTION */
+
+.evolution-intro {
+  max-width: 800px;
+
+  margin: 0 auto 25px;
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    1fr
+    auto;
+
+  align-items: center;
+
+  gap: 12px;
+
+  color: var(--brown);
+
+  font-size: .78rem;
+
+  font-weight: bold;
+
+  letter-spacing: 1px;
+}
+
+.evolution-axis {
+  padding: 7px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #edc4bb,
+      #f4e2a4,
+      #c5dff0
+    );
+
+  text-align: center;
+}
+
+.evolution-list {
+  display: grid;
+
+  gap: 18px;
+}
+
+.evolution-card {
+  padding: 22px;
+
+  border: 2px solid var(--evolution);
+  border-radius: 18px;
+
+  background: var(--paper);
+
+  box-shadow:
+    0 5px 15px var(--shadow);
+}
+
+.evolution-card-top {
+  display: flex;
+
+  align-items: center;
+
+  gap: 17px;
+}
+
+.evolution-card-top h2 {
+  margin: 4px 0;
+}
+
+.evolution-animal {
+  font-size: 2.7rem;
+}
+
+.evolution-card p {
+  color: #665846;
+
+  line-height: 1.5;
+}
+
+.evolution-formulas {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+
+  margin-top: 18px;
+}
+
+.evolution-formulas span {
+  padding: 10px 13px;
+
+  border: 2px solid #ccb8db;
+  border-radius: 11px;
+
+  background: #f6f0fa;
+
+  font-size: 1.2rem;
+
+  font-weight: bold;
+}
+
+.evolution-formulas strong {
+  color: var(--evolution);
+
+  font-size: 1.4rem;
+}
+
+.evolution-note {
+  max-width: 760px;
+
+  margin: 25px auto 0;
+
+  padding: 18px;
+
+  border-left: 6px solid var(--evolution);
+  border-radius: 12px;
+
+  background: #f3edf7;
+
+  line-height: 1.5;
+}
+
+
+/* PERIOD-EX */
+
+.periodex-summary {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap: 12px;
+
+  max-width: 760px;
+
+  margin: 0 auto 24px;
+}
+
+.periodex-summary-card {
+  padding: 15px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 5px;
+
+  border: 1px solid #d8caaa;
+  border-radius: 13px;
+
+  background: var(--paper);
+
+  text-align: center;
+}
+
+.periodex-summary-card span {
+  font-size: 2rem;
+}
+
+.catalogue {
+  max-width: 820px;
+
+  margin: auto;
+}
+
+.periodex-section-heading {
+  margin: 30px 0 12px;
+
+  padding: 14px 17px;
+
+  border-radius: 12px;
+
+  background: var(--light-green);
+}
+
+.periodex-section-heading:first-child {
+  margin-top: 0;
+}
+
+.catalogue-card {
+  margin: 10px 0;
+
+  padding: 17px 18px;
+
+  border-radius: 10px;
+
+  background: var(--paper);
+
+  box-shadow:
+    0 3px 10px
+    rgba(52, 43, 29, .08);
+
+  line-height: 1.5;
+}
+
+.elemental-entry {
+  border-left: 6px solid var(--green);
+}
+
+.molecular-entry {
+  border-left: 6px solid var(--gold);
+}
+
+.evolution-entry {
+  border-left: 6px solid var(--evolution);
+}
+
+.periodex-undiscovered {
+  margin: 10px 0;
+
+  padding: 20px;
+
+  border: 2px dashed #cfc2a8;
+  border-radius: 12px;
+
+  background: #f7f2e8;
+
+  color: #756a58;
+
+  text-align: center;
+}
+
+
+/* HABITAT ACCENTS */
+
+#farmBuildScreen .builder-panel,
+#farmBuildScreen .build-zone {
+  border-color: #d0ad63;
+}
+
+#wildBuildScreen .builder-panel,
+#wildBuildScreen .build-zone {
+  border-color: #9eb487;
+}
+
+#seaBuildScreen .builder-panel,
+#seaBuildScreen .build-zone {
+  border-color: #93bdd3;
+}
+
+#farmBuildScreen .build-tray {
+  background: #fff5d7;
+}
+
+#wildBuildScreen .build-tray {
+  background: #edf3e7;
+}
+
+#seaBuildScreen .build-tray {
+  background: #eaf4fa;
+}
+
+
+/* FOOTER */
+
+footer {
+  padding: 32px 20px;
+
+  color: #665846;
+
+  font-size: .82rem;
+
+  line-height: 1.6;
+
+  text-align: center;
+}
+
+
+/* TABLET */
+
+@media (max-width: 820px) {
+
+  .habitat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .builder-shell {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+  main {
+    width: 96%;
+  }
+
+  .world-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .world-card {
+    min-height: auto;
+  }
+
+  .farm-loop {
+    padding: 20px 12px;
+  }
+
+  .loop-row {
+    flex-direction: column;
+  }
+
+  .loop-arrow {
+    transform: rotate(90deg);
+  }
+
+  .loop-step {
+    width: min(300px, 100%);
+  }
+
+  .habitat-game-heading {
+    flex-direction: column;
+
+    text-align: center;
+  }
+
+  .discovery-mode-switch {
+    grid-template-columns: 1fr;
+  }
+
+  .particle-builder {
+    grid-template-columns: 1fr;
+  }
+
+  .periodex-summary {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* SMALL PHONE */
+
+@media (max-width: 430px) {
+
+  .period {
+    grid-template-columns:
+      repeat(
+        18,
+        62px
+      );
+
+    grid-template-rows:
+      repeat(
+        3,
+        88px
+      );
+  }
+
+  .element {
+    width: 62px;
+    height: 88px;
+  }
+
+}
+
+</style>
 
 </head>
 
@@ -55,47 +1701,42 @@
 <body>
 
 
-<!-- =====================================================
-     HEADER
-====================================================== -->
-
 <header>
 
-  <a
-    class="lab-link"
-    href="index.html"
-  >
-    ← PAT Learning Lab
-  </a>
+<a
+  class="lab-link"
+  href="index.html"
+>
+  ← PAT Learning Lab
+</a>
 
-  <div class="farm-mark">
-    🌾
+<div class="farm-mark">
+  🌾
+</div>
+
+<h1>
+  MOLECULAR FARM
+</h1>
+
+<p class="farm-tagline">
+  Grow Your Chemistry
+</p>
+
+<p class="farm-subtitle">
+  Find it. Build it. Capture it. Evolve it.
+</p>
+
+<div class="xp-wrap">
+
+  <div class="xp-bar">
+    <div id="xpFill"></div>
   </div>
 
-  <h1>
-    MOLECULAR FARM
-  </h1>
+  <small id="xpText">
+    0 XP
+  </small>
 
-  <p class="farm-tagline">
-    Grow Your Chemistry
-  </p>
-
-  <p class="farm-subtitle">
-    Find it. Build it. Capture it. Evolve it.
-  </p>
-
-
-  <div class="xp-wrap">
-
-    <div class="xp-bar">
-      <div id="xpFill"></div>
-    </div>
-
-    <small id="xpText">
-      0 XP
-    </small>
-
-  </div>
+</div>
 
 </header>
 
@@ -103,1299 +1744,1200 @@
 <main>
 
 
-<!-- =====================================================
-     FARM HOME
-====================================================== -->
+<!-- FARM HOME -->
 
 <section
   id="farmHome"
   class="screen active"
 >
 
-  <div class="section-title">
+<div class="section-title">
 
-    <div class="section-kicker">
-      WELCOME TO THE FARM
-    </div>
-
-    <h2>
-      Explore Molecular Farm
-    </h2>
-
-    <p>
-      Chemistry is an ecosystem.
-      Reconstruct elemental species,
-      combine them into molecular animals,
-      capture your discoveries,
-      and follow how those species transform
-      when their environment changes.
-    </p>
-
+  <div class="section-kicker">
+    WELCOME TO THE FARM
   </div>
 
+  <h2>
+    Explore Molecular Farm
+  </h2>
 
-  <div class="world-grid">
+  <p>
+    Chemistry is an ecosystem.
+    Reconstruct elemental species,
+    combine them into molecular animals,
+    capture your discoveries,
+    and follow how those species transform
+    when their environment changes.
+  </p>
 
-
-    <!-- CHEMICAL PERIOD -->
-
-    <button
-      class="world-card period-world"
-      type="button"
-      onclick="showScreen('periodScreen')"
-    >
-
-      <div class="icon">
-        🌱
-      </div>
-
-      <div class="world-label">
-        ELEMENTAL SPECIES
-      </div>
-
-      <h2>
-        Chemical-Period
-      </h2>
-
-      <p>
-        Explore the periodic table through
-        Hydrogen Hippos, Oxygen Owls,
-        Sodium Snails and other elemental species.
-      </p>
-
-      <strong>
-        Explore the Chemical-Period →
-      </strong>
-
-    </button>
+</div>
 
 
-    <!-- DISCOVERY HABITATS -->
-
-    <button
-      class="world-card molecular-world"
-      type="button"
-      onclick="showScreen('habitatScreen')"
-    >
-
-      <div class="icon">
-        🐾
-      </div>
-
-      <div class="world-label">
-        DISCOVERY HABITATS
-      </div>
-
-      <h2>
-        Explore the Farm
-      </h2>
-
-      <p>
-        Build atoms from subatomic particles
-        or combine elements into molecular animals
-        on the Farm, in the Wild and Under the Sea.
-      </p>
-
-      <strong>
-        Search for Species →
-      </strong>
-
-    </button>
+<div class="world-grid">
 
 
-    <!-- EVOLUTION -->
+<button
+  class="world-card period-world"
+  type="button"
+  onclick="showScreen('periodScreen')"
+>
 
-    <button
-      class="world-card evolution-world"
-      type="button"
-      onclick="showScreen('evolutionScreen')"
-    >
-
-      <div class="icon">
-        🧬
-      </div>
-
-      <div class="world-label">
-        CHEMICAL EVOLUTION
-      </div>
-
-      <h2>
-        Evolution Lines
-      </h2>
-
-      <p>
-        Follow molecular families through
-        protonation, pH, equilibrium and
-        changing chemical environments.
-      </p>
-
-      <strong>
-        Follow the Evolution Lines →
-      </strong>
-
-    </button>
-
-
-    <!-- PERIOD EX -->
-
-    <button
-      class="world-card periodex-world"
-      type="button"
-      onclick="showPeriodex()"
-    >
-
-      <div class="icon">
-        📖
-      </div>
-
-      <div class="world-label">
-        SPECIES CATALOGUE
-      </div>
-
-      <h2>
-        Period-ex
-      </h2>
-
-      <p>
-        View every elemental species,
-        molecular animal and evolution
-        family you have captured.
-      </p>
-
-      <strong>
-        Open Your Period-ex →
-      </strong>
-
-    </button>
-
+  <div class="icon">
+    🌱
   </div>
 
+  <div class="world-label">
+    ELEMENTAL SPECIES
+  </div>
 
-  <!-- FARM LOOP -->
+  <h2>
+    Chemical-Period
+  </h2>
 
-  <section class="farm-loop">
+  <p>
+    Explore the periodic table through
+    Hydrogen Hippos, Oxygen Owls,
+    Sodium Snails and other elemental species.
+  </p>
 
-    <div class="section-kicker">
-      THE MOLECULAR FARM LOOP
-    </div>
+  <strong>
+    Explore the Chemical-Period →
+  </strong>
 
-    <h2>
-      Observe → Build → Capture → Evolve
-    </h2>
-
-
-    <div class="loop-row">
-
-      <div class="loop-step">
-
-        <span>
-          👀
-        </span>
-
-        <strong>
-          Observe
-        </strong>
-
-        <small>
-          Study an elemental species.
-        </small>
-
-      </div>
+</button>
 
 
-      <div class="loop-arrow">
-        →
-      </div>
+<button
+  class="world-card molecular-world"
+  type="button"
+  onclick="showScreen('habitatScreen')"
+>
+
+  <div class="icon">
+    🐾
+  </div>
+
+  <div class="world-label">
+    DISCOVERY HABITATS
+  </div>
+
+  <h2>
+    Explore the Farm
+  </h2>
+
+  <p>
+    Build atoms from subatomic particles
+    or combine elements into molecular animals
+    on the Farm, in the Wild and Under the Sea.
+  </p>
+
+  <strong>
+    Search for Species →
+  </strong>
+
+</button>
 
 
-      <div class="loop-step">
+<button
+  class="world-card evolution-world"
+  type="button"
+  onclick="showScreen('evolutionScreen')"
+>
 
-        <span>
-          ⚛️
-        </span>
+  <div class="icon">
+    🧬
+  </div>
 
-        <strong>
-          Build
-        </strong>
+  <div class="world-label">
+    CHEMICAL EVOLUTION
+  </div>
 
-        <small>
-          Reconstruct atoms or combine elements.
-        </small>
+  <h2>
+    Evolution Lines
+  </h2>
 
-      </div>
+  <p>
+    Follow molecular families through
+    protonation, pH, equilibrium and
+    changing chemical environments.
+  </p>
 
+  <strong>
+    Follow the Evolution Lines →
+  </strong>
 
-      <div class="loop-arrow">
-        →
-      </div>
-
-
-      <div class="loop-step">
-
-        <span>
-          🐾
-        </span>
-
-        <strong>
-          Capture
-        </strong>
-
-        <small>
-          Capture your new chemical species.
-        </small>
-
-      </div>
+</button>
 
 
-      <div class="loop-arrow">
-        →
-      </div>
+<button
+  class="world-card periodex-world"
+  type="button"
+  onclick="showPeriodex()"
+>
+
+  <div class="icon">
+    📖
+  </div>
+
+  <div class="world-label">
+    SPECIES CATALOGUE
+  </div>
+
+  <h2>
+    Period-ex
+  </h2>
+
+  <p>
+    View every elemental species,
+    molecular animal and evolution
+    family you have discovered.
+  </p>
+
+  <strong>
+    Open Your Period-ex →
+  </strong>
+
+</button>
+
+</div>
 
 
-      <div class="loop-step">
+<section class="farm-loop">
 
-        <span>
-          🧬
-        </span>
+<div class="section-kicker">
+  THE MOLECULAR FARM LOOP
+</div>
 
-        <strong>
-          Evolve
-        </strong>
+<h2>
+  Observe → Build → Discover → Capture → Evolve
+</h2>
 
-        <small>
-          Change its chemical environment.
-        </small>
+<div class="loop-row">
 
-      </div>
+<div class="loop-step">
+  <span>👀</span>
+  <strong>Observe</strong>
+  <small>Study chemical structure.</small>
+</div>
 
-    </div>
+<div class="loop-arrow">
+  →
+</div>
 
-  </section>
+<div class="loop-step">
+  <span>⚛️</span>
+  <strong>Build</strong>
+  <small>Reconstruct atoms or molecules.</small>
+</div>
+
+<div class="loop-arrow">
+  →
+</div>
+
+<div class="loop-step">
+  <span>🐾</span>
+  <strong>Discover</strong>
+  <small>Reveal a molecular animal.</small>
+</div>
+
+<div class="loop-arrow">
+  →
+</div>
+
+<div class="loop-step">
+  <span>📖</span>
+  <strong>Capture</strong>
+  <small>Add it to your Period-ex.</small>
+</div>
+
+<div class="loop-arrow">
+  →
+</div>
+
+<div class="loop-step">
+  <span>🧬</span>
+  <strong>Evolve</strong>
+  <small>Change its environment.</small>
+</div>
+
+</div>
+
+</section>
 
 </section>
 
 
-<!-- =====================================================
-     CHEMICAL PERIOD
-====================================================== -->
+<!-- CHEMICAL PERIOD -->
 
 <section
   id="periodScreen"
   class="screen"
 >
 
-  <button
-    class="back-button"
-    type="button"
-    onclick="showScreen('farmHome')"
-  >
-    ← Molecular Farm
-  </button>
+<button
+  class="back-button"
+  type="button"
+  onclick="showScreen('farmHome')"
+>
+  ← Molecular Farm
+</button>
 
 
-  <div class="section-title">
+<div class="section-title">
 
-    <div class="section-kicker">
-      ELEMENTAL SPECIES
-    </div>
+<div class="section-kicker">
+  ELEMENTAL SPECIES
+</div>
 
-    <h1>
-      The Chemical-Period
-    </h1>
+<h1>
+  The Chemical-Period
+</h1>
 
-    <p>
-      Each elemental animal encodes part of
-      the chemistry of the element it represents.
-      Reconstruct them and catalogue them in your Period-ex.
-    </p>
+<p>
+  Each elemental animal encodes part of
+  the chemistry of the element it represents.
+  Discover them and catalogue them in your Period-ex.
+</p>
 
-  </div>
-
-
-  <div class="period-key">
-
-    <span>
-      🌱 Discovered
-    </span>
-
-    <span>
-      ❓ Undiscovered
-    </span>
-
-  </div>
+</div>
 
 
-  <div class="period-scroll">
+<div class="period-key">
 
-    <div
-      id="period"
-      class="period"
-    ></div>
+<span>
+  🌱 Discovered
+</span>
 
-  </div>
+<span>
+  ❓ Undiscovered
+</span>
+
+</div>
 
 
-  <div class="period-note">
+<div class="period-scroll">
 
-    <strong>
-      Chemical-Period Species
-    </strong>
+<div
+  id="period"
+  class="period"
+></div>
 
-    <p>
-      Hydrogen Hippo • Helium Hyena •
-      Lithium Lightning-Bug • Boron Butterfly •
-      Carbon Clam • Oxygen Owl • Fluorine Fire Ant •
-      Sodium Snail • Magnesium Moth •
-      Aluminum Army Ant • Silicon Stick Bug •
-      Phosphorus Pill Bug • Chlorine Cicada
-    </p>
+</div>
 
-  </div>
+
+<div class="period-note">
+
+<strong>
+  Chemical-Period Species
+</strong>
+
+<p>
+  Hydrogen Hippo • Helium Hyena •
+  Lithium Lightning-Bug • Boron Butterfly •
+  Carbon Clam • Oxygen Owl • Fluorine Fire Ant •
+  Sodium Snail • Magnesium Moth •
+  Aluminum Army Ant • Silicon Stick Bug •
+  Phosphorus Pill Bug • Chlorine Cicada
+</p>
+
+</div>
 
 </section>
 
 
-<!-- =====================================================
-     ELEMENTAL SPECIES SCREEN
-====================================================== -->
+<!-- SPECIES SCREEN -->
 
 <section
   id="speciesScreen"
   class="screen"
 >
 
-  <button
-    class="back-button"
-    type="button"
-    onclick="showScreen('periodScreen')"
-  >
-    ← Chemical-Period
-  </button>
+<button
+  class="back-button"
+  type="button"
+  onclick="showScreen('periodScreen')"
+>
+  ← Chemical-Period
+</button>
 
 
-  <div class="species-card">
+<div class="species-card">
 
-    <div class="species-card-label">
-      ELEMENTAL SPECIES
-    </div>
+<div class="species-card-label">
+  ELEMENTAL SPECIES
+</div>
 
-    <h1 id="speciesName"></h1>
+<h1 id="speciesName"></h1>
 
+<div
+  id="speciesImage"
+  class="species-placeholder"
+>
+  ⚛️
+</div>
 
-    <div
-      id="speciesImage"
-      class="species-placeholder"
-    >
-      ⚛️
-    </div>
+<div class="clue">
 
+<strong>
+  🔎 Observe First
+</strong>
 
-    <div class="clue">
+<p id="speciesClue"></p>
 
-      <strong>
-        🔎 Observe First
-      </strong>
-
-      <p id="speciesClue"></p>
-
-    </div>
+</div>
 
 
-    <div class="reconstruction-panel">
+<div class="reconstruction-panel">
 
-      <div class="mini-heading">
-        RECONSTRUCTION CHALLENGE
-      </div>
+<div class="mini-heading">
+  RECONSTRUCTION CHALLENGE
+</div>
 
-      <h3 id="questionText"></h3>
+<h3 id="questionText"></h3>
 
-      <div
-        id="answers"
-        class="answer-grid"
-      ></div>
+<div
+  id="answers"
+  class="answer-grid"
+></div>
 
-      <div
-        id="feedback"
-        class="species-feedback"
-      ></div>
+<div
+  id="feedback"
+  class="species-feedback"
+></div>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </section>
 
 
-<!-- =====================================================
-     HABITAT SELECT
-====================================================== -->
+<!-- HABITAT SELECT -->
 
 <section
   id="habitatScreen"
   class="screen"
 >
 
-  <button
-    class="back-button"
-    type="button"
-    onclick="showScreen('farmHome')"
-  >
-    ← Molecular Farm
-  </button>
+<button
+  class="back-button"
+  type="button"
+  onclick="showScreen('farmHome')"
+>
+  ← Molecular Farm
+</button>
 
 
-  <div class="section-title">
+<div class="section-title">
 
-    <div class="section-kicker">
-      DISCOVERY HABITATS
-    </div>
+<div class="section-kicker">
+  MOLECULAR SPECIES
+</div>
 
-    <h1>
-      Where Will You Explore?
-    </h1>
+<h1>
+  Where Will You Explore?
+</h1>
 
-    <p>
-      Build chemical species and capture
-      the animals hiding throughout Molecular Farm.
-    </p>
+<p>
+  Build chemical species in the environment
+  where they live, then capture them
+  for your Period-ex.
+</p>
 
-  </div>
-
-
-  <div class="habitat-grid">
+</div>
 
 
-    <!-- FARM -->
-
-    <button
-      class="habitat-card farm-habitat"
-      type="button"
-      onclick="showScreen('farmBuildScreen')"
-    >
-
-      <div class="habitat-scene">
-        🌾 🐔 🐄 🐷 🐴
-      </div>
-
-      <div class="habitat-kicker">
-        HABITAT 01
-      </div>
-
-      <h2>
-        On the Farm
-      </h2>
-
-      <p>
-        Search for Methane Chickens,
-        Ammonium Horses, Chromate Crows,
-        Hydrogen Phosphate Pigs,
-        M(n)OOOO! Cows and more.
-      </p>
-
-      <strong>
-        Enter the Farm →
-      </strong>
-
-    </button>
+<div class="habitat-grid">
 
 
-    <!-- WILD -->
+<button
+  class="habitat-card farm-habitat"
+  type="button"
+  onclick="showScreen('farmBuildScreen')"
+>
 
-    <button
-      class="habitat-card wild-habitat"
-      type="button"
-      onclick="showScreen('wildBuildScreen')"
-    >
+<div class="habitat-scene">
+  🌾 🐔 🐄 🐷 🐴
+</div>
 
-      <div class="habitat-scene">
-        🌲 🦋 🐜 🪲 🦔
-      </div>
+<div class="habitat-kicker">
+  HABITAT 01
+</div>
 
-      <div class="habitat-kicker">
-        HABITAT 02
-      </div>
+<h2>
+  On the Farm
+</h2>
 
-      <h2>
-        In the Wild
-      </h2>
+<p>
+  Search for Methane Chickens,
+  Ammonium Horses, Chromate Crows,
+  M(n)OOOO! Cows and more.
+</p>
 
-      <p>
-        Search among insects and elemental wildlife
-        for the H-PO(rcupine)
-        and other chemical creatures.
-      </p>
+<strong>
+  Enter the Farm →
+</strong>
 
-      <strong>
-        Search the Wild →
-      </strong>
-
-    </button>
+</button>
 
 
-    <!-- SEA -->
+<button
+  class="habitat-card wild-habitat"
+  type="button"
+  onclick="showScreen('wildBuildScreen')"
+>
 
-    <button
-      class="habitat-card sea-habitat"
-      type="button"
-      onclick="showScreen('seaBuildScreen')"
-    >
+<div class="habitat-scene">
+  🌲 🦋 🐜 🪲 🦔
+</div>
 
-      <div class="habitat-scene">
-        🌊 🐙 🦈 🐠 🐚
-      </div>
+<div class="habitat-kicker">
+  HABITAT 02
+</div>
 
-      <div class="habitat-kicker">
-        HABITAT 03
-      </div>
+<h2>
+  In the Wild
+</h2>
 
-      <h2>
-        Under the Sea
-      </h2>
+<p>
+  Search among elemental wildlife
+  for species such as the
+  H-PO(rcupine).
+</p>
 
-      <p>
-        Dive for H-O(ctopi),
-        Sulfuric Sharks,
-        H-CLO(wn)-Fish
-        and other aquatic molecular species.
-      </p>
+<strong>
+  Search the Wild →
+</strong>
 
-      <strong>
-        Dive Under the Sea →
-      </strong>
+</button>
 
-    </button>
 
-  </div>
+<button
+  class="habitat-card sea-habitat"
+  type="button"
+  onclick="showScreen('seaBuildScreen')"
+>
+
+<div class="habitat-scene">
+  🌊 🐙 🦈 🐠 🐚
+</div>
+
+<div class="habitat-kicker">
+  HABITAT 03
+</div>
+
+<h2>
+  Under the Sea
+</h2>
+
+<p>
+  Dive for H-O(ctopi),
+  Sulfuric Sharks,
+  H-CLO(wn)-Fish
+  and other aquatic species.
+</p>
+
+<strong>
+  Dive Under the Sea →
+</strong>
+
+</button>
+
+</div>
 
 </section>
 
 
-<!-- =====================================================
-     FARM BUILDER
-====================================================== -->
+<!-- FARM BUILD -->
 
 <section
   id="farmBuildScreen"
   class="screen"
 >
 
-  <button
-    class="back-button"
-    type="button"
-    onclick="showScreen('habitatScreen')"
-  >
-    ← Habitats
-  </button>
+<button
+  class="back-button"
+  type="button"
+  onclick="showScreen('habitatScreen')"
+>
+  ← Habitats
+</button>
 
 
-  <div class="habitat-game-heading">
+<div class="habitat-game-heading">
 
-    <div class="habitat-big-icon">
-      🌾
-    </div>
+<div class="habitat-big-icon">
+  🌾
+</div>
 
-    <div>
+<div>
 
-      <div class="section-kicker">
-        ON THE FARM
-      </div>
+<div class="section-kicker">
+  ON THE FARM
+</div>
 
-      <h1>
-        Build a Farm Species
-      </h1>
+<h1>
+  Build a Farm Species
+</h1>
 
-      <p>
-        Combine elemental species and see
-        what molecular animal you can capture.
-      </p>
+<p>
+  Combine elemental species and see
+  what molecular animal you discover.
+</p>
 
-    </div>
+</div>
 
-  </div>
-
-
-  <div class="builder-shell">
+</div>
 
 
-    <div class="builder-panel">
+<div class="builder-shell">
 
-      <div class="mini-heading">
-        ELEMENT BANK
-      </div>
+<div class="builder-panel">
 
-      <p>
-        Select elemental species to bring onto the farm.
-      </p>
+<div class="mini-heading">
+  ELEMENT BANK
+</div>
 
-      <div
-        id="farmElementBank"
-        class="builder-element-bank"
-      ></div>
+<p>
+  Select elemental species to bring onto the farm.
+</p>
 
-    </div>
+<div
+  id="farmElementBank"
+  class="builder-element-bank"
+></div>
 
-
-    <div class="build-zone">
-
-      <div class="mini-heading">
-        YOUR SPECIES
-      </div>
-
-      <div
-        id="farmBuildTray"
-        class="build-tray"
-      >
-
-        <div class="empty-build-message">
-          Add elements to begin building.
-        </div>
-
-      </div>
+</div>
 
 
-      <div
-        id="farmFormula"
-        class="build-formula"
-      >
-        ?
-      </div>
+<div class="build-zone">
 
+<div class="mini-heading">
+  YOUR SPECIES
+</div>
 
-      <div class="builder-buttons">
+<div
+  id="farmBuildTray"
+  class="build-tray"
+>
 
-        <button
-          id="farmBuildButton"
-          class="primary-button"
-          type="button"
-        >
-          🌱 Capture Species
-        </button>
+<div class="empty-build-message">
+  Add elements to begin building.
+</div>
 
-        <button
-          id="farmClearButton"
-          class="secondary-button"
-          type="button"
-        >
-          Clear
-        </button>
+</div>
 
-      </div>
+<div
+  id="farmFormula"
+  class="build-formula"
+>
+  ?
+</div>
 
+<div class="builder-buttons">
 
-      <div
-        id="farmBuildFeedback"
-        class="builder-feedback"
-      ></div>
+<button
+  id="farmBuildButton"
+  class="primary-button"
+  type="button"
+>
+  🌱 Discover Species
+</button>
 
-    </div>
+<button
+  id="farmClearButton"
+  class="secondary-button"
+  type="button"
+>
+  Clear
+</button>
 
-  </div>
+</div>
 
+<div
+  id="farmBuildFeedback"
+  class="builder-feedback"
+></div>
 
-  <div
-    id="farmDiscoveryCard"
-    class="discovery-card"
-  ></div>
+</div>
+
+</div>
+
+<div
+  id="farmDiscoveryCard"
+  class="discovery-card"
+></div>
 
 </section>
 
 
-<!-- =====================================================
-     WILD BUILDER
-====================================================== -->
+<!-- WILD BUILD -->
 
 <section
   id="wildBuildScreen"
   class="screen"
 >
 
-  <button
-    class="back-button"
-    type="button"
-    onclick="showScreen('habitatScreen')"
-  >
-    ← Habitats
-  </button>
+<button
+  class="back-button"
+  type="button"
+  onclick="showScreen('habitatScreen')"
+>
+  ← Habitats
+</button>
 
 
-  <div class="habitat-game-heading">
+<div class="habitat-game-heading">
 
-    <div class="habitat-big-icon">
-      🌲
-    </div>
+<div class="habitat-big-icon">
+  🌲
+</div>
 
-    <div>
+<div>
 
-      <div class="section-kicker">
-        IN THE WILD
-      </div>
+<div class="section-kicker">
+  IN THE WILD
+</div>
 
-      <h1>
-        Build a Wild Species
-      </h1>
+<h1>
+  Build a Wild Species
+</h1>
 
-      <p>
-        Combine elemental wildlife and search
-        for molecular creatures hiding in the ecosystem.
-      </p>
+<p>
+  Reconstruct elemental wildlife
+  or discover molecular creatures.
+</p>
 
-    </div>
+</div>
 
-  </div>
-
-
-  <div class="builder-shell">
+</div>
 
 
-    <div class="builder-panel">
+<div class="builder-shell">
 
-      <div class="mini-heading">
-        ELEMENT BANK
-      </div>
+<div class="builder-panel">
 
-      <p>
-        Select elemental species from the Wild.
-      </p>
+<div class="mini-heading">
+  ELEMENT BANK
+</div>
 
-      <div
-        id="wildElementBank"
-        class="builder-element-bank"
-      ></div>
+<p>
+  Select elemental species from the Wild.
+</p>
 
-    </div>
+<div
+  id="wildElementBank"
+  class="builder-element-bank"
+></div>
 
-
-    <div class="build-zone">
-
-      <div class="mini-heading">
-        YOUR SPECIES
-      </div>
-
-      <div
-        id="wildBuildTray"
-        class="build-tray"
-      >
-
-        <div class="empty-build-message">
-          Add elements to begin building.
-        </div>
-
-      </div>
+</div>
 
 
-      <div
-        id="wildFormula"
-        class="build-formula"
-      >
-        ?
-      </div>
+<div class="build-zone">
 
+<div class="mini-heading">
+  YOUR SPECIES
+</div>
 
-      <div class="builder-buttons">
+<div
+  id="wildBuildTray"
+  class="build-tray"
+>
 
-        <button
-          id="wildBuildButton"
-          class="primary-button"
-          type="button"
-        >
-          🌲 Capture Species
-        </button>
+<div class="empty-build-message">
+  Add elements to begin building.
+</div>
 
-        <button
-          id="wildClearButton"
-          class="secondary-button"
-          type="button"
-        >
-          Clear
-        </button>
+</div>
 
-      </div>
+<div
+  id="wildFormula"
+  class="build-formula"
+>
+  ?
+</div>
 
+<div class="builder-buttons">
 
-      <div
-        id="wildBuildFeedback"
-        class="builder-feedback"
-      ></div>
+<button
+  id="wildBuildButton"
+  class="primary-button"
+  type="button"
+>
+  🌲 Discover Species
+</button>
 
-    </div>
+<button
+  id="wildClearButton"
+  class="secondary-button"
+  type="button"
+>
+  Clear
+</button>
 
-  </div>
+</div>
 
+<div
+  id="wildBuildFeedback"
+  class="builder-feedback"
+></div>
 
-  <div
-    id="wildDiscoveryCard"
-    class="discovery-card"
-  ></div>
+</div>
+
+</div>
+
+<div
+  id="wildDiscoveryCard"
+  class="discovery-card"
+></div>
 
 </section>
 
 
-<!-- =====================================================
-     SEA BUILDER
-====================================================== -->
+<!-- SEA BUILD -->
 
 <section
   id="seaBuildScreen"
   class="screen"
 >
 
-  <button
-    class="back-button"
-    type="button"
-    onclick="showScreen('habitatScreen')"
-  >
-    ← Habitats
-  </button>
+<button
+  class="back-button"
+  type="button"
+  onclick="showScreen('habitatScreen')"
+>
+  ← Habitats
+</button>
 
 
-  <div class="habitat-game-heading">
+<div class="habitat-game-heading">
 
-    <div class="habitat-big-icon">
-      🌊
-    </div>
+<div class="habitat-big-icon">
+  🌊
+</div>
 
-    <div>
+<div>
 
-      <div class="section-kicker">
-        UNDER THE SEA
-      </div>
+<div class="section-kicker">
+  UNDER THE SEA
+</div>
 
-      <h1>
-        Build an Aquatic Species
-      </h1>
+<h1>
+  Build an Aquatic Species
+</h1>
 
-      <p>
-        Combine elemental species and dive
-        for molecular animals beneath the surface.
-      </p>
+<p>
+  Combine elemental species and dive
+  for molecular animals beneath the surface.
+</p>
 
-    </div>
+</div>
 
-  </div>
-
-
-  <div class="builder-shell">
+</div>
 
 
-    <div class="builder-panel">
+<div class="builder-shell">
 
-      <div class="mini-heading">
-        ELEMENT BANK
-      </div>
+<div class="builder-panel">
 
-      <p>
-        Select the elemental species you need.
-      </p>
+<div class="mini-heading">
+  ELEMENT BANK
+</div>
 
-      <div
-        id="seaElementBank"
-        class="builder-element-bank"
-      ></div>
+<p>
+  Select the elemental species you need.
+</p>
 
-    </div>
+<div
+  id="seaElementBank"
+  class="builder-element-bank"
+></div>
 
-
-    <div class="build-zone">
-
-      <div class="mini-heading">
-        YOUR SPECIES
-      </div>
-
-      <div
-        id="seaBuildTray"
-        class="build-tray"
-      >
-
-        <div class="empty-build-message">
-          Add elements to begin building.
-        </div>
-
-      </div>
+</div>
 
 
-      <div
-        id="seaFormula"
-        class="build-formula"
-      >
-        ?
-      </div>
+<div class="build-zone">
 
+<div class="mini-heading">
+  YOUR SPECIES
+</div>
 
-      <div class="builder-buttons">
+<div
+  id="seaBuildTray"
+  class="build-tray"
+>
 
-        <button
-          id="seaBuildButton"
-          class="primary-button"
-          type="button"
-        >
-          🌊 Capture Species
-        </button>
+<div class="empty-build-message">
+  Add elements to begin building.
+</div>
 
-        <button
-          id="seaClearButton"
-          class="secondary-button"
-          type="button"
-        >
-          Clear
-        </button>
+</div>
 
-      </div>
+<div
+  id="seaFormula"
+  class="build-formula"
+>
+  ?
+</div>
 
+<div class="builder-buttons">
 
-      <div
-        id="seaBuildFeedback"
-        class="builder-feedback"
-      ></div>
+<button
+  id="seaBuildButton"
+  class="primary-button"
+  type="button"
+>
+  🌊 Discover Species
+</button>
 
-    </div>
+<button
+  id="seaClearButton"
+  class="secondary-button"
+  type="button"
+>
+  Clear
+</button>
 
-  </div>
+</div>
 
+<div
+  id="seaBuildFeedback"
+  class="builder-feedback"
+></div>
 
-  <div
-    id="seaDiscoveryCard"
-    class="discovery-card"
-  ></div>
+</div>
+
+</div>
+
+<div
+  id="seaDiscoveryCard"
+  class="discovery-card"
+></div>
 
 </section>
 
 
-<!-- =====================================================
-     EVOLUTION LINES
-====================================================== -->
+<!-- EVOLUTION -->
 
 <section
   id="evolutionScreen"
   class="screen"
 >
 
-  <button
-    class="back-button"
-    type="button"
-    onclick="showScreen('farmHome')"
-  >
-    ← Molecular Farm
-  </button>
+<button
+  class="back-button"
+  type="button"
+  onclick="showScreen('farmHome')"
+>
+  ← Molecular Farm
+</button>
 
 
-  <div class="section-title">
+<div class="section-title">
 
-    <div class="section-kicker">
-      CHEMICAL EVOLUTION
-    </div>
+<div class="section-kicker">
+  CHEMICAL EVOLUTION
+</div>
 
-    <h1>
-      Evolution Lines
-    </h1>
+<h1>
+  Evolution Lines
+</h1>
 
-    <p>
-      Molecular species can change when
-      the surrounding chemical environment changes.
-      Follow the family instead of memorizing isolated formulas.
-    </p>
+<p>
+  Molecular species change as their
+  chemical environment changes.
+</p>
 
-  </div>
+</div>
 
 
-  <div class="evolution-intro">
+<div class="evolution-intro">
 
-    <div>
-      ACIDIC
-    </div>
+<div>
+  ACIDIC
+</div>
 
-    <div class="evolution-axis">
-      ← changing environment →
-    </div>
+<div class="evolution-axis">
+  ← changing environment →
+</div>
 
-    <div>
-      BASIC
-    </div>
+<div>
+  BASIC
+</div>
 
-  </div>
+</div>
 
 
-  <div
-    id="evolutionList"
-    class="evolution-list"
-  >
+<div class="evolution-list">
 
 
-    <!-- PHOSPHATE / PORCUPINE -->
+<article class="evolution-card">
 
-    <article class="evolution-card">
+<div class="evolution-card-top">
 
-      <div class="evolution-card-top">
+<span class="evolution-animal">
+  🦔
+</span>
 
-        <span class="evolution-animal">
-          🦔
-        </span>
+<div>
 
-        <div>
+<div class="mini-heading">
+  EVOLUTION LINE
+</div>
 
-          <div class="mini-heading">
-            EVOLUTION LINE
-          </div>
+<h2>
+  Phosphate Porcupine
+</h2>
 
-          <h2>
-            Phosphate Porcupine Evolution
-          </h2>
+</div>
 
-        </div>
+</div>
 
-      </div>
 
+<p>
+  The Porcupine changes protonation state
+  as its environment becomes more basic.
+</p>
 
-      <p>
-        The same Porcupine family changes charge
-        as hydrogen is progressively removed
-        in increasingly basic environments.
-      </p>
 
+<div class="evolution-formulas">
 
-      <div class="evolution-formulas">
+<span>
+  H₃PO₄
+</span>
 
-        <span>
-          H₃PO₄
-        </span>
+<strong>
+  ⇌
+</strong>
 
-        <strong>
-          →
-        </strong>
+<span>
+  H₂PO₄⁻
+</span>
 
-        <span>
-          H₂PO₄⁻
-        </span>
+<strong>
+  ⇌
+</strong>
 
-        <strong>
-          →
-        </strong>
+<span>
+  HPO₄²⁻
+</span>
 
-        <span>
-          HPO₄²⁻
-        </span>
+<strong>
+  ⇌
+</strong>
 
-        <strong>
-          →
-        </strong>
+<span>
+  PO₄³⁻
+</span>
 
-        <span>
-          PO₄³⁻
-        </span>
+</div>
 
-      </div>
+</article>
 
-    </article>
 
+<article class="evolution-card">
 
-    <!-- WATER -->
+<div class="evolution-card-top">
 
-    <article class="evolution-card">
+<span class="evolution-animal">
+  🐙
+</span>
 
-      <div class="evolution-card-top">
+<div>
 
-        <span class="evolution-animal">
-          🐙
-        </span>
+<div class="mini-heading">
+  EVOLUTION LINE
+</div>
 
-        <div>
+<h2>
+  Water Evolution
+</h2>
 
-          <div class="mini-heading">
-            EVOLUTION LINE
-          </div>
+</div>
 
-          <h2>
-            Water Evolution
-          </h2>
+</div>
 
-        </div>
 
-      </div>
+<p>
+  Gain or lose protons and the hydrogen-oxygen
+  family changes form.
+</p>
 
 
-      <p>
-        Gain or lose protons and the hydrogen-oxygen
-        species changes identity.
-      </p>
+<div class="evolution-formulas">
 
+<span>
+  H₃O⁺
+</span>
 
-      <div class="evolution-formulas">
+<strong>
+  ⇌
+</strong>
 
-        <span>
-          H₃O⁺
-        </span>
+<span>
+  H₂O
+</span>
 
-        <strong>
-          ⇌
-        </strong>
+<strong>
+  ⇌
+</strong>
 
-        <span>
-          H₂O
-        </span>
+<span>
+  OH⁻
+</span>
 
-        <strong>
-          ⇌
-        </strong>
+</div>
 
-        <span>
-          OH⁻
-        </span>
+</article>
 
-      </div>
 
-    </article>
+<article class="evolution-card">
 
+<div class="evolution-card-top">
 
-    <!-- CHROMATE -->
+<span class="evolution-animal">
+  🐦‍⬛ → 🌾
+</span>
 
-    <article class="evolution-card">
+<div>
 
-      <div class="evolution-card-top">
+<div class="mini-heading">
+  EVOLUTION LINE
+</div>
 
-        <span class="evolution-animal">
-          🐦‍⬛ → 🌾
-        </span>
+<h2>
+  Crow → Scarecrow
+</h2>
 
-        <div>
+</div>
 
-          <div class="mini-heading">
-            EVOLUTION LINE
-          </div>
+</div>
 
-          <h2>
-            Crow → Scarecrow
-          </h2>
 
-        </div>
+<p>
+  Chromate and dichromate move through
+  equilibrium as their environment changes.
+</p>
 
-      </div>
 
+<div class="evolution-formulas">
 
-      <p>
-        Chromate and dichromate move through
-        an equilibrium as their chemical environment changes.
-      </p>
+<span>
+  CrO₄²⁻
+</span>
 
+<strong>
+  ⇌
+</strong>
 
-      <div class="evolution-formulas">
+<span>
+  Cr₂O₇²⁻
+</span>
 
-        <span>
-          CrO₄²⁻
-        </span>
+</div>
 
-        <strong>
-          ⇌
-        </strong>
+</article>
 
-        <span>
-          Cr₂O₇²⁻
-        </span>
 
-      </div>
+</div>
 
-    </article>
 
-  </div>
+<div class="evolution-note">
 
+<strong>
+  🧬 Evolution is chemistry in motion.
+</strong>
 
-  <div class="evolution-note">
+<p>
+  Related chemical forms become a family
+  rather than a list of disconnected formulas.
+</p>
 
-    <strong>
-      🧬 Evolution is chemistry in motion.
-    </strong>
-
-    <p>
-      These are not unrelated formulas.
-      Each family shows how one chemical structure
-      transforms into another as its environment changes.
-    </p>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- =====================================================
-     PERIOD-EX
-====================================================== -->
+<!-- PERIOD EX -->
 
 <section
   id="periodex"
   class="screen"
 >
 
-  <button
-    class="back-button"
-    type="button"
-    onclick="showScreen('farmHome')"
-  >
-    ← Molecular Farm
-  </button>
+<button
+  class="back-button"
+  type="button"
+  onclick="showScreen('farmHome')"
+>
+  ← Molecular Farm
+</button>
 
 
-  <div class="section-title">
+<div class="section-title">
 
-    <div class="section-kicker">
-      SPECIES CATALOGUE
-    </div>
+<div class="section-kicker">
+  SPECIES CATALOGUE
+</div>
 
-    <h1>
-      📖 Period-ex
-    </h1>
+<h1>
+  📖 Period-ex
+</h1>
 
-    <p>
-      Your growing field guide to Molecular Farm.
-    </p>
+<p>
+  Your growing field guide to Molecular Farm.
+</p>
 
-  </div>
-
-
-  <div class="periodex-summary">
-
-    <div class="periodex-summary-card">
-
-      <span>
-        🌱
-      </span>
-
-      <strong>
-        Elemental Species
-      </strong>
-
-    </div>
+</div>
 
 
-    <div class="periodex-summary-card">
+<div class="periodex-summary">
 
-      <span>
-        🐾
-      </span>
+<div class="periodex-summary-card">
 
-      <strong>
-        Molecular Species
-      </strong>
+<span>
+  🌱
+</span>
 
-    </div>
+<strong>
+  Elemental Species
+</strong>
 
-
-    <div class="periodex-summary-card">
-
-      <span>
-        🧬
-      </span>
-
-      <strong>
-        Evolution Lines
-      </strong>
-
-    </div>
-
-  </div>
+</div>
 
 
-  <div
-    id="catalogue"
-    class="catalogue"
-  ></div>
+<div class="periodex-summary-card">
+
+<span>
+  🐾
+</span>
+
+<strong>
+  Molecular Species
+</strong>
+
+</div>
+
+
+<div class="periodex-summary-card">
+
+<span>
+  🧬
+</span>
+
+<strong>
+  Evolution Lines
+</strong>
+
+</div>
+
+</div>
+
+
+<div
+  id="catalogue"
+  class="catalogue"
+></div>
 
 </section>
 
@@ -1403,30 +2945,27 @@
 </main>
 
 
-<!-- =====================================================
-     FOOTER
-====================================================== -->
-
 <footer>
 
-  <strong>
-    Molecular Farm™
-  </strong>
+<strong>
+  Molecular Farm™
+</strong>
 
-  • PAT Learning Lab
+• PAT Learning Lab
 
-  <br>
+<br>
 
-  Find it. Build it. Capture it. Evolve it.
+Find it. Build it. Capture it. Evolve it.
 
 </footer>
 
 
-<!-- MOLECULAR FARM GAME ENGINE -->
+<!--
+  KEEPING JS EXTERNAL IS FINE.
+  WE ALREADY KNOW THE CSS CONNECTION IS THE THING FAILING.
+-->
 
-<script
-  src="https://pattutoring.github.io/PAT-Games/molecularfarm.js"
-></script>
+<script src="/PAT-Games/molecularfarm.js"></script>
 
 
 </body>
