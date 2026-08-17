@@ -2,18 +2,18 @@
    MOLECULAR FARM
    PAT LEARNING LAB
 
-   VERSION 2 FOUNDATION
+   VERSION 3
+
+   BUILD → DISCOVER → CAPTURE → CATALOGUE
 
    ELEMENTAL SPECIES
    MOLECULAR SPECIES
+   ATOM CONSTRUCTION
+   MOLECULE CONSTRUCTION
    HABITATS
    EVOLUTION LINES
    PERIOD-EX
    ANALYTICS
-
-   This file is designed to remain compatible with
-   the current Molecular Farm HTML while preparing
-   the game for the new Farm / Wild / Sea system.
 ========================================================== */
 
 
@@ -53,110 +53,84 @@ function trackFarmEvent(
 
 /* ==========================================================
    HABITATS
-
-   These become actual playable worlds in the next HTML step.
 ========================================================== */
 
 const habitats = {
 
-  period:
-    {
-      id:
-        "period",
+  period: {
 
-      name:
-        "Chemical-Period",
+    id:
+      "period",
 
-      icon:
-        "🌱",
+    name:
+      "Chemical-Period",
 
-      description:
-        "The elemental species of Molecular Farm."
-    },
+    icon:
+      "🌱"
+
+  },
 
 
-  farm:
-    {
-      id:
-        "farm",
+  farm: {
 
-      name:
-        "On the Farm",
+    id:
+      "farm",
 
-      icon:
-        "🌾",
+    name:
+      "On the Farm",
 
-      description:
-        "Build and discover molecular farm animals."
-    },
+    icon:
+      "🌾"
+
+  },
 
 
-  wild:
-    {
-      id:
-        "wild",
+  wild: {
 
-      name:
-        "In the Wild",
+    id:
+      "wild",
 
-      icon:
-        "🌲",
+    name:
+      "In the Wild",
 
-      description:
-        "Search for elemental and molecular species in the wild."
-    },
+    icon:
+      "🌲"
+
+  },
 
 
-  sea:
-    {
-      id:
-        "sea",
+  sea: {
 
-      name:
-        "Under the Sea",
+    id:
+      "sea",
 
-      icon:
-        "🌊",
+    name:
+      "Under the Sea",
 
-      description:
-        "Discover aquatic molecular species."
-    },
+    icon:
+      "🌊"
 
-
-  evolution:
-    {
-      id:
-        "evolution",
-
-      name:
-        "Evolution Lines",
-
-      icon:
-        "🧬",
-
-      description:
-        "Watch molecular species transform as their chemical environments change."
-    }
+  }
 
 };
 
 
 
 /* ==========================================================
-   ELEMENTAL SPECIES DATABASE
+   ELEMENTAL SPECIES
 
-   This is now the Chemical-Period database.
+   commonNeutrons gives the atom builder
+   a stable/common isotope target.
 
-   group + period prepare the species for a real
-   periodic-table layout in the CSS/HTML step.
+   Example:
+   Carbon-12
+   6 p+
+   6 n0
+   6 e-
 ========================================================== */
 
 const elementalSpecies = [
 
-
-  /* ========================================================
-     PERIOD 1
-  ======================================================== */
 
   {
     id:
@@ -186,11 +160,14 @@ const elementalSpecies = [
     valenceElectrons:
       1,
 
+    commonNeutrons:
+      0,
+
     habitat:
       "wild",
 
     clue:
-      "Hydrogen is the simplest element and carries one electron in a neutral atom.",
+      "Hydrogen is the simplest element and carries one electron.",
 
     unlockedByDefault:
       true
@@ -225,6 +202,9 @@ const elementalSpecies = [
     valenceElectrons:
       2,
 
+    commonNeutrons:
+      2,
+
     habitat:
       "wild",
 
@@ -235,11 +215,6 @@ const elementalSpecies = [
       true
   },
 
-
-
-  /* ========================================================
-     PERIOD 2
-  ======================================================== */
 
   {
     id:
@@ -269,12 +244,14 @@ const elementalSpecies = [
     valenceElectrons:
       1,
 
+    commonNeutrons:
+      4,
+
     habitat:
       "wild",
 
     clue:
-      "Study the Lightning-Bug. Its anatomy represents its electrons.",
-
+      "Its electron structure gives Lithium one outer electron.",
 
     questions: [
 
@@ -294,7 +271,7 @@ const elementalSpecies = [
           "1",
 
         explanation:
-          "Exactly. Lithium has one valence electron — represented by its single antenna."
+          "Exactly. Lithium has one valence electron."
       },
 
 
@@ -369,11 +346,14 @@ const elementalSpecies = [
     valenceElectrons:
       3,
 
+    commonNeutrons:
+      6,
+
     habitat:
       "wild",
 
     clue:
-      "Look for three valence electrons in the Butterfly's anatomy."
+      "Boron has three valence electrons."
   },
 
 
@@ -404,6 +384,9 @@ const elementalSpecies = [
 
     valenceElectrons:
       4,
+
+    commonNeutrons:
+      6,
 
     habitat:
       "sea",
@@ -441,6 +424,9 @@ const elementalSpecies = [
     valenceElectrons:
       6,
 
+    commonNeutrons:
+      8,
+
     habitat:
       "wild",
 
@@ -477,18 +463,16 @@ const elementalSpecies = [
     valenceElectrons:
       7,
 
+    commonNeutrons:
+      10,
+
     habitat:
       "wild",
 
     clue:
-      "Fluorine sits one electron short of a complete outer shell."
+      "Fluorine is one electron short of a complete outer shell."
   },
 
-
-
-  /* ========================================================
-     PERIOD 3
-  ======================================================== */
 
   {
     id:
@@ -518,11 +502,14 @@ const elementalSpecies = [
     valenceElectrons:
       1,
 
+    commonNeutrons:
+      12,
+
     habitat:
       "wild",
 
     clue:
-      "Sodium carries one valence electron and readily forms Na⁺."
+      "Sodium carries one valence electron."
   },
 
 
@@ -553,6 +540,9 @@ const elementalSpecies = [
 
     valenceElectrons:
       2,
+
+    commonNeutrons:
+      12,
 
     habitat:
       "wild",
@@ -590,11 +580,14 @@ const elementalSpecies = [
     valenceElectrons:
       3,
 
+    commonNeutrons:
+      14,
+
     habitat:
       "wild",
 
     clue:
-      "Aluminum carries three valence electrons and commonly forms Al³⁺."
+      "Aluminum carries three valence electrons."
   },
 
 
@@ -625,6 +618,9 @@ const elementalSpecies = [
 
     valenceElectrons:
       4,
+
+    commonNeutrons:
+      14,
 
     habitat:
       "wild",
@@ -662,6 +658,9 @@ const elementalSpecies = [
     valenceElectrons:
       5,
 
+    commonNeutrons:
+      16,
+
     habitat:
       "wild",
 
@@ -698,11 +697,14 @@ const elementalSpecies = [
     valenceElectrons:
       7,
 
+    commonNeutrons:
+      18,
+
     habitat:
       "wild",
 
     clue:
-      "Chlorine is one electron short of a complete valence shell."
+      "Chlorine is one electron short of a complete outer shell."
   }
 
 ];
@@ -710,21 +712,70 @@ const elementalSpecies = [
 
 
 /* ==========================================================
-   MOLECULAR SPECIES DATABASE
+   BUILDING ELEMENTS
 
-   These will become discoverable by BUILDING them
-   in the Farm / Wild / Sea screens.
+   Some molecular animals use atoms that do not yet
+   have finished Molecular Farm animal artwork.
 
-   ingredients tells the future builder exactly
-   what elemental pieces are required.
+   They can still be used chemically.
+========================================================== */
+
+const buildingElements = {
+
+  H:
+    "Hydrogen",
+
+  C:
+    "Carbon",
+
+  N:
+    "Nitrogen",
+
+  O:
+    "Oxygen",
+
+  F:
+    "Fluorine",
+
+  Na:
+    "Sodium",
+
+  Mg:
+    "Magnesium",
+
+  Al:
+    "Aluminum",
+
+  Si:
+    "Silicon",
+
+  P:
+    "Phosphorus",
+
+  S:
+    "Sulfur",
+
+  Cl:
+    "Chlorine",
+
+  Cr:
+    "Chromium",
+
+  Mn:
+    "Manganese"
+
+};
+
+
+
+/* ==========================================================
+   MOLECULAR SPECIES
 ========================================================== */
 
 const molecularSpecies = [
 
 
-  /* ========================================================
-     FARM
-  ======================================================== */
+  /* FARM */
 
   {
     id:
@@ -742,23 +793,21 @@ const molecularSpecies = [
     habitat:
       "farm",
 
-    family:
-      "carbon-hydrogen",
+    ingredients: {
 
-    ingredients:
-      {
-        C:
-          1,
+      C:
+        1,
 
-        H:
-          4
-      },
+      H:
+        4
+
+    },
 
     clue:
       "One Carbon Clam surrounded by four Hydrogen Hippos.",
 
     fact:
-      "Methane contains one carbon atom bonded to four hydrogen atoms."
+      "Methane is CH₄."
   },
 
 
@@ -778,26 +827,24 @@ const molecularSpecies = [
     habitat:
       "farm",
 
-    family:
-      "nitrogen-hydrogen",
+    ingredients: {
 
-    ingredients:
-      {
-        N:
-          1,
+      N:
+        1,
 
-        H:
-          4
-      },
+      H:
+        4
+
+    },
 
     charge:
       "+1",
 
     clue:
-      "A nitrogen center carrying four hydrogens and a positive charge.",
+      "One nitrogen with four hydrogens.",
 
     fact:
-      "Ammonium is the polyatomic ion NH₄⁺."
+      "Ammonium is NH₄⁺."
   },
 
 
@@ -817,23 +864,21 @@ const molecularSpecies = [
     habitat:
       "farm",
 
-    family:
-      "chromate",
+    ingredients: {
 
-    ingredients:
-      {
-        Cr:
-          1,
+      Cr:
+        1,
 
-        O:
-          4
-      },
+      O:
+        4
+
+    },
 
     charge:
       "-2",
 
     clue:
-      "Chromium surrounded by four oxygen atoms.",
+      "One chromium and four oxygens.",
 
     fact:
       "Chromate is CrO₄²⁻."
@@ -851,28 +896,26 @@ const molecularSpecies = [
       "Dichromate Scarecrow",
 
     icon:
-      "🎃",
+      "🌾",
 
     habitat:
       "farm",
 
-    family:
-      "chromate",
+    ingredients: {
 
-    ingredients:
-      {
-        Cr:
-          2,
+      Cr:
+        2,
 
-        O:
-          7
-      },
+      O:
+        7
+
+    },
 
     charge:
       "-2",
 
     clue:
-      "Two chromium centers share a larger oxygen framework.",
+      "Two chromium atoms and seven oxygens.",
 
     fact:
       "Dichromate is Cr₂O₇²⁻."
@@ -895,26 +938,24 @@ const molecularSpecies = [
     habitat:
       "farm",
 
-    family:
-      "phosphate",
+    ingredients: {
 
-    ingredients:
-      {
-        H:
-          1,
+      H:
+        1,
 
-        P:
-          1,
+      P:
+        1,
 
-        O:
-          4
-      },
+      O:
+        4
+
+    },
 
     charge:
       "-2",
 
     clue:
-      "H-P-O(ink)! One hydrogen joins a phosphate framework.",
+      "H-P-O(ink)!",
 
     fact:
       "Hydrogen phosphate is HPO₄²⁻."
@@ -937,23 +978,21 @@ const molecularSpecies = [
     habitat:
       "farm",
 
-    family:
-      "manganese-oxygen",
+    ingredients: {
 
-    ingredients:
-      {
-        Mn:
-          1,
+      Mn:
+        1,
 
-        O:
-          4
-      },
+      O:
+        4
+
+    },
 
     charge:
       "-1",
 
     clue:
-      "M(n)OOOO! One manganese surrounded by four oxygens.",
+      "M(n)OOOO!",
 
     fact:
       "Permanganate is MnO₄⁻."
@@ -976,33 +1015,69 @@ const molecularSpecies = [
     habitat:
       "farm",
 
-    family:
-      "carbon-hydrogen-oxygen",
+    ingredients: {
 
-    ingredients:
-      {
-        C:
-          1,
+      C:
+        1,
 
-        H:
-          1,
+      H:
+        1,
 
-        O:
-          1
-      },
+      O:
+        1
+
+    },
 
     clue:
-      "C + H + O forms the visual wordplay of the C-HO(rse).",
+      "C + H + O.",
 
     fact:
-      "This Molecular Farm species reinforces recognition of C, H and O together."
+      "The species connects C, H and O through its name."
   },
 
 
 
-  /* ========================================================
-     UNDER THE SEA
-  ======================================================== */
+  /* WILD */
+
+  {
+    id:
+      "phosphoric-porcupine",
+
+    formula:
+      "H₃PO₄",
+
+    name:
+      "H-PO(rcupine)",
+
+    icon:
+      "🦔",
+
+    habitat:
+      "wild",
+
+    ingredients: {
+
+      H:
+        3,
+
+      P:
+        1,
+
+      O:
+        4
+
+    },
+
+    clue:
+      "Build phosphoric acid.",
+
+    fact:
+      "Phosphoric acid is H₃PO₄."
+  },
+
+
+
+  /* SEA */
 
   {
     id:
@@ -1020,20 +1095,18 @@ const molecularSpecies = [
     habitat:
       "sea",
 
-    family:
-      "water",
+    ingredients: {
 
-    ingredients:
-      {
-        H:
-          2,
+      H:
+        2,
 
-        O:
-          1
-      },
+      O:
+        1
+
+    },
 
     clue:
-      "Two Hydrogen Hippos and one Oxygen Owl head under the sea.",
+      "Two hydrogens and one oxygen.",
 
     fact:
       "Water is H₂O."
@@ -1056,23 +1129,21 @@ const molecularSpecies = [
     habitat:
       "sea",
 
-    family:
-      "water",
+    ingredients: {
 
-    ingredients:
-      {
-        O:
-          1,
+      O:
+        1,
 
-        H:
-          1
-      },
+      H:
+        1
+
+    },
 
     charge:
       "-1",
 
     clue:
-      "Remove a proton from water and the octopus changes form.",
+      "One oxygen and one hydrogen.",
 
     fact:
       "Hydroxide is OH⁻."
@@ -1095,23 +1166,21 @@ const molecularSpecies = [
     habitat:
       "sea",
 
-    family:
-      "sulfuric-acid",
+    ingredients: {
 
-    ingredients:
-      {
-        H:
-          2,
+      H:
+        2,
 
-        S:
-          1,
+      S:
+        1,
 
-        O:
-          4
-      },
+      O:
+        4
+
+    },
 
     clue:
-      "Two hydrogens, one sulfur and four oxygens swim together.",
+      "Two hydrogens, one sulfur and four oxygens.",
 
     fact:
       "Sulfuric acid is H₂SO₄."
@@ -1134,65 +1203,24 @@ const molecularSpecies = [
     habitat:
       "sea",
 
-    family:
-      "chlorine-oxygen",
+    ingredients: {
 
-    ingredients:
-      {
-        H:
-          1,
+      H:
+        1,
 
-        Cl:
-          1,
+      Cl:
+        1,
 
-        O:
-          1
-      },
+      O:
+        1
+
+    },
 
     clue:
-      "H + Cl + O hides inside the clownfish's name.",
+      "H + Cl + O.",
 
     fact:
-      "Hypochlorous acid can be written HClO."
-  },
-
-
-  {
-    id:
-      "phosphoric-porcupine",
-
-    formula:
-      "H₃PO₄",
-
-    name:
-      "H-PO(rcupine)",
-
-    icon:
-      "🦔",
-
-    habitat:
-      "wild",
-
-    family:
-      "phosphate",
-
-    ingredients:
-      {
-        H:
-          3,
-
-        P:
-          1,
-
-        O:
-          4
-      },
-
-    clue:
-      "Three hydrogens begin the phosphate evolution line.",
-
-    fact:
-      "Phosphoric acid is H₃PO₄."
+      "Hypochlorous acid is HClO."
   }
 
 ];
@@ -1202,11 +1230,14 @@ const molecularSpecies = [
 /* ==========================================================
    EVOLUTION LINES
 
-   These reference molecularSpecies IDs rather than
-   duplicating species data.
+   IMPORTANT:
 
-   Later the UI will display arrows, environments,
-   pH changes and transformations.
+   PHOSPHATE IS ONE PORCUPINE.
+
+   It does NOT evolve into the Pig.
+
+   The chemistry of the same Porcupine changes
+   as hydrogens are removed.
 ========================================================== */
 
 const evolutionLines = [
@@ -1217,68 +1248,70 @@ const evolutionLines = [
       "phosphate-line",
 
     name:
-      "Phosphate Evolution",
+      "Porcupine Phosphate Evolution",
 
     icon:
-      "🐷",
+      "🦔",
+
+    speciesName:
+      "H-PO(rcupine)",
 
     trigger:
       "Increasing pH / successive deprotonation",
 
     description:
-      "Hydrogen is progressively removed as the environment becomes more basic.",
+      "The same Porcupine changes protonation state as the environment becomes more basic.",
 
-    stages:
-      [
+    stages: [
 
-        {
-          formula:
-            "H₃PO₄",
+      {
+        formula:
+          "H₃PO₄",
 
-          speciesId:
-            "phosphoric-porcupine",
+        label:
+          "Phosphoric Acid",
 
-          label:
-            "Phosphoric Acid"
-        },
-
-
-        {
-          formula:
-            "H₂PO₄⁻",
-
-          speciesId:
-            null,
-
-          label:
-            "Dihydrogen Phosphate"
-        },
+        icon:
+          "🦔"
+      },
 
 
-        {
-          formula:
-            "HPO₄²⁻",
+      {
+        formula:
+          "H₂PO₄⁻",
 
-          speciesId:
-            "hydrogen-phosphate-pig",
+        label:
+          "Dihydrogen Phosphate",
 
-          label:
-            "Hydrogen Phosphate"
-        },
+        icon:
+          "🦔"
+      },
 
 
-        {
-          formula:
-            "PO₄³⁻",
+      {
+        formula:
+          "HPO₄²⁻",
 
-          speciesId:
-            null,
+        label:
+          "Hydrogen Phosphate",
 
-          label:
-            "Phosphate"
-        }
+        icon:
+          "🦔"
+      },
 
-      ]
+
+      {
+        formula:
+          "PO₄³⁻",
+
+        label:
+          "Phosphate",
+
+        icon:
+          "🦔"
+      }
+
+    ]
   },
 
 
@@ -1287,7 +1320,7 @@ const evolutionLines = [
       "water-line",
 
     name:
-      "Water Evolution",
+      "Octopus Water Evolution",
 
     icon:
       "🐙",
@@ -1296,47 +1329,46 @@ const evolutionLines = [
       "Acid-base environment",
 
     description:
-      "The hydrogen/oxygen family changes as protons are gained or lost.",
+      "The hydrogen-oxygen species changes as protons are gained or lost.",
 
-    stages:
-      [
+    stages: [
 
-        {
-          formula:
-            "H₃O⁺",
+      {
+        formula:
+          "H₃O⁺",
 
-          speciesId:
-            null,
+        label:
+          "Hydronium",
 
-          label:
-            "Hydronium"
-        },
-
-
-        {
-          formula:
-            "H₂O",
-
-          speciesId:
-            "water-octopus",
-
-          label:
-            "Water"
-        },
+        icon:
+          "🐙"
+      },
 
 
-        {
-          formula:
-            "OH⁻",
+      {
+        formula:
+          "H₂O",
 
-          speciesId:
-            "hydroxide-octopus",
+        label:
+          "Water",
 
-          label:
-            "Hydroxide"
-        }
+        icon:
+          "🐙"
+      },
 
-      ]
+
+      {
+        formula:
+          "OH⁻",
+
+        label:
+          "Hydroxide",
+
+        icon:
+          "🐙"
+      }
+
+    ]
   },
 
 
@@ -1354,35 +1386,34 @@ const evolutionLines = [
       "Acid-base equilibrium",
 
     description:
-      "Chromate and dichromate shift relative to one another as chemical conditions change.",
+      "Chromate and dichromate shift relative to one another as conditions change.",
 
-    stages:
-      [
+    stages: [
 
-        {
-          formula:
-            "CrO₄²⁻",
+      {
+        formula:
+          "CrO₄²⁻",
 
-          speciesId:
-            "chromate-crow",
+        label:
+          "Chromate Crow",
 
-          label:
-            "Chromate Crow"
-        },
+        icon:
+          "🐦‍⬛"
+      },
 
 
-        {
-          formula:
-            "Cr₂O₇²⁻",
+      {
+        formula:
+          "Cr₂O₇²⁻",
 
-          speciesId:
-            "dichromate-scarecrow",
+        label:
+          "Dichromate Scarecrow",
 
-          label:
-            "Dichromate Scarecrow"
-        }
+        icon:
+          "🌾"
+      }
 
-      ]
+    ]
   }
 
 ];
@@ -1390,7 +1421,7 @@ const evolutionLines = [
 
 
 /* ==========================================================
-   QUICK LOOKUP HELPERS
+   LOOKUPS
 ========================================================== */
 
 function getElementByAtomicNumber(
@@ -1455,23 +1486,7 @@ function getMoleculeById(
 
 
 /* ==========================================================
-   PLAYER DATA MIGRATION
-
-   OLD VERSION:
-
-   {
-     xp: 0,
-     unlocked: [1, 2]
-   }
-
-   NEW VERSION:
-
-   {
-     xp: 0,
-     unlockedElements: [1, 2],
-     unlockedMolecules: [],
-     discoveredEvolutions: []
-   }
+   PLAYER DATA
 ========================================================== */
 
 const oldPlayer =
@@ -1482,7 +1497,7 @@ const oldPlayer =
   );
 
 
-const savedV2Player =
+const savedPlayer =
   JSON.parse(
     localStorage.getItem(
       "molecularFarmPlayerV2"
@@ -1494,64 +1509,40 @@ let player;
 
 
 if (
-  savedV2Player
+  savedPlayer
 ) {
 
   player =
-    savedV2Player;
-
-}
-
-else if (
-  oldPlayer
-) {
-
-  player =
-    {
-      xp:
-        oldPlayer.xp || 0,
-
-      unlockedElements:
-        Array.isArray(
-          oldPlayer.unlocked
-        )
-        ?
-          oldPlayer.unlocked.slice()
-        :
-          [1, 2],
-
-      unlockedMolecules:
-        [],
-
-      discoveredEvolutions:
-        []
-    };
+    savedPlayer;
 
 }
 
 else {
 
-  player =
-    {
-      xp:
-        0,
+  player = {
 
-      unlockedElements:
+    xp:
+      oldPlayer?.xp || 0,
+
+    unlockedElements:
+      Array.isArray(
+        oldPlayer?.unlocked
+      )
+      ?
+        oldPlayer.unlocked.slice()
+      :
         [1, 2],
 
-      unlockedMolecules:
-        [],
+    unlockedMolecules:
+      [],
 
-      discoveredEvolutions:
-        []
-    };
+    discoveredEvolutions:
+      []
+
+  };
 
 }
 
-
-/*
-  Safety checks in case future versions add fields.
-*/
 
 if (
   !Array.isArray(
@@ -1591,7 +1582,7 @@ if (
 
 
 /* ==========================================================
-   CURRENT GAME STATE
+   GENERAL STATE
 ========================================================== */
 
 let currentSpecies =
@@ -1602,8 +1593,12 @@ let currentQuestion =
   0;
 
 
-const cataloguedThisSession =
-  new Set();
+/*
+   Discovered but NOT YET captured.
+*/
+
+let pendingCapture =
+  null;
 
 
 
@@ -1658,10 +1653,7 @@ function showScreen(
       "chemical_period_opened",
       {
         discovered_elements:
-          player.unlockedElements.length,
-
-        total_elements:
-          elementalSpecies.length
+          player.unlockedElements.length
       }
     );
 
@@ -1678,12 +1670,101 @@ function showScreen(
 
 
 /* ==========================================================
-   BUILD CHEMICAL-PERIOD
+   SAVE
+========================================================== */
 
-   Current HTML can already display these.
+function savePlayer() {
 
-   The next CSS step will turn this into a true
-   simplified periodic-table layout.
+  localStorage.setItem(
+    "molecularFarmPlayerV2",
+    JSON.stringify(
+      player
+    )
+  );
+
+
+  localStorage.setItem(
+    "patPlayer",
+    JSON.stringify(
+      {
+        xp:
+          player.xp,
+
+        unlocked:
+          player.unlockedElements
+      }
+    )
+  );
+
+}
+
+
+
+/* ==========================================================
+   XP
+========================================================== */
+
+function addXP(
+  amount
+) {
+
+  player.xp +=
+    amount;
+
+
+  savePlayer();
+
+
+  updateXP();
+
+}
+
+
+function updateXP() {
+
+  const xpText =
+    document.getElementById(
+      "xpText"
+    );
+
+
+  const xpFill =
+    document.getElementById(
+      "xpFill"
+    );
+
+
+  if (
+    xpText
+  ) {
+
+    xpText.textContent =
+      player.xp +
+      " XP";
+
+  }
+
+
+  if (
+    xpFill
+  ) {
+
+    xpFill.style.width =
+      (
+        player.xp %
+        100
+      )
+      +
+      "%";
+
+  }
+
+}
+
+
+
+/* ==========================================================
+   CHEMICAL PERIOD
 ========================================================== */
 
 function buildPeriod() {
@@ -1737,28 +1818,6 @@ function buildPeriod() {
               "locked"
         );
 
-
-      box.dataset.atomicNumber =
-        item.atomicNumber;
-
-
-      box.dataset.symbol =
-        item.symbol;
-
-
-      box.dataset.group =
-        item.group;
-
-
-      box.dataset.period =
-        item.period;
-
-
-      /*
-        These CSS variables will let the next
-        stylesheet position each species correctly
-        on the periodic table.
-      */
 
       box.style.setProperty(
         "--group",
@@ -1831,7 +1890,7 @@ function buildPeriod() {
 
 
 /* ==========================================================
-   OPEN ELEMENTAL SPECIES
+   SPECIES DETAIL SCREEN
 ========================================================== */
 
 function openSpecies(
@@ -1846,7 +1905,7 @@ function openSpecies(
     0;
 
 
-  const alreadyDiscovered =
+  const discovered =
     player
       .unlockedElements
       .includes(
@@ -1854,46 +1913,12 @@ function openSpecies(
       );
 
 
-  trackFarmEvent(
-    "species_viewed",
-    {
-      species_type:
-        "elemental",
-
-      species_name:
-        item.name,
-
-      element_name:
-        item.element,
-
-      element_symbol:
-        item.symbol,
-
-      atomic_number:
-        item.atomicNumber,
-
-      habitat:
-        item.habitat,
-
-      already_discovered:
-        alreadyDiscovered,
-
-      has_questions:
-        Boolean(
-          item.questions
-          &&
-          item.questions.length
-        )
-    }
-  );
-
-
   document
     .getElementById(
       "speciesName"
     )
     .textContent =
-      alreadyDiscovered
+      discovered
       ?
         item.name
       :
@@ -1906,7 +1931,7 @@ function openSpecies(
       "speciesImage"
     )
     .textContent =
-      alreadyDiscovered
+      discovered
       ?
         item.icon
       :
@@ -1926,107 +1951,99 @@ function openSpecies(
   );
 
 
-  /*
-    Species with reconstruction questions
-    can currently be discovered directly.
+  trackFarmEvent(
+    "species_viewed",
+    {
+      species_type:
+        "elemental",
 
-    Other species are already in the data model
-    and will receive their Farm / Wild / Sea
-    discovery methods in the next HTML step.
-  */
+      species_name:
+        item.name,
+
+      discovered:
+        discovered
+    }
+  );
+
 
   if (
     item.questions
     &&
     item.questions.length
+    &&
+    discovered
   ) {
 
     loadQuestion();
+
+
+    return;
+
+  }
+
+
+  const question =
+    document.getElementById(
+      "questionText"
+    );
+
+
+  const answers =
+    document.getElementById(
+      "answers"
+    );
+
+
+  const feedback =
+    document.getElementById(
+      "feedback"
+    );
+
+
+  answers.innerHTML =
+    "";
+
+
+  if (
+    discovered
+  ) {
+
+    question.textContent =
+      "Species catalogued.";
+
+
+    feedback.innerHTML = `
+
+      <strong>
+        ${item.element}
+      </strong>
+
+      <br>
+
+      Atomic Number:
+      ${item.atomicNumber}
+
+      <br>
+
+      Valence Electrons:
+      ${item.valenceElectrons}
+
+    `;
 
   }
 
   else {
 
-    const questionText =
-      document.getElementById(
-        "questionText"
-      );
+    question.textContent =
+      "You haven't captured this species yet.";
 
 
-    const answers =
-      document.getElementById(
-        "answers"
-      );
+    feedback.innerHTML = `
 
+      Build the atom in one of the
+      discovery habitats to find and capture it.
 
-    const feedback =
-      document.getElementById(
-        "feedback"
-      );
-
-
-    if (
-      alreadyDiscovered
-    ) {
-
-      questionText.textContent =
-        item.element
-        +
-        " has been catalogued in your Period-ex.";
-
-
-      feedback.innerHTML = `
-
-        <strong>
-          ${item.symbol}
-          • Atomic Number
-          ${item.atomicNumber}
-        </strong>
-
-        <br><br>
-
-        Valence electrons:
-        ${item.valenceElectrons}
-
-      `;
-
-    }
-
-    else {
-
-      questionText.textContent =
-        "This species has not been discovered yet.";
-
-
-      feedback.innerHTML = `
-
-        <strong>
-          Future Discovery:
-        </strong>
-
-        <br>
-
-        Search the
-        ${
-          habitats[
-            item.habitat
-          ]
-          ?
-            habitats[
-              item.habitat
-            ].name
-          :
-            "Molecular Farm"
-        }
-        to catalogue this species.
-
-      `;
-
-    }
-
-
-    answers.innerHTML =
-      "";
+    `;
 
   }
 
@@ -2035,16 +2052,15 @@ function openSpecies(
 
 
 /* ==========================================================
-   LOAD RECONSTRUCTION QUESTION
+   EXISTING RECONSTRUCTION QUIZ
 ========================================================== */
 
 function loadQuestion() {
 
   const q =
-    currentSpecies
-      .questions[
-        currentQuestion
-      ];
+    currentSpecies.questions[
+      currentQuestion
+    ];
 
 
   document
@@ -2084,6 +2100,10 @@ function loadQuestion() {
         );
 
 
+      button.type =
+        "button";
+
+
       button.className =
         "answer-button";
 
@@ -2114,20 +2134,14 @@ function loadQuestion() {
 }
 
 
-
-/* ==========================================================
-   CHECK ELEMENTAL RECONSTRUCTION ANSWER
-========================================================== */
-
 function checkAnswer(
   answer
 ) {
 
   const q =
-    currentSpecies
-      .questions[
-        currentQuestion
-      ];
+    currentSpecies.questions[
+      currentQuestion
+    ];
 
 
   const feedback =
@@ -2136,48 +2150,19 @@ function checkAnswer(
     );
 
 
-  const correct =
-    answer ===
-    q.correct;
-
-
-  trackFarmEvent(
-    "species_answered",
-    {
-      species_type:
-        "elemental",
-
-      species_name:
-        currentSpecies.name,
-
-      element_symbol:
-        currentSpecies.symbol,
-
-      atomic_number:
-        currentSpecies.atomicNumber,
-
-      question_number:
-        currentQuestion +
-        1,
-
-      answer_correct:
-        correct
-    }
-  );
-
-
   if (
-    correct
+    answer ===
+    q.correct
   ) {
 
-    feedback.innerHTML =
+    feedback.textContent =
       "✓ "
       +
       q.explanation;
 
 
     addXP(
-      10
+      5
     );
 
 
@@ -2188,11 +2173,8 @@ function checkAnswer(
 
 
         if (
-          currentQuestion
-          <
-          currentSpecies
-            .questions
-            .length
+          currentQuestion <
+          currentSpecies.questions.length
         ) {
 
           loadQuestion();
@@ -2201,20 +2183,32 @@ function checkAnswer(
 
         else {
 
-          completeElementSpecies();
+          document
+            .getElementById(
+              "questionText"
+            )
+            .textContent =
+              "Reconstruction complete!";
+
+
+          document
+            .getElementById(
+              "answers"
+            )
+            .innerHTML =
+              "";
 
         }
 
       },
-
-      1300
+      900
     );
 
   }
 
   else {
 
-    feedback.innerHTML =
+    feedback.textContent =
       "Not quite. Look at the structure again.";
 
   }
@@ -2224,164 +2218,1199 @@ function checkAnswer(
 
 
 /* ==========================================================
-   COMPLETE ELEMENTAL SPECIES
+   DISCOVERY BUILDERS
+
+   Each habitat automatically receives:
+
+   BUILD AN ATOM
+   BUILD A MOLECULE
+
+   We inject the controls so your current HTML
+   does NOT need another replacement yet.
 ========================================================== */
 
-function completeElementSpecies() {
+const habitatBuilderState = {
 
-  const atomicNumber =
-    currentSpecies.atomicNumber;
+  farm: {
 
+    mode:
+      "molecule",
 
-  const wasAlreadyUnlocked =
-    player
-      .unlockedElements
-      .includes(
-        atomicNumber
-      );
+    atoms:
+      {},
 
+    proton:
+      0,
 
-  if (
-    !wasAlreadyUnlocked
-  ) {
+    neutron:
+      0,
 
-    player
-      .unlockedElements
-      .push(
-        atomicNumber
-      );
+    electron:
+      0
+
+  },
 
 
-    addXP(
-      25
-    );
+  wild: {
+
+    mode:
+      "molecule",
+
+    atoms:
+      {},
+
+    proton:
+      0,
+
+    neutron:
+      0,
+
+    electron:
+      0
+
+  },
+
+
+  sea: {
+
+    mode:
+      "molecule",
+
+    atoms:
+      {},
+
+    proton:
+      0,
+
+    neutron:
+      0,
+
+    electron:
+      0
 
   }
 
+};
 
-  if (
-    !wasAlreadyUnlocked
-    &&
-    !cataloguedThisSession.has(
-      "element-"
-      +
-      atomicNumber
+
+
+/* ==========================================================
+   GET HABITAT ELEMENTS
+
+   Uses every element required by known molecules
+   in that habitat.
+========================================================== */
+
+function getHabitatElements(
+  habitat
+) {
+
+  const symbols =
+    new Set();
+
+
+  molecularSpecies
+    .filter(
+      function (
+        molecule
+      ) {
+
+        return (
+          molecule.habitat ===
+          habitat
+        );
+
+      }
     )
-  ) {
+    .forEach(
+      function (
+        molecule
+      ) {
 
-    cataloguedThisSession.add(
-      "element-"
-      +
-      atomicNumber
-    );
+        Object
+          .keys(
+            molecule.ingredients
+          )
+          .forEach(
+            function (
+              symbol
+            ) {
 
+              symbols.add(
+                symbol
+              );
 
-    trackFarmEvent(
-      "species_catalogued",
-      {
-        species_type:
-          "elemental",
+            }
+          );
 
-        species_name:
-          currentSpecies.name,
-
-        element_symbol:
-          currentSpecies.symbol,
-
-        atomic_number:
-          atomicNumber,
-
-        total_elements_discovered:
-          player.unlockedElements.length,
-
-        xp:
-          player.xp
       }
     );
 
-  }
+
+  /*
+    Also allow students to experiment
+    with familiar atoms.
+  */
+
+  [
+    "H",
+    "C",
+    "N",
+    "O",
+    "P",
+    "S",
+    "Cl"
+  ]
+    .forEach(
+      function (
+        symbol
+      ) {
+
+        symbols.add(
+          symbol
+        );
+
+      }
+    );
 
 
-  savePlayer();
-
-
-  document
-    .getElementById(
-      "speciesName"
-    )
-    .textContent =
-      currentSpecies.name;
-
-
-  document
-    .getElementById(
-      "speciesImage"
-    )
-    .textContent =
-      currentSpecies.icon;
-
-
-  document
-    .getElementById(
-      "questionText"
-    )
-    .innerHTML =
-      "🌱 SPECIES CATALOGUED!";
-
-
-  document
-    .getElementById(
-      "answers"
-    )
-    .innerHTML = `
-
-      <button
-        class="farm-button"
-        onclick="showPeriodex()"
-      >
-        View in Period-ex
-      </button>
-
-    `;
-
-
-  document
-    .getElementById(
-      "feedback"
-    )
-    .innerHTML = `
-
-      <strong>
-
-        ${currentSpecies.symbol}
-
-        • Atomic Number
-
-        ${currentSpecies.atomicNumber}
-
-      </strong>
-
-    `;
-
-
-  buildPeriod();
+  return Array.from(
+    symbols
+  );
 
 }
 
 
 
 /* ==========================================================
-   MOLECULAR DISCOVERY ENGINE
+   INJECT BUILDER MODE CONTROLS
+========================================================== */
 
-   The actual drag/build interface is added in HTML next.
+function injectBuilderControls(
+  habitat
+) {
 
-   This function is ready now so the new interface
-   only has to send it a collection such as:
+  const bank =
+    document.getElementById(
+      habitat +
+      "ElementBank"
+    );
 
-   {
-     C: 1,
-     H: 4
-   }
+
+  if (
+    !bank
+  ) {
+
+    return;
+
+  }
+
+
+  const parent =
+    bank.parentElement;
+
+
+  if (
+    parent.querySelector(
+      ".discovery-mode-switch"
+    )
+  ) {
+
+    return;
+
+  }
+
+
+  const switcher =
+    document.createElement(
+      "div"
+    );
+
+
+  switcher.className =
+    "discovery-mode-switch";
+
+
+  switcher.innerHTML = `
+
+    <button
+      type="button"
+      class="discovery-mode-button"
+      data-mode="atom"
+    >
+      ⚛️ Build an Atom
+    </button>
+
+    <button
+      type="button"
+      class="discovery-mode-button active"
+      data-mode="molecule"
+    >
+      🧪 Build a Molecule
+    </button>
+
+  `;
+
+
+  parent.insertBefore(
+    switcher,
+    bank
+  );
+
+
+  switcher
+    .querySelectorAll(
+      ".discovery-mode-button"
+    )
+    .forEach(
+      function (
+        button
+      ) {
+
+        button.addEventListener(
+          "click",
+          function () {
+
+            habitatBuilderState[
+              habitat
+            ].mode =
+              button.dataset.mode;
+
+
+            switcher
+              .querySelectorAll(
+                ".discovery-mode-button"
+              )
+              .forEach(
+                function (
+                  item
+                ) {
+
+                  item.classList.remove(
+                    "active"
+                  );
+
+                }
+              );
+
+
+            button.classList.add(
+              "active"
+            );
+
+
+            clearHabitatBuild(
+              habitat
+            );
+
+
+            renderHabitatBuilder(
+              habitat
+            );
+
+          }
+        );
+
+      }
+    );
+
+}
+
+
+
+/* ==========================================================
+   RENDER HABITAT BUILDER
+========================================================== */
+
+function renderHabitatBuilder(
+  habitat
+) {
+
+  const state =
+    habitatBuilderState[
+      habitat
+    ];
+
+
+  const bank =
+    document.getElementById(
+      habitat +
+      "ElementBank"
+    );
+
+
+  const tray =
+    document.getElementById(
+      habitat +
+      "BuildTray"
+    );
+
+
+  const formula =
+    document.getElementById(
+      habitat +
+      "Formula"
+    );
+
+
+  const buildButton =
+    document.getElementById(
+      habitat +
+      "BuildButton"
+    );
+
+
+  if (
+    !bank ||
+    !tray ||
+    !formula ||
+    !buildButton
+  ) {
+
+    return;
+
+  }
+
+
+  bank.innerHTML =
+    "";
+
+
+  tray.innerHTML =
+    "";
+
+
+  pendingCapture =
+    null;
+
+
+  hideDiscoveryCard(
+    habitat
+  );
+
+
+  if (
+    state.mode ===
+    "atom"
+  ) {
+
+    buildButton.textContent =
+      "🔎 Identify Atom";
+
+
+    renderAtomBuilder(
+      habitat
+    );
+
+
+    return;
+
+  }
+
+
+  buildButton.textContent =
+    "🔎 Identify Molecule";
+
+
+  getHabitatElements(
+    habitat
+  )
+    .forEach(
+      function (
+        symbol
+      ) {
+
+        const button =
+          document.createElement(
+            "button"
+          );
+
+
+        button.type =
+          "button";
+
+
+        button.className =
+          "builder-element";
+
+
+        button.innerHTML = `
+
+          <strong>
+            ${symbol}
+          </strong>
+
+          <small>
+            ${
+              buildingElements[
+                symbol
+              ]
+              ||
+              symbol
+            }
+          </small>
+
+        `;
+
+
+        button.addEventListener(
+          "click",
+          function () {
+
+            addMoleculeAtom(
+              habitat,
+              symbol
+            );
+
+          }
+        );
+
+
+        bank.appendChild(
+          button
+        );
+
+      }
+    );
+
+
+  renderMoleculeTray(
+    habitat
+  );
+
+}
+
+
+
+/* ==========================================================
+   ATOM BUILDER
+========================================================== */
+
+function renderAtomBuilder(
+  habitat
+) {
+
+  const state =
+    habitatBuilderState[
+      habitat
+    ];
+
+
+  const bank =
+    document.getElementById(
+      habitat +
+      "ElementBank"
+    );
+
+
+  const tray =
+    document.getElementById(
+      habitat +
+      "BuildTray"
+    );
+
+
+  const formula =
+    document.getElementById(
+      habitat +
+      "Formula"
+    );
+
+
+  bank.innerHTML = `
+
+    <div class="atom-builder-info">
+
+      <strong>
+        Build the atom from particles.
+      </strong>
+
+      <br>
+
+      Neutral atoms need equal numbers
+      of protons and electrons.
+
+    </div>
+
+  `;
+
+
+  tray.innerHTML = `
+
+    <div class="particle-builder">
+
+
+      <div class="particle-build-card">
+
+        <span class="particle-symbol">
+          p⁺
+        </span>
+
+        <strong>
+          Protons
+        </strong>
+
+        <div class="particle-controls">
+
+          <button
+            type="button"
+            data-particle="proton"
+            data-change="-1"
+          >
+            −
+          </button>
+
+          <span id="${habitat}ProtonCount">
+            ${state.proton}
+          </span>
+
+          <button
+            type="button"
+            data-particle="proton"
+            data-change="1"
+          >
+            +
+          </button>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="particle-build-card">
+
+        <span class="particle-symbol">
+          n⁰
+        </span>
+
+        <strong>
+          Neutrons
+        </strong>
+
+        <div class="particle-controls">
+
+          <button
+            type="button"
+            data-particle="neutron"
+            data-change="-1"
+          >
+            −
+          </button>
+
+          <span id="${habitat}NeutronCount">
+            ${state.neutron}
+          </span>
+
+          <button
+            type="button"
+            data-particle="neutron"
+            data-change="1"
+          >
+            +
+          </button>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="particle-build-card">
+
+        <span class="particle-symbol">
+          e⁻
+        </span>
+
+        <strong>
+          Electrons
+        </strong>
+
+        <div class="particle-controls">
+
+          <button
+            type="button"
+            data-particle="electron"
+            data-change="-1"
+          >
+            −
+          </button>
+
+          <span id="${habitat}ElectronCount">
+            ${state.electron}
+          </span>
+
+          <button
+            type="button"
+            data-particle="electron"
+            data-change="1"
+          >
+            +
+          </button>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  `;
+
+
+  tray
+    .querySelectorAll(
+      "[data-particle]"
+    )
+    .forEach(
+      function (
+        button
+      ) {
+
+        button.addEventListener(
+          "click",
+          function () {
+
+            const particle =
+              button.dataset.particle;
+
+
+            const change =
+              Number(
+                button.dataset.change
+              );
+
+
+            state[
+              particle
+            ] =
+              Math.max(
+                0,
+                state[
+                  particle
+                ] +
+                change
+              );
+
+
+            renderAtomBuilder(
+              habitat
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+  if (
+    state.proton ===
+    0
+  ) {
+
+    formula.textContent =
+      "Build a nucleus";
+
+  }
+
+  else {
+
+    formula.textContent =
+      state.proton +
+      "p⁺  •  "
+      +
+      state.neutron +
+      "n⁰  •  "
+      +
+      state.electron +
+      "e⁻";
+
+  }
+
+}
+
+
+
+/* ==========================================================
+   IDENTIFY BUILT ATOM
+========================================================== */
+
+function attemptAtomBuild(
+  habitat
+) {
+
+  const state =
+    habitatBuilderState[
+      habitat
+    ];
+
+
+  const feedback =
+    document.getElementById(
+      habitat +
+      "BuildFeedback"
+    );
+
+
+  if (
+    state.proton ===
+    0
+  ) {
+
+    feedback.textContent =
+      "Add protons to the nucleus first.";
+
+
+    return;
+
+  }
+
+
+  if (
+    state.proton !==
+    state.electron
+  ) {
+
+    feedback.textContent =
+      "That structure is charged. For now, capture a neutral atom by matching protons and electrons.";
+
+
+    return;
+
+  }
+
+
+  const element =
+    elementalSpecies.find(
+      function (
+        item
+      ) {
+
+        return (
+          item.atomicNumber ===
+          state.proton
+          &&
+          item.commonNeutrons ===
+          state.neutron
+        );
+
+      }
+    );
+
+
+  trackFarmEvent(
+    "atom_build_attempted",
+    {
+      habitat:
+        habitat,
+
+      protons:
+        state.proton,
+
+      neutrons:
+        state.neutron,
+
+      electrons:
+        state.electron,
+
+      successful:
+        Boolean(
+          element
+        )
+    }
+  );
+
+
+  if (
+    !element
+  ) {
+
+    const atomicMatch =
+      elementalSpecies.find(
+        function (
+          item
+        ) {
+
+          return (
+            item.atomicNumber ===
+            state.proton
+          );
+
+        }
+      );
+
+
+    if (
+      atomicMatch
+    ) {
+
+      feedback.textContent =
+        "You found "
+        +
+        atomicMatch.element
+        +
+        ", but this prototype is looking for its common isotope. Check the neutron count.";
+
+
+      return;
+
+    }
+
+
+    feedback.textContent =
+      "That atom is chemically possible, but it does not have a Molecular Farm species in the current Chemical-Period yet.";
+
+
+    return;
+
+  }
+
+
+  pendingCapture = {
+
+    type:
+      "element",
+
+    habitat:
+      habitat,
+
+    data:
+      element
+
+  };
+
+
+  feedback.textContent =
+    "🌱 Species located! Capture it to add it to your Period-ex.";
+
+
+  showElementDiscovery(
+    habitat,
+    element
+  );
+
+}
+
+
+
+/* ==========================================================
+   MOLECULE BUILDER
+========================================================== */
+
+function addMoleculeAtom(
+  habitat,
+  symbol
+) {
+
+  const state =
+    habitatBuilderState[
+      habitat
+    ];
+
+
+  state.atoms[
+    symbol
+  ] =
+    (
+      state.atoms[
+        symbol
+      ]
+      ||
+      0
+    )
+    +
+    1;
+
+
+  renderMoleculeTray(
+    habitat
+  );
+
+}
+
+
+
+/* ==========================================================
+   REMOVE MOLECULE ATOM
+========================================================== */
+
+function removeMoleculeAtom(
+  habitat,
+  symbol
+) {
+
+  const state =
+    habitatBuilderState[
+      habitat
+    ];
+
+
+  if (
+    !state.atoms[
+      symbol
+    ]
+  ) {
+
+    return;
+
+  }
+
+
+  state.atoms[
+    symbol
+  ]--;
+
+
+  if (
+    state.atoms[
+      symbol
+    ] <=
+    0
+  ) {
+
+    delete state.atoms[
+      symbol
+    ];
+
+  }
+
+
+  renderMoleculeTray(
+    habitat
+  );
+
+}
+
+
+
+/* ==========================================================
+   BUILD FORMULA PREVIEW
+========================================================== */
+
+const subscriptCharacters = {
+
+  2:
+    "₂",
+
+  3:
+    "₃",
+
+  4:
+    "₄",
+
+  5:
+    "₅",
+
+  6:
+    "₆",
+
+  7:
+    "₇",
+
+  8:
+    "₈",
+
+  9:
+    "₉"
+
+};
+
+
+function getIngredientFormula(
+  ingredients
+) {
+
+  return Object
+    .keys(
+      ingredients
+    )
+    .map(
+      function (
+        symbol
+      ) {
+
+        const count =
+          ingredients[
+            symbol
+          ];
+
+
+        return (
+          symbol
+          +
+          (
+            count >
+            1
+            ?
+              (
+                subscriptCharacters[
+                  count
+                ]
+                ||
+                count
+              )
+            :
+              ""
+          )
+        );
+
+      }
+    )
+    .join(
+      ""
+    );
+
+}
+
+
+
+/* ==========================================================
+   RENDER MOLECULE TRAY
+========================================================== */
+
+function renderMoleculeTray(
+  habitat
+) {
+
+  const state =
+    habitatBuilderState[
+      habitat
+    ];
+
+
+  const tray =
+    document.getElementById(
+      habitat +
+      "BuildTray"
+    );
+
+
+  const formula =
+    document.getElementById(
+      habitat +
+      "Formula"
+    );
+
+
+  if (
+    !tray ||
+    !formula
+  ) {
+
+    return;
+
+  }
+
+
+  tray.innerHTML =
+    "";
+
+
+  const symbols =
+    Object.keys(
+      state.atoms
+    );
+
+
+  if (
+    symbols.length ===
+    0
+  ) {
+
+    tray.innerHTML = `
+
+      <div class="empty-build-message">
+        Add elements to begin building.
+      </div>
+
+    `;
+
+
+    formula.textContent =
+      "?";
+
+
+    return;
+
+  }
+
+
+  symbols.forEach(
+    function (
+      symbol
+    ) {
+
+      for (
+        let index = 0;
+        index <
+        state.atoms[
+          symbol
+        ];
+        index++
+      ) {
+
+        const atom =
+          document.createElement(
+            "button"
+          );
+
+
+        atom.type =
+          "button";
+
+
+        atom.className =
+          "build-atom";
+
+
+        atom.innerHTML = `
+
+          <strong>
+            ${symbol}
+          </strong>
+
+          <small>
+            tap to remove
+          </small>
+
+        `;
+
+
+        atom.addEventListener(
+          "click",
+          function () {
+
+            removeMoleculeAtom(
+              habitat,
+              symbol
+            );
+
+          }
+        );
+
+
+        tray.appendChild(
+          atom
+        );
+
+      }
+
+    }
+  );
+
+
+  formula.textContent =
+    getIngredientFormula(
+      state.atoms
+    );
+
+}
+
+
+
+/* ==========================================================
+   NORMALIZE MOLECULE INGREDIENTS
 ========================================================== */
 
 function normalizeIngredientObject(
@@ -2392,9 +3421,10 @@ function normalizeIngredientObject(
     {};
 
 
-  Object.keys(
-    ingredients
-  )
+  Object
+    .keys(
+      ingredients
+    )
     .sort()
     .forEach(
       function (
@@ -2422,9 +3452,13 @@ function normalizeIngredientObject(
 
 
 
+/* ==========================================================
+   FIND MOLECULE
+========================================================== */
+
 function findMolecularSpecies(
   ingredients,
-  habitatId
+  habitat
 ) {
 
   const target =
@@ -2438,25 +3472,15 @@ function findMolecularSpecies(
       molecule
     ) {
 
-      const sameIngredients =
+      return (
+        molecule.habitat ===
+        habitat
+        &&
         normalizeIngredientObject(
           molecule.ingredients
         )
         ===
-        target;
-
-
-      const sameHabitat =
-        !habitatId
-        ||
-        molecule.habitat ===
-        habitatId;
-
-
-      return (
-        sameIngredients
-        &&
-        sameHabitat
+        target
       );
 
     }
@@ -2467,100 +3491,50 @@ function findMolecularSpecies(
 
 
 /* ==========================================================
-   CATALOGUE MOLECULE
+   IDENTIFY MOLECULE
 
-   This will be called by the Farm/Wild/Sea builder.
-========================================================== */
+   DOES NOT CAPTURE IT.
 
-function catalogueMolecule(
-  molecule
-) {
-
-  if (
-    !molecule
-  ) {
-
-    return false;
-
-  }
-
-
-  const alreadyDiscovered =
-    player
-      .unlockedMolecules
-      .includes(
-        molecule.id
-      );
-
-
-  if (
-    !alreadyDiscovered
-  ) {
-
-    player
-      .unlockedMolecules
-      .push(
-        molecule.id
-      );
-
-
-    addXP(
-      30
-    );
-
-
-    trackFarmEvent(
-      "species_catalogued",
-      {
-        species_type:
-          "molecular",
-
-        species_name:
-          molecule.name,
-
-        formula:
-          molecule.formula,
-
-        habitat:
-          molecule.habitat,
-
-        total_molecules_discovered:
-          player.unlockedMolecules.length,
-
-        xp:
-          player.xp
-      }
-    );
-
-  }
-
-
-  savePlayer();
-
-
-  return (
-    !alreadyDiscovered
-  );
-
-}
-
-
-
-/* ==========================================================
-   BUILD MOLECULE
-
-   Ready for the next interface.
+   This is intentional.
 ========================================================== */
 
 function attemptMoleculeBuild(
-  ingredients,
-  habitatId
+  habitat
 ) {
+
+  const state =
+    habitatBuilderState[
+      habitat
+    ];
+
+
+  const feedback =
+    document.getElementById(
+      habitat +
+      "BuildFeedback"
+    );
+
+
+  if (
+    Object.keys(
+      state.atoms
+    ).length ===
+    0
+  ) {
+
+    feedback.textContent =
+      "Build a molecular structure first.";
+
+
+    return;
+
+  }
+
 
   const molecule =
     findMolecularSpecies(
-      ingredients,
-      habitatId
+      state.atoms,
+      habitat
     );
 
 
@@ -2568,7 +3542,7 @@ function attemptMoleculeBuild(
     "molecule_build_attempted",
     {
       habitat:
-        habitatId || "unknown",
+        habitat,
 
       successful:
         Boolean(
@@ -2582,45 +3556,789 @@ function attemptMoleculeBuild(
     !molecule
   ) {
 
-    return {
-      success:
-        false,
+    feedback.textContent =
+      "Nothing has appeared yet. Change the number or combination of atoms and keep searching.";
 
-      molecule:
-        null
-    };
+
+    hideDiscoveryCard(
+      habitat
+    );
+
+
+    pendingCapture =
+      null;
+
+
+    return;
 
   }
 
 
-  const newDiscovery =
-    catalogueMolecule(
+  pendingCapture = {
+
+    type:
+      "molecule",
+
+    habitat:
+      habitat,
+
+    data:
       molecule
-    );
 
-
-  return {
-    success:
-      true,
-
-    molecule:
-      molecule,
-
-    newDiscovery:
-      newDiscovery
   };
+
+
+  feedback.textContent =
+    "🐾 Something appeared! Capture it to catalogue the species.";
+
+
+  showMoleculeDiscovery(
+    habitat,
+    molecule
+  );
 
 }
 
 
 
 /* ==========================================================
-   EVOLUTION DISCOVERY
+   SHOW ELEMENT DISCOVERY
+========================================================== */
+
+function showElementDiscovery(
+  habitat,
+  element
+) {
+
+  const card =
+    document.getElementById(
+      habitat +
+      "DiscoveryCard"
+    );
+
+
+  if (
+    !card
+  ) {
+
+    return;
+
+  }
+
+
+  const alreadyCaptured =
+    player
+      .unlockedElements
+      .includes(
+        element.atomicNumber
+      );
+
+
+  card.innerHTML = `
+
+    <div class="discovery-icon">
+      ${element.icon}
+    </div>
+
+    <div class="section-kicker">
+      ELEMENTAL SPECIES FOUND
+    </div>
+
+    <h2>
+      ${element.name}
+    </h2>
+
+    <div class="discovery-formula">
+      ${element.symbol}
+    </div>
+
+    <p>
+      Atomic Number:
+      ${element.atomicNumber}
+    </p>
+
+    <p>
+      ${element.clue}
+    </p>
+
+    <button
+      type="button"
+      class="primary-button capture-species-button"
+    >
+      ${
+        alreadyCaptured
+        ?
+          "✓ Already Catalogued"
+        :
+          "📸 Capture Species"
+      }
+    </button>
+
+  `;
+
+
+  card.classList.add(
+    "visible"
+  );
+
+
+  const button =
+    card.querySelector(
+      ".capture-species-button"
+    );
+
+
+  if (
+    alreadyCaptured
+  ) {
+
+    button.disabled =
+      true;
+
+  }
+
+  else {
+
+    button.addEventListener(
+      "click",
+      capturePendingSpecies
+    );
+
+  }
+
+}
+
+
+
+/* ==========================================================
+   SHOW MOLECULE DISCOVERY
+========================================================== */
+
+function showMoleculeDiscovery(
+  habitat,
+  molecule
+) {
+
+  const card =
+    document.getElementById(
+      habitat +
+      "DiscoveryCard"
+    );
+
+
+  if (
+    !card
+  ) {
+
+    return;
+
+  }
+
+
+  const alreadyCaptured =
+    player
+      .unlockedMolecules
+      .includes(
+        molecule.id
+      );
+
+
+  card.innerHTML = `
+
+    <div class="discovery-icon">
+      ${molecule.icon}
+    </div>
+
+    <div class="section-kicker">
+      MOLECULAR SPECIES FOUND
+    </div>
+
+    <h2>
+      ${molecule.name}
+    </h2>
+
+    <div class="discovery-formula">
+      ${molecule.formula}
+    </div>
+
+    <p>
+      ${molecule.fact}
+    </p>
+
+    <button
+      type="button"
+      class="primary-button capture-species-button"
+    >
+      ${
+        alreadyCaptured
+        ?
+          "✓ Already Catalogued"
+        :
+          "📸 Capture Species"
+      }
+    </button>
+
+  `;
+
+
+  card.classList.add(
+    "visible"
+  );
+
+
+  const button =
+    card.querySelector(
+      ".capture-species-button"
+    );
+
+
+  if (
+    alreadyCaptured
+  ) {
+
+    button.disabled =
+      true;
+
+  }
+
+  else {
+
+    button.addEventListener(
+      "click",
+      capturePendingSpecies
+    );
+
+  }
+
+}
+
+
+
+/* ==========================================================
+   HIDE DISCOVERY CARD
+========================================================== */
+
+function hideDiscoveryCard(
+  habitat
+) {
+
+  const card =
+    document.getElementById(
+      habitat +
+      "DiscoveryCard"
+    );
+
+
+  if (
+    card
+  ) {
+
+    card.classList.remove(
+      "visible"
+    );
+
+
+    card.innerHTML =
+      "";
+
+  }
+
+}
+
+
+
+/* ==========================================================
+   CAPTURE SPECIES
+========================================================== */
+
+function capturePendingSpecies() {
+
+  if (
+    !pendingCapture
+  ) {
+
+    return;
+
+  }
+
+
+  if (
+    pendingCapture.type ===
+    "element"
+  ) {
+
+    captureElement(
+      pendingCapture.data,
+      pendingCapture.habitat
+    );
+
+  }
+
+
+  if (
+    pendingCapture.type ===
+    "molecule"
+  ) {
+
+    captureMolecule(
+      pendingCapture.data,
+      pendingCapture.habitat
+    );
+
+  }
+
+}
+
+
+
+/* ==========================================================
+   CAPTURE ELEMENT
+========================================================== */
+
+function captureElement(
+  element,
+  habitat
+) {
+
+  if (
+    player
+      .unlockedElements
+      .includes(
+        element.atomicNumber
+      )
+  ) {
+
+    return;
+
+  }
+
+
+  player
+    .unlockedElements
+    .push(
+      element.atomicNumber
+    );
+
+
+  addXP(
+    25
+  );
+
+
+  savePlayer();
+
+
+  buildPeriod();
+
+
+  trackFarmEvent(
+    "species_captured",
+    {
+      species_type:
+        "elemental",
+
+      species_name:
+        element.name,
+
+      element_symbol:
+        element.symbol,
+
+      atomic_number:
+        element.atomicNumber,
+
+      habitat:
+        habitat
+    }
+  );
+
+
+  const card =
+    document.getElementById(
+      habitat +
+      "DiscoveryCard"
+    );
+
+
+  card.innerHTML += `
+
+    <div class="capture-success">
+      ✓ CAPTURED IN PERIOD-EX
+    </div>
+
+  `;
+
+
+  const button =
+    card.querySelector(
+      ".capture-species-button"
+    );
+
+
+  if (
+    button
+  ) {
+
+    button.textContent =
+      "✓ Captured";
+
+
+    button.disabled =
+      true;
+
+  }
+
+
+  pendingCapture =
+    null;
+
+}
+
+
+
+/* ==========================================================
+   CAPTURE MOLECULE
+========================================================== */
+
+function captureMolecule(
+  molecule,
+  habitat
+) {
+
+  if (
+    player
+      .unlockedMolecules
+      .includes(
+        molecule.id
+      )
+  ) {
+
+    return;
+
+  }
+
+
+  player
+    .unlockedMolecules
+    .push(
+      molecule.id
+    );
+
+
+  addXP(
+    30
+  );
+
+
+  savePlayer();
+
+
+  trackFarmEvent(
+    "species_captured",
+    {
+      species_type:
+        "molecular",
+
+      species_name:
+        molecule.name,
+
+      formula:
+        molecule.formula,
+
+      habitat:
+        habitat
+    }
+  );
+
+
+  updateEvolutionUnlocks();
+
+
+  const card =
+    document.getElementById(
+      habitat +
+      "DiscoveryCard"
+    );
+
+
+  card.innerHTML += `
+
+    <div class="capture-success">
+      ✓ CAPTURED IN PERIOD-EX
+    </div>
+
+  `;
+
+
+  const button =
+    card.querySelector(
+      ".capture-species-button"
+    );
+
+
+  if (
+    button
+  ) {
+
+    button.textContent =
+      "✓ Captured";
+
+
+    button.disabled =
+      true;
+
+  }
+
+
+  pendingCapture =
+    null;
+
+}
+
+
+
+/* ==========================================================
+   CLEAR HABITAT BUILD
+========================================================== */
+
+function clearHabitatBuild(
+  habitat
+) {
+
+  const state =
+    habitatBuilderState[
+      habitat
+    ];
+
+
+  state.atoms =
+    {};
+
+
+  state.proton =
+    0;
+
+
+  state.neutron =
+    0;
+
+
+  state.electron =
+    0;
+
+
+  pendingCapture =
+    null;
+
+
+  const feedback =
+    document.getElementById(
+      habitat +
+      "BuildFeedback"
+    );
+
+
+  if (
+    feedback
+  ) {
+
+    feedback.textContent =
+      "";
+
+  }
+
+
+  hideDiscoveryCard(
+    habitat
+  );
+
+}
+
+
+
+/* ==========================================================
+   BUILD / CLEAR BUTTON EVENTS
+========================================================== */
+
+function wireHabitatButtons(
+  habitat
+) {
+
+  const buildButton =
+    document.getElementById(
+      habitat +
+      "BuildButton"
+    );
+
+
+  const clearButton =
+    document.getElementById(
+      habitat +
+      "ClearButton"
+    );
+
+
+  if (
+    buildButton
+  ) {
+
+    buildButton.addEventListener(
+      "click",
+      function () {
+
+        if (
+          habitatBuilderState[
+            habitat
+          ].mode ===
+          "atom"
+        ) {
+
+          attemptAtomBuild(
+            habitat
+          );
+
+        }
+
+        else {
+
+          attemptMoleculeBuild(
+            habitat
+          );
+
+        }
+
+      }
+    );
+
+  }
+
+
+  if (
+    clearButton
+  ) {
+
+    clearButton.addEventListener(
+      "click",
+      function () {
+
+        clearHabitatBuild(
+          habitat
+        );
+
+
+        renderHabitatBuilder(
+          habitat
+        );
+
+      }
+    );
+
+  }
+
+}
+
+
+
+/* ==========================================================
+   EVOLUTION UNLOCKS
+========================================================== */
+
+function updateEvolutionUnlocks() {
+
+
+  /*
+    PORCUPINE LINE
+
+    Capture H3PO4 to unlock the family.
+  */
+
+  if (
+    player
+      .unlockedMolecules
+      .includes(
+        "phosphoric-porcupine"
+      )
+  ) {
+
+    catalogueEvolution(
+      "phosphate-line",
+      false
+    );
+
+  }
+
+
+  /*
+    WATER LINE
+  */
+
+  if (
+    player
+      .unlockedMolecules
+      .includes(
+        "water-octopus"
+      )
+  ) {
+
+    catalogueEvolution(
+      "water-line",
+      false
+    );
+
+  }
+
+
+  /*
+    CHROMATE LINE
+
+    Require both Crow and Scarecrow.
+  */
+
+  if (
+    player
+      .unlockedMolecules
+      .includes(
+        "chromate-crow"
+      )
+    &&
+    player
+      .unlockedMolecules
+      .includes(
+        "dichromate-scarecrow"
+      )
+  ) {
+
+    catalogueEvolution(
+      "chromate-line",
+      false
+    );
+
+  }
+
+}
+
+
+
+/* ==========================================================
+   CATALOGUE EVOLUTION
 ========================================================== */
 
 function catalogueEvolution(
-  evolutionId
+  evolutionId,
+  rewardPlayer = true
 ) {
+
+  if (
+    player
+      .discoveredEvolutions
+      .includes(
+        evolutionId
+      )
+  ) {
+
+    return;
+
+  }
+
 
   const evolution =
     evolutionLines.find(
@@ -2646,19 +4364,6 @@ function catalogueEvolution(
   }
 
 
-  if (
-    player
-      .discoveredEvolutions
-      .includes(
-        evolutionId
-      )
-  ) {
-
-    return;
-
-  }
-
-
   player
     .discoveredEvolutions
     .push(
@@ -2666,27 +4371,28 @@ function catalogueEvolution(
     );
 
 
-  addXP(
-    40
-  );
+  if (
+    rewardPlayer
+  ) {
 
+    addXP(
+      40
+    );
 
-  savePlayer();
+  }
+
+  else {
+
+    savePlayer();
+
+  }
 
 
   trackFarmEvent(
     "evolution_discovered",
     {
-      evolution_id:
-        evolution.id,
-
       evolution_name:
-        evolution.name,
-
-      total_evolutions_discovered:
-        player
-          .discoveredEvolutions
-          .length
+        evolution.name
     }
   );
 
@@ -2695,80 +4401,7 @@ function catalogueEvolution(
 
 
 /* ==========================================================
-   XP
-========================================================== */
-
-function addXP(
-  amount
-) {
-
-  player.xp +=
-    amount;
-
-
-  savePlayer();
-
-
-  updateXP();
-
-}
-
-
-
-function updateXP() {
-
-  const xpText =
-    document.getElementById(
-      "xpText"
-    );
-
-
-  const xpFill =
-    document.getElementById(
-      "xpFill"
-    );
-
-
-  if (
-    xpText
-  ) {
-
-    xpText.textContent =
-      player.xp
-      +
-      " XP";
-
-  }
-
-
-  if (
-    xpFill
-  ) {
-
-    const percent =
-      player.xp
-      %
-      100;
-
-
-    xpFill.style.width =
-      percent
-      +
-      "%";
-
-  }
-
-}
-
-
-
-/* ==========================================================
    PERIOD-EX
-
-   The existing HTML has one catalogue container,
-   so V2 renders all collections inside it.
-
-   Later the HTML will give us real tabs.
 ========================================================== */
 
 function showPeriodex() {
@@ -2824,7 +4457,7 @@ function showPeriodex() {
     );
 
 
-  const discoveredEvolutionLines =
+  const discoveredEvolutions =
     evolutionLines.filter(
       function (
         item
@@ -2840,55 +4473,26 @@ function showPeriodex() {
     );
 
 
-  trackFarmEvent(
-    "periodex_opened",
-    {
-      discovered_elements:
-        discoveredElements.length,
+  /* ELEMENTS */
 
-      discovered_molecules:
-        discoveredMolecules.length,
+  catalogue.innerHTML += `
 
-      discovered_evolutions:
-        discoveredEvolutionLines.length
-    }
-  );
+    <div class="periodex-section-heading">
 
+      <h2>
+        🌱 Elemental Species
+      </h2>
 
+      <p>
+        ${discoveredElements.length}
+        /
+        ${elementalSpecies.length}
+        captured
+      </p>
 
-  /* ========================================================
-     ELEMENTAL SECTION
-  ======================================================== */
-
-  const elementHeading =
-    document.createElement(
-      "div"
-    );
-
-
-  elementHeading.className =
-    "periodex-section-heading";
-
-
-  elementHeading.innerHTML = `
-
-    <h2>
-      🌱 Elemental Species
-    </h2>
-
-    <p>
-      ${discoveredElements.length}
-      /
-      ${elementalSpecies.length}
-      catalogued
-    </p>
+    </div>
 
   `;
-
-
-  catalogue.appendChild(
-    elementHeading
-  );
 
 
   discoveredElements.forEach(
@@ -2896,88 +4500,60 @@ function showPeriodex() {
       item
     ) {
 
-      const card =
-        document.createElement(
-          "div"
-        );
+      catalogue.innerHTML += `
 
+        <div class="catalogue-card elemental-entry">
 
-      card.className =
-        "catalogue-card elemental-entry";
+          <strong>
+            ${item.icon}
+            ${item.name}
+          </strong>
 
+          <br>
 
-      card.innerHTML = `
+          ${item.symbol}
+          •
+          ${item.element}
 
-        <strong>
+          <br>
 
-          ${item.icon}
+          <small>
+            Atomic Number:
+            ${item.atomicNumber}
+            •
+            Valence Electrons:
+            ${item.valenceElectrons}
+          </small>
 
-          ${item.name}
-
-        </strong>
-
-        <br>
-
-        ${item.symbol}
-
-        • ${item.element}
-
-        • Atomic Number
-
-        ${item.atomicNumber}
-
-        <br>
-
-        <small>
-          Valence electrons:
-          ${item.valenceElectrons}
-        </small>
+        </div>
 
       `;
-
-
-      catalogue.appendChild(
-        card
-      );
 
     }
   );
 
 
 
-  /* ========================================================
-     MOLECULAR SECTION
-  ======================================================== */
+  /* MOLECULES */
 
-  const moleculeHeading =
-    document.createElement(
-      "div"
-    );
+  catalogue.innerHTML += `
 
+    <div class="periodex-section-heading">
 
-  moleculeHeading.className =
-    "periodex-section-heading";
+      <h2>
+        🐾 Molecular Species
+      </h2>
 
+      <p>
+        ${discoveredMolecules.length}
+        /
+        ${molecularSpecies.length}
+        captured
+      </p>
 
-  moleculeHeading.innerHTML = `
-
-    <h2>
-      🐾 Molecular Species
-    </h2>
-
-    <p>
-      ${discoveredMolecules.length}
-      /
-      ${molecularSpecies.length}
-      discovered
-    </p>
+    </div>
 
   `;
-
-
-  catalogue.appendChild(
-    moleculeHeading
-  );
 
 
   if (
@@ -2985,34 +4561,23 @@ function showPeriodex() {
     0
   ) {
 
-    const empty =
-      document.createElement(
-        "div"
-      );
+    catalogue.innerHTML += `
 
+      <div class="periodex-undiscovered">
 
-    empty.className =
-      "periodex-undiscovered";
+        <strong>
+          ??? Molecular Species
+        </strong>
 
+        <p>
+          Build and capture molecular animals
+          on the Farm, in the Wild
+          or Under the Sea.
+        </p>
 
-    empty.innerHTML = `
-
-      <strong>
-        ??? Molecular Species
-      </strong>
-
-      <p>
-        Build species on the Farm,
-        in the Wild or Under the Sea
-        to catalogue them here.
-      </p>
+      </div>
 
     `;
-
-
-    catalogue.appendChild(
-      empty
-    );
 
   }
 
@@ -3022,163 +4587,94 @@ function showPeriodex() {
       item
     ) {
 
-      const card =
-        document.createElement(
-          "div"
-        );
+      catalogue.innerHTML += `
 
+        <div class="catalogue-card molecular-entry">
 
-      card.className =
-        "catalogue-card molecular-entry";
+          <strong>
+            ${item.icon}
+            ${item.name}
+          </strong>
 
+          <br>
 
-      card.innerHTML = `
+          ${item.formula}
 
-        <strong>
+          <br>
 
-          ${item.icon}
+          <small>
+            ${item.fact}
+          </small>
 
-          ${item.name}
-
-        </strong>
-
-        <br>
-
-        ${item.formula}
-
-        <br>
-
-        <small>
-
-          Habitat:
-
-          ${
-            habitats[
-              item.habitat
-            ]
-            ?
-              habitats[
-                item.habitat
-              ].name
-            :
-              item.habitat
-          }
-
-        </small>
-
-        <br>
-
-        <small>
-          ${item.fact}
-        </small>
+        </div>
 
       `;
-
-
-      catalogue.appendChild(
-        card
-      );
 
     }
   );
 
 
 
-  /* ========================================================
-     EVOLUTION SECTION
-  ======================================================== */
+  /* EVOLUTIONS */
 
-  const evolutionHeading =
-    document.createElement(
-      "div"
-    );
+  catalogue.innerHTML += `
 
+    <div class="periodex-section-heading">
 
-  evolutionHeading.className =
-    "periodex-section-heading";
+      <h2>
+        🧬 Evolution Lines
+      </h2>
 
+      <p>
+        ${discoveredEvolutions.length}
+        /
+        ${evolutionLines.length}
+        discovered
+      </p>
 
-  evolutionHeading.innerHTML = `
-
-    <h2>
-      🧬 Evolution Lines
-    </h2>
-
-    <p>
-      ${discoveredEvolutionLines.length}
-      /
-      ${evolutionLines.length}
-      completed
-    </p>
+    </div>
 
   `;
 
 
-  catalogue.appendChild(
-    evolutionHeading
-  );
-
-
   if (
-    discoveredEvolutionLines.length ===
+    discoveredEvolutions.length ===
     0
   ) {
 
-    const empty =
-      document.createElement(
-        "div"
-      );
+    catalogue.innerHTML += `
 
+      <div class="periodex-undiscovered">
 
-    empty.className =
-      "periodex-undiscovered";
+        Capture related species to uncover
+        their chemical evolution.
 
-
-    empty.innerHTML = `
-
-      <strong>
-        ??? Evolution Lines
-      </strong>
-
-      <p>
-        Discover related molecular species
-        and follow how they transform
-        under changing chemical conditions.
-      </p>
+      </div>
 
     `;
-
-
-    catalogue.appendChild(
-      empty
-    );
 
   }
 
 
-  discoveredEvolutionLines.forEach(
+  discoveredEvolutions.forEach(
     function (
       evolution
     ) {
 
-      const card =
-        document.createElement(
-          "div"
-        );
-
-
-      card.className =
-        "catalogue-card evolution-entry";
-
-
-      const stageText =
+      const stages =
         evolution.stages
           .map(
             function (
               stage
             ) {
 
-              return stage.formula;
+              return (
+                stage.icon
+                +
+                " "
+                +
+                stage.formula
+              );
 
             }
           )
@@ -3187,33 +4683,44 @@ function showPeriodex() {
           );
 
 
-      card.innerHTML = `
+      catalogue.innerHTML += `
 
-        <strong>
+        <div class="catalogue-card evolution-entry">
 
-          ${evolution.icon}
+          <strong>
+            ${evolution.icon}
+            ${evolution.name}
+          </strong>
 
-          ${evolution.name}
+          <br><br>
 
-        </strong>
+          ${stages}
 
-        <br><br>
+          <br><br>
 
-        ${stageText}
+          <small>
+            ${evolution.trigger}
+          </small>
 
-        <br><br>
-
-        <small>
-          ${evolution.trigger}
-        </small>
+        </div>
 
       `;
 
+    }
+  );
 
-      catalogue.appendChild(
-        card
-      );
 
+  trackFarmEvent(
+    "periodex_opened",
+    {
+      elements:
+        discoveredElements.length,
+
+      molecules:
+        discoveredMolecules.length,
+
+      evolutions:
+        discoveredEvolutions.length
     }
   );
 
@@ -3227,41 +4734,25 @@ function showPeriodex() {
 
 
 /* ==========================================================
-   SAVE PLAYER
-
-   Save new format.
-
-   Also maintain the old patPlayer key for compatibility
-   while the rest of the site transitions.
+   INITIALIZE DISCOVERY HABITATS
 ========================================================== */
 
-function savePlayer() {
+function initializeHabitat(
+  habitat
+) {
 
-  localStorage.setItem(
-
-    "molecularFarmPlayerV2",
-
-    JSON.stringify(
-      player
-    )
-
+  injectBuilderControls(
+    habitat
   );
 
 
-  localStorage.setItem(
+  wireHabitatButtons(
+    habitat
+  );
 
-    "patPlayer",
 
-    JSON.stringify(
-      {
-        xp:
-          player.xp,
-
-        unlocked:
-          player.unlockedElements
-      }
-    )
-
+  renderHabitatBuilder(
+    habitat
   );
 
 }
@@ -3269,67 +4760,41 @@ function savePlayer() {
 
 
 /* ==========================================================
-   DEBUG / DEVELOPMENT HELPERS
-
-   These are intentionally available globally while
-   we're building the prototype.
-
-   Example in browser console:
-
-   discoverMoleculeForTesting("methane-chicken")
+   DEVELOPMENT HELPERS
 ========================================================== */
 
-window.discoverMoleculeForTesting =
-  function (
-    id
-  ) {
-
-    const molecule =
-      getMoleculeById(
-        id
-      );
-
+window.resetMolecularFarmProgress =
+  function () {
 
     if (
-      molecule
+      !window.confirm(
+        "Reset all Molecular Farm progress on this device?"
+      )
     ) {
 
-      catalogueMolecule(
-        molecule
-      );
-
-
-      console.log(
-        "Discovered:",
-        molecule.name
-      );
+      return;
 
     }
 
-  };
 
-
-window.discoverEvolutionForTesting =
-  function (
-    id
-  ) {
-
-    catalogueEvolution(
-      id
+    localStorage.removeItem(
+      "molecularFarmPlayerV2"
     );
 
 
-    console.log(
-      "Evolution discovered:",
-      id
+    localStorage.removeItem(
+      "patPlayer"
     );
+
+
+    window.location.reload();
 
   };
 
 
 
 /* ==========================================================
-   START MOLECULAR FARM
+   START
 ========================================================== */
 
 savePlayer();
@@ -3341,22 +4806,35 @@ buildPeriod();
 updateXP();
 
 
+updateEvolutionUnlocks();
+
+
+initializeHabitat(
+  "farm"
+);
+
+
+initializeHabitat(
+  "wild"
+);
+
+
+initializeHabitat(
+  "sea"
+);
+
+
 trackFarmEvent(
   "world_entered",
   {
     version:
-      "2",
+      "3",
 
     discovered_elements:
       player.unlockedElements.length,
 
     discovered_molecules:
       player.unlockedMolecules.length,
-
-    discovered_evolutions:
-      player
-        .discoveredEvolutions
-        .length,
 
     xp:
       player.xp
