@@ -157,6 +157,9 @@ button {
   cursor:
     pointer;
 
+  -webkit-tap-highlight-color:
+    transparent;
+
 }
 
 
@@ -168,9 +171,9 @@ button {
 header {
 
   padding:
-    30px
+    28px
     20px
-    25px;
+    28px;
 
   text-align:
     center;
@@ -184,7 +187,7 @@ header {
     inline-block;
 
   margin-bottom:
-    15px;
+    18px;
 
   padding:
     8px
@@ -213,21 +216,23 @@ header {
 }
 
 
+/* SMALL MODEL MARK */
+
 .ssm-mark {
 
   position:
     relative;
 
   width:
-    125px;
+    112px;
 
   height:
-    82px;
+    70px;
 
   margin:
-    0
+    3px
     auto
-    5px;
+    20px;
 
 }
 
@@ -244,10 +249,10 @@ header {
     50%;
 
   width:
-    108px;
+    94px;
 
   height:
-    44px;
+    38px;
 
   transform:
     translate(
@@ -297,17 +302,11 @@ header {
   top:
     50%;
 
-  transform:
-    translate(
-      -50%,
-      -50%
-    );
-
   width:
-    38px;
+    35px;
 
   height:
-    38px;
+    35px;
 
   display:
     flex;
@@ -317,6 +316,12 @@ header {
 
   justify-content:
     center;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
 
   border:
     3px
@@ -333,7 +338,7 @@ header {
     var(--purple);
 
   font-size:
-    1.5rem;
+    1.3rem;
 
   font-weight:
     bold;
@@ -343,16 +348,26 @@ header {
 
 header h1 {
 
+  position:
+    relative;
+
+  z-index:
+    5;
+
   margin:
-    4px
-    0;
+    7px
+    0
+    5px;
 
   font-size:
     clamp(
-      2.1rem,
+      2rem,
       8vw,
-      4.4rem
+      4.2rem
     );
+
+  line-height:
+    1.05;
 
   letter-spacing:
     1px;
@@ -363,7 +378,7 @@ header h1 {
 .tagline {
 
   margin-top:
-    8px;
+    10px;
 
   color:
     var(--slate);
@@ -421,7 +436,7 @@ main {
     830px;
 
   margin:
-    38px
+    40px
     auto
     22px;
 
@@ -477,7 +492,7 @@ main {
 
 
 /* =====================================================
-   PRINCIPLE
+   PRINCIPLE CARD
 ====================================================== */
 
 .principle-card {
@@ -723,42 +738,27 @@ main {
 
 
 .particle-card.z {
-
-  border-color:
-    var(--gold);
-
+  border-color: var(--gold);
 }
 
 
 .particle-card.w {
-
-  border-color:
-    var(--red);
-
+  border-color: var(--red);
 }
 
 
 .particle-card.gamma {
-
-  border-color:
-    var(--blue);
-
+  border-color: var(--blue);
 }
 
 
 .particle-card.cqd {
-
-  border-color:
-    var(--purple);
-
+  border-color: var(--purple);
 }
 
 
 .particle-card.lqg {
-
-  border-color:
-    var(--green);
-
+  border-color: var(--green);
 }
 
 
@@ -864,8 +864,11 @@ main {
   position:
     relative;
 
+  width:
+    100%;
+
   min-height:
-    440px;
+    430px;
 
   margin-top:
     20px;
@@ -924,6 +927,9 @@ main {
 
   inset:
     0;
+
+  display:
+    block;
 
   width:
     100%;
@@ -1057,6 +1063,17 @@ main {
 
   font-weight:
     bold;
+
+  text-anchor:
+    middle;
+
+}
+
+
+.diagram-small {
+
+  font-size:
+    11px;
 
   text-anchor:
     middle;
@@ -1305,6 +1322,223 @@ main {
 
 
 /* =====================================================
+   CQD
+====================================================== */
+
+.cqd-shell {
+
+  margin-top:
+    25px;
+
+  padding:
+    24px;
+
+  border:
+    3px
+    solid
+    var(--purple);
+
+  border-radius:
+    20px;
+
+  background:
+    var(--paper);
+
+}
+
+
+.cqd-row {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      1fr
+    );
+
+  gap:
+    10px;
+
+}
+
+
+.cqd-state {
+
+  padding:
+    16px;
+
+  border:
+    2px
+    solid
+    #cbb79a;
+
+  border-radius:
+    12px;
+
+  background:
+    var(--cream);
+
+  text-align:
+    center;
+
+}
+
+
+.cqd-state.active {
+
+  border-color:
+    var(--purple);
+
+  background:
+    var(--purple-light);
+
+}
+
+
+.cqd-state strong {
+
+  display:
+    block;
+
+  margin-bottom:
+    5px;
+
+}
+
+
+.cqd-output {
+
+  margin-top:
+    15px;
+
+  padding:
+    15px;
+
+  border-left:
+    6px
+    solid
+    var(--purple);
+
+  border-radius:
+    11px;
+
+  background:
+    var(--cream);
+
+  line-height:
+    1.5;
+
+}
+
+
+
+/* =====================================================
+   LQG
+====================================================== */
+
+.lqg-shell {
+
+  margin-top:
+    25px;
+
+  padding:
+    24px;
+
+  border:
+    3px
+    solid
+    var(--green);
+
+  border-radius:
+    20px;
+
+  background:
+    var(--paper);
+
+}
+
+
+.loop-controls {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  gap:
+    9px;
+
+  flex-wrap:
+    wrap;
+
+  margin-bottom:
+    15px;
+
+}
+
+
+.loop-button {
+
+  padding:
+    10px
+    13px;
+
+  border:
+    2px
+    solid
+    var(--green);
+
+  border-radius:
+    10px;
+
+  background:
+    white;
+
+  color:
+    var(--green);
+
+  font-weight:
+    bold;
+
+}
+
+
+.loop-button.active {
+
+  background:
+    var(--green-light);
+
+}
+
+
+.loop-status {
+
+  min-height:
+    52px;
+
+  margin-top:
+    13px;
+
+  color:
+    var(--brown);
+
+  font-weight:
+    bold;
+
+  line-height:
+    1.45;
+
+  text-align:
+    center;
+
+}
+
+
+
+/* =====================================================
    SENTENCE COLLIDER
 ====================================================== */
 
@@ -1529,13 +1763,27 @@ main {
 }
 
 
+/* CRITICAL FIX */
+
 .collider-diagram {
 
+  position:
+    relative;
+
+  width:
+    100%;
+
+  height:
+    390px;
+
   min-height:
-    330px;
+    390px;
 
   margin-top:
     17px;
+
+  overflow:
+    hidden;
 
   border:
     2px
@@ -1546,224 +1794,58 @@ main {
     15px;
 
   background:
+
+    linear-gradient(
+      rgba(
+        71,
+        124,
+        168,
+        .04
+      )
+      1px,
+      transparent
+      1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(
+        185,
+        87,
+        78,
+        .04
+      )
+      1px,
+      transparent
+      1px
+    ),
+
     var(--paper);
 
-}
-
-
-
-/* =====================================================
-   CQD
-====================================================== */
-
-.cqd-shell {
-
-  margin-top:
-    25px;
-
-  padding:
-    24px;
-
-  border:
-    3px
-    solid
-    var(--purple);
-
-  border-radius:
-    20px;
-
-  background:
-    var(--paper);
+  background-size:
+    30px
+    30px;
 
 }
 
 
-.cqd-row {
+.collider-diagram
+.interaction-svg {
 
-  display:
-    grid;
+  position:
+    absolute;
 
-  grid-template-columns:
-    repeat(
-      3,
-      1fr
-    );
-
-  gap:
-    10px;
-
-}
-
-
-.cqd-state {
-
-  padding:
-    16px;
-
-  border:
-    2px
-    solid
-    #cbb79a;
-
-  border-radius:
-    12px;
-
-  background:
-    var(--cream);
-
-  text-align:
-    center;
-
-}
-
-
-.cqd-state.active {
-
-  border-color:
-    var(--purple);
-
-  background:
-    var(--purple-light);
-
-}
-
-
-.cqd-state strong {
+  inset:
+    0;
 
   display:
     block;
 
-  margin-bottom:
-    5px;
+  width:
+    100%;
 
-}
-
-
-.cqd-output {
-
-  margin-top:
-    15px;
-
-  padding:
-    15px;
-
-  border-left:
-    6px
-    solid
-    var(--purple);
-
-  border-radius:
-    11px;
-
-  background:
-    var(--cream);
-
-  line-height:
-    1.5;
-
-}
-
-
-
-/* =====================================================
-   LQG LOOP
-====================================================== */
-
-.lqg-shell {
-
-  margin-top:
-    25px;
-
-  padding:
-    24px;
-
-  border:
-    3px
-    solid
-    var(--green);
-
-  border-radius:
-    20px;
-
-  background:
-    var(--paper);
-
-}
-
-
-.loop-controls {
-
-  display:
-    flex;
-
-  justify-content:
-    center;
-
-  gap:
-    9px;
-
-  flex-wrap:
-    wrap;
-
-  margin-bottom:
-    15px;
-
-}
-
-
-.loop-button {
-
-  padding:
-    10px
-    13px;
-
-  border:
-    2px
-    solid
-    var(--green);
-
-  border-radius:
-    10px;
-
-  background:
-    white;
-
-  color:
-    var(--green);
-
-  font-weight:
-    bold;
-
-}
-
-
-.loop-button.active {
-
-  background:
-    var(--green-light);
-
-}
-
-
-.loop-status {
-
-  min-height:
-    52px;
-
-  margin-top:
-    13px;
-
-  color:
-    var(--brown);
-
-  font-weight:
-    bold;
-
-  line-height:
-    1.45;
-
-  text-align:
-    center;
+  height:
+    100%;
 
 }
 
@@ -1844,6 +1926,54 @@ footer {
 
   }
 
+
+  .interaction-board {
+
+    min-height:
+      390px;
+
+  }
+
+
+  .collider-diagram {
+
+    height:
+      430px;
+
+    min-height:
+      430px;
+
+  }
+
+}
+
+
+@media
+(max-width: 430px) {
+
+  header {
+
+    padding-top:
+      20px;
+
+  }
+
+
+  .ssm-mark {
+
+    margin-bottom:
+      18px;
+
+  }
+
+
+  .particle-grid {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
 }
 
 </style>
@@ -1856,6 +1986,7 @@ footer {
 
 
 <header>
+
 
 <a
   class="lab-link"
@@ -1902,6 +2033,7 @@ footer {
 
 </p>
 
+
 </header>
 
 
@@ -1915,9 +2047,14 @@ footer {
 
 <section class="principle-card">
 
-<div class="kicker" style="text-align:center;">
+
+<div
+  class="kicker"
+  style="text-align:center;"
+>
   THE MODEL
 </div>
+
 
 <h2>
   From Meaning Interaction to Sentence Form
@@ -1927,20 +2064,24 @@ footer {
 <p class="principle-lead">
 
   The Sentence Standard Model separates
+
   <strong>
     underlying relational meaning
   </strong>
+
   from its
+
   <strong>
     charged syntactic realization.
   </strong>
 
-  Both semantic and syntactic structure exist
-  at every scale, but the model lets us move
-  from transformations of meaning down into
-  the actual linguistic objects that express them.
+  Both semantics and syntax exist at every scale,
+  but the model lets us move from transformations
+  of meaning into the linguistic objects and
+  interactions that express them.
 
 </p>
+
 
 
 <div class="principle-grid">
@@ -1952,8 +2093,8 @@ footer {
   Context / Higgs Field
 </strong>
 
-Context determines which semantic possibilities
-acquire effective relevance or “mass.”
+Context selects which possibilities acquire
+effective semantic relevance or mass.
 
 </div>
 
@@ -1965,8 +2106,8 @@ acquire effective relevance or “mass.”
 </strong>
 
 A lexical state can carry different amounts
-of relational content depending on the field
-surrounding it.
+of relational information depending upon
+the field around it.
 
 </div>
 
@@ -1977,8 +2118,8 @@ surrounding it.
   Syntactic Charge
 </strong>
 
-Grammar constrains how an expression may interact,
-attach, agree or transform.
+Grammar constrains how an expression may
+attach, agree and interact.
 
 </div>
 
@@ -1989,8 +2130,8 @@ attach, agree or transform.
   Conservation
 </strong>
 
-A sentence may change form while preserving
-core semantic relations.
+Expression can transform while preserving
+the underlying semantic relation.
 
 </div>
 
@@ -2001,8 +2142,8 @@ core semantic relations.
   Reversibility
 </strong>
 
-A visible sentence can be decomposed back into
-the relations that generated it.
+A visible sentence can be decomposed back
+into the interactions that produced it.
 
 </div>
 
@@ -2013,14 +2154,14 @@ the relations that generated it.
   Scale
 </strong>
 
-Transformations of meaning can be resolved
-into lower-level linguistic objects,
-operators and interaction vertices.
+Meaning-level transformations resolve downward
+into linguistic particles, operators and vertices.
 
 </div>
 
 
 </div>
+
 
 </section>
 
@@ -2042,14 +2183,12 @@ operators and interaction vertices.
 
 <p>
 
-  Different mediators perform different linguistic jobs.
+  Different mediators perform different
+  linguistic operations.
 
-  The important distinction is not merely
-  which word appears, but
-  <strong>
-    what kind of relation was exchanged
-    to produce the new state.
-  </strong>
+  The important question is not only which
+  word appears, but what interaction produced
+  its new state.
 
 </p>
 
@@ -2072,11 +2211,11 @@ operators and interaction vertices.
 
 <p>
 
-  A massless neutral semantic carrier.
+  The massless neutral semantic carrier.
 
-  It transmits relational meaning without
-  imposing syntactic charge and can seed
-  a Lexical Quantum Gravity loop.
+  It communicates relational meaning without
+  syntactic charge and can initiate a
+  Lexical Quantum Gravity loop.
 
 </p>
 
@@ -2098,8 +2237,8 @@ operators and interaction vertices.
 
   Charged syntactic mediators.
 
-  W interactions convert an underlying lexical
-  state into a grammatically charged realization.
+  W interactions produce grammatically charged
+  expression from an underlying lexical state.
 
 </p>
 
@@ -2121,8 +2260,8 @@ operators and interaction vertices.
 
   Pure uncharged syntactic expression.
 
-  It propagates form without changing
-  the underlying semantic charge.
+  It carries form without altering
+  semantic charge.
 
 </p>
 
@@ -2144,9 +2283,9 @@ operators and interaction vertices.
 
   Conjugation Chromodynamics.
 
-  It tracks conjugate grammatical states
-  such as tense, agreement, person,
-  number and related expression changes.
+  It moves expression through tense,
+  agreement, person, number and other
+  conjugate grammatical states.
 
 </p>
 
@@ -2167,10 +2306,10 @@ operators and interaction vertices.
 <p>
 
   Lexical Quantum Gravity closes relations
-  into a stable lexical geometry.
+  into stable lexical geometry.
 
-  Green loops represent form generated
-  from repeated relational constraints.
+  Green loops represent relational
+  form generated by the interaction.
 
 </p>
 
@@ -2182,7 +2321,7 @@ operators and interaction vertices.
 
 
 <!-- =====================================================
-     INTERACTION LAB
+     FEYNMAN LAB
 ====================================================== -->
 
 <div class="section-heading">
@@ -2197,11 +2336,11 @@ operators and interaction vertices.
 
 <p>
 
-  Choose an incoming lexical state,
-  a contextual field and a mediator.
+  Choose a lexical state,
+  a context field and a mediator.
 
-  The diagram then shows how the state
-  propagates or transforms.
+  Watch the outgoing expression change
+  according to the interaction.
 
 </p>
 
@@ -2227,16 +2366,16 @@ operators and interaction vertices.
   RUN
 </option>
 
+<option value="PLAY">
+  PLAY
+</option>
+
 <option value="LIGHT">
   LIGHT
 </option>
 
 <option value="SANCTION">
   SANCTION
-</option>
-
-<option value="PLAY">
-  PLAY
 </option>
 
 <option value="CHARGE">
@@ -2266,15 +2405,15 @@ operators and interaction vertices.
 </option>
 
 <option value="third">
-  Third-person singular field
+  Third-person singular
 </option>
 
 <option value="progressive">
-  Progressive field
+  Progressive aspect
 </option>
 
 <option value="semantic">
-  Semantic disambiguation field
+  Semantic-disambiguation field
 </option>
 
 </select>
@@ -2296,11 +2435,11 @@ operators and interaction vertices.
 </option>
 
 <option value="w">
-  W± • Charged syntax
+  W± • Charged Syntax
 </option>
 
 <option value="gamma">
-  γ • Pure syntax
+  γ • Pure Syntax
 </option>
 
 <option value="cqd">
@@ -2350,11 +2489,8 @@ operators and interaction vertices.
 
 <p>
 
-  Start from a lexical invariant and fire different mediators.
-
-  This shows how one lexical family can produce
-  multiple grammatical realizations without becoming
-  an unrelated object.
+  Fire different mediators through one lexical family
+  and compare the resulting states.
 
 </p>
 
@@ -2374,6 +2510,7 @@ operators and interaction vertices.
   Incoming State
 </h3>
 
+
 <div
   id="transformInput"
   class="word-state"
@@ -2384,7 +2521,12 @@ operators and interaction vertices.
 
 <label
   for="transformWord"
-  style="display:block;margin-top:12px;font-weight:bold;font-size:.78rem;"
+  style="
+    display:block;
+    margin-top:12px;
+    font-weight:bold;
+    font-size:.78rem;
+  "
 >
   Choose lexical family
 </label>
@@ -2392,7 +2534,13 @@ operators and interaction vertices.
 
 <select
   id="transformWord"
-  style="width:100%;margin-top:6px;padding:10px;border:2px solid #cbb99a;border-radius:9px;"
+  style="
+    width:100%;
+    margin-top:6px;
+    padding:10px;
+    border:2px solid #cbb99a;
+    border-radius:9px;
+  "
 >
 
 <option value="RUN">
@@ -2412,6 +2560,7 @@ operators and interaction vertices.
 </option>
 
 </select>
+
 
 </div>
 
@@ -2511,9 +2660,9 @@ Choose a mediator.
 
 <p>
 
-  Conjugation is treated as a structured movement
-  among related grammatical states rather than
-  as a disconnected list of endings.
+  Conjugation is a structured movement among
+  related grammatical states rather than
+  a disconnected list of endings.
 
 </p>
 
@@ -2575,13 +2724,14 @@ running
 </div>
 
 
+
 <div
   id="cqdOutput"
   class="cqd-output"
 >
 
-CQD keeps these states inside the same lexical family
-while changing grammatical charge.
+CQD keeps these expressions in the same lexical
+family while changing grammatical charge.
 
 </div>
 
@@ -2591,7 +2741,7 @@ while changing grammatical charge.
 
 
 <!-- =====================================================
-     LQG LOOP
+     LQG
 ====================================================== -->
 
 <div class="section-heading">
@@ -2606,10 +2756,10 @@ while changing grammatical charge.
 
 <p>
 
-  The Semantic Z⁰ can seed a relational loop.
+  The neutral Semantic Z⁰ seeds a relation.
 
-  When enough compatible relations are connected,
-  a stable lexical geometry closes.
+  Activate enough compatible nodes
+  to close a stable green lexical loop.
 
 </p>
 
@@ -2653,6 +2803,7 @@ while changing grammatical charge.
 </div>
 
 
+
 <div
   id="loopBoard"
   class="interaction-board"
@@ -2686,15 +2837,14 @@ Activate relational nodes to close the green loop.
 </div>
 
 <h2>
-  Collapse Relations into a Sentence
+  Collapse Meaning into Sentence Form
 </h2>
 
 <p>
 
-  Choose three interacting lexical objects.
-
-  The model first renders the relation graph,
-  then collapses it into ordinary syntactic expression.
+  Build an underlying relational interaction,
+  then collapse that structure into
+  ordinary syntactic expression.
 
 </p>
 
@@ -2711,7 +2861,7 @@ Activate relational nodes to close the green loop.
 <div class="collider-slot">
 
 <label for="subjectSelect">
-  Agent / Subject
+  Agent
 </label>
 
 <select id="subjectSelect">
@@ -2741,7 +2891,7 @@ Activate relational nodes to close the green loop.
 <div class="collider-slot">
 
 <label for="verbSelect">
-  Action / Verb
+  Relation / Action
 </label>
 
 <select id="verbSelect">
@@ -2771,7 +2921,7 @@ Activate relational nodes to close the green loop.
 <div class="collider-slot">
 
 <label for="objectSelect">
-  Object / Target
+  Target / Object
 </label>
 
 <select id="objectSelect">
@@ -2818,7 +2968,7 @@ Activate relational nodes to close the green loop.
   class="secondary-button"
   type="button"
 >
-  Reverse Engineer
+  ↶ Reverse Engineer
 </button>
 
 
@@ -2831,9 +2981,11 @@ Activate relational nodes to close the green loop.
   class="sentence-output"
 >
 
+
 <div class="kicker">
   COLLAPSED EXPRESSION
 </div>
+
 
 <div
   id="collapsedSentence"
@@ -2842,9 +2994,14 @@ Activate relational nodes to close the green loop.
   Theia eats the apple.
 </div>
 
+
 <div id="sentenceNote">
-  Build the interaction to inspect its underlying relations.
+
+  Build the interaction to inspect
+  its underlying structure.
+
 </div>
+
 
 </div>
 
@@ -2922,7 +3079,7 @@ function trackSSMEvent(
 
 
 /* =====================================================
-   HELPERS
+   WORD TRANSFORMATION
 ====================================================== */
 
 function transformWordByContext(
@@ -2934,11 +3091,12 @@ function transformWordByContext(
     word.toUpperCase();
 
 
-  const irregular =
+  const forms =
     {
 
       RUN:
         {
+
           past:
             "RAN",
 
@@ -2947,10 +3105,13 @@ function transformWordByContext(
 
           progressive:
             "RUNNING"
+
         },
+
 
       PLAY:
         {
+
           past:
             "PLAYED",
 
@@ -2959,10 +3120,13 @@ function transformWordByContext(
 
           progressive:
             "PLAYING"
+
         },
+
 
       WALK:
         {
+
           past:
             "WALKED",
 
@@ -2971,10 +3135,13 @@ function transformWordByContext(
 
           progressive:
             "WALKING"
+
         },
+
 
       LOOK:
         {
+
           past:
             "LOOKED",
 
@@ -2983,24 +3150,25 @@ function transformWordByContext(
 
           progressive:
             "LOOKING"
+
         }
 
     };
 
 
   if (
-    irregular[
+    forms[
       base
     ]
     &&
-    irregular[
+    forms[
       base
     ][
       context
     ]
   ) {
 
-    return irregular[
+    return forms[
       base
     ][
       context
@@ -3058,7 +3226,7 @@ function transformWordByContext(
 
 
 /* =====================================================
-   FEYNMAN INTERACTION
+   FEYNMAN INTERACTION LAB
 ====================================================== */
 
 const interactionWord =
@@ -3140,7 +3308,7 @@ function renderInteraction() {
 
 
     explanation =
-      "The massless Semantic Z⁰ carries relational meaning without forcing syntactic charge. The lexical state remains semantically connected and is eligible to seed an LQG loop.";
+      "The massless Semantic Z⁰ carries a neutral relation without forcing syntactic charge. The state remains semantically connected and can seed an LQG loop.";
 
   }
 
@@ -3175,7 +3343,7 @@ function renderInteraction() {
 
 
     explanation =
-      "A W interaction converts the lexical state into a charged syntactic realization. The underlying lexical relation is preserved while grammatical expression changes.";
+      "The W boson introduces charged syntactic expression. Lexical identity persists while the grammatical realization changes.";
 
   }
 
@@ -3198,7 +3366,7 @@ function renderInteraction() {
 
 
     explanation =
-      "The syntactic photon γ propagates pure uncharged form. Syntactic structure is transmitted without exchanging semantic charge.";
+      "The syntactic photon γ propagates pure uncharged form without exchanging semantic charge.";
 
   }
 
@@ -3233,31 +3401,56 @@ function renderInteraction() {
 
 
     explanation =
-      "Conjugation Chromodynamics moves the lexical state through a conjugate grammatical space while keeping the transformed form inside the same lexical family.";
+      "Conjugation Chromodynamics rotates the expression through a conjugate grammatical state while preserving membership in the same lexical family.";
 
   }
+
 
 
   interactionBoard.innerHTML = `
 
     <svg
       class="interaction-svg"
-      viewBox="0 0 900 440"
+      viewBox="0 0 900 430"
     >
+
+      <defs>
+
+        <marker
+          id="arrowInteraction"
+          markerWidth="10"
+          markerHeight="10"
+          refX="8"
+          refY="3"
+          orient="auto"
+        >
+
+          <path
+            d="M0,0 L0,6 L9,3 z"
+            fill="#29261f"
+          />
+
+        </marker>
+
+      </defs>
+
 
       <path
         d="M 70 220 L 340 220"
         class="fermion-line"
+        marker-end="url(#arrowInteraction)"
       />
+
 
       <path
         d="M 560 220 L 830 220"
         class="fermion-line"
+        marker-end="url(#arrowInteraction)"
       />
 
 
       <path
-        d="M 450 70 L 450 190"
+        d="M 450 60 L 450 190"
         class="${lineClass}"
       />
 
@@ -3265,13 +3458,23 @@ function renderInteraction() {
       <circle
         cx="450"
         cy="220"
-        r="18"
+        r="19"
         class="vertex"
       />
 
 
+      <path
+        d="
+          M 390 270
+          C 390 350, 510 350, 510 270
+          C 510 230, 390 230, 390 270
+        "
+        class="loop-dashed"
+      />
+
+
       <text
-        x="180"
+        x="185"
         y="195"
         class="diagram-label"
       >
@@ -3280,7 +3483,7 @@ function renderInteraction() {
 
 
       <text
-        x="720"
+        x="715"
         y="195"
         class="diagram-label"
       >
@@ -3290,7 +3493,7 @@ function renderInteraction() {
 
       <text
         x="450"
-        y="55"
+        y="45"
         class="diagram-label"
       >
         ${mediatorLabel}
@@ -3299,29 +3502,12 @@ function renderInteraction() {
 
       <text
         x="450"
-        y="255"
-        class="diagram-label"
+        y="375"
+        class="diagram-small"
       >
-        interaction vertex
+        latent lexical relation
       </text>
 
-
-      <text
-        x="180"
-        y="250"
-        class="diagram-label"
-      >
-        incoming lexical state
-      </text>
-
-
-      <text
-        x="720"
-        y="250"
-        class="diagram-label"
-      >
-        outgoing expression
-      </text>
 
     </svg>
 
@@ -3331,11 +3517,17 @@ function renderInteraction() {
   interactionDescription.innerHTML = `
 
     <strong>
+
       ${word}
+
       →
+
       ${mediatorLabel}
+
       →
+
       ${output}
+
     </strong>
 
     <br><br>
@@ -3460,21 +3652,17 @@ document
                 item
               ) {
 
-                item
-                  .classList
-                  .remove(
-                    "active"
-                  );
+                item.classList.remove(
+                  "active"
+                );
 
               }
             );
 
 
-          button
-            .classList
-            .add(
-              "active"
-            );
+          button.classList.add(
+            "active"
+          );
 
 
           const word =
@@ -3503,7 +3691,7 @@ document
 
 
             description =
-              "Z⁰ preserves the lexical state as a neutral semantic relation and can feed that relation into an LQG loop.";
+              "Z⁰ carries the neutral semantic relation and allows it to seed a lexical loop.";
 
 
             transformEquation.textContent =
@@ -3529,7 +3717,7 @@ document
 
 
             description =
-              "W± adds syntactic charge. The lexical invariant persists, but its grammatical realization changes.";
+              "W± adds syntactic charge while preserving the lexical invariant.";
 
 
             transformEquation.textContent =
@@ -3552,7 +3740,7 @@ document
 
 
             description =
-              "γ carries pure syntactic structure without changing semantic charge.";
+              "γ carries uncharged syntactic structure without changing semantic charge.";
 
 
             transformEquation.textContent =
@@ -3578,7 +3766,7 @@ document
 
 
             description =
-              "CQD rotates the expression into a conjugate grammatical state while keeping it inside the same lexical family.";
+              "CQD rotates the word into a conjugate grammatical state.";
 
 
             transformEquation.textContent =
@@ -3607,14 +3795,15 @@ document
           trackSSMEvent(
             "word_transformed",
             {
+
               word:
                 word.toLowerCase(),
 
               mediator:
                 mediator
+
             }
           );
-
 
         }
       );
@@ -3651,21 +3840,17 @@ document
                 item
               ) {
 
-                item
-                  .classList
-                  .remove(
-                    "active"
-                  );
+                item.classList.remove(
+                  "active"
+                );
 
               }
             );
 
 
-          button
-            .classList
-            .add(
-              "active"
-            );
+          button.classList.add(
+            "active"
+          );
 
 
           const state =
@@ -3691,8 +3876,9 @@ document
 
               <br><br>
 
-              The grammatical state rotates toward past-time expression.
-              Lexical identity is preserved while syntactic charge changes.
+              The grammatical state rotates toward
+              past-time expression while lexical
+              identity remains conserved.
 
             `;
 
@@ -3712,8 +3898,8 @@ document
 
               <br><br>
 
-              Present expression depends on agreement.
-              CQD therefore couples tense with person and number.
+              Present expression couples tense
+              with agreement, person and number.
 
             `;
 
@@ -3733,8 +3919,8 @@ document
 
               <br><br>
 
-              Progressive aspect changes how the action is situated
-              through time while maintaining the same lexical family.
+              Progressive aspect changes how
+              the relation extends through time.
 
             `;
 
@@ -3808,8 +3994,10 @@ function renderLoop() {
 
 
       <path
-        d="M 180 180
-           C 230 70, 370 55, 450 120"
+        d="
+          M 180 180
+          C 230 70, 370 55, 450 120
+        "
         class="${
           loopState.agent
           ?
@@ -3821,8 +4009,10 @@ function renderLoop() {
 
 
       <path
-        d="M 450 120
-           C 590 55, 720 85, 720 180"
+        d="
+          M 450 120
+          C 590 55, 720 85, 720 180
+        "
         class="${
           loopState.action
           ?
@@ -3834,8 +4024,10 @@ function renderLoop() {
 
 
       <path
-        d="M 720 180
-           C 650 315, 280 315, 180 180"
+        d="
+          M 720 180
+          C 650 315, 280 315, 180 180
+        "
         class="${
           loopState.object
           ?
@@ -3849,7 +4041,7 @@ function renderLoop() {
       <circle
         cx="180"
         cy="180"
-        r="34"
+        r="36"
         fill="${
           loopState.agent
           ?
@@ -3865,7 +4057,7 @@ function renderLoop() {
       <circle
         cx="450"
         cy="120"
-        r="34"
+        r="36"
         fill="${
           loopState.action
           ?
@@ -3881,7 +4073,7 @@ function renderLoop() {
       <circle
         cx="720"
         cy="180"
-        r="34"
+        r="36"
         fill="${
           loopState.object
           ?
@@ -3896,8 +4088,8 @@ function renderLoop() {
 
       <circle
         cx="450"
-        cy="240"
-        r="26"
+        cy="245"
+        r="28"
         fill="#fff6d3"
         stroke="#d5a83e"
         stroke-width="3"
@@ -3933,7 +4125,7 @@ function renderLoop() {
 
       <text
         x="450"
-        y="245"
+        y="250"
         class="diagram-label"
       >
         Z⁰
@@ -3959,7 +4151,7 @@ function renderLoop() {
 
       Agent, action and object now form
       a stable relational geometry around
-      the neutral Semantic Z⁰ interaction.
+      the massless Semantic Z⁰.
 
     `;
 
@@ -4113,50 +4305,64 @@ function renderCollider(
     sentence;
 
 
+
   colliderDiagram.innerHTML = `
 
     <svg
       class="interaction-svg"
-      viewBox="0 0 900 330"
+      viewBox="0 0 900 390"
     >
 
 
-      <path
-        d="M 95 165 L 330 165"
-        class="fermion-line"
-      />
+      <defs>
+
+        <marker
+          id="arrowCollider"
+          markerWidth="10"
+          markerHeight="10"
+          refX="8"
+          refY="3"
+          orient="auto"
+        >
+
+          <path
+            d="M0,0 L0,6 L9,3 z"
+            fill="#29261f"
+          />
+
+        </marker>
+
+      </defs>
 
 
-      <path
-        d="M 570 165 L 805 165"
-        class="fermion-line"
-      />
+      <!-- ================================================
+           UNDERLYING SEMANTIC OBJECTS
+      ================================================= -->
 
 
-      <path
-        d="M 450 55 L 450 135"
-        class="w-line"
-      />
-
-
-      <path
-        d="M 450 195
-           C 390 265, 510 265, 450 195"
-        class="loop-line"
+      <circle
+        cx="150"
+        cy="195"
+        r="48"
+        fill="#fffdf7"
+        stroke="#d5a83e"
+        stroke-width="3"
       />
 
 
       <circle
-        cx="450"
-        cy="165"
-        r="19"
-        class="vertex"
+        cx="750"
+        cy="195"
+        r="48"
+        fill="#fffdf7"
+        stroke="#d5a83e"
+        stroke-width="3"
       />
 
 
       <text
-        x="190"
-        y="142"
+        x="150"
+        y="190"
         class="diagram-label"
       >
         ${subject}
@@ -4164,17 +4370,17 @@ function renderCollider(
 
 
       <text
-        x="450"
-        y="42"
-        class="diagram-label"
+        x="150"
+        y="210"
+        class="diagram-small"
       >
-        W± / CQD
+        semantic object
       </text>
 
 
       <text
-        x="710"
-        y="142"
+        x="750"
+        y="190"
         class="diagram-label"
       >
         ${object}
@@ -4182,8 +4388,134 @@ function renderCollider(
 
 
       <text
+        x="750"
+        y="210"
+        class="diagram-small"
+      >
+        semantic object
+      </text>
+
+
+
+      <!-- ================================================
+           SEMANTIC Z RELATION
+      ================================================= -->
+
+
+      <path
+        d="
+          M 200 195
+          C 285 95, 355 95, 420 165
+        "
+        class="semantic-line"
+      />
+
+
+      <circle
+        cx="450"
+        cy="195"
+        r="31"
+        fill="#fff6d3"
+        stroke="#d5a83e"
+        stroke-width="4"
+      />
+
+
+      <text
         x="450"
-        y="170"
+        y="201"
+        class="diagram-label"
+      >
+        Z⁰
+      </text>
+
+
+      <path
+        d="
+          M 480 165
+          C 550 95, 630 95, 700 195
+        "
+        class="semantic-line"
+      />
+
+
+
+      <!-- ================================================
+           GREEN LQG FORM LOOP
+      ================================================= -->
+
+
+      <path
+        d="
+          M 340 235
+          C 340 345, 560 345, 560 235
+          C 560 175, 340 175, 340 235
+        "
+        class="loop-line"
+      />
+
+
+      <text
+        x="450"
+        y="355"
+        class="diagram-small"
+      >
+        Lexical Quantum Gravity loop
+      </text>
+
+
+
+      <!-- ================================================
+           W / CQD SYNTACTIC EXPRESSION
+      ================================================= -->
+
+
+      <path
+        d="
+          M 450 65
+          L 450 154
+        "
+        class="w-line"
+      />
+
+
+      <text
+        x="450"
+        y="45"
+        class="diagram-label"
+      >
+        W± + CQD
+      </text>
+
+
+      <text
+        x="450"
+        y="95"
+        class="diagram-small"
+      >
+        charged syntactic expression
+      </text>
+
+
+
+      <!-- ================================================
+           VERB RELATION
+      ================================================= -->
+
+
+      <circle
+        cx="450"
+        cy="275"
+        r="37"
+        fill="#eee5f4"
+        stroke="#71558e"
+        stroke-width="3"
+      />
+
+
+      <text
+        x="450"
+        y="270"
         class="diagram-label"
       >
         ${verb}
@@ -4192,16 +4524,43 @@ function renderCollider(
 
       <text
         x="450"
-        y="285"
-        class="diagram-label"
+        y="288"
+        class="diagram-small"
       >
-        green lexical relation loop
+        realized relation
       </text>
+
+
+
+      <!-- ================================================
+           CONNECTIONS
+      ================================================= -->
+
+
+      <path
+        d="
+          M 196 218
+          L 413 265
+        "
+        class="fermion-line"
+        marker-end="url(#arrowCollider)"
+      />
+
+
+      <path
+        d="
+          M 487 265
+          L 704 218
+        "
+        class="fermion-line"
+        marker-end="url(#arrowCollider)"
+      />
 
 
     </svg>
 
   `;
+
 
 
   if (
@@ -4214,10 +4573,17 @@ function renderCollider(
         Reverse engineered:
       </strong>
 
-      the visible sentence decomposes into
-      an Agent → Action → Object interaction,
-      with the verb carrying the charged
-      syntactic relation between the two lexical objects.
+      “${sentence}”
+
+      is decomposed into two semantic objects
+      joined through a neutral Z⁰ relation,
+      stabilized as a green LQG structure,
+      then realized through W± / CQD as the
+      charged syntactic relation
+
+      <strong>
+        ${verb}
+      </strong>.
 
     `;
 
@@ -4231,12 +4597,19 @@ function renderCollider(
         Interaction collapsed:
       </strong>
 
-      the underlying relation graph has been
-      expressed as ordinary sentence form.
+      the Semantic Z⁰ relates the lexical objects,
+      the green LQG loop stabilizes the relational form,
+      and W± / CQD supplies the charged syntactic
+      expression that collapses into:
+
+      <strong>
+        ${sentence}
+      </strong>
 
     `;
 
   }
+
 
 
   trackSSMEvent(
@@ -4303,7 +4676,9 @@ document
 
 renderInteraction();
 
+
 renderLoop();
+
 
 renderCollider(
   false
@@ -4313,8 +4688,10 @@ renderCollider(
 trackSSMEvent(
   "sentence_standard_model_opened",
   {
+
     prototype:
-      "interaction_model_001"
+      "interaction_model_002"
+
   }
 );
 
