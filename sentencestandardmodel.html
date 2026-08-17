@@ -1,1 +1,4326 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>Sentence Standard Model | PAT Learning Lab</title>
+
+
+<!-- =====================================================
+     GOOGLE ANALYTICS
+====================================================== -->
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-QCEPJP202V"
+></script>
+
+<script>
+
+window.dataLayer =
+  window.dataLayer || [];
+
+function gtag() {
+  dataLayer.push(arguments);
+}
+
+gtag(
+  "js",
+  new Date()
+);
+
+gtag(
+  "config",
+  "G-QCEPJP202V"
+);
+
+</script>
+
+
+
+<style>
+
+:root {
+
+  --cream:
+    #fff8e8;
+
+  --paper:
+    #fffdf7;
+
+  --ink:
+    #29261f;
+
+  --green:
+    #58784b;
+
+  --green-light:
+    #e2ecdb;
+
+  --gold:
+    #d5a83e;
+
+  --gold-light:
+    #f6e9b8;
+
+  --brown:
+    #8b633e;
+
+  --red:
+    #b9574e;
+
+  --red-light:
+    #f3dedd;
+
+  --blue:
+    #477ca8;
+
+  --blue-light:
+    #dceaf4;
+
+  --purple:
+    #71558e;
+
+  --purple-light:
+    #eee5f4;
+
+  --slate:
+    #465767;
+
+  --shadow:
+    rgba(
+      52,
+      43,
+      29,
+      .14
+    );
+
+}
+
+
+
+/* =====================================================
+   GLOBAL
+====================================================== */
+
+* {
+  box-sizing:
+    border-box;
+}
+
+
+html {
+  scroll-behavior:
+    smooth;
+}
+
+
+body {
+
+  margin:
+    0;
+
+  background:
+    var(--cream);
+
+  color:
+    var(--ink);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+}
+
+
+button,
+input,
+select,
+textarea {
+
+  font:
+    inherit;
+
+}
+
+
+button {
+
+  cursor:
+    pointer;
+
+}
+
+
+
+/* =====================================================
+   HEADER
+====================================================== */
+
+header {
+
+  padding:
+    30px
+    20px
+    25px;
+
+  text-align:
+    center;
+
+}
+
+
+.lab-link {
+
+  display:
+    inline-block;
+
+  margin-bottom:
+    15px;
+
+  padding:
+    8px
+    13px;
+
+  border:
+    2px
+    solid
+    var(--brown);
+
+  border-radius:
+    10px;
+
+  background:
+    var(--paper);
+
+  color:
+    var(--brown);
+
+  font-weight:
+    bold;
+
+  text-decoration:
+    none;
+
+}
+
+
+.ssm-mark {
+
+  position:
+    relative;
+
+  width:
+    125px;
+
+  height:
+    82px;
+
+  margin:
+    0
+    auto
+    5px;
+
+}
+
+
+.ssm-ring {
+
+  position:
+    absolute;
+
+  left:
+    50%;
+
+  top:
+    50%;
+
+  width:
+    108px;
+
+  height:
+    44px;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    )
+    rotate(
+      -16deg
+    );
+
+  border:
+    2px
+    solid
+    var(--green);
+
+  border-radius:
+    50%;
+
+}
+
+
+.ssm-ring.second {
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    )
+    rotate(
+      36deg
+    );
+
+}
+
+
+.ssm-core {
+
+  position:
+    absolute;
+
+  z-index:
+    3;
+
+  left:
+    50%;
+
+  top:
+    50%;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  width:
+    38px;
+
+  height:
+    38px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border:
+    3px
+    solid
+    var(--gold);
+
+  border-radius:
+    50%;
+
+  background:
+    var(--paper);
+
+  color:
+    var(--purple);
+
+  font-size:
+    1.5rem;
+
+  font-weight:
+    bold;
+
+}
+
+
+header h1 {
+
+  margin:
+    4px
+    0;
+
+  font-size:
+    clamp(
+      2.1rem,
+      8vw,
+      4.4rem
+    );
+
+  letter-spacing:
+    1px;
+
+}
+
+
+.tagline {
+
+  margin-top:
+    8px;
+
+  color:
+    var(--slate);
+
+  font-weight:
+    bold;
+
+}
+
+
+.header-copy {
+
+  max-width:
+    800px;
+
+  margin:
+    17px
+    auto
+    0;
+
+  color:
+    #655849;
+
+  line-height:
+    1.6;
+
+}
+
+
+
+/* =====================================================
+   MAIN
+====================================================== */
+
+main {
+
+  width:
+    min(
+      1140px,
+      94%
+    );
+
+  margin:
+    auto;
+
+  padding-bottom:
+    75px;
+
+}
+
+
+.section-heading {
+
+  max-width:
+    830px;
+
+  margin:
+    38px
+    auto
+    22px;
+
+  text-align:
+    center;
+
+}
+
+
+.section-heading h2 {
+
+  margin:
+    6px
+    0
+    8px;
+
+}
+
+
+.section-heading p {
+
+  margin:
+    auto;
+
+  color:
+    #675949;
+
+  line-height:
+    1.55;
+
+}
+
+
+.kicker {
+
+  color:
+    var(--green);
+
+  font-size:
+    .72rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    2px;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+
+/* =====================================================
+   PRINCIPLE
+====================================================== */
+
+.principle-card {
+
+  max-width:
+    930px;
+
+  margin:
+    10px
+    auto
+    35px;
+
+  padding:
+    26px;
+
+  border:
+    2px
+    solid
+    var(--gold);
+
+  border-radius:
+    20px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0
+    7px
+    18px
+    var(--shadow);
+
+}
+
+
+.principle-card h2 {
+
+  margin:
+    5px
+    0
+    13px;
+
+  text-align:
+    center;
+
+}
+
+
+.principle-lead {
+
+  max-width:
+    780px;
+
+  margin:
+    0
+    auto
+    20px;
+
+  line-height:
+    1.6;
+
+  text-align:
+    center;
+
+}
+
+
+.principle-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(
+        220px,
+        1fr
+      )
+    );
+
+  gap:
+    12px;
+
+}
+
+
+.principle {
+
+  padding:
+    16px;
+
+  border-radius:
+    13px;
+
+  background:
+    var(--cream);
+
+  line-height:
+    1.45;
+
+}
+
+
+.principle strong {
+
+  display:
+    block;
+
+  margin-bottom:
+    5px;
+
+  color:
+    var(--slate);
+
+}
+
+
+
+/* =====================================================
+   PARTICLE CARDS
+====================================================== */
+
+.particle-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(
+        195px,
+        1fr
+      )
+    );
+
+  gap:
+    12px;
+
+}
+
+
+.particle-card {
+
+  min-height:
+    220px;
+
+  padding:
+    18px;
+
+  border:
+    2px
+    solid
+    #d6c3a1;
+
+  border-radius:
+    16px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0
+    4px
+    12px
+    rgba(
+      52,
+      43,
+      29,
+      .08
+    );
+
+  text-align:
+    center;
+
+}
+
+
+.particle-symbol {
+
+  width:
+    66px;
+
+  height:
+    66px;
+
+  margin:
+    0
+    auto
+    8px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border:
+    3px
+    solid
+    var(--gold);
+
+  border-radius:
+    50%;
+
+  background:
+    var(--cream);
+
+  font-size:
+    1.7rem;
+
+  font-weight:
+    bold;
+
+}
+
+
+.particle-card h3 {
+
+  margin:
+    7px
+    0;
+
+}
+
+
+.particle-card p {
+
+  color:
+    #685b4c;
+
+  font-size:
+    .87rem;
+
+  line-height:
+    1.45;
+
+}
+
+
+.particle-card.z {
+
+  border-color:
+    var(--gold);
+
+}
+
+
+.particle-card.w {
+
+  border-color:
+    var(--red);
+
+}
+
+
+.particle-card.gamma {
+
+  border-color:
+    var(--blue);
+
+}
+
+
+.particle-card.cqd {
+
+  border-color:
+    var(--purple);
+
+}
+
+
+.particle-card.lqg {
+
+  border-color:
+    var(--green);
+
+}
+
+
+
+/* =====================================================
+   INTERACTION LAB
+====================================================== */
+
+.interaction-shell {
+
+  margin-top:
+    24px;
+
+  padding:
+    24px;
+
+  border:
+    3px
+    solid
+    var(--slate);
+
+  border-radius:
+    20px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0
+    7px
+    20px
+    var(--shadow);
+
+}
+
+
+.interaction-controls {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    12px;
+
+}
+
+
+.control-group {
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    6px;
+
+}
+
+
+.control-group label {
+
+  font-size:
+    .76rem;
+
+  font-weight:
+    bold;
+
+}
+
+
+.control-group select {
+
+  padding:
+    10px;
+
+  border:
+    2px
+    solid
+    #cbb99a;
+
+  border-radius:
+    9px;
+
+  background:
+    white;
+
+}
+
+
+.interaction-board {
+
+  position:
+    relative;
+
+  min-height:
+    440px;
+
+  margin-top:
+    20px;
+
+  overflow:
+    hidden;
+
+  border:
+    2px
+    solid
+    #cfbea0;
+
+  border-radius:
+    17px;
+
+  background:
+
+    linear-gradient(
+      rgba(
+        71,
+        124,
+        168,
+        .045
+      )
+      1px,
+      transparent
+      1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(
+        185,
+        87,
+        78,
+        .045
+      )
+      1px,
+      transparent
+      1px
+    ),
+
+    #fffdf7;
+
+  background-size:
+    34px
+    34px;
+
+}
+
+
+.interaction-svg {
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+}
+
+
+.fermion-line {
+
+  fill:
+    none;
+
+  stroke:
+    var(--ink);
+
+  stroke-width:
+    4;
+
+}
+
+
+.semantic-line {
+
+  fill:
+    none;
+
+  stroke:
+    var(--gold);
+
+  stroke-width:
+    4;
+
+}
+
+
+.syntax-line {
+
+  fill:
+    none;
+
+  stroke:
+    var(--blue);
+
+  stroke-width:
+    4;
+
+}
+
+
+.w-line {
+
+  fill:
+    none;
+
+  stroke:
+    var(--red);
+
+  stroke-width:
+    4;
+
+}
+
+
+.cqd-line {
+
+  fill:
+    none;
+
+  stroke:
+    var(--purple);
+
+  stroke-width:
+    4;
+
+}
+
+
+.loop-line {
+
+  fill:
+    none;
+
+  stroke:
+    var(--green);
+
+  stroke-width:
+    4;
+
+}
+
+
+.loop-dashed {
+
+  fill:
+    none;
+
+  stroke:
+    var(--green);
+
+  stroke-width:
+    3;
+
+  stroke-dasharray:
+    8
+    7;
+
+}
+
+
+.vertex {
+
+  fill:
+    var(--paper);
+
+  stroke:
+    var(--gold);
+
+  stroke-width:
+    4;
+
+}
+
+
+.diagram-label {
+
+  font-size:
+    14px;
+
+  font-weight:
+    bold;
+
+  text-anchor:
+    middle;
+
+}
+
+
+.interaction-description {
+
+  margin-top:
+    16px;
+
+  padding:
+    15px;
+
+  border-left:
+    6px
+    solid
+    var(--gold);
+
+  border-radius:
+    11px;
+
+  background:
+    var(--cream);
+
+  line-height:
+    1.5;
+
+}
+
+
+
+/* =====================================================
+   WORD TRANSFORMER
+====================================================== */
+
+.transformer-shell {
+
+  margin-top:
+    25px;
+
+  padding:
+    24px;
+
+  border:
+    3px
+    solid
+    var(--purple);
+
+  border-radius:
+    20px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0
+    7px
+    18px
+    var(--shadow);
+
+}
+
+
+.transformer-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap:
+    15px;
+
+}
+
+
+.transformer-panel {
+
+  padding:
+    18px;
+
+  border:
+    2px
+    solid
+    #d7c5a3;
+
+  border-radius:
+    14px;
+
+  background:
+    var(--cream);
+
+}
+
+
+.transformer-panel h3 {
+
+  margin-top:
+    0;
+
+}
+
+
+.word-state {
+
+  min-height:
+    110px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border:
+    2px
+    solid
+    var(--green);
+
+  border-radius:
+    13px;
+
+  background:
+    white;
+
+  color:
+    var(--slate);
+
+  font-size:
+    clamp(
+      2rem,
+      7vw,
+      3.4rem
+    );
+
+  font-weight:
+    bold;
+
+}
+
+
+.mediator-buttons {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      1fr
+    );
+
+  gap:
+    8px;
+
+  margin-top:
+    12px;
+
+}
+
+
+.mediator-button {
+
+  padding:
+    11px
+    8px;
+
+  border:
+    2px
+    solid
+    #cbb99a;
+
+  border-radius:
+    10px;
+
+  background:
+    white;
+
+  color:
+    var(--ink);
+
+  font-weight:
+    bold;
+
+}
+
+
+.mediator-button.active {
+
+  border-color:
+    var(--gold);
+
+  background:
+    var(--gold-light);
+
+}
+
+
+.transform-result {
+
+  margin-top:
+    13px;
+
+  line-height:
+    1.5;
+
+}
+
+
+.transform-equation {
+
+  margin-top:
+    12px;
+
+  padding:
+    11px;
+
+  border-radius:
+    10px;
+
+  background:
+    white;
+
+  color:
+    var(--purple);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-weight:
+    bold;
+
+  text-align:
+    center;
+
+}
+
+
+
+/* =====================================================
+   SENTENCE COLLIDER
+====================================================== */
+
+.collider-shell {
+
+  margin-top:
+    25px;
+
+  padding:
+    24px;
+
+  border:
+    3px
+    solid
+    var(--green);
+
+  border-radius:
+    20px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0
+    7px
+    18px
+    var(--shadow);
+
+}
+
+
+.collider-builder {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      1fr
+    );
+
+  gap:
+    12px;
+
+}
+
+
+.collider-slot {
+
+  padding:
+    17px;
+
+  border:
+    2px
+    solid
+    #d7c4a0;
+
+  border-radius:
+    13px;
+
+  background:
+    var(--cream);
+
+  text-align:
+    center;
+
+}
+
+
+.collider-slot label {
+
+  display:
+    block;
+
+  margin-bottom:
+    6px;
+
+  font-size:
+    .75rem;
+
+  font-weight:
+    bold;
+
+}
+
+
+.collider-slot select {
+
+  width:
+    100%;
+
+  padding:
+    9px;
+
+  border:
+    2px
+    solid
+    #c7b592;
+
+  border-radius:
+    8px;
+
+  background:
+    white;
+
+}
+
+
+.collider-actions {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  gap:
+    9px;
+
+  flex-wrap:
+    wrap;
+
+  margin-top:
+    17px;
+
+}
+
+
+.primary-button,
+.secondary-button {
+
+  padding:
+    11px
+    16px;
+
+  border-radius:
+    10px;
+
+  font-weight:
+    bold;
+
+}
+
+
+.primary-button {
+
+  border:
+    2px
+    solid
+    var(--green);
+
+  background:
+    var(--green);
+
+  color:
+    white;
+
+}
+
+
+.secondary-button {
+
+  border:
+    2px
+    solid
+    var(--brown);
+
+  background:
+    white;
+
+  color:
+    var(--brown);
+
+}
+
+
+.sentence-output {
+
+  margin-top:
+    20px;
+
+  padding:
+    18px;
+
+  border:
+    2px
+    solid
+    var(--gold);
+
+  border-radius:
+    14px;
+
+  background:
+    #fff6d3;
+
+  text-align:
+    center;
+
+}
+
+
+.sentence-output .sentence {
+
+  margin:
+    8px
+    0;
+
+  color:
+    var(--slate);
+
+  font-size:
+    clamp(
+      1.5rem,
+      5vw,
+      2.5rem
+    );
+
+  font-weight:
+    bold;
+
+}
+
+
+.collider-diagram {
+
+  min-height:
+    330px;
+
+  margin-top:
+    17px;
+
+  border:
+    2px
+    solid
+    #cfbea0;
+
+  border-radius:
+    15px;
+
+  background:
+    var(--paper);
+
+}
+
+
+
+/* =====================================================
+   CQD
+====================================================== */
+
+.cqd-shell {
+
+  margin-top:
+    25px;
+
+  padding:
+    24px;
+
+  border:
+    3px
+    solid
+    var(--purple);
+
+  border-radius:
+    20px;
+
+  background:
+    var(--paper);
+
+}
+
+
+.cqd-row {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      1fr
+    );
+
+  gap:
+    10px;
+
+}
+
+
+.cqd-state {
+
+  padding:
+    16px;
+
+  border:
+    2px
+    solid
+    #cbb79a;
+
+  border-radius:
+    12px;
+
+  background:
+    var(--cream);
+
+  text-align:
+    center;
+
+}
+
+
+.cqd-state.active {
+
+  border-color:
+    var(--purple);
+
+  background:
+    var(--purple-light);
+
+}
+
+
+.cqd-state strong {
+
+  display:
+    block;
+
+  margin-bottom:
+    5px;
+
+}
+
+
+.cqd-output {
+
+  margin-top:
+    15px;
+
+  padding:
+    15px;
+
+  border-left:
+    6px
+    solid
+    var(--purple);
+
+  border-radius:
+    11px;
+
+  background:
+    var(--cream);
+
+  line-height:
+    1.5;
+
+}
+
+
+
+/* =====================================================
+   LQG LOOP
+====================================================== */
+
+.lqg-shell {
+
+  margin-top:
+    25px;
+
+  padding:
+    24px;
+
+  border:
+    3px
+    solid
+    var(--green);
+
+  border-radius:
+    20px;
+
+  background:
+    var(--paper);
+
+}
+
+
+.loop-controls {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  gap:
+    9px;
+
+  flex-wrap:
+    wrap;
+
+  margin-bottom:
+    15px;
+
+}
+
+
+.loop-button {
+
+  padding:
+    10px
+    13px;
+
+  border:
+    2px
+    solid
+    var(--green);
+
+  border-radius:
+    10px;
+
+  background:
+    white;
+
+  color:
+    var(--green);
+
+  font-weight:
+    bold;
+
+}
+
+
+.loop-button.active {
+
+  background:
+    var(--green-light);
+
+}
+
+
+.loop-status {
+
+  min-height:
+    52px;
+
+  margin-top:
+    13px;
+
+  color:
+    var(--brown);
+
+  font-weight:
+    bold;
+
+  line-height:
+    1.45;
+
+  text-align:
+    center;
+
+}
+
+
+
+/* =====================================================
+   FOOTER
+====================================================== */
+
+footer {
+
+  padding:
+    34px
+    20px;
+
+  color:
+    #675949;
+
+  font-size:
+    .82rem;
+
+  line-height:
+    1.6;
+
+  text-align:
+    center;
+
+}
+
+
+
+/* =====================================================
+   MOBILE
+====================================================== */
+
+@media
+(max-width: 760px) {
+
+  .interaction-controls {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .transformer-grid {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .collider-builder {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .cqd-row {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .mediator-buttons {
+
+    grid-template-columns:
+      repeat(
+        2,
+        1fr
+      );
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+<header>
+
+<a
+  class="lab-link"
+  href="index.html"
+>
+  ← PAT Learning Lab
+</a>
+
+
+<div class="ssm-mark">
+
+  <div class="ssm-ring">
+  </div>
+
+  <div class="ssm-ring second">
+  </div>
+
+  <div class="ssm-core">
+    S
+  </div>
+
+</div>
+
+
+<h1>
+  SENTENCE STANDARD MODEL
+</h1>
+
+
+<div class="tagline">
+  Meaning interacts. Syntax expresses.
+</div>
+
+
+<p class="header-copy">
+
+  A sentence is not treated as the primitive object.
+
+  It is the visible syntactic expression of a deeper
+  relational interaction: lexical states enter a field,
+  exchange semantic and syntactic carriers,
+  transform through conjugation,
+  and collapse into sentence form.
+
+</p>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =====================================================
+     PRINCIPLE
+====================================================== -->
+
+<section class="principle-card">
+
+<div class="kicker" style="text-align:center;">
+  THE MODEL
+</div>
+
+<h2>
+  From Meaning Interaction to Sentence Form
+</h2>
+
+
+<p class="principle-lead">
+
+  The Sentence Standard Model separates
+  <strong>
+    underlying relational meaning
+  </strong>
+  from its
+  <strong>
+    charged syntactic realization.
+  </strong>
+
+  Both semantic and syntactic structure exist
+  at every scale, but the model lets us move
+  from transformations of meaning down into
+  the actual linguistic objects that express them.
+
+</p>
+
+
+<div class="principle-grid">
+
+
+<div class="principle">
+
+<strong>
+  Context / Higgs Field
+</strong>
+
+Context determines which semantic possibilities
+acquire effective relevance or “mass.”
+
+</div>
+
+
+<div class="principle">
+
+<strong>
+  Semantic Mass
+</strong>
+
+A lexical state can carry different amounts
+of relational content depending on the field
+surrounding it.
+
+</div>
+
+
+<div class="principle">
+
+<strong>
+  Syntactic Charge
+</strong>
+
+Grammar constrains how an expression may interact,
+attach, agree or transform.
+
+</div>
+
+
+<div class="principle">
+
+<strong>
+  Conservation
+</strong>
+
+A sentence may change form while preserving
+core semantic relations.
+
+</div>
+
+
+<div class="principle">
+
+<strong>
+  Reversibility
+</strong>
+
+A visible sentence can be decomposed back into
+the relations that generated it.
+
+</div>
+
+
+<div class="principle">
+
+<strong>
+  Scale
+</strong>
+
+Transformations of meaning can be resolved
+into lower-level linguistic objects,
+operators and interaction vertices.
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PARTICLES
+====================================================== -->
+
+<div class="section-heading">
+
+<div class="kicker">
+  INTERACTION PARTICLES
+</div>
+
+<h2>
+  Carriers of Meaning and Form
+</h2>
+
+<p>
+
+  Different mediators perform different linguistic jobs.
+
+  The important distinction is not merely
+  which word appears, but
+  <strong>
+    what kind of relation was exchanged
+    to produce the new state.
+  </strong>
+
+</p>
+
+</div>
+
+
+
+<div class="particle-grid">
+
+
+<div class="particle-card z">
+
+<div class="particle-symbol">
+  Z⁰
+</div>
+
+<h3>
+  Semantic Z Boson
+</h3>
+
+<p>
+
+  A massless neutral semantic carrier.
+
+  It transmits relational meaning without
+  imposing syntactic charge and can seed
+  a Lexical Quantum Gravity loop.
+
+</p>
+
+</div>
+
+
+
+<div class="particle-card w">
+
+<div class="particle-symbol">
+  W±
+</div>
+
+<h3>
+  W Bosons
+</h3>
+
+<p>
+
+  Charged syntactic mediators.
+
+  W interactions convert an underlying lexical
+  state into a grammatically charged realization.
+
+</p>
+
+</div>
+
+
+
+<div class="particle-card gamma">
+
+<div class="particle-symbol">
+  γ
+</div>
+
+<h3>
+  Syntactic Photon
+</h3>
+
+<p>
+
+  Pure uncharged syntactic expression.
+
+  It propagates form without changing
+  the underlying semantic charge.
+
+</p>
+
+</div>
+
+
+
+<div class="particle-card cqd">
+
+<div class="particle-symbol">
+  C
+</div>
+
+<h3>
+  CQD
+</h3>
+
+<p>
+
+  Conjugation Chromodynamics.
+
+  It tracks conjugate grammatical states
+  such as tense, agreement, person,
+  number and related expression changes.
+
+</p>
+
+</div>
+
+
+
+<div class="particle-card lqg">
+
+<div class="particle-symbol">
+  ⟳
+</div>
+
+<h3>
+  LQG Loop
+</h3>
+
+<p>
+
+  Lexical Quantum Gravity closes relations
+  into a stable lexical geometry.
+
+  Green loops represent form generated
+  from repeated relational constraints.
+
+</p>
+
+</div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     INTERACTION LAB
+====================================================== -->
+
+<div class="section-heading">
+
+<div class="kicker">
+  FEYNMAN STRUCTURES OF MEANING
+</div>
+
+<h2>
+  Fire an Interaction
+</h2>
+
+<p>
+
+  Choose an incoming lexical state,
+  a contextual field and a mediator.
+
+  The diagram then shows how the state
+  propagates or transforms.
+
+</p>
+
+</div>
+
+
+
+<section class="interaction-shell">
+
+
+<div class="interaction-controls">
+
+
+<div class="control-group">
+
+<label for="interactionWord">
+  Incoming lexical state
+</label>
+
+<select id="interactionWord">
+
+<option value="RUN">
+  RUN
+</option>
+
+<option value="LIGHT">
+  LIGHT
+</option>
+
+<option value="SANCTION">
+  SANCTION
+</option>
+
+<option value="PLAY">
+  PLAY
+</option>
+
+<option value="CHARGE">
+  CHARGE
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="control-group">
+
+<label for="interactionContext">
+  Context field
+</label>
+
+<select id="interactionContext">
+
+<option value="neutral">
+  Neutral field
+</option>
+
+<option value="past">
+  Past-time field
+</option>
+
+<option value="third">
+  Third-person singular field
+</option>
+
+<option value="progressive">
+  Progressive field
+</option>
+
+<option value="semantic">
+  Semantic disambiguation field
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="control-group">
+
+<label for="interactionMediator">
+  Mediator
+</label>
+
+<select id="interactionMediator">
+
+<option value="z">
+  Z⁰ • Semantic
+</option>
+
+<option value="w">
+  W± • Charged syntax
+</option>
+
+<option value="gamma">
+  γ • Pure syntax
+</option>
+
+<option value="cqd">
+  CQD • Conjugation
+</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+
+
+<div
+  id="interactionBoard"
+  class="interaction-board"
+>
+</div>
+
+
+<div
+  id="interactionDescription"
+  class="interaction-description"
+>
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     WORD TRANSFORMER
+====================================================== -->
+
+<div class="section-heading">
+
+<div class="kicker">
+  WORD TRANSFORMER
+</div>
+
+<h2>
+  Preserve Identity, Change Expression
+</h2>
+
+<p>
+
+  Start from a lexical invariant and fire different mediators.
+
+  This shows how one lexical family can produce
+  multiple grammatical realizations without becoming
+  an unrelated object.
+
+</p>
+
+</div>
+
+
+
+<section class="transformer-shell">
+
+
+<div class="transformer-grid">
+
+
+<div class="transformer-panel">
+
+<h3>
+  Incoming State
+</h3>
+
+<div
+  id="transformInput"
+  class="word-state"
+>
+  RUN
+</div>
+
+
+<label
+  for="transformWord"
+  style="display:block;margin-top:12px;font-weight:bold;font-size:.78rem;"
+>
+  Choose lexical family
+</label>
+
+
+<select
+  id="transformWord"
+  style="width:100%;margin-top:6px;padding:10px;border:2px solid #cbb99a;border-radius:9px;"
+>
+
+<option value="RUN">
+  RUN
+</option>
+
+<option value="PLAY">
+  PLAY
+</option>
+
+<option value="WALK">
+  WALK
+</option>
+
+<option value="LOOK">
+  LOOK
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="transformer-panel">
+
+<h3>
+  Fire a Mediator
+</h3>
+
+
+<div class="mediator-buttons">
+
+
+<button
+  class="mediator-button"
+  data-transform="z"
+  type="button"
+>
+  Z⁰
+</button>
+
+
+<button
+  class="mediator-button"
+  data-transform="w"
+  type="button"
+>
+  W±
+</button>
+
+
+<button
+  class="mediator-button"
+  data-transform="gamma"
+  type="button"
+>
+  γ
+</button>
+
+
+<button
+  class="mediator-button"
+  data-transform="cqd"
+  type="button"
+>
+  CQD
+</button>
+
+
+</div>
+
+
+
+<div
+  id="transformResult"
+  class="transform-result"
+>
+
+Choose a mediator.
+
+</div>
+
+
+<div
+  id="transformEquation"
+  class="transform-equation"
+>
+  lexical state → interaction → expression
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     CQD
+====================================================== -->
+
+<div class="section-heading">
+
+<div class="kicker">
+  CONJUGATION CHROMODYNAMICS
+</div>
+
+<h2>
+  CQD State Space
+</h2>
+
+<p>
+
+  Conjugation is treated as a structured movement
+  among related grammatical states rather than
+  as a disconnected list of endings.
+
+</p>
+
+</div>
+
+
+
+<section class="cqd-shell">
+
+
+<div class="cqd-row">
+
+
+<button
+  class="cqd-state active"
+  data-cqd="past"
+  type="button"
+>
+
+<strong>
+  PAST
+</strong>
+
+ran
+
+</button>
+
+
+<button
+  class="cqd-state"
+  data-cqd="present"
+  type="button"
+>
+
+<strong>
+  PRESENT
+</strong>
+
+run / runs
+
+</button>
+
+
+<button
+  class="cqd-state"
+  data-cqd="progressive"
+  type="button"
+>
+
+<strong>
+  PROGRESSIVE
+</strong>
+
+running
+
+</button>
+
+
+</div>
+
+
+<div
+  id="cqdOutput"
+  class="cqd-output"
+>
+
+CQD keeps these states inside the same lexical family
+while changing grammatical charge.
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     LQG LOOP
+====================================================== -->
+
+<div class="section-heading">
+
+<div class="kicker">
+  LEXICAL QUANTUM GRAVITY
+</div>
+
+<h2>
+  Close the Meaning Loop
+</h2>
+
+<p>
+
+  The Semantic Z⁰ can seed a relational loop.
+
+  When enough compatible relations are connected,
+  a stable lexical geometry closes.
+
+</p>
+
+</div>
+
+
+
+<section class="lqg-shell">
+
+
+<div class="loop-controls">
+
+
+<button
+  class="loop-button"
+  data-loop="agent"
+  type="button"
+>
+  + Agent
+</button>
+
+
+<button
+  class="loop-button"
+  data-loop="action"
+  type="button"
+>
+  + Action
+</button>
+
+
+<button
+  class="loop-button"
+  data-loop="object"
+  type="button"
+>
+  + Object
+</button>
+
+
+</div>
+
+
+<div
+  id="loopBoard"
+  class="interaction-board"
+  style="min-height:360px;"
+>
+</div>
+
+
+<div
+  id="loopStatus"
+  class="loop-status"
+>
+
+Activate relational nodes to close the green loop.
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     SENTENCE COLLIDER
+====================================================== -->
+
+<div class="section-heading">
+
+<div class="kicker">
+  SENTENCE COLLIDER
+</div>
+
+<h2>
+  Collapse Relations into a Sentence
+</h2>
+
+<p>
+
+  Choose three interacting lexical objects.
+
+  The model first renders the relation graph,
+  then collapses it into ordinary syntactic expression.
+
+</p>
+
+</div>
+
+
+
+<section class="collider-shell">
+
+
+<div class="collider-builder">
+
+
+<div class="collider-slot">
+
+<label for="subjectSelect">
+  Agent / Subject
+</label>
+
+<select id="subjectSelect">
+
+<option value="Theia">
+  Theia
+</option>
+
+<option value="The student">
+  The student
+</option>
+
+<option value="The owl">
+  The owl
+</option>
+
+<option value="The teacher">
+  The teacher
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="collider-slot">
+
+<label for="verbSelect">
+  Action / Verb
+</label>
+
+<select id="verbSelect">
+
+<option value="eats">
+  eats
+</option>
+
+<option value="studies">
+  studies
+</option>
+
+<option value="sees">
+  sees
+</option>
+
+<option value="builds">
+  builds
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="collider-slot">
+
+<label for="objectSelect">
+  Object / Target
+</label>
+
+<select id="objectSelect">
+
+<option value="the apple">
+  the apple
+</option>
+
+<option value="the molecule">
+  the molecule
+</option>
+
+<option value="the pattern">
+  the pattern
+</option>
+
+<option value="the sentence">
+  the sentence
+</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+
+
+<div class="collider-actions">
+
+
+<button
+  id="buildSentence"
+  class="primary-button"
+  type="button"
+>
+  ⚛ Build Interaction
+</button>
+
+
+<button
+  id="reverseSentence"
+  class="secondary-button"
+  type="button"
+>
+  Reverse Engineer
+</button>
+
+
+</div>
+
+
+
+<div
+  id="sentenceOutput"
+  class="sentence-output"
+>
+
+<div class="kicker">
+  COLLAPSED EXPRESSION
+</div>
+
+<div
+  id="collapsedSentence"
+  class="sentence"
+>
+  Theia eats the apple.
+</div>
+
+<div id="sentenceNote">
+  Build the interaction to inspect its underlying relations.
+</div>
+
+</div>
+
+
+
+<div
+  id="colliderDiagram"
+  class="collider-diagram"
+>
+</div>
+
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+<strong>
+  Sentence Standard Model™
+</strong>
+
+• PAT Learning Lab
+
+<br>
+
+Meaning interacts.
+Syntax expresses.
+Context determines the field.
+
+</footer>
+
+
+
+<script>
+
+
+/* =====================================================
+   ANALYTICS
+====================================================== */
+
+function trackSSMEvent(
+  eventName,
+  data
+) {
+
+  if (
+    typeof gtag !==
+    "function"
+  ) {
+
+    return;
+
+  }
+
+
+  gtag(
+    "event",
+    eventName,
+    {
+
+      game_name:
+        "sentence_standard_model",
+
+      ...(data || {})
+
+    }
+  );
+
+}
+
+
+
+/* =====================================================
+   HELPERS
+====================================================== */
+
+function transformWordByContext(
+  word,
+  context
+) {
+
+  const base =
+    word.toUpperCase();
+
+
+  const irregular =
+    {
+
+      RUN:
+        {
+          past:
+            "RAN",
+
+          third:
+            "RUNS",
+
+          progressive:
+            "RUNNING"
+        },
+
+      PLAY:
+        {
+          past:
+            "PLAYED",
+
+          third:
+            "PLAYS",
+
+          progressive:
+            "PLAYING"
+        },
+
+      WALK:
+        {
+          past:
+            "WALKED",
+
+          third:
+            "WALKS",
+
+          progressive:
+            "WALKING"
+        },
+
+      LOOK:
+        {
+          past:
+            "LOOKED",
+
+          third:
+            "LOOKS",
+
+          progressive:
+            "LOOKING"
+        }
+
+    };
+
+
+  if (
+    irregular[
+      base
+    ]
+    &&
+    irregular[
+      base
+    ][
+      context
+    ]
+  ) {
+
+    return irregular[
+      base
+    ][
+      context
+    ];
+
+  }
+
+
+  if (
+    context ===
+    "past"
+  ) {
+
+    return (
+      base
+      +
+      "ED"
+    );
+
+  }
+
+
+  if (
+    context ===
+    "third"
+  ) {
+
+    return (
+      base
+      +
+      "S"
+    );
+
+  }
+
+
+  if (
+    context ===
+    "progressive"
+  ) {
+
+    return (
+      base
+      +
+      "ING"
+    );
+
+  }
+
+
+  return base;
+
+}
+
+
+
+/* =====================================================
+   FEYNMAN INTERACTION
+====================================================== */
+
+const interactionWord =
+  document.getElementById(
+    "interactionWord"
+  );
+
+
+const interactionContext =
+  document.getElementById(
+    "interactionContext"
+  );
+
+
+const interactionMediator =
+  document.getElementById(
+    "interactionMediator"
+  );
+
+
+const interactionBoard =
+  document.getElementById(
+    "interactionBoard"
+  );
+
+
+const interactionDescription =
+  document.getElementById(
+    "interactionDescription"
+  );
+
+
+
+function renderInteraction() {
+
+  const word =
+    interactionWord.value;
+
+
+  const context =
+    interactionContext.value;
+
+
+  const mediator =
+    interactionMediator.value;
+
+
+  let output =
+    word;
+
+
+  let lineClass =
+    "semantic-line";
+
+
+  let mediatorLabel =
+    "Z⁰";
+
+
+  let explanation =
+    "";
+
+
+  if (
+    mediator ===
+    "z"
+  ) {
+
+    output =
+      word;
+
+
+    lineClass =
+      "semantic-line";
+
+
+    mediatorLabel =
+      "Z⁰";
+
+
+    explanation =
+      "The massless Semantic Z⁰ carries relational meaning without forcing syntactic charge. The lexical state remains semantically connected and is eligible to seed an LQG loop.";
+
+  }
+
+
+  if (
+    mediator ===
+    "w"
+  ) {
+
+    const selectedContext =
+      context ===
+      "neutral"
+      ?
+        "third"
+      :
+        context;
+
+
+    output =
+      transformWordByContext(
+        word,
+        selectedContext
+      );
+
+
+    lineClass =
+      "w-line";
+
+
+    mediatorLabel =
+      "W±";
+
+
+    explanation =
+      "A W interaction converts the lexical state into a charged syntactic realization. The underlying lexical relation is preserved while grammatical expression changes.";
+
+  }
+
+
+  if (
+    mediator ===
+    "gamma"
+  ) {
+
+    output =
+      word;
+
+
+    lineClass =
+      "syntax-line";
+
+
+    mediatorLabel =
+      "γ";
+
+
+    explanation =
+      "The syntactic photon γ propagates pure uncharged form. Syntactic structure is transmitted without exchanging semantic charge.";
+
+  }
+
+
+  if (
+    mediator ===
+    "cqd"
+  ) {
+
+    const selectedContext =
+      context ===
+      "neutral"
+      ?
+        "past"
+      :
+        context;
+
+
+    output =
+      transformWordByContext(
+        word,
+        selectedContext
+      );
+
+
+    lineClass =
+      "cqd-line";
+
+
+    mediatorLabel =
+      "CQD";
+
+
+    explanation =
+      "Conjugation Chromodynamics moves the lexical state through a conjugate grammatical space while keeping the transformed form inside the same lexical family.";
+
+  }
+
+
+  interactionBoard.innerHTML = `
+
+    <svg
+      class="interaction-svg"
+      viewBox="0 0 900 440"
+    >
+
+      <path
+        d="M 70 220 L 340 220"
+        class="fermion-line"
+      />
+
+      <path
+        d="M 560 220 L 830 220"
+        class="fermion-line"
+      />
+
+
+      <path
+        d="M 450 70 L 450 190"
+        class="${lineClass}"
+      />
+
+
+      <circle
+        cx="450"
+        cy="220"
+        r="18"
+        class="vertex"
+      />
+
+
+      <text
+        x="180"
+        y="195"
+        class="diagram-label"
+      >
+        ${word}
+      </text>
+
+
+      <text
+        x="720"
+        y="195"
+        class="diagram-label"
+      >
+        ${output}
+      </text>
+
+
+      <text
+        x="450"
+        y="55"
+        class="diagram-label"
+      >
+        ${mediatorLabel}
+      </text>
+
+
+      <text
+        x="450"
+        y="255"
+        class="diagram-label"
+      >
+        interaction vertex
+      </text>
+
+
+      <text
+        x="180"
+        y="250"
+        class="diagram-label"
+      >
+        incoming lexical state
+      </text>
+
+
+      <text
+        x="720"
+        y="250"
+        class="diagram-label"
+      >
+        outgoing expression
+      </text>
+
+    </svg>
+
+  `;
+
+
+  interactionDescription.innerHTML = `
+
+    <strong>
+      ${word}
+      →
+      ${mediatorLabel}
+      →
+      ${output}
+    </strong>
+
+    <br><br>
+
+    ${explanation}
+
+  `;
+
+
+  trackSSMEvent(
+    "interaction_rendered",
+    {
+
+      word:
+        word.toLowerCase(),
+
+      mediator:
+        mediator,
+
+      context:
+        context
+
+    }
+  );
+
+}
+
+
+
+interactionWord
+  .addEventListener(
+    "change",
+    renderInteraction
+  );
+
+
+interactionContext
+  .addEventListener(
+    "change",
+    renderInteraction
+  );
+
+
+interactionMediator
+  .addEventListener(
+    "change",
+    renderInteraction
+  );
+
+
+
+/* =====================================================
+   WORD TRANSFORMER
+====================================================== */
+
+const transformWord =
+  document.getElementById(
+    "transformWord"
+  );
+
+
+const transformInput =
+  document.getElementById(
+    "transformInput"
+  );
+
+
+const transformResult =
+  document.getElementById(
+    "transformResult"
+  );
+
+
+const transformEquation =
+  document.getElementById(
+    "transformEquation"
+  );
+
+
+
+transformWord
+  .addEventListener(
+    "change",
+    function () {
+
+      transformInput.textContent =
+        transformWord.value;
+
+
+      transformResult.textContent =
+        "Choose a mediator.";
+
+
+      transformEquation.textContent =
+        "lexical state → interaction → expression";
+
+    }
+  );
+
+
+
+document
+  .querySelectorAll(
+    ".mediator-button"
+  )
+  .forEach(
+    function (
+      button
+    ) {
+
+      button.addEventListener(
+        "click",
+        function () {
+
+
+          document
+            .querySelectorAll(
+              ".mediator-button"
+            )
+            .forEach(
+              function (
+                item
+              ) {
+
+                item
+                  .classList
+                  .remove(
+                    "active"
+                  );
+
+              }
+            );
+
+
+          button
+            .classList
+            .add(
+              "active"
+            );
+
+
+          const word =
+            transformWord.value;
+
+
+          const mediator =
+            button.dataset.transform;
+
+
+          let output =
+            word;
+
+
+          let description =
+            "";
+
+
+          if (
+            mediator ===
+            "z"
+          ) {
+
+            output =
+              word;
+
+
+            description =
+              "Z⁰ preserves the lexical state as a neutral semantic relation and can feed that relation into an LQG loop.";
+
+
+            transformEquation.textContent =
+              word
+              +
+              " + Z⁰ → "
+              +
+              word;
+
+          }
+
+
+          if (
+            mediator ===
+            "w"
+          ) {
+
+            output =
+              transformWordByContext(
+                word,
+                "third"
+              );
+
+
+            description =
+              "W± adds syntactic charge. The lexical invariant persists, but its grammatical realization changes.";
+
+
+            transformEquation.textContent =
+              word
+              +
+              " + W± → "
+              +
+              output;
+
+          }
+
+
+          if (
+            mediator ===
+            "gamma"
+          ) {
+
+            output =
+              word;
+
+
+            description =
+              "γ carries pure syntactic structure without changing semantic charge.";
+
+
+            transformEquation.textContent =
+              word
+              +
+              " + γ → "
+              +
+              word;
+
+          }
+
+
+          if (
+            mediator ===
+            "cqd"
+          ) {
+
+            output =
+              transformWordByContext(
+                word,
+                "past"
+              );
+
+
+            description =
+              "CQD rotates the expression into a conjugate grammatical state while keeping it inside the same lexical family.";
+
+
+            transformEquation.textContent =
+              word
+              +
+              " --CQD→ "
+              +
+              output;
+
+          }
+
+
+          transformResult.innerHTML = `
+
+            <strong>
+              ${output}
+            </strong>
+
+            <br><br>
+
+            ${description}
+
+          `;
+
+
+          trackSSMEvent(
+            "word_transformed",
+            {
+              word:
+                word.toLowerCase(),
+
+              mediator:
+                mediator
+            }
+          );
+
+
+        }
+      );
+
+    }
+  );
+
+
+
+/* =====================================================
+   CQD
+====================================================== */
+
+document
+  .querySelectorAll(
+    ".cqd-state"
+  )
+  .forEach(
+    function (
+      button
+    ) {
+
+      button.addEventListener(
+        "click",
+        function () {
+
+
+          document
+            .querySelectorAll(
+              ".cqd-state"
+            )
+            .forEach(
+              function (
+                item
+              ) {
+
+                item
+                  .classList
+                  .remove(
+                    "active"
+                  );
+
+              }
+            );
+
+
+          button
+            .classList
+            .add(
+              "active"
+            );
+
+
+          const state =
+            button.dataset.cqd;
+
+
+          const output =
+            document.getElementById(
+              "cqdOutput"
+            );
+
+
+          if (
+            state ===
+            "past"
+          ) {
+
+            output.innerHTML = `
+
+              <strong>
+                RUN → RAN
+              </strong>
+
+              <br><br>
+
+              The grammatical state rotates toward past-time expression.
+              Lexical identity is preserved while syntactic charge changes.
+
+            `;
+
+          }
+
+
+          if (
+            state ===
+            "present"
+          ) {
+
+            output.innerHTML = `
+
+              <strong>
+                RUN → RUN / RUNS
+              </strong>
+
+              <br><br>
+
+              Present expression depends on agreement.
+              CQD therefore couples tense with person and number.
+
+            `;
+
+          }
+
+
+          if (
+            state ===
+            "progressive"
+          ) {
+
+            output.innerHTML = `
+
+              <strong>
+                RUN → RUNNING
+              </strong>
+
+              <br><br>
+
+              Progressive aspect changes how the action is situated
+              through time while maintaining the same lexical family.
+
+            `;
+
+          }
+
+
+          trackSSMEvent(
+            "cqd_state_selected",
+            {
+              state:
+                state
+            }
+          );
+
+        }
+      );
+
+    }
+  );
+
+
+
+/* =====================================================
+   LQG LOOP
+====================================================== */
+
+const loopState =
+  {
+
+    agent:
+      false,
+
+    action:
+      false,
+
+    object:
+      false
+
+  };
+
+
+const loopBoard =
+  document.getElementById(
+    "loopBoard"
+  );
+
+
+const loopStatus =
+  document.getElementById(
+    "loopStatus"
+  );
+
+
+
+function renderLoop() {
+
+  const closed =
+    loopState.agent
+    &&
+    loopState.action
+    &&
+    loopState.object;
+
+
+  loopBoard.innerHTML = `
+
+    <svg
+      class="interaction-svg"
+      viewBox="0 0 900 360"
+    >
+
+
+      <path
+        d="M 180 180
+           C 230 70, 370 55, 450 120"
+        class="${
+          loopState.agent
+          ?
+            "loop-line"
+          :
+            "loop-dashed"
+        }"
+      />
+
+
+      <path
+        d="M 450 120
+           C 590 55, 720 85, 720 180"
+        class="${
+          loopState.action
+          ?
+            "loop-line"
+          :
+            "loop-dashed"
+        }"
+      />
+
+
+      <path
+        d="M 720 180
+           C 650 315, 280 315, 180 180"
+        class="${
+          loopState.object
+          ?
+            "loop-line"
+          :
+            "loop-dashed"
+        }"
+      />
+
+
+      <circle
+        cx="180"
+        cy="180"
+        r="34"
+        fill="${
+          loopState.agent
+          ?
+            "#e2ecdb"
+          :
+            "#fffdf7"
+        }"
+        stroke="#58784b"
+        stroke-width="3"
+      />
+
+
+      <circle
+        cx="450"
+        cy="120"
+        r="34"
+        fill="${
+          loopState.action
+          ?
+            "#e2ecdb"
+          :
+            "#fffdf7"
+        }"
+        stroke="#58784b"
+        stroke-width="3"
+      />
+
+
+      <circle
+        cx="720"
+        cy="180"
+        r="34"
+        fill="${
+          loopState.object
+          ?
+            "#e2ecdb"
+          :
+            "#fffdf7"
+        }"
+        stroke="#58784b"
+        stroke-width="3"
+      />
+
+
+      <circle
+        cx="450"
+        cy="240"
+        r="26"
+        fill="#fff6d3"
+        stroke="#d5a83e"
+        stroke-width="3"
+      />
+
+
+      <text
+        x="180"
+        y="185"
+        class="diagram-label"
+      >
+        AGENT
+      </text>
+
+
+      <text
+        x="450"
+        y="125"
+        class="diagram-label"
+      >
+        ACTION
+      </text>
+
+
+      <text
+        x="720"
+        y="185"
+        class="diagram-label"
+      >
+        OBJECT
+      </text>
+
+
+      <text
+        x="450"
+        y="245"
+        class="diagram-label"
+      >
+        Z⁰
+      </text>
+
+
+    </svg>
+
+  `;
+
+
+  if (
+    closed
+  ) {
+
+    loopStatus.innerHTML = `
+
+      <strong>
+        ✓ LEXICAL LOOP CLOSED
+      </strong>
+
+      <br>
+
+      Agent, action and object now form
+      a stable relational geometry around
+      the neutral Semantic Z⁰ interaction.
+
+    `;
+
+
+    trackSSMEvent(
+      "lqg_loop_closed",
+      {}
+    );
+
+  }
+
+  else {
+
+    const active =
+      Object
+        .values(
+          loopState
+        )
+        .filter(
+          Boolean
+        )
+        .length;
+
+
+    loopStatus.textContent =
+      active
+      +
+      " of 3 relational nodes active.";
+
+  }
+
+}
+
+
+
+document
+  .querySelectorAll(
+    ".loop-button"
+  )
+  .forEach(
+    function (
+      button
+    ) {
+
+      button.addEventListener(
+        "click",
+        function () {
+
+          const part =
+            button.dataset.loop;
+
+
+          loopState[
+            part
+          ] =
+            !loopState[
+              part
+            ];
+
+
+          button.classList.toggle(
+            "active",
+            loopState[
+              part
+            ]
+          );
+
+
+          renderLoop();
+
+        }
+      );
+
+    }
+  );
+
+
+
+/* =====================================================
+   SENTENCE COLLIDER
+====================================================== */
+
+const subjectSelect =
+  document.getElementById(
+    "subjectSelect"
+  );
+
+
+const verbSelect =
+  document.getElementById(
+    "verbSelect"
+  );
+
+
+const objectSelect =
+  document.getElementById(
+    "objectSelect"
+  );
+
+
+const collapsedSentence =
+  document.getElementById(
+    "collapsedSentence"
+  );
+
+
+const sentenceNote =
+  document.getElementById(
+    "sentenceNote"
+  );
+
+
+const colliderDiagram =
+  document.getElementById(
+    "colliderDiagram"
+  );
+
+
+
+function renderCollider(
+  reverseMode
+) {
+
+  const subject =
+    subjectSelect.value;
+
+
+  const verb =
+    verbSelect.value;
+
+
+  const object =
+    objectSelect.value;
+
+
+  const sentence =
+    subject
+    +
+    " "
+    +
+    verb
+    +
+    " "
+    +
+    object
+    +
+    ".";
+
+
+  collapsedSentence.textContent =
+    sentence;
+
+
+  colliderDiagram.innerHTML = `
+
+    <svg
+      class="interaction-svg"
+      viewBox="0 0 900 330"
+    >
+
+
+      <path
+        d="M 95 165 L 330 165"
+        class="fermion-line"
+      />
+
+
+      <path
+        d="M 570 165 L 805 165"
+        class="fermion-line"
+      />
+
+
+      <path
+        d="M 450 55 L 450 135"
+        class="w-line"
+      />
+
+
+      <path
+        d="M 450 195
+           C 390 265, 510 265, 450 195"
+        class="loop-line"
+      />
+
+
+      <circle
+        cx="450"
+        cy="165"
+        r="19"
+        class="vertex"
+      />
+
+
+      <text
+        x="190"
+        y="142"
+        class="diagram-label"
+      >
+        ${subject}
+      </text>
+
+
+      <text
+        x="450"
+        y="42"
+        class="diagram-label"
+      >
+        W± / CQD
+      </text>
+
+
+      <text
+        x="710"
+        y="142"
+        class="diagram-label"
+      >
+        ${object}
+      </text>
+
+
+      <text
+        x="450"
+        y="170"
+        class="diagram-label"
+      >
+        ${verb}
+      </text>
+
+
+      <text
+        x="450"
+        y="285"
+        class="diagram-label"
+      >
+        green lexical relation loop
+      </text>
+
+
+    </svg>
+
+  `;
+
+
+  if (
+    reverseMode
+  ) {
+
+    sentenceNote.innerHTML = `
+
+      <strong>
+        Reverse engineered:
+      </strong>
+
+      the visible sentence decomposes into
+      an Agent → Action → Object interaction,
+      with the verb carrying the charged
+      syntactic relation between the two lexical objects.
+
+    `;
+
+  }
+
+  else {
+
+    sentenceNote.innerHTML = `
+
+      <strong>
+        Interaction collapsed:
+      </strong>
+
+      the underlying relation graph has been
+      expressed as ordinary sentence form.
+
+    `;
+
+  }
+
+
+  trackSSMEvent(
+    reverseMode
+    ?
+      "sentence_reverse_engineered"
+    :
+      "sentence_collapsed",
+    {
+
+      subject:
+        subject,
+
+      verb:
+        verb,
+
+      object:
+        object
+
+    }
+  );
+
+}
+
+
+
+document
+  .getElementById(
+    "buildSentence"
+  )
+  .addEventListener(
+    "click",
+    function () {
+
+      renderCollider(
+        false
+      );
+
+    }
+  );
+
+
+
+document
+  .getElementById(
+    "reverseSentence"
+  )
+  .addEventListener(
+    "click",
+    function () {
+
+      renderCollider(
+        true
+      );
+
+    }
+  );
+
+
+
+/* =====================================================
+   START
+====================================================== */
+
+renderInteraction();
+
+renderLoop();
+
+renderCollider(
+  false
+);
+
+
+trackSSMEvent(
+  "sentence_standard_model_opened",
+  {
+    prototype:
+      "interaction_model_001"
+  }
+);
+
+</script>
+
+
+</body>
+
+</html>
