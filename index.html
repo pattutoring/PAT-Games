@@ -68,6 +68,9 @@
   --teal: #4e7f78;
   --slate: #485565;
 
+  --wordsmith: #68537d;
+  --wordsmith-light: #f0e9f5;
+
   --shadow: rgba(50,40,25,.14);
 }
 
@@ -364,6 +367,23 @@ main {
 }
 
 
+
+.molecular-bee {
+
+  border-color:
+    var(--gold);
+}
+
+
+.molecular-bee
+.card-button {
+
+  background:
+    #aa8229;
+}
+
+
+
 .contronym {
 
   border-color:
@@ -377,6 +397,7 @@ main {
   background:
     var(--blue);
 }
+
 
 
 .clue-card {
@@ -394,20 +415,6 @@ main {
 }
 
 
-.molecular-bee {
-
-  border-color:
-    var(--gold);
-}
-
-
-.molecular-bee
-.card-button {
-
-  background:
-    #aa8229;
-}
-
 
 .koan-kaon {
 
@@ -422,6 +429,7 @@ main {
   background:
     var(--red);
 }
+
 
 
 .cryptic-calculus {
@@ -441,8 +449,9 @@ main {
 
 
 /* =====================================================
-   NEW WORLDS
+   EXPERIMENTAL WORLDS
 ====================================================== */
+
 
 /* CANDY-CALCULUS */
 
@@ -523,6 +532,31 @@ main {
 
 
 
+/* WORDSMITH */
+
+.wordsmith {
+
+  border-color:
+    var(--wordsmith);
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--paper),
+      var(--wordsmith-light)
+    );
+}
+
+
+.wordsmith
+.card-button {
+
+  background:
+    var(--wordsmith);
+}
+
+
+
 /* SENTENCE STANDARD MODEL */
 
 .sentence-model {
@@ -572,7 +606,7 @@ main {
 .world-divider p {
 
   max-width:
-    700px;
+    720px;
 
   margin:
     auto;
@@ -765,12 +799,14 @@ footer {
 
 
 
+  <!-- =====================================================
+       ORIGINAL LEARNING WORLDS
+  ====================================================== -->
+
   <div class="lab-grid">
 
 
-    <!-- =====================================================
-         MOLECULAR FARM
-    ====================================================== -->
+    <!-- MOLECULAR FARM -->
 
     <article
       class="lab-card molecular-farm"
@@ -808,9 +844,7 @@ footer {
 
 
 
-    <!-- =====================================================
-         MOLECULAR BEE
-    ====================================================== -->
+    <!-- MOLECULAR BEE -->
 
     <article
       class="lab-card molecular-bee"
@@ -848,9 +882,7 @@ footer {
 
 
 
-    <!-- =====================================================
-         CONTRONYM
-    ====================================================== -->
+    <!-- CONTRONYM -->
 
     <article
       class="lab-card contronym"
@@ -889,9 +921,7 @@ footer {
 
 
 
-    <!-- =====================================================
-         CRYPTIC CLUE CARDS
-    ====================================================== -->
+    <!-- CRYPTIC CLUE CARDS -->
 
     <article
       class="lab-card clue-card"
@@ -929,9 +959,7 @@ footer {
 
 
 
-    <!-- =====================================================
-         KOAN KAON
-    ====================================================== -->
+    <!-- KOAN KAON -->
 
     <article
       class="lab-card koan-kaon"
@@ -969,9 +997,7 @@ footer {
 
 
 
-    <!-- =====================================================
-         CRYPTIC CALCULUS
-    ====================================================== -->
+    <!-- CRYPTIC CALCULUS -->
 
     <article
       class="lab-card cryptic-calculus"
@@ -1013,7 +1039,7 @@ footer {
 
 
   <!-- =====================================================
-       NEW SYSTEMS
+       EXPERIMENTAL SYSTEMS
   ====================================================== -->
 
   <div class="world-divider">
@@ -1023,10 +1049,12 @@ footer {
     </h2>
 
     <p>
+
       Explore mathematical, semantic,
       narrative and linguistic models
       built around the same
       reverse-engineering principle.
+
     </p>
 
   </div>
@@ -1036,9 +1064,7 @@ footer {
   <div class="lab-grid">
 
 
-    <!-- =====================================================
-         CANDY CALCULUS
-    ====================================================== -->
+    <!-- CANDY CALCULUS -->
 
     <article
       class="lab-card candy-calculus"
@@ -1057,9 +1083,13 @@ footer {
       <p>
 
         Turn algebra into something you can
-        unwrap. Explore Candy-Coated Functions,
-        FOIL, factoring, inequalities
-        and visual equation structure.
+        unwrap.
+
+        Explore Candy-Coated Functions,
+        Everlasting Gobstoppers,
+        FOIL wrappers, Candy Dots,
+        Licorice Lines, Lollipop Limits
+        and other mathematical treats.
 
       </p>
 
@@ -1076,9 +1106,7 @@ footer {
 
 
 
-    <!-- =====================================================
-         MEANING GRAPHS
-    ====================================================== -->
+    <!-- MEANING GRAPHS -->
 
     <article
       class="lab-card meaning-graphs"
@@ -1099,9 +1127,10 @@ footer {
         Map meaning across Transverse
         and Conjugate axes.
 
-        Explore polarity, zeroes,
-        vertices, symmetry and
-        contextual transformations.
+        Explore polarity, symmetry,
+        semantic distance, zeroes,
+        contextual charge and
+        transformations of meaning.
 
       </p>
 
@@ -1118,47 +1147,91 @@ footer {
 
 
 
-    <!-- =====================================================
-     MYTHOPOETIC DIAGRAMS
-====================================================== -->
+    <!-- MYTHOPOETIC DIAGRAMS -->
 
-<article
-  class="lab-card mythopoetic"
->
+    <article
+      class="lab-card mythopoetic"
+    >
 
-  <div class="lab-icon">
-    📖
-  </div>
-
-  <h2>
-    Mythopoetic Diagrams
-  </h2>
-
-  <p>
-
-    Model stories with mathematics.
-
-    Explore Parabolic-Parables,
-    character development,
-    oppositions, similes
-    and narrative geometry.
-
-  </p>
-
-  <a
-    class="card-button game-link"
-    href="mythopoeticdiagrams.html"
-    data-game="mythopoetic_diagrams"
-  >
-    Enter Mythopoetic Diagrams
-  </a>
-
-</article>
+      <div class="lab-icon">
+        📖
+      </div>
 
 
-    <!-- =====================================================
-         SENTENCE STANDARD MODEL
-    ====================================================== -->
+      <h2>
+        Mythopoetic Diagrams
+      </h2>
+
+
+      <p>
+
+        Model stories with mathematics.
+
+        Explore Parabolic-Parables,
+        Hyperbolic-Hyperbole,
+        Elliptical-Ellipsis,
+        Simultaneous Similes,
+        character FOILs
+        and narrative symmetry.
+
+      </p>
+
+
+      <a
+        class="card-button game-link"
+        href="mythopoeticdiagrams.html"
+        data-game="mythopoetic_diagrams"
+      >
+        Enter Mythopoetic Diagrams
+      </a>
+
+    </article>
+
+
+
+    <!-- WORDSMITH -->
+
+    <article
+      class="lab-card wordsmith"
+    >
+
+      <div class="lab-icon">
+        ✒️
+      </div>
+
+
+      <h2>
+        Wordsmith
+      </h2>
+
+
+      <p>
+
+        Read the words.
+        Map the relations.
+
+        Annotate poems for metaphor,
+        puns, sound-play, repetition,
+        semantic shifts, irony
+        and layered meaning —
+        then build a map of the piece.
+
+      </p>
+
+
+      <a
+        class="card-button game-link"
+        href="wordsmith.html"
+        data-game="wordsmith"
+      >
+        Enter Wordsmith
+      </a>
+
+    </article>
+
+
+
+    <!-- SENTENCE STANDARD MODEL -->
 
     <article
       class="lab-card sentence-model"
@@ -1178,9 +1251,12 @@ footer {
 
         Explore language as a system
         of interacting structures:
-        semantic mass, syntactic charge,
-        context fields and
-        sentence transformations.
+
+        semantic mass,
+        syntactic charge,
+        context fields,
+        conjugation dynamics
+        and transformations of meaning.
 
       </p>
 
@@ -1227,10 +1303,12 @@ footer {
       PAT Learning Lab is built around
 
       <strong>
+
         observing structure,
         finding relationships,
         reconstructing solutions
         and explaining why they work.
+
       </strong>
 
     </p>
@@ -1256,8 +1334,10 @@ footer {
 
       New puzzles, chemistry species,
       mathematical worlds, Meaning Graphs,
-      narrative diagrams and interactive
-      experiments are being added over time.
+      poems, narrative diagrams,
+      sentence interactions
+      and interactive experiments
+      are being added over time.
 
     </p>
 
@@ -1279,6 +1359,22 @@ footer {
 
 <!-- =====================================================
      GAME CLICK ANALYTICS
+
+     Automatically records every clickable Learning Lab world.
+
+     Examples:
+
+     play_molecular_farm
+     play_molecular_bee
+     play_contronym
+     play_clue_cards
+     play_koan_kaon
+     play_cryptic_calculus
+     play_candy_calculus
+     play_meaning_graphs
+     play_mythopoetic_diagrams
+     play_wordsmith
+     play_sentence_standard_model
 ====================================================== -->
 
 <script>
