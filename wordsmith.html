@@ -1,6 +1,4 @@
-{
-  id:
-    "002",<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -33,7 +31,10 @@ function gtag() {
   dataLayer.push(arguments);
 }
 
-gtag("js", new Date());
+gtag(
+  "js",
+  new Date()
+);
 
 gtag(
   "config",
@@ -41,6 +42,7 @@ gtag(
 );
 
 </script>
+
 
 
 <style>
@@ -73,9 +75,15 @@ gtag(
   --slate: #485565;
 
   --shadow:
-    rgba(52, 43, 29, .14);
+    rgba(
+      52,
+      43,
+      29,
+      .14
+    );
 
 }
+
 
 
 /* =====================================================
@@ -86,15 +94,18 @@ gtag(
   box-sizing: border-box;
 }
 
+
 html {
   scroll-behavior: smooth;
 }
+
 
 body {
 
   margin: 0;
 
   background: var(--cream);
+
   color: var(--ink);
 
   font-family:
@@ -104,12 +115,16 @@ body {
 
 }
 
+
 button,
 input,
 select,
 textarea {
+
   font: inherit;
+
 }
+
 
 button {
 
@@ -119,6 +134,7 @@ button {
     transparent;
 
 }
+
 
 
 /* =====================================================
@@ -135,6 +151,7 @@ header {
   text-align: center;
 
 }
+
 
 .lab-link {
 
@@ -163,9 +180,11 @@ header {
 
 }
 
+
 .wordsmith-mark {
 
   width: 74px;
+
   height: 74px;
 
   margin:
@@ -176,6 +195,7 @@ header {
   display: flex;
 
   align-items: center;
+
   justify-content: center;
 
   border:
@@ -190,6 +210,7 @@ header {
   font-size: 2.4rem;
 
 }
+
 
 header h1 {
 
@@ -208,6 +229,7 @@ header h1 {
 
 }
 
+
 .tagline {
 
   margin-top: 7px;
@@ -217,6 +239,7 @@ header h1 {
   font-weight: bold;
 
 }
+
 
 .header-copy {
 
@@ -234,8 +257,9 @@ header h1 {
 }
 
 
+
 /* =====================================================
-   MAIN / SCREENS
+   MAIN
 ====================================================== */
 
 main {
@@ -252,9 +276,13 @@ main {
 
 }
 
+
 .screen {
+
   display: none;
+
 }
+
 
 .screen.active {
 
@@ -267,6 +295,7 @@ main {
 
 }
 
+
 @keyframes appear {
 
   from {
@@ -274,7 +303,9 @@ main {
     opacity: 0;
 
     transform:
-      translateY(7px);
+      translateY(
+        7px
+      );
 
   }
 
@@ -283,11 +314,14 @@ main {
     opacity: 1;
 
     transform:
-      translateY(0);
+      translateY(
+        0
+      );
 
   }
 
 }
+
 
 .section-heading {
 
@@ -302,6 +336,7 @@ main {
 
 }
 
+
 .section-heading h2 {
 
   margin:
@@ -311,6 +346,7 @@ main {
 
 }
 
+
 .section-heading p {
 
   color: #655849;
@@ -319,11 +355,13 @@ main {
 
 }
 
+
 .kicker {
 
   color: var(--green);
 
   font-size: .72rem;
+
   font-weight: bold;
 
   letter-spacing: 2px;
@@ -331,6 +369,7 @@ main {
   text-transform: uppercase;
 
 }
+
 
 
 /* =====================================================
@@ -352,6 +391,7 @@ main {
 
 }
 
+
 .back-button {
 
   margin-bottom: 18px;
@@ -367,6 +407,7 @@ main {
 
 }
 
+
 .primary-button {
 
   border:
@@ -380,6 +421,7 @@ main {
 
 }
 
+
 .secondary-button {
 
   border:
@@ -392,6 +434,7 @@ main {
   color: var(--brown);
 
 }
+
 
 .danger-button {
 
@@ -407,6 +450,7 @@ main {
 }
 
 
+
 /* =====================================================
    HOME
 ====================================================== */
@@ -418,12 +462,16 @@ main {
   grid-template-columns:
     repeat(
       3,
-      minmax(0, 1fr)
+      minmax(
+        0,
+        1fr
+      )
     );
 
   gap: 17px;
 
 }
+
 
 .mode-card {
 
@@ -451,11 +499,13 @@ main {
 
 }
 
+
 .mode-card .mode-icon {
 
   font-size: 3rem;
 
 }
+
 
 .mode-card h2 {
 
@@ -465,6 +515,7 @@ main {
 
 }
 
+
 .mode-card p {
 
   color: #665849;
@@ -472,6 +523,7 @@ main {
   line-height: 1.5;
 
 }
+
 
 .mode-card strong {
 
@@ -481,17 +533,27 @@ main {
 
 }
 
+
 .annotate-mode {
+
   border-color: var(--purple);
+
 }
+
 
 .map-mode {
+
   border-color: var(--blue);
+
 }
 
+
 .write-mode {
+
   border-color: var(--gold);
+
 }
+
 
 
 /* =====================================================
@@ -523,11 +585,13 @@ main {
 
 }
 
+
 .relation-chain {
 
   display: flex;
 
   align-items: center;
+
   justify-content: center;
 
   gap: 8px;
@@ -537,6 +601,7 @@ main {
   margin-top: 18px;
 
 }
+
 
 .chain-box {
 
@@ -557,6 +622,7 @@ main {
 
 }
 
+
 .chain-arrow {
 
   color: var(--gold);
@@ -564,6 +630,7 @@ main {
   font-weight: bold;
 
 }
+
 
 
 /* =====================================================
@@ -577,12 +644,16 @@ main {
   grid-template-columns:
     repeat(
       auto-fit,
-      minmax(230px, 1fr)
+      minmax(
+        230px,
+        1fr
+      )
     );
 
   gap: 14px;
 
 }
+
 
 .poem-card {
 
@@ -601,9 +672,15 @@ main {
     0
     4px
     13px
-    rgba(52, 43, 29, .09);
+    rgba(
+      52,
+      43,
+      29,
+      .09
+    );
 
 }
+
 
 .poem-card h3 {
 
@@ -613,6 +690,7 @@ main {
 
 }
 
+
 .poem-card p {
 
   color: #675949;
@@ -621,6 +699,7 @@ main {
 
 }
 
+
 .poem-card button {
 
   width: 100%;
@@ -628,6 +707,7 @@ main {
   margin-top: 10px;
 
 }
+
 
 
 /* =====================================================
@@ -639,12 +719,19 @@ main {
   display: grid;
 
   grid-template-columns:
-    minmax(300px, 1.2fr)
-    minmax(260px, .8fr);
+    minmax(
+      300px,
+      1.2fr
+    )
+    minmax(
+      260px,
+      .8fr
+    );
 
   gap: 17px;
 
 }
+
 
 .poem-panel,
 .annotation-panel {
@@ -668,9 +755,13 @@ main {
 
 }
 
+
 .poem-panel h2 {
+
   margin-top: 4px;
+
 }
+
 
 .poem-byline {
 
@@ -681,6 +772,7 @@ main {
   font-style: italic;
 
 }
+
 
 .poem-text {
 
@@ -694,13 +786,14 @@ main {
 
   line-height: 1.85;
 
-  white-space: pre-wrap;
-
 }
+
 
 .poem-line {
 
   display: block;
+
+  min-height: 1.5em;
 
   padding:
     2px
@@ -712,9 +805,13 @@ main {
 
 }
 
+
 .poem-line:hover {
+
   background: var(--blue-light);
+
 }
+
 
 .poem-line.selected {
 
@@ -728,13 +825,17 @@ main {
 }
 
 
+
 /* =====================================================
    TAG PALETTE
 ====================================================== */
 
 .annotation-panel h3 {
+
   margin-top: 3px;
+
 }
+
 
 .selected-text-box {
 
@@ -761,6 +862,7 @@ main {
 
 }
 
+
 .tag-grid {
 
   display: grid;
@@ -768,12 +870,16 @@ main {
   grid-template-columns:
     repeat(
       2,
-      minmax(0, 1fr)
+      minmax(
+        0,
+        1fr
+      )
     );
 
   gap: 7px;
 
 }
+
 
 .tag-button {
 
@@ -793,13 +899,18 @@ main {
   color: var(--ink);
 
   font-size: .8rem;
+
   font-weight: bold;
 
 }
 
+
 .tag-button:hover {
+
   background: var(--purple-light);
+
 }
+
 
 .annotation-feedback {
 
@@ -814,8 +925,9 @@ main {
 }
 
 
+
 /* =====================================================
-   ANNOTATIONS
+   ANNOTATION LIST
 ====================================================== */
 
 .annotation-list {
@@ -827,6 +939,7 @@ main {
   margin-top: 16px;
 
 }
+
 
 .annotation-entry {
 
@@ -847,6 +960,7 @@ main {
 
 }
 
+
 .annotation-tag {
 
   display: inline-block;
@@ -858,6 +972,7 @@ main {
   font-weight: bold;
 
 }
+
 
 
 /* =====================================================
@@ -883,13 +998,20 @@ main {
 
 }
 
+
 .author-panel.visible {
+
   display: block;
+
 }
 
+
 .author-panel h3 {
+
   margin-top: 0;
+
 }
+
 
 .author-entry {
 
@@ -902,11 +1024,17 @@ main {
   border-radius: 9px;
 
   background:
-    rgba(255,255,255,.65);
+    rgba(
+      255,
+      255,
+      255,
+      .65
+    );
 
   line-height: 1.45;
 
 }
+
 
 
 /* =====================================================
@@ -934,6 +1062,7 @@ main {
 
 }
 
+
 .map-canvas {
 
   position: relative;
@@ -942,7 +1071,7 @@ main {
 
   margin-top: 16px;
 
-  overflow: hidden;
+  overflow: auto;
 
   border:
     2px
@@ -954,7 +1083,12 @@ main {
   background:
 
     linear-gradient(
-      rgba(71,124,168,.045)
+      rgba(
+        71,
+        124,
+        168,
+        .045
+      )
       1px,
       transparent
       1px
@@ -962,7 +1096,12 @@ main {
 
     linear-gradient(
       90deg,
-      rgba(185,87,78,.045)
+      rgba(
+        185,
+        87,
+        78,
+        .045
+      )
       1px,
       transparent
       1px
@@ -976,16 +1115,19 @@ main {
 
 }
 
+
 .map-svg {
 
-  position: absolute;
-
-  inset: 0;
-
   width: 100%;
-  height: 100%;
+
+  min-width: 760px;
+
+  height: auto;
+
+  display: block;
 
 }
+
 
 .map-node {
 
@@ -994,6 +1136,7 @@ main {
   stroke-width: 3;
 
 }
+
 
 .map-text {
 
@@ -1005,6 +1148,7 @@ main {
 
 }
 
+
 .map-small {
 
   font-size: 10px;
@@ -1012,6 +1156,7 @@ main {
   text-anchor: middle;
 
 }
+
 
 .map-description {
 
@@ -1031,6 +1176,7 @@ main {
   line-height: 1.5;
 
 }
+
 
 
 /* =====================================================
@@ -1057,6 +1203,7 @@ main {
     var(--shadow);
 
 }
+
 
 .writer-textarea {
 
@@ -1090,6 +1237,7 @@ main {
 
 }
 
+
 .write-tools {
 
   display: grid;
@@ -1103,6 +1251,7 @@ main {
   margin-top: 17px;
 
 }
+
 
 .write-panel {
 
@@ -1119,9 +1268,13 @@ main {
 
 }
 
+
 .write-panel h3 {
+
   margin-top: 0;
+
 }
+
 
 .student-tag-row {
 
@@ -1132,6 +1285,7 @@ main {
   flex-wrap: wrap;
 
 }
+
 
 .student-tag {
 
@@ -1156,6 +1310,14 @@ main {
 
 }
 
+
+.student-tag.active {
+
+  background: var(--purple-light);
+
+}
+
+
 .writing-analysis {
 
   margin-top: 15px;
@@ -1174,6 +1336,7 @@ main {
   line-height: 1.5;
 
 }
+
 
 
 /* =====================================================
@@ -1197,6 +1360,7 @@ footer {
 }
 
 
+
 /* =====================================================
    MOBILE
 ====================================================== */
@@ -1205,32 +1369,49 @@ footer {
 (max-width: 800px) {
 
   .mode-grid {
+
     grid-template-columns: 1fr;
+
   }
+
 
   .analysis-layout {
+
     grid-template-columns: 1fr;
+
   }
 
+
   .write-tools {
+
     grid-template-columns: 1fr;
+
   }
 
 }
+
 
 @media
 (max-width: 480px) {
 
   header {
+
     padding-top: 20px;
+
   }
+
 
   .tag-grid {
+
     grid-template-columns: 1fr;
+
   }
 
+
   .map-canvas {
-    min-height: 560px;
+
+    min-height: 520px;
+
   }
 
 }
@@ -1240,10 +1421,12 @@ footer {
 </head>
 
 
+
 <body>
 
 
 <header>
+
 
 <a
   class="lab-link"
@@ -1252,17 +1435,21 @@ footer {
   ← PAT Learning Lab
 </a>
 
+
 <div class="wordsmith-mark">
   ✒️
 </div>
+
 
 <h1>
   WORDSMITH
 </h1>
 
+
 <div class="tagline">
   Read the words. Map the relations.
 </div>
+
 
 <p class="header-copy">
 
@@ -1278,20 +1465,23 @@ footer {
 
 </p>
 
+
 </header>
+
 
 
 <main>
 
 
 <!-- =====================================================
-     HOME
+     HOME SCREEN
 ====================================================== -->
 
 <section
   id="homeScreen"
   class="screen active"
 >
+
 
 <div class="section-heading">
 
@@ -1304,15 +1494,19 @@ footer {
 </h2>
 
 <p>
+
   Begin with close reading,
   move into relational mapping,
   or bring in your own writing.
+
 </p>
 
 </div>
 
 
+
 <div class="mode-grid">
+
 
 <button
   class="mode-card annotate-mode"
@@ -1343,6 +1537,7 @@ footer {
 </button>
 
 
+
 <button
   class="mode-card map-mode"
   data-screen="mapScreen"
@@ -1359,9 +1554,10 @@ footer {
 
 <p>
 
-  Turn annotations into a relational map
-  connecting language, operation,
-  second meanings and larger themes.
+  Turn literary devices into relational
+  structures connecting language,
+  transformation, secondary meaning
+  and the poem as a whole.
 
 </p>
 
@@ -1370,6 +1566,7 @@ footer {
 </strong>
 
 </button>
+
 
 
 <button
@@ -1390,7 +1587,8 @@ footer {
 
   Paste or write your own poem,
   tag the techniques you used,
-  and build a structural map of the piece.
+  and build a structural fingerprint
+  of the piece.
 
 </p>
 
@@ -1400,7 +1598,9 @@ footer {
 
 </button>
 
+
 </div>
+
 
 
 <section class="wordsmith-principle">
@@ -1412,6 +1612,7 @@ footer {
 <h2>
   Don't Just Name the Device — Follow What It Does
 </h2>
+
 
 <p>
 
@@ -1461,19 +1662,23 @@ footer {
 
 </div>
 
-</section>
 
 </section>
+
+
+</section>
+
 
 
 <!-- =====================================================
-     LIBRARY
+     LIBRARY SCREEN
 ====================================================== -->
 
 <section
   id="libraryScreen"
   class="screen"
 >
+
 
 <button
   class="back-button"
@@ -1482,6 +1687,7 @@ footer {
 >
   ← Wordsmith
 </button>
+
 
 <div class="section-heading">
 
@@ -1497,11 +1703,13 @@ footer {
 
   Read first without the author's map.
   Make your own observations before revealing
-  the intended structures.
+  some of the structures intentionally built
+  into the poem.
 
 </p>
 
 </div>
+
 
 <div
   id="poemLibrary"
@@ -1509,17 +1717,20 @@ footer {
 >
 </div>
 
+
 </section>
 
 
+
 <!-- =====================================================
-     ANNOTATION
+     ANNOTATION SCREEN
 ====================================================== -->
 
 <section
   id="annotationScreen"
   class="screen"
 >
+
 
 <button
   class="back-button"
@@ -1529,21 +1740,29 @@ footer {
   ← Poem Library
 </button>
 
+
+
 <div class="analysis-layout">
 
+
 <div class="poem-panel">
+
 
 <div class="kicker">
   CLOSE READING
 </div>
 
-<h2 id="activePoemTitle"></h2>
+
+<h2 id="activePoemTitle">
+</h2>
+
 
 <div
   id="activePoemByline"
   class="poem-byline"
 >
 </div>
+
 
 <p style="color:#675949;font-size:.87rem;">
 
@@ -1553,6 +1772,7 @@ footer {
 
 </p>
 
+
 <div
   id="activePoemText"
   class="poem-text"
@@ -1560,7 +1780,15 @@ footer {
 </div>
 
 
-<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:15px;">
+<div
+  style="
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:15px;
+  "
+>
+
 
 <button
   id="revealAuthorButton"
@@ -1570,6 +1798,7 @@ footer {
   Reveal Author Map
 </button>
 
+
 <button
   id="mapCurrentButton"
   class="secondary-button"
@@ -1577,6 +1806,7 @@ footer {
 >
   Map This Poem
 </button>
+
 
 <button
   id="clearAnnotations"
@@ -1586,7 +1816,9 @@ footer {
   Clear My Notes
 </button>
 
+
 </div>
+
 
 
 <div
@@ -1599,27 +1831,35 @@ footer {
 </h3>
 
 <p>
+
   Compare your interpretation with some
   of the structures intentionally built
   into the piece.
+
 </p>
 
-<div id="authorEntries"></div>
-
+<div id="authorEntries">
 </div>
 
 </div>
+
+
+</div>
+
 
 
 <div class="annotation-panel">
+
 
 <div class="kicker">
   ANNOTATION TOOL
 </div>
 
+
 <h3>
   What is happening here?
 </h3>
+
 
 <div
   id="selectedTextBox"
@@ -1628,11 +1868,13 @@ footer {
   Select a line from the poem.
 </div>
 
+
 <div
   id="tagGrid"
   class="tag-grid"
 >
 </div>
+
 
 <div
   id="annotationFeedback"
@@ -1640,9 +1882,11 @@ footer {
 >
 </div>
 
+
 <h3>
   Your Map
 </h3>
+
 
 <div
   id="annotationList"
@@ -1650,21 +1894,26 @@ footer {
 >
 </div>
 
-</div>
 
 </div>
+
+
+</div>
+
 
 </section>
 
 
+
 <!-- =====================================================
-     MAP
+     MAP SCREEN
 ====================================================== -->
 
 <section
   id="mapScreen"
   class="screen"
 >
+
 
 <button
   class="back-button"
@@ -1673,6 +1922,7 @@ footer {
 >
   ← Wordsmith
 </button>
+
 
 <div class="section-heading">
 
@@ -1686,18 +1936,29 @@ footer {
 
 <p>
 
-  Follow how recurring words and phrases
-  change meaning as they move through
-  the structure of a poem.
+  The language is treated as a network:
+  a phrase undergoes an operation,
+  that operation opens another relation,
+  and those relations contribute to
+  the meaning of the larger piece.
 
 </p>
 
 </div>
 
 
+
 <section class="map-shell">
 
-<div style="display:flex;gap:9px;flex-wrap:wrap;">
+
+<div
+  style="
+    display:flex;
+    gap:9px;
+    flex-wrap:wrap;
+  "
+>
+
 
 <select
   id="mapPoemSelect"
@@ -1712,6 +1973,7 @@ footer {
 >
 </select>
 
+
 <button
   id="renderMapButton"
   class="primary-button"
@@ -1720,13 +1982,17 @@ footer {
   Build Relation Map
 </button>
 
+
 </div>
+
+
 
 <div
   id="mapCanvas"
   class="map-canvas"
 >
 </div>
+
 
 <div
   id="mapDescription"
@@ -1735,19 +2001,23 @@ footer {
   Choose a poem and build its map.
 </div>
 
-</section>
 
 </section>
+
+
+</section>
+
 
 
 <!-- =====================================================
-     WRITE
+     WRITE SCREEN
 ====================================================== -->
 
 <section
   id="writeScreen"
   class="screen"
 >
+
 
 <button
   class="back-button"
@@ -1756,6 +2026,7 @@ footer {
 >
   ← Wordsmith
 </button>
+
 
 <div class="section-heading">
 
@@ -1781,7 +2052,9 @@ footer {
 </div>
 
 
+
 <section class="write-shell">
+
 
 <textarea
   id="writerText"
@@ -1790,7 +2063,9 @@ footer {
 ></textarea>
 
 
+
 <div class="write-tools">
+
 
 <div class="write-panel">
 
@@ -1805,13 +2080,16 @@ footer {
 
 </p>
 
+
 <div
   id="studentTagRow"
   class="student-tag-row"
 >
 </div>
 
+
 </div>
+
 
 
 <div class="write-panel">
@@ -1829,10 +2107,20 @@ footer {
 
 </div>
 
+
 </div>
 
 
-<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;">
+
+<div
+  style="
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:16px;
+  "
+>
+
 
 <button
   id="analyzeWriting"
@@ -1842,6 +2130,7 @@ footer {
   Map My Writing
 </button>
 
+
 <button
   id="clearWriting"
   class="secondary-button"
@@ -1850,7 +2139,9 @@ footer {
   Clear
 </button>
 
+
 </div>
+
 
 
 <div
@@ -1860,18 +2151,26 @@ footer {
   Your structural analysis will appear here.
 </div>
 
+
 <div
   id="writingMap"
   class="map-canvas"
-  style="margin-top:17px;min-height:420px;"
+  style="
+    margin-top:17px;
+    min-height:420px;
+  "
 >
 </div>
 
-</section>
 
 </section>
+
+
+</section>
+
 
 </main>
+
 
 
 <footer>
@@ -1891,6 +2190,7 @@ Rebuild the meaning.
 </footer>
 
 
+
 <script>
 
 
@@ -1907,21 +2207,27 @@ function trackWordsmithEvent(
     typeof gtag !==
     "function"
   ) {
+
     return;
+
   }
+
 
   gtag(
     "event",
     eventName,
     {
+
       game_name:
         "wordsmith",
 
       ...(data || {})
+
     }
   );
 
 }
+
 
 
 /* =====================================================
@@ -1991,6 +2297,12 @@ const literaryTags = [
   },
 
   {
+    id: "paradox",
+    label: "Paradox",
+    symbol: "⇌"
+  },
+
+  {
     id: "semantic-shift",
     label: "Semantic Shift",
     symbol: "⇢"
@@ -2027,12 +2339,6 @@ const literaryTags = [
   },
 
   {
-    id: "paradox",
-    label: "Paradox",
-    symbol: "↯"
-  },
-
-  {
     id: "ellipsis",
     label: "Ellipsis",
     symbol: "…"
@@ -2041,41 +2347,57 @@ const literaryTags = [
   {
     id: "metacommentary",
     label: "Metacommentary",
-    symbol: "↻"
+    symbol: "⌘"
+  },
+
+  {
+    id: "sound-play",
+    label: "Sound Play",
+    symbol: "🔊"
   },
 
   {
     id: "personification",
     label: "Personification",
-    symbol: "♙"
+    symbol: "☻"
+  },
+
+  {
+    id: "allusion",
+    label: "Allusion",
+    symbol: "↗"
+  },
+
+  {
+    id: "symmetry",
+    label: "Symmetry",
+    symbol: "✦"
   }
 
 ];
 
 
+
 /* =====================================================
-   POEMS
+   POEM DATABASE
 ====================================================== */
 
 const poems = [
 
 
 /* =====================================================
-   #001 MORE OR...
+   #001 MORE OR …
 ====================================================== */
 
 {
-  id:
-    "001",
+  id: "001",
 
-  title:
-    "More or …",
+  title: "More or …",
 
-  byline:
-    "Patrick Oberlander II",
+  byline: "Patrick Oberlander II",
 
   description:
-    "A recursive piece about economy, expectation and deliberately unfinished language.",
+    "A recursive miniature about economy, expectation and deliberately unfinished language.",
 
   text:
 `Less is more,
@@ -2084,70 +2406,66 @@ In a few words or less,
 Do more with less,
 More or …`,
 
-  authorAnnotations:
-  [
+  authorAnnotations: [
 
     {
       phrase:
         "Less is more",
 
-      tags:
-        [
-          "contrast",
-          "paradox",
-          "repetition"
-        ],
+      tags: [
+        "contrast",
+        "paradox",
+        "repetition"
+      ],
 
       explanation:
-        "The opening establishes the governing relation: reduction can create expansion."
+        "The opening establishes the governing contradiction: reduction becomes expansion. Less produces more."
     },
 
     {
       phrase:
         "leave them wanting more",
 
-      tags:
-        [
-          "repetition",
-          "double-meaning"
-        ],
+      tags: [
+        "repetition",
+        "double-meaning"
+      ],
 
       explanation:
-        "MORE shifts from an abstract principle into a desire produced in the reader."
+        "MORE changes function. It begins as an abstract principle and becomes the reader's desire."
     },
 
     {
       phrase:
-        "Do more with less",
+        "In a few words or less / Do more with less",
 
-      tags:
-        [
-          "repetition",
-          "contrast",
-          "motif"
-        ],
+      tags: [
+        "repetition",
+        "syntactic-shift",
+        "motif"
+      ],
 
       explanation:
-        "MORE and LESS exchange positions while preserving the same central opposition."
+        "MORE and LESS repeatedly exchange grammatical positions while preserving their central opposition."
     },
 
     {
       phrase:
         "More or …",
 
-      tags:
-        [
-          "ellipsis",
-          "irony",
-          "metacommentary"
-        ],
+      tags: [
+        "ellipsis",
+        "irony",
+        "metacommentary"
+      ],
 
       explanation:
-        "The poem performs its own thesis. The missing word LESS causes the poem to literally do more with less."
+        "The poem performs its own argument. The expected final word disappears, so the poem literally does more with less."
     }
 
   ]
 },
+
 
 
 /* =====================================================
@@ -2155,17 +2473,14 @@ More or …`,
 ====================================================== */
 
 {
-  id:
-    "002",
+  id: "002",
 
-  title:
-    "War of the Words",
+  title: "War of the Words",
 
-  byline:
-    "Patrick Oberlander II",
+  byline: "Patrick Oberlander II",
 
   description:
-    "A collision of language, fighting, music, geometry, astronomy and punctuation built through rapid semantic transformations.",
+    "Rapid associative wordplay built from conflict, sound, lexical transformation and punctuation.",
 
   text:
 `If it’s war of the words I’m gonna throw a few punchlines — a hook and jab,
@@ -2173,131 +2488,128 @@ A song and a scrap,
 an ellipse an eclipse —
 a period of pause - a cosmic comatose a comma enacts`,
 
-  authorAnnotations:
-  [
+  authorAnnotations: [
 
     {
       phrase:
         "war of the words",
 
-      tags:
-        [
-          "pun",
-          "approximation",
-          "semantic-shift"
-        ],
+      tags: [
+        "pun",
+        "approximation",
+        "semantic-shift",
+        "allusion"
+      ],
 
       explanation:
-        "WAR OF THE WORLDS transforms into WAR OF THE WORDS, shifting a familiar cosmic conflict into a conflict carried by language."
+        "WAR OF THE WORLDS becomes WAR OF THE WORDS. The familiar cosmic conflict is shifted into a linguistic conflict."
     },
 
     {
       phrase:
         "throw a few punchlines — a hook and jab",
 
-      tags:
-        [
-          "double-meaning",
-          "metaphor",
-          "semantic-shift"
-        ],
+      tags: [
+        "double-meaning",
+        "metaphor",
+        "semantic-shift"
+      ],
 
       explanation:
-        "THROW, PUNCHLINES, HOOK and JAB occupy verbal and physical domains simultaneously. Language itself becomes the weapon."
+        "THROW, PUNCHLINES, HOOK and JAB simultaneously inhabit writing, comedy and literal boxing. The verbal battle behaves like a physical fight."
     },
 
     {
       phrase:
         "A song and a scrap",
 
-      tags:
-        [
-          "contrast",
-          "rhyme",
-          "semantic-shift"
-        ],
+      tags: [
+        "contrast",
+        "rhyme",
+        "semantic-shift"
+      ],
 
       explanation:
-        "Music and fighting remain simultaneously active inside the poem's war-of-words frame."
+        "Artistic creation and physical conflict are placed inside the same verbal field: a song can coexist with a scrap."
     },
 
     {
       phrase:
         "an ellipse an eclipse",
 
-      tags:
-        [
-          "approximation",
-          "imagery",
-          "semantic-shift"
-        ],
+      tags: [
+        "approximation",
+        "sound-play",
+        "imagery",
+        "semantic-shift"
+      ],
 
       explanation:
-        "Near-sound similarity produces a rapid domain jump from mathematical or linguistic form toward astronomy."
+        "The near-sound relation rapidly moves the poem from linguistic or mathematical form into astronomy."
     },
 
     {
       phrase:
         "a period of pause",
 
-      tags:
-        [
-          "double-meaning",
-          "pun",
-          "metacommentary"
-        ],
+      tags: [
+        "double-meaning",
+        "pun",
+        "metacommentary"
+      ],
 
       explanation:
-        "PERIOD can be a span of time or punctuation. Both meanings converge on the idea of stopping."
+        "PERIOD means both a duration and a punctuation mark. Temporal stopping and grammatical stopping occupy the same phrase."
     },
 
     {
       phrase:
         "a cosmic comatose",
 
-      tags:
-        [
-          "alliteration",
-          "metaphor",
-          "imagery"
-        ],
+      tags: [
+        "alliteration",
+        "metaphor",
+        "imagery",
+        "semantic-shift"
+      ],
 
       explanation:
-        "The astronomical field expands into a state of suspended consciousness: the pause becomes cosmic."
+        "COSMIC COMATOSE carries the astronomical field into a state of suspension. Physical unconsciousness becomes a metaphor for linguistic interruption."
     },
 
     {
       phrase:
         "a comma enacts",
 
-      tags:
-        [
-          "irony",
-          "syntactic-shift",
-          "metacommentary"
-        ],
+      tags: [
+        "irony",
+        "syntactic-shift",
+        "metacommentary",
+        "double-meaning"
+      ],
 
       explanation:
-        "The comma is transformed from punctuation into an operator. It enacts the pause that the line describes."
+        "The comma becomes an active operator. The language describes a pause while punctuation itself enacts one."
     },
 
     {
       phrase:
         "period → pause → comatose → comma",
 
-      tags:
-        [
-          "motif",
-          "semantic-shift",
-          "approximation"
-        ],
+      tags: [
+        "motif",
+        "semantic-shift",
+        "approximation",
+        "syntactic-shift"
+      ],
 
       explanation:
-        "The words cross temporal, physical, cosmic and grammatical domains while conserving the underlying relation of interruption or suspension."
+        "The final chain changes domain repeatedly while conserving the relational idea of stopping, interruption or suspension."
     }
 
   ]
 },
+
 
 
 /* =====================================================
@@ -2305,8 +2617,7 @@ a period of pause - a cosmic comatose a comma enacts`,
 ====================================================== */
 
 {
-  id:
-    "003",
+  id: "003",
 
   title:
     "The Drawing of Death",
@@ -2315,7 +2626,7 @@ a period of pause - a cosmic comatose a comma enacts`,
     "Patrick Oberlander II",
 
   description:
-    "A symmetrical meditation on death built around the transformations of draw, breath, line, time and entropy.",
+    "A recursive meditation on death built around drawing, waiting, symmetry, breath and the possibility of a final draw.",
 
   text:
 `I could not wait for Death,
@@ -2334,177 +2645,141 @@ and as I could no longer breathe,
 I said unto Death—
 “Appears a draw to me.”`,
 
-  authorAnnotations:
-  [
+  authorAnnotations: [
 
     {
       phrase:
         "I could not wait for Death / so he kindly waited for me",
 
-      tags:
-        [
-          "personification",
-          "irony",
-          "repetition",
-          "contrast"
-        ],
+      tags: [
+        "personification",
+        "irony",
+        "allusion",
+        "reversal"
+      ],
 
       explanation:
-        "The relation reverses immediately: the speaker cannot wait for Death, so Death waits for the speaker. Subject and object exchange positions."
+        "Death becomes an active character capable of waiting. The opening also reverses the expected relationship between a person waiting for death and Death waiting for the person."
     },
 
     {
       phrase:
         "With bated breath",
 
-      tags:
-        [
-          "motif",
-          "imagery"
-        ],
+      tags: [
+        "motif",
+        "double-meaning",
+        "foreshadowing"
+      ],
 
       explanation:
-        "Breath enters as a measure of remaining life and later returns as gasp, breast and the inability to breathe."
+        "Breath begins as suspense but later becomes literal mortality, making the idiom structurally predictive."
     },
 
     {
       phrase:
         "he drew ever nearer me",
 
-      tags:
-        [
-          "double-meaning",
-          "motif",
-          "semantic-shift"
-        ],
+      tags: [
+        "double-meaning",
+        "motif",
+        "semantic-shift"
+      ],
 
       explanation:
-        "DRAW begins as motion: Death approaches the speaker. The same word will later move through artistic, spatial and competitive meanings."
+        "DRAW initially means approach, but it introduces the visual-art and game-result meanings that will continue accumulating."
     },
 
     {
       phrase:
         "draw my final reprieve",
 
-      tags:
-        [
-          "double-meaning",
-          "semantic-shift"
-        ],
+      tags: [
+        "double-meaning",
+        "semantic-shift",
+        "motif"
+      ],
 
       explanation:
-        "DRAW shifts from approach toward creation or extraction: the speaker is asked to produce a final reprieve."
+        "DRAW shifts from physical approach into creation or extraction: the speaker attempts to produce one final reprieve."
     },
 
     {
       phrase:
-        "I drew nearer Death— or did Death draw nearer me?",
+        "I drew nearer Death / or did Death draw nearer me?",
 
-      tags:
-        [
-          "repetition",
-          "symmetry",
-          "contrast",
-          "syntactic-shift"
-        ],
+      tags: [
+        "symmetry",
+        "reversal",
+        "paradox",
+        "repetition"
+      ],
 
       explanation:
-        "The sentence mirrors its own relation. Speaker and Death exchange grammatical positions while the distance between them continues to collapse."
+        "Subject and object exchange positions while the relation remains conserved. The two directions form a nearly mirrored relational structure."
     },
 
     {
       phrase:
-        "The only line cut through time",
+        "The only line cut through time / is one drawn of perfect symmetry",
 
-      tags:
-        [
-          "metaphor",
-          "imagery",
-          "double-meaning"
-        ],
-
-      explanation:
-        "LINE can be geometrical, temporal, written or drawn. CUT also introduces the image of a boundary passing through time."
-    },
-
-    {
-      phrase:
-        "drawn of perfect symmetry",
-
-      tags:
-        [
-          "motif",
-          "metaphor",
-          "semantic-shift"
-        ],
+      tags: [
+        "metaphor",
+        "symmetry",
+        "imagery",
+        "double-meaning"
+      ],
 
       explanation:
-        "The poem explicitly names the structural principle it has been performing: reciprocal motion between the speaker and Death."
+        "LINE and DRAWN now become geometrical. The poem converts the relationship between speaker and Death into a symmetric diagram extending through time."
     },
 
     {
       phrase:
         "traced by entropy",
 
-      tags:
-        [
-          "metaphor",
-          "imagery",
-          "contrast"
-        ],
+      tags: [
+        "metaphor",
+        "imagery",
+        "semantic-shift"
+      ],
 
       explanation:
-        "Perfect symmetry is placed against entropy. The line can be symmetrical in relation even as time gives it an irreversible direction."
+        "The visual language of drawing is transferred to thermodynamic direction. Entropy becomes the hand tracing the irreversible path."
     },
 
     {
       phrase:
         "I drew my last gasp from my breast",
 
-      tags:
-        [
-          "double-meaning",
-          "motif",
-          "imagery"
-        ],
+      tags: [
+        "motif",
+        "double-meaning",
+        "repetition"
+      ],
 
       explanation:
-        "DRAW transforms again, now meaning extraction. The speaker literally draws breath while approaching the point at which breath ends."
+        "DRAW returns again, now meaning to extract breath. The poem's central word has moved through approach, creation, geometry and respiration."
     },
 
     {
       phrase:
-        "Appears a draw to me.",
+        "Appears a draw to me",
 
-      tags:
-        [
-          "pun",
-          "double-meaning",
-          "irony",
-          "metacommentary"
-        ],
-
-      explanation:
-        "The final DRAW means a tie, but it simultaneously recalls every previous use: approaching, creating, tracing and extracting. The final pun closes the poem by collapsing the entire lexical field into one word."
-    },
-
-    {
-      phrase:
-        "speaker ↔ Death",
-
-      tags:
-        [
-          "symmetry",
-          "motif",
-          "contrast"
-        ],
+      tags: [
+        "pun",
+        "irony",
+        "double-meaning",
+        "metacommentary"
+      ],
 
       explanation:
-        "The poem's larger architecture is reciprocal. The speaker approaches Death exactly as Death approaches the speaker, producing the final 'draw.'"
+        "The final DRAW means a tie while simultaneously recalling every earlier use of DRAW. Neither Death nor speaker finally appears to have won."
     }
 
   ]
 },
+
 
 
 /* =====================================================
@@ -2512,8 +2787,7 @@ I said unto Death—
 ====================================================== */
 
 {
-  id:
-    "004",
+  id: "004",
 
   title:
     "A Curse I Swear",
@@ -2522,7 +2796,7 @@ I said unto Death—
     "Patrick Oberlander II",
 
   description:
-    "A lexical chain in which curse, word, wound, sword, swear and promise repeatedly change function while preserving the power of speech.",
+    "A lexical chain exploring how curse, swear, word, wound, promise and weapon change meaning through context.",
 
   text:
 `A jinx,
@@ -2541,161 +2815,141 @@ A curse,
 A swear,
 A curse from the lips brings a promise of hell - I swear.`,
 
-  authorAnnotations:
-  [
+  authorAnnotations: [
 
     {
       phrase:
         "A jinx / A shared word / A curse",
 
-      tags:
-        [
-          "repetition",
-          "semantic-shift",
-          "motif"
-        ],
+      tags: [
+        "repetition",
+        "semantic-shift",
+        "double-meaning"
+      ],
 
       explanation:
-        "CURSE begins inside a field of spoken taboo, superstition and shared language."
+        "CURSE begins inside a field containing jinx, language and prohibition. The poem immediately destabilizes whether a curse is magical, verbal or social."
     },
 
     {
       phrase:
-        "surname in reverse",
+        "state your surname in reverse",
 
-      tags:
-        [
-          "wordplay",
-          "syntactic-shift",
-          "metacommentary"
-        ],
+      tags: [
+        "reversal",
+        "sound-play",
+        "wordplay",
+        "metacommentary"
+      ],
 
       explanation:
-        "The poem turns the word itself into an object that can be manipulated. Language does not merely describe the curse; rearranging language becomes part of its mechanism."
+        "Language itself becomes the mechanism of the curse. A transformation of a name is treated as capable of changing the state of the system."
     },
 
     {
       phrase:
         "The power of a word",
 
-      tags:
-        [
-          "motif",
-          "metaphor"
-        ],
+      tags: [
+        "motif",
+        "metaphor"
+      ],
 
       explanation:
-        "The second movement makes explicit the poem's governing claim: words have causal power."
+        "WORD becomes the central conserved object linking injury, healing, promise, naming and conflict."
     },
 
     {
       phrase:
         "The pen is mightier than the sword",
 
-      tags:
-        [
-          "metaphor",
-          "contrast",
-          "motif"
-        ],
+      tags: [
+        "allusion",
+        "contrast",
+        "metaphor"
+      ],
 
       explanation:
-        "Writing and weaponry become opposing expressions of power, establishing the relation that the following lines begin to collapse."
+        "The familiar opposition between language and weaponry creates the structural field for the following lines."
     },
 
     {
       phrase:
         "The wound only by word may be cured",
 
-      tags:
-        [
-          "alliteration",
-          "metaphor",
-          "semantic-shift"
-        ],
+      tags: [
+        "approximation",
+        "sound-play",
+        "contrast",
+        "semantic-shift"
+      ],
 
       explanation:
-        "WORD and WOUND are pulled together through sound and meaning. Language becomes both part of conflict and the means by which damage can be repaired."
+        "WOUND and WORD sit extremely close in sound and typography while occupying opposite roles: injury and potential cure."
     },
 
     {
       phrase:
         "silver-tongued blade",
 
-      tags:
-        [
-          "metaphor",
-          "imagery",
-          "double-meaning"
-        ],
+      tags: [
+        "metaphor",
+        "imagery",
+        "double-meaning"
+      ],
 
       explanation:
-        "Tongue and blade fuse the linguistic and weapon domains. Speech acquires the cutting power previously assigned to the sword."
+        "Speech and weapon fuse. The tongue becomes a blade, allowing language to function simultaneously as instrument of injury and truth."
     },
 
     {
       phrase:
         "A curse / A hex / A curse / A swear",
 
-      tags:
-        [
-          "repetition",
-          "semantic-shift",
-          "motif"
-        ],
+      tags: [
+        "repetition",
+        "semantic-shift",
+        "motif"
+      ],
 
       explanation:
-        "CURSE repeatedly returns while its neighboring terms move it between magical curse, profanity and spoken declaration."
+        "CURSE repeatedly returns while neighboring terms alter its contextual charge. SWEAR begins opening the transition from profanity or curse toward oath."
     },
 
     {
       phrase:
-        "A curse from the lips",
+        "A curse from the lips brings a promise of hell - I swear",
 
-      tags:
-        [
-          "double-meaning",
-          "semantic-shift"
-        ],
+      tags: [
+        "double-meaning",
+        "pun",
+        "semantic-shift",
+        "irony"
+      ],
 
       explanation:
-        "CURSE now simultaneously carries supernatural and profane meanings. Both originate in speech."
+        "SWEAR simultaneously means utter profanity and make a solemn promise. The final phrase collapses both definitions into one utterance."
     },
 
     {
       phrase:
-        "a promise of hell - I swear",
+        "curse → word → wound → cure → blade → swear",
 
-      tags:
-        [
-          "double-meaning",
-          "pun",
-          "irony"
-        ],
-
-      explanation:
-        "SWEAR closes the transformation. To swear can mean to curse or to make a solemn promise, allowing the final phrase to occupy both meanings simultaneously."
-    },
-
-    {
-      phrase:
-        "curse → word → sword → wound → word → blade → swear",
-
-      tags:
-        [
-          "motif",
-          "semantic-shift",
-          "contrast"
-        ],
+      tags: [
+        "motif",
+        "semantic-shift",
+        "contrast"
+      ],
 
       explanation:
-        "The poem repeatedly moves between language and violence. Words become weapons, weapons become linguistic metaphors, and the final word SWEAR reunites curse and promise."
+        "The poem forms a semantic chain in which language repeatedly changes charge: harmful, healing, weaponized and finally binding."
     }
 
   ]
 }
 
 ];
+
 
 
 /* =====================================================
@@ -2705,26 +2959,36 @@ A curse from the lips brings a promise of hell - I swear.`,
 let activePoem =
   poems[0];
 
+
 let selectedLineIndex =
   null;
+
 
 let studentAnnotations =
   {};
 
+
 let studentWritingTags =
   new Set();
+
 
 
 /* =====================================================
    NAVIGATION
 ====================================================== */
 
-function showScreen(id) {
+function showScreen(
+  id
+) {
 
   document
-    .querySelectorAll(".screen")
+    .querySelectorAll(
+      ".screen"
+    )
     .forEach(
-      function(screen) {
+      function (
+        screen
+      ) {
 
         screen.classList.remove(
           "active"
@@ -2733,16 +2997,23 @@ function showScreen(id) {
       }
     );
 
-  const target =
-    document.getElementById(id);
 
-  if (target) {
+  const target =
+    document.getElementById(
+      id
+    );
+
+
+  if (
+    target
+  ) {
 
     target.classList.add(
       "active"
     );
 
   }
+
 
   window.scrollTo(
     {
@@ -2754,14 +3025,19 @@ function showScreen(id) {
 }
 
 
+
 document
-  .querySelectorAll("[data-screen]")
+  .querySelectorAll(
+    "[data-screen]"
+  )
   .forEach(
-    function(button) {
+    function (
+      button
+    ) {
 
       button.addEventListener(
         "click",
-        function() {
+        function () {
 
           showScreen(
             button.dataset.screen
@@ -2774,8 +3050,9 @@ document
   );
 
 
+
 /* =====================================================
-   LIBRARY
+   BUILD POEM LIBRARY
 ====================================================== */
 
 const poemLibrary =
@@ -2786,18 +3063,24 @@ const poemLibrary =
 
 function buildPoemLibrary() {
 
-  poemLibrary.innerHTML = "";
+  poemLibrary.innerHTML =
+    "";
+
 
   poems.forEach(
-    function(poem) {
+    function (
+      poem
+    ) {
 
       const card =
         document.createElement(
           "div"
         );
 
+
       card.className =
         "poem-card";
+
 
       card.innerHTML = `
 
@@ -2822,16 +3105,22 @@ function buildPoemLibrary() {
 
       `;
 
+
       card
-        .querySelector("button")
+        .querySelector(
+          "button"
+        )
         .addEventListener(
           "click",
-          function() {
+          function () {
 
-            loadPoem(poem);
+            loadPoem(
+              poem
+            );
 
           }
         );
+
 
       poemLibrary.appendChild(
         card
@@ -2843,15 +3132,22 @@ function buildPoemLibrary() {
 }
 
 
+
 /* =====================================================
    LOAD POEM
 ====================================================== */
 
-function loadPoem(poem) {
+function loadPoem(
+  poem
+) {
 
-  activePoem = poem;
+  activePoem =
+    poem;
 
-  selectedLineIndex = null;
+
+  selectedLineIndex =
+    null;
+
 
   document
     .getElementById(
@@ -2860,6 +3156,7 @@ function loadPoem(poem) {
     .textContent =
       poem.title;
 
+
   document
     .getElementById(
       "activePoemByline"
@@ -2867,35 +3164,52 @@ function loadPoem(poem) {
     .textContent =
       poem.byline;
 
+
   const textArea =
     document.getElementById(
       "activePoemText"
     );
 
-  textArea.innerHTML = "";
+
+  textArea.innerHTML =
+    "";
+
 
   poem.text
-    .split("\n")
+    .split(
+      "\n"
+    )
     .forEach(
-      function(line, index) {
+      function (
+        line,
+        index
+      ) {
 
         const span =
           document.createElement(
             "span"
           );
 
+
         span.className =
           "poem-line";
+
 
         span.dataset.line =
           index;
 
+
         span.textContent =
-          line || " ";
+          line === ""
+          ?
+            "\u00A0"
+          :
+            line;
+
 
         span.addEventListener(
           "click",
-          function() {
+          function () {
 
             selectPoemLine(
               index,
@@ -2905,12 +3219,14 @@ function loadPoem(poem) {
           }
         );
 
+
         textArea.appendChild(
           span
         );
 
       }
     );
+
 
   document
     .getElementById(
@@ -2919,6 +3235,7 @@ function loadPoem(poem) {
     .textContent =
       "Select a line from the poem.";
 
+
   document
     .getElementById(
       "annotationFeedback"
@@ -2926,28 +3243,38 @@ function loadPoem(poem) {
     .textContent =
       "";
 
+
   document
     .getElementById(
       "authorPanel"
     )
     .classList
-    .remove("visible");
+    .remove(
+      "visible"
+    );
+
 
   renderStudentAnnotations();
+
 
   showScreen(
     "annotationScreen"
   );
 
+
   trackWordsmithEvent(
     "poem_opened",
     {
-      poem_id: poem.id,
-      poem_title: poem.title
+      poem_id:
+        poem.id,
+
+      poem_title:
+        poem.title
     }
   );
 
 }
+
 
 
 /* =====================================================
@@ -2962,12 +3289,15 @@ function selectPoemLine(
   selectedLineIndex =
     index;
 
+
   document
     .querySelectorAll(
       ".poem-line"
     )
     .forEach(
-      function(item) {
+      function (
+        item
+      ) {
 
         item.classList.remove(
           "selected"
@@ -2976,14 +3306,20 @@ function selectPoemLine(
       }
     );
 
+
   const selected =
     document.querySelector(
-      '.poem-line[data-line="' +
-      index +
+      '.poem-line[data-line="'
+      +
+      index
+      +
       '"]'
     );
 
-  if (selected) {
+
+  if (
+    selected
+  ) {
 
     selected.classList.add(
       "selected"
@@ -2991,18 +3327,21 @@ function selectPoemLine(
 
   }
 
+
   document
     .getElementById(
       "selectedTextBox"
     )
     .textContent =
-      line || "(line break)";
+      line ||
+      "(blank structural line)";
 
 }
 
 
+
 /* =====================================================
-   TAG PALETTE
+   BUILD TAG PALETTE
 ====================================================== */
 
 const tagGrid =
@@ -3013,35 +3352,48 @@ const tagGrid =
 
 function buildTagGrid() {
 
-  tagGrid.innerHTML = "";
+  tagGrid.innerHTML =
+    "";
+
 
   literaryTags.forEach(
-    function(tag) {
+    function (
+      tag
+    ) {
 
       const button =
         document.createElement(
           "button"
         );
 
+
       button.type =
         "button";
+
 
       button.className =
         "tag-button";
 
+
       button.textContent =
-        tag.symbol +
-        " " +
+        tag.symbol
+        +
+        " "
+        +
         tag.label;
+
 
       button.addEventListener(
         "click",
-        function() {
+        function () {
 
-          addAnnotation(tag);
+          addAnnotation(
+            tag
+          );
 
         }
       );
+
 
       tagGrid.appendChild(
         button
@@ -3053,11 +3405,14 @@ function buildTagGrid() {
 }
 
 
+
 /* =====================================================
-   ADD ANNOTATION
+   ADD STUDENT ANNOTATION
 ====================================================== */
 
-function addAnnotation(tag) {
+function addAnnotation(
+  tag
+) {
 
   if (
     selectedLineIndex ===
@@ -3071,12 +3426,15 @@ function addAnnotation(tag) {
       .textContent =
         "Select a poem line first.";
 
+
     return;
 
   }
 
+
   const poemId =
     activePoem.id;
+
 
   if (
     !studentAnnotations[
@@ -3086,22 +3444,29 @@ function addAnnotation(tag) {
 
     studentAnnotations[
       poemId
-    ] = [];
+    ] =
+      [];
 
   }
 
+
   const line =
     activePoem.text
-      .split("\n")[
+      .split(
+        "\n"
+      )[
         selectedLineIndex
       ];
+
 
   const duplicate =
     studentAnnotations[
       poemId
     ]
     .some(
-      function(item) {
+      function (
+        item
+      ) {
 
         return (
           item.lineIndex ===
@@ -3114,7 +3479,10 @@ function addAnnotation(tag) {
       }
     );
 
-  if (duplicate) {
+
+  if (
+    duplicate
+  ) {
 
     document
       .getElementById(
@@ -3123,15 +3491,18 @@ function addAnnotation(tag) {
       .textContent =
         "You already mapped that relation on this line.";
 
+
     return;
 
   }
+
 
   studentAnnotations[
     poemId
   ]
   .push(
     {
+
       lineIndex:
         selectedLineIndex,
 
@@ -3140,31 +3511,45 @@ function addAnnotation(tag) {
 
       tag:
         tag
+
     }
   );
+
 
   document
     .getElementById(
       "annotationFeedback"
     )
     .textContent =
-      "✓ " +
-      tag.label +
+      "✓ "
+      +
+      tag.label
+      +
       " added to your map.";
 
+
   renderStudentAnnotations();
+
 
   trackWordsmithEvent(
     "annotation_added",
     {
-      poem_id: poemId,
-      tag: tag.id,
+
+      poem_id:
+        poemId,
+
+      tag:
+        tag.id,
+
       line_number:
-        selectedLineIndex + 1
+        selectedLineIndex +
+        1
+
     }
   );
 
 }
+
 
 
 /* =====================================================
@@ -3178,12 +3563,18 @@ function renderStudentAnnotations() {
       "annotationList"
     );
 
-  list.innerHTML = "";
+
+  list.innerHTML =
+    "";
+
 
   const annotations =
     studentAnnotations[
       activePoem.id
-    ] || [];
+    ]
+    ||
+    [];
+
 
   if (
     annotations.length ===
@@ -3193,20 +3584,26 @@ function renderStudentAnnotations() {
     list.innerHTML =
       '<div style="color:#766958;font-style:italic;">Your annotations will appear here.</div>';
 
+
     return;
 
   }
 
+
   annotations.forEach(
-    function(item) {
+    function (
+      item
+    ) {
 
       const entry =
         document.createElement(
           "div"
         );
 
+
       entry.className =
         "annotation-entry";
+
 
       entry.innerHTML = `
 
@@ -3221,6 +3618,7 @@ function renderStudentAnnotations() {
 
       `;
 
+
       list.appendChild(
         entry
       );
@@ -3229,6 +3627,7 @@ function renderStudentAnnotations() {
   );
 
 }
+
 
 
 /* =====================================================
@@ -3241,13 +3640,16 @@ document
   )
   .addEventListener(
     "click",
-    function() {
+    function () {
 
       studentAnnotations[
         activePoem.id
-      ] = [];
+      ] =
+        [];
+
 
       renderStudentAnnotations();
+
 
       document
         .getElementById(
@@ -3260,6 +3662,7 @@ document
   );
 
 
+
 /* =====================================================
    AUTHOR MAP
 ====================================================== */
@@ -3270,32 +3673,40 @@ document
   )
   .addEventListener(
     "click",
-    function() {
+    function () {
 
       const panel =
         document.getElementById(
           "authorPanel"
         );
 
+
       const container =
         document.getElementById(
           "authorEntries"
         );
 
-      container.innerHTML = "";
+
+      container.innerHTML =
+        "";
+
 
       activePoem
         .authorAnnotations
         .forEach(
-          function(annotation) {
+          function (
+            annotation
+          ) {
 
             const entry =
               document.createElement(
                 "div"
               );
 
+
             entry.className =
               "author-entry";
+
 
             entry.innerHTML = `
 
@@ -3315,6 +3726,7 @@ document
 
             `;
 
+
             container.appendChild(
               entry
             );
@@ -3322,9 +3734,11 @@ document
           }
         );
 
+
       panel.classList.add(
         "visible"
       );
+
 
       trackWordsmithEvent(
         "author_map_revealed",
@@ -3336,6 +3750,7 @@ document
 
     }
   );
+
 
 
 /* =====================================================
@@ -3350,24 +3765,34 @@ const mapPoemSelect =
 
 function buildMapSelector() {
 
-  mapPoemSelect.innerHTML = "";
+  mapPoemSelect.innerHTML =
+    "";
+
 
   poems.forEach(
-    function(poem) {
+    function (
+      poem
+    ) {
 
       const option =
         document.createElement(
           "option"
         );
 
+
       option.value =
         poem.id;
 
+
       option.textContent =
-        "Wordsmith #" +
-        poem.id +
-        " • " +
+        "Wordsmith #"
+        +
+        poem.id
+        +
+        " • "
+        +
         poem.title;
+
 
       mapPoemSelect.appendChild(
         option
@@ -3379,99 +3804,142 @@ function buildMapSelector() {
 }
 
 
+
 /* =====================================================
-   MAP
+   XML ESCAPE FOR SVG
 ====================================================== */
 
-function safeMapText(text) {
+function escapeSvgText(
+  text
+) {
 
-  return text
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
+  return String(
+    text
+  )
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    );
 
 }
 
 
-function renderPoemMap(poem) {
+
+/* =====================================================
+   BUILD POEM MAP
+====================================================== */
+
+function renderPoemMap(
+  poem
+) {
 
   const canvas =
     document.getElementById(
       "mapCanvas"
     );
 
+
   const annotations =
     poem.authorAnnotations;
 
+
   const height =
     Math.max(
-      500,
-      annotations.length * 110
+      520,
+      annotations.length *
+      112
+      +
+      100
     );
 
-  canvas.style.minHeight =
-    height + "px";
 
-  let svg = `
+  let svg =
+    `
 
     <svg
       class="map-svg"
       viewBox="0 0 900 ${height}"
-      preserveAspectRatio="xMidYMid meet"
+      xmlns="http://www.w3.org/2000/svg"
     >
 
       <line
         x1="450"
-        y1="60"
+        y1="70"
         x2="450"
-        y2="${height - 50}"
+        y2="${height - 45}"
         stroke="#d5a83e"
         stroke-width="3"
         stroke-dasharray="7 7"
       />
 
+
       <circle
         cx="450"
-        cy="52"
-        r="40"
+        cy="58"
+        r="48"
         class="map-node"
         stroke="#d5a83e"
       />
 
+
       <text
         x="450"
-        y="48"
+        y="54"
         class="map-text"
       >
-        ${safeMapText(poem.title.substring(0, 20))}
+        ${escapeSvgText(poem.title.substring(0, 22))}
       </text>
+
 
       <text
         x="450"
-        y="66"
+        y="72"
         class="map-small"
       >
-        whole structure
+        whole poem
       </text>
 
-  `;
+    `;
+
 
   annotations.forEach(
-    function(annotation, index) {
+    function (
+      annotation,
+      index
+    ) {
 
       const y =
-        140 +
-        index * 100;
+        145
+        +
+        index *
+        105;
+
 
       const left =
-        index % 2 === 0;
+        index %
+        2 ===
+        0;
+
 
       const phraseX =
         left
         ?
-          190
+          185
         :
-          710;
+          715;
+
 
       const operationX =
         left
@@ -3479,6 +3947,27 @@ function renderPoemMap(poem) {
           340
         :
           560;
+
+
+      const phrase =
+        annotation.phrase.length >
+        21
+        ?
+          annotation.phrase.substring(
+            0,
+            20
+          )
+          +
+          "…"
+        :
+          annotation.phrase;
+
+
+      const operation =
+        annotation.tags[0]
+        ||
+        "relation";
+
 
       svg += `
 
@@ -3491,6 +3980,7 @@ function renderPoemMap(poem) {
           stroke-width="3"
         />
 
+
         <line
           x1="${operationX}"
           y1="${y}"
@@ -3500,49 +3990,55 @@ function renderPoemMap(poem) {
           stroke-width="3"
         />
 
+
         <circle
           cx="${phraseX}"
           cy="${y}"
-          r="48"
+          r="55"
           class="map-node"
           stroke="#477ca8"
         />
 
+
         <circle
           cx="${operationX}"
           cy="${y}"
-          r="38"
+          r="42"
           class="map-node"
           stroke="#71558e"
         />
+
 
         <text
           x="${phraseX}"
           y="${y - 4}"
           class="map-text"
         >
-          ${safeMapText(annotation.phrase.substring(0, 18))}
+          ${escapeSvgText(phrase)}
         </text>
+
 
         <text
           x="${phraseX}"
-          y="${y + 13}"
+          y="${y + 14}"
           class="map-small"
         >
           phrase
         </text>
 
-        <text
-          x="${operationX}"
-          y="${y - 3}"
-          class="map-text"
-        >
-          ${safeMapText(annotation.tags[0].substring(0, 14))}
-        </text>
 
         <text
           x="${operationX}"
-          y="${y + 13}"
+          y="${y - 4}"
+          class="map-text"
+        >
+          ${escapeSvgText(operation)}
+        </text>
+
+
+        <text
+          x="${operationX}"
+          y="${y + 14}"
           class="map-small"
         >
           operation
@@ -3553,11 +4049,14 @@ function renderPoemMap(poem) {
     }
   );
 
+
   svg +=
     "</svg>";
 
+
   canvas.innerHTML =
     svg;
+
 
   document
     .getElementById(
@@ -3575,17 +4074,13 @@ function renderPoemMap(poem) {
 
       <br><br>
 
-      Follow the repeated language across the map:
-      the important question is not merely
-      <em>which device appears?</em>
-
-      It is
-
-      <strong>
-        what does the word become as its context changes?
-      </strong>
+      The important move is not simply identifying
+      a literary device. Follow the phrase through
+      the operation and ask how that transformation
+      contributes to the poem as a whole.
 
     `;
+
 
   trackWordsmithEvent(
     "poem_map_opened",
@@ -3598,17 +4093,20 @@ function renderPoemMap(poem) {
 }
 
 
+
 document
   .getElementById(
     "renderMapButton"
   )
   .addEventListener(
     "click",
-    function() {
+    function () {
 
       const poem =
         poems.find(
-          function(item) {
+          function (
+            item
+          ) {
 
             return (
               item.id ===
@@ -3618,14 +4116,20 @@ document
           }
         );
 
-      if (poem) {
 
-        renderPoemMap(poem);
+      if (
+        poem
+      ) {
+
+        renderPoemMap(
+          poem
+        );
 
       }
 
     }
   );
+
 
 
 document
@@ -3634,14 +4138,16 @@ document
   )
   .addEventListener(
     "click",
-    function() {
+    function () {
 
       mapPoemSelect.value =
         activePoem.id;
 
+
       renderPoemMap(
         activePoem
       );
+
 
       showScreen(
         "mapScreen"
@@ -3649,6 +4155,7 @@ document
 
     }
   );
+
 
 
 /* =====================================================
@@ -3663,30 +4170,40 @@ const studentTagRow =
 
 function buildStudentTags() {
 
-  studentTagRow.innerHTML = "";
+  studentTagRow.innerHTML =
+    "";
+
 
   literaryTags.forEach(
-    function(tag) {
+    function (
+      tag
+    ) {
 
       const button =
         document.createElement(
           "button"
         );
 
+
       button.type =
         "button";
+
 
       button.className =
         "student-tag";
 
+
       button.textContent =
-        tag.symbol +
-        " " +
+        tag.symbol
+        +
+        " "
+        +
         tag.label;
+
 
       button.addEventListener(
         "click",
-        function() {
+        function () {
 
           if (
             studentWritingTags.has(
@@ -3698,8 +4215,10 @@ function buildStudentTags() {
               tag.id
             );
 
-            button.style.background =
-              "white";
+
+            button.classList.remove(
+              "active"
+            );
 
           }
 
@@ -3709,15 +4228,19 @@ function buildStudentTags() {
               tag.id
             );
 
-            button.style.background =
-              "#eee6f4";
+
+            button.classList.add(
+              "active"
+            );
 
           }
+
 
           updateWritingStats();
 
         }
       );
+
 
       studentTagRow.appendChild(
         button
@@ -3727,6 +4250,7 @@ function buildStudentTags() {
   );
 
 }
+
 
 
 /* =====================================================
@@ -3743,23 +4267,33 @@ function updateWritingStats() {
       .value
       .trim();
 
+
   const words =
     text
     ?
       text
-        .split(/\s+/)
-        .filter(Boolean)
+        .split(
+          /\s+/
+        )
+        .filter(
+          Boolean
+        )
         .length
     :
       0;
+
 
   const lines =
     text
     ?
       text
-        .split("\n")
+        .split(
+          "\n"
+        )
         .filter(
-          function(line) {
+          function (
+            line
+          ) {
 
             return (
               line.trim() !==
@@ -3771,6 +4305,7 @@ function updateWritingStats() {
         .length
     :
       0;
+
 
   document
     .getElementById(
@@ -3802,15 +4337,17 @@ function updateWritingStats() {
 }
 
 
+
 document
   .getElementById(
     "writerText"
   )
   .addEventListener(
     "input",
-    function() {
+    function () {
 
       updateWritingStats();
+
 
       if (
         this.value.length ===
@@ -3828,8 +4365,9 @@ document
   );
 
 
+
 /* =====================================================
-   ANALYZE WRITING
+   MAP STUDENT WRITING
 ====================================================== */
 
 document
@@ -3838,7 +4376,7 @@ document
   )
   .addEventListener(
     "click",
-    function() {
+    function () {
 
       const text =
         document
@@ -3848,7 +4386,10 @@ document
           .value
           .trim();
 
-      if (!text) {
+
+      if (
+        !text
+      ) {
 
         document
           .getElementById(
@@ -3857,13 +4398,17 @@ document
           .textContent =
             "Write or paste something first.";
 
+
         return;
 
       }
 
+
       const activeTags =
         literaryTags.filter(
-          function(tag) {
+          function (
+            tag
+          ) {
 
             return studentWritingTags.has(
               tag.id
@@ -3871,6 +4416,7 @@ document
 
           }
         );
+
 
       if (
         activeTags.length ===
@@ -3884,9 +4430,11 @@ document
           .textContent =
             "Select at least one technique you used before mapping the piece.";
 
+
         return;
 
       }
+
 
       document
         .getElementById(
@@ -3900,44 +4448,50 @@ document
 
           ${activeTags
             .map(
-              function(tag) {
+              function (
+                tag
+              ) {
 
                 return tag.label;
 
               }
             )
-            .join(" • ")}
+            .join(
+              " • "
+            )}
 
           <br><br>
 
-          Now follow the transformations.
+          Now treat these as relations rather than
+          a checklist of literary devices.
 
-          Which words recur?
-
-          Which meanings change domain?
-
-          Which relations remain invariant
-          even when the vocabulary changes?
-
-          And which operation organizes
-          the piece as a whole?
+          Which operation redirects meaning?
+          Which creates symmetry or contrast?
+          Which relation keeps returning?
+          Which one organizes the piece as a whole?
 
         `;
+
 
       renderWritingMap(
         activeTags
       );
 
+
       trackWordsmithEvent(
         "student_writing_mapped",
         {
+
           technique_count:
             activeTags.length,
 
           word_count:
             text
-              .split(/\s+/)
+              .split(
+                /\s+/
+              )
               .length
+
         }
       );
 
@@ -3945,52 +4499,83 @@ document
   );
 
 
-function renderWritingMap(tags) {
+
+function renderWritingMap(
+  tags
+) {
 
   const canvas =
     document.getElementById(
       "writingMap"
     );
 
-  const centerX = 450;
-  const centerY = 210;
-  const radius = 150;
 
-  let svg = `
+  const width =
+    900;
+
+
+  const height =
+    500;
+
+
+  const centerX =
+    width /
+    2;
+
+
+  const centerY =
+    height /
+    2;
+
+
+  const radius =
+    175;
+
+
+  let svg =
+    `
 
     <svg
       class="map-svg"
-      viewBox="0 0 900 420"
+      viewBox="0 0 ${width} ${height}"
+      xmlns="http://www.w3.org/2000/svg"
     >
+
 
       <circle
         cx="${centerX}"
         cy="${centerY}"
-        r="55"
+        r="62"
         class="map-node"
         stroke="#d5a83e"
       />
 
-      <text
-        x="${centerX}"
-        y="${centerY - 2}"
-        class="map-text"
-      >
-        MY POEM
-      </text>
 
       <text
         x="${centerX}"
-        y="${centerY + 15}"
+        y="${centerY - 3}"
+        class="map-text"
+      >
+        MY WRITING
+      </text>
+
+
+      <text
+        x="${centerX}"
+        y="${centerY + 16}"
         class="map-small"
       >
         relational field
       </text>
 
-  `;
+    `;
+
 
   tags.forEach(
-    function(tag, index) {
+    function (
+      tag,
+      index
+    ) {
 
       const angle =
         (
@@ -4001,15 +4586,26 @@ function renderWritingMap(tags) {
         /
         tags.length;
 
+
       const x =
-        centerX +
-        Math.cos(angle) *
+        centerX
+        +
+        Math.cos(
+          angle
+        )
+        *
         radius;
 
+
       const y =
-        centerY +
-        Math.sin(angle) *
+        centerY
+        +
+        Math.sin(
+          angle
+        )
+        *
         radius;
+
 
       svg += `
 
@@ -4022,28 +4618,31 @@ function renderWritingMap(tags) {
           stroke-width="3"
         />
 
+
         <circle
           cx="${x}"
           cy="${y}"
-          r="41"
+          r="48"
           class="map-node"
           stroke="#71558e"
         />
 
-        <text
-          x="${x}"
-          y="${y - 2}"
-          class="map-text"
-        >
-          ${safeMapText(tag.label)}
-        </text>
 
         <text
           x="${x}"
-          y="${y + 15}"
+          y="${y - 3}"
+          class="map-text"
+        >
+          ${escapeSvgText(tag.label)}
+        </text>
+
+
+        <text
+          x="${x}"
+          y="${y + 16}"
           class="map-small"
         >
-          ${safeMapText(tag.symbol)}
+          ${escapeSvgText(tag.symbol)}
         </text>
 
       `;
@@ -4051,13 +4650,16 @@ function renderWritingMap(tags) {
     }
   );
 
+
   svg +=
     "</svg>";
+
 
   canvas.innerHTML =
     svg;
 
 }
+
 
 
 /* =====================================================
@@ -4070,7 +4672,7 @@ document
   )
   .addEventListener(
     "click",
-    function() {
+    function () {
 
       document
         .getElementById(
@@ -4079,20 +4681,26 @@ document
         .value =
           "";
 
+
       studentWritingTags.clear();
+
 
       document
         .querySelectorAll(
           ".student-tag"
         )
         .forEach(
-          function(button) {
+          function (
+            button
+          ) {
 
-            button.style.background =
-              "white";
+            button.classList.remove(
+              "active"
+            );
 
           }
         );
+
 
       document
         .getElementById(
@@ -4101,6 +4709,7 @@ document
         .textContent =
           "Your structural analysis will appear here.";
 
+
       document
         .getElementById(
           "writingMap"
@@ -4108,10 +4717,12 @@ document
         .innerHTML =
           "";
 
+
       updateWritingStats();
 
     }
   );
+
 
 
 /* =====================================================
@@ -4132,11 +4743,15 @@ renderPoemMap(
   poems[0]
 );
 
+
 trackWordsmithEvent(
   "wordsmith_opened",
   {
     prototype:
-      "wordsmith_002"
+      "wordsmith_002",
+
+    poem_count:
+      poems.length
   }
 );
 
@@ -4146,173 +4761,3 @@ trackWordsmithEvent(
 </body>
 
 </html>
-
-  title:
-    "War of the Words",
-
-  byline:
-    "Patrick Oberlander II",
-
-  description:
-    "Rapid associative wordplay built from sound, collision, transformation, punctuation and layered reference.",
-
-  text:
-`If it’s war of the words I’m gonna throw a few punchlines — a hook and jab,
-A song and a scrap,
-an ellipse an eclipse —
-I’m on Uranus with that.
-a period of pause - a cosmic comatose a comma enacts`,
-
-
-  authorAnnotations:
-    [
-
-      {
-        phrase:
-          "war of the words",
-
-        tags:
-          [
-            "pun",
-            "approximation",
-            "semantic-shift"
-          ],
-
-        explanation:
-          "WAR OF THE WORLDS is shifted into WAR OF THE WORDS, moving the familiar phrase from a cosmic conflict into a linguistic one."
-      },
-
-
-      {
-        phrase:
-          "throw a few punchlines — a hook and jab",
-
-        tags:
-          [
-            "double-meaning",
-            "metaphor",
-            "semantic-shift"
-          ],
-
-        explanation:
-          "THROW, PUNCHLINES, HOOK and JAB simultaneously describe verbal performance and literal fighting. The poem makes the war of words physically behave like a boxing match."
-      },
-
-
-      {
-        phrase:
-          "A song and a scrap",
-
-        tags:
-          [
-            "contrast",
-            "rhyme",
-            "semantic-shift"
-          ],
-
-        explanation:
-          "Song and scrap place artistic production beside physical conflict, keeping music and fighting active inside the same verbal field."
-      },
-
-
-      {
-        phrase:
-          "an ellipse an eclipse",
-
-        tags:
-          [
-            "approximation",
-            "sound-play",
-            "imagery",
-            "semantic-shift"
-          ],
-
-        explanation:
-          "The near-sound relation between ELLIPSE and ECLIPSE rapidly moves the poem from mathematical or linguistic form into astronomy."
-      },
-
-
-      {
-        phrase:
-          "I’m on Uranus with that",
-
-        tags:
-          [
-            "double-meaning",
-            "sound-play",
-            "imagery"
-          ],
-
-        explanation:
-          "The astronomical reference follows ECLIPSE into cosmic imagery while the spoken form of URANUS opens a second comic interpretation."
-      },
-
-
-      {
-        phrase:
-          "a period of pause",
-
-        tags:
-          [
-            "double-meaning",
-            "pun",
-            "metacommentary"
-          ],
-
-        explanation:
-          "PERIOD simultaneously means a duration of time and the punctuation mark that produces a full grammatical stop. The poem turns punctuation itself into temporal behavior."
-      },
-
-
-      {
-        phrase:
-          "a cosmic comatose",
-
-        tags:
-          [
-            "imagery",
-            "alliteration",
-            "metaphor",
-            "semantic-shift"
-          ],
-
-        explanation:
-          "COSMIC COMATOSE extends the astronomical field while translating grammatical suspension into a state of unconscious stillness. The sentence seems capable of entering a linguistic coma."
-      },
-
-
-      {
-        phrase:
-          "a comma enacts",
-
-        tags:
-          [
-            "irony",
-            "syntactic-shift",
-            "metacommentary",
-            "double-meaning"
-          ],
-
-        explanation:
-          "The ending makes punctuation an active operator. A comma normally delays closure rather than completing it, so the phrase describes the pause while simultaneously enacting one. The poem ends by turning syntax into the action it names."
-      },
-
-
-      {
-        phrase:
-          "period → pause → comatose → comma",
-
-        tags:
-          [
-            "motif",
-            "semantic-shift",
-            "approximation",
-            "syntactic-shift"
-          ],
-
-        explanation:
-          "The final sequence moves through several domains without abandoning the central idea of interruption: temporal period, grammatical period, physical pause, unconscious suspension and grammatical comma. Meaning changes domain while the relational structure of stopping or delaying remains conserved."
-      }
-
-    ]
-}
