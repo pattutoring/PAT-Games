@@ -1,0 +1,3411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>Twain Editor | PAT Learning Lab</title>
+
+
+<!-- =====================================================
+     GOOGLE ANALYTICS
+====================================================== -->
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-QCEPJP202V"
+></script>
+
+<script>
+
+window.dataLayer =
+  window.dataLayer || [];
+
+
+function gtag() {
+
+  dataLayer.push(
+    arguments
+  );
+
+}
+
+
+gtag(
+  "js",
+  new Date()
+);
+
+
+gtag(
+  "config",
+  "G-QCEPJP202V"
+);
+
+</script>
+
+
+
+<style>
+
+:root {
+
+  --cream:
+    #fdf6e3;
+
+  --paper:
+    #fffdf7;
+
+  --ink:
+    #29261f;
+
+  --green:
+    #58784b;
+
+  --green-light:
+    #e2ecdb;
+
+  --gold:
+    #d5a83e;
+
+  --gold-light:
+    #f7e8ab;
+
+  --brown:
+    #8b633e;
+
+  --brown-dark:
+    #65472f;
+
+  --blue:
+    #477ca8;
+
+  --blue-light:
+    #dcebf5;
+
+  --red:
+    #b9574e;
+
+  --red-light:
+    #f3dbd7;
+
+  --orange:
+    #c47a36;
+
+  --orange-light:
+    #f6e4cb;
+
+  --purple:
+    #71558e;
+
+  --purple-light:
+    #eee7f3;
+
+  --teal:
+    #4e7f78;
+
+  --teal-light:
+    #dcebe8;
+
+  --pink:
+    #a95d78;
+
+  --shadow:
+    rgba(
+      40,
+      34,
+      24,
+      .15
+    );
+
+}
+
+
+
+/* =====================================================
+   GLOBAL
+====================================================== */
+
+* {
+
+  box-sizing:
+    border-box;
+
+}
+
+
+html {
+
+  scroll-behavior:
+    smooth;
+
+}
+
+
+body {
+
+  margin:
+    0;
+
+  background:
+    var(--cream);
+
+  color:
+    var(--ink);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+}
+
+
+button,
+textarea,
+input,
+select {
+
+  font:
+    inherit;
+
+}
+
+
+button {
+
+  cursor:
+    pointer;
+
+  -webkit-tap-highlight-color:
+    transparent;
+
+}
+
+
+
+/* =====================================================
+   HEADER
+====================================================== */
+
+header {
+
+  padding:
+    28px
+    20px
+    22px;
+
+  text-align:
+    center;
+
+}
+
+
+.lab-link {
+
+  display:
+    inline-block;
+
+  margin-bottom:
+    15px;
+
+  padding:
+    8px
+    13px;
+
+  border:
+    2px
+    solid
+    var(--brown);
+
+  border-radius:
+    10px;
+
+  background:
+    var(--paper);
+
+  color:
+    var(--brown);
+
+  font-weight:
+    bold;
+
+  text-decoration:
+    none;
+
+}
+
+
+.twain-mark {
+
+  width:
+    78px;
+
+  height:
+    78px;
+
+  margin:
+    3px
+    auto
+    12px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border:
+    3px
+    solid
+    var(--brown);
+
+  border-radius:
+    50%;
+
+  background:
+    var(--paper);
+
+  font-size:
+    2.5rem;
+
+  box-shadow:
+    0
+    5px
+    13px
+    var(--shadow);
+
+}
+
+
+header h1 {
+
+  margin:
+    4px
+    0;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    clamp(
+      2.2rem,
+      9vw,
+      4.4rem
+    );
+
+  letter-spacing:
+    2px;
+
+}
+
+
+.tagline {
+
+  margin-top:
+    7px;
+
+  color:
+    var(--brown);
+
+  font-weight:
+    bold;
+
+}
+
+
+.header-copy {
+
+  max-width:
+    800px;
+
+  margin:
+    17px
+    auto
+    0;
+
+  color:
+    #665849;
+
+  line-height:
+    1.6;
+
+}
+
+
+
+/* =====================================================
+   MAIN
+====================================================== */
+
+main {
+
+  width:
+    min(
+      1080px,
+      94%
+    );
+
+  margin:
+    auto;
+
+  padding-bottom:
+    70px;
+
+}
+
+
+.section-heading {
+
+  max-width:
+    780px;
+
+  margin:
+    28px
+    auto
+    20px;
+
+  text-align:
+    center;
+
+}
+
+
+.section-heading h2 {
+
+  margin:
+    5px
+    0
+    8px;
+
+}
+
+
+.section-heading p {
+
+  color:
+    #665849;
+
+  line-height:
+    1.55;
+
+}
+
+
+.kicker {
+
+  color:
+    var(--green);
+
+  font-size:
+    .72rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    2px;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+
+/* =====================================================
+   EDITOR SHELL
+====================================================== */
+
+.editor-shell {
+
+  overflow:
+    hidden;
+
+  border:
+    3px
+    solid
+    var(--brown);
+
+  border-radius:
+    18px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0
+    7px
+    20px
+    var(--shadow);
+
+}
+
+
+.editor-toolbar {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    12px;
+
+  flex-wrap:
+    wrap;
+
+  padding:
+    12px
+    15px;
+
+  border-bottom:
+    2px
+    solid
+    #d8c9ae;
+
+  background:
+    #eee6d7;
+
+}
+
+
+.editor-toolbar strong {
+
+  font-family:
+    "Courier New",
+    monospace;
+
+}
+
+
+.editor-wrap {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    50px
+    minmax(
+      0,
+      1fr
+    );
+
+  min-height:
+    360px;
+
+}
+
+
+.line-numbers {
+
+  padding:
+    17px
+    8px;
+
+  background:
+    #eee8dc;
+
+  color:
+    #817665;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    15px;
+
+  line-height:
+    1.65;
+
+  text-align:
+    right;
+
+  user-select:
+    none;
+
+  white-space:
+    pre-line;
+
+}
+
+
+#editor {
+
+  min-height:
+    360px;
+
+  padding:
+    17px;
+
+  outline:
+    none;
+
+  background:
+    #fffdf8;
+
+  color:
+    #211f1b;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    16px;
+
+  line-height:
+    1.65;
+
+  white-space:
+    pre-wrap;
+
+  overflow-wrap:
+    anywhere;
+
+}
+
+
+#editor:empty::before {
+
+  content:
+    attr(data-placeholder);
+
+  color:
+    #999184;
+
+}
+
+
+#editor:focus {
+
+  background:
+    #fffefb;
+
+}
+
+
+
+/* =====================================================
+   CONTROLS
+====================================================== */
+
+.control-row {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    12px;
+
+  flex-wrap:
+    wrap;
+
+  margin:
+    14px
+    0;
+
+}
+
+
+.editor-stats {
+
+  display:
+    flex;
+
+  gap:
+    8px;
+
+  flex-wrap:
+    wrap;
+
+}
+
+
+.stat-pill {
+
+  padding:
+    8px
+    11px;
+
+  border:
+    1px
+    solid
+    #d2c2a6;
+
+  border-radius:
+    999px;
+
+  background:
+    var(--paper);
+
+  color:
+    var(--brown);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    .8rem;
+
+  font-weight:
+    bold;
+
+}
+
+
+.button-row {
+
+  display:
+    flex;
+
+  gap:
+    8px;
+
+  flex-wrap:
+    wrap;
+
+}
+
+
+.primary-button,
+.secondary-button,
+.danger-button {
+
+  padding:
+    10px
+    15px;
+
+  border-radius:
+    10px;
+
+  font-weight:
+    bold;
+
+}
+
+
+.primary-button {
+
+  border:
+    2px
+    solid
+    var(--blue);
+
+  background:
+    var(--blue);
+
+  color:
+    white;
+
+}
+
+
+.secondary-button {
+
+  border:
+    2px
+    solid
+    var(--brown);
+
+  background:
+    var(--paper);
+
+  color:
+    var(--brown);
+
+}
+
+
+.danger-button {
+
+  border:
+    2px
+    solid
+    var(--red);
+
+  background:
+    white;
+
+  color:
+    var(--red);
+
+}
+
+
+
+/* =====================================================
+   ANALYSIS SUMMARY
+====================================================== */
+
+.analysis-summary {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    12px;
+
+  margin:
+    22px
+    0;
+
+}
+
+
+.summary-card {
+
+  padding:
+    16px;
+
+  border:
+    2px
+    solid
+    #d5c5a8;
+
+  border-radius:
+    14px;
+
+  background:
+    var(--paper);
+
+  text-align:
+    center;
+
+}
+
+
+.summary-card span {
+
+  display:
+    block;
+
+  margin-bottom:
+    4px;
+
+  font-size:
+    1.8rem;
+
+}
+
+
+.summary-card strong {
+
+  font-size:
+    1.2rem;
+
+}
+
+
+.summary-card small {
+
+  display:
+    block;
+
+  margin-top:
+    5px;
+
+  color:
+    #746858;
+
+}
+
+
+
+/* =====================================================
+   TWAIN FEEDBACK
+====================================================== */
+
+.feedback-section {
+
+  margin-top:
+    25px;
+
+}
+
+
+#feedback {
+
+  display:
+    grid;
+
+  gap:
+    12px;
+
+}
+
+
+.empty-feedback {
+
+  padding:
+    20px;
+
+  border:
+    2px
+    dashed
+    #cdbd9f;
+
+  border-radius:
+    14px;
+
+  background:
+    var(--paper);
+
+  color:
+    #766b5b;
+
+  text-align:
+    center;
+
+}
+
+
+.twain-bubble {
+
+  position:
+    relative;
+
+  padding:
+    15px
+    17px;
+
+  border:
+    2px
+    solid;
+
+  border-radius:
+    14px;
+
+  box-shadow:
+    3px
+    3px
+    0
+    rgba(
+      0,
+      0,
+      0,
+      .12
+    );
+
+  line-height:
+    1.5;
+
+}
+
+
+.twain-bubble-top {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    10px;
+
+  flex-wrap:
+    wrap;
+
+  margin-bottom:
+    6px;
+
+}
+
+
+.feedback-category {
+
+  padding:
+    4px
+    8px;
+
+  border-radius:
+    999px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .65
+    );
+
+  font-size:
+    .68rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    1px;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+.detected-text {
+
+  margin-top:
+    8px;
+
+  padding:
+    8px
+    10px;
+
+  border-radius:
+    8px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .58
+    );
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    .82rem;
+
+}
+
+
+
+/* =====================================================
+   HIGHLIGHTS
+====================================================== */
+
+.rule-0 {
+
+  background:
+    rgba(
+      185,
+      87,
+      78,
+      .28
+    );
+
+}
+
+
+.rule-1 {
+
+  background:
+    rgba(
+      196,
+      122,
+      54,
+      .28
+    );
+
+}
+
+
+.rule-2 {
+
+  background:
+    rgba(
+      213,
+      168,
+      62,
+      .34
+    );
+
+}
+
+
+.rule-3 {
+
+  background:
+    rgba(
+      88,
+      120,
+      75,
+      .27
+    );
+
+}
+
+
+.rule-4 {
+
+  background:
+    rgba(
+      78,
+      127,
+      120,
+      .28
+    );
+
+}
+
+
+.rule-5 {
+
+  background:
+    rgba(
+      71,
+      124,
+      168,
+      .27
+    );
+
+}
+
+
+.rule-6 {
+
+  background:
+    rgba(
+      113,
+      85,
+      142,
+      .27
+    );
+
+}
+
+
+.rule-7 {
+
+  background:
+    rgba(
+      169,
+      93,
+      120,
+      .26
+    );
+
+}
+
+
+.rule-8 {
+
+  background:
+    rgba(
+      194,
+      169,
+      51,
+      .27
+    );
+
+}
+
+
+
+/* =====================================================
+   PRINCIPLES
+====================================================== */
+
+.principle-box {
+
+  margin:
+    28px
+    0;
+
+  padding:
+    22px;
+
+  border-left:
+    7px
+    solid
+    var(--gold);
+
+  border-radius:
+    14px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0
+    5px
+    15px
+    var(--shadow);
+
+  line-height:
+    1.55;
+
+}
+
+
+.principle-chain {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    8px;
+
+  flex-wrap:
+    wrap;
+
+  margin-top:
+    18px;
+
+}
+
+
+.chain-step {
+
+  padding:
+    9px
+    12px;
+
+  border:
+    2px
+    solid
+    #d3bf97;
+
+  border-radius:
+    9px;
+
+  background:
+    var(--cream);
+
+  font-weight:
+    bold;
+
+}
+
+
+.chain-arrow {
+
+  color:
+    var(--gold);
+
+  font-weight:
+    bold;
+
+}
+
+
+
+/* =====================================================
+   RULE REFERENCE
+====================================================== */
+
+.rule-reference {
+
+  margin-top:
+    25px;
+
+  padding:
+    22px;
+
+  border:
+    2px
+    solid
+    #d5c4a4;
+
+  border-radius:
+    17px;
+
+  background:
+    var(--paper);
+
+}
+
+
+.rule-reference h2 {
+
+  margin-top:
+    0;
+
+}
+
+
+.rule-reference-intro {
+
+  color:
+    #685b4b;
+
+  line-height:
+    1.5;
+
+}
+
+
+.rule-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    10px;
+
+  margin-top:
+    16px;
+
+}
+
+
+.rule-card {
+
+  padding:
+    14px;
+
+  border:
+    1px
+    solid
+    #d9cbb2;
+
+  border-radius:
+    11px;
+
+  background:
+    var(--cream);
+
+}
+
+
+.rule-card h3 {
+
+  margin:
+    0
+    0
+    5px;
+
+  font-size:
+    .95rem;
+
+}
+
+
+.rule-card p {
+
+  margin:
+    0;
+
+  color:
+    #6b5f50;
+
+  font-size:
+    .84rem;
+
+  line-height:
+    1.4;
+
+}
+
+
+
+/* =====================================================
+   CROSS-LINK
+====================================================== */
+
+.wordsmith-link {
+
+  margin-top:
+    28px;
+
+  padding:
+    21px;
+
+  border:
+    2px
+    solid
+    var(--purple);
+
+  border-radius:
+    15px;
+
+  background:
+    var(--purple-light);
+
+  text-align:
+    center;
+
+}
+
+
+.wordsmith-link h2 {
+
+  margin-top:
+    0;
+
+}
+
+
+.wordsmith-link a {
+
+  display:
+    inline-block;
+
+  margin-top:
+    8px;
+
+  padding:
+    10px
+    15px;
+
+  border-radius:
+    10px;
+
+  background:
+    var(--purple);
+
+  color:
+    white;
+
+  font-weight:
+    bold;
+
+  text-decoration:
+    none;
+
+}
+
+
+
+/* =====================================================
+   FOOTER
+====================================================== */
+
+footer {
+
+  padding:
+    32px
+    20px;
+
+  color:
+    #6b5f50;
+
+  font-size:
+    .82rem;
+
+  line-height:
+    1.6;
+
+  text-align:
+    center;
+
+}
+
+
+
+/* =====================================================
+   MOBILE
+====================================================== */
+
+@media
+(max-width: 750px) {
+
+  .analysis-summary {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .rule-grid {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+}
+
+
+@media
+(max-width: 520px) {
+
+  header {
+
+    padding-top:
+      20px;
+
+  }
+
+
+  .editor-wrap {
+
+    grid-template-columns:
+      38px
+      1fr;
+
+  }
+
+
+  .line-numbers {
+
+    padding:
+      13px
+      5px;
+
+    font-size:
+      12px;
+
+  }
+
+
+  #editor {
+
+    min-height:
+      310px;
+
+    padding:
+      13px;
+
+    font-size:
+      14px;
+
+  }
+
+
+  .control-row {
+
+    align-items:
+      stretch;
+
+  }
+
+
+  .button-row {
+
+    width:
+      100%;
+
+  }
+
+
+  .button-row button {
+
+    flex:
+      1;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+<header>
+
+
+<a
+  class="lab-link"
+  href="index.html"
+>
+  ← PAT Learning Lab
+</a>
+
+
+<div class="twain-mark">
+  ⌨️
+</div>
+
+
+<h1>
+  TWAIN EDITOR
+</h1>
+
+
+<div class="tagline">
+  Write it. Cut it. Sharpen it.
+</div>
+
+
+<p class="header-copy">
+
+  Good revision is not simply correcting grammar.
+
+  It means asking whether every word
+  earns its place.
+
+  Twain Editor looks for places where
+  a sentence may be inflated, vague,
+  repetitive or overly familiar —
+  then leaves the final decision to the writer.
+
+</p>
+
+
+</header>
+
+
+
+<main>
+
+
+<!-- =====================================================
+     INTRO
+====================================================== -->
+
+<div class="section-heading">
+
+<div class="kicker">
+  REVISION LAB
+</div>
+
+<h2>
+  Put Your Prose on the Typewriter
+</h2>
+
+<p>
+
+  Draft naturally first.
+
+  Then analyze the passage and examine
+  the places where your writing might become
+  simpler, more precise or more original.
+
+</p>
+
+</div>
+
+
+
+<!-- =====================================================
+     EDITOR
+====================================================== -->
+
+<section class="editor-shell">
+
+
+<div class="editor-toolbar">
+
+<strong>
+  TWAIN STUDENT EDITOR
+</strong>
+
+<span>
+  Draft → Analyze → Revise
+</span>
+
+</div>
+
+
+
+<div class="editor-wrap">
+
+
+<div
+  id="lineNumbers"
+  class="line-numbers"
+>
+1
+</div>
+
+
+<div
+  id="editor"
+  contenteditable="true"
+  spellcheck="true"
+  data-placeholder="Write something worth revising..."
+></div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTROLS
+====================================================== -->
+
+<div class="control-row">
+
+
+<div class="editor-stats">
+
+<div
+  id="wordCount"
+  class="stat-pill"
+>
+  Words: 0
+</div>
+
+
+<div
+  id="sentenceCount"
+  class="stat-pill"
+>
+  Sentences: 0
+</div>
+
+
+<div
+  id="issueCount"
+  class="stat-pill"
+>
+  Signals: 0
+</div>
+
+</div>
+
+
+
+<div class="button-row">
+
+
+<button
+  id="analyzeButton"
+  class="primary-button"
+  type="button"
+>
+  🔎 Analyze Writing
+</button>
+
+
+<button
+  id="restoreButton"
+  class="secondary-button"
+  type="button"
+>
+  Remove Highlights
+</button>
+
+
+<button
+  id="clearButton"
+  class="danger-button"
+  type="button"
+>
+  Clear
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     SUMMARY
+====================================================== -->
+
+<div class="analysis-summary">
+
+
+<div class="summary-card">
+
+<span>
+  ✂️
+</span>
+
+<strong id="economyScore">
+  —
+</strong>
+
+<small>
+  Economy
+</small>
+
+</div>
+
+
+
+<div class="summary-card">
+
+<span>
+  ⚡
+</span>
+
+<strong id="precisionScore">
+  —
+</strong>
+
+<small>
+  Precision
+</small>
+
+</div>
+
+
+
+<div class="summary-card">
+
+<span>
+  ✒️
+</span>
+
+<strong id="originalityScore">
+  —
+</strong>
+
+<small>
+  Originality
+</small>
+
+</div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     FEEDBACK
+====================================================== -->
+
+<section class="feedback-section">
+
+
+<div class="section-heading">
+
+<div class="kicker">
+  EDITOR NOTES
+</div>
+
+<h2>
+  What Might Be Worth Revising?
+</h2>
+
+</div>
+
+
+<div id="feedback">
+
+<div class="empty-feedback">
+
+  Write something above,
+  then press <strong>Analyze Writing</strong>.
+
+</div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     PRINCIPLE
+====================================================== -->
+
+<section class="principle-box">
+
+<div class="kicker">
+  THE TWAIN EDITOR PRINCIPLE
+</div>
+
+<h2>
+  A Warning Is Not a Verdict
+</h2>
+
+<p>
+
+  Style rules are diagnostic tools,
+  not commandments.
+
+  An adjective may be exactly right.
+  Repetition may be deliberate.
+  A cliché may be transformed into a joke.
+
+  The editor's job is to make you
+  <strong>
+    notice the choice.
+  </strong>
+
+</p>
+
+
+<div class="principle-chain">
+
+<div class="chain-step">
+  DRAFT
+</div>
+
+<div class="chain-arrow">
+  →
+</div>
+
+<div class="chain-step">
+  NOTICE
+</div>
+
+<div class="chain-arrow">
+  →
+</div>
+
+<div class="chain-step">
+  QUESTION
+</div>
+
+<div class="chain-arrow">
+  →
+</div>
+
+<div class="chain-step">
+  REVISE
+</div>
+
+<div class="chain-arrow">
+  →
+</div>
+
+<div class="chain-step">
+  CHOOSE
+</div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     RULE REFERENCE
+====================================================== -->
+
+<section class="rule-reference">
+
+
+<div class="kicker">
+  EDITOR'S DESK
+</div>
+
+
+<h2>
+  What Twain Editor Watches For
+</h2>
+
+
+<p class="rule-reference-intro">
+
+  These are revision signals rather than automatic errors.
+
+  Some are inspired by the plainspoken style
+  associated with Twain; others are general
+  clarity checks useful to student writers.
+
+</p>
+
+
+<div
+  id="ruleGrid"
+  class="rule-grid"
+>
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     WORDSMITH
+====================================================== -->
+
+<section class="wordsmith-link">
+
+<h2>
+  ✒️ Finished Revising?
+</h2>
+
+<p>
+
+  Twain Editor asks how your writing can be sharpened.
+
+  Wordsmith asks what your language is doing.
+
+  Take the finished piece into Wordsmith
+  to map its puns, metaphors, shifts,
+  repetitions and other relations.
+
+</p>
+
+<a
+  href="wordsmith.html"
+>
+  Continue to Wordsmith →
+</a>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+<strong>
+  Twain Editor™
+</strong>
+
+• PAT Learning Lab
+
+<br>
+
+Write it.
+Cut it.
+Sharpen it.
+
+</footer>
+
+
+
+<script>
+
+
+/* =====================================================
+   ANALYTICS
+====================================================== */
+
+function trackTwainEvent(
+  eventName,
+  data
+) {
+
+  if (
+    typeof gtag !==
+    "function"
+  ) {
+
+    return;
+
+  }
+
+
+  gtag(
+    "event",
+    eventName,
+    {
+
+      game_name:
+        "twain_editor",
+
+      ...(data || {})
+
+    }
+  );
+
+}
+
+
+
+/* =====================================================
+   RULES
+
+   These are intentionally presented as revision signals,
+   not absolute grammatical laws.
+====================================================== */
+
+const rules = [
+
+
+  {
+
+    id:
+      "fancy-word",
+
+    title:
+      "Five-Dollar Word",
+
+    category:
+      "Economy",
+
+    color:
+      0,
+
+    regex:
+      /\b(utilize|commence|ascertain|ameliorate|endeavor|employ|emolument|facilitate|aforementioned)\b/gi,
+
+    message:
+      "Could a shorter, more familiar word carry the same meaning?",
+
+    principle:
+      "Prefer clarity over unnecessary grandeur."
+
+  },
+
+
+  {
+
+    id:
+      "ly-word",
+
+    title:
+      "Adverb Check",
+
+    category:
+      "Precision",
+
+    color:
+      1,
+
+    regex:
+      /\b[A-Za-z]+ly\b/gi,
+
+    message:
+      "This -ly word may be useful — but see whether a stronger verb could do the work instead.",
+
+    principle:
+      "Modifiers are choices, not decorations."
+
+  },
+
+
+  {
+
+    id:
+      "very",
+
+    title:
+      "Very",
+
+    category:
+      "Economy",
+
+    color:
+      2,
+
+    regex:
+      /\bvery\b/gi,
+
+    message:
+      "VERY often signals that a more precise word may exist. Try strengthening the word beside it.",
+
+    principle:
+      "Intensify meaning, not merely volume."
+
+  },
+
+
+  {
+
+    id:
+      "vague-intensifier",
+
+    title:
+      "Vague Intensifier",
+
+    category:
+      "Precision",
+
+    color:
+      3,
+
+    regex:
+      /\b(really|quite|rather|somewhat|basically|literally)\b/gi,
+
+    message:
+      "Ask whether this modifier adds information or only emphasis.",
+
+    principle:
+      "Choose the exact degree you mean."
+
+  },
+
+
+  {
+
+    id:
+      "alliteration",
+
+    title:
+      "Alliteration",
+
+    category:
+      "Style",
+
+    color:
+      4,
+
+    regex:
+      /\b([A-Za-z])\w*\s+\1\w*\b/gi,
+
+    message:
+      "Repeated opening sounds detected. Keep them if the music is intentional.",
+
+    principle:
+      "Sound patterns should serve the sentence."
+
+  },
+
+
+  {
+
+    id:
+      "cliche",
+
+    title:
+      "Familiar Phrase",
+
+    category:
+      "Originality",
+
+    color:
+      5,
+
+    regex:
+      /\b(at the end of the day|once in a lifetime|in the nick of time|old hat|like a plague|think outside the box|avoid it like the plague|better late than never)\b/gi,
+
+    message:
+      "This familiar phrase may be doing the thinking for you. Can you make the image your own?",
+
+    principle:
+      "Replace borrowed language with observed language."
+
+  },
+
+
+  {
+
+    id:
+      "wordy-phrase",
+
+    title:
+      "Wordy Construction",
+
+    category:
+      "Economy",
+
+    color:
+      6,
+
+    regex:
+      /\b(due to the fact that|in order to|at this point in time|for the purpose of|in the event that)\b/gi,
+
+    message:
+      "This phrase may compress into fewer words without losing meaning.",
+
+    principle:
+      "Remove scaffolding once the sentence can stand."
+
+  },
+
+
+  {
+
+    id:
+      "rhetorical-question",
+
+    title:
+      "Question Ending",
+
+    category:
+      "Structure",
+
+    color:
+      7,
+
+    regex:
+      /[^.!?\n]+\?/g,
+
+    message:
+      "A question changes the reader's role. Is the question genuinely useful, or could the claim be stated directly?",
+
+    principle:
+      "Use questions deliberately."
+
+  },
+
+
+  {
+
+    id:
+      "exaggeration",
+
+    title:
+      "Scale Check",
+
+    category:
+      "Precision",
+
+    color:
+      8,
+
+    regex:
+      /\b(extremely|tremendously|gigantic|enormous|absolutely|completely|totally|incredibly)\b/gi,
+
+    message:
+      "Check the scale. A concrete description may be stronger than an amplifier.",
+
+    principle:
+      "Specificity usually beats exaggeration."
+
+  }
+
+
+];
+
+
+
+/* =====================================================
+   ELEMENTS
+====================================================== */
+
+const editor =
+  document.getElementById(
+    "editor"
+  );
+
+
+const lineNumbers =
+  document.getElementById(
+    "lineNumbers"
+  );
+
+
+const wordCount =
+  document.getElementById(
+    "wordCount"
+  );
+
+
+const sentenceCount =
+  document.getElementById(
+    "sentenceCount"
+  );
+
+
+const issueCount =
+  document.getElementById(
+    "issueCount"
+  );
+
+
+const feedback =
+  document.getElementById(
+    "feedback"
+  );
+
+
+let lastPlainText =
+  "";
+
+
+
+/* =====================================================
+   HTML ESCAPE
+====================================================== */
+
+function escapeHTML(
+  text
+) {
+
+  return text
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    );
+
+}
+
+
+
+/* =====================================================
+   GET PLAIN TEXT
+====================================================== */
+
+function getPlainText() {
+
+  return editor.innerText
+    .replace(
+      /\u00A0/g,
+      " "
+    );
+
+}
+
+
+
+/* =====================================================
+   LIVE STATS
+====================================================== */
+
+function updateStats() {
+
+  const text =
+    getPlainText();
+
+
+  const words =
+    text.trim()
+    ?
+      text
+        .trim()
+        .split(
+          /\s+/
+        )
+        .filter(
+          Boolean
+        )
+        .length
+    :
+      0;
+
+
+  const sentences =
+    text.trim()
+    ?
+      (
+        text.match(
+          /[^.!?]+[.!?]+|[^.!?]+$/g
+        )
+        ||
+        []
+      ).length
+    :
+      0;
+
+
+  const lines =
+    Math.max(
+      1,
+      text.split(
+        "\n"
+      ).length
+    );
+
+
+  wordCount.textContent =
+    "Words: "
+    +
+    words;
+
+
+  sentenceCount.textContent =
+    "Sentences: "
+    +
+    sentences;
+
+
+  lineNumbers.textContent =
+    Array.from(
+      {
+        length:
+          lines
+      },
+      function (
+        item,
+        index
+      ) {
+
+        return index + 1;
+
+      }
+    )
+    .join(
+      "\n"
+    );
+
+
+  localStorage.setItem(
+    "twainEditorText",
+    text
+  );
+
+}
+
+
+
+/* =====================================================
+   MATCH COLLECTION
+====================================================== */
+
+function collectMatches(
+  text
+) {
+
+  const matches =
+    [];
+
+
+  rules.forEach(
+    function (
+      rule
+    ) {
+
+      rule.regex.lastIndex =
+        0;
+
+
+      let match;
+
+
+      while (
+        (
+          match =
+            rule.regex.exec(
+              text
+            )
+        )
+        !==
+        null
+      ) {
+
+        matches.push(
+          {
+
+            start:
+              match.index,
+
+            end:
+              match.index
+              +
+              match[0].length,
+
+            text:
+              match[0],
+
+            rule:
+              rule
+
+          }
+        );
+
+
+        if (
+          match.index ===
+          rule.regex.lastIndex
+        ) {
+
+          rule.regex.lastIndex++;
+
+        }
+
+      }
+
+    }
+  );
+
+
+  return matches;
+
+}
+
+
+
+/* =====================================================
+   FILTER OVERLAPPING HIGHLIGHTS
+====================================================== */
+
+function removeOverlaps(
+  matches
+) {
+
+  const sorted =
+    matches
+      .slice()
+      .sort(
+        function (
+          a,
+          b
+        ) {
+
+          if (
+            a.start !==
+            b.start
+          ) {
+
+            return (
+              a.start -
+              b.start
+            );
+
+          }
+
+
+          return (
+            b.end -
+            a.end
+          );
+
+        }
+      );
+
+
+  const output =
+    [];
+
+
+  let previousEnd =
+    -1;
+
+
+  sorted.forEach(
+    function (
+      match
+    ) {
+
+      if (
+        match.start >=
+        previousEnd
+      ) {
+
+        output.push(
+          match
+        );
+
+
+        previousEnd =
+          match.end;
+
+      }
+
+    }
+  );
+
+
+  return output;
+
+}
+
+
+
+/* =====================================================
+   RENDER HIGHLIGHTS
+====================================================== */
+
+function renderHighlightedText(
+  text,
+  matches
+) {
+
+  let html =
+    "";
+
+
+  let cursor =
+    0;
+
+
+  matches.forEach(
+    function (
+      match
+    ) {
+
+      html +=
+        escapeHTML(
+          text.slice(
+            cursor,
+            match.start
+          )
+        );
+
+
+      html +=
+        '<span class="rule-'
+        +
+        match.rule.color
+        +
+        '" title="'
+        +
+        escapeHTML(
+          match.rule.title
+        )
+        +
+        '">'
+        +
+        escapeHTML(
+          text.slice(
+            match.start,
+            match.end
+          )
+        )
+        +
+        "</span>";
+
+
+      cursor =
+        match.end;
+
+    }
+  );
+
+
+  html +=
+    escapeHTML(
+      text.slice(
+        cursor
+      )
+    );
+
+
+  editor.innerHTML =
+    html.replace(
+      /\n/g,
+      "<br>"
+    );
+
+}
+
+
+
+/* =====================================================
+   FEEDBACK
+====================================================== */
+
+function renderFeedback(
+  matches
+) {
+
+  feedback.innerHTML =
+    "";
+
+
+  const grouped =
+    new Map();
+
+
+  matches.forEach(
+    function (
+      match
+    ) {
+
+      if (
+        !grouped.has(
+          match.rule.id
+        )
+      ) {
+
+        grouped.set(
+          match.rule.id,
+          {
+            rule:
+              match.rule,
+
+            examples:
+              []
+          }
+        );
+
+      }
+
+
+      const group =
+        grouped.get(
+          match.rule.id
+        );
+
+
+      if (
+        !group.examples.includes(
+          match.text
+        )
+      ) {
+
+        group.examples.push(
+          match.text
+        );
+
+      }
+
+    }
+  );
+
+
+  if (
+    grouped.size ===
+    0
+  ) {
+
+    feedback.innerHTML = `
+
+      <div class="empty-feedback">
+
+        No current revision signals were detected.
+
+        <br><br>
+
+        That does not automatically make the passage finished —
+        read it aloud and ask whether every sentence says
+        exactly what you mean.
+
+      </div>
+
+    `;
+
+
+    return;
+
+  }
+
+
+  grouped.forEach(
+    function (
+      group
+    ) {
+
+      const rule =
+        group.rule;
+
+
+      const bubble =
+        document.createElement(
+          "div"
+        );
+
+
+      bubble.className =
+        "twain-bubble rule-"
+        +
+        rule.color;
+
+
+      bubble.innerHTML = `
+
+        <div class="twain-bubble-top">
+
+          <strong>
+            ✒️ ${rule.title}
+          </strong>
+
+          <span class="feedback-category">
+            ${rule.category}
+          </span>
+
+        </div>
+
+
+        <div>
+          ${rule.message}
+        </div>
+
+
+        <div class="detected-text">
+
+          Detected:
+
+          ${group.examples
+            .slice(
+              0,
+              4
+            )
+            .map(
+              function (
+                example
+              ) {
+
+                return (
+                  "“"
+                  +
+                  escapeHTML(
+                    example
+                  )
+                  +
+                  "”"
+                );
+
+              }
+            )
+            .join(
+              " • "
+            )}
+
+        </div>
+
+
+        <small>
+          ${rule.principle}
+        </small>
+
+      `;
+
+
+      feedback.appendChild(
+        bubble
+      );
+
+    }
+  );
+
+}
+
+
+
+/* =====================================================
+   SCORES
+====================================================== */
+
+function updateScores(
+  matches,
+  text
+) {
+
+  const words =
+    text.trim()
+    ?
+      text
+        .trim()
+        .split(
+          /\s+/
+        ).length
+    :
+      0;
+
+
+  if (
+    words ===
+    0
+  ) {
+
+    document
+      .getElementById(
+        "economyScore"
+      )
+      .textContent =
+        "—";
+
+
+    document
+      .getElementById(
+        "precisionScore"
+      )
+      .textContent =
+        "—";
+
+
+    document
+      .getElementById(
+        "originalityScore"
+      )
+      .textContent =
+        "—";
+
+
+    return;
+
+  }
+
+
+  const economyIssues =
+    matches.filter(
+      function (
+        match
+      ) {
+
+        return (
+          match.rule.category ===
+          "Economy"
+        );
+
+      }
+    ).length;
+
+
+  const precisionIssues =
+    matches.filter(
+      function (
+        match
+      ) {
+
+        return (
+          match.rule.category ===
+          "Precision"
+        );
+
+      }
+    ).length;
+
+
+  const originalityIssues =
+    matches.filter(
+      function (
+        match
+      ) {
+
+        return (
+          match.rule.category ===
+          "Originality"
+        );
+
+      }
+    ).length;
+
+
+  function score(
+    issues
+  ) {
+
+    return Math.max(
+      50,
+      Math.round(
+        100
+        -
+        (
+          issues /
+          Math.max(
+            words,
+            1
+          )
+        )
+        *
+        180
+      )
+    );
+
+  }
+
+
+  document
+    .getElementById(
+      "economyScore"
+    )
+    .textContent =
+      score(
+        economyIssues
+      )
+      +
+      "%";
+
+
+  document
+    .getElementById(
+      "precisionScore"
+    )
+    .textContent =
+      score(
+        precisionIssues
+      )
+      +
+      "%";
+
+
+  document
+    .getElementById(
+      "originalityScore"
+    )
+    .textContent =
+      score(
+        originalityIssues
+      )
+      +
+      "%";
+
+}
+
+
+
+/* =====================================================
+   ANALYZE
+====================================================== */
+
+function analyzeWriting() {
+
+  const text =
+    getPlainText();
+
+
+  lastPlainText =
+    text;
+
+
+  if (
+    !text.trim()
+  ) {
+
+    feedback.innerHTML = `
+
+      <div class="empty-feedback">
+
+        Write something first.
+
+      </div>
+
+    `;
+
+
+    return;
+
+  }
+
+
+  const allMatches =
+    collectMatches(
+      text
+    );
+
+
+  const highlights =
+    removeOverlaps(
+      allMatches
+    );
+
+
+  renderHighlightedText(
+    text,
+    highlights
+  );
+
+
+  renderFeedback(
+    allMatches
+  );
+
+
+  issueCount.textContent =
+    "Signals: "
+    +
+    allMatches.length;
+
+
+  updateScores(
+    allMatches,
+    text
+  );
+
+
+  updateStats();
+
+
+  trackTwainEvent(
+    "writing_analyzed",
+    {
+
+      word_count:
+        text
+          .trim()
+          .split(
+            /\s+/
+          )
+          .length,
+
+      revision_signals:
+        allMatches.length
+
+    }
+  );
+
+}
+
+
+
+/* =====================================================
+   REMOVE HIGHLIGHTS
+====================================================== */
+
+function restorePlainText() {
+
+  const text =
+    getPlainText();
+
+
+  editor.textContent =
+    text;
+
+
+  issueCount.textContent =
+    "Signals: 0";
+
+
+  updateStats();
+
+}
+
+
+
+/* =====================================================
+   CLEAR
+====================================================== */
+
+function clearEditor() {
+
+  if (
+    !window.confirm(
+      "Clear your Twain Editor draft?"
+    )
+  ) {
+
+    return;
+
+  }
+
+
+  editor.innerHTML =
+    "";
+
+
+  localStorage.removeItem(
+    "twainEditorText"
+  );
+
+
+  feedback.innerHTML = `
+
+    <div class="empty-feedback">
+
+      Write something above,
+      then press <strong>Analyze Writing</strong>.
+
+    </div>
+
+  `;
+
+
+  issueCount.textContent =
+    "Signals: 0";
+
+
+  document
+    .getElementById(
+      "economyScore"
+    )
+    .textContent =
+      "—";
+
+
+  document
+    .getElementById(
+      "precisionScore"
+    )
+    .textContent =
+      "—";
+
+
+  document
+    .getElementById(
+      "originalityScore"
+    )
+    .textContent =
+      "—";
+
+
+  updateStats();
+
+
+  editor.focus();
+
+}
+
+
+
+/* =====================================================
+   RULE REFERENCE
+====================================================== */
+
+function buildRuleReference() {
+
+  const grid =
+    document.getElementById(
+      "ruleGrid"
+    );
+
+
+  grid.innerHTML =
+    "";
+
+
+  rules.forEach(
+    function (
+      rule
+    ) {
+
+      const card =
+        document.createElement(
+          "div"
+        );
+
+
+      card.className =
+        "rule-card rule-"
+        +
+        rule.color;
+
+
+      card.innerHTML = `
+
+        <h3>
+          ${rule.title}
+        </h3>
+
+        <p>
+          <strong>
+            ${rule.category}:
+          </strong>
+
+          ${rule.principle}
+        </p>
+
+      `;
+
+
+      grid.appendChild(
+        card
+      );
+
+    }
+  );
+
+}
+
+
+
+/* =====================================================
+   EVENTS
+====================================================== */
+
+editor.addEventListener(
+  "input",
+  function () {
+
+    updateStats();
+
+
+    if (
+      getPlainText().length ===
+      1
+    ) {
+
+      trackTwainEvent(
+        "writing_started",
+        {}
+      );
+
+    }
+
+  }
+);
+
+
+
+document
+  .getElementById(
+    "analyzeButton"
+  )
+  .addEventListener(
+    "click",
+    analyzeWriting
+  );
+
+
+
+document
+  .getElementById(
+    "restoreButton"
+  )
+  .addEventListener(
+    "click",
+    restorePlainText
+  );
+
+
+
+document
+  .getElementById(
+    "clearButton"
+  )
+  .addEventListener(
+    "click",
+    clearEditor
+  );
+
+
+
+/* =====================================================
+   RESTORE SAVED DRAFT
+====================================================== */
+
+const savedText =
+  localStorage.getItem(
+    "twainEditorText"
+  );
+
+
+if (
+  savedText
+) {
+
+  editor.textContent =
+    savedText;
+
+}
+
+
+
+/* =====================================================
+   START
+====================================================== */
+
+buildRuleReference();
+
+
+updateStats();
+
+
+trackTwainEvent(
+  "twain_editor_opened",
+  {
+    prototype:
+      "twain_editor_001"
+  }
+);
+
+</script>
+
+
+</body>
+
+</html>
