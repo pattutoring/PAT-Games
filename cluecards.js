@@ -114,9 +114,6 @@ const clueCards = [
     difficulty:
       "Easy",
 
-
-    /* CLUE RELEASE */
-
     clueSlides: [
 
       "/PAT-Games/IMG_0270.jpeg",
@@ -130,9 +127,6 @@ const clueCards = [
       "/PAT-Games/IMG_0266.jpeg"
 
     ],
-
-
-    /* SOLUTION RELEASE */
 
     solutionSlides: [
 
@@ -227,7 +221,7 @@ function trackEvent(
     {
 
       game_name:
-        "clue_cards",
+        "cluecards",
 
       mode:
         "cryptic_clue_card",
@@ -329,9 +323,17 @@ function archiveUnlocked() {
 /* ==========================================================
    COMPLETE CLUE-CARD
 
-   Called ONLY after an actual correct solve.
+   CURRENT CLUE:
+   - saves completion
+   - awards XP once
+   - advances Clue-Card streak
 
-   Manual solution reveal does not call this.
+   ARCHIVED CLUE:
+   - saves completion
+   - awards XP once
+   - DOES NOT advance weekly streak
+
+   Manual solution reveal does NOT call this.
 ========================================================== */
 
 function completeClueCardProfile() {
@@ -361,10 +363,15 @@ function completeClueCardProfile() {
   }
 
 
+  const isCurrentClue =
+    activeClue ===
+    currentClue;
+
+
   const result =
     PATProfile.complete(
 
-      "clue_cards",
+      "cluecards",
 
       "clue-"
       +
@@ -372,8 +379,21 @@ function completeClueCardProfile() {
 
       {
 
+        /*
+          Current weekly clue:
+          advance the Clue-Card streak.
+
+          Archived clue:
+          save completion and XP,
+          but do not advance that streak.
+        */
+
         streakKey:
-          "cluecards"
+          isCurrentClue
+          ?
+            "cluecards"
+          :
+            "archive_no_streak"
 
       }
 
@@ -1202,10 +1222,13 @@ function revealSolution(
 
 
   /*
-    MANUAL REVEAL
+    MANUAL REVEAL:
+    analytics only.
 
-    This records puzzle_revealed,
-    but does NOT touch PATProfile.
+    It does NOT:
+    - complete the puzzle
+    - award XP
+    - advance a streak
   */
 
   if (
@@ -2480,8 +2503,8 @@ imageFrame
 /* ==========================================================
    PROFILE CHANGED
 
-   If the user upgrades later,
-   rebuild the archive immediately.
+   If profile, plan, XP or archive access changes,
+   refresh the Clue-Card interface.
 ========================================================== */
 
 window.addEventListener(
