@@ -232,10 +232,10 @@ function trackEvent(
     {
 
       /*
-        Analytics may keep its existing public-facing
-        identifier.
+        Analytics may keep its existing
+        public-facing identifier.
 
-        PATProfile uses "cluecards" separately below.
+        PATProfile uses "cluecards".
       */
 
       game_name:
@@ -343,18 +343,16 @@ function archiveUnlocked() {
 /* ==========================================================
    COMPLETE CLUE-CARD
 
-   IMPORTANT:
-
-   Only an ACTUAL CORRECT SOLVE reaches this function.
+   ONLY AN ACTUAL CORRECT SOLVE REACHES THIS.
 
    Manual reveal:
-   - does NOT award XP
-   - does NOT advance Lab streak
-   - does NOT advance Clue-Card streak
-   - does NOT create a completion
+   - no completion
+   - no XP
+   - no mastery
+   - no Lab streak
+   - no Clue-Card streak
 
-   PROFILE GAME ID MUST MATCH profile.js:
-
+   PROFILE GAME ID:
    cluecards
 ========================================================== */
 
@@ -389,13 +387,6 @@ function completeClueCardProfile() {
   const result =
     PATProfile.complete(
 
-      /*
-        IMPORTANT V3 FIX:
-
-        This must be "cluecards",
-        NOT "clue_cards".
-      */
-
       "cluecards",
 
       "clue-" +
@@ -403,8 +394,25 @@ function completeClueCardProfile() {
 
       {
 
+        /*
+          V3 uses release-based streaks.
+
+          clue-001 → clue-002 → clue-003
+
+          increases the Clue-Card streak.
+
+          Replaying an older archive puzzle
+          will not damage the current streak.
+        */
+
         streakKey:
           "cluecards",
+
+
+        /*
+          Every unique correct Clue-Card
+          also adds to Clues Solved mastery.
+        */
 
         mastery: {
 
@@ -731,7 +739,8 @@ function normalizeAnswer(
 ) {
 
   return String(
-    text || ""
+    text ||
+    ""
   )
     .trim()
     .toUpperCase()
@@ -817,7 +826,9 @@ function loadClue(
 
 
 
-  /* CLUE INFORMATION */
+  /* ========================================================
+     CLUE INFORMATION
+  ======================================================== */
 
   clueNumber.textContent =
     "CLUE-CARD #"
@@ -844,7 +855,9 @@ function loadClue(
 
 
 
-  /* GUESSING */
+  /* ========================================================
+     GUESSING
+  ======================================================== */
 
   guessCounter.textContent =
     "Guesses: 0";
@@ -874,7 +887,9 @@ function loadClue(
 
 
 
-  /* SOLUTION DATA */
+  /* ========================================================
+     SOLUTION DATA
+  ======================================================== */
 
   answerTitle.textContent =
     card.answer;
@@ -901,7 +916,9 @@ function loadClue(
 
 
 
-  /* HIDE SOLUTION */
+  /* ========================================================
+     HIDE SOLUTION
+  ======================================================== */
 
   solutionInfo
     .classList
@@ -919,7 +936,9 @@ function loadClue(
 
 
 
-  /* PHASE */
+  /* ========================================================
+     PHASE
+  ======================================================== */
 
   cluePhaseButton
     .classList
@@ -1295,7 +1314,7 @@ function revealSolution(
   /* ========================================================
      MANUAL REVEAL ANALYTICS
 
-     Does NOT touch PATProfile.
+     DOES NOT TOUCH PATProfile.
   ======================================================== */
 
   if (
@@ -1339,14 +1358,18 @@ function revealSolution(
 
 
 
-  /* SHOW ANSWER */
+  /* ========================================================
+     SHOW ANSWER
+  ======================================================== */
 
   clueTitle.textContent =
     activeClue.answer;
 
 
 
-  /* LOCK GUESSING */
+  /* ========================================================
+     LOCK GUESSING
+  ======================================================== */
 
   guessInput.disabled =
     true;
@@ -1357,7 +1380,9 @@ function revealSolution(
 
 
 
-  /* PHASE BUTTONS */
+  /* ========================================================
+     PHASE BUTTONS
+  ======================================================== */
 
   solutionPhaseButton.textContent =
     "🔓 Solution";
@@ -1378,7 +1403,9 @@ function revealSolution(
 
 
 
-  /* SOLUTION INFO */
+  /* ========================================================
+     SOLUTION INFO
+  ======================================================== */
 
   solutionInfo
     .classList
@@ -1591,6 +1618,11 @@ function submitGuess() {
       "!";
 
 
+
+    /* ======================================================
+       XP
+    ====================================================== */
+
     if (
       profileResult
 
@@ -1609,6 +1641,11 @@ function submitGuess() {
     }
 
 
+
+    /* ======================================================
+       DUPLICATE COMPLETION
+    ====================================================== */
+
     else if (
       profileResult
 
@@ -1623,9 +1660,9 @@ function submitGuess() {
 
 
 
-    /*
-      V3 streak feedback.
-    */
+    /* ======================================================
+       RELEASE STREAK
+    ====================================================== */
 
     if (
       profileResult
@@ -1650,6 +1687,37 @@ function submitGuess() {
             .cluecards
           ||
           0
+        )
+        +
+        "!";
+
+    }
+
+
+
+    /* ======================================================
+       WEEKLY LEARNING LAB STREAK
+    ====================================================== */
+
+    if (
+      profileResult
+
+      &&
+      profileResult.globalStreakAdvanced
+
+      &&
+      profileResult.profile
+    ) {
+
+      feedback +=
+        " 🔥 Lab "
+        +
+        (
+          profileResult
+            .profile
+            .globalStreak
+          ||
+          1
         )
         +
         "!";
@@ -1696,7 +1764,7 @@ function submitGuess() {
      SPECIAL #002 NEAR-MISS
 
      SOCKS gets useful feedback,
-     but does NOT count as correct.
+     but DOES NOT count as correct.
   ======================================================== */
 
   if (
@@ -2451,9 +2519,9 @@ function buildArchive() {
 
 
               /*
-                Neither top tab is marked active here because
-                the player is inside an archived puzzle,
-                not the current clue.
+                Neither top tab stays active because
+                this is an archived puzzle rather than
+                the current weekly clue.
               */
 
               currentTab
@@ -2737,7 +2805,9 @@ imageFrame
 
 
 
-      /* SWIPE LEFT */
+      /* ====================================================
+         SWIPE LEFT
+      ==================================================== */
 
       if (
         difference <
@@ -2758,7 +2828,9 @@ imageFrame
 
 
 
-      /* SWIPE RIGHT */
+      /* ====================================================
+         SWIPE RIGHT
+      ==================================================== */
 
       if (
         difference >
@@ -2790,10 +2862,14 @@ imageFrame
 /* ==========================================================
    PROFILE CHANGED
 
-   Refresh XP / streak display.
+   Refresh:
+   - XP
+   - Weekly Lab streak
+   - Clue-Card streak
+   - plan / archive state
 
-   If Learning Lab+ status changes while the
-   archive is visible, immediately rebuild it.
+   If Learning Lab+ status changes while archive
+   is visible, rebuild immediately.
 ========================================================== */
 
 window.addEventListener(
@@ -2840,6 +2916,19 @@ window.addEventListener(
 
    #002 = CURRENT
    #001 = ARCHIVE
+
+   When you add #003 to the END of clueCards:
+
+   #003 automatically becomes current.
+   #002 automatically moves to archive.
+
+   V3 progression will then recognize:
+
+   clue-001
+   clue-002
+   clue-003
+
+   as consecutive Clue-Card releases.
 ========================================================== */
 
 loadClue(
