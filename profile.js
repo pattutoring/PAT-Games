@@ -2,7 +2,7 @@
    PAT LEARNING LAB
    SHARED PROFILE SYSTEM
 
-   VERSION 2
+   VERSION 3
 
    ONE PROFILE ACROSS THE ENTIRE LEARNING LAB
 
@@ -11,13 +11,16 @@
    - Email
    - Avatar
    - Free / Plus / Admin plan
-   - XP
-   - Overall Learning Lab streak
-   - Selected game/series streaks
+   - Shared XP
+   - Learning Lab Level
+   - Weekly overall Learning Lab streak
+   - Release-based puzzle streaks
    - Completion history
+   - Duplicate reward protection
    - Game progress
+   - Mastery counters
    - Unlocks
-   - Achievements
+   - Achievements / badges
    - Archive access
    - Future subscription integration
 
@@ -25,7 +28,9 @@
    localStorage
 
    FUTURE:
-   Real authentication + cloud database + subscriptions
+   Real authentication
+   Cloud database
+   Subscription backend
 ========================================================== */
 
 
@@ -35,28 +40,40 @@
 ========================================================== */
 
 const PAT_PROFILE_STORAGE_KEY =
-  "patLearningLabProfileV2";
+  "patLearningLabProfileV3";
 
 
-const PAT_OLD_PROFILE_KEYS =
-  [
-    "patLearningLabProfileV1"
-  ];
+const PAT_OLD_PROFILE_KEYS = [
+
+  "patLearningLabProfileV2",
+
+  "patLearningLabProfileV1"
+
+];
+
+
+
+/* ==========================================================
+   LEVEL SYSTEM
+
+   Level 1:
+   0–99 XP
+
+   Level 2:
+   100–199 XP
+
+   etc.
+
+   Easy to rebalance later.
+========================================================== */
+
+const PAT_XP_PER_LEVEL =
+  100;
 
 
 
 /* ==========================================================
    LEARNING LAB WORLDS
-
-   These are the main areas currently represented
-   in the Learning Lab.
-
-   usesStreak determines whether simply completing
-   that game's normal activity contributes to a
-   dedicated streak.
-
-   Some games, such as Molecular Bee and KOAN~KAON,
-   contain particular MODES that have streaks.
 ========================================================== */
 
 const PAT_GAMES = {
@@ -224,7 +241,7 @@ const PAT_GAMES = {
 
 
   /* ========================================================
-     MEANING / NARRATIVE SYSTEMS
+     MEANING / NARRATIVE
   ======================================================== */
 
   meaning_graphs: {
@@ -331,18 +348,20 @@ const PAT_GAMES = {
 
 
 /* ==========================================================
-   STREAK SERIES
+   RELEASE-BASED STREAK SERIES
 
-   These are intentionally separate from the main
-   Learning Lab worlds.
+   These do NOT care whether someone solved the
+   puzzle yesterday.
 
-   Example:
-   Buzzword lives inside Molecular Bee, but Buzzword
-   can have its own streak without forcing the entire
-   Molecular Bee app to use one.
+   Instead:
 
-   KOAN~KAON can likewise have two independent puzzle
-   series.
+   #001 → #002 → #003 = streak 3
+
+   Missing #003 and solving #004 resets the series
+   streak to 1.
+
+   Replaying older archive puzzles does not destroy
+   the player's current streak.
 ========================================================== */
 
 const PAT_STREAK_SERIES = {
@@ -388,7 +407,7 @@ const PAT_STREAK_SERIES = {
       "koan_one",
 
     name:
-      "KOAN~KAON I",
+      "KOAN~KAON SU(1)",
 
     icon:
       "✣",
@@ -405,7 +424,7 @@ const PAT_STREAK_SERIES = {
       "koan_two",
 
     name:
-      "KOAN~KAON II",
+      "KOAN~KAON SU(2)",
 
     icon:
       "◈",
@@ -437,20 +456,14 @@ const PAT_STREAK_SERIES = {
 
 
 /* ==========================================================
-   DEFAULT PROFILE
+   CREATE EMPTY GAME STRUCTURES
 ========================================================== */
 
-function createDefaultPATProfile() {
+function createPATGameObject(
+  defaultValueFactory
+) {
 
-  const completed =
-    {};
-
-
-  const progress =
-    {};
-
-
-  const lastPlayed =
+  const object =
     {};
 
 
@@ -462,25 +475,65 @@ function createDefaultPATProfile() {
       gameId
     ) {
 
-      completed[
+      object[
         gameId
       ] =
-        [];
-
-
-      progress[
-        gameId
-      ] =
-        {};
-
-
-      lastPlayed[
-        gameId
-      ] =
-        null;
+        defaultValueFactory();
 
     }
   );
+
+
+  return object;
+
+}
+
+
+
+/* ==========================================================
+   DEFAULT PROFILE
+========================================================== */
+
+function createDefaultPATProfile() {
+
+  const completed =
+    createPATGameObject(
+      function () {
+
+        return [];
+
+      }
+    );
+
+
+  const progress =
+    createPATGameObject(
+      function () {
+
+        return {};
+
+      }
+    );
+
+
+  const mastery =
+    createPATGameObject(
+      function () {
+
+        return {};
+
+      }
+    );
+
+
+  const lastPlayed =
+    createPATGameObject(
+      function () {
+
+        return null;
+
+      }
+    );
 
 
   const streaks =
@@ -488,6 +541,10 @@ function createDefaultPATProfile() {
 
 
   const streakLastPlayed =
+    {};
+
+
+  const streakLastActivity =
     {};
 
 
@@ -510,6 +567,12 @@ function createDefaultPATProfile() {
       ] =
         null;
 
+
+      streakLastActivity[
+        streakId
+      ] =
+        null;
+
     }
   );
 
@@ -517,7 +580,7 @@ function createDefaultPATProfile() {
   return {
 
     version:
-      2,
+      3,
 
 
     /* ======================================================
@@ -539,10 +602,6 @@ function createDefaultPATProfile() {
 
     /* ======================================================
        SUBSCRIPTION
-
-       free
-       plus
-       admin
     ====================================================== */
 
     plan:
@@ -550,7 +609,7 @@ function createDefaultPATProfile() {
 
 
     /* ======================================================
-       PLAYER STATS
+       PLAYER
     ====================================================== */
 
     xp:
@@ -559,12 +618,15 @@ function createDefaultPATProfile() {
     globalStreak:
       0,
 
+    globalStreakLastWeek:
+      null,
+
     lastActiveDate:
       null,
 
 
     /* ======================================================
-       PER-SERIES STREAKS
+       RELEASE STREAKS
     ====================================================== */
 
     streaks:
@@ -572,6 +634,9 @@ function createDefaultPATProfile() {
 
     streakLastPlayed:
       streakLastPlayed,
+
+    streakLastActivity:
+      streakLastActivity,
 
 
     /* ======================================================
@@ -584,8 +649,14 @@ function createDefaultPATProfile() {
     completed:
       completed,
 
+    completionHistory:
+      [],
+
     progress:
       progress,
+
+    mastery:
+      mastery,
 
 
     /* ======================================================
@@ -618,11 +689,16 @@ function createDefaultPATProfile() {
 
 
 /* ==========================================================
-   SAVE
+   INTERNAL STORAGE SAVE
+
+   dispatchEvent = false is used during migration so simply
+   READING a profile does not create an event loop.
 ========================================================== */
 
-function savePATProfile(
-  profile
+function persistPATProfile(
+  profile,
+  dispatchEvent =
+    true
 ) {
 
   profile.updatedAt =
@@ -641,19 +717,25 @@ function savePATProfile(
   );
 
 
-  window.dispatchEvent(
+  if (
+    dispatchEvent
+  ) {
 
-    new CustomEvent(
-      "pat-profile-updated",
-      {
+    window.dispatchEvent(
 
-        detail:
-          profile
+      new CustomEvent(
+        "pat-profile-updated",
+        {
 
-      }
-    )
+          detail:
+            profile
 
-  );
+        }
+      )
+
+    );
+
+  }
 
 
   return profile;
@@ -663,59 +745,323 @@ function savePATProfile(
 
 
 /* ==========================================================
-   OLD PROFILE DISCOVERY
+   PUBLIC SAVE
 ========================================================== */
 
-function findOldPATProfile() {
+function savePATProfile(
+  profile
+) {
 
-  for (
-    const key
-    of
-    PAT_OLD_PROFILE_KEYS
-  ) {
-
-    const saved =
-      localStorage.getItem(
-        key
-      );
-
-
-    if (
-      saved
-    ) {
-
-      try {
-
-        return JSON.parse(
-          saved
-        );
-
-      }
-
-      catch (
-        error
-      ) {
-
-        console.warn(
-          "Could not read old PAT profile:",
-          key
-        );
-
-      }
-
-    }
-
-  }
-
-
-  return null;
+  return persistPATProfile(
+    profile,
+    true
+  );
 
 }
 
 
 
 /* ==========================================================
-   MIGRATION
+   DATE HELPERS
+========================================================== */
+
+function getPATDateString(
+  date =
+    new Date()
+) {
+
+  const year =
+    date.getFullYear();
+
+
+  const month =
+    String(
+      date.getMonth() +
+      1
+    )
+    .padStart(
+      2,
+      "0"
+    );
+
+
+  const day =
+    String(
+      date.getDate()
+    )
+    .padStart(
+      2,
+      "0"
+    );
+
+
+  return (
+    year +
+    "-" +
+    month +
+    "-" +
+    day
+  );
+
+}
+
+
+
+/* ==========================================================
+   WEEK KEY
+
+   Week begins Monday.
+
+   Result is the local date of that week's Monday.
+
+   Example:
+
+   2026-08-27
+   becomes
+   2026-08-24
+========================================================== */
+
+function getPATWeekKey(
+  date =
+    new Date()
+) {
+
+  const copy =
+    new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate()
+    );
+
+
+  const day =
+    copy.getDay();
+
+
+  const distanceFromMonday =
+    day ===
+    0
+    ?
+      6
+    :
+      day -
+      1;
+
+
+  copy.setDate(
+    copy.getDate() -
+    distanceFromMonday
+  );
+
+
+  return getPATDateString(
+    copy
+  );
+
+}
+
+
+
+/* ==========================================================
+   PREVIOUS WEEK
+========================================================== */
+
+function getPATPreviousWeekKey(
+  weekKey
+) {
+
+  if (
+    !weekKey
+  ) {
+
+    return null;
+
+  }
+
+
+  const parts =
+    weekKey
+      .split(
+        "-"
+      )
+      .map(
+        Number
+      );
+
+
+  if (
+    parts.length !==
+    3
+  ) {
+
+    return null;
+
+  }
+
+
+  const date =
+    new Date(
+
+      parts[0],
+
+      parts[1] -
+      1,
+
+      parts[2]
+
+    );
+
+
+  date.setDate(
+    date.getDate() -
+    7
+  );
+
+
+  return getPATDateString(
+    date
+  );
+
+}
+
+
+
+/* ==========================================================
+   ACTIVITY SEQUENCE NUMBER
+
+   Extracts the final number from IDs such as:
+
+   002
+   clue-002
+   buzzword-004
+   su1-003
+   mini-015
+
+   Used for release streak continuity.
+========================================================== */
+
+function getPATActivitySequence(
+  activityId
+) {
+
+  const text =
+    String(
+      activityId
+    );
+
+
+  const match =
+    text.match(
+      /(\d+)(?!.*\d)/
+    );
+
+
+  if (
+    !match
+  ) {
+
+    return null;
+
+  }
+
+
+  return Number(
+    match[1]
+  );
+
+}
+
+
+
+/* ==========================================================
+   FIND HIGHEST COMPLETION
+
+   Used during migration to reconstruct release streak state.
+========================================================== */
+
+function findHighestPATCompletion(
+  completions,
+  filter
+) {
+
+  if (
+    !Array.isArray(
+      completions
+    )
+  ) {
+
+    return null;
+
+  }
+
+
+  let best =
+    null;
+
+
+  let bestSequence =
+    -1;
+
+
+  completions.forEach(
+    function (
+      activityId
+    ) {
+
+      const text =
+        String(
+          activityId
+        );
+
+
+      if (
+        filter
+        &&
+        !filter(
+          text
+        )
+      ) {
+
+        return;
+
+      }
+
+
+      const sequence =
+        getPATActivitySequence(
+          text
+        );
+
+
+      if (
+        sequence !==
+        null
+        &&
+        sequence >
+        bestSequence
+      ) {
+
+        best =
+          text;
+
+
+        bestSequence =
+          sequence;
+
+      }
+
+    }
+  );
+
+
+  return best;
+
+}
+
+
+
+/* ==========================================================
+   NORMALIZE / MIGRATE PROFILE
 ========================================================== */
 
 function migratePATProfile(
@@ -728,12 +1074,20 @@ function migratePATProfile(
 
   if (
     !oldProfile
+    ||
+    typeof oldProfile !==
+    "object"
   ) {
 
     return fresh;
 
   }
 
+
+
+  /* ========================================================
+     ACCOUNT
+  ======================================================== */
 
   fresh.username =
     oldProfile.username
@@ -768,26 +1122,54 @@ function migratePATProfile(
     );
 
 
-  fresh.plan =
-    oldProfile.plan
-    ||
-    "free";
+  if (
+    [
+      "free",
+      "plus",
+      "admin"
+    ]
+    .includes(
+      oldProfile.plan
+    )
+  ) {
 
+    fresh.plan =
+      oldProfile.plan;
+
+  }
+
+
+
+  /* ========================================================
+     PLAYER STATS
+  ======================================================== */
 
   fresh.xp =
-    Number(
-      oldProfile.xp
-      ||
-      0
+    Math.max(
+      0,
+      Number(
+        oldProfile.xp
+        ||
+        0
+      )
     );
 
 
   fresh.globalStreak =
-    Number(
-      oldProfile.globalStreak
-      ||
-      0
+    Math.max(
+      0,
+      Number(
+        oldProfile.globalStreak
+        ||
+        0
+      )
     );
+
+
+  fresh.globalStreakLastWeek =
+    oldProfile.globalStreakLastWeek
+    ||
+    null;
 
 
   fresh.lastActiveDate =
@@ -809,21 +1191,28 @@ function migratePATProfile(
 
   if (
     oldProfile.completed
+    &&
+    typeof oldProfile.completed ===
+    "object"
   ) {
 
     Object.keys(
-      fresh.completed
+      PAT_GAMES
     )
     .forEach(
       function (
         gameId
       ) {
 
+        const oldArray =
+          oldProfile.completed[
+            gameId
+          ];
+
+
         if (
           Array.isArray(
-            oldProfile.completed[
-              gameId
-            ]
+            oldArray
           )
         ) {
 
@@ -831,9 +1220,11 @@ function migratePATProfile(
             gameId
           ] =
             [
-              ...oldProfile.completed[
-                gameId
-              ]
+              ...new Set(
+                oldArray.map(
+                  String
+                )
+              )
             ];
 
         }
@@ -846,15 +1237,62 @@ function migratePATProfile(
 
 
   /* ========================================================
+     COMPLETION HISTORY
+  ======================================================== */
+
+  if (
+    Array.isArray(
+      oldProfile.completionHistory
+    )
+  ) {
+
+    fresh.completionHistory =
+      oldProfile.completionHistory
+        .filter(
+          function (
+            entry
+          ) {
+
+            return (
+              entry
+              &&
+              typeof entry ===
+              "object"
+            );
+
+          }
+        )
+        .map(
+          function (
+            entry
+          ) {
+
+            return {
+
+              ...entry
+
+            };
+
+          }
+        );
+
+  }
+
+
+
+  /* ========================================================
      PROGRESS
   ======================================================== */
 
   if (
     oldProfile.progress
+    &&
+    typeof oldProfile.progress ===
+    "object"
   ) {
 
     Object.keys(
-      fresh.progress
+      PAT_GAMES
     )
     .forEach(
       function (
@@ -870,6 +1308,12 @@ function migratePATProfile(
             gameId
           ] ===
           "object"
+          &&
+          !Array.isArray(
+            oldProfile.progress[
+              gameId
+            ]
+          )
         ) {
 
           fresh.progress[
@@ -893,15 +1337,18 @@ function migratePATProfile(
 
 
   /* ========================================================
-     GAME LAST PLAYED
+     MASTERY
   ======================================================== */
 
   if (
-    oldProfile.lastPlayed
+    oldProfile.mastery
+    &&
+    typeof oldProfile.mastery ===
+    "object"
   ) {
 
     Object.keys(
-      fresh.lastPlayed
+      PAT_GAMES
     )
     .forEach(
       function (
@@ -909,17 +1356,26 @@ function migratePATProfile(
       ) {
 
         if (
-          oldProfile.lastPlayed[
+          oldProfile.mastery[
             gameId
           ]
+          &&
+          typeof oldProfile.mastery[
+            gameId
+          ] ===
+          "object"
         ) {
 
-          fresh.lastPlayed[
+          fresh.mastery[
             gameId
           ] =
-            oldProfile.lastPlayed[
-              gameId
-            ];
+            {
+
+              ...oldProfile.mastery[
+                gameId
+              ]
+
+            };
 
         }
 
@@ -931,70 +1387,91 @@ function migratePATProfile(
 
 
   /* ========================================================
-     OLD STREAKS
+     LAST PLAYED
+  ======================================================== */
 
-     Preserves names from our previous prototype.
+  if (
+    oldProfile.lastPlayed
+    &&
+    typeof oldProfile.lastPlayed ===
+    "object"
+  ) {
+
+    Object.keys(
+      PAT_GAMES
+    )
+    .forEach(
+      function (
+        gameId
+      ) {
+
+        fresh.lastPlayed[
+          gameId
+        ] =
+          oldProfile.lastPlayed[
+            gameId
+          ]
+          ||
+          null;
+
+      }
+    );
+
+  }
+
+
+
+  /* ========================================================
+     STREAK COUNTS
   ======================================================== */
 
   if (
     oldProfile.streaks
+    &&
+    typeof oldProfile.streaks ===
+    "object"
   ) {
 
-    if (
-      oldProfile.streaks.contronym
-      !==
-      undefined
-    ) {
+    Object.keys(
+      PAT_STREAK_SERIES
+    )
+    .forEach(
+      function (
+        streakId
+      ) {
 
-      fresh.streaks.contronym =
-        Number(
-          oldProfile.streaks.contronym
-          ||
-          0
-        );
+        if (
+          oldProfile.streaks[
+            streakId
+          ] !==
+          undefined
+        ) {
 
-    }
+          fresh.streaks[
+            streakId
+          ] =
+            Math.max(
+              0,
+              Number(
+                oldProfile.streaks[
+                  streakId
+                ]
+                ||
+                0
+              )
+            );
 
+        }
 
-    if (
-      oldProfile.streaks.cluecards
-      !==
-      undefined
-    ) {
-
-      fresh.streaks.cluecards =
-        Number(
-          oldProfile.streaks.cluecards
-          ||
-          0
-        );
-
-    }
-
-
-    if (
-      oldProfile.streaks.buzzword
-      !==
-      undefined
-    ) {
-
-      fresh.streaks.buzzword =
-        Number(
-          oldProfile.streaks.buzzword
-          ||
-          0
-        );
-
-    }
+      }
+    );
 
 
-    /*
-      Previous prototype names
-    */
+
+    /* OLD KOAN NAMES */
 
     if (
-      oldProfile.streaks.koan_crossword
-      !==
+      oldProfile.streaks.koan_crossword !==
       undefined
     ) {
 
@@ -1009,8 +1486,7 @@ function migratePATProfile(
 
 
     if (
-      oldProfile.streaks.koan_cryptic
-      !==
+      oldProfile.streaks.koan_cryptic !==
       undefined
     ) {
 
@@ -1028,7 +1504,217 @@ function migratePATProfile(
 
 
   /* ========================================================
-     OLD ACHIEVEMENTS / UNLOCKS
+     STREAK LAST PLAYED
+  ======================================================== */
+
+  if (
+    oldProfile.streakLastPlayed
+    &&
+    typeof oldProfile.streakLastPlayed ===
+    "object"
+  ) {
+
+    Object.keys(
+      PAT_STREAK_SERIES
+    )
+    .forEach(
+      function (
+        streakId
+      ) {
+
+        fresh.streakLastPlayed[
+          streakId
+        ] =
+          oldProfile.streakLastPlayed[
+            streakId
+          ]
+          ||
+          null;
+
+      }
+    );
+
+  }
+
+
+
+  /* ========================================================
+     EXISTING RELEASE STREAK STATE
+  ======================================================== */
+
+  if (
+    oldProfile.streakLastActivity
+    &&
+    typeof oldProfile.streakLastActivity ===
+    "object"
+  ) {
+
+    Object.keys(
+      PAT_STREAK_SERIES
+    )
+    .forEach(
+      function (
+        streakId
+      ) {
+
+        fresh.streakLastActivity[
+          streakId
+        ] =
+          oldProfile.streakLastActivity[
+            streakId
+          ]
+          ||
+          null;
+
+      }
+    );
+
+  }
+
+
+
+  /* ========================================================
+     RECONSTRUCT RELEASE STREAK STATE WHEN MIGRATING V2
+  ======================================================== */
+
+  if (
+    !fresh.streakLastActivity.contronym
+  ) {
+
+    fresh.streakLastActivity.contronym =
+      findHighestPATCompletion(
+        fresh.completed.contronym
+      );
+
+  }
+
+
+  if (
+    !fresh.streakLastActivity.cluecards
+  ) {
+
+    fresh.streakLastActivity.cluecards =
+      findHighestPATCompletion(
+        fresh.completed.cluecards
+      );
+
+  }
+
+
+  if (
+    !fresh.streakLastActivity.buzzword
+  ) {
+
+    fresh.streakLastActivity.buzzword =
+      findHighestPATCompletion(
+
+        fresh.completed.molecular_bee,
+
+        function (
+          activity
+        ) {
+
+          return /buzzword/i.test(
+            activity
+          );
+
+        }
+
+      );
+
+  }
+
+
+  if (
+    !fresh.streakLastActivity.koan_one
+  ) {
+
+    fresh.streakLastActivity.koan_one =
+      findHighestPATCompletion(
+
+        fresh.completed.koan_kaon,
+
+        function (
+          activity
+        ) {
+
+          return (
+            /su1/i.test(
+              activity
+            )
+            ||
+            /koan[_-]?one/i.test(
+              activity
+            )
+          );
+
+        }
+
+      );
+
+  }
+
+
+  if (
+    !fresh.streakLastActivity.koan_two
+  ) {
+
+    fresh.streakLastActivity.koan_two =
+      findHighestPATCompletion(
+
+        fresh.completed.koan_kaon,
+
+        function (
+          activity
+        ) {
+
+          return (
+            /su2/i.test(
+              activity
+            )
+            ||
+            /mini/i.test(
+              activity
+            )
+            ||
+            /koan[_-]?two/i.test(
+              activity
+            )
+          );
+
+        }
+
+      );
+
+  }
+
+
+
+  /* ========================================================
+     UNLOCKS
+  ======================================================== */
+
+  if (
+    Array.isArray(
+      oldProfile.unlocks
+    )
+  ) {
+
+    fresh.unlocks =
+      [
+        ...new Set(
+          oldProfile.unlocks.map(
+            String
+          )
+        )
+      ];
+
+  }
+
+
+
+  /* ========================================================
+     ACHIEVEMENTS
   ======================================================== */
 
   if (
@@ -1039,21 +1725,11 @@ function migratePATProfile(
 
     fresh.achievements =
       [
-        ...oldProfile.achievements
-      ];
-
-  }
-
-
-  if (
-    Array.isArray(
-      oldProfile.unlocks
-    )
-  ) {
-
-    fresh.unlocks =
-      [
-        ...oldProfile.unlocks
+        ...new Set(
+          oldProfile.achievements.map(
+            String
+          )
+        )
       ];
 
   }
@@ -1066,7 +1742,77 @@ function migratePATProfile(
 
 
 /* ==========================================================
-   LOAD
+   FIND OLD PROFILE
+========================================================== */
+
+function findOldPATProfile() {
+
+  for (
+    const key
+    of
+    PAT_OLD_PROFILE_KEYS
+  ) {
+
+    const saved =
+      localStorage.getItem(
+        key
+      );
+
+
+    if (
+      !saved
+    ) {
+
+      continue;
+
+    }
+
+
+    try {
+
+      return {
+
+        key:
+          key,
+
+        profile:
+          JSON.parse(
+            saved
+          )
+
+      };
+
+    }
+
+    catch (
+      error
+    ) {
+
+      console.warn(
+        "Could not read old PAT profile:",
+        key
+      );
+
+    }
+
+  }
+
+
+  return null;
+
+}
+
+
+
+/* ==========================================================
+   LOAD PROFILE
+
+   IMPORTANT:
+
+   Reading the profile does NOT dispatch
+   pat-profile-updated.
+
+   This prevents render → get → update → render loops.
 ========================================================== */
 
 function loadPATProfile() {
@@ -1089,14 +1835,32 @@ function loadPATProfile() {
         );
 
 
+      /*
+        Already V3.
+        Normalize in memory to make future additions safe.
+      */
+
+      if (
+        parsed.version ===
+        3
+      ) {
+
+        return migratePATProfile(
+          parsed
+        );
+
+      }
+
+
       const migrated =
         migratePATProfile(
           parsed
         );
 
 
-      savePATProfile(
-        migrated
+      persistPATProfile(
+        migrated,
+        false
       );
 
 
@@ -1118,22 +1882,24 @@ function loadPATProfile() {
   }
 
 
-  const oldProfile =
+
+  const old =
     findOldPATProfile();
 
 
   if (
-    oldProfile
+    old
   ) {
 
     const migrated =
       migratePATProfile(
-        oldProfile
+        old.profile
       );
 
 
-    savePATProfile(
-      migrated
+    persistPATProfile(
+      migrated,
+      false
     );
 
 
@@ -1142,12 +1908,14 @@ function loadPATProfile() {
   }
 
 
+
   const fresh =
     createDefaultPATProfile();
 
 
-  savePATProfile(
-    fresh
+  persistPATProfile(
+    fresh,
+    false
   );
 
 
@@ -1158,100 +1926,31 @@ function loadPATProfile() {
 
 
 /* ==========================================================
-   DATE HELPERS
+   WEEKLY GLOBAL LEARNING LAB STREAK
 
-   Uses the user's LOCAL calendar day.
+   Advances ONLY on a NEW meaningful completion.
 
-   This is important for streaks.
-========================================================== */
+   Merely opening a game does not count.
 
-function getPATDateString(
-  date =
-    new Date()
-) {
-
-  const year =
-    date.getFullYear();
-
-
-  const month =
-    String(
-      date.getMonth()
-      +
-      1
-    )
-    .padStart(
-      2,
-      "0"
-    );
-
-
-  const day =
-    String(
-      date.getDate()
-    )
-    .padStart(
-      2,
-      "0"
-    );
-
-
-  return (
-    year
-    +
-    "-"
-    +
-    month
-    +
-    "-"
-    +
-    day
-  );
-
-}
-
-
-
-function getPATYesterdayString() {
-
-  const date =
-    new Date();
-
-
-  date.setDate(
-    date.getDate()
-    -
-    1
-  );
-
-
-  return getPATDateString(
-    date
-  );
-
-}
-
-
-
-/* ==========================================================
-   GLOBAL LEARNING LAB STREAK
+   One or more completions within the same week
+   count as one streak week.
 ========================================================== */
 
 function updatePATGlobalStreak(
   profile
 ) {
 
-  const today =
-    getPATDateString();
+  const thisWeek =
+    getPATWeekKey();
 
 
-  const yesterday =
-    getPATYesterdayString();
+  const lastWeek =
+    profile.globalStreakLastWeek;
 
 
   if (
-    profile.lastActiveDate ===
-    today
+    lastWeek ===
+    thisWeek
   ) {
 
     return false;
@@ -1260,11 +1959,25 @@ function updatePATGlobalStreak(
 
 
   if (
-    profile.lastActiveDate ===
-    yesterday
+    lastWeek
+    &&
+    getPATPreviousWeekKey(
+      thisWeek
+    ) ===
+    lastWeek
   ) {
 
-    profile.globalStreak++;
+    profile.globalStreak =
+      Math.max(
+        0,
+        Number(
+          profile.globalStreak
+          ||
+          0
+        )
+      )
+      +
+      1;
 
   }
 
@@ -1276,8 +1989,12 @@ function updatePATGlobalStreak(
   }
 
 
+  profile.globalStreakLastWeek =
+    thisWeek;
+
+
   profile.lastActiveDate =
-    today;
+    getPATDateString();
 
 
   return true;
@@ -1287,12 +2004,24 @@ function updatePATGlobalStreak(
 
 
 /* ==========================================================
-   DEDICATED STREAK
+   RELEASE-BASED SERIES STREAK
+
+   Examples:
+
+   clue-001 → clue-002
+   = streak increases
+
+   clue-002 → clue-004
+   = skipped #003, streak resets to 1
+
+   clue-004 → clue-001
+   = archive replay, current streak unchanged
 ========================================================== */
 
 function updatePATSeriesStreak(
   profile,
-  streakKey
+  streakKey,
+  activityId
 ) {
 
   if (
@@ -1306,27 +2035,25 @@ function updatePATSeriesStreak(
   }
 
 
-  const today =
-    getPATDateString();
+  const currentActivity =
+    String(
+      activityId
+    );
 
 
-  const yesterday =
-    getPATYesterdayString();
-
-
-  const lastPlayed =
-    profile.streakLastPlayed[
+  const previousActivity =
+    profile.streakLastActivity[
       streakKey
     ];
 
 
   /*
-    Already counted today.
+    Same release already handled.
   */
 
   if (
-    lastPlayed ===
-    today
+    previousActivity ===
+    currentActivity
   ) {
 
     return false;
@@ -1334,31 +2061,207 @@ function updatePATSeriesStreak(
   }
 
 
+  const currentSequence =
+    getPATActivitySequence(
+      currentActivity
+    );
+
+
+  const previousSequence =
+    previousActivity
+    ?
+      getPATActivitySequence(
+        previousActivity
+      )
+    :
+      null;
+
+
+
+  /* ========================================================
+     FIRST RELEASE RECORDED
+  ======================================================== */
+
   if (
-    lastPlayed ===
-    yesterday
+    previousActivity ===
+    null
   ) {
 
-    profile.streaks[
-      streakKey
-    ]++;
+    if (
+      profile.streaks[
+        streakKey
+      ] <=
+      0
+    ) {
 
-  }
+      profile.streaks[
+        streakKey
+      ] =
+        1;
 
-  else {
+    }
 
-    profile.streaks[
+
+    profile.streakLastActivity[
       streakKey
     ] =
-      1;
+      currentActivity;
+
+
+    profile.streakLastPlayed[
+      streakKey
+    ] =
+      getPATDateString();
+
+
+    return true;
 
   }
+
+
+
+  /* ========================================================
+     NUMBERED SERIES
+  ======================================================== */
+
+  if (
+    currentSequence !==
+    null
+    &&
+    previousSequence !==
+    null
+  ) {
+
+
+    /*
+      NEXT RELEASE
+    */
+
+    if (
+      currentSequence ===
+      previousSequence +
+      1
+    ) {
+
+      profile.streaks[
+        streakKey
+      ] =
+        Math.max(
+          0,
+          Number(
+            profile.streaks[
+              streakKey
+            ]
+            ||
+            0
+          )
+        )
+        +
+        1;
+
+
+      profile.streakLastActivity[
+        streakKey
+      ] =
+        currentActivity;
+
+
+      profile.streakLastPlayed[
+        streakKey
+      ] =
+        getPATDateString();
+
+
+      return true;
+
+    }
+
+
+
+    /*
+      SKIPPED ONE OR MORE RELEASES
+    */
+
+    if (
+      currentSequence >
+      previousSequence +
+      1
+    ) {
+
+      profile.streaks[
+        streakKey
+      ] =
+        1;
+
+
+      profile.streakLastActivity[
+        streakKey
+      ] =
+        currentActivity;
+
+
+      profile.streakLastPlayed[
+        streakKey
+      ] =
+        getPATDateString();
+
+
+      return true;
+
+    }
+
+
+
+    /*
+      OLDER ARCHIVE PUZZLE.
+
+      Do not damage current streak.
+    */
+
+    if (
+      currentSequence <
+      previousSequence
+    ) {
+
+      return false;
+
+    }
+
+  }
+
+
+
+  /* ========================================================
+     FALLBACK FOR NON-NUMBERED SERIES
+  ======================================================== */
+
+  profile.streaks[
+    streakKey
+  ] =
+    Math.max(
+      1,
+      Number(
+        profile.streaks[
+          streakKey
+        ]
+        ||
+        0
+      )
+      +
+      1
+    );
+
+
+  profile.streakLastActivity[
+    streakKey
+  ] =
+    currentActivity;
 
 
   profile.streakLastPlayed[
     streakKey
   ] =
-    today;
+    getPATDateString();
 
 
   return true;
@@ -1370,12 +2273,14 @@ function updatePATSeriesStreak(
 /* ==========================================================
    MARK GAME PLAYED
 
-   This updates:
-   - global activity streak
-   - last played date
+   Records activity.
 
-   It DOES NOT automatically update a dedicated
-   puzzle streak unless a streakKey is supplied.
+   DOES NOT:
+   - award XP
+   - advance global streak
+   - advance dedicated streak
+
+   This keeps opening a page from counting as learning.
 ========================================================== */
 
 function markPATGamePlayed(
@@ -1409,51 +2314,10 @@ function markPATGamePlayed(
     loadPATProfile();
 
 
-  const today =
-    getPATDateString();
-
-
-  updatePATGlobalStreak(
-    profile
-  );
-
-
   profile.lastPlayed[
     gameId
   ] =
-    today;
-
-
-  let streakKey =
-    options.streakKey
-    ||
-    null;
-
-
-  if (
-    !streakKey
-    &&
-    game.usesStreak
-    &&
-    game.defaultStreakKey
-  ) {
-
-    streakKey =
-      game.defaultStreakKey;
-
-  }
-
-
-  if (
-    streakKey
-  ) {
-
-    updatePATSeriesStreak(
-      profile,
-      streakKey
-    );
-
-  }
+    getPATDateString();
 
 
   savePATProfile(
@@ -1468,40 +2332,110 @@ function markPATGamePlayed(
 
 
 /* ==========================================================
+   APPLY MASTERY INCREMENTS
+
+   Example:
+
+   mastery: {
+     graphsBuilt: 1,
+     transformationsMapped: 2
+   }
+========================================================== */
+
+function applyPATMasteryChanges(
+  profile,
+  gameId,
+  masteryChanges
+) {
+
+  if (
+    !masteryChanges
+    ||
+    typeof masteryChanges !==
+    "object"
+  ) {
+
+    return;
+
+  }
+
+
+  if (
+    !profile.mastery[
+      gameId
+    ]
+  ) {
+
+    profile.mastery[
+      gameId
+    ] =
+      {};
+
+  }
+
+
+  Object.keys(
+    masteryChanges
+  )
+  .forEach(
+    function (
+      key
+    ) {
+
+      const amount =
+        Number(
+          masteryChanges[
+            key
+          ]
+          ||
+          0
+        );
+
+
+      const current =
+        Number(
+          profile.mastery[
+            gameId
+          ][
+            key
+          ]
+          ||
+          0
+        );
+
+
+      profile.mastery[
+        gameId
+      ][
+        key
+      ] =
+        current +
+        amount;
+
+    }
+  );
+
+}
+
+
+
+/* ==========================================================
    COMPLETE ACTIVITY
 
-   Examples:
+   The central progression function.
 
-   CONTRONYM:
+   A UNIQUE completion may:
+   - award XP
+   - advance weekly Lab streak
+   - advance release streak
+   - increment mastery
+   - award achievements
+   - write history
 
-   PATProfile.complete(
-     "contronym",
-     "002"
-   );
-
-
-   BUZZWORD:
-
-   PATProfile.complete(
-     "molecular_bee",
-     "buzzword-004",
-     {
-       streakKey:
-         "buzzword"
-     }
-   );
-
-
-   KOAN PUZZLE ONE:
-
-   PATProfile.complete(
-     "koan_kaon",
-     "001",
-     {
-       streakKey:
-         "koan_one"
-     }
-   );
+   Replaying the SAME activity:
+   - awards no XP
+   - advances no streak
+   - adds no duplicate history
 ========================================================== */
 
 function completePATActivity(
@@ -1536,25 +2470,30 @@ function completePATActivity(
     loadPATProfile();
 
 
-  const today =
-    getPATDateString();
-
-
-  updatePATGlobalStreak(
-    profile
-  );
+  const completionId =
+    String(
+      activityId
+    );
 
 
   profile.lastPlayed[
     gameId
   ] =
-    today;
+    getPATDateString();
 
 
-  const completionId =
-    String(
-      activityId
-    );
+  if (
+    !profile.completed[
+      gameId
+    ]
+  ) {
+
+    profile.completed[
+      gameId
+    ] =
+      [];
+
+  }
 
 
   const alreadyCompleted =
@@ -1570,53 +2509,24 @@ function completePATActivity(
     0;
 
 
-  /*
-    XP is awarded once per unique activity.
-  */
-
-  if (
-    !alreadyCompleted
-  ) {
-
-    profile.completed[
-      gameId
-    ]
-    .push(
-      completionId
-    );
+  let globalStreakAdvanced =
+    false;
 
 
-    xpEarned =
-      Number(
-        options.xp
-      )
-      ||
-      Number(
-        game.xpPerCompletion
-      )
-      ||
-      0;
+  let streakAdvanced =
+    false;
 
-
-    profile.xp +=
-      xpEarned;
-
-  }
-
-
-
-  /* ========================================================
-     STREAK
-
-     A dedicated streak advances when the activity
-     is completed, not merely viewed.
-  ======================================================== */
 
   let streakKey =
     options.streakKey
     ||
     null;
 
+
+
+  /* ========================================================
+     DEFAULT GAME STREAK
+  ======================================================== */
 
   if (
     !streakKey
@@ -1632,21 +2542,201 @@ function completePATActivity(
   }
 
 
-  let streakAdvanced =
-    false;
 
+  /* ========================================================
+     UNIQUE COMPLETION ONLY
+  ======================================================== */
 
   if (
-    streakKey
+    !alreadyCompleted
   ) {
 
-    streakAdvanced =
-      updatePATSeriesStreak(
+    profile.completed[
+      gameId
+    ]
+    .push(
+      completionId
+    );
+
+
+
+    /* XP */
+
+    if (
+      options.xp ===
+      0
+    ) {
+
+      xpEarned =
+        0;
+
+    }
+
+    else {
+
+      xpEarned =
+        Number(
+          options.xp
+        );
+
+
+      if (
+        !Number.isFinite(
+          xpEarned
+        )
+      ) {
+
+        xpEarned =
+          Number(
+            game.xpPerCompletion
+            ||
+            0
+          );
+
+      }
+
+    }
+
+
+    xpEarned =
+      Math.max(
+        0,
+        xpEarned
+      );
+
+
+    profile.xp +=
+      xpEarned;
+
+
+
+    /* WEEKLY LAB STREAK */
+
+    globalStreakAdvanced =
+      updatePATGlobalStreak(
+        profile
+      );
+
+
+
+    /* RELEASE STREAK */
+
+    if (
+      streakKey
+    ) {
+
+      streakAdvanced =
+        updatePATSeriesStreak(
+
+          profile,
+
+          streakKey,
+
+          completionId
+
+        );
+
+    }
+
+
+
+    /* MASTERY */
+
+    if (
+      options.mastery
+    ) {
+
+      applyPATMasteryChanges(
+
         profile,
-        streakKey
+
+        gameId,
+
+        options.mastery
+
+      );
+
+    }
+
+
+
+    /* ACHIEVEMENTS */
+
+    if (
+      Array.isArray(
+        options.achievements
+      )
+    ) {
+
+      options.achievements
+        .forEach(
+          function (
+            achievement
+          ) {
+
+            const id =
+              String(
+                achievement
+              );
+
+
+            if (
+              !profile.achievements
+                .includes(
+                  id
+                )
+            ) {
+
+              profile.achievements
+                .push(
+                  id
+                );
+
+            }
+
+          }
+        );
+
+    }
+
+
+
+    /* HISTORY */
+
+    profile.completionHistory
+      .push(
+        {
+
+          gameId:
+            gameId,
+
+          gameName:
+            game.name,
+
+          activityId:
+            completionId,
+
+          xpEarned:
+            xpEarned,
+
+          streakKey:
+            streakKey,
+
+          completedAt:
+            new Date()
+              .toISOString(),
+
+          date:
+            getPATDateString(),
+
+          weekKey:
+            getPATWeekKey()
+
+        }
       );
 
   }
+
 
 
   savePATProfile(
@@ -1675,7 +2765,10 @@ function completePATActivity(
       streakKey,
 
     streakAdvanced:
-      streakAdvanced
+      streakAdvanced,
+
+    globalStreakAdvanced:
+      globalStreakAdvanced
 
   };
 
@@ -1684,23 +2777,9 @@ function completePATActivity(
 
 
 /* ==========================================================
-   SAVE GAME PROGRESS
+   SET GAME PROGRESS
 
-   Use this for games that do not need streaks.
-
-   Examples:
-
-   PATProfile.setProgress(
-     "molecular_farm",
-     "speciesDiscovered",
-     8
-   );
-
-   PATProfile.setProgress(
-     "meaning_graphs",
-     "graphsBuilt",
-     3
-   );
+   Flexible save storage for game-specific state.
 ========================================================== */
 
 function setPATGameProgress(
@@ -1714,6 +2793,12 @@ function setPATGameProgress(
       gameId
     ]
   ) {
+
+    console.warn(
+      "Unknown PAT game:",
+      gameId
+    );
+
 
     return null;
 
@@ -1788,9 +2873,13 @@ function getPATGameProgress(
     undefined
   ) {
 
-    return profile.progress[
-      gameId
-    ];
+    return {
+
+      ...profile.progress[
+        gameId
+      ]
+
+    };
 
   }
 
@@ -1806,7 +2895,196 @@ function getPATGameProgress(
 
 
 /* ==========================================================
-   UNLOCKS
+   INCREMENT MASTERY
+
+   Example:
+
+   PATProfile.incrementMastery(
+     "meaning_graphs",
+     "graphsBuilt",
+     1
+   );
+========================================================== */
+
+function incrementPATMastery(
+  gameId,
+  key,
+  amount =
+    1
+) {
+
+  if (
+    !PAT_GAMES[
+      gameId
+    ]
+  ) {
+
+    return null;
+
+  }
+
+
+  const profile =
+    loadPATProfile();
+
+
+  if (
+    !profile.mastery[
+      gameId
+    ]
+  ) {
+
+    profile.mastery[
+      gameId
+    ] =
+      {};
+
+  }
+
+
+  const current =
+    Number(
+      profile.mastery[
+        gameId
+      ][
+        key
+      ]
+      ||
+      0
+    );
+
+
+  profile.mastery[
+    gameId
+  ][
+    key
+  ] =
+    current +
+    Number(
+      amount
+      ||
+      0
+    );
+
+
+  savePATProfile(
+    profile
+  );
+
+
+  return profile.mastery[
+    gameId
+  ][
+    key
+  ];
+
+}
+
+
+
+/* ==========================================================
+   SET MASTERY
+========================================================== */
+
+function setPATMastery(
+  gameId,
+  key,
+  value
+) {
+
+  if (
+    !PAT_GAMES[
+      gameId
+    ]
+  ) {
+
+    return null;
+
+  }
+
+
+  const profile =
+    loadPATProfile();
+
+
+  if (
+    !profile.mastery[
+      gameId
+    ]
+  ) {
+
+    profile.mastery[
+      gameId
+    ] =
+      {};
+
+  }
+
+
+  profile.mastery[
+    gameId
+  ][
+    key
+  ] =
+    value;
+
+
+  savePATProfile(
+    profile
+  );
+
+
+  return value;
+
+}
+
+
+
+/* ==========================================================
+   GET MASTERY
+========================================================== */
+
+function getPATMastery(
+  gameId,
+  key
+) {
+
+  const profile =
+    loadPATProfile();
+
+
+  const gameMastery =
+    profile.mastery[
+      gameId
+    ]
+    ||
+    {};
+
+
+  if (
+    key ===
+    undefined
+  ) {
+
+    return {
+
+      ...gameMastery
+
+    };
+
+  }
+
+
+  return gameMastery[
+    key
+  ];
+
+}
+
+
+
+/* ==========================================================
+   UNLOCK CONTENT
 ========================================================== */
 
 function unlockPATContent(
@@ -1824,14 +3102,16 @@ function unlockPATContent(
 
 
   if (
-    !profile.unlocks.includes(
-      id
-    )
+    !profile.unlocks
+      .includes(
+        id
+      )
   ) {
 
-    profile.unlocks.push(
-      id
-    );
+    profile.unlocks
+      .push(
+        id
+      );
 
 
     savePATProfile(
@@ -1847,6 +3127,10 @@ function unlockPATContent(
 
 
 
+/* ==========================================================
+   CHECK UNLOCK
+========================================================== */
+
 function hasPATUnlock(
   unlockId
 ) {
@@ -1855,11 +3139,12 @@ function hasPATUnlock(
     loadPATProfile();
 
 
-  return profile.unlocks.includes(
-    String(
-      unlockId
-    )
-  );
+  return profile.unlocks
+    .includes(
+      String(
+        unlockId
+      )
+    );
 
 }
 
@@ -1884,34 +3169,59 @@ function awardPATAchievement(
 
 
   if (
-    !profile.achievements.includes(
-      id
-    )
+    profile.achievements
+      .includes(
+        id
+      )
   ) {
 
-    profile.achievements.push(
-      id
-    );
-
-
-    savePATProfile(
-      profile
-    );
-
-
-    return true;
+    return false;
 
   }
 
 
-  return false;
+  profile.achievements
+    .push(
+      id
+    );
+
+
+  savePATProfile(
+    profile
+  );
+
+
+  return true;
 
 }
 
 
 
 /* ==========================================================
-   PROFILE DETAILS
+   CHECK ACHIEVEMENT
+========================================================== */
+
+function hasPATAchievement(
+  achievementId
+) {
+
+  const profile =
+    loadPATProfile();
+
+
+  return profile.achievements
+    .includes(
+      String(
+        achievementId
+      )
+    );
+
+}
+
+
+
+/* ==========================================================
+   UPDATE ACCOUNT
 ========================================================== */
 
 function updatePATAccount(
@@ -1922,6 +3232,9 @@ function updatePATAccount(
   const profile =
     loadPATProfile();
 
+
+
+  /* USERNAME */
 
   if (
     data.username !==
@@ -1935,6 +3248,10 @@ function updatePATAccount(
         ""
       )
       .trim()
+      .replace(
+        /^@+/,
+        ""
+      )
       .slice(
         0,
         30
@@ -1948,6 +3265,9 @@ function updatePATAccount(
 
   }
 
+
+
+  /* EMAIL */
 
   if (
     data.email !==
@@ -1970,6 +3290,9 @@ function updatePATAccount(
   }
 
 
+
+  /* AVATAR */
+
   if (
     data.avatar !==
     undefined
@@ -1985,14 +3308,21 @@ function updatePATAccount(
   }
 
 
+
+  /* PROFILE CREATED */
+
   profile.profileCreated =
     Boolean(
+
       profile.email
+
       &&
       profile.username
+
       &&
       profile.username !==
       "Guest"
+
     );
 
 
@@ -2073,25 +3403,25 @@ function setPATAvatar(
 /* ==========================================================
    PLAN / SUBSCRIPTION
 
-   IMPORTANT:
+   PROTOTYPE ONLY.
 
-   This is only prototype state.
-
-   Once real subscriptions exist, plan status should be
-   supplied by a secure backend rather than trusted from
-   localStorage.
+   Real paid access must eventually be verified
+   by a secure backend.
 ========================================================== */
 
 function setPATPlan(
   plan
 ) {
 
-  const allowed =
-    [
-      "free",
-      "plus",
-      "admin"
-    ];
+  const allowed = [
+
+    "free",
+
+    "plus",
+
+    "admin"
+
+  ];
 
 
   if (
@@ -2141,11 +3471,14 @@ function PATCanAccessArchive() {
 
 
   return (
+
     profile.plan ===
     "plus"
+
     ||
     profile.plan ===
     "admin"
+
   );
 
 }
@@ -2153,7 +3486,7 @@ function PATCanAccessArchive() {
 
 
 /* ==========================================================
-   SUBSCRIPTION CHECK
+   PLAN CHECK
 ========================================================== */
 
 function PATHasPlan(
@@ -2180,11 +3513,14 @@ function PATHasPlan(
   ) {
 
     return (
+
       profile.plan ===
       "plus"
+
       ||
       profile.plan ===
       "admin"
+
     );
 
   }
@@ -2204,6 +3540,102 @@ function PATHasPlan(
 
 
   return false;
+
+}
+
+
+
+/* ==========================================================
+   LEVEL CALCULATION
+========================================================== */
+
+function getPATLevelData(
+  xp
+) {
+
+  const safeXP =
+    Math.max(
+      0,
+      Number(
+        xp
+        ||
+        0
+      )
+    );
+
+
+  const level =
+    Math.floor(
+      safeXP /
+      PAT_XP_PER_LEVEL
+    )
+    +
+    1;
+
+
+  const currentLevelStart =
+    (
+      level -
+      1
+    )
+    *
+    PAT_XP_PER_LEVEL;
+
+
+  const nextLevelXP =
+    level *
+    PAT_XP_PER_LEVEL;
+
+
+  const xpIntoLevel =
+    safeXP -
+    currentLevelStart;
+
+
+  const xpNeeded =
+    nextLevelXP -
+    safeXP;
+
+
+  const percent =
+    Math.min(
+      100,
+      Math.max(
+        0,
+        (
+          xpIntoLevel /
+          PAT_XP_PER_LEVEL
+        )
+        *
+        100
+      )
+    );
+
+
+  return {
+
+    level:
+      level,
+
+    xp:
+      safeXP,
+
+    xpIntoLevel:
+      xpIntoLevel,
+
+    xpPerLevel:
+      PAT_XP_PER_LEVEL,
+
+    nextLevelXP:
+      nextLevelXP,
+
+    xpNeeded:
+      xpNeeded,
+
+    levelPercent:
+      percent
+
+  };
 
 }
 
@@ -2236,10 +3668,17 @@ function getPATProfileStats() {
     ) {
 
       const count =
-        profile.completed[
-          gameId
-        ]
-        .length;
+        Array.isArray(
+          profile.completed[
+            gameId
+          ]
+        )
+        ?
+          profile.completed[
+            gameId
+          ].length
+        :
+          0;
 
 
       completedByGame[
@@ -2253,6 +3692,37 @@ function getPATProfileStats() {
 
     }
   );
+
+
+  const levelData =
+    getPATLevelData(
+      profile.xp
+    );
+
+
+  const recentCompletions =
+    profile.completionHistory
+      .slice()
+      .sort(
+        function (
+          a,
+          b
+        ) {
+
+          return new Date(
+            b.completedAt
+          )
+          -
+          new Date(
+            a.completedAt
+          );
+
+        }
+      )
+      .slice(
+        0,
+        10
+      );
 
 
   return {
@@ -2272,11 +3742,38 @@ function getPATProfileStats() {
     plan:
       profile.plan,
 
+
+    /* XP / LEVEL */
+
     xp:
       profile.xp,
 
+    level:
+      levelData.level,
+
+    xpIntoLevel:
+      levelData.xpIntoLevel,
+
+    xpPerLevel:
+      levelData.xpPerLevel,
+
+    xpNeeded:
+      levelData.xpNeeded,
+
+    nextLevelXP:
+      levelData.nextLevelXP,
+
+    levelPercent:
+      levelData.levelPercent,
+
+
+    /* STREAKS */
+
     globalStreak:
       profile.globalStreak,
+
+    globalStreakLastWeek:
+      profile.globalStreakLastWeek,
 
     streaks:
       {
@@ -2285,11 +3782,37 @@ function getPATProfileStats() {
 
       },
 
+    streakLastActivity:
+      {
+
+        ...profile.streakLastActivity
+
+      },
+
+
+    /* COMPLETIONS */
+
     totalCompleted:
       totalCompleted,
 
     completedByGame:
       completedByGame,
+
+    recentCompletions:
+      recentCompletions,
+
+
+    /* MASTERY */
+
+    mastery:
+      JSON.parse(
+        JSON.stringify(
+          profile.mastery
+        )
+      ),
+
+
+    /* CONTENT */
 
     achievements:
       [
@@ -2345,13 +3868,52 @@ function hasPATCompleted(
 
 
 /* ==========================================================
-   PROFILE CREATED / SIGNED IN
+   COMPLETION HISTORY
+========================================================== */
 
-   For now "signed in" means that the user has created
-   a local Learning Lab profile with username + email.
+function getPATCompletionHistory(
+  gameId
+) {
 
-   Later this function can be swapped to real
-   authentication without changing game pages.
+  const profile =
+    loadPATProfile();
+
+
+  if (
+    !gameId
+  ) {
+
+    return profile.completionHistory
+      .slice();
+
+  }
+
+
+  return profile.completionHistory
+    .filter(
+      function (
+        entry
+      ) {
+
+        return entry.gameId ===
+          gameId;
+
+      }
+    );
+
+}
+
+
+
+/* ==========================================================
+   SIGNED IN
+
+   LOCAL PROTOTYPE:
+
+   username + email = local profile created.
+
+   Real authentication can replace this later
+   without changing game APIs.
 ========================================================== */
 
 function PATIsSignedIn() {
@@ -2361,14 +3923,19 @@ function PATIsSignedIn() {
 
 
   return Boolean(
+
     profile.profileCreated
+
     &&
     profile.username
+
     &&
     profile.username !==
     "Guest"
+
     &&
     profile.email
+
   );
 
 }
@@ -2378,12 +3945,10 @@ function PATIsSignedIn() {
 /* ==========================================================
    SIGN OUT
 
-   Because this is currently local-only, sign out does
-   NOT erase progress.
+   Current prototype keeps all progress on device
+   but removes local identity.
 
-   It only removes identity fields.
-
-   Real account behavior can replace this later.
+   Cloud behavior can replace this later.
 ========================================================== */
 
 function PATSignOut() {
@@ -2416,7 +3981,7 @@ function PATSignOut() {
 
 
 /* ==========================================================
-   RESET EVERYTHING
+   RESET
 
    DEVELOPMENT / TESTING ONLY
 ========================================================== */
@@ -2441,7 +4006,7 @@ function resetPATProfile() {
 /* ==========================================================
    PUBLIC API
 
-   AVAILABLE FROM EVERY PAGE AFTER:
+   Existing pages remain compatible.
 
    <script src="profile.js"></script>
 ========================================================== */
@@ -2449,7 +4014,9 @@ function resetPATProfile() {
 window.PATProfile = {
 
 
-  /* ACCOUNT */
+  /* ========================================================
+     ACCOUNT
+  ======================================================== */
 
   get:
     loadPATProfile,
@@ -2476,7 +4043,9 @@ window.PATProfile = {
     PATSignOut,
 
 
-  /* SUBSCRIPTION */
+  /* ========================================================
+     SUBSCRIPTION
+  ======================================================== */
 
   setPlan:
     setPATPlan,
@@ -2488,13 +4057,18 @@ window.PATProfile = {
     PATCanAccessArchive,
 
 
-  /* GAME ACTIVITY */
+  /* ========================================================
+     GAME ACTIVITY
+  ======================================================== */
 
   complete:
     completePATActivity,
 
   hasCompleted:
     hasPATCompleted,
+
+  history:
+    getPATCompletionHistory,
 
   markPlayed:
     markPATGamePlayed,
@@ -2506,7 +4080,23 @@ window.PATProfile = {
     getPATGameProgress,
 
 
-  /* CONTENT */
+  /* ========================================================
+     MASTERY
+  ======================================================== */
+
+  incrementMastery:
+    incrementPATMastery,
+
+  setMastery:
+    setPATMastery,
+
+  getMastery:
+    getPATMastery,
+
+
+  /* ========================================================
+     CONTENT
+  ======================================================== */
 
   unlock:
     unlockPATContent,
@@ -2517,14 +4107,45 @@ window.PATProfile = {
   awardAchievement:
     awardPATAchievement,
 
+  hasAchievement:
+    hasPATAchievement,
 
-  /* STATS */
+
+  /* ========================================================
+     STATS
+  ======================================================== */
 
   stats:
     getPATProfileStats,
 
+  getLevel:
+    function () {
 
-  /* CONFIG */
+      const profile =
+        loadPATProfile();
+
+
+      return getPATLevelData(
+        profile.xp
+      );
+
+    },
+
+
+  /* ========================================================
+     DATE HELPERS
+  ======================================================== */
+
+  date:
+    getPATDateString,
+
+  week:
+    getPATWeekKey,
+
+
+  /* ========================================================
+     CONFIG
+  ======================================================== */
 
   games:
     PAT_GAMES,
@@ -2532,8 +4153,13 @@ window.PATProfile = {
   streakSeries:
     PAT_STREAK_SERIES,
 
+  xpPerLevel:
+    PAT_XP_PER_LEVEL,
 
-  /* DEV */
+
+  /* ========================================================
+     DEV
+  ======================================================== */
 
   reset:
     resetPATProfile
@@ -2544,6 +4170,11 @@ window.PATProfile = {
 
 /* ==========================================================
    INITIALIZE
+
+   This migrates V1 / V2 silently.
+
+   It DOES NOT fire pat-profile-updated merely
+   because a page requested the profile.
 ========================================================== */
 
 const initializedPATProfile =
@@ -2553,15 +4184,6 @@ const initializedPATProfile =
 
 /* ==========================================================
    READY EVENT
-
-   Any page may listen for:
-
-   window.addEventListener(
-     "pat-profile-ready",
-     function(event) {
-       console.log(event.detail);
-     }
-   );
 ========================================================== */
 
 window.dispatchEvent(
