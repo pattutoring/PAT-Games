@@ -45,7 +45,7 @@ gtag(
 
 
 <!-- =====================================================
-     SHARED PAT LEARNING LAB PROFILE
+     SHARED PAT LEARNING LAB PROFILE V3
 ===================================================== -->
 
 <script src="profile.js"></script>
@@ -53,7 +53,7 @@ gtag(
 
 <link
   rel="stylesheet"
-  href="cluecards.css?v=20260827-3"
+  href="cluecards.css?v=20260827-4"
 >
 
 
@@ -67,7 +67,7 @@ gtag(
 
   width:
     min(
-      760px,
+      800px,
       94%
     );
 
@@ -76,21 +76,7 @@ gtag(
     auto
     18px;
 
-  display:
-    grid;
-
-  grid-template-columns:
-    1fr
-    auto;
-
-  gap:
-    12px;
-
-  align-items:
-    center;
-
   padding:
-    13px
     15px;
 
   border:
@@ -99,7 +85,7 @@ gtag(
     #d7c39d;
 
   border-radius:
-    15px;
+    16px;
 
   background:
     #fffdf7;
@@ -114,6 +100,24 @@ gtag(
       25,
       .10
     );
+
+}
+
+
+.clue-profile-main {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr
+    auto;
+
+  gap:
+    12px;
+
+  align-items:
+    center;
 
 }
 
@@ -138,15 +142,15 @@ gtag(
 .clue-profile-avatar {
 
   width:
-    48px;
+    50px;
 
   height:
-    48px;
+    50px;
 
   flex:
     0
     0
-    48px;
+    50px;
 
   display:
     flex;
@@ -169,7 +173,7 @@ gtag(
     #fff7e8;
 
   font-size:
-    1.45rem;
+    1.5rem;
 
 }
 
@@ -266,6 +270,17 @@ gtag(
 }
 
 
+.clue-level-pill {
+
+  background:
+    #eee6f4;
+
+  color:
+    #71558e;
+
+}
+
+
 .clue-profile-button {
 
   min-height:
@@ -291,6 +306,148 @@ gtag(
 
   font-weight:
     bold;
+
+}
+
+
+
+/* =====================================================
+   LEVEL PROGRESS
+===================================================== */
+
+.clue-level-panel {
+
+  margin-top:
+    13px;
+
+  padding-top:
+    12px;
+
+  border-top:
+    1px
+    solid
+    #ded0b8;
+
+}
+
+
+.clue-level-row {
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  gap:
+    10px;
+
+  margin-bottom:
+    6px;
+
+  color:
+    #65584a;
+
+  font-size:
+    .73rem;
+
+  font-weight:
+    bold;
+
+}
+
+
+.clue-level-track {
+
+  width:
+    100%;
+
+  height:
+    9px;
+
+  overflow:
+    hidden;
+
+  border-radius:
+    999px;
+
+  background:
+    #e9e1d5;
+
+}
+
+
+.clue-level-fill {
+
+  width:
+    0%;
+
+  height:
+    100%;
+
+  border-radius:
+    999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #477ca8,
+      #71558e,
+      #b9574e
+    );
+
+  transition:
+    width
+    .3s
+    ease;
+
+}
+
+
+
+/* =====================================================
+   CURRENT STREAK BADGE
+===================================================== */
+
+.current-clue-streak {
+
+  width:
+    fit-content;
+
+  max-width:
+    94%;
+
+  margin:
+    0
+    auto
+    18px;
+
+  padding:
+    7px
+    12px;
+
+  border:
+    1px
+    solid
+    #cdbbdf;
+
+  border-radius:
+    999px;
+
+  background:
+    #f2ebf7;
+
+  color:
+    #71558e;
+
+  font-size:
+    .76rem;
+
+  font-weight:
+    bold;
+
+  text-align:
+    center;
 
 }
 
@@ -446,9 +603,6 @@ gtag(
 
   .clue-profile-strip {
 
-    grid-template-columns:
-      1fr;
-
     width:
       96%;
 
@@ -458,10 +612,26 @@ gtag(
   }
 
 
+  .clue-profile-main {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
   .clue-profile-button {
 
     width:
       100%;
+
+  }
+
+
+  .clue-level-row {
+
+    font-size:
+      .68rem;
 
   }
 
@@ -533,6 +703,9 @@ gtag(
 <section class="clue-profile-strip">
 
 
+<div class="clue-profile-main">
+
+
 <div class="clue-profile-left">
 
 
@@ -564,6 +737,14 @@ gtag(
 
 
 <div class="clue-profile-stats">
+
+
+<span
+  id="clueProfileLevel"
+  class="clue-profile-pill clue-level-pill"
+>
+  🧪 Level 1
+</span>
 
 
 <span
@@ -608,7 +789,55 @@ gtag(
 </button>
 
 
+</div>
+
+
+
+<div class="clue-level-panel">
+
+
+<div class="clue-level-row">
+
+
+<span id="clueLevelText">
+  Level 1 Progress
+</span>
+
+
+<span id="clueLevelXPText">
+  0 / 100 XP
+</span>
+
+
+</div>
+
+
+<div class="clue-level-track">
+
+
+<div
+  id="clueLevelFill"
+  class="clue-level-fill"
+>
+</div>
+
+
+</div>
+
+
+</div>
+
+
 </section>
+
+
+
+<div
+  id="currentClueStreak"
+  class="current-clue-streak"
+>
+  🔥 Current Clue-Card streak: 0
+</div>
 
 
 
@@ -1081,14 +1310,20 @@ gtag(
   class="archive-access"
 >
 
+
 <strong>
   🔒 Current Clue Free • Archive Learning Lab+
 </strong>
 
+
 <br>
 
+
 The newest Clue-Card is available to everyone.
-Previous clues will become part of the Learning Lab+ archive.
+
+Previous clues will become part of
+the Learning Lab+ archive.
+
 
 </div>
 
@@ -1177,15 +1412,12 @@ Master meaning.
      CLUE CARD GAME LOGIC
 ===================================================== -->
 
-<script src="cluecards.js?v=20260827-3"></script>
+<script src="cluecards.js?v=20260827-4"></script>
 
 
 
 <!-- =====================================================
-     SHARED PROFILE DISPLAY
-
-     The actual solve/completion hook will be added
-     inside cluecards.js next.
+     SHARED PROFILE DISPLAY V3
 ===================================================== -->
 
 <script>
@@ -1209,6 +1441,51 @@ function renderClueCardProfile() {
   const stats =
     PATProfile.stats();
 
+
+  const clueStreak =
+    Number(
+      stats.streaks.cluecards
+      ||
+      0
+    );
+
+
+  const level =
+    Number(
+      stats.level
+      ||
+      1
+    );
+
+
+  const levelPercent =
+    Number(
+      stats.levelPercent
+      ||
+      0
+    );
+
+
+  const xpIntoLevel =
+    Number(
+      stats.xpIntoLevel
+      ||
+      0
+    );
+
+
+  const xpPerLevel =
+    Number(
+      stats.xpPerLevel
+      ||
+      100
+    );
+
+
+
+  /* ===================================================
+     IDENTITY
+  ==================================================== */
 
   document
     .getElementById(
@@ -1252,6 +1529,21 @@ function renderClueCardProfile() {
         "FREE EXPLORER";
 
 
+
+  /* ===================================================
+     LEVEL + XP
+  ==================================================== */
+
+  document
+    .getElementById(
+      "clueProfileLevel"
+    )
+    .textContent =
+      "🧪 Level "
+      +
+      level;
+
+
   document
     .getElementById(
       "clueProfileXP"
@@ -1267,6 +1559,54 @@ function renderClueCardProfile() {
       +
       " XP";
 
+
+  document
+    .getElementById(
+      "clueLevelText"
+    )
+    .textContent =
+      "Level "
+      +
+      level
+      +
+      " Progress";
+
+
+  document
+    .getElementById(
+      "clueLevelXPText"
+    )
+    .textContent =
+      xpIntoLevel
+      +
+      " / "
+      +
+      xpPerLevel
+      +
+      " XP";
+
+
+  document
+    .getElementById(
+      "clueLevelFill"
+    )
+    .style
+    .width =
+      Math.min(
+        100,
+        Math.max(
+          0,
+          levelPercent
+        )
+      )
+      +
+      "%";
+
+
+
+  /* ===================================================
+     STREAKS
+  ==================================================== */
 
   document
     .getElementById(
@@ -1289,12 +1629,23 @@ function renderClueCardProfile() {
     .textContent =
       "🧩 Clue-Cards "
       +
-      (
-        stats.streaks.cluecards
-        ||
-        0
-      );
+      clueStreak;
 
+
+  document
+    .getElementById(
+      "currentClueStreak"
+    )
+    .textContent =
+      "🔥 Current Clue-Card streak: "
+      +
+      clueStreak;
+
+
+
+  /* ===================================================
+     ARCHIVE ACCESS
+  ==================================================== */
 
   const archiveAccess =
     document.getElementById(
@@ -1357,8 +1708,6 @@ function renderClueCardProfile() {
 
 /* =====================================================
    PROFILE BUTTON
-
-   Account creation remains centralized on index.html.
 ===================================================== */
 
 document
@@ -1383,6 +1732,21 @@ document
 
 window.addEventListener(
   "pat-profile-updated",
+  function () {
+
+    renderClueCardProfile();
+
+  }
+);
+
+
+
+/* =====================================================
+   PROFILE READY
+===================================================== */
+
+window.addEventListener(
+  "pat-profile-ready",
   function () {
 
     renderClueCardProfile();
