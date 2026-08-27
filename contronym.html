@@ -93,21 +93,34 @@ gtag(
 }
 
 
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
 * {
-  box-sizing: border-box;
+
+  box-sizing:
+    border-box;
+
 }
 
 
 html {
-  scroll-behavior: smooth;
+
+  scroll-behavior:
+    smooth;
+
 }
 
 
 body {
 
-  margin: 0;
+  margin:
+    0;
 
-  min-height: 100vh;
+  min-height:
+    100vh;
 
   padding:
     18px
@@ -130,13 +143,21 @@ body {
 
 button,
 input {
-  font: inherit;
+
+  font:
+    inherit;
+
 }
 
 
 button {
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
+
+  cursor:
+    pointer;
+
+  -webkit-tap-highlight-color:
+    transparent;
+
 }
 
 
@@ -202,39 +223,48 @@ button {
 
 .brand-logo-wrap {
 
-  width: 100%;
+  width:
+    100%;
 
-  display: flex;
+  display:
+    flex;
 
-  justify-content: center;
+  justify-content:
+    center;
 
-  align-items: center;
+  align-items:
+    center;
 
-  margin-bottom: -2px;
+  margin-bottom:
+    -2px;
 
 }
 
 
 .brand-logo {
 
-  display: block;
+  display:
+    block;
 
   width:
     min(
-      280px,
-      74vw
+      290px,
+      76vw
     );
 
-  height: auto;
+  height:
+    auto;
 
-  overflow: visible;
+  overflow:
+    visible;
 
 }
 
 
 .brand-panel h1 {
 
-  margin: 0;
+  margin:
+    0;
 
   font-size:
     clamp(
@@ -243,9 +273,11 @@ button {
       4.6rem
     );
 
-  line-height: 1;
+  line-height:
+    1;
 
-  letter-spacing: 1px;
+  letter-spacing:
+    1px;
 
 }
 
@@ -264,28 +296,37 @@ button {
       1.9rem
     );
 
-  font-style: italic;
+  font-style:
+    italic;
 
-  font-weight: normal;
+  font-weight:
+    normal;
 
 }
 
 
 .brand-description {
 
-  max-width: 620px;
+  max-width:
+    620px;
 
-  margin: auto;
+  margin:
+    auto;
 
-  color: #675a4b;
+  color:
+    #675a4b;
 
-  line-height: 1.55;
+  line-height:
+    1.55;
 
 }
 
 
 .brand-description strong {
-  color: var(--blue);
+
+  color:
+    var(--blue);
+
 }
 
 
@@ -296,15 +337,20 @@ button {
 
 .top-nav {
 
-  display: flex;
+  display:
+    flex;
 
-  justify-content: center;
+  justify-content:
+    center;
 
-  gap: 8px;
+  gap:
+    8px;
 
-  flex-wrap: wrap;
+  flex-wrap:
+    wrap;
 
-  margin-bottom: 18px;
+  margin-bottom:
+    18px;
 
 }
 
@@ -343,7 +389,8 @@ button {
   color:
     var(--blue);
 
-  font-weight: bold;
+  font-weight:
+    bold;
 
 }
 
@@ -355,18 +402,22 @@ button {
 
 #play-view {
 
-  display: flex;
+  display:
+    flex;
 
-  flex-direction: column;
+  flex-direction:
+    column;
 
-  align-items: center;
+  align-items:
+    center;
 
 }
 
 
 #archive-view {
 
-  display: none;
+  display:
+    none;
 
   width:
     min(
@@ -393,14 +444,16 @@ button {
       100%
     );
 
-  padding: 22px;
+  padding:
+    22px;
 
   border:
     2px
     solid
     var(--soft-border);
 
-  border-radius: 22px;
+  border-radius:
+    22px;
 
   background:
     var(--paper);
@@ -416,11 +469,14 @@ button {
 
 .puzzle-heading {
 
-  max-width: 700px;
+  max-width:
+    700px;
 
-  margin: auto;
+  margin:
+    auto;
 
-  text-align: center;
+  text-align:
+    center;
 
 }
 
@@ -459,7 +515,8 @@ button {
 
 .puzzle-heading p {
 
-  margin: 0;
+  margin:
+    0;
 
   color:
     #6d6151;
@@ -477,7 +534,8 @@ button {
 
 .game-container {
 
-  position: relative;
+  position:
+    relative;
 
   width:
     min(
@@ -485,7 +543,8 @@ button {
       100%
     );
 
-  height: 500px;
+  height:
+    500px;
 
   margin:
     15px
@@ -497,15 +556,20 @@ button {
 
 .graph-svg {
 
-  position: absolute;
+  position:
+    absolute;
 
-  inset: 0;
+  inset:
+    0;
 
-  width: 100%;
+  width:
+    100%;
 
-  height: 100%;
+  height:
+    100%;
 
-  pointer-events: none;
+  pointer-events:
+    none;
 
 }
 
@@ -517,9 +581,11 @@ button {
 
 .axis-label {
 
-  position: absolute;
+  position:
+    absolute;
 
-  z-index: 5;
+  z-index:
+    5;
 
   padding:
     3px
@@ -547,9 +613,11 @@ button {
 
 .conjugate-label {
 
-  top: 2px;
+  top:
+    2px;
 
-  left: 50%;
+  left:
+    50%;
 
   transform:
     translateX(
@@ -559,34 +627,42 @@ button {
   color:
     var(--red);
 
-  text-align: center;
+  text-align:
+    center;
 
 }
 
 
 .transverse-label {
 
-  right: 4%;
+  right:
+    4%;
 
-  bottom: 68px;
+  bottom:
+    68px;
 
   color:
     var(--blue);
 
-  text-align: right;
+  text-align:
+    right;
 
 }
 
 
 .vertex-label {
 
-  position: absolute;
+  position:
+    absolute;
 
-  left: 50%;
+  left:
+    50%;
 
-  bottom: 3px;
+  bottom:
+    3px;
 
-  width: 95%;
+  width:
+    95%;
 
   transform:
     translateX(
@@ -665,7 +741,8 @@ button {
 
 .negative-column {
 
-  left: 0;
+  left:
+    0;
 
   border-color:
     var(--red);
@@ -675,7 +752,8 @@ button {
 
 .positive-column {
 
-  right: 0;
+  right:
+    0;
 
   border-color:
     var(--blue);
@@ -828,7 +906,8 @@ button {
 
 .clue-content {
 
-  min-width: 0;
+  min-width:
+    0;
 
 }
 
@@ -1084,7 +1163,10 @@ button {
 
 
 button {
-  border: none;
+
+  border:
+    none;
+
 }
 
 
@@ -1595,7 +1677,10 @@ button {
 (max-width: 760px) {
 
   .game-container {
-    height: 610px;
+
+    height:
+      610px;
+
   }
 
 
@@ -1618,7 +1703,10 @@ button {
 
 
   .clue-word {
-    font-size: .69rem;
+
+    font-size:
+      .69rem;
+
   }
 
 
@@ -1657,7 +1745,10 @@ button {
 
 
   .concept-grid {
-    grid-template-columns: 1fr;
+
+    grid-template-columns:
+      1fr;
+
   }
 
 }
@@ -1667,27 +1758,42 @@ button {
 (max-width: 480px) {
 
   body {
-    padding-top: 10px;
+
+    padding-top:
+      10px;
+
   }
 
 
   .brand-panel {
-    padding: 14px;
+
+    padding:
+      14px;
+
   }
 
 
   .brand-logo {
-    width: 230px;
+
+    width:
+      235px;
+
   }
 
 
   .puzzle-card {
-    padding: 12px;
+
+    padding:
+      12px;
+
   }
 
 
   .game-container {
-    height: 560px;
+
+    height:
+      560px;
+
   }
 
 
@@ -1703,7 +1809,10 @@ button {
 
 
   .clue-column-subtitle {
-    font-size: .61rem;
+
+    font-size:
+      .61rem;
+
   }
 
 
@@ -1719,7 +1828,10 @@ button {
 
 
   .clue-item {
-    padding: 4px;
+
+    padding:
+      4px;
+
   }
 
 
@@ -1787,7 +1899,40 @@ button {
 >
 
 
-<!-- RED C -->
+<!-- =====================================================
+     UPPER HALF OF BLUE ORBIT
+
+     DRAWN FIRST:
+     PASSES BEHIND THE RED C
+===================================================== -->
+
+<path
+  d="
+    M 55 154
+
+    C 83 91,
+      150 49,
+      225 49
+
+    C 287 49,
+      331 75,
+      344 106
+  "
+  fill="none"
+  stroke="#1f568f"
+  stroke-width="7"
+  stroke-dasharray="18 13"
+  stroke-linecap="round"
+  transform="rotate(-12 200 130)"
+/>
+
+
+
+<!-- =====================================================
+     RED C
+
+     DRAWN ABOVE THE UPPER ORBIT
+===================================================== -->
 
 <path
   d="
@@ -1817,27 +1962,42 @@ button {
 
 
 
-<!-- BLUE DASHED ORBIT ONLY -->
+<!-- =====================================================
+     LOWER HALF OF BLUE ORBIT
 
-<ellipse
-  cx="193"
-  cy="134"
-  rx="145"
-  ry="55"
-  transform="rotate(-20 193 134)"
+     DRAWN AFTER THE C:
+     PASSES IN FRONT OF THE RED C
+===================================================== -->
+
+<path
+  d="
+    M 344 106
+
+    C 324 169,
+      263 208,
+      191 215
+
+    C 124 221,
+      75 195,
+      55 154
+  "
   fill="none"
   stroke="#1f568f"
   stroke-width="7"
   stroke-dasharray="18 13"
+  stroke-linecap="round"
+  transform="rotate(-12 200 130)"
 />
 
 
 
-<!-- ν ON RIGHT SIDE OF ORBIT -->
+<!-- =====================================================
+     ν ON RIGHT END OF ORBIT
+===================================================== -->
 
 <text
-  x="322"
-  y="99"
+  x="335"
+  y="92"
   font-family="Georgia, serif"
   font-size="42"
   font-style="italic"
@@ -1969,7 +2129,9 @@ button {
 >
 
 
-<!-- TRANSVERSE AXIS -->
+<!-- =====================================================
+     TRANSVERSE AXIS
+===================================================== -->
 
 <line
   x1="155"
@@ -1994,7 +2156,9 @@ button {
 
 
 
-<!-- CONJUGATE AXIS -->
+<!-- =====================================================
+     CONJUGATE AXIS
+===================================================== -->
 
 <line
   x1="410"
@@ -2014,15 +2178,15 @@ button {
 
 
 <!-- =====================================================
-     WIDER LEFT PARABOLA
+     WIDE RED PARABOLA HALF
 ===================================================== -->
 
 <path
   d="
-    M 205 78
+    M 190 72
 
-    C 225 175,
-      280 310,
+    C 216 188,
+      280 315,
       410 385
   "
   fill="none"
@@ -2035,16 +2199,16 @@ button {
 
 
 <!-- =====================================================
-     WIDER RIGHT PARABOLA
+     WIDE BLUE PARABOLA HALF
 ===================================================== -->
 
 <path
   d="
     M 410 385
 
-    C 540 310,
-      595 175,
-      615 78
+    C 540 315,
+      604 188,
+      630 72
   "
   fill="none"
   stroke="#1f568f"
@@ -2055,7 +2219,9 @@ button {
 
 
 
-<!-- GOLD VERTEX -->
+<!-- =====================================================
+     GOLD VERTEX
+===================================================== -->
 
 <circle
   cx="410"
@@ -2068,13 +2234,17 @@ button {
 <path
   d="
     M 410 367
+
     L 415 380
     L 429 385
     L 415 390
+
     L 410 403
+
     L 405 390
     L 391 385
     L 405 380
+
     Z
   "
   fill="#d6aa44"
@@ -2083,25 +2253,35 @@ button {
 
 
 <!-- =====================================================
-     BLACK DASHED ν TRAIL
-     CROSSING BELOW VERTEX
+     BLACK ν TRAJECTORY
+
+     WRAPS AROUND TRANSVERSE AXIS
+     BUT DIPS BELOW VERTEX
 ===================================================== -->
 
 <path
   d="
-    M 210 414
+    M 205 399
 
-    C 265 392,
-      315 432,
-      365 410
+    C 250 368,
+      292 371,
+      335 393
 
-    C 405 393,
-      446 424,
-      492 410
+    C 360 406,
+      381 418,
+      397 422
 
-    C 548 393,
-      590 399,
-      625 382
+    C 406 425,
+      416 425,
+      425 422
+
+    C 443 417,
+      464 405,
+      490 393
+
+    C 535 371,
+      580 370,
+      625 398
   "
   fill="none"
   stroke="#222"
@@ -2112,11 +2292,13 @@ button {
 
 
 
-<!-- ν AT RIGHT END -->
+<!-- =====================================================
+     ν AT RIGHT END
+===================================================== -->
 
 <text
-  x="630"
-  y="384"
+  x="633"
+  y="403"
   fill="#222"
   font-family="Georgia, serif"
   font-size="29"
@@ -2130,7 +2312,9 @@ button {
 
 
 
-<!-- AXIS LABELS -->
+<!-- =====================================================
+     AXIS LABELS
+===================================================== -->
 
 <div class="axis-label conjugate-label">
 
@@ -2159,7 +2343,9 @@ button {
 
 
 
-<!-- NEGATIVE CLUES -->
+<!-- =====================================================
+     NEGATIVE CLUES
+===================================================== -->
 
 <div class="clue-column negative-column">
 
@@ -2185,7 +2371,9 @@ button {
 
 
 
-<!-- POSITIVE CLUES -->
+<!-- =====================================================
+     POSITIVE CLUES
+===================================================== -->
 
 <div class="clue-column positive-column">
 
@@ -2295,7 +2483,9 @@ button {
 
 
 
-<!-- RESULT CARD -->
+<!-- =========================================================
+     RESULT
+========================================================= -->
 
 <div id="result-card">
 
@@ -2534,7 +2724,7 @@ function trackContronymEvent(
 
 
 /* =========================================================
-   SILHOUETTES
+   SILHOUETTE ICONS
 ========================================================= */
 
 const silhouetteIcons = {
@@ -2552,28 +2742,15 @@ cut:
     stroke-linejoin="round"
   >
 
-    <circle
-      cx="14"
-      cy="18"
-      r="8"
-    />
+    <circle cx="14" cy="18" r="8" />
 
-    <circle
-      cx="14"
-      cy="46"
-      r="8"
-    />
+    <circle cx="14" cy="46" r="8" />
 
     <path
       d="
-        M20 23
-        L54 8
-
-        M20 41
-        L54 56
-
-        M21 31
-        L36 31
+        M20 23 L54 8
+        M20 41 L54 56
+        M21 31 L36 31
       "
     />
 
@@ -2689,7 +2866,6 @@ attach:
   <path
     d="
       M24 39
-
       L43 20
 
       C50 13,
@@ -2741,11 +2917,8 @@ fasten:
 
   <path
     d="
-      M5 32
-      H23
-
-      M41 32
-      H59
+      M5 32 H23
+      M41 32 H59
     "
     stroke="#111"
     stroke-width="7"
@@ -2820,14 +2993,9 @@ restrict:
 
   <path
     d="
-      M10 20
-      L23 36
-
-      M27 20
-      L40 36
-
-      M44 20
-      L55 33
+      M10 20 L23 36
+      M27 20 L40 36
+      M44 20 L55 33
     "
     stroke="#fff"
     stroke-width="4"
@@ -3078,24 +3246,20 @@ const puzzles = [
 
       negative:
         {
-
           word:
             "restrict",
 
           icon:
             "restrict"
-
         },
 
       positive:
         {
-
           word:
             "permit",
 
           icon:
             "permit"
-
         }
 
     },
@@ -3105,24 +3269,20 @@ const puzzles = [
 
       negative:
         {
-
           word:
             "penalize",
 
           icon:
             "penalize"
-
         },
 
       positive:
         {
-
           word:
             "authorize",
 
           icon:
             "authorize"
-
         }
 
     },
@@ -3132,24 +3292,20 @@ const puzzles = [
 
       negative:
         {
-
           word:
             "punish",
 
           icon:
             "punish"
-
         },
 
       positive:
         {
-
           word:
             "approve",
 
           icon:
             "approve"
-
         }
 
     }
@@ -3202,24 +3358,20 @@ const puzzles = [
 
       negative:
         {
-
           word:
             "cut",
 
           icon:
             "cut"
-
         },
 
       positive:
         {
-
           word:
             "attach",
 
           icon:
             "attach"
-
         }
 
     },
@@ -3229,24 +3381,20 @@ const puzzles = [
 
       negative:
         {
-
           word:
             "trim",
 
           icon:
             "trim"
-
         },
 
       positive:
         {
-
           word:
             "fasten",
 
           icon:
             "fasten"
-
         }
 
     },
@@ -3256,24 +3404,20 @@ const puzzles = [
 
       negative:
         {
-
           word:
             "remove",
 
           icon:
             "remove"
-
         },
 
       positive:
         {
-
           word:
             "secure",
 
           icon:
             "secure"
-
         }
 
     }
@@ -3551,7 +3695,6 @@ function createClueElement(
       ${index + 1}
     </div>
 
-
     <div class="clue-content">
 
       <div class="clue-word-row">
@@ -3559,7 +3702,6 @@ function createClueElement(
         <span class="clue-word">
           ${clue.word}
         </span>
-
 
         <span class="clue-silhouette">
           ${getSilhouette(clue.icon)}
@@ -4409,10 +4551,8 @@ currentTab.addEventListener(
       "puzzle_started",
       puzzle,
       {
-
         archived:
           false
-
       }
     );
 
