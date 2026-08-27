@@ -1,14 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Contronym | The Majorana of Meaning</title>
-
-<!-- GOOGLE ANALYTICS -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QCEPJP202V"></script><!DOCTYPE html>
-<html lang="en">
 
 <head>
 
@@ -21,11 +12,7 @@
 
 <title>Contronym | The Majorana of Meaning</title>
 
-
-<!-- =====================================================
-     GOOGLE ANALYTICS
-===================================================== -->
-
+<!-- GOOGLE ANALYTICS -->
 <script
   async
   src="https://www.googletagmanager.com/gtag/js?id=G-QCEPJP202V"
@@ -37,11 +24,7 @@ window.dataLayer =
   window.dataLayer || [];
 
 function gtag() {
-
-  dataLayer.push(
-    arguments
-  );
-
+  dataLayer.push(arguments);
 }
 
 gtag(
@@ -57,5841 +40,8 @@ gtag(
 </script>
 
 
-
 <style>
 
-/* =====================================================
-   COLOR SYSTEM
-===================================================== */
-
-:root {
-
-  --cream:#fff8e8;
-
-  --paper:#fffdf7;
-
-  --ink:#29261f;
-
-  --red:#cf2637;
-
-  --red-light:#f6dfdf;
-
-  --blue:#205995;
-
-  --blue-light:#e1edf7;
-
-  --gold:#d6aa44;
-
-  --gold-light:#f6e7ac;
-
-  --brown:#8b633e;
-
-  --border:#dcc8a5;
-
-  --shadow:rgba(
-    50,
-    40,
-    25,
-    .14
-  );
-
-}
-
-
-
-/* =====================================================
-   GLOBAL
-===================================================== */
-
-* {
-
-  box-sizing:
-    border-box;
-
-}
-
-
-html {
-
-  scroll-behavior:
-    smooth;
-
-  -webkit-text-size-adjust:
-    100%;
-
-}
-
-
-body {
-
-  margin:
-    0;
-
-  min-height:
-    100vh;
-
-  padding:
-    18px
-    10px
-    45px;
-
-  overflow-x:
-    hidden;
-
-  background:
-    var(--cream);
-
-  color:
-    var(--ink);
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-}
-
-
-button,
-input {
-
-  font:
-    inherit;
-
-}
-
-
-button {
-
-  cursor:
-    pointer;
-
-  touch-action:
-    manipulation;
-
-  -webkit-tap-highlight-color:
-    transparent;
-
-}
-
-
-.page-shell {
-
-  width:
-    min(
-      980px,
-      97%
-    );
-
-  margin:
-    auto;
-
-}
-
-
-
-/* =====================================================
-   BRAND
-===================================================== */
-
-.brand-panel {
-
-  width:
-    min(
-      760px,
-      100%
-    );
-
-  margin:
-    0
-    auto
-    18px;
-
-  padding:
-    22px
-    18px
-    24px;
-
-  border:
-    2px
-    solid
-    var(--border);
-
-  border-radius:
-    22px;
-
-  background:
-    var(--paper);
-
-  box-shadow:
-    0
-    7px
-    20px
-    var(--shadow);
-
-  text-align:
-    center;
-
-}
-
-
-.brand-logo-wrap {
-
-  display:
-    flex;
-
-  justify-content:
-    center;
-
-  align-items:
-    center;
-
-  height:
-    245px;
-
-  margin-bottom:
-    -5px;
-
-}
-
-
-.brand-logo {
-
-  width:
-    min(
-      390px,
-      88vw
-    );
-
-  height:
-    auto;
-
-  overflow:
-    visible;
-
-}
-
-
-.brand-panel h1 {
-
-  margin:
-    0;
-
-  font-size:
-    clamp(
-      2.7rem,
-      9vw,
-      4.7rem
-    );
-
-  line-height:
-    1;
-
-}
-
-
-.brand-panel h2 {
-
-  margin:
-    9px
-    0
-    13px;
-
-  font-size:
-    clamp(
-      1.25rem,
-      4vw,
-      2rem
-    );
-
-  font-style:
-    italic;
-
-  font-weight:
-    normal;
-
-}
-
-
-.brand-description {
-
-  margin:
-    0;
-
-  color:
-    #685a49;
-
-  font-size:
-    1rem;
-
-  line-height:
-    1.55;
-
-}
-
-
-.brand-description strong {
-
-  color:
-    var(--blue);
-
-}
-
-
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-.top-nav {
-
-  display:
-    flex;
-
-  justify-content:
-    center;
-
-  gap:
-    10px;
-
-  flex-wrap:
-    wrap;
-
-  margin:
-    20px
-    0;
-
-}
-
-
-.top-nav button {
-
-  min-height:
-    48px;
-
-  padding:
-    10px
-    17px;
-
-  border:
-    1px
-    solid
-    #d4c9b7;
-
-  border-radius:
-    12px;
-
-  background:
-    #eee8dc;
-
-  color:
-    var(--ink);
-
-  transition:
-    transform
-    .15s
-    ease,
-    background
-    .15s
-    ease;
-
-}
-
-
-.top-nav button:active {
-
-  transform:
-    scale(
-      .98
-    );
-
-}
-
-
-.top-nav button.active {
-
-  border-color:
-    #9bc2d7;
-
-  background:
-    var(--blue-light);
-
-  color:
-    var(--blue);
-
-  font-weight:
-    bold;
-
-}
-
-
-
-/* =====================================================
-   VIEWS
-===================================================== */
-
-#play-view {
-
-  display:
-    flex;
-
-  flex-direction:
-    column;
-
-  align-items:
-    center;
-
-}
-
-
-#archive-view {
-
-  display:
-    none;
-
-  width:
-    min(
-      620px,
-      100%
-    );
-
-  margin:
-    auto;
-
-}
-
-
-
-/* =====================================================
-   PUZZLE CARD
-===================================================== */
-
-.puzzle-card {
-
-  width:
-    min(
-      900px,
-      100%
-    );
-
-  padding:
-    23px;
-
-  border:
-    2px
-    solid
-    var(--border);
-
-  border-radius:
-    22px;
-
-  background:
-    var(--paper);
-
-  box-shadow:
-    0
-    7px
-    20px
-    var(--shadow);
-
-}
-
-
-.puzzle-heading {
-
-  max-width:
-    720px;
-
-  margin:
-    auto;
-
-  text-align:
-    center;
-
-}
-
-
-.kicker {
-
-  color:
-    var(--blue);
-
-  font-size:
-    .72rem;
-
-  font-weight:
-    bold;
-
-  letter-spacing:
-    3px;
-
-  text-transform:
-    uppercase;
-
-}
-
-
-.puzzle-heading h3 {
-
-  margin:
-    7px
-    0;
-
-  font-size:
-    1.55rem;
-
-}
-
-
-.puzzle-heading p {
-
-  margin:
-    0;
-
-  color:
-    #6d6151;
-
-  line-height:
-    1.5;
-
-}
-
-
-
-/* =====================================================
-   MEANING GRAPH
-===================================================== */
-
-.game-container {
-
-  position:
-    relative;
-
-  width:
-    min(
-      820px,
-      100%
-    );
-
-  height:
-    500px;
-
-  margin:
-    18px
-    auto
-    8px;
-
-}
-
-
-.graph-svg {
-
-  position:
-    absolute;
-
-  inset:
-    0;
-
-  width:
-    100%;
-
-  height:
-    100%;
-
-  pointer-events:
-    none;
-
-}
-
-
-
-/* =====================================================
-   GRAPH LABELS
-===================================================== */
-
-.axis-label {
-
-  position:
-    absolute;
-
-  z-index:
-    5;
-
-  padding:
-    3px
-    7px;
-
-  border-radius:
-    6px;
-
-  background:
-    rgba(
-      255,
-      248,
-      232,
-      .94
-    );
-
-  font-size:
-    .78rem;
-
-  line-height:
-    1.35;
-
-}
-
-
-.conjugate-label {
-
-  top:
-    3px;
-
-  left:
-    50%;
-
-  transform:
-    translateX(
-      -50%
-    );
-
-  color:
-    var(--red);
-
-  text-align:
-    center;
-
-}
-
-
-.transverse-label {
-
-  right:
-    4%;
-
-  bottom:
-    66px;
-
-  color:
-    var(--blue);
-
-  text-align:
-    right;
-
-}
-
-
-.vertex-label {
-
-  position:
-    absolute;
-
-  left:
-    50%;
-
-  bottom:
-    3px;
-
-  width:
-    95%;
-
-  transform:
-    translateX(
-      -50%
-    );
-
-  color:
-    var(--brown);
-
-  font-size:
-    .75rem;
-
-  line-height:
-    1.35;
-
-  text-align:
-    center;
-
-}
-
-
-
-/* =====================================================
-   CLUE COLUMNS
-===================================================== */
-
-.clue-column {
-
-  position:
-    absolute;
-
-  z-index:
-    7;
-
-  top:
-    76px;
-
-  width:
-    175px;
-
-  min-height:
-    260px;
-
-  padding:
-    12px
-    10px;
-
-  border:
-    2px
-    solid;
-
-  border-radius:
-    14px;
-
-  background:
-    rgba(
-      255,
-      253,
-      247,
-      .97
-    );
-
-  box-shadow:
-    0
-    4px
-    12px
-    rgba(
-      50,
-      40,
-      25,
-      .08
-    );
-
-}
-
-
-.negative-column {
-
-  left:
-    0;
-
-  border-color:
-    var(--red);
-
-}
-
-
-.positive-column {
-
-  right:
-    0;
-
-  border-color:
-    var(--blue);
-
-}
-
-
-.clue-column-title {
-
-  margin-bottom:
-    4px;
-
-  font-weight:
-    bold;
-
-  text-align:
-    center;
-
-}
-
-
-.negative-column
-.clue-column-title {
-
-  color:
-    var(--red);
-
-}
-
-
-.positive-column
-.clue-column-title {
-
-  color:
-    var(--blue);
-
-}
-
-
-.clue-column-subtitle {
-
-  margin-bottom:
-    10px;
-
-  color:
-    #75695c;
-
-  font-size:
-    .72rem;
-
-  font-style:
-    italic;
-
-  text-align:
-    center;
-
-}
-
-
-.clue-list {
-
-  display:
-    grid;
-
-  gap:
-    8px;
-
-}
-
-
-.clue-item {
-
-  min-height:
-    62px;
-
-  display:
-    grid;
-
-  grid-template-columns:
-    28px
-    1fr;
-
-  align-items:
-    center;
-
-  gap:
-    6px;
-
-  padding:
-    6px;
-
-  border-radius:
-    9px;
-
-  background:
-    var(--cream);
-
-}
-
-
-.clue-number {
-
-  width:
-    24px;
-
-  height:
-    24px;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  border-radius:
-    50%;
-
-  color:
-    white;
-
-  font-size:
-    .72rem;
-
-  font-weight:
-    bold;
-
-}
-
-
-.negative-column
-.clue-number {
-
-  background:
-    var(--red);
-
-}
-
-
-.positive-column
-.clue-number {
-
-  background:
-    var(--blue);
-
-}
-
-
-.clue-word-row {
-
-  min-width:
-    0;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  gap:
-    5px;
-
-}
-
-
-.clue-word {
-
-  flex:
-    1;
-
-  min-width:
-    0;
-
-  font-size:
-    .78rem;
-
-  font-weight:
-    bold;
-
-  overflow-wrap:
-    anywhere;
-
-  text-transform:
-    uppercase;
-
-}
-
-
-.clue-silhouette {
-
-  width:
-    30px;
-
-  height:
-    30px;
-
-  flex:
-    0
-    0
-    30px;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-}
-
-
-.clue-silhouette svg {
-
-  width:
-    28px;
-
-  height:
-    28px;
-
-}
-
-
-.hidden-clue {
-
-  opacity:
-    .28;
-
-}
-
-
-.hidden-clue
-.clue-word {
-
-  position:
-    relative;
-
-  color:
-    transparent;
-
-}
-
-
-.hidden-clue
-.clue-word::after {
-
-  content:
-    "?";
-
-  position:
-    absolute;
-
-  left:
-    0;
-
-  color:
-    #777;
-
-}
-
-
-.hidden-clue
-.clue-silhouette {
-
-  visibility:
-    hidden;
-
-}
-
-
-
-/* =====================================================
-   ANSWER
-===================================================== */
-
-.answer-section {
-
-  margin-top:
-    8px;
-
-  text-align:
-    center;
-
-}
-
-
-#letter-count {
-
-  color:
-    var(--brown);
-
-  font-size:
-    .84rem;
-
-  font-weight:
-    bold;
-
-  letter-spacing:
-    1px;
-
-}
-
-
-.answer-boxes {
-
-  display:
-    flex;
-
-  justify-content:
-    center;
-
-  gap:
-    7px;
-
-  flex-wrap:
-    wrap;
-
-  margin-top:
-    11px;
-
-}
-
-
-.letter-box {
-
-  width:
-    42px;
-
-  height:
-    44px;
-
-  padding:
-    0;
-
-  border:
-    2px
-    solid
-    var(--blue);
-
-  border-radius:
-    8px;
-
-  background:
-    white;
-
-  color:
-    var(--ink);
-
-  font-family:
-    monospace;
-
-  font-size:
-    1.3rem;
-
-  font-weight:
-    bold;
-
-  text-align:
-    center;
-
-  text-transform:
-    uppercase;
-
-}
-
-
-.letter-box:focus {
-
-  outline:
-    none;
-
-  box-shadow:
-    0
-    0
-    0
-    4px
-    rgba(
-      32,
-      89,
-      149,
-      .13
-    );
-
-}
-
-
-
-/* =====================================================
-   GAME BUTTONS
-===================================================== */
-
-.button-row {
-
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(
-      3,
-      minmax(
-        0,
-        1fr
-      )
-    );
-
-  gap:
-    12px;
-
-  width:
-    min(
-      680px,
-      100%
-    );
-
-  margin:
-    22px
-    auto
-    0;
-
-}
-
-
-.button-row button {
-
-  min-height:
-    64px;
-
-  padding:
-    15px
-    18px;
-
-  border:
-    2px
-    solid
-    transparent;
-
-  border-radius:
-    18px;
-
-  font-size:
-    1.03rem;
-
-  font-weight:
-    800;
-
-  box-shadow:
-    0
-    6px
-    13px
-    rgba(
-      50,
-      40,
-      25,
-      .14
-    );
-
-  transition:
-    transform
-    .15s
-    ease,
-    box-shadow
-    .15s
-    ease;
-
-}
-
-
-.button-row button:hover {
-
-  transform:
-    translateY(
-      -2px
-    );
-
-  box-shadow:
-    0
-    9px
-    18px
-    rgba(
-      50,
-      40,
-      25,
-      .17
-    );
-
-}
-
-
-.button-row button:active {
-
-  transform:
-    scale(
-      .985
-    );
-
-}
-
-
-#submit-answer {
-
-  border-color:
-    #174b82;
-
-  background:
-    linear-gradient(
-      180deg,
-      #3274b7,
-      #205995
-    );
-
-  color:
-    white;
-
-}
-
-
-#submit-answer::before {
-
-  content:
-    "✓ ";
-
-}
-
-
-#show-hint {
-
-  border-color:
-    #c89b34;
-
-  background:
-    linear-gradient(
-      180deg,
-      #faecb9,
-      #efd174
-    );
-
-  color:
-    #5d4717;
-
-}
-
-
-#show-hint::before {
-
-  content:
-    "🔎 ";
-
-}
-
-
-#reset-puzzle {
-
-  border-color:
-    #ce6670;
-
-  background:
-    linear-gradient(
-      180deg,
-      #f7e1e3,
-      #edbec2
-    );
-
-  color:
-    #8d2932;
-
-}
-
-
-#reset-puzzle::before {
-
-  content:
-    "↻ ";
-
-}
-
-
-.button-row button:disabled {
-
-  opacity:
-    .5;
-
-  cursor:
-    default;
-
-  transform:
-    none;
-
-}
-
-
-
-/* =====================================================
-   STATUS
-===================================================== */
-
-#attempts {
-
-  width:
-    fit-content;
-
-  max-width:
-    100%;
-
-  margin:
-    15px
-    auto
-    0;
-
-  padding:
-    8px
-    15px;
-
-  border:
-    1px
-    solid
-    #ddd0b8;
-
-  border-radius:
-    999px;
-
-  background:
-    #f5efe4;
-
-  color:
-    #665b4f;
-
-  font-size:
-    .86rem;
-
-  font-weight:
-    bold;
-
-  text-align:
-    center;
-
-}
-
-
-#hint-text {
-
-  display:
-    none;
-
-  max-width:
-    580px;
-
-  margin:
-    16px
-    auto
-    0;
-
-  padding:
-    13px
-    16px;
-
-  border-left:
-    5px
-    solid
-    var(--gold);
-
-  border-radius:
-    11px;
-
-  background:
-    #fff6d2;
-
-  color:
-    #665b4f;
-
-  font-size:
-    .9rem;
-
-  font-style:
-    italic;
-
-  line-height:
-    1.5;
-
-  text-align:
-    center;
-
-}
-
-
-#message {
-
-  min-height:
-    34px;
-
-  max-width:
-    580px;
-
-  margin:
-    15px
-    auto
-    0;
-
-  color:
-    var(--blue);
-
-  font-size:
-    .98rem;
-
-  font-weight:
-    bold;
-
-  line-height:
-    1.4;
-
-  text-align:
-    center;
-
-}
-
-
-
-/* =====================================================
-   RESULT
-===================================================== */
-
-#result-card {
-
-  display:
-    none;
-
-  width:
-    min(
-      660px,
-      100%
-    );
-
-  margin:
-    24px
-    auto
-    0;
-
-  padding:
-    20px;
-
-  border:
-    2px
-    solid
-    var(--gold);
-
-  border-radius:
-    18px;
-
-  background:
-    #fff8d8;
-
-}
-
-
-.result-majorana {
-
-  display:
-    flex;
-
-  justify-content:
-    center;
-
-  gap:
-    3px;
-
-  font-size:
-    2.2rem;
-
-  font-weight:
-    bold;
-
-}
-
-
-.result-title {
-
-  margin-top:
-    5px;
-
-  color:
-    var(--blue);
-
-  font-size:
-    1.15rem;
-
-  font-weight:
-    bold;
-
-  text-align:
-    center;
-
-}
-
-
-.definition-box {
-
-  margin-top:
-    14px;
-
-  line-height:
-    1.5;
-
-}
-
-
-.charge-definition {
-
-  margin-top:
-    12px;
-
-  padding:
-    12px;
-
-  border-radius:
-    10px;
-
-}
-
-
-.charge-definition.negative {
-
-  border-left:
-    5px
-    solid
-    var(--red);
-
-  background:
-    var(--red-light);
-
-}
-
-
-.charge-definition.positive {
-
-  border-left:
-    5px
-    solid
-    var(--blue);
-
-  background:
-    var(--blue-light);
-
-}
-
-
-.share-preview {
-
-  margin-top:
-    12px;
-
-  padding:
-    11px;
-
-  overflow-wrap:
-    anywhere;
-
-  border-radius:
-    10px;
-
-  background:
-    var(--paper);
-
-  font-family:
-    monospace;
-
-  font-size:
-    .82rem;
-
-  white-space:
-    pre-line;
-
-}
-
-
-.share-buttons {
-
-  display:
-    flex;
-
-  justify-content:
-    center;
-
-  gap:
-    9px;
-
-  flex-wrap:
-    wrap;
-
-  margin-top:
-    12px;
-
-}
-
-
-.share-buttons button {
-
-  min-height:
-    46px;
-
-  padding:
-    10px
-    16px;
-
-  border:
-    1px
-    solid
-    #c9b991;
-
-  border-radius:
-    11px;
-
-  background:
-    white;
-
-  font-weight:
-    bold;
-
-}
-
-
-
-/* =====================================================
-   CONCEPT
-===================================================== */
-
-.concept-panel {
-
-  width:
-    min(
-      820px,
-      100%
-    );
-
-  margin:
-    20px
-    auto
-    0;
-
-  padding:
-    20px;
-
-  border:
-    1px
-    solid
-    var(--border);
-
-  border-radius:
-    16px;
-
-  background:
-    var(--paper);
-
-  line-height:
-    1.55;
-
-}
-
-
-.concept-panel h3 {
-
-  margin-top:
-    0;
-
-  text-align:
-    center;
-
-}
-
-
-.concept-grid {
-
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(
-      3,
-      minmax(
-        0,
-        1fr
-      )
-    );
-
-  gap:
-    10px;
-
-  margin-top:
-    14px;
-
-}
-
-
-.concept-box {
-
-  padding:
-    12px;
-
-  border:
-    1px
-    solid
-    var(--border);
-
-  border-radius:
-    10px;
-
-  background:
-    var(--cream);
-
-  text-align:
-    center;
-
-}
-
-
-
-/* =====================================================
-   ARCHIVE
-===================================================== */
-
-.archive-heading {
-
-  text-align:
-    center;
-
-}
-
-
-.archive-card {
-
-  margin-bottom:
-    12px;
-
-  padding:
-    15px;
-
-  border:
-    1px
-    solid
-    #ddd;
-
-  border-radius:
-    15px;
-
-  background:
-    var(--paper);
-
-}
-
-
-.archive-number {
-
-  color:
-    var(--blue);
-
-  font-weight:
-    bold;
-
-}
-
-
-.archive-date {
-
-  color:
-    #777;
-
-  font-size:
-    .8rem;
-
-  font-style:
-    italic;
-
-}
-
-
-.archive-description {
-
-  margin:
-    9px
-    0;
-
-  color:
-    #555;
-
-  font-size:
-    .88rem;
-
-}
-
-
-.archive-play {
-
-  width:
-    100%;
-
-  min-height:
-    48px;
-
-  padding:
-    9px
-    14px;
-
-  border:
-    1px
-    solid
-    #abc8dc;
-
-  border-radius:
-    10px;
-
-  background:
-    var(--blue-light);
-
-  color:
-    var(--blue);
-
-  font-weight:
-    bold;
-
-}
-
-
-.footer-note {
-
-  margin-top:
-    20px;
-
-  color:
-    #6d6151;
-
-  font-size:
-    .8rem;
-
-  font-style:
-    italic;
-
-  text-align:
-    center;
-
-}
-
-
-
-/* =====================================================
-   TABLET
-===================================================== */
-
-@media
-(max-width:760px) {
-
-  .page-shell {
-
-    width:
-      100%;
-
-  }
-
-
-  .game-container {
-
-    height:
-      610px;
-
-  }
-
-
-  .clue-column {
-
-    top:
-      46px;
-
-    width:
-      145px;
-
-  }
-
-
-  .clue-word {
-
-    font-size:
-      .69rem;
-
-  }
-
-
-  .concept-grid {
-
-    grid-template-columns:
-      1fr;
-
-  }
-
-}
-
-
-
-/* =====================================================
-   MOBILE REDESIGN
-===================================================== */
-
-@media
-(max-width:600px) {
-
-  body {
-
-    padding:
-      max(
-        8px,
-        env(
-          safe-area-inset-top
-        )
-      )
-      6px
-      calc(
-        30px
-        +
-        env(
-          safe-area-inset-bottom
-        )
-      );
-
-  }
-
-
-  .page-shell {
-
-    width:
-      100%;
-
-  }
-
-
-
-  /* BRAND */
-
-  .brand-panel {
-
-    width:
-      100%;
-
-    margin-bottom:
-      10px;
-
-    padding:
-      12px
-      10px
-      16px;
-
-    border-radius:
-      16px;
-
-    box-shadow:
-      0
-      4px
-      12px
-      rgba(
-        50,
-        40,
-        25,
-        .11
-      );
-
-  }
-
-
-  .brand-logo-wrap {
-
-    height:
-      145px;
-
-    margin-bottom:
-      -3px;
-
-  }
-
-
-  .brand-logo {
-
-    width:
-      min(
-        250px,
-        72vw
-      );
-
-  }
-
-
-  .brand-panel h1 {
-
-    font-size:
-      clamp(
-        2.25rem,
-        12vw,
-        3.2rem
-      );
-
-  }
-
-
-  .brand-panel h2 {
-
-    margin:
-      6px
-      0
-      9px;
-
-    font-size:
-      1.15rem;
-
-  }
-
-
-  .brand-description {
-
-    font-size:
-      .87rem;
-
-    line-height:
-      1.45;
-
-  }
-
-
-
-  /* NAV */
-
-  .top-nav {
-
-    display:
-      grid;
-
-    grid-template-columns:
-      repeat(
-        2,
-        minmax(
-          0,
-          1fr
-        )
-      );
-
-    gap:
-      7px;
-
-    margin:
-      10px
-      0
-      12px;
-
-  }
-
-
-  .top-nav button {
-
-    width:
-      100%;
-
-    min-height:
-      48px;
-
-    padding:
-      8px
-      7px;
-
-    border-radius:
-      10px;
-
-    font-size:
-      .78rem;
-
-    line-height:
-      1.2;
-
-  }
-
-
-
-  /* PUZZLE CARD */
-
-  .puzzle-card {
-
-    width:
-      100%;
-
-    padding:
-      12px
-      8px
-      16px;
-
-    border-radius:
-      16px;
-
-  }
-
-
-  .kicker {
-
-    font-size:
-      .62rem;
-
-    letter-spacing:
-      2px;
-
-  }
-
-
-  .puzzle-heading h3 {
-
-    margin:
-      6px
-      0;
-
-    font-size:
-      1.35rem;
-
-  }
-
-
-  .puzzle-heading p {
-
-    max-width:
-      335px;
-
-    margin:
-      auto;
-
-    font-size:
-      .86rem;
-
-    line-height:
-      1.42;
-
-  }
-
-
-
-  /* ==============================================
-     MOBILE GRAPH LAYOUT
-
-     Clues get their own upper region.
-     Geometry gets its own lower region.
-  ============================================== */
-
-  .game-container {
-
-    height:
-      675px;
-
-    margin:
-      10px
-      auto
-      0;
-
-  }
-
-
-  .graph-svg {
-
-    top:
-      250px;
-
-    bottom:
-      auto;
-
-    width:
-      100%;
-
-    height:
-      390px;
-
-  }
-
-
-
-  /* CLUE BRANCH CARDS */
-
-  .clue-column {
-
-    top:
-      34px;
-
-    width:
-      calc(
-        50%
-        -
-        4px
-      );
-
-    min-height:
-      208px;
-
-    padding:
-      8px
-      6px;
-
-    border-radius:
-      11px;
-
-  }
-
-
-  .negative-column {
-
-    left:
-      0;
-
-  }
-
-
-  .positive-column {
-
-    right:
-      0;
-
-  }
-
-
-  .clue-column-title {
-
-    margin-bottom:
-      2px;
-
-    font-size:
-      .78rem;
-
-  }
-
-
-  .clue-column-subtitle {
-
-    margin-bottom:
-      6px;
-
-    font-size:
-      .61rem;
-
-  }
-
-
-  .clue-list {
-
-    gap:
-      5px;
-
-  }
-
-
-  .clue-item {
-
-    min-height:
-      49px;
-
-    grid-template-columns:
-      23px
-      minmax(
-        0,
-        1fr
-      );
-
-    gap:
-      3px;
-
-    padding:
-      4px;
-
-    border-radius:
-      7px;
-
-  }
-
-
-  .clue-number {
-
-    width:
-      21px;
-
-    height:
-      21px;
-
-    font-size:
-      .63rem;
-
-  }
-
-
-  .clue-word-row {
-
-    gap:
-      2px;
-
-  }
-
-
-  .clue-word {
-
-    font-size:
-      .63rem;
-
-    line-height:
-      1.08;
-
-  }
-
-
-  .clue-silhouette {
-
-    width:
-      23px;
-
-    height:
-      23px;
-
-    flex-basis:
-      23px;
-
-  }
-
-
-  .clue-silhouette svg {
-
-    width:
-      21px;
-
-    height:
-      21px;
-
-  }
-
-
-
-  /* GRAPH LABELS */
-
-  .conjugate-label {
-
-    top:
-      259px;
-
-    max-width:
-      100px;
-
-    padding:
-      2px
-      4px;
-
-    font-size:
-      .58rem;
-
-  }
-
-
-  .transverse-label {
-
-    right:
-      2px;
-
-    bottom:
-      55px;
-
-    padding:
-      2px
-      4px;
-
-    font-size:
-      .56rem;
-
-  }
-
-
-  .vertex-label {
-
-    bottom:
-      2px;
-
-    width:
-      100%;
-
-    font-size:
-      .61rem;
-
-  }
-
-
-
-  /* ANSWER */
-
-  .answer-section {
-
-    margin-top:
-      3px;
-
-  }
-
-
-  #letter-count {
-
-    display:
-      block;
-
-    padding:
-      0
-      6px;
-
-    font-size:
-      .72rem;
-
-    line-height:
-      1.4;
-
-  }
-
-
-  .answer-boxes {
-
-    gap:
-      5px;
-
-    margin-top:
-      9px;
-
-  }
-
-
-  .letter-box {
-
-    width:
-      37px;
-
-    height:
-      42px;
-
-    border-radius:
-      7px;
-
-    font-size:
-      1.15rem;
-
-  }
-
-
-
-  /* STATUS */
-
-  #attempts {
-
-    margin-top:
-      12px;
-
-    padding:
-      7px
-      11px;
-
-    font-size:
-      .72rem;
-
-    line-height:
-      1.35;
-
-  }
-
-
-
-  /* BUTTONS */
-
-  .button-row {
-
-    grid-template-columns:
-      1fr;
-
-    gap:
-      8px;
-
-    width:
-      100%;
-
-    margin-top:
-      15px;
-
-  }
-
-
-  .button-row button {
-
-    width:
-      100%;
-
-    min-height:
-      55px;
-
-    padding:
-      12px
-      15px;
-
-    border-radius:
-      14px;
-
-    font-size:
-      .95rem;
-
-  }
-
-
-
-  #hint-text {
-
-    margin-top:
-      12px;
-
-    padding:
-      11px
-      12px;
-
-    font-size:
-      .82rem;
-
-  }
-
-
-  #message {
-
-    min-height:
-      28px;
-
-    margin-top:
-      11px;
-
-    font-size:
-      .85rem;
-
-  }
-
-
-
-  /* RESULTS */
-
-  #result-card {
-
-    margin-top:
-      18px;
-
-    padding:
-      15px
-      12px;
-
-    border-radius:
-      14px;
-
-  }
-
-
-  .result-majorana {
-
-    font-size:
-      1.9rem;
-
-  }
-
-
-  .result-title {
-
-    font-size:
-      1rem;
-
-  }
-
-
-  .definition-box {
-
-    font-size:
-      .9rem;
-
-  }
-
-
-  .charge-definition {
-
-    padding:
-      10px;
-
-  }
-
-
-  .share-buttons {
-
-    display:
-      grid;
-
-    grid-template-columns:
-      1fr
-      1fr;
-
-  }
-
-
-  .share-buttons button {
-
-    width:
-      100%;
-
-  }
-
-
-
-  /* CONCEPT */
-
-  .concept-panel {
-
-    margin-top:
-      12px;
-
-    padding:
-      15px
-      12px;
-
-    border-radius:
-      14px;
-
-    font-size:
-      .9rem;
-
-  }
-
-
-  .concept-panel h3 {
-
-    font-size:
-      1.2rem;
-
-  }
-
-
-  .concept-grid {
-
-    grid-template-columns:
-      1fr;
-
-    gap:
-      7px;
-
-  }
-
-
-  .concept-box {
-
-    padding:
-      10px;
-
-  }
-
-
-
-  /* ARCHIVE */
-
-  #archive-view {
-
-    width:
-      100%;
-
-  }
-
-
-  .archive-card {
-
-    padding:
-      13px;
-
-  }
-
-}
-
-
-
-/* =====================================================
-   SMALL PHONES
-===================================================== */
-
-@media
-(max-width:390px) {
-
-  .brand-logo-wrap {
-
-    height:
-      130px;
-
-  }
-
-
-  .brand-logo {
-
-    width:
-      225px;
-
-  }
-
-
-  .brand-panel h1 {
-
-    font-size:
-      2.25rem;
-
-  }
-
-
-  .top-nav button {
-
-    font-size:
-      .72rem;
-
-  }
-
-
-  .game-container {
-
-    height:
-      665px;
-
-  }
-
-
-  .clue-column {
-
-    padding:
-      7px
-      4px;
-
-  }
-
-
-  .clue-word {
-
-    font-size:
-      .58rem;
-
-  }
-
-
-  .clue-silhouette {
-
-    width:
-      20px;
-
-    height:
-      20px;
-
-    flex-basis:
-      20px;
-
-  }
-
-
-  .clue-silhouette svg {
-
-    width:
-      19px;
-
-    height:
-      19px;
-
-  }
-
-
-  .letter-box {
-
-    width:
-      34px;
-
-    height:
-      39px;
-
-    font-size:
-      1.05rem;
-
-  }
-
-}
-
-
-
-/* =====================================================
-   VERY SMALL PHONES
-===================================================== */
-
-@media
-(max-width:350px) {
-
-  .top-nav {
-
-    grid-template-columns:
-      1fr;
-
-  }
-
-
-  .game-container {
-
-    height:
-      685px;
-
-  }
-
-
-  .clue-word {
-
-    font-size:
-      .54rem;
-
-  }
-
-
-  .letter-box {
-
-    width:
-      31px;
-
-    height:
-      38px;
-
-  }
-
-}
-
-</style>
-
-</head>
-
-
-
-<body>
-
-
-<div class="page-shell">
-
-
-
-<!-- =====================================================
-     BRAND
-===================================================== -->
-
-<section class="brand-panel">
-
-
-<div class="brand-logo-wrap">
-
-
-<svg
-  class="brand-logo"
-  viewBox="0 0 440 280"
-  aria-label="Contronym logo"
->
-
-
-<ellipse
-  cx="220"
-  cy="140"
-  rx="165"
-  ry="57"
-  transform="rotate(-17 220 140)"
-  fill="none"
-  stroke="#205995"
-  stroke-width="7"
-  stroke-dasharray="18 14"
-  stroke-linecap="round"
-/>
-
-
-<path
-  d="
-    M 283 64
-    C 256 39,207 34,168 54
-    C 125 76,104 116,106 158
-    C 108 201,133 233,172 242
-    C 212 252,251 233,282 203
-  "
-  fill="none"
-  stroke="#cf2637"
-  stroke-width="35"
-  stroke-linecap="round"
-/>
-
-
-<path
-  d="
-    M 385 140
-    A 165 57 0 0 1 55 140
-  "
-  transform="rotate(-17 220 140)"
-  fill="none"
-  stroke="#205995"
-  stroke-width="7"
-  stroke-dasharray="18 14"
-  stroke-linecap="round"
-/>
-
-
-<circle
-  cx="62"
-  cy="188"
-  r="23"
-  fill="#fffdf7"
-/>
-
-
-<circle
-  cx="62"
-  cy="188"
-  r="12"
-  fill="#205995"
-/>
-
-
-<ellipse
-  cx="378"
-  cy="92"
-  rx="25"
-  ry="29"
-  fill="#fffdf7"
-/>
-
-
-<text
-  x="378"
-  y="94"
-  fill="#205995"
-  font-family="Georgia,'Times New Roman',serif"
-  font-size="51"
-  font-style="italic"
-  font-weight="700"
-  text-anchor="middle"
-  dominant-baseline="middle"
->
-ν
-</text>
-
-
-</svg>
-
-
-</div>
-
-
-
-<h1>
-Contronym
-</h1>
-
-
-<h2>
-The Majorana of Meaning
-</h2>
-
-
-<p class="brand-description">
-
-One word. Two meanings.
-Opposites in perfect balance.
-
-<br>
-
-<strong>
-Context determines charge.
-</strong>
-
-</p>
-
-
-</section>
-
-
-
-<!-- =====================================================
-     NAVIGATION
-===================================================== -->
-
-<div class="top-nav">
-
-
-<button
-  id="current-tab"
-  class="active"
-  type="button"
->
-Current Puzzle
-</button>
-
-
-<button
-  id="archive-tab"
-  type="button"
->
-Archive
-</button>
-
-
-<button
-  type="button"
-  onclick="window.location.href='philosophy.html'"
->
-Philosophy & Learning Model
-</button>
-
-
-<button
-  type="button"
-  onclick="window.location.href='index.html'"
->
-Learning Lab
-</button>
-
-
-</div>
-
-
-
-<!-- =====================================================
-     PLAY VIEW
-===================================================== -->
-
-<div id="play-view">
-
-
-<section class="puzzle-card">
-
-
-<div class="puzzle-heading">
-
-
-<div class="kicker">
-CAN ONE WORD MEAN BOTH?
-</div>
-
-
-<h3 id="puzzle-title">
-</h3>
-
-
-<p>
-
-One clue reveals from each side of the parabola.
-
-Find the single word capable of carrying both meanings.
-
-</p>
-
-
-</div>
-
-
-
-<!-- =====================================================
-     MEANING GRAPH
-===================================================== -->
-
-<div class="game-container">
-
-
-<svg
-  class="graph-svg"
-  viewBox="0 0 820 500"
-  preserveAspectRatio="xMidYMid meet"
->
-
-
-<!-- TRANSVERSE AXIS -->
-
-<line
-  x1="150"
-  y1="385"
-  x2="670"
-  y2="385"
-  stroke="#205995"
-  stroke-width="4"
-/>
-
-
-<polygon
-  points="678,385 660,375 660,395"
-  fill="#205995"
-/>
-
-
-<polygon
-  points="142,385 160,375 160,395"
-  fill="#205995"
-/>
-
-
-
-<!-- CONJUGATE AXIS -->
-
-<line
-  x1="410"
-  y1="30"
-  x2="410"
-  y2="430"
-  stroke="#cf2637"
-  stroke-width="4"
-/>
-
-
-<polygon
-  points="410,20 400,42 420,42"
-  fill="#cf2637"
-/>
-
-
-
-<!-- NEGATIVE BRANCH -->
-
-<path
-  d="
-    M180 65
-    C205 176,267 306,410 385
-  "
-  fill="none"
-  stroke="#cf2637"
-  stroke-width="5"
-  stroke-dasharray="15 13"
-  stroke-linecap="round"
-/>
-
-
-
-<!-- POSITIVE BRANCH -->
-
-<path
-  d="
-    M410 385
-    C553 306,615 176,640 65
-  "
-  fill="none"
-  stroke="#205995"
-  stroke-width="5"
-  stroke-dasharray="15 13"
-  stroke-linecap="round"
-/>
-
-
-
-<!-- VERTEX -->
-
-<circle
-  cx="410"
-  cy="385"
-  r="7"
-  fill="#d6aa44"
-/>
-
-
-<path
-  d="
-    M410 366
-    L415 379
-    L429 385
-    L415 391
-    L410 404
-    L405 391
-    L391 385
-    L405 379
-    Z
-  "
-  fill="#d6aa44"
-/>
-
-
-
-<!-- MAJORANA TRAIL -->
-
-<path
-  d="
-    M205 396
-    C246 368,286 369,327 390
-    C350 402,372 415,392 421
-    C401 424,406 426,410 426
-    C416 426,422 424,430 420
-    C452 412,472 400,496 390
-    C539 370,581 371,625 396
-  "
-  fill="none"
-  stroke="#222"
-  stroke-width="1.6"
-  stroke-dasharray="7 7"
-  stroke-linecap="round"
-/>
-
-
-<text
-  x="633"
-  y="402"
-  fill="#222"
-  font-family="Georgia,serif"
-  font-size="28"
-  font-style="italic"
->
-ν
-</text>
-
-
-</svg>
-
-
-
-<div class="axis-label conjugate-label">
-
-CONJUGATE AXIS
-
-<br>
-
-<small>
-meaning inversion
-</small>
-
-</div>
-
-
-
-<div class="axis-label transverse-label">
-
-TRANSVERSE AXIS
-
-<br>
-
-<small>
-semantic exploration
-</small>
-
-</div>
-
-
-
-<!-- NEGATIVE CLUES -->
-
-<div class="clue-column negative-column">
-
-
-<div class="clue-column-title">
-⊖ OPPOSITE
-</div>
-
-
-<div class="clue-column-subtitle">
-opposite meaning
-</div>
-
-
-<div
-  id="negativeClues"
-  class="clue-list"
->
-</div>
-
-
-</div>
-
-
-
-<!-- POSITIVE CLUES -->
-
-<div class="clue-column positive-column">
-
-
-<div class="clue-column-title">
-⊕ SIMILAR
-</div>
-
-
-<div class="clue-column-subtitle">
-similar meaning
-</div>
-
-
-<div
-  id="positiveClues"
-  class="clue-list"
->
-</div>
-
-
-</div>
-
-
-
-<div class="vertex-label">
-
-<strong>
-VERTEX (0)
-</strong>
-
-<br>
-
-NEUTRAL ORIGIN • WHERE OPPOSITES MEET
-
-</div>
-
-
-</div>
-
-
-
-<!-- =====================================================
-     ANSWER
-===================================================== -->
-
-<div class="answer-section">
-
-
-<strong id="letter-count">
-</strong>
-
-
-<div
-  id="answer-boxes"
-  class="answer-boxes"
->
-</div>
-
-
-</div>
-
-
-
-<p id="attempts">
-</p>
-
-
-
-<div class="button-row">
-
-
-<button
-  id="submit-answer"
-  type="button"
->
-Submit Answer
-</button>
-
-
-<button
-  id="show-hint"
-  type="button"
->
-Reveal Hint Pair
-</button>
-
-
-<button
-  id="reset-puzzle"
-  type="button"
->
-Reset Puzzle
-</button>
-
-
-</div>
-
-
-
-<p id="hint-text">
-</p>
-
-
-<p id="message">
-</p>
-
-
-
-<!-- =====================================================
-     RESULT
-===================================================== -->
-
-<div id="result-card">
-
-
-<div class="result-majorana">
-
-<span
-  style="
-    color:#cf2637;
-  "
->
-C
-</span>
-
-<span
-  style="
-    color:#205995;
-    font-style:italic;
-  "
->
-ν
-</span>
-
-</div>
-
-
-<div
-  id="result-title"
-  class="result-title"
->
-</div>
-
-
-<div
-  id="definition-box"
-  class="definition-box"
->
-</div>
-
-
-<div
-  id="share-preview"
-  class="share-preview"
->
-</div>
-
-
-<div class="share-buttons">
-
-
-<button
-  id="native-share"
-  type="button"
->
-Share
-</button>
-
-
-<button
-  id="copy-share"
-  type="button"
->
-Copy Result
-</button>
-
-
-</div>
-
-
-</div>
-
-
-</section>
-
-
-
-<!-- =====================================================
-     CONCEPT
-===================================================== -->
-
-<section class="concept-panel">
-
-
-<h3>
-The Majorana of Meaning
-</h3>
-
-
-<p>
-
-A contronym is one lexical form capable of expressing opposing meanings.
-
-Context selects which semantic charge becomes visible while the underlying
-word remains invariant.
-
-</p>
-
-
-
-<div class="concept-grid">
-
-
-<div class="concept-box">
-
-<strong
-  style="
-    color:#cf2637;
-  "
->
-− Conjugate
-</strong>
-
-<br>
-
-Opposed semantic expression.
-
-</div>
-
-
-
-<div class="concept-box">
-
-<strong
-  style="
-    color:#d6aa44;
-  "
->
-✦ Vertex
-</strong>
-
-<br>
-
-The neutral lexical identity.
-
-</div>
-
-
-
-<div class="concept-box">
-
-<strong
-  style="
-    color:#205995;
-  "
->
-+ Transverse
-</strong>
-
-<br>
-
-Contextual semantic expression.
-
-</div>
-
-
-</div>
-
-
-</section>
-
-
-</div>
-
-
-
-<!-- =====================================================
-     ARCHIVE
-===================================================== -->
-
-<div id="archive-view">
-
-
-<div class="archive-heading">
-
-<h3>
-Contronym Archive
-</h3>
-
-<p>
-Return to earlier Majoranas of Meaning.
-</p>
-
-</div>
-
-
-<div id="archive-list">
-</div>
-
-
-</div>
-
-
-
-<div
-  id="footer-note"
-  class="footer-note"
->
-
-Context determines charge.
-
-• PAT Learning Lab
-
-</div>
-
-
-</div>
-
-
-
-<script>
-
-
-/* =====================================================
-   ANALYTICS
-===================================================== */
-
-function trackContronymEvent(
-  eventName,
-  puzzle,
-  extraData
-) {
-
-  if (
-    typeof gtag !==
-    "function"
-  ) {
-
-    return;
-
-  }
-
-
-  gtag(
-    "event",
-    eventName,
-    {
-
-      game_name:
-        "contronym",
-
-      mode:
-        "majorana_of_meaning",
-
-      puzzle_number:
-        puzzle.number,
-
-      ...(extraData || {})
-
-    }
-  );
-
-}
-
-
-
-/* =====================================================
-   ICONS
-===================================================== */
-
-const icons = {
-
-
-cut:
-`
-<svg viewBox="0 0 64 64">
-
-<g
-  fill="none"
-  stroke="#111"
-  stroke-width="5"
-  stroke-linecap="round"
->
-
-<circle
-  cx="14"
-  cy="18"
-  r="8"
-/>
-
-<circle
-  cx="14"
-  cy="46"
-  r="8"
-/>
-
-<path
-  d="
-    M20 23 L54 8
-    M20 41 L54 56
-    M21 31 L36 31
-  "
-/>
-
-</g>
-
-</svg>
-`,
-
-
-trim:
-`
-<svg viewBox="0 0 64 64">
-
-<g
-  fill="none"
-  stroke="#111"
-  stroke-width="6"
-  stroke-linecap="round"
->
-
-<circle
-  cx="15"
-  cy="18"
-  r="7"
-/>
-
-<circle
-  cx="15"
-  cy="45"
-  r="7"
-/>
-
-<path
-  d="
-    M21 23 L52 10
-    M21 40 L52 53
-  "
-/>
-
-</g>
-
-</svg>
-`,
-
-
-remove:
-`
-<svg viewBox="0 0 64 64">
-
-<rect
-  x="6"
-  y="20"
-  width="30"
-  height="25"
-  rx="4"
-  fill="#111"
-/>
-
-<path
-  d="
-    M34 14
-    L59 32
-    L34 50
-    Z
-  "
-  fill="#111"
-/>
-
-</svg>
-`,
-
-
-attach:
-`
-<svg viewBox="0 0 64 64">
-
-<path
-  d="
-    M23 39
-    L43 19
-    C50 12,59 22,52 29
-    L29 52
-    C18 63,3 49,14 38
-    L38 14
-  "
-  fill="none"
-  stroke="#111"
-  stroke-width="6"
-  stroke-linecap="round"
-  stroke-linejoin="round"
-/>
-
-</svg>
-`,
-
-
-fasten:
-`
-<svg viewBox="0 0 64 64">
-
-<rect
-  x="7"
-  y="19"
-  width="50"
-  height="27"
-  rx="6"
-  fill="none"
-  stroke="#111"
-  stroke-width="6"
-/>
-
-<rect
-  x="23"
-  y="25"
-  width="18"
-  height="15"
-  rx="3"
-  fill="#111"
-/>
-
-</svg>
-`,
-
-
-secure:
-`
-<svg viewBox="0 0 64 64">
-
-<rect
-  x="12"
-  y="28"
-  width="40"
-  height="29"
-  rx="5"
-  fill="#111"
-/>
-
-<path
-  d="
-    M21 29
-    V21
-    C21 8,43 8,43 21
-    V29
-  "
-  fill="none"
-  stroke="#111"
-  stroke-width="7"
-/>
-
-</svg>
-`,
-
-
-restrict:
-`
-<svg viewBox="0 0 64 64">
-
-<rect
-  x="6"
-  y="18"
-  width="52"
-  height="20"
-  rx="3"
-  fill="#111"
-/>
-
-<rect
-  x="13"
-  y="38"
-  width="7"
-  height="19"
-  fill="#111"
-/>
-
-<rect
-  x="44"
-  y="38"
-  width="7"
-  height="19"
-  fill="#111"
-/>
-
-</svg>
-`,
-
-
-penalize:
-`
-<svg viewBox="0 0 64 64">
-
-<rect
-  x="18"
-  y="8"
-  width="31"
-  height="13"
-  rx="3"
-  fill="#111"
-  transform="
-    rotate(
-      -34
-      32
-      14
-    )
-  "
-/>
-
-<rect
-  x="28"
-  y="20"
-  width="8"
-  height="35"
-  fill="#111"
-  transform="
-    rotate(
-      -34
-      32
-      37
-    )
-  "
-/>
-
-<rect
-  x="8"
-  y="51"
-  width="39"
-  height="7"
-  rx="3"
-  fill="#111"
-/>
-
-</svg>
-`,
-
-
-punish:
-`
-<svg viewBox="0 0 64 64">
-
-<rect
-  x="13"
-  y="9"
-  width="33"
-  height="15"
-  rx="3"
-  fill="#111"
-  transform="
-    rotate(
-      -25
-      29
-      16
-    )
-  "
-/>
-
-<rect
-  x="31"
-  y="19"
-  width="8"
-  height="39"
-  fill="#111"
-  transform="
-    rotate(
-      -25
-      35
-      38
-    )
-  "
-/>
-
-</svg>
-`,
-
-
-permit:
-`
-<svg viewBox="0 0 64 64">
-
-<rect
-  x="8"
-  y="9"
-  width="7"
-  height="47"
-  fill="#111"
-/>
-
-<rect
-  x="49"
-  y="9"
-  width="7"
-  height="47"
-  fill="#111"
-/>
-
-<path
-  d="
-    M16 48
-    L40 35
-    L40 14
-    L16 27
-    Z
-  "
-  fill="#111"
-/>
-
-</svg>
-`,
-
-
-authorize:
-`
-<svg viewBox="0 0 64 64">
-
-<path
-  d="
-    M23 7
-    H41
-    C44 14,43 22,39 28
-    H25
-    C21 22,20 14,23 7
-    Z
-  "
-  fill="#111"
-/>
-
-<rect
-  x="15"
-  y="27"
-  width="34"
-  height="13"
-  rx="4"
-  fill="#111"
-/>
-
-<rect
-  x="9"
-  y="44"
-  width="46"
-  height="10"
-  rx="3"
-  fill="#111"
-/>
-
-</svg>
-`,
-
-
-approve:
-`
-<svg viewBox="0 0 64 64">
-
-<circle
-  cx="32"
-  cy="32"
-  r="26"
-  fill="#111"
-/>
-
-<path
-  d="
-    M17 32
-    L27 42
-    L48 19
-  "
-  fill="none"
-  stroke="#fff"
-  stroke-width="7"
-  stroke-linecap="round"
-  stroke-linejoin="round"
-/>
-
-</svg>
-`
-
-};
-
-
-
-/* =====================================================
-   PUZZLES
-===================================================== */
-
-const puzzles = [
-
-
-{
-
-  number:
-    "001",
-
-  date:
-    "June 2026",
-
-  word:
-    "SANCTION",
-
-  hintPairs: [
-
-    {
-
-      negative:
-        {
-
-          word:
-            "restrict",
-
-          icon:
-            "restrict"
-
-        },
-
-      positive:
-        {
-
-          word:
-            "permit",
-
-          icon:
-            "permit"
-
-        }
-
-    },
-
-
-    {
-
-      negative:
-        {
-
-          word:
-            "penalize",
-
-          icon:
-            "penalize"
-
-        },
-
-      positive:
-        {
-
-          word:
-            "authorize",
-
-          icon:
-            "authorize"
-
-        }
-
-    },
-
-
-    {
-
-      negative:
-        {
-
-          word:
-            "punish",
-
-          icon:
-            "punish"
-
-        },
-
-      positive:
-        {
-
-          word:
-            "approve",
-
-          icon:
-            "approve"
-
-        }
-
-    }
-
-  ],
-
-  message:
-    "A single word can officially approve something or impose a penalty depending on context.",
-
-  positiveDefinition:
-    "to officially approve, authorize or permit something.",
-
-  negativeDefinition:
-    "to penalize, punish or impose restrictions.",
-
-  positiveExample:
-    "The committee sanctioned the proposal.",
-
-  negativeExample:
-    "The league sanctioned the player.",
-
-  footer:
-    "Context determines charge. • PAT Learning Lab"
-
-},
-
-
-
-{
-
-  number:
-    "002",
-
-  date:
-    "August 2026",
-
-  word:
-    "CLIP",
-
-  hintPairs: [
-
-    {
-
-      negative:
-        {
-
-          word:
-            "cut",
-
-          icon:
-            "cut"
-
-        },
-
-      positive:
-        {
-
-          word:
-            "attach",
-
-          icon:
-            "attach"
-
-        }
-
-    },
-
-
-    {
-
-      negative:
-        {
-
-          word:
-            "trim",
-
-          icon:
-            "trim"
-
-        },
-
-      positive:
-        {
-
-          word:
-            "fasten",
-
-          icon:
-            "fasten"
-
-        }
-
-    },
-
-
-    {
-
-      negative:
-        {
-
-          word:
-            "remove",
-
-          icon:
-            "remove"
-
-        },
-
-      positive:
-        {
-
-          word:
-            "secure",
-
-          icon:
-            "secure"
-
-        }
-
-    }
-
-  ],
-
-  message:
-    "One word can remove material or attach something firmly.",
-
-  positiveDefinition:
-    "to attach, fasten or secure one thing to another.",
-
-  negativeDefinition:
-    "to cut, trim or remove part of something.",
-
-  positiveExample:
-    "She clipped the badge to her jacket.",
-
-  negativeExample:
-    "He clipped the hedge along the path.",
-
-  footer:
-    "Context determines charge. • PAT Learning Lab"
-
-}
-
-];
-
-
-
-/* =====================================================
-   STATE
-===================================================== */
-
-const currentPuzzle =
-  puzzles[
-    puzzles.length - 1
-  ];
-
-
-let puzzle =
-  currentPuzzle;
-
-
-let attempts =
-  0;
-
-
-let hintsUsed =
-  0;
-
-
-let visibleHintPairs =
-  1;
-
-
-let solved =
-  false;
-
-
-let archived =
-  false;
-
-
-
-/* =====================================================
-   ELEMENTS
-===================================================== */
-
-const answerBoxes =
-  document.getElementById(
-    "answer-boxes"
-  );
-
-
-const negativeClues =
-  document.getElementById(
-    "negativeClues"
-  );
-
-
-const positiveClues =
-  document.getElementById(
-    "positiveClues"
-  );
-
-
-const attemptsText =
-  document.getElementById(
-    "attempts"
-  );
-
-
-const message =
-  document.getElementById(
-    "message"
-  );
-
-
-const hintText =
-  document.getElementById(
-    "hint-text"
-  );
-
-
-const submitButton =
-  document.getElementById(
-    "submit-answer"
-  );
-
-
-const hintButton =
-  document.getElementById(
-    "show-hint"
-  );
-
-
-const resetButton =
-  document.getElementById(
-    "reset-puzzle"
-  );
-
-
-const resultCard =
-  document.getElementById(
-    "result-card"
-  );
-
-
-const resultTitle =
-  document.getElementById(
-    "result-title"
-  );
-
-
-const definitionBox =
-  document.getElementById(
-    "definition-box"
-  );
-
-
-const sharePreview =
-  document.getElementById(
-    "share-preview"
-  );
-
-
-const currentTab =
-  document.getElementById(
-    "current-tab"
-  );
-
-
-const archiveTab =
-  document.getElementById(
-    "archive-tab"
-  );
-
-
-const playView =
-  document.getElementById(
-    "play-view"
-  );
-
-
-const archiveView =
-  document.getElementById(
-    "archive-view"
-  );
-
-
-const archiveList =
-  document.getElementById(
-    "archive-list"
-  );
-
-
-
-/* =====================================================
-   CLUES
-===================================================== */
-
-function clueRow(
-  clue,
-  index,
-  visible
-) {
-
-  const row =
-    document.createElement(
-      "div"
-    );
-
-
-  row.className =
-    "clue-item"
-    +
-    (
-      visible
-      ?
-        ""
-      :
-        " hidden-clue"
-    );
-
-
-  row.innerHTML = `
-
-    <div class="clue-number">
-      ${index + 1}
-    </div>
-
-    <div class="clue-word-row">
-
-      <span class="clue-word">
-        ${clue.word}
-      </span>
-
-      <span class="clue-silhouette">
-        ${icons[clue.icon] || ""}
-      </span>
-
-    </div>
-
-  `;
-
-
-  return row;
-
-}
-
-
-
-function renderHints() {
-
-  negativeClues.innerHTML =
-    "";
-
-
-  positiveClues.innerHTML =
-    "";
-
-
-  puzzle
-    .hintPairs
-    .forEach(
-      function (
-        pair,
-        index
-      ) {
-
-        const visible =
-          index <
-          visibleHintPairs;
-
-
-        negativeClues.appendChild(
-          clueRow(
-            pair.negative,
-            index,
-            visible
-          )
-        );
-
-
-        positiveClues.appendChild(
-          clueRow(
-            pair.positive,
-            index,
-            visible
-          )
-        );
-
-      }
-    );
-
-
-  hintButton.textContent =
-    visibleHintPairs >=
-    puzzle.hintPairs.length
-    ?
-      "Reveal Field Note"
-    :
-      "Reveal Hint Pair";
-
-}
-
-
-
-/* =====================================================
-   ANSWER BOXES
-===================================================== */
-
-function makeBoxes() {
-
-  answerBoxes.innerHTML =
-    "";
-
-
-  const word =
-    puzzle.word.toUpperCase();
-
-
-  document
-    .getElementById(
-      "puzzle-title"
-    )
-    .textContent =
-      "Contronym #"
-      +
-      puzzle.number;
-
-
-  document
-    .getElementById(
-      "letter-count"
-    )
-    .textContent =
-      word.length
-      +
-      " LETTER"
-      +
-      (
-        word.length ===
-        1
-        ?
-          ""
-        :
-          "S"
-      )
-      +
-      " • ONE CONTRONYM";
-
-
-  [...word].forEach(
-    function (
-      letter,
-      index
-    ) {
-
-      const input =
-        document.createElement(
-          "input"
-        );
-
-
-      input.className =
-        "letter-box";
-
-
-      input.maxLength =
-        1;
-
-
-      input.dataset.index =
-        index;
-
-
-      input.autocomplete =
-        "off";
-
-
-      input.autocapitalize =
-        "characters";
-
-
-      input.inputMode =
-        "text";
-
-
-      input.setAttribute(
-        "aria-label",
-        "Letter "
-        +
-        (
-          index + 1
-        )
-      );
-
-
-      answerBoxes.appendChild(
-        input
-      );
-
-    }
-  );
-
-}
-
-
-
-/* =====================================================
-   STATUS
-===================================================== */
-
-function updateStatus() {
-
-  attemptsText.textContent =
-    "Contronym #"
-    +
-    puzzle.number
-    +
-    " • Attempts "
-    +
-    attempts
-    +
-    " / 3"
-    +
-    " • Hint pairs used "
-    +
-    hintsUsed;
-
-}
-
-
-
-/* =====================================================
-   GUESS
-===================================================== */
-
-function currentGuess() {
-
-  return Array
-    .from(
-      answerBoxes.children
-    )
-    .map(
-      function (
-        input
-      ) {
-
-        return input.value
-          .toUpperCase();
-
-      }
-    )
-    .join(
-      ""
-    );
-
-}
-
-
-
-/* =====================================================
-   RESULT
-===================================================== */
-
-function resultPhrase() {
-
-  if (
-    !solved
-  ) {
-
-    return "No Majorana found";
-
-  }
-
-
-  if (
-    attempts ===
-    1
-  ) {
-
-    return "Majorana in One";
-
-  }
-
-
-  if (
-    attempts ===
-    2
-  ) {
-
-    return "Majorana in Two";
-
-  }
-
-
-  return "Majorana in Three";
-
-}
-
-
-
-function shareText() {
-
-  return (
-    "Cν CONTRONYM #"
-    +
-    puzzle.number
-    +
-    "\n"
-    +
-    resultPhrase()
-    +
-    "\nAttempts: "
-    +
-    attempts
-    +
-    "/3"
-    +
-    "\nHint pairs used: "
-    +
-    hintsUsed
-    +
-    "\n\nContext determines charge."
-  );
-
-}
-
-
-
-function showResult() {
-
-  resultCard.style.display =
-    "block";
-
-
-  resultTitle.textContent =
-    resultPhrase()
-    +
-    " • "
-    +
-    puzzle.word;
-
-
-  definitionBox.innerHTML = `
-
-    <strong>
-      ${puzzle.word}
-    </strong>
-
-    <br>
-
-    <em>
-      ${puzzle.date}
-    </em>
-
-
-    <div class="charge-definition negative">
-
-      <strong>
-        − Opposite Meaning
-      </strong>
-
-      <br>
-
-      ${puzzle.negativeDefinition}
-
-      <br><br>
-
-      <em>
-        ${puzzle.negativeExample}
-      </em>
-
-    </div>
-
-
-    <div class="charge-definition positive">
-
-      <strong>
-        + Similar Meaning
-      </strong>
-
-      <br>
-
-      ${puzzle.positiveDefinition}
-
-      <br><br>
-
-      <em>
-        ${puzzle.positiveExample}
-      </em>
-
-    </div>
-
-  `;
-
-
-  sharePreview.textContent =
-    shareText();
-
-
-  setTimeout(
-    function () {
-
-      resultCard.scrollIntoView(
-        {
-
-          behavior:
-            "smooth",
-
-          block:
-            "nearest"
-
-        }
-      );
-
-    },
-
-    100
-  );
-
-}
-
-
-
-/* =====================================================
-   SUBMIT
-===================================================== */
-
-function submitGuess() {
-
-  if (
-    solved
-    ||
-    attempts >=
-    3
-  ) {
-
-    return;
-
-  }
-
-
-  const inputs =
-    Array.from(
-      answerBoxes.children
-    );
-
-
-  if (
-    inputs.some(
-      function (
-        input
-      ) {
-
-        return !input.value;
-
-      }
-    )
-  ) {
-
-    message.textContent =
-      "Fill every letter box before submitting.";
-
-
-    return;
-
-  }
-
-
-  attempts++;
-
-
-  updateStatus();
-
-
-  const guess =
-    currentGuess();
-
-
-  if (
-    guess ===
-    puzzle.word.toUpperCase()
-  ) {
-
-    solved =
-      true;
-
-
-    message.textContent =
-      resultPhrase()
-      +
-      " — you found the Majorana of Meaning.";
-
-
-    inputs.forEach(
-      function (
-        input
-      ) {
-
-        input.disabled =
-          true;
-
-      }
-    );
-
-
-    submitButton.disabled =
-      true;
-
-
-    hintButton.disabled =
-      true;
-
-
-    showResult();
-
-
-    trackContronymEvent(
-      "puzzle_solved",
-      puzzle,
-      {
-
-        attempts:
-          attempts,
-
-        hints_used:
-          hintsUsed,
-
-        archived:
-          archived
-
-      }
-    );
-
-
-    return;
-
-  }
-
-
-  if (
-    attempts >=
-    3
-  ) {
-
-    message.textContent =
-      "The Majorana was "
-      +
-      puzzle.word
-      +
-      ".";
-
-
-    inputs.forEach(
-      function (
-        input
-      ) {
-
-        input.disabled =
-          true;
-
-      }
-    );
-
-
-    submitButton.disabled =
-      true;
-
-
-    hintButton.disabled =
-      true;
-
-
-    showResult();
-
-
-    trackContronymEvent(
-      "puzzle_revealed",
-      puzzle,
-      {
-
-        attempts:
-          attempts,
-
-        hints_used:
-          hintsUsed
-
-      }
-    );
-
-
-    return;
-
-  }
-
-
-  const remaining =
-    3 -
-    attempts;
-
-
-  message.textContent =
-    "Not quite — charge mismatch. "
-    +
-    remaining
-    +
-    " attempt"
-    +
-    (
-      remaining ===
-      1
-      ?
-        ""
-      :
-        "s"
-    )
-    +
-    " remain.";
-
-}
-
-
-
-/* =====================================================
-   RESET
-===================================================== */
-
-function resetPuzzle() {
-
-  attempts =
-    0;
-
-
-  hintsUsed =
-    0;
-
-
-  visibleHintPairs =
-    1;
-
-
-  solved =
-    false;
-
-
-  makeBoxes();
-
-
-  renderHints();
-
-
-  updateStatus();
-
-
-  message.textContent =
-    "";
-
-
-  hintText.textContent =
-    puzzle.message;
-
-
-  hintText.style.display =
-    "none";
-
-
-  resultCard.style.display =
-    "none";
-
-
-  submitButton.disabled =
-    false;
-
-
-  hintButton.disabled =
-    false;
-
-}
-
-
-
-/* =====================================================
-   INPUT
-===================================================== */
-
-answerBoxes.addEventListener(
-  "input",
-  function (
-    event
-  ) {
-
-    const input =
-      event.target;
-
-
-    if (
-      !input.classList.contains(
-        "letter-box"
-      )
-    ) {
-
-      return;
-
-    }
-
-
-    const index =
-      Number(
-        input.dataset.index
-      );
-
-
-    input.value =
-      input.value
-        .toUpperCase()
-        .replace(
-          /[^A-Z]/g,
-          ""
-        )
-        .slice(
-          0,
-          1
-        );
-
-
-    if (
-      input.value
-    ) {
-
-      const next =
-        answerBoxes.children[
-          index + 1
-        ];
-
-
-      if (
-        next
-      ) {
-
-        next.focus();
-
-      }
-
-    }
-
-  }
-);
-
-
-
-answerBoxes.addEventListener(
-  "keydown",
-  function (
-    event
-  ) {
-
-    const input =
-      event.target;
-
-
-    if (
-      !input.classList.contains(
-        "letter-box"
-      )
-    ) {
-
-      return;
-
-    }
-
-
-    const index =
-      Number(
-        input.dataset.index
-      );
-
-
-    if (
-      event.key ===
-      "Backspace"
-      &&
-      !input.value
-    ) {
-
-      const previous =
-        answerBoxes.children[
-          index - 1
-        ];
-
-
-      if (
-        previous
-      ) {
-
-        previous.focus();
-
-      }
-
-    }
-
-
-    if (
-      event.key ===
-      "Enter"
-    ) {
-
-      submitGuess();
-
-    }
-
-  }
-);
-
-
-
-answerBoxes.addEventListener(
-  "paste",
-  function (
-    event
-  ) {
-
-    const target =
-      event.target;
-
-
-    if (
-      !target.classList.contains(
-        "letter-box"
-      )
-    ) {
-
-      return;
-
-    }
-
-
-    event.preventDefault();
-
-
-    const pasted =
-      (
-        event.clipboardData
-        ||
-        window.clipboardData
-      )
-      .getData(
-        "text"
-      )
-      .toUpperCase()
-      .replace(
-        /[^A-Z]/g,
-        ""
-      );
-
-
-    let index =
-      Number(
-        target.dataset.index
-      );
-
-
-    [...pasted].forEach(
-      function (
-        letter
-      ) {
-
-        const box =
-          answerBoxes.children[
-            index
-          ];
-
-
-        if (
-          box
-        ) {
-
-          box.value =
-            letter;
-
-
-          index++;
-
-        }
-
-      }
-    );
-
-
-    const next =
-      answerBoxes.children[
-        index
-      ];
-
-
-    if (
-      next
-    ) {
-
-      next.focus();
-
-    }
-
-  }
-);
-
-
-
-/* =====================================================
-   CONTROLS
-===================================================== */
-
-submitButton.addEventListener(
-  "click",
-  submitGuess
-);
-
-
-
-hintButton.addEventListener(
-  "click",
-  function () {
-
-    if (
-      visibleHintPairs <
-      puzzle.hintPairs.length
-    ) {
-
-      visibleHintPairs++;
-
-
-      hintsUsed++;
-
-
-      renderHints();
-
-
-      updateStatus();
-
-
-      trackContronymEvent(
-        "hint_pair_revealed",
-        puzzle,
-        {
-
-          pair:
-            visibleHintPairs
-
-        }
-      );
-
-
-      return;
-
-    }
-
-
-    hintText.style.display =
-      "block";
-
-
-    hintText.scrollIntoView(
-      {
-
-        behavior:
-          "smooth",
-
-        block:
-          "nearest"
-
-      }
-    );
-
-  }
-);
-
-
-
-resetButton.addEventListener(
-  "click",
-  function () {
-
-    resetPuzzle();
-
-
-    trackContronymEvent(
-      "puzzle_restarted",
-      puzzle,
-      {
-
-        archived:
-          archived
-
-      }
-    );
-
-  }
-);
-
-
-
-/* =====================================================
-   ARCHIVE
-===================================================== */
-
-function buildArchive() {
-
-  archiveList.innerHTML =
-    "";
-
-
-  puzzles
-    .slice(
-      0,
-      -1
-    )
-    .reverse()
-    .forEach(
-      function (
-        oldPuzzle
-      ) {
-
-        const card =
-          document.createElement(
-            "div"
-          );
-
-
-        card.className =
-          "archive-card";
-
-
-        card.innerHTML = `
-
-          <div class="archive-number">
-            Contronym #${oldPuzzle.number}
-          </div>
-
-          <div class="archive-date">
-            ${oldPuzzle.date}
-          </div>
-
-          <div class="archive-description">
-            Revisit this Majorana of Meaning.
-          </div>
-
-          <button
-            class="archive-play"
-            type="button"
-          >
-            Play Puzzle #${oldPuzzle.number}
-          </button>
-
-        `;
-
-
-        card
-          .querySelector(
-            ".archive-play"
-          )
-          .addEventListener(
-            "click",
-            function () {
-
-              puzzle =
-                oldPuzzle;
-
-
-              archived =
-                true;
-
-
-              resetPuzzle();
-
-
-              archiveView.style.display =
-                "none";
-
-
-              playView.style.display =
-                "flex";
-
-
-              currentTab.classList.remove(
-                "active"
-              );
-
-
-              archiveTab.classList.remove(
-                "active"
-              );
-
-
-              window.scrollTo(
-                {
-
-                  top:
-                    0,
-
-                  behavior:
-                    "smooth"
-
-                }
-              );
-
-
-              trackContronymEvent(
-                "puzzle_started",
-                puzzle,
-                {
-
-                  archived:
-                    true
-
-                }
-              );
-
-            }
-          );
-
-
-        archiveList.appendChild(
-          card
-        );
-
-      }
-    );
-
-}
-
-
-
-currentTab.addEventListener(
-  "click",
-  function () {
-
-    puzzle =
-      currentPuzzle;
-
-
-    archived =
-      false;
-
-
-    resetPuzzle();
-
-
-    archiveView.style.display =
-      "none";
-
-
-    playView.style.display =
-      "flex";
-
-
-    currentTab.classList.add(
-      "active"
-    );
-
-
-    archiveTab.classList.remove(
-      "active"
-    );
-
-
-    trackContronymEvent(
-      "puzzle_started",
-      puzzle,
-      {
-
-        archived:
-          false
-
-      }
-    );
-
-  }
-);
-
-
-
-archiveTab.addEventListener(
-  "click",
-  function () {
-
-    buildArchive();
-
-
-    playView.style.display =
-      "none";
-
-
-    archiveView.style.display =
-      "block";
-
-
-    archiveTab.classList.add(
-      "active"
-    );
-
-
-    currentTab.classList.remove(
-      "active"
-    );
-
-  }
-);
-
-
-
-/* =====================================================
-   SHARING
-===================================================== */
-
-document
-  .getElementById(
-    "native-share"
-  )
-  .addEventListener(
-    "click",
-    async function () {
-
-      if (
-        navigator.share
-      ) {
-
-        try {
-
-          await navigator.share(
-            {
-
-              title:
-                "Contronym: The Majorana of Meaning",
-
-              text:
-                shareText(),
-
-              url:
-                window.location.href
-
-            }
-          );
-
-
-          trackContronymEvent(
-            "puzzle_shared",
-            puzzle,
-            {
-
-              method:
-                "native",
-
-              attempts:
-                attempts,
-
-              hints_used:
-                hintsUsed
-
-            }
-          );
-
-        }
-
-        catch (
-          error
-        ) {
-
-          console.log(
-            "Share cancelled."
-          );
-
-        }
-
-      }
-
-      else {
-
-        alert(
-          shareText()
-        );
-
-      }
-
-    }
-  );
-
-
-
-document
-  .getElementById(
-    "copy-share"
-  )
-  .addEventListener(
-    "click",
-    async function () {
-
-      const button =
-        this;
-
-
-      try {
-
-        await navigator
-          .clipboard
-          .writeText(
-            shareText()
-            +
-            "\n\n"
-            +
-            window.location.href
-          );
-
-
-        button.textContent =
-          "Copied!";
-
-
-        setTimeout(
-          function () {
-
-            button.textContent =
-              "Copy Result";
-
-          },
-
-          1200
-        );
-
-      }
-
-      catch (
-        error
-      ) {
-
-        alert(
-          shareText()
-        );
-
-      }
-
-    }
-  );
-
-
-
-/* =====================================================
-   START
-===================================================== */
-
-resetPuzzle();
-
-
-trackContronymEvent(
-  "puzzle_started",
-  currentPuzzle,
-  {
-
-    archived:
-      false
-
-  }
-);
-
-
-</script>
-
-
-</body>
-
-</html>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){ dataLayer.push(arguments); }
-gtag("js", new Date());
-gtag("config", "G-QCEPJP202V");
-</script>
-
-<style>
 :root {
   --cream:#fff8e8;
   --paper:#fffdf7;
@@ -5907,23 +57,33 @@ gtag("config", "G-QCEPJP202V");
   --shadow:rgba(50,40,25,.14);
 }
 
-* { box-sizing:border-box; }
+* {
+  box-sizing:border-box;
+}
 
-html { scroll-behavior:smooth; }
+html {
+  scroll-behavior:smooth;
+  -webkit-text-size-adjust:100%;
+}
 
 body {
   margin:0;
   min-height:100vh;
   padding:18px 10px 45px;
+  overflow-x:hidden;
   background:var(--cream);
   color:var(--ink);
   font-family:Georgia,"Times New Roman",serif;
 }
 
-button,input { font:inherit; }
+button,
+input {
+  font:inherit;
+}
 
 button {
   cursor:pointer;
+  touch-action:manipulation;
   -webkit-tap-highlight-color:transparent;
 }
 
@@ -5932,7 +92,10 @@ button {
   margin:auto;
 }
 
-/* BRAND */
+
+/* =====================================================
+   BRAND
+===================================================== */
 
 .brand-panel {
   width:min(760px,100%);
@@ -5979,9 +142,14 @@ button {
   line-height:1.55;
 }
 
-.brand-description strong { color:var(--blue); }
+.brand-description strong {
+  color:var(--blue);
+}
 
-/* NAVIGATION */
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
 
 .top-nav {
   display:flex;
@@ -5998,6 +166,13 @@ button {
   border-radius:12px;
   background:#eee8dc;
   color:var(--ink);
+  transition:
+    transform .15s ease,
+    background .15s ease;
+}
+
+.top-nav button:active {
+  transform:scale(.98);
 }
 
 .top-nav button.active {
@@ -6007,7 +182,10 @@ button {
   font-weight:bold;
 }
 
-/* VIEWS */
+
+/* =====================================================
+   VIEWS
+===================================================== */
 
 #play-view {
   display:flex;
@@ -6021,7 +199,10 @@ button {
   margin:auto;
 }
 
-/* PUZZLE CARD */
+
+/* =====================================================
+   PUZZLE CARD
+===================================================== */
 
 .puzzle-card {
   width:min(900px,100%);
@@ -6057,7 +238,10 @@ button {
   line-height:1.5;
 }
 
-/* MEANING GRAPH */
+
+/* =====================================================
+   MEANING GRAPH
+===================================================== */
 
 .game-container {
   position:relative;
@@ -6073,6 +257,11 @@ button {
   height:100%;
   pointer-events:none;
 }
+
+
+/* =====================================================
+   GRAPH LABELS
+===================================================== */
 
 .axis-label {
   position:absolute;
@@ -6111,7 +300,10 @@ button {
   text-align:center;
 }
 
-/* CLUE COLUMNS */
+
+/* =====================================================
+   CLUE COLUMNS
+===================================================== */
 
 .clue-column {
   position:absolute;
@@ -6123,6 +315,7 @@ button {
   border:2px solid;
   border-radius:14px;
   background:rgba(255,253,247,.97);
+  box-shadow:0 4px 12px rgba(50,40,25,.08);
 }
 
 .negative-column {
@@ -6141,8 +334,13 @@ button {
   text-align:center;
 }
 
-.negative-column .clue-column-title { color:var(--red); }
-.positive-column .clue-column-title { color:var(--blue); }
+.negative-column .clue-column-title {
+  color:var(--red);
+}
+
+.positive-column .clue-column-title {
+  color:var(--blue);
+}
 
 .clue-column-subtitle {
   margin-bottom:10px;
@@ -6180,10 +378,16 @@ button {
   font-weight:bold;
 }
 
-.negative-column .clue-number { background:var(--red); }
-.positive-column .clue-number { background:var(--blue); }
+.negative-column .clue-number {
+  background:var(--red);
+}
+
+.positive-column .clue-number {
+  background:var(--blue);
+}
 
 .clue-word-row {
+  min-width:0;
   display:flex;
   align-items:center;
   gap:5px;
@@ -6191,14 +395,17 @@ button {
 
 .clue-word {
   flex:1;
+  min-width:0;
   font-size:.78rem;
   font-weight:bold;
+  overflow-wrap:anywhere;
   text-transform:uppercase;
 }
 
 .clue-silhouette {
   width:30px;
   height:30px;
+  flex:0 0 30px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -6209,7 +416,9 @@ button {
   height:28px;
 }
 
-.hidden-clue { opacity:.28; }
+.hidden-clue {
+  opacity:.28;
+}
 
 .hidden-clue .clue-word {
   position:relative;
@@ -6227,7 +436,10 @@ button {
   visibility:hidden;
 }
 
-/* ANSWER */
+
+/* =====================================================
+   ANSWER
+===================================================== */
 
 .answer-section {
   margin-top:8px;
@@ -6252,6 +464,7 @@ button {
 .letter-box {
   width:42px;
   height:44px;
+  padding:0;
   border:2px solid var(--blue);
   border-radius:8px;
   background:white;
@@ -6268,7 +481,10 @@ button {
   box-shadow:0 0 0 4px rgba(32,89,149,.13);
 }
 
-/* GAME BUTTONS */
+
+/* =====================================================
+   BUTTONS
+===================================================== */
 
 .button-row {
   display:grid;
@@ -6286,12 +502,18 @@ button {
   font-size:1.03rem;
   font-weight:800;
   box-shadow:0 6px 13px rgba(50,40,25,.14);
-  transition:transform .15s ease,box-shadow .15s ease;
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease;
 }
 
 .button-row button:hover {
   transform:translateY(-2px);
   box-shadow:0 9px 18px rgba(50,40,25,.17);
+}
+
+.button-row button:active {
+  transform:scale(.985);
 }
 
 #submit-answer {
@@ -6300,7 +522,9 @@ button {
   color:white;
 }
 
-#submit-answer::before { content:"✓ "; }
+#submit-answer::before {
+  content:"✓ ";
+}
 
 #show-hint {
   border-color:#c89b34;
@@ -6308,7 +532,9 @@ button {
   color:#5d4717;
 }
 
-#show-hint::before { content:"🔎 "; }
+#show-hint::before {
+  content:"🔎 ";
+}
 
 #reset-puzzle {
   border-color:#ce6670;
@@ -6316,7 +542,9 @@ button {
   color:#8d2932;
 }
 
-#reset-puzzle::before { content:"↻ "; }
+#reset-puzzle::before {
+  content:"↻ ";
+}
 
 .button-row button:disabled {
   opacity:.5;
@@ -6324,7 +552,10 @@ button {
   transform:none;
 }
 
-/* STATUS */
+
+/* =====================================================
+   STATUS
+===================================================== */
 
 #attempts {
   width:fit-content;
@@ -6366,7 +597,10 @@ button {
   text-align:center;
 }
 
-/* RESULT */
+
+/* =====================================================
+   RESULT
+===================================================== */
 
 #result-card {
   display:none;
@@ -6418,6 +652,7 @@ button {
 .share-preview {
   margin-top:12px;
   padding:11px;
+  overflow-wrap:anywhere;
   border-radius:10px;
   background:var(--paper);
   font-family:monospace;
@@ -6442,7 +677,10 @@ button {
   font-weight:bold;
 }
 
-/* CONCEPT */
+
+/* =====================================================
+   CONCEPT
+===================================================== */
 
 .concept-panel {
   width:min(820px,100%);
@@ -6474,9 +712,14 @@ button {
   text-align:center;
 }
 
-/* ARCHIVE */
 
-.archive-heading { text-align:center; }
+/* =====================================================
+   ARCHIVE
+===================================================== */
+
+.archive-heading {
+  text-align:center;
+}
 
 .archive-card {
   margin-bottom:12px;
@@ -6504,7 +747,8 @@ button {
 }
 
 .archive-play {
-  min-height:46px;
+  width:100%;
+  min-height:48px;
   padding:9px 14px;
   border:1px solid #abc8dc;
   border-radius:10px;
@@ -6521,140 +765,540 @@ button {
   text-align:center;
 }
 
-/* RESPONSIVE */
+
+/* =====================================================
+   TABLET
+===================================================== */
 
 @media(max-width:760px) {
-  .game-container { height:610px; }
-  .clue-column { top:46px; width:145px; }
-  .clue-word { font-size:.69rem; }
-  .concept-grid { grid-template-columns:1fr; }
-}
 
-@media(max-width:600px) {
-  .button-row {
-    grid-template-columns:1fr;
-    width:min(390px,100%);
+  .page-shell {
+    width:100%;
   }
 
-  .button-row button { min-height:64px; }
+  .game-container {
+    height:610px;
+  }
+
+  .clue-column {
+    top:46px;
+    width:145px;
+  }
+
+  .clue-word {
+    font-size:.69rem;
+  }
+
+  .concept-grid {
+    grid-template-columns:1fr;
+  }
+
 }
 
-@media(max-width:480px) {
-  body { padding-top:10px; }
-  .brand-panel { padding:14px; }
-  .brand-logo-wrap { height:205px; }
-  .brand-logo { width:315px; }
-  .puzzle-card { padding:12px; }
-  .game-container { height:560px; }
-  .clue-column { width:127px; top:52px; }
-  .letter-box { width:35px; height:39px; }
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px) {
+
+  body {
+    padding:
+      max(8px,env(safe-area-inset-top))
+      6px
+      calc(30px + env(safe-area-inset-bottom));
+  }
+
+  .page-shell {
+    width:100%;
+  }
+
+  .brand-panel {
+    width:100%;
+    margin-bottom:10px;
+    padding:12px 10px 16px;
+    border-radius:16px;
+    box-shadow:0 4px 12px rgba(50,40,25,.11);
+  }
+
+  .brand-logo-wrap {
+    height:145px;
+    margin-bottom:-3px;
+  }
+
+  .brand-logo {
+    width:min(250px,72vw);
+  }
+
+  .brand-panel h1 {
+    font-size:clamp(2.25rem,12vw,3.2rem);
+  }
+
+  .brand-panel h2 {
+    margin:6px 0 9px;
+    font-size:1.15rem;
+  }
+
+  .brand-description {
+    font-size:.87rem;
+    line-height:1.45;
+  }
+
+  .top-nav {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:7px;
+    margin:10px 0 12px;
+  }
+
+  .top-nav button {
+    width:100%;
+    min-height:48px;
+    padding:8px 7px;
+    border-radius:10px;
+    font-size:.78rem;
+    line-height:1.2;
+  }
+
+  .puzzle-card {
+    width:100%;
+    padding:12px 8px 16px;
+    border-radius:16px;
+  }
+
+  .kicker {
+    font-size:.62rem;
+    letter-spacing:2px;
+  }
+
+  .puzzle-heading h3 {
+    margin:6px 0;
+    font-size:1.35rem;
+  }
+
+  .puzzle-heading p {
+    max-width:335px;
+    margin:auto;
+    font-size:.86rem;
+    line-height:1.42;
+  }
+
+  .game-container {
+    height:675px;
+    margin:10px auto 0;
+  }
+
+  .graph-svg {
+    top:250px;
+    bottom:auto;
+    width:100%;
+    height:390px;
+  }
+
+  .clue-column {
+    top:34px;
+    width:calc(50% - 4px);
+    min-height:208px;
+    padding:8px 6px;
+    border-radius:11px;
+  }
+
+  .negative-column {
+    left:0;
+  }
+
+  .positive-column {
+    right:0;
+  }
+
+  .clue-column-title {
+    margin-bottom:2px;
+    font-size:.78rem;
+  }
+
+  .clue-column-subtitle {
+    margin-bottom:6px;
+    font-size:.61rem;
+  }
+
+  .clue-list {
+    gap:5px;
+  }
+
+  .clue-item {
+    min-height:49px;
+    grid-template-columns:23px minmax(0,1fr);
+    gap:3px;
+    padding:4px;
+    border-radius:7px;
+  }
+
+  .clue-number {
+    width:21px;
+    height:21px;
+    font-size:.63rem;
+  }
+
+  .clue-word-row {
+    gap:2px;
+  }
+
+  .clue-word {
+    font-size:.63rem;
+    line-height:1.08;
+  }
+
+  .clue-silhouette {
+    width:23px;
+    height:23px;
+    flex-basis:23px;
+  }
+
+  .clue-silhouette svg {
+    width:21px;
+    height:21px;
+  }
+
+  .conjugate-label {
+    top:259px;
+    max-width:100px;
+    padding:2px 4px;
+    font-size:.58rem;
+  }
+
+  .transverse-label {
+    right:2px;
+    bottom:55px;
+    padding:2px 4px;
+    font-size:.56rem;
+  }
+
+  .vertex-label {
+    bottom:2px;
+    width:100%;
+    font-size:.61rem;
+  }
+
+  .answer-section {
+    margin-top:3px;
+  }
+
+  #letter-count {
+    display:block;
+    padding:0 6px;
+    font-size:.72rem;
+    line-height:1.4;
+  }
+
+  .answer-boxes {
+    gap:5px;
+    margin-top:9px;
+  }
+
+  .letter-box {
+    width:37px;
+    height:42px;
+    border-radius:7px;
+    font-size:1.15rem;
+  }
+
+  #attempts {
+    margin-top:12px;
+    padding:7px 11px;
+    font-size:.72rem;
+    line-height:1.35;
+  }
+
+  .button-row {
+    grid-template-columns:1fr;
+    gap:8px;
+    width:100%;
+    margin-top:15px;
+  }
+
+  .button-row button {
+    width:100%;
+    min-height:55px;
+    padding:12px 15px;
+    border-radius:14px;
+    font-size:.95rem;
+  }
+
+  #hint-text {
+    margin-top:12px;
+    padding:11px 12px;
+    font-size:.82rem;
+  }
+
+  #message {
+    min-height:28px;
+    margin-top:11px;
+    font-size:.85rem;
+  }
+
+  #result-card {
+    margin-top:18px;
+    padding:15px 12px;
+    border-radius:14px;
+  }
+
+  .result-majorana {
+    font-size:1.9rem;
+  }
+
+  .result-title {
+    font-size:1rem;
+  }
+
+  .definition-box {
+    font-size:.9rem;
+  }
+
+  .charge-definition {
+    padding:10px;
+  }
+
+  .share-buttons {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+
+  .share-buttons button {
+    width:100%;
+  }
+
+  .concept-panel {
+    margin-top:12px;
+    padding:15px 12px;
+    border-radius:14px;
+    font-size:.9rem;
+  }
+
+  .concept-panel h3 {
+    font-size:1.2rem;
+  }
+
+  .concept-grid {
+    grid-template-columns:1fr;
+    gap:7px;
+  }
+
+  .concept-box {
+    padding:10px;
+  }
+
+  #archive-view {
+    width:100%;
+  }
+
+  .archive-card {
+    padding:13px;
+  }
+
 }
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media(max-width:390px) {
+
+  .brand-logo-wrap {
+    height:130px;
+  }
+
+  .brand-logo {
+    width:225px;
+  }
+
+  .brand-panel h1 {
+    font-size:2.25rem;
+  }
+
+  .top-nav button {
+    font-size:.72rem;
+  }
+
+  .game-container {
+    height:665px;
+  }
+
+  .clue-column {
+    padding:7px 4px;
+  }
+
+  .clue-word {
+    font-size:.58rem;
+  }
+
+  .clue-silhouette {
+    width:20px;
+    height:20px;
+    flex-basis:20px;
+  }
+
+  .clue-silhouette svg {
+    width:19px;
+    height:19px;
+  }
+
+  .letter-box {
+    width:34px;
+    height:39px;
+    font-size:1.05rem;
+  }
+
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media(max-width:350px) {
+
+  .top-nav {
+    grid-template-columns:1fr;
+  }
+
+  .game-container {
+    height:685px;
+  }
+
+  .clue-word {
+    font-size:.54rem;
+  }
+
+  .letter-box {
+    width:31px;
+    height:38px;
+  }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
 <div class="page-shell">
 
+
+<!-- BRAND -->
+
 <section class="brand-panel">
 
-  <div class="brand-logo-wrap">
+<div class="brand-logo-wrap">
 
-    <svg
-      class="brand-logo"
-      viewBox="0 0 440 280"
-      aria-label="Contronym logo"
-    >
+<svg
+  class="brand-logo"
+  viewBox="0 0 440 280"
+  aria-label="Contronym logo"
+>
 
-      <ellipse
-        cx="220"
-        cy="140"
-        rx="165"
-        ry="57"
-        transform="rotate(-17 220 140)"
-        fill="none"
-        stroke="#205995"
-        stroke-width="7"
-        stroke-dasharray="18 14"
-        stroke-linecap="round"
-      />
+<ellipse
+  cx="220"
+  cy="140"
+  rx="165"
+  ry="57"
+  transform="rotate(-17 220 140)"
+  fill="none"
+  stroke="#205995"
+  stroke-width="7"
+  stroke-dasharray="18 14"
+  stroke-linecap="round"
+/>
 
-      <path
-        d="
-          M 283 64
-          C 256 39,207 34,168 54
-          C 125 76,104 116,106 158
-          C 108 201,133 233,172 242
-          C 212 252,251 233,282 203
-        "
-        fill="none"
-        stroke="#cf2637"
-        stroke-width="35"
-        stroke-linecap="round"
-      />
+<path
+  d="
+    M 283 64
+    C 256 39,207 34,168 54
+    C 125 76,104 116,106 158
+    C 108 201,133 233,172 242
+    C 212 252,251 233,282 203
+  "
+  fill="none"
+  stroke="#cf2637"
+  stroke-width="35"
+  stroke-linecap="round"
+/>
 
-      <path
-        d="
-          M 385 140
-          A 165 57 0 0 1 55 140
-        "
-        transform="rotate(-17 220 140)"
-        fill="none"
-        stroke="#205995"
-        stroke-width="7"
-        stroke-dasharray="18 14"
-        stroke-linecap="round"
-      />
+<path
+  d="
+    M 385 140
+    A 165 57 0 0 1 55 140
+  "
+  transform="rotate(-17 220 140)"
+  fill="none"
+  stroke="#205995"
+  stroke-width="7"
+  stroke-dasharray="18 14"
+  stroke-linecap="round"
+/>
 
-      <circle
-        cx="62"
-        cy="188"
-        r="23"
-        fill="#fffdf7"
-      />
+<circle
+  cx="62"
+  cy="188"
+  r="23"
+  fill="#fffdf7"
+/>
 
-      <circle
-        cx="62"
-        cy="188"
-        r="12"
-        fill="#205995"
-      />
+<circle
+  cx="62"
+  cy="188"
+  r="12"
+  fill="#205995"
+/>
 
-      <ellipse
-        cx="378"
-        cy="92"
-        rx="25"
-        ry="29"
-        fill="#fffdf7"
-      />
+<ellipse
+  cx="378"
+  cy="92"
+  rx="25"
+  ry="29"
+  fill="#fffdf7"
+/>
 
-      <text
-        x="378"
-        y="94"
-        fill="#205995"
-        font-family="Georgia,'Times New Roman',serif"
-        font-size="51"
-        font-style="italic"
-        font-weight="700"
-        text-anchor="middle"
-        dominant-baseline="middle"
-      >
-        ν
-      </text>
+<text
+  x="378"
+  y="94"
+  fill="#205995"
+  font-family="Georgia,'Times New Roman',serif"
+  font-size="51"
+  font-style="italic"
+  font-weight="700"
+  text-anchor="middle"
+  dominant-baseline="middle"
+>
+ν
+</text>
 
-    </svg>
+</svg>
 
-  </div>
+</div>
 
-  <h1>Contronym</h1>
+<h1>
+Contronym
+</h1>
 
-  <h2>The Majorana of Meaning</h2>
+<h2>
+The Majorana of Meaning
+</h2>
 
-  <p class="brand-description">
-    One word. Two meanings. Opposites in perfect balance.
-    <br>
-    <strong>Context determines charge.</strong>
-  </p>
+<p class="brand-description">
+
+One word. Two meanings.
+Opposites in perfect balance.
+
+<br>
+
+<strong>
+Context determines charge.
+</strong>
+
+</p>
 
 </section>
 
@@ -6663,34 +1307,34 @@ button {
 
 <div class="top-nav">
 
-  <button
-    id="current-tab"
-    class="active"
-    type="button"
-  >
-    Current Puzzle
-  </button>
+<button
+  id="current-tab"
+  class="active"
+  type="button"
+>
+Current Puzzle
+</button>
 
-  <button
-    id="archive-tab"
-    type="button"
-  >
-    Archive
-  </button>
+<button
+  id="archive-tab"
+  type="button"
+>
+Archive
+</button>
 
-  <button
-    type="button"
-    onclick="window.location.href='philosophy.html'"
-  >
-    Philosophy & Learning Model
-  </button>
+<button
+  type="button"
+  onclick="window.location.href='philosophy.html'"
+>
+Philosophy & Learning Model
+</button>
 
-  <button
-    type="button"
-    onclick="window.location.href='index.html'"
-  >
-    Learning Lab
-  </button>
+<button
+  type="button"
+  onclick="window.location.href='index.html'"
+>
+Learning Lab
+</button>
 
 </div>
 
@@ -6703,16 +1347,16 @@ button {
 
 <div class="puzzle-heading">
 
-  <div class="kicker">
-    CAN ONE WORD MEAN BOTH?
-  </div>
+<div class="kicker">
+CAN ONE WORD MEAN BOTH?
+</div>
 
-  <h3 id="puzzle-title"></h3>
+<h3 id="puzzle-title"></h3>
 
-  <p>
-    One clue reveals from each side of the parabola.
-    Find the single word capable of carrying both meanings.
-  </p>
+<p>
+One clue reveals from each side of the parabola.
+Find the single word capable of carrying both meanings.
+</p>
 
 </div>
 
@@ -6725,173 +1369,198 @@ button {
   preserveAspectRatio="xMidYMid meet"
 >
 
-  <line
-    x1="150"
-    y1="385"
-    x2="670"
-    y2="385"
-    stroke="#205995"
-    stroke-width="4"
-  />
+<line
+  x1="150"
+  y1="385"
+  x2="670"
+  y2="385"
+  stroke="#205995"
+  stroke-width="4"
+/>
 
-  <polygon
-    points="678,385 660,375 660,395"
-    fill="#205995"
-  />
+<polygon
+  points="678,385 660,375 660,395"
+  fill="#205995"
+/>
 
-  <polygon
-    points="142,385 160,375 160,395"
-    fill="#205995"
-  />
+<polygon
+  points="142,385 160,375 160,395"
+  fill="#205995"
+/>
 
-  <line
-    x1="410"
-    y1="30"
-    x2="410"
-    y2="430"
-    stroke="#cf2637"
-    stroke-width="4"
-  />
+<line
+  x1="410"
+  y1="30"
+  x2="410"
+  y2="430"
+  stroke="#cf2637"
+  stroke-width="4"
+/>
 
-  <polygon
-    points="410,20 400,42 420,42"
-    fill="#cf2637"
-  />
+<polygon
+  points="410,20 400,42 420,42"
+  fill="#cf2637"
+/>
 
-  <path
-    d="M180 65 C205 176,267 306,410 385"
-    fill="none"
-    stroke="#cf2637"
-    stroke-width="5"
-    stroke-dasharray="15 13"
-    stroke-linecap="round"
-  />
+<path
+  d="M180 65 C205 176,267 306,410 385"
+  fill="none"
+  stroke="#cf2637"
+  stroke-width="5"
+  stroke-dasharray="15 13"
+  stroke-linecap="round"
+/>
 
-  <path
-    d="M410 385 C553 306,615 176,640 65"
-    fill="none"
-    stroke="#205995"
-    stroke-width="5"
-    stroke-dasharray="15 13"
-    stroke-linecap="round"
-  />
+<path
+  d="M410 385 C553 306,615 176,640 65"
+  fill="none"
+  stroke="#205995"
+  stroke-width="5"
+  stroke-dasharray="15 13"
+  stroke-linecap="round"
+/>
 
-  <circle
-    cx="410"
-    cy="385"
-    r="7"
-    fill="#d6aa44"
-  />
+<circle
+  cx="410"
+  cy="385"
+  r="7"
+  fill="#d6aa44"
+/>
 
-  <path
-    d="
-      M410 366
-      L415 379
-      L429 385
-      L415 391
-      L410 404
-      L405 391
-      L391 385
-      L405 379
-      Z
-    "
-    fill="#d6aa44"
-  />
+<path
+  d="
+    M410 366
+    L415 379
+    L429 385
+    L415 391
+    L410 404
+    L405 391
+    L391 385
+    L405 379
+    Z
+  "
+  fill="#d6aa44"
+/>
 
-  <path
-    d="
-      M205 396
-      C246 368,286 369,327 390
-      C350 402,372 415,392 421
-      C401 424,406 426,410 426
-      C416 426,422 424,430 420
-      C452 412,472 400,496 390
-      C539 370,581 371,625 396
-    "
-    fill="none"
-    stroke="#222"
-    stroke-width="1.6"
-    stroke-dasharray="7 7"
-    stroke-linecap="round"
-  />
+<path
+  d="
+    M205 396
+    C246 368,286 369,327 390
+    C350 402,372 415,392 421
+    C401 424,406 426,410 426
+    C416 426,422 424,430 420
+    C452 412,472 400,496 390
+    C539 370,581 371,625 396
+  "
+  fill="none"
+  stroke="#222"
+  stroke-width="1.6"
+  stroke-dasharray="7 7"
+  stroke-linecap="round"
+/>
 
-  <text
-    x="633"
-    y="402"
-    fill="#222"
-    font-family="Georgia,serif"
-    font-size="28"
-    font-style="italic"
-  >
-    ν
-  </text>
+<text
+  x="633"
+  y="402"
+  fill="#222"
+  font-family="Georgia,serif"
+  font-size="28"
+  font-style="italic"
+>
+ν
+</text>
 
 </svg>
 
 
 <div class="axis-label conjugate-label">
-  CONJUGATE AXIS
-  <br>
-  <small>meaning inversion</small>
+
+CONJUGATE AXIS
+
+<br>
+
+<small>
+meaning inversion
+</small>
+
 </div>
 
+
 <div class="axis-label transverse-label">
-  TRANSVERSE AXIS
-  <br>
-  <small>semantic exploration</small>
+
+TRANSVERSE AXIS
+
+<br>
+
+<small>
+semantic exploration
+</small>
+
 </div>
+
 
 <div class="clue-column negative-column">
 
-  <div class="clue-column-title">
-    ⊖ OPPOSITE
-  </div>
+<div class="clue-column-title">
+⊖ OPPOSITE
+</div>
 
-  <div class="clue-column-subtitle">
-    opposite meaning
-  </div>
+<div class="clue-column-subtitle">
+opposite meaning
+</div>
 
-  <div
-    id="negativeClues"
-    class="clue-list"
-  ></div>
+<div
+  id="negativeClues"
+  class="clue-list"
+></div>
 
 </div>
+
 
 <div class="clue-column positive-column">
 
-  <div class="clue-column-title">
-    ⊕ SIMILAR
-  </div>
+<div class="clue-column-title">
+⊕ SIMILAR
+</div>
 
-  <div class="clue-column-subtitle">
-    similar meaning
-  </div>
+<div class="clue-column-subtitle">
+similar meaning
+</div>
 
-  <div
-    id="positiveClues"
-    class="clue-list"
-  ></div>
+<div
+  id="positiveClues"
+  class="clue-list"
+></div>
 
 </div>
+
 
 <div class="vertex-label">
-  <strong>VERTEX (0)</strong>
-  <br>
-  NEUTRAL ORIGIN • WHERE OPPOSITES MEET
-</div>
+
+<strong>
+VERTEX (0)
+</strong>
+
+<br>
+
+NEUTRAL ORIGIN • WHERE OPPOSITES MEET
 
 </div>
 
+</div>
+
+
+<!-- ANSWER -->
 
 <div class="answer-section">
 
-  <strong id="letter-count"></strong>
+<strong id="letter-count">
+</strong>
 
-  <div
-    id="answer-boxes"
-    class="answer-boxes"
-  ></div>
+<div
+  id="answer-boxes"
+  class="answer-boxes"
+></div>
 
 </div>
 
@@ -6901,116 +1570,142 @@ button {
 
 <div class="button-row">
 
-  <button
-    id="submit-answer"
-    type="button"
-  >
-    Submit Answer
-  </button>
+<button
+  id="submit-answer"
+  type="button"
+>
+Submit Answer
+</button>
 
-  <button
-    id="show-hint"
-    type="button"
-  >
-    Reveal Hint Pair
-  </button>
+<button
+  id="show-hint"
+  type="button"
+>
+Reveal Hint Pair
+</button>
 
-  <button
-    id="reset-puzzle"
-    type="button"
-  >
-    Reset Puzzle
-  </button>
+<button
+  id="reset-puzzle"
+  type="button"
+>
+Reset Puzzle
+</button>
 
 </div>
 
 
 <p id="hint-text"></p>
+
 <p id="message"></p>
 
 
+<!-- RESULT -->
+
 <div id="result-card">
 
-  <div class="result-majorana">
-    <span style="color:#cf2637;">C</span>
-    <span style="color:#205995;font-style:italic;">ν</span>
-  </div>
+<div class="result-majorana">
 
-  <div
-    id="result-title"
-    class="result-title"
-  ></div>
+<span style="color:#cf2637;">
+C
+</span>
 
-  <div
-    id="definition-box"
-    class="definition-box"
-  ></div>
+<span style="color:#205995;font-style:italic;">
+ν
+</span>
 
-  <div
-    id="share-preview"
-    class="share-preview"
-  ></div>
+</div>
 
-  <div class="share-buttons">
+<div
+  id="result-title"
+  class="result-title"
+></div>
 
-    <button
-      id="native-share"
-      type="button"
-    >
-      Share
-    </button>
+<div
+  id="definition-box"
+  class="definition-box"
+></div>
 
-    <button
-      id="copy-share"
-      type="button"
-    >
-      Copy Result
-    </button>
+<div
+  id="share-preview"
+  class="share-preview"
+></div>
 
-  </div>
+<div class="share-buttons">
+
+<button
+  id="native-share"
+  type="button"
+>
+Share
+</button>
+
+<button
+  id="copy-share"
+  type="button"
+>
+Copy Result
+</button>
+
+</div>
 
 </div>
 
 </section>
 
 
+<!-- CONCEPT -->
+
 <section class="concept-panel">
 
 <h3>
-  The Majorana of Meaning
+The Majorana of Meaning
 </h3>
 
 <p>
-  A contronym is one lexical form capable of expressing opposing meanings.
-  Context selects which semantic charge becomes visible while the underlying
-  word remains invariant.
+A contronym is one lexical form capable of expressing opposing meanings.
+Context selects which semantic charge becomes visible while the underlying
+word remains invariant.
 </p>
 
 <div class="concept-grid">
 
-  <div class="concept-box">
-    <strong style="color:#cf2637;">
-      − Conjugate
-    </strong>
-    <br>
-    Opposed semantic expression.
-  </div>
+<div class="concept-box">
 
-  <div class="concept-box">
-    <strong style="color:#d6aa44;">
-      ✦ Vertex
-    </strong>
-    <br>
-    The neutral lexical identity.
-  </div>
+<strong style="color:#cf2637;">
+− Conjugate
+</strong>
 
-  <div class="concept-box">
-    <strong style="color:#205995;">
-      + Transverse
-    </strong>
-    <br>
-    Contextual semantic expression.
-  </div>
+<br>
+
+Opposed semantic expression.
+
+</div>
+
+
+<div class="concept-box">
+
+<strong style="color:#d6aa44;">
+✦ Vertex
+</strong>
+
+<br>
+
+The neutral lexical identity.
+
+</div>
+
+
+<div class="concept-box">
+
+<strong style="color:#205995;">
++ Transverse
+</strong>
+
+<br>
+
+Contextual semantic expression.
+
+</div>
 
 </div>
 
@@ -7023,12 +1718,19 @@ button {
 
 <div id="archive-view">
 
-  <div class="archive-heading">
-    <h3>Contronym Archive</h3>
-    <p>Return to earlier Majoranas of Meaning.</p>
-  </div>
+<div class="archive-heading">
 
-  <div id="archive-list"></div>
+<h3>
+Contronym Archive
+</h3>
+
+<p>
+Return to earlier Majoranas of Meaning.
+</p>
+
+</div>
+
+<div id="archive-list"></div>
 
 </div>
 
@@ -7037,7 +1739,10 @@ button {
   id="footer-note"
   class="footer-note"
 >
-  Context determines charge. • PAT Learning Lab
+
+Context determines charge.
+• PAT Learning Lab
+
 </div>
 
 </div>
@@ -7045,11 +1750,19 @@ button {
 
 <script>
 
-/* ANALYTICS */
+/* =====================================================
+   ANALYTICS
+===================================================== */
 
-function trackContronymEvent(eventName,puzzle,extraData){
+function trackContronymEvent(
+  eventName,
+  puzzle,
+  extraData
+) {
 
-  if(typeof gtag !== "function"){
+  if (
+    typeof gtag !== "function"
+  ) {
     return;
   }
 
@@ -7063,10 +1776,13 @@ function trackContronymEvent(eventName,puzzle,extraData){
       ...(extraData || {})
     }
   );
+
 }
 
 
-/* ICONS */
+/* =====================================================
+   ICONS
+===================================================== */
 
 const icons = {
 
@@ -7134,16 +1850,53 @@ restrict:`
 
 penalize:`
 <svg viewBox="0 0 64 64">
-<rect x="18" y="8" width="31" height="13" rx="3" fill="#111" transform="rotate(-34 32 14)"/>
-<rect x="28" y="20" width="8" height="35" fill="#111" transform="rotate(-34 32 37)"/>
-<rect x="8" y="51" width="39" height="7" rx="3" fill="#111"/>
+<rect
+x="18"
+y="8"
+width="31"
+height="13"
+rx="3"
+fill="#111"
+transform="rotate(-34 32 14)"
+/>
+<rect
+x="28"
+y="20"
+width="8"
+height="35"
+fill="#111"
+transform="rotate(-34 32 37)"
+/>
+<rect
+x="8"
+y="51"
+width="39"
+height="7"
+rx="3"
+fill="#111"
+/>
 </svg>
 `,
 
 punish:`
 <svg viewBox="0 0 64 64">
-<rect x="13" y="9" width="33" height="15" rx="3" fill="#111" transform="rotate(-25 29 16)"/>
-<rect x="31" y="19" width="8" height="39" fill="#111" transform="rotate(-25 35 38)"/>
+<rect
+x="13"
+y="9"
+width="33"
+height="15"
+rx="3"
+fill="#111"
+transform="rotate(-25 29 16)"
+/>
+<rect
+x="31"
+y="19"
+width="8"
+height="39"
+fill="#111"
+transform="rotate(-25 35 38)"
+/>
 </svg>
 `,
 
@@ -7157,7 +1910,10 @@ permit:`
 
 authorize:`
 <svg viewBox="0 0 64 64">
-<path d="M23 7 H41 C44 14,43 22,39 28 H25 C21 22,20 14,23 7 Z" fill="#111"/>
+<path
+d="M23 7 H41 C44 14,43 22,39 28 H25 C21 22,20 14,23 7 Z"
+fill="#111"
+/>
 <rect x="15" y="27" width="34" height="13" rx="4" fill="#111"/>
 <rect x="9" y="44" width="46" height="10" rx="3" fill="#111"/>
 </svg>
@@ -7180,7 +1936,9 @@ stroke-linejoin="round"
 };
 
 
-/* PUZZLES */
+/* =====================================================
+   PUZZLES
+===================================================== */
 
 const puzzles = [
 
@@ -7191,16 +1949,36 @@ const puzzles = [
 
   hintPairs:[
     {
-      negative:{word:"restrict",icon:"restrict"},
-      positive:{word:"permit",icon:"permit"}
+      negative:{
+        word:"restrict",
+        icon:"restrict"
+      },
+      positive:{
+        word:"permit",
+        icon:"permit"
+      }
     },
+
     {
-      negative:{word:"penalize",icon:"penalize"},
-      positive:{word:"authorize",icon:"authorize"}
+      negative:{
+        word:"penalize",
+        icon:"penalize"
+      },
+      positive:{
+        word:"authorize",
+        icon:"authorize"
+      }
     },
+
     {
-      negative:{word:"punish",icon:"punish"},
-      positive:{word:"approve",icon:"approve"}
+      negative:{
+        word:"punish",
+        icon:"punish"
+      },
+      positive:{
+        word:"approve",
+        icon:"approve"
+      }
     }
   ],
 
@@ -7230,16 +2008,36 @@ const puzzles = [
 
   hintPairs:[
     {
-      negative:{word:"cut",icon:"cut"},
-      positive:{word:"attach",icon:"attach"}
+      negative:{
+        word:"cut",
+        icon:"cut"
+      },
+      positive:{
+        word:"attach",
+        icon:"attach"
+      }
     },
+
     {
-      negative:{word:"trim",icon:"trim"},
-      positive:{word:"fasten",icon:"fasten"}
+      negative:{
+        word:"trim",
+        icon:"trim"
+      },
+      positive:{
+        word:"fasten",
+        icon:"fasten"
+      }
     },
+
     {
-      negative:{word:"remove",icon:"remove"},
-      positive:{word:"secure",icon:"secure"}
+      negative:{
+        word:"remove",
+        icon:"remove"
+      },
+      positive:{
+        word:"secure",
+        icon:"secure"
+      }
     }
   ],
 
@@ -7265,87 +2063,152 @@ const puzzles = [
 ];
 
 
-/* STATE */
+/* =====================================================
+   STATE
+===================================================== */
 
-const currentPuzzle = puzzles[puzzles.length - 1];
+const currentPuzzle =
+  puzzles[puzzles.length - 1];
 
-let puzzle = currentPuzzle;
-let attempts = 0;
-let hintsUsed = 0;
-let visibleHintPairs = 1;
-let solved = false;
-let archived = false;
+let puzzle =
+  currentPuzzle;
+
+let attempts =
+  0;
+
+let hintsUsed =
+  0;
+
+let visibleHintPairs =
+  1;
+
+let solved =
+  false;
+
+let archived =
+  false;
 
 
-/* ELEMENTS */
+/* =====================================================
+   ELEMENTS
+===================================================== */
 
 const answerBoxes =
-  document.getElementById("answer-boxes");
+  document.getElementById(
+    "answer-boxes"
+  );
 
 const negativeClues =
-  document.getElementById("negativeClues");
+  document.getElementById(
+    "negativeClues"
+  );
 
 const positiveClues =
-  document.getElementById("positiveClues");
+  document.getElementById(
+    "positiveClues"
+  );
 
 const attemptsText =
-  document.getElementById("attempts");
+  document.getElementById(
+    "attempts"
+  );
 
 const message =
-  document.getElementById("message");
+  document.getElementById(
+    "message"
+  );
 
 const hintText =
-  document.getElementById("hint-text");
+  document.getElementById(
+    "hint-text"
+  );
 
 const submitButton =
-  document.getElementById("submit-answer");
+  document.getElementById(
+    "submit-answer"
+  );
 
 const hintButton =
-  document.getElementById("show-hint");
+  document.getElementById(
+    "show-hint"
+  );
 
 const resetButton =
-  document.getElementById("reset-puzzle");
+  document.getElementById(
+    "reset-puzzle"
+  );
 
 const resultCard =
-  document.getElementById("result-card");
+  document.getElementById(
+    "result-card"
+  );
 
 const resultTitle =
-  document.getElementById("result-title");
+  document.getElementById(
+    "result-title"
+  );
 
 const definitionBox =
-  document.getElementById("definition-box");
+  document.getElementById(
+    "definition-box"
+  );
 
 const sharePreview =
-  document.getElementById("share-preview");
+  document.getElementById(
+    "share-preview"
+  );
 
 const currentTab =
-  document.getElementById("current-tab");
+  document.getElementById(
+    "current-tab"
+  );
 
 const archiveTab =
-  document.getElementById("archive-tab");
+  document.getElementById(
+    "archive-tab"
+  );
 
 const playView =
-  document.getElementById("play-view");
+  document.getElementById(
+    "play-view"
+  );
 
 const archiveView =
-  document.getElementById("archive-view");
+  document.getElementById(
+    "archive-view"
+  );
 
 const archiveList =
-  document.getElementById("archive-list");
+  document.getElementById(
+    "archive-list"
+  );
 
 
-/* CLUES */
+/* =====================================================
+   CLUES
+===================================================== */
 
-function clueRow(clue,index,visible){
+function clueRow(
+  clue,
+  index,
+  visible
+) {
 
   const row =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
 
   row.className =
     "clue-item" +
-    (visible ? "" : " hidden-clue");
+    (
+      visible
+      ? ""
+      : " hidden-clue"
+    );
 
   row.innerHTML = `
+
     <div class="clue-number">
       ${index + 1}
     </div>
@@ -7361,88 +2224,148 @@ function clueRow(clue,index,visible){
       </span>
 
     </div>
+
   `;
 
   return row;
+
 }
 
 
-function renderHints(){
+function renderHints() {
 
-  negativeClues.innerHTML = "";
-  positiveClues.innerHTML = "";
+  negativeClues.innerHTML =
+    "";
 
-  puzzle.hintPairs.forEach(function(pair,index){
+  positiveClues.innerHTML =
+    "";
 
-    const visible =
-      index < visibleHintPairs;
+  puzzle.hintPairs.forEach(
+    function(
+      pair,
+      index
+    ) {
 
-    negativeClues.appendChild(
-      clueRow(
-        pair.negative,
-        index,
-        visible
-      )
-    );
+      const visible =
+        index <
+        visibleHintPairs;
 
-    positiveClues.appendChild(
-      clueRow(
-        pair.positive,
-        index,
-        visible
-      )
-    );
+      negativeClues.appendChild(
+        clueRow(
+          pair.negative,
+          index,
+          visible
+        )
+      );
 
-  });
+      positiveClues.appendChild(
+        clueRow(
+          pair.positive,
+          index,
+          visible
+        )
+      );
+
+    }
+  );
 
   hintButton.textContent =
-    visibleHintPairs >= puzzle.hintPairs.length
-      ? "Reveal Field Note"
-      : "Reveal Hint Pair";
+    visibleHintPairs >=
+    puzzle.hintPairs.length
+    ?
+    "Reveal Field Note"
+    :
+    "Reveal Hint Pair";
+
 }
 
 
-/* ANSWER BOXES */
+/* =====================================================
+   ANSWER BOXES
+===================================================== */
 
-function makeBoxes(){
+function makeBoxes() {
 
-  answerBoxes.innerHTML = "";
+  answerBoxes.innerHTML =
+    "";
 
   const word =
     puzzle.word.toUpperCase();
 
   document
-    .getElementById("puzzle-title")
+    .getElementById(
+      "puzzle-title"
+    )
     .textContent =
-      "Contronym #" + puzzle.number;
+      "Contronym #" +
+      puzzle.number;
 
   document
-    .getElementById("letter-count")
+    .getElementById(
+      "letter-count"
+    )
     .textContent =
       word.length +
       " LETTER" +
-      (word.length === 1 ? "" : "S") +
+      (
+        word.length === 1
+        ? ""
+        : "S"
+      ) +
       " • ONE CONTRONYM";
 
-  [...word].forEach(function(letter,index){
+  [...word].forEach(
+    function(
+      letter,
+      index
+    ) {
 
-    const input =
-      document.createElement("input");
+      const input =
+        document.createElement(
+          "input"
+        );
 
-    input.className = "letter-box";
-    input.maxLength = 1;
-    input.dataset.index = index;
-    input.autocomplete = "off";
+      input.className =
+        "letter-box";
 
-    answerBoxes.appendChild(input);
+      input.maxLength =
+        1;
 
-  });
+      input.dataset.index =
+        index;
+
+      input.autocomplete =
+        "off";
+
+      input.autocapitalize =
+        "characters";
+
+      input.inputMode =
+        "text";
+
+      input.setAttribute(
+        "aria-label",
+        "Letter " +
+        (
+          index + 1
+        )
+      );
+
+      answerBoxes.appendChild(
+        input
+      );
+
+    }
+  );
+
 }
 
 
-/* STATUS */
+/* =====================================================
+   STATUS
+===================================================== */
 
-function updateStatus(){
+function updateStatus() {
 
   attemptsText.textContent =
     "Contronym #" +
@@ -7452,43 +2375,63 @@ function updateStatus(){
     " / 3" +
     " • Hint pairs used " +
     hintsUsed;
+
 }
 
 
-/* GUESS */
+/* =====================================================
+   GUESS
+===================================================== */
 
-function currentGuess(){
+function currentGuess() {
 
   return Array
-    .from(answerBoxes.children)
-    .map(function(input){
-      return input.value.toUpperCase();
-    })
+    .from(
+      answerBoxes.children
+    )
+    .map(
+      function(input) {
+
+        return input.value
+          .toUpperCase();
+
+      }
+    )
     .join("");
+
 }
 
 
-/* RESULT */
+/* =====================================================
+   RESULT
+===================================================== */
 
-function resultPhrase(){
+function resultPhrase() {
 
-  if(!solved){
+  if (
+    !solved
+  ) {
     return "No Majorana found";
   }
 
-  if(attempts === 1){
+  if (
+    attempts === 1
+  ) {
     return "Majorana in One";
   }
 
-  if(attempts === 2){
+  if (
+    attempts === 2
+  ) {
     return "Majorana in Two";
   }
 
   return "Majorana in Three";
+
 }
 
 
-function shareText(){
+function shareText() {
 
   return (
     "Cν CONTRONYM #" +
@@ -7502,12 +2445,14 @@ function shareText(){
     hintsUsed +
     "\n\nContext determines charge."
   );
+
 }
 
 
-function showResult(){
+function showResult() {
 
-  resultCard.style.display = "block";
+  resultCard.style.display =
+    "block";
 
   resultTitle.textContent =
     resultPhrase() +
@@ -7561,60 +2506,92 @@ function showResult(){
       </em>
 
     </div>
+
   `;
 
   sharePreview.textContent =
     shareText();
+
+  setTimeout(
+    function() {
+
+      resultCard.scrollIntoView(
+        {
+          behavior:"smooth",
+          block:"nearest"
+        }
+      );
+
+    },
+    100
+  );
+
 }
 
 
-/* SUBMIT */
+/* =====================================================
+   SUBMIT
+===================================================== */
 
-function submitGuess(){
+function submitGuess() {
 
-  if(
+  if (
     solved ||
     attempts >= 3
-  ){
+  ) {
     return;
   }
 
   const inputs =
-    Array.from(answerBoxes.children);
+    Array.from(
+      answerBoxes.children
+    );
 
-  if(
-    inputs.some(function(input){
-      return !input.value;
-    })
-  ){
+  if (
+    inputs.some(
+      function(input) {
+        return !input.value;
+      }
+    )
+  ) {
+
     message.textContent =
       "Fill every letter box before submitting.";
+
     return;
+
   }
 
   attempts++;
+
   updateStatus();
 
   const guess =
     currentGuess();
 
-  if(
+  if (
     guess ===
     puzzle.word.toUpperCase()
-  ){
+  ) {
 
-    solved = true;
+    solved =
+      true;
 
     message.textContent =
       resultPhrase() +
       " — you found the Majorana of Meaning.";
 
-    inputs.forEach(function(input){
-      input.disabled = true;
-    });
+    inputs.forEach(
+      function(input) {
+        input.disabled = true;
+      }
+    );
 
-    submitButton.disabled = true;
-    hintButton.disabled = true;
+    submitButton.disabled =
+      true;
+
+    hintButton.disabled =
+      true;
 
     showResult();
 
@@ -7629,21 +2606,29 @@ function submitGuess(){
     );
 
     return;
+
   }
 
-  if(attempts >= 3){
+  if (
+    attempts >= 3
+  ) {
 
     message.textContent =
       "The Majorana was " +
       puzzle.word +
       ".";
 
-    inputs.forEach(function(input){
-      input.disabled = true;
-    });
+    inputs.forEach(
+      function(input) {
+        input.disabled = true;
+      }
+    );
 
-    submitButton.disabled = true;
-    hintButton.disabled = true;
+    submitButton.disabled =
+      true;
+
+    hintButton.disabled =
+      true;
 
     showResult();
 
@@ -7657,6 +2642,7 @@ function submitGuess(){
     );
 
     return;
+
   }
 
   const remaining =
@@ -7666,25 +2652,42 @@ function submitGuess(){
     "Not quite — charge mismatch. " +
     remaining +
     " attempt" +
-    (remaining === 1 ? "" : "s") +
+    (
+      remaining === 1
+      ? ""
+      : "s"
+    ) +
     " remain.";
+
 }
 
 
-/* RESET */
+/* =====================================================
+   RESET
+===================================================== */
 
-function resetPuzzle(){
+function resetPuzzle() {
 
-  attempts = 0;
-  hintsUsed = 0;
-  visibleHintPairs = 1;
-  solved = false;
+  attempts =
+    0;
+
+  hintsUsed =
+    0;
+
+  visibleHintPairs =
+    1;
+
+  solved =
+    false;
 
   makeBoxes();
+
   renderHints();
+
   updateStatus();
 
-  message.textContent = "";
+  message.textContent =
+    "";
 
   hintText.textContent =
     puzzle.message;
@@ -7700,32 +2703,58 @@ function resetPuzzle(){
 
   hintButton.disabled =
     false;
+
 }
 
 
-/* INPUT */
+/* =====================================================
+   INPUT
+===================================================== */
 
 answerBoxes.addEventListener(
   "input",
-  function(event){
+  function(event) {
 
     const input =
       event.target;
 
+    if (
+      !input.classList.contains(
+        "letter-box"
+      )
+    ) {
+      return;
+    }
+
     const index =
-      Number(input.dataset.index);
+      Number(
+        input.dataset.index
+      );
 
     input.value =
       input.value
         .toUpperCase()
-        .replace(/[^A-Z]/g,"");
+        .replace(
+          /[^A-Z]/g,
+          ""
+        )
+        .slice(
+          0,
+          1
+        );
 
-    if(input.value){
+    if (
+      input.value
+    ) {
 
       const next =
-        answerBoxes.children[index + 1];
+        answerBoxes.children[
+          index + 1
+        ];
 
-      if(next){
+      if (
+        next
+      ) {
         next.focus();
       }
 
@@ -7737,29 +2766,45 @@ answerBoxes.addEventListener(
 
 answerBoxes.addEventListener(
   "keydown",
-  function(event){
+  function(event) {
 
     const input =
       event.target;
 
-    const index =
-      Number(input.dataset.index);
+    if (
+      !input.classList.contains(
+        "letter-box"
+      )
+    ) {
+      return;
+    }
 
-    if(
+    const index =
+      Number(
+        input.dataset.index
+      );
+
+    if (
       event.key === "Backspace" &&
       !input.value
-    ){
+    ) {
 
       const previous =
-        answerBoxes.children[index - 1];
+        answerBoxes.children[
+          index - 1
+        ];
 
-      if(previous){
+      if (
+        previous
+      ) {
         previous.focus();
       }
 
     }
 
-    if(event.key === "Enter"){
+    if (
+      event.key === "Enter"
+    ) {
       submitGuess();
     }
 
@@ -7767,7 +2812,82 @@ answerBoxes.addEventListener(
 );
 
 
-/* CONTROLS */
+answerBoxes.addEventListener(
+  "paste",
+  function(event) {
+
+    const target =
+      event.target;
+
+    if (
+      !target.classList.contains(
+        "letter-box"
+      )
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+
+    const pasted =
+      (
+        event.clipboardData ||
+        window.clipboardData
+      )
+      .getData(
+        "text"
+      )
+      .toUpperCase()
+      .replace(
+        /[^A-Z]/g,
+        ""
+      );
+
+    let index =
+      Number(
+        target.dataset.index
+      );
+
+    [...pasted].forEach(
+      function(letter) {
+
+        const box =
+          answerBoxes.children[
+            index
+          ];
+
+        if (
+          box
+        ) {
+
+          box.value =
+            letter;
+
+          index++;
+
+        }
+
+      }
+    );
+
+    const next =
+      answerBoxes.children[
+        index
+      ];
+
+    if (
+      next
+    ) {
+      next.focus();
+    }
+
+  }
+);
+
+
+/* =====================================================
+   CONTROLS
+===================================================== */
 
 submitButton.addEventListener(
   "click",
@@ -7777,17 +2897,19 @@ submitButton.addEventListener(
 
 hintButton.addEventListener(
   "click",
-  function(){
+  function() {
 
-    if(
+    if (
       visibleHintPairs <
       puzzle.hintPairs.length
-    ){
+    ) {
 
       visibleHintPairs++;
+
       hintsUsed++;
 
       renderHints();
+
       updateStatus();
 
       trackContronymEvent(
@@ -7799,10 +2921,18 @@ hintButton.addEventListener(
       );
 
       return;
+
     }
 
     hintText.style.display =
       "block";
+
+    hintText.scrollIntoView(
+      {
+        behavior:"smooth",
+        block:"nearest"
+      }
+    );
 
   }
 );
@@ -7810,7 +2940,7 @@ hintButton.addEventListener(
 
 resetButton.addEventListener(
   "click",
-  function(){
+  function() {
 
     resetPuzzle();
 
@@ -7826,90 +2956,116 @@ resetButton.addEventListener(
 );
 
 
-/* ARCHIVE */
+/* =====================================================
+   ARCHIVE
+===================================================== */
 
-function buildArchive(){
+function buildArchive() {
 
-  archiveList.innerHTML = "";
+  archiveList.innerHTML =
+    "";
 
   puzzles
-    .slice(0,-1)
+    .slice(
+      0,
+      -1
+    )
     .reverse()
-    .forEach(function(oldPuzzle){
+    .forEach(
+      function(oldPuzzle) {
 
-      const card =
-        document.createElement("div");
+        const card =
+          document.createElement(
+            "div"
+          );
 
-      card.className =
-        "archive-card";
+        card.className =
+          "archive-card";
 
-      card.innerHTML = `
+        card.innerHTML = `
 
-        <div class="archive-number">
-          Contronym #${oldPuzzle.number}
-        </div>
+          <div class="archive-number">
+            Contronym #${oldPuzzle.number}
+          </div>
 
-        <div class="archive-date">
-          ${oldPuzzle.date}
-        </div>
+          <div class="archive-date">
+            ${oldPuzzle.date}
+          </div>
 
-        <div class="archive-description">
-          Revisit this Majorana of Meaning.
-        </div>
+          <div class="archive-description">
+            Revisit this Majorana of Meaning.
+          </div>
 
-        <button class="archive-play">
-          Play Puzzle #${oldPuzzle.number}
-        </button>
-      `;
+          <button
+            class="archive-play"
+            type="button"
+          >
+            Play Puzzle #${oldPuzzle.number}
+          </button>
 
-      card
-        .querySelector(".archive-play")
-        .addEventListener(
-          "click",
-          function(){
+        `;
 
-            puzzle =
-              oldPuzzle;
+        card
+          .querySelector(
+            ".archive-play"
+          )
+          .addEventListener(
+            "click",
+            function() {
 
-            archived =
-              true;
+              puzzle =
+                oldPuzzle;
 
-            resetPuzzle();
+              archived =
+                true;
 
-            archiveView.style.display =
-              "none";
+              resetPuzzle();
 
-            playView.style.display =
-              "flex";
+              archiveView.style.display =
+                "none";
 
-            currentTab.classList.remove(
-              "active"
-            );
+              playView.style.display =
+                "flex";
 
-            archiveTab.classList.remove(
-              "active"
-            );
+              currentTab.classList.remove(
+                "active"
+              );
 
-            trackContronymEvent(
-              "puzzle_started",
-              puzzle,
-              {
-                archived:true
-              }
-            );
+              archiveTab.classList.remove(
+                "active"
+              );
 
-          }
+              window.scrollTo(
+                {
+                  top:0,
+                  behavior:"smooth"
+                }
+              );
+
+              trackContronymEvent(
+                "puzzle_started",
+                puzzle,
+                {
+                  archived:true
+                }
+              );
+
+            }
+          );
+
+        archiveList.appendChild(
+          card
         );
 
-      archiveList.appendChild(card);
+      }
+    );
 
-    });
 }
 
 
 currentTab.addEventListener(
   "click",
-  function(){
+  function() {
 
     puzzle =
       currentPuzzle;
@@ -7947,7 +3103,7 @@ currentTab.addEventListener(
 
 archiveTab.addEventListener(
   "click",
-  function(){
+  function() {
 
     buildArchive();
 
@@ -7969,26 +3125,36 @@ archiveTab.addEventListener(
 );
 
 
-/* SHARING */
+/* =====================================================
+   SHARING
+===================================================== */
 
 document
-  .getElementById("native-share")
+  .getElementById(
+    "native-share"
+  )
   .addEventListener(
     "click",
-    async function(){
+    async function() {
 
-      if(navigator.share){
+      if (
+        navigator.share
+      ) {
 
-        try{
+        try {
 
-          await navigator.share({
-            title:
-              "Contronym: The Majorana of Meaning",
-            text:
-              shareText(),
-            url:
-              window.location.href
-          });
+          await navigator.share(
+            {
+              title:
+                "Contronym: The Majorana of Meaning",
+
+              text:
+                shareText(),
+
+              url:
+                window.location.href
+            }
+          );
 
           trackContronymEvent(
             "puzzle_shared",
@@ -8000,7 +3166,8 @@ document
             }
           );
 
-        }catch(error){
+        }
+        catch(error) {
 
           console.log(
             "Share cancelled."
@@ -8009,21 +3176,30 @@ document
         }
 
       }
+      else {
+
+        alert(
+          shareText()
+        );
+
+      }
 
     }
   );
 
 
 document
-  .getElementById("copy-share")
+  .getElementById(
+    "copy-share"
+  )
   .addEventListener(
     "click",
-    async function(){
+    async function() {
 
       const button =
         this;
 
-      try{
+      try {
 
         await navigator
           .clipboard
@@ -8037,14 +3213,17 @@ document
           "Copied!";
 
         setTimeout(
-          function(){
+          function() {
+
             button.textContent =
               "Copy Result";
+
           },
           1200
         );
 
-      }catch(error){
+      }
+      catch(error) {
 
         alert(
           shareText()
@@ -8056,7 +3235,9 @@ document
   );
 
 
-/* START */
+/* =====================================================
+   START
+===================================================== */
 
 resetPuzzle();
 
