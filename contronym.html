@@ -93,34 +93,21 @@ gtag(
 }
 
 
-
-/* =========================================================
-   GLOBAL
-========================================================= */
-
 * {
-
-  box-sizing:
-    border-box;
-
+  box-sizing: border-box;
 }
 
 
 html {
-
-  scroll-behavior:
-    smooth;
-
+  scroll-behavior: smooth;
 }
 
 
 body {
 
-  margin:
-    0;
+  margin: 0;
 
-  min-height:
-    100vh;
+  min-height: 100vh;
 
   padding:
     18px
@@ -143,21 +130,13 @@ body {
 
 button,
 input {
-
-  font:
-    inherit;
-
+  font: inherit;
 }
 
 
 button {
-
-  cursor:
-    pointer;
-
-  -webkit-tap-highlight-color:
-    transparent;
-
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -223,28 +202,22 @@ button {
 
 .brand-logo-wrap {
 
-  width:
-    100%;
+  width: 100%;
 
-  display:
-    flex;
+  display: flex;
 
-  justify-content:
-    center;
+  justify-content: center;
 
-  align-items:
-    center;
+  align-items: center;
 
-  margin-bottom:
-    -2px;
+  margin-bottom: -2px;
 
 }
 
 
 .brand-logo {
 
-  display:
-    block;
+  display: block;
 
   width:
     min(
@@ -252,19 +225,16 @@ button {
       74vw
     );
 
-  height:
-    auto;
+  height: auto;
 
-  overflow:
-    visible;
+  overflow: visible;
 
 }
 
 
 .brand-panel h1 {
 
-  margin:
-    0;
+  margin: 0;
 
   font-size:
     clamp(
@@ -273,11 +243,9 @@ button {
       4.6rem
     );
 
-  line-height:
-    1;
+  line-height: 1;
 
-  letter-spacing:
-    1px;
+  letter-spacing: 1px;
 
 }
 
@@ -296,37 +264,28 @@ button {
       1.9rem
     );
 
-  font-style:
-    italic;
+  font-style: italic;
 
-  font-weight:
-    normal;
+  font-weight: normal;
 
 }
 
 
 .brand-description {
 
-  max-width:
-    620px;
+  max-width: 620px;
 
-  margin:
-    auto;
+  margin: auto;
 
-  color:
-    #675a4b;
+  color: #675a4b;
 
-  line-height:
-    1.55;
+  line-height: 1.55;
 
 }
 
 
 .brand-description strong {
-
-  color:
-    var(--blue);
-
+  color: var(--blue);
 }
 
 
@@ -337,20 +296,15 @@ button {
 
 .top-nav {
 
-  display:
-    flex;
+  display: flex;
 
-  justify-content:
-    center;
+  justify-content: center;
 
-  gap:
-    8px;
+  gap: 8px;
 
-  flex-wrap:
-    wrap;
+  flex-wrap: wrap;
 
-  margin-bottom:
-    18px;
+  margin-bottom: 18px;
 
 }
 
@@ -389,8 +343,7 @@ button {
   color:
     var(--blue);
 
-  font-weight:
-    bold;
+  font-weight: bold;
 
 }
 
@@ -402,22 +355,18 @@ button {
 
 #play-view {
 
-  display:
-    flex;
+  display: flex;
 
-  flex-direction:
-    column;
+  flex-direction: column;
 
-  align-items:
-    center;
+  align-items: center;
 
 }
 
 
 #archive-view {
 
-  display:
-    none;
+  display: none;
 
   width:
     min(
@@ -444,16 +393,14 @@ button {
       100%
     );
 
-  padding:
-    22px;
+  padding: 22px;
 
   border:
     2px
     solid
     var(--soft-border);
 
-  border-radius:
-    22px;
+  border-radius: 22px;
 
   background:
     var(--paper);
@@ -469,14 +416,11 @@ button {
 
 .puzzle-heading {
 
-  max-width:
-    700px;
+  max-width: 700px;
 
-  margin:
-    auto;
+  margin: auto;
 
-  text-align:
-    center;
+  text-align: center;
 
 }
 
@@ -515,8 +459,7 @@ button {
 
 .puzzle-heading p {
 
-  margin:
-    0;
+  margin: 0;
 
   color:
     #6d6151;
@@ -534,17 +477,15 @@ button {
 
 .game-container {
 
-  position:
-    relative;
+  position: relative;
 
   width:
     min(
-      760px,
+      820px,
       100%
     );
 
-  height:
-    500px;
+  height: 500px;
 
   margin:
     15px
@@ -556,20 +497,15 @@ button {
 
 .graph-svg {
 
-  position:
-    absolute;
+  position: absolute;
 
-  inset:
-    0;
+  inset: 0;
 
-  width:
-    100%;
+  width: 100%;
 
-  height:
-    100%;
+  height: 100%;
 
-  pointer-events:
-    none;
+  pointer-events: none;
 
 }
 
@@ -581,11 +517,9 @@ button {
 
 .axis-label {
 
-  position:
-    absolute;
+  position: absolute;
 
-  z-index:
-    5;
+  z-index: 5;
 
   padding:
     3px
@@ -613,11 +547,9 @@ button {
 
 .conjugate-label {
 
-  top:
-    2px;
+  top: 2px;
 
-  left:
-    50%;
+  left: 50%;
 
   transform:
     translateX(
@@ -627,42 +559,34 @@ button {
   color:
     var(--red);
 
-  text-align:
-    center;
+  text-align: center;
 
 }
 
 
 .transverse-label {
 
-  right:
-    4%;
+  right: 4%;
 
-  bottom:
-    68px;
+  bottom: 68px;
 
   color:
     var(--blue);
 
-  text-align:
-    right;
+  text-align: right;
 
 }
 
 
 .vertex-label {
 
-  position:
-    absolute;
+  position: absolute;
 
-  left:
-    50%;
+  left: 50%;
 
-  bottom:
-    3px;
+  bottom: 3px;
 
-  width:
-    95%;
+  width: 95%;
 
   transform:
     translateX(
@@ -741,8 +665,7 @@ button {
 
 .negative-column {
 
-  left:
-    0;
+  left: 0;
 
   border-color:
     var(--red);
@@ -752,8 +675,7 @@ button {
 
 .positive-column {
 
-  right:
-    0;
+  right: 0;
 
   border-color:
     var(--blue);
@@ -906,8 +828,7 @@ button {
 
 .clue-content {
 
-  min-width:
-    0;
+  min-width: 0;
 
 }
 
@@ -1163,10 +1084,7 @@ button {
 
 
 button {
-
-  border:
-    none;
-
+  border: none;
 }
 
 
@@ -1677,10 +1595,7 @@ button {
 (max-width: 760px) {
 
   .game-container {
-
-    height:
-      610px;
-
+    height: 610px;
   }
 
 
@@ -1703,10 +1618,7 @@ button {
 
 
   .clue-word {
-
-    font-size:
-      .69rem;
-
+    font-size: .69rem;
   }
 
 
@@ -1745,10 +1657,7 @@ button {
 
 
   .concept-grid {
-
-    grid-template-columns:
-      1fr;
-
+    grid-template-columns: 1fr;
   }
 
 }
@@ -1758,42 +1667,27 @@ button {
 (max-width: 480px) {
 
   body {
-
-    padding-top:
-      10px;
-
+    padding-top: 10px;
   }
 
 
   .brand-panel {
-
-    padding:
-      14px;
-
+    padding: 14px;
   }
 
 
   .brand-logo {
-
-    width:
-      230px;
-
+    width: 230px;
   }
 
 
   .puzzle-card {
-
-    padding:
-      12px;
-
+    padding: 12px;
   }
 
 
   .game-container {
-
-    height:
-      560px;
-
+    height: 560px;
   }
 
 
@@ -1809,10 +1703,7 @@ button {
 
 
   .clue-column-subtitle {
-
-    font-size:
-      .61rem;
-
+    font-size: .61rem;
   }
 
 
@@ -1828,10 +1719,7 @@ button {
 
 
   .clue-item {
-
-    padding:
-      4px;
-
+    padding: 4px;
   }
 
 
@@ -1899,9 +1787,7 @@ button {
 >
 
 
-<!-- =====================================================
-     RED C
-===================================================== -->
+<!-- RED C -->
 
 <path
   d="
@@ -1931,12 +1817,7 @@ button {
 
 
 
-<!-- =====================================================
-     TRUE BLUE ORBIT
-
-     Elliptical orbital path passing behind/in front
-     of the red C rather than just a diagonal line.
-===================================================== -->
+<!-- BLUE DASHED ORBIT ONLY -->
 
 <ellipse
   cx="193"
@@ -1948,33 +1829,6 @@ button {
   stroke="#1f568f"
   stroke-width="7"
   stroke-dasharray="18 13"
-/>
-
-
-
-<!-- =====================================================
-     SMALL INNER ORBITAL ARC
-
-     Gives the logo the orbital / particle feel
-     of the original mark rather than a single path.
-===================================================== -->
-
-<path
-  d="
-    M 92 174
-
-    C 126 196,
-      177 197,
-      220 177
-
-    C 253 161,
-      280 134,
-      300 101
-  "
-  fill="none"
-  stroke="#1f568f"
-  stroke-width="4"
-  stroke-linecap="round"
 />
 
 
@@ -2110,19 +1964,17 @@ button {
 
 <svg
   class="graph-svg"
-  viewBox="0 0 760 500"
+  viewBox="0 0 820 500"
   preserveAspectRatio="xMidYMid meet"
 >
 
 
-<!-- =====================================================
-     TRANSVERSE AXIS — BLUE
-===================================================== -->
+<!-- TRANSVERSE AXIS -->
 
 <line
-  x1="185"
+  x1="155"
   y1="385"
-  x2="575"
+  x2="665"
   y2="385"
   stroke="#1f568f"
   stroke-width="4"
@@ -2130,26 +1982,24 @@ button {
 
 
 <polygon
-  points="582,385 565,375 565,395"
+  points="672,385 655,375 655,395"
   fill="#1f568f"
 />
 
 
 <polygon
-  points="178,385 195,375 195,395"
+  points="148,385 165,375 165,395"
   fill="#1f568f"
 />
 
 
 
-<!-- =====================================================
-     CONJUGATE AXIS — RED
-===================================================== -->
+<!-- CONJUGATE AXIS -->
 
 <line
-  x1="380"
+  x1="410"
   y1="30"
-  x2="380"
+  x2="410"
   y2="427"
   stroke="#b62432"
   stroke-width="4"
@@ -2157,26 +2007,23 @@ button {
 
 
 <polygon
-  points="380,20 370,42 390,42"
+  points="410,20 400,42 420,42"
   fill="#b62432"
 />
 
 
 
 <!-- =====================================================
-     LEFT PARABOLA
-
-     RED DASHES ONLY
-     NO BLACK UNDERLAY
+     WIDER LEFT PARABOLA
 ===================================================== -->
 
 <path
   d="
-    M 245 88
+    M 205 78
 
-    C 258 165,
-      285 290,
-      380 385
+    C 225 175,
+      280 310,
+      410 385
   "
   fill="none"
   stroke="#b62432"
@@ -2188,18 +2035,16 @@ button {
 
 
 <!-- =====================================================
-     RIGHT PARABOLA
-
-     BLUE DASHES ONLY
+     WIDER RIGHT PARABOLA
 ===================================================== -->
 
 <path
   d="
-    M 380 385
+    M 410 385
 
-    C 475 290,
-      502 165,
-      515 88
+    C 540 310,
+      595 175,
+      615 78
   "
   fill="none"
   stroke="#1f568f"
@@ -2210,12 +2055,10 @@ button {
 
 
 
-<!-- =====================================================
-     GOLD VERTEX
-===================================================== -->
+<!-- GOLD VERTEX -->
 
 <circle
-  cx="380"
+  cx="410"
   cy="385"
   r="8"
   fill="#d6aa44"
@@ -2224,14 +2067,14 @@ button {
 
 <path
   d="
-    M 380 367
-    L 385 380
-    L 399 385
-    L 385 390
-    L 380 403
-    L 375 390
-    L 361 385
-    L 375 380
+    M 410 367
+    L 415 380
+    L 429 385
+    L 415 390
+    L 410 403
+    L 405 390
+    L 391 385
+    L 405 380
     Z
   "
   fill="#d6aa44"
@@ -2240,29 +2083,25 @@ button {
 
 
 <!-- =====================================================
-     MAJORANA ν TRANSVERSE TRAIL
-
-     THIN
-     BLACK
-     DASHED
-     NO CIRCLES
+     BLACK DASHED ν TRAIL
+     CROSSING BELOW VERTEX
 ===================================================== -->
 
 <path
   d="
-    M 214 401
+    M 210 414
 
-    C 254 370,
-      293 404,
-      330 389
+    C 265 392,
+      315 432,
+      365 410
 
-    C 368 373,
-      397 397,
-      430 386
+    C 405 393,
+      446 424,
+      492 410
 
-    C 468 373,
-      509 374,
-      546 354
+    C 548 393,
+      590 399,
+      625 382
   "
   fill="none"
   stroke="#222"
@@ -2273,11 +2112,11 @@ button {
 
 
 
-<!-- ν MOVED TO RIGHT END -->
+<!-- ν AT RIGHT END -->
 
 <text
-  x="551"
-  y="355"
+  x="630"
+  y="384"
   fill="#222"
   font-family="Georgia, serif"
   font-size="29"
@@ -2291,9 +2130,7 @@ button {
 
 
 
-<!-- =====================================================
-     AXIS LABELS
-===================================================== -->
+<!-- AXIS LABELS -->
 
 <div class="axis-label conjugate-label">
 
@@ -2322,24 +2159,18 @@ button {
 
 
 
-<!-- =====================================================
-     NEGATIVE CLUES
-===================================================== -->
+<!-- NEGATIVE CLUES -->
 
 <div class="clue-column negative-column">
 
 
 <div class="clue-column-title">
-
   ⊖ OPPOSITE
-
 </div>
 
 
 <div class="clue-column-subtitle">
-
   negative charge
-
 </div>
 
 
@@ -2354,24 +2185,18 @@ button {
 
 
 
-<!-- =====================================================
-     POSITIVE CLUES
-===================================================== -->
+<!-- POSITIVE CLUES -->
 
 <div class="clue-column positive-column">
 
 
 <div class="clue-column-title">
-
   ⊕ SIMILAR
-
 </div>
 
 
 <div class="clue-column-subtitle">
-
   positive charge
-
 </div>
 
 
@@ -2470,9 +2295,7 @@ button {
 
 
 
-<!-- =========================================================
-     RESULT CARD
-========================================================= -->
+<!-- RESULT CARD -->
 
 <div id="result-card">
 
@@ -2711,17 +2534,11 @@ function trackContronymEvent(
 
 
 /* =========================================================
-   SILHOUETTE ICONS
-
-   EACH CLUE HAS ITS OWN BLACK IMAGE.
+   SILHOUETTES
 ========================================================= */
 
 const silhouetteIcons = {
 
-
-/* =========================================================
-   CUT — SCISSORS
-========================================================= */
 
 cut:
 `
@@ -2765,11 +2582,6 @@ cut:
 </svg>
 `,
 
-
-
-/* =========================================================
-   TRIM — HEDGE SHEARS
-========================================================= */
 
 trim:
 `
@@ -2832,11 +2644,6 @@ trim:
 `,
 
 
-
-/* =========================================================
-   REMOVE — PIECE BEING CUT AWAY
-========================================================= */
-
 remove:
 `
 <svg viewBox="0 0 64 64" aria-hidden="true">
@@ -2875,11 +2682,6 @@ remove:
 `,
 
 
-
-/* =========================================================
-   ATTACH — PAPERCLIP
-========================================================= */
-
 attach:
 `
 <svg viewBox="0 0 64 64" aria-hidden="true">
@@ -2912,11 +2714,6 @@ attach:
 </svg>
 `,
 
-
-
-/* =========================================================
-   FASTEN — BUCKLE / FASTENER
-========================================================= */
 
 fasten:
 `
@@ -2958,11 +2755,6 @@ fasten:
 </svg>
 `,
 
-
-
-/* =========================================================
-   SECURE — PADLOCK
-========================================================= */
 
 secure:
 `
@@ -3013,11 +2805,6 @@ secure:
 `,
 
 
-
-/* =========================================================
-   RESTRICT — BARRIER
-========================================================= */
-
 restrict:
 `
 <svg viewBox="0 0 64 64" aria-hidden="true">
@@ -3066,11 +2853,6 @@ restrict:
 `,
 
 
-
-/* =========================================================
-   PENALIZE — GAVEL
-========================================================= */
-
 penalize:
 `
 <svg viewBox="0 0 64 64" aria-hidden="true">
@@ -3108,11 +2890,6 @@ penalize:
 </svg>
 `,
 
-
-
-/* =========================================================
-   PUNISH — HAMMER / IMPACT
-========================================================= */
 
 punish:
 `
@@ -3153,11 +2930,6 @@ punish:
 </svg>
 `,
 
-
-
-/* =========================================================
-   PERMIT — OPEN GATE
-========================================================= */
 
 permit:
 `
@@ -3203,11 +2975,6 @@ permit:
 </svg>
 `,
 
-
-
-/* =========================================================
-   AUTHORIZE — STAMP
-========================================================= */
 
 authorize:
 `
@@ -3255,11 +3022,6 @@ authorize:
 `,
 
 
-
-/* =========================================================
-   APPROVE — CHECKMARK SEAL
-========================================================= */
-
 approve:
 `
 <svg viewBox="0 0 64 64" aria-hidden="true">
@@ -3297,10 +3059,6 @@ approve:
 
 const puzzles = [
 
-
-/* =========================================================
-   #001 SANCTION
-========================================================= */
 
 {
 
@@ -3425,10 +3183,6 @@ const puzzles = [
 },
 
 
-
-/* =========================================================
-   #002 CLIP
-========================================================= */
 
 {
 
@@ -3751,10 +3505,6 @@ const puzzleTitle =
 
 
 
-/* =========================================================
-   ICON
-========================================================= */
-
 function getSilhouette(
   icon
 ) {
@@ -3770,10 +3520,6 @@ function getSilhouette(
 }
 
 
-
-/* =========================================================
-   CLUE ROW
-========================================================= */
 
 function createClueElement(
   clue,
@@ -3802,9 +3548,7 @@ function createClueElement(
   row.innerHTML = `
 
     <div class="clue-number">
-
       ${index + 1}
-
     </div>
 
 
@@ -3812,20 +3556,14 @@ function createClueElement(
 
       <div class="clue-word-row">
 
-
         <span class="clue-word">
-
           ${clue.word}
-
         </span>
 
 
         <span class="clue-silhouette">
-
           ${getSilhouette(clue.icon)}
-
         </span>
-
 
       </div>
 
@@ -3839,10 +3577,6 @@ function createClueElement(
 }
 
 
-
-/* =========================================================
-   HINTS
-========================================================= */
 
 function renderHints() {
 
@@ -3908,10 +3642,6 @@ function renderHints() {
 }
 
 
-
-/* =========================================================
-   LETTER BOXES
-========================================================= */
 
 function createBoxes() {
 
@@ -4016,10 +3746,6 @@ function getGuess() {
 
 
 
-/* =========================================================
-   STATUS
-========================================================= */
-
 function updateAttempts() {
 
   attemptsText.textContent =
@@ -4070,19 +3796,13 @@ function lockGame() {
 
 
 
-/* =========================================================
-   RESULT
-========================================================= */
-
 function resultPhrase() {
 
   if (
     !solved
   ) {
 
-    return (
-      "No Majorana found"
-    );
+    return "No Majorana found";
 
   }
 
@@ -4092,9 +3812,7 @@ function resultPhrase() {
     1
   ) {
 
-    return (
-      "Majorana in One"
-    );
+    return "Majorana in One";
 
   }
 
@@ -4104,16 +3822,12 @@ function resultPhrase() {
     2
   ) {
 
-    return (
-      "Majorana in Two"
-    );
+    return "Majorana in Two";
 
   }
 
 
-  return (
-    "Majorana in Three"
-  );
+  return "Majorana in Three";
 
 }
 
@@ -4235,10 +3949,6 @@ function showResult() {
 }
 
 
-
-/* =========================================================
-   SUBMIT
-========================================================= */
 
 function submitGuess() {
 
@@ -4434,10 +4144,6 @@ function submitGuess() {
 
 
 
-/* =========================================================
-   RESET
-========================================================= */
-
 function resetPuzzle() {
 
   attempts =
@@ -4515,10 +4221,6 @@ function resetPuzzle() {
 
 
 
-/* =========================================================
-   LOAD PUZZLE
-========================================================= */
-
 function loadPuzzle(
   selectedPuzzle,
   archived
@@ -4585,10 +4287,6 @@ function loadPuzzle(
 
 
 
-/* =========================================================
-   ARCHIVE
-========================================================= */
-
 function buildArchive() {
 
   archiveList.innerHTML =
@@ -4622,16 +4320,12 @@ function buildArchive() {
       card.innerHTML = `
 
         <div class="archive-number">
-
           Contronym #${oldPuzzle.number}
-
         </div>
 
 
         <div class="archive-date">
-
           ${oldPuzzle.date}
-
         </div>
 
 
@@ -4644,9 +4338,7 @@ function buildArchive() {
 
 
         <button class="archive-play">
-
           Play Puzzle #${oldPuzzle.number}
-
         </button>
 
       `;
@@ -4679,10 +4371,6 @@ function buildArchive() {
 }
 
 
-
-/* =========================================================
-   CURRENT TAB
-========================================================= */
 
 currentTab.addEventListener(
   "click",
@@ -4733,10 +4421,6 @@ currentTab.addEventListener(
 
 
 
-/* =========================================================
-   ARCHIVE TAB
-========================================================= */
-
 archiveTab.addEventListener(
   "click",
   function () {
@@ -4765,10 +4449,6 @@ archiveTab.addEventListener(
 );
 
 
-
-/* =========================================================
-   INPUT
-========================================================= */
 
 answerBoxes.addEventListener(
   "input",
@@ -4875,20 +4555,12 @@ answerBoxes.addEventListener(
 
 
 
-/* =========================================================
-   SUBMIT BUTTON
-========================================================= */
-
 submitBtn.addEventListener(
   "click",
   submitGuess
 );
 
 
-
-/* =========================================================
-   HINT PAIRS
-========================================================= */
 
 showHintBtn.addEventListener(
   "click",
@@ -4939,10 +4611,6 @@ showHintBtn.addEventListener(
 
 
 
-/* =========================================================
-   RESET BUTTON
-========================================================= */
-
 resetBtn.addEventListener(
   "click",
   function () {
@@ -4968,10 +4636,6 @@ resetBtn.addEventListener(
 );
 
 
-
-/* =========================================================
-   SHARE
-========================================================= */
 
 nativeShareBtn.addEventListener(
   "click",
@@ -5136,10 +4800,6 @@ copyShareBtn.addEventListener(
 );
 
 
-
-/* =========================================================
-   START
-========================================================= */
 
 resetPuzzle();
 
