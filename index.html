@@ -7,7 +7,7 @@
 
 <meta
   name="viewport"
-  content="width=device-width, initial-scale=1.0"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
 >
 
 <title>PAT Learning Lab</title>
@@ -29,7 +29,11 @@ window.dataLayer =
 
 
 function gtag() {
-  dataLayer.push(arguments);
+
+  dataLayer.push(
+    arguments
+  );
+
 }
 
 
@@ -47,8 +51,9 @@ gtag(
 </script>
 
 
+
 <!-- =====================================================
-     SHARED LEARNING LAB PROFILE
+     SHARED PROFILE SYSTEM
 ====================================================== -->
 
 <script src="profile.js"></script>
@@ -59,32 +64,68 @@ gtag(
 
 :root {
 
-  --cream: #fff7e8;
-  --paper: #fffdf7;
-  --ink: #29261f;
+  --cream:
+    #fff7e8;
 
-  --green: #59784c;
-  --light-green: #e5eddc;
+  --paper:
+    #fffdf7;
 
-  --brown: #8b633e;
-  --gold: #d6aa44;
+  --ink:
+    #29261f;
 
-  --red: #b6534d;
-  --blue: #467dad;
-  --purple: #71558e;
+  --green:
+    #59784c;
 
-  --orange: #c47a36;
-  --rose: #a95d67;
-  --teal: #4e7f78;
-  --slate: #485565;
+  --light-green:
+    #e5eddc;
 
-  --wordsmith: #68537d;
-  --wordsmith-light: #f0e9f5;
+  --brown:
+    #8b633e;
 
-  --twain: #715b46;
-  --twain-light: #f1e8d9;
+  --gold:
+    #d6aa44;
 
-  --shadow: rgba(50,40,25,.14);
+  --red:
+    #b6534d;
+
+  --blue:
+    #467dad;
+
+  --purple:
+    #71558e;
+
+  --orange:
+    #c47a36;
+
+  --rose:
+    #a95d67;
+
+  --teal:
+    #4e7f78;
+
+  --slate:
+    #485565;
+
+  --wordsmith:
+    #68537d;
+
+  --wordsmith-light:
+    #f0e9f5;
+
+  --twain:
+    #715b46;
+
+  --twain-light:
+    #f1e8d9;
+
+  --shadow:
+    rgba(
+      50,
+      40,
+      25,
+      .14
+    );
+
 }
 
 
@@ -94,18 +135,28 @@ gtag(
 ====================================================== */
 
 * {
-  box-sizing: border-box;
+
+  box-sizing:
+    border-box;
+
 }
 
 
 html {
-  scroll-behavior: smooth;
+
+  scroll-behavior:
+    smooth;
+
+  -webkit-text-size-adjust:
+    100%;
+
 }
 
 
 body {
 
-  margin: 0;
+  margin:
+    0;
 
   background:
     var(--cream);
@@ -135,6 +186,9 @@ button {
   cursor:
     pointer;
 
+  -webkit-tap-highlight-color:
+    transparent;
+
 }
 
 
@@ -146,7 +200,9 @@ button {
 header {
 
   padding:
-    42px 20px 25px;
+    42px
+    20px
+    24px;
 
   text-align:
     center;
@@ -155,6 +211,9 @@ header {
 
 
 .brand-small {
+
+  margin-bottom:
+    4px;
 
   color:
     var(--green);
@@ -165,16 +224,14 @@ header {
   letter-spacing:
     3px;
 
-  margin-bottom:
-    4px;
-
 }
 
 
 h1 {
 
   margin:
-    4px 0;
+    4px
+    0;
 
   font-size:
     clamp(
@@ -206,16 +263,18 @@ h1 {
 .intro {
 
   max-width:
-    700px;
+    720px;
 
   margin:
-    24px auto 0;
-
-  line-height:
-    1.6;
+    24px
+    auto
+    0;
 
   font-size:
     1.05rem;
+
+  line-height:
+    1.6;
 
 }
 
@@ -229,14 +288,14 @@ h1 {
 
   width:
     min(
-      900px,
+      960px,
       92%
     );
 
   margin:
     0
     auto
-    28px;
+    30px;
 
   padding:
     22px;
@@ -247,7 +306,7 @@ h1 {
     var(--gold);
 
   border-radius:
-    20px;
+    22px;
 
   background:
     var(--paper);
@@ -283,10 +342,10 @@ h1 {
 .profile-avatar {
 
   width:
-    64px;
+    68px;
 
   height:
-    64px;
+    68px;
 
   display:
     flex;
@@ -309,7 +368,7 @@ h1 {
     var(--cream);
 
   font-size:
-    2rem;
+    2.1rem;
 
 }
 
@@ -317,7 +376,7 @@ h1 {
 .profile-name {
 
   font-size:
-    1.3rem;
+    1.35rem;
 
   font-weight:
     bold;
@@ -328,19 +387,19 @@ h1 {
 .profile-plan {
 
   margin-top:
-    3px;
+    4px;
 
   color:
     var(--brown);
 
   font-size:
-    .78rem;
+    .76rem;
 
   font-weight:
     bold;
 
   letter-spacing:
-    1px;
+    1.2px;
 
   text-transform:
     uppercase;
@@ -351,11 +410,11 @@ h1 {
 .profile-button {
 
   min-height:
-    46px;
+    48px;
 
   padding:
     10px
-    15px;
+    16px;
 
   border:
     2px
@@ -363,7 +422,7 @@ h1 {
     var(--green);
 
   border-radius:
-    11px;
+    12px;
 
   background:
     var(--green);
@@ -376,6 +435,137 @@ h1 {
 
 }
 
+
+
+/* =====================================================
+   LEVEL BAR
+====================================================== */
+
+.level-panel {
+
+  margin-top:
+    19px;
+
+  padding:
+    15px;
+
+  border:
+    1px
+    solid
+    #dccba8;
+
+  border-radius:
+    14px;
+
+  background:
+    #faf5e9;
+
+}
+
+
+.level-top {
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  gap:
+    12px;
+
+  align-items:
+    center;
+
+}
+
+
+.level-name {
+
+  color:
+    var(--blue);
+
+  font-size:
+    1.05rem;
+
+  font-weight:
+    bold;
+
+}
+
+
+.level-xp {
+
+  color:
+    #6d6050;
+
+  font-size:
+    .78rem;
+
+  font-weight:
+    bold;
+
+}
+
+
+.level-track {
+
+  width:
+    100%;
+
+  height:
+    13px;
+
+  margin-top:
+    10px;
+
+  overflow:
+    hidden;
+
+  border:
+    1px
+    solid
+    #d3c09a;
+
+  border-radius:
+    999px;
+
+  background:
+    #eee4d0;
+
+}
+
+
+.level-fill {
+
+  width:
+    0%;
+
+  height:
+    100%;
+
+  border-radius:
+    inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--green),
+      var(--gold)
+    );
+
+  transition:
+    width
+    .35s
+    ease;
+
+}
+
+
+
+/* =====================================================
+   PROFILE STATS
+====================================================== */
 
 .profile-stats {
 
@@ -395,7 +585,7 @@ h1 {
     10px;
 
   margin-top:
-    18px;
+    15px;
 
 }
 
@@ -403,7 +593,7 @@ h1 {
 .profile-stat {
 
   padding:
-    12px;
+    13px;
 
   border:
     1px
@@ -441,13 +631,21 @@ h1 {
   color:
     #6a5c4b;
 
+  line-height:
+    1.3;
+
 }
 
+
+
+/* =====================================================
+   STREAKS
+====================================================== */
 
 .streak-section {
 
   margin-top:
-    18px;
+    19px;
 
   padding-top:
     17px;
@@ -460,7 +658,7 @@ h1 {
 }
 
 
-.streak-title {
+.section-mini-title {
 
   margin-bottom:
     10px;
@@ -469,7 +667,7 @@ h1 {
     var(--brown);
 
   font-size:
-    .78rem;
+    .77rem;
 
   font-weight:
     bold;
@@ -482,6 +680,31 @@ h1 {
 
   text-transform:
     uppercase;
+
+}
+
+
+.streak-note {
+
+  max-width:
+    660px;
+
+  margin:
+    -2px
+    auto
+    12px;
+
+  color:
+    #746656;
+
+  font-size:
+    .76rem;
+
+  line-height:
+    1.4;
+
+  text-align:
+    center;
 
 }
 
@@ -509,7 +732,7 @@ h1 {
 .streak-card {
 
   padding:
-    10px
+    11px
     7px;
 
   border:
@@ -518,7 +741,7 @@ h1 {
     #d8c8ab;
 
   border-radius:
-    10px;
+    11px;
 
   background:
     #faf4e7;
@@ -535,7 +758,7 @@ h1 {
     block;
 
   font-size:
-    1.25rem;
+    1.3rem;
 
 }
 
@@ -549,7 +772,7 @@ h1 {
     4px;
 
   font-size:
-    .95rem;
+    1rem;
 
 }
 
@@ -560,7 +783,119 @@ h1 {
     #6e6255;
 
   font-size:
-    .7rem;
+    .69rem;
+
+}
+
+
+
+/* =====================================================
+   PROFILE DETAILS
+====================================================== */
+
+.profile-extra-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap:
+    12px;
+
+  margin-top:
+    18px;
+
+}
+
+
+.profile-extra-card {
+
+  min-height:
+    150px;
+
+  padding:
+    15px;
+
+  border:
+    1px
+    solid
+    #dac9a9;
+
+  border-radius:
+    14px;
+
+  background:
+    #fffaf0;
+
+}
+
+
+.profile-extra-card h3 {
+
+  margin:
+    0
+    0
+    10px;
+
+  font-size:
+    1rem;
+
+}
+
+
+.recent-list,
+.mastery-list {
+
+  display:
+    grid;
+
+  gap:
+    7px;
+
+}
+
+
+.recent-item,
+.mastery-item {
+
+  padding:
+    8px
+    10px;
+
+  border-radius:
+    9px;
+
+  background:
+    var(--cream);
+
+  color:
+    #665949;
+
+  font-size:
+    .78rem;
+
+  line-height:
+    1.35;
+
+}
+
+
+.empty-profile-data {
+
+  color:
+    #786b5c;
+
+  font-size:
+    .78rem;
+
+  font-style:
+    italic;
+
+  line-height:
+    1.45;
 
 }
 
@@ -686,6 +1021,11 @@ h1 {
     40px;
 
   height:
+    40px;
+
+  flex:
+    0
+    0
     40px;
 
   border:
@@ -977,13 +1317,13 @@ main {
 
 .section-title {
 
-  text-align:
-    center;
-
   margin:
     30px
     0
     25px;
+
+  text-align:
+    center;
 
 }
 
@@ -998,7 +1338,7 @@ main {
 
 
 /* =====================================================
-   LEARNING LAB GRID
+   LAB GRID
 ====================================================== */
 
 .lab-grid {
@@ -1023,8 +1363,18 @@ main {
 
 .lab-card {
 
-  background:
-    var(--paper);
+  min-height:
+    270px;
+
+  padding:
+    25px
+    22px;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
 
   border:
     2px
@@ -1034,24 +1384,14 @@ main {
   border-radius:
     20px;
 
-  padding:
-    25px
-    22px;
-
-  min-height:
-    270px;
+  background:
+    var(--paper);
 
   box-shadow:
     0
     7px
     18px
     var(--shadow);
-
-  display:
-    flex;
-
-  flex-direction:
-    column;
 
   transition:
     transform
@@ -1082,11 +1422,11 @@ main {
 
 .lab-icon {
 
-  font-size:
-    3rem;
-
   margin-bottom:
     7px;
+
+  font-size:
+    3rem;
 
 }
 
@@ -1103,11 +1443,11 @@ main {
 
 .lab-card p {
 
-  line-height:
-    1.5;
-
   flex-grow:
     1;
+
+  line-height:
+    1.5;
 
 }
 
@@ -1122,17 +1462,8 @@ main {
   display:
     block;
 
-  text-decoration:
-    none;
-
-  text-align:
-    center;
-
-  background:
-    var(--green);
-
-  color:
-    white;
+  margin-top:
+    12px;
 
   padding:
     13px
@@ -1141,11 +1472,20 @@ main {
   border-radius:
     12px;
 
+  background:
+    var(--green);
+
+  color:
+    white;
+
   font-weight:
     bold;
 
-  margin-top:
-    12px;
+  text-align:
+    center;
+
+  text-decoration:
+    none;
 
 }
 
@@ -1166,56 +1506,92 @@ main {
 ====================================================== */
 
 .molecular-farm {
-  border-color:var(--green);
+
+  border-color:
+    var(--green);
+
 }
 
 .molecular-farm .card-button {
-  background:var(--green);
+
+  background:
+    var(--green);
+
 }
 
 
 .molecular-bee {
-  border-color:var(--gold);
+
+  border-color:
+    var(--gold);
+
 }
 
 .molecular-bee .card-button {
-  background:#aa8229;
+
+  background:
+    #aa8229;
+
 }
 
 
 .contronym {
-  border-color:var(--blue);
+
+  border-color:
+    var(--blue);
+
 }
 
 .contronym .card-button {
-  background:var(--blue);
+
+  background:
+    var(--blue);
+
 }
 
 
 .clue-card {
-  border-color:var(--purple);
+
+  border-color:
+    var(--purple);
+
 }
 
 .clue-card .card-button {
-  background:var(--purple);
+
+  background:
+    var(--purple);
+
 }
 
 
 .koan-kaon {
-  border-color:var(--red);
+
+  border-color:
+    var(--red);
+
 }
 
 .koan-kaon .card-button {
-  background:var(--red);
+
+  background:
+    var(--red);
+
 }
 
 
 .cryptic-calculus {
-  border-color:var(--brown);
+
+  border-color:
+    var(--brown);
+
 }
 
 .cryptic-calculus .card-button {
-  background:var(--brown);
+
+  background:
+    var(--brown);
+
 }
 
 
@@ -1234,7 +1610,10 @@ main {
 }
 
 .candy-calculus .card-button {
-  background:var(--orange);
+
+  background:
+    var(--orange);
+
 }
 
 
@@ -1279,7 +1658,10 @@ main {
 }
 
 .mythopoetic .card-button {
-  background:var(--rose);
+
+  background:
+    var(--rose);
+
 }
 
 
@@ -1298,7 +1680,10 @@ main {
 }
 
 .wordsmith .card-button {
-  background:var(--wordsmith);
+
+  background:
+    var(--wordsmith);
+
 }
 
 
@@ -1317,7 +1702,10 @@ main {
 }
 
 .twain-editor .card-button {
-  background:var(--twain);
+
+  background:
+    var(--twain);
+
 }
 
 
@@ -1336,13 +1724,16 @@ main {
 }
 
 .sentence-model .card-button {
-  background:var(--slate);
+
+  background:
+    var(--slate);
+
 }
 
 
 
 /* =====================================================
-   SECTION DIVIDER
+   DIVIDER
 ====================================================== */
 
 .world-divider {
@@ -1390,23 +1781,23 @@ main {
 
 .philosophy {
 
-  background:
-    var(--paper);
+  margin:
+    40px
+    0;
+
+  padding:
+    25px;
 
   border-left:
     7px
     solid
     var(--gold);
 
-  padding:
-    25px;
-
   border-radius:
     15px;
 
-  margin:
-    40px
-    0;
+  background:
+    var(--paper);
 
   box-shadow:
     0
@@ -1440,8 +1831,8 @@ main {
 
 .growing {
 
-  background:
-    var(--light-green);
+  margin-top:
+    35px;
 
   padding:
     23px;
@@ -1449,11 +1840,11 @@ main {
   border-radius:
     16px;
 
+  background:
+    var(--light-green);
+
   text-align:
     center;
-
-  margin-top:
-    35px;
 
 }
 
@@ -1465,9 +1856,6 @@ main {
 
 footer {
 
-  text-align:
-    center;
-
   padding:
     30px
     20px;
@@ -1478,6 +1866,41 @@ footer {
   font-size:
     .85rem;
 
+  text-align:
+    center;
+
+}
+
+
+
+/* =====================================================
+   TABLET
+====================================================== */
+
+@media
+(max-width:800px) {
+
+  .profile-extra-grid {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .streak-grid {
+
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(
+          0,
+          1fr
+        )
+      );
+
+  }
+
 }
 
 
@@ -1487,7 +1910,7 @@ footer {
 ====================================================== */
 
 @media
-(max-width: 700px) {
+(max-width:700px) {
 
   .profile-top {
 
@@ -1518,20 +1941,21 @@ footer {
 
   }
 
-
-  .streak-grid {
-
-    grid-template-columns:
-      1fr
-      1fr;
-
-  }
-
 }
 
 
 @media
-(max-width: 600px) {
+(max-width:600px) {
+
+  body {
+
+    padding-bottom:
+      env(
+        safe-area-inset-bottom
+      );
+
+  }
+
 
   header {
 
@@ -1545,14 +1969,6 @@ footer {
 
     font-size:
       1rem;
-
-  }
-
-
-  .lab-card {
-
-    min-height:
-      auto;
 
   }
 
@@ -1575,16 +1991,47 @@ footer {
 
   }
 
+
+  .lab-card {
+
+    min-height:
+      auto;
+
+  }
+
+
+  .streak-grid {
+
+    grid-template-columns:
+      1fr
+      1fr;
+
+  }
+
 }
 
 
 @media
-(max-width: 420px) {
+(max-width:390px) {
 
   .streak-grid {
 
     grid-template-columns:
       1fr;
+
+  }
+
+
+  .profile-avatar {
+
+    width:
+      58px;
+
+    height:
+      58px;
+
+    font-size:
+      1.8rem;
 
   }
 
@@ -1599,35 +2046,48 @@ footer {
 <body>
 
 
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
 <header>
 
 
 <div class="brand-small">
-  PAT TUTORING
+
+PAT TUTORING
+
 </div>
 
 
 <h1>
-  LEARNING LAB
+
+LEARNING LAB
+
 </h1>
 
 
 <div class="tagline">
-  Learn it. See it. Rebuild it.
+
+Learn it. See it. Rebuild it.
+
 </div>
 
 
 <p class="intro">
 
-  A growing collection of visual games,
-  puzzles and learning systems built around
-  one idea:
+A growing collection of visual games,
+puzzles and learning systems built around
+one idea:
 
-  <strong>
-    don't just memorize an answer —
-    learn enough of the structure
-    to reconstruct it.
-  </strong>
+<strong>
+
+don't just memorize an answer —
+learn enough of the structure
+to reconstruct it.
+
+</strong>
 
 </p>
 
@@ -1650,7 +2110,7 @@ footer {
   id="profileAvatar"
   class="profile-avatar"
 >
-  🧪
+🧪
 </div>
 
 
@@ -1661,7 +2121,7 @@ footer {
   id="profileName"
   class="profile-name"
 >
-  Guest Explorer
+Guest Explorer
 </div>
 
 
@@ -1669,7 +2129,7 @@ footer {
   id="profilePlan"
   class="profile-plan"
 >
-  Free Explorer
+FREE EXPLORER
 </div>
 
 
@@ -1681,7 +2141,7 @@ footer {
   class="profile-button"
   type="button"
 >
-  Create Profile / Sign In
+Create Profile / Sign In
 </button>
 
 
@@ -1689,17 +2149,67 @@ footer {
 
 
 
+<!-- =====================================================
+     LEVEL
+====================================================== -->
+
+<div class="level-panel">
+
+
+<div class="level-top">
+
+
+<div
+  id="profileLevel"
+  class="level-name"
+>
+Level 1
+</div>
+
+
+<div
+  id="profileLevelXP"
+  class="level-xp"
+>
+0 / 100 XP
+</div>
+
+
+</div>
+
+
+<div class="level-track">
+
+
+<div
+  id="profileLevelFill"
+  class="level-fill"
+>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     MAIN STATS
+====================================================== -->
+
 <div class="profile-stats">
 
 
 <div class="profile-stat">
 
 <strong id="profileXP">
-  0
+0
 </strong>
 
 <small>
-  Total XP
+Total XP
 </small>
 
 </div>
@@ -1708,11 +2218,11 @@ footer {
 <div class="profile-stat">
 
 <strong id="profileGlobalStreak">
-  0
+0
 </strong>
 
 <small>
-  Learning Lab Streak
+Weekly Lab Streak
 </small>
 
 </div>
@@ -1721,11 +2231,11 @@ footer {
 <div class="profile-stat">
 
 <strong id="profileCompleted">
-  0
+0
 </strong>
 
 <small>
-  Activities Completed
+Activities Completed
 </small>
 
 </div>
@@ -1735,12 +2245,26 @@ footer {
 
 
 
+<!-- =====================================================
+     SERIES STREAKS
+====================================================== -->
+
 <div class="streak-section">
 
 
-<div class="streak-title">
-  Weekly Puzzle Streaks
+<div class="section-mini-title">
+
+Recurring Challenge Streaks
+
 </div>
+
+
+<p class="streak-note">
+
+These streaks follow consecutive puzzle releases,
+not consecutive calendar days.
+
+</p>
 
 
 <div class="streak-grid">
@@ -1749,15 +2273,15 @@ footer {
 <div class="streak-card">
 
 <span>
-  ±
+±
 </span>
 
 <strong id="streakContronym">
-  0
+0
 </strong>
 
 <small>
-  Contronym
+Contronym
 </small>
 
 </div>
@@ -1766,15 +2290,15 @@ footer {
 <div class="streak-card">
 
 <span>
-  🧩
+🧩
 </span>
 
 <strong id="streakCluecards">
-  0
+0
 </strong>
 
 <small>
-  Clue-Cards
+Clue-Cards
 </small>
 
 </div>
@@ -1783,15 +2307,15 @@ footer {
 <div class="streak-card">
 
 <span>
-  ✣
+✣
 </span>
 
 <strong id="streakKoanOne">
-  0
+0
 </strong>
 
 <small>
-  KOAN I
+KOAN SU(1)
 </small>
 
 </div>
@@ -1800,15 +2324,15 @@ footer {
 <div class="streak-card">
 
 <span>
-  ◈
+◈
 </span>
 
 <strong id="streakKoanTwo">
-  0
+0
 </strong>
 
 <small>
-  KOAN II
+KOAN SU(2)
 </small>
 
 </div>
@@ -1817,16 +2341,79 @@ footer {
 <div class="streak-card">
 
 <span>
-  🐝
+🐝
 </span>
 
 <strong id="streakBuzzword">
-  0
+0
 </strong>
 
 <small>
-  Buzzword
+Buzzword
 </small>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     RECENT + MASTERY
+====================================================== -->
+
+<div class="profile-extra-grid">
+
+
+<div class="profile-extra-card">
+
+
+<h3>
+🕘 Recent Activity
+</h3>
+
+
+<div
+  id="recentActivity"
+  class="recent-list"
+>
+
+<div class="empty-profile-data">
+
+Complete an activity and it will appear here.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+<div class="profile-extra-card">
+
+
+<h3>
+🏅 Mastery
+</h3>
+
+
+<div
+  id="masterySummary"
+  class="mastery-list"
+>
+
+<div class="empty-profile-data">
+
+Mastery grows as you build,
+map, analyze and solve across the Lab.
+
+</div>
 
 </div>
 
@@ -1869,12 +2456,12 @@ footer {
     letter-spacing:2px;
   "
 >
-  PAT LEARNING LAB PROFILE
+PAT LEARNING LAB PROFILE
 </div>
 
 
 <h2>
-  Your Explorer Profile
+Your Explorer Profile
 </h2>
 
 
@@ -1885,8 +2472,9 @@ footer {
   id="closeProfile"
   class="close-profile"
   type="button"
+  aria-label="Close profile"
 >
-  ×
+×
 </button>
 
 
@@ -1896,11 +2484,12 @@ footer {
 
 <p class="profile-modal-copy">
 
-  Create one profile for the entire Learning Lab.
+Create one profile for the entire Learning Lab.
 
-  Your username, XP, streaks, completions and
-  future Learning Lab+ subscription will all
-  belong to the same account.
+Your username, XP, levels, streaks,
+mastery, completions and future
+Learning Lab+ subscription will belong
+to the same profile.
 
 </p>
 
@@ -1908,9 +2497,13 @@ footer {
 
 <div class="profile-field">
 
+
 <label for="usernameInput">
-  Username
+
+Username
+
 </label>
+
 
 <input
   id="usernameInput"
@@ -1920,15 +2513,20 @@ footer {
   placeholder="Choose a username"
 >
 
+
 </div>
 
 
 
 <div class="profile-field">
 
+
 <label for="emailInput">
-  Email
+
+Email
+
 </label>
+
 
 <input
   id="emailInput"
@@ -1938,14 +2536,18 @@ footer {
   placeholder="you@example.com"
 >
 
+
 </div>
 
 
 
 <div class="profile-field">
 
+
 <label>
-  Explorer Icon
+
+Explorer Icon
+
 </label>
 
 
@@ -2009,6 +2611,24 @@ footer {
 </button>
 
 
+<button
+  class="avatar-choice"
+  data-avatar="✒️"
+  type="button"
+>
+✒️
+</button>
+
+
+<button
+  class="avatar-choice"
+  data-avatar="📈"
+  type="button"
+>
+📈
+</button>
+
+
 </div>
 
 
@@ -2024,7 +2644,7 @@ footer {
   class="save-profile"
   type="button"
 >
-  Save Profile
+Save Profile
 </button>
 
 
@@ -2033,7 +2653,7 @@ footer {
   class="signout-profile"
   type="button"
 >
-  Sign Out
+Sign Out
 </button>
 
 
@@ -2050,16 +2670,19 @@ footer {
 
 <div class="profile-note">
 
-  <strong>
-    Prototype account:
-  </strong>
+<strong>
+Prototype account:
+</strong>
 
-  Your profile is currently stored on this device.
-  It is not yet a verified cloud account.
+Your profile is currently stored locally
+on this browser and device.
 
-  When secure login and paid subscriptions are added,
-  this same profile interface can connect to the real
-  account system.
+This is not yet a password-based cloud account.
+
+When secure authentication and subscriptions
+are added, this interface can connect to the
+real account system without redesigning
+the individual games.
 
 </div>
 
@@ -2071,6 +2694,10 @@ footer {
 
 
 
+<!-- =====================================================
+     MAIN LAB
+====================================================== -->
+
 <main>
 
 
@@ -2079,14 +2706,14 @@ footer {
 
 
 <h2>
-  Choose a Learning World
+Choose a Learning World
 </h2>
 
 
 <p>
 
-  Explore chemistry, language,
-  mathematics, meaning and critical thinking.
+Explore chemistry, language,
+mathematics, meaning and critical thinking.
 
 </p>
 
@@ -2096,7 +2723,7 @@ footer {
 
 
 <!-- =====================================================
-     ORIGINAL LEARNING WORLDS
+     CORE WORLDS
 ====================================================== -->
 
 <div class="lab-grid">
@@ -2105,27 +2732,25 @@ footer {
 
 <!-- MOLECULAR FARM -->
 
-<article
-  class="lab-card molecular-farm"
->
+<article class="lab-card molecular-farm">
 
 
 <div class="lab-icon">
-  🌾
+🌾
 </div>
 
 
 <h2>
-  Molecular Farm
+Molecular Farm
 </h2>
 
 
 <p>
 
-  Explore chemistry through memorable
-  species whose structures, families
-  and transformations are based on
-  real chemical behavior.
+Explore chemistry through memorable
+species whose structures, families
+and transformations are based on
+real chemical behavior.
 
 </p>
 
@@ -2135,7 +2760,7 @@ footer {
   href="molecularfarm.html"
   data-game="molecular_farm"
 >
-  Enter Molecular Farm
+Enter Molecular Farm
 </a>
 
 
@@ -2145,27 +2770,24 @@ footer {
 
 <!-- MOLECULAR BEE -->
 
-<article
-  class="lab-card molecular-bee"
->
+<article class="lab-card molecular-bee">
 
 
 <div class="lab-icon">
-  🐝
+🐝
 </div>
 
 
 <h2>
-  Molecular Bee
+Molecular Bee
 </h2>
 
 
 <p>
 
-  Spell compounds, build atoms,
-  balance charges, and explore
-  chemistry through multiple
-  hive challenges.
+Spell compounds, build atoms,
+balance charges, and explore
+chemistry through multiple hive challenges.
 
 </p>
 
@@ -2175,7 +2797,7 @@ footer {
   href="molecularbee.html"
   data-game="molecular_bee"
 >
-  Enter Molecular Bee
+Enter Molecular Bee
 </a>
 
 
@@ -2185,28 +2807,26 @@ footer {
 
 <!-- CONTRONYM -->
 
-<article
-  class="lab-card contronym"
->
+<article class="lab-card contronym">
 
 
 <div class="lab-icon">
-  ±
+±
 </div>
 
 
 <h2>
-  Contronym
+Contronym
 </h2>
 
 
 <p>
 
-  Explore words capable of carrying
-  opposing meanings.
+Explore words capable of carrying
+opposing meanings.
 
-  Use hints, polarity and context
-  to reverse-engineer the word.
+Use hints, polarity and context
+to reverse-engineer the word.
 
 </p>
 
@@ -2216,7 +2836,7 @@ footer {
   href="contronym.html"
   data-game="contronym"
 >
-  Play Contronym
+Play Contronym
 </a>
 
 
@@ -2226,27 +2846,25 @@ footer {
 
 <!-- CLUE CARDS -->
 
-<article
-  class="lab-card clue-card"
->
+<article class="lab-card clue-card">
 
 
 <div class="lab-icon">
-  🧩
+🧩
 </div>
 
 
 <h2>
-  Cryptic Clue-Cards
+Cryptic Clue-Cards
 </h2>
 
 
 <p>
 
-  Reverse-engineer wordplay through
-  double definitions, homophones,
-  transformations, Meaning Graphs
-  and Cryptic-Calculus.
+Reverse-engineer wordplay through
+double definitions, homophones,
+transformations, Meaning Graphs
+and Cryptic-Calculus.
 
 </p>
 
@@ -2256,7 +2874,7 @@ footer {
   href="cluecards.html"
   data-game="cluecards"
 >
-  Play Current Clue-Card
+Play Current Clue-Card
 </a>
 
 
@@ -2266,27 +2884,24 @@ footer {
 
 <!-- KOAN -->
 
-<article
-  class="lab-card koan-kaon"
->
+<article class="lab-card koan-kaon">
 
 
 <div class="lab-icon">
-  ✣
+✣
 </div>
 
 
 <h2>
-  KOAN~KAON
+KOAN~KAON
 </h2>
 
 
 <p>
 
-  Solve symmetry-bending crosswords
-  where Transverse and Conjugate clues
-  intersect through a shared
-  lexical structure.
+Solve symmetry-bending crosswords
+where Transverse and Conjugate clues
+intersect through a shared lexical structure.
 
 </p>
 
@@ -2296,7 +2911,7 @@ footer {
   href="koankaon.html"
   data-game="koan_kaon"
 >
-  Play KOAN~KAON
+Play KOAN~KAON
 </a>
 
 
@@ -2306,27 +2921,25 @@ footer {
 
 <!-- CRYPTIC CALCULUS -->
 
-<article
-  class="lab-card cryptic-calculus"
->
+<article class="lab-card cryptic-calculus">
 
 
 <div class="lab-icon">
-  ∫
+∫
 </div>
 
 
 <h2>
-  Cryptic-Calculus
+Cryptic-Calculus
 </h2>
 
 
 <p>
 
-  Treat wordplay like mathematics:
-  identify the transformation,
-  apply operations, compose functions
-  and reconstruct the answer.
+Treat wordplay like mathematics:
+identify the transformation,
+apply operations, compose functions
+and reconstruct the answer.
 
 </p>
 
@@ -2336,7 +2949,7 @@ footer {
   href="crypticcalculus.html"
   data-game="cryptic_calculus"
 >
-  Enter Cryptic-Calculus
+Enter Cryptic-Calculus
 </a>
 
 
@@ -2355,16 +2968,15 @@ footer {
 
 
 <h2>
-  New Experimental Systems
+New Experimental Systems
 </h2>
 
 
 <p>
 
-  Explore mathematical, semantic,
-  narrative, writing and linguistic models
-  built around the same
-  reverse-engineering principle.
+Explore mathematical, semantic,
+narrative, writing and linguistic models
+built around the same reverse-engineering principle.
 
 </p>
 
@@ -2379,30 +2991,28 @@ footer {
 
 <!-- CANDY CALCULUS -->
 
-<article
-  class="lab-card candy-calculus"
->
+<article class="lab-card candy-calculus">
 
 
 <div class="lab-icon">
-  🍬
+🍬
 </div>
 
 
 <h2>
-  Oberlander! Candy-Calculus
+Oberlander! Candy-Calculus
 </h2>
 
 
 <p>
 
-  Turn algebra into something you can unwrap.
+Turn algebra into something you can unwrap.
 
-  Explore Candy-Coated Functions,
-  Everlasting Gobstoppers,
-  FOIL wrappers, Candy Dots,
-  Licorice Lines, Lollipop Limits
-  and other mathematical treats.
+Explore Candy-Coated Functions,
+Everlasting Gobstoppers,
+FOIL wrappers, Candy Dots,
+Licorice Lines, Lollipop Limits
+and other mathematical treats.
 
 </p>
 
@@ -2412,7 +3022,7 @@ footer {
   href="candyalgebra.html"
   data-game="candy_calculus"
 >
-  Enter Candy-Calculus
+Enter Candy-Calculus
 </a>
 
 
@@ -2422,30 +3032,28 @@ footer {
 
 <!-- MEANING GRAPHS -->
 
-<article
-  class="lab-card meaning-graphs"
->
+<article class="lab-card meaning-graphs">
 
 
 <div class="lab-icon">
-  📈
+📈
 </div>
 
 
 <h2>
-  Meaning Graphs
+Meaning Graphs
 </h2>
 
 
 <p>
 
-  Map meaning across Transverse
-  and Conjugate axes.
+Map meaning across Transverse
+and Conjugate axes.
 
-  Explore polarity, symmetry,
-  semantic distance, zeroes,
-  contextual charge and
-  transformations of meaning.
+Explore polarity, symmetry,
+semantic distance, zeroes,
+contextual charge and transformations
+of meaning.
 
 </p>
 
@@ -2455,7 +3063,7 @@ footer {
   href="meaninggraphs.html"
   data-game="meaning_graphs"
 >
-  Explore Meaning Graphs
+Explore Meaning Graphs
 </a>
 
 
@@ -2465,31 +3073,28 @@ footer {
 
 <!-- MYTHOPOETIC -->
 
-<article
-  class="lab-card mythopoetic"
->
+<article class="lab-card mythopoetic">
 
 
 <div class="lab-icon">
-  📖
+📖
 </div>
 
 
 <h2>
-  Mythopoetic Diagrams
+Mythopoetic Diagrams
 </h2>
 
 
 <p>
 
-  Model stories with mathematics.
+Model stories with mathematics.
 
-  Explore Parabolic-Parables,
-  Hyperbolic-Hyperbole,
-  Elliptical-Ellipsis,
-  Simultaneous Similes,
-  character FOILs
-  and narrative symmetry.
+Explore Parabolic-Parables,
+Hyperbolic-Hyperbole,
+Elliptical-Ellipsis,
+Simultaneous Similes,
+character FOILs and narrative symmetry.
 
 </p>
 
@@ -2499,7 +3104,7 @@ footer {
   href="mythopoeticdiagrams.html"
   data-game="mythopoetic_diagrams"
 >
-  Enter Mythopoetic Diagrams
+Enter Mythopoetic Diagrams
 </a>
 
 
@@ -2509,31 +3114,28 @@ footer {
 
 <!-- WORDSMITH -->
 
-<article
-  class="lab-card wordsmith"
->
+<article class="lab-card wordsmith">
 
 
 <div class="lab-icon">
-  ✒️
+✒️
 </div>
 
 
 <h2>
-  Wordsmith
+Wordsmith
 </h2>
 
 
 <p>
 
-  Read the words.
-  Map the relations.
+Read the words.
+Map the relations.
 
-  Annotate poems for metaphor,
-  puns, sound-play, repetition,
-  semantic shifts, irony
-  and layered meaning —
-  then build a map of the piece.
+Annotate poems for metaphor,
+puns, sound-play, repetition,
+semantic shifts, irony and layered meaning —
+then build a map of the piece.
 
 </p>
 
@@ -2543,7 +3145,7 @@ footer {
   href="wordsmith.html"
   data-game="wordsmith"
 >
-  Enter Wordsmith
+Enter Wordsmith
 </a>
 
 
@@ -2553,32 +3155,29 @@ footer {
 
 <!-- TWAIN EDITOR -->
 
-<article
-  class="lab-card twain-editor"
->
+<article class="lab-card twain-editor">
 
 
 <div class="lab-icon">
-  ⌨️
+⌨️
 </div>
 
 
 <h2>
-  Twain Editor
+Twain Editor
 </h2>
 
 
 <p>
 
-  Write it.
-  Cut it.
-  Sharpen it.
+Write it.
+Cut it.
+Sharpen it.
 
-  Draft your own prose and inspect
-  unnecessary wording, vague modifiers,
-  clichés, exaggeration and other
-  revision signals before deciding
-  what deserves to stay.
+Draft your own prose and inspect
+unnecessary wording, vague modifiers,
+clichés, exaggeration and other
+revision signals.
 
 </p>
 
@@ -2588,7 +3187,7 @@ footer {
   href="twaineditor.html"
   data-game="twain_editor"
 >
-  Open Twain Editor
+Open Twain Editor
 </a>
 
 
@@ -2596,33 +3195,31 @@ footer {
 
 
 
-<!-- SENTENCE STANDARD MODEL -->
+<!-- SENTENCE MODEL -->
 
-<article
-  class="lab-card sentence-model"
->
+<article class="lab-card sentence-model">
 
 
 <div class="lab-icon">
-  ⚛️
+⚛️
 </div>
 
 
 <h2>
-  Sentence Standard Model
+Sentence Standard Model
 </h2>
 
 
 <p>
 
-  Explore language as a system
-  of interacting structures:
+Explore language as a system
+of interacting structures:
 
-  semantic mass,
-  syntactic charge,
-  context fields,
-  conjugation dynamics
-  and transformations of meaning.
+semantic mass,
+syntactic charge,
+context fields,
+conjugation dynamics
+and transformations of meaning.
 
 </p>
 
@@ -2632,7 +3229,7 @@ footer {
   href="sentencestandardmodel.html"
   data-game="sentence_standard_model"
 >
-  Enter the Standard Model
+Enter the Standard Model
 </a>
 
 
@@ -2651,32 +3248,32 @@ footer {
 
 
 <h2>
-  The Reverse-Engineering Principle
+The Reverse-Engineering Principle
 </h2>
 
 
 <p>
 
-  Memorization can give you an answer.
+Memorization can give you an answer.
 
-  Understanding gives you a way
-  to find it again.
+Understanding gives you a way
+to find it again.
 
 </p>
 
 
 <p>
 
-  PAT Learning Lab is built around
+PAT Learning Lab is built around
 
-  <strong>
+<strong>
 
-    observing structure,
-    finding relationships,
-    reconstructing solutions
-    and explaining why they work.
+observing structure,
+finding relationships,
+reconstructing solutions
+and explaining why they work.
 
-  </strong>
+</strong>
 
 </p>
 
@@ -2693,18 +3290,17 @@ footer {
 
 
 <h2>
-  🧪 The Lab Is Growing
+🧪 The Lab Is Growing
 </h2>
 
 
 <p>
 
-  New puzzles, chemistry species,
-  mathematical worlds, Meaning Graphs,
-  poems, writing tools, narrative diagrams,
-  sentence interactions
-  and interactive experiments
-  are being added over time.
+New puzzles, chemistry species,
+mathematical worlds, Meaning Graphs,
+poems, writing tools, narrative diagrams,
+sentence interactions and interactive
+experiments are being added over time.
 
 </p>
 
@@ -2785,6 +3381,107 @@ let selectedAvatar =
 
 
 /* =====================================================
+   MASTERY LABELS
+====================================================== */
+
+const masteryLabels = {
+
+  speciesDiscovered:
+    "Species Discovered",
+
+  compoundsBuilt:
+    "Compounds Built",
+
+  moleculesBuilt:
+    "Molecules Built",
+
+  atomsBuilt:
+    "Atoms Built",
+
+  graphsBuilt:
+    "Meaning Graphs Built",
+
+  transformationsMapped:
+    "Transformations Mapped",
+
+  poemsMapped:
+    "Poems Mapped",
+
+  poemsAnnotated:
+    "Poems Annotated",
+
+  storiesMapped:
+    "Stories Mapped",
+
+  diagramsBuilt:
+    "Diagrams Built",
+
+  revisionsCompleted:
+    "Revisions Completed",
+
+  sentencesBuilt:
+    "Sentences Built",
+
+  interactionsBuilt:
+    "Meaning Interactions",
+
+  cluesSolved:
+    "Clues Solved",
+
+  puzzlesSolved:
+    "Puzzles Solved"
+
+};
+
+
+
+/* =====================================================
+   GAME SHORT NAMES
+====================================================== */
+
+const profileGameNames = {
+
+  molecular_farm:
+    "Molecular Farm",
+
+  molecular_bee:
+    "Molecular Bee",
+
+  contronym:
+    "Contronym",
+
+  cluecards:
+    "Clue-Cards",
+
+  koan_kaon:
+    "KOAN~KAON",
+
+  cryptic_calculus:
+    "Cryptic-Calculus",
+
+  candy_calculus:
+    "Candy-Calculus",
+
+  meaning_graphs:
+    "Meaning Graphs",
+
+  mythopoetic_diagrams:
+    "Mythopoetic",
+
+  wordsmith:
+    "Wordsmith",
+
+  sentence_standard_model:
+    "Sentence Standard Model",
+
+  twain_editor:
+    "Twain Editor"
+
+};
+
+
+
+/* =====================================================
    RENDER PROFILE
 ====================================================== */
 
@@ -2813,6 +3510,9 @@ function renderProfile() {
     "🧪";
 
 
+
+  /* AVATAR */
+
   document
     .getElementById(
       "profileAvatar"
@@ -2820,6 +3520,9 @@ function renderProfile() {
     .textContent =
       selectedAvatar;
 
+
+
+  /* NAME */
 
   document
     .getElementById(
@@ -2835,6 +3538,9 @@ function renderProfile() {
         "Guest Explorer";
 
 
+
+  /* PLAN */
+
   document
     .getElementById(
       "profilePlan"
@@ -2843,39 +3549,115 @@ function renderProfile() {
       profile.plan ===
       "plus"
       ?
-        "Learning Lab+"
+        "LEARNING LAB+"
       :
       profile.plan ===
       "admin"
       ?
-        "Lab Admin"
+        "LAB ADMIN"
       :
-        "Free Explorer";
+        "FREE EXPLORER";
 
+
+
+  /* XP */
 
   document
     .getElementById(
       "profileXP"
     )
     .textContent =
-      stats.xp;
+      stats.xp
+      ||
+      0;
 
+
+
+  /* LEVEL */
+
+  document
+    .getElementById(
+      "profileLevel"
+    )
+    .textContent =
+      "Level "
+      +
+      (
+        stats.level
+        ||
+        1
+      );
+
+
+  document
+    .getElementById(
+      "profileLevelXP"
+    )
+    .textContent =
+      (
+        stats.xpIntoLevel
+        ||
+        0
+      )
+      +
+      " / "
+      +
+      (
+        stats.xpPerLevel
+        ||
+        100
+      )
+      +
+      " XP";
+
+
+  document
+    .getElementById(
+      "profileLevelFill"
+    )
+    .style
+    .width =
+      Math.min(
+        100,
+        Math.max(
+          0,
+          stats.levelPercent
+          ||
+          0
+        )
+      )
+      +
+      "%";
+
+
+
+  /* GLOBAL STREAK */
 
   document
     .getElementById(
       "profileGlobalStreak"
     )
     .textContent =
-      stats.globalStreak;
+      stats.globalStreak
+      ||
+      0;
 
+
+
+  /* COMPLETIONS */
 
   document
     .getElementById(
       "profileCompleted"
     )
     .textContent =
-      stats.totalCompleted;
+      stats.totalCompleted
+      ||
+      0;
 
+
+
+  /* SERIES STREAKS */
 
   document
     .getElementById(
@@ -2927,6 +3709,9 @@ function renderProfile() {
       0;
 
 
+
+  /* PROFILE BUTTON */
+
   profileButton.textContent =
     profile.profileCreated
     ?
@@ -2934,6 +3719,9 @@ function renderProfile() {
     :
       "Create Profile / Sign In";
 
+
+
+  /* AVATAR SELECTION */
 
   document
     .querySelectorAll(
@@ -2953,6 +3741,313 @@ function renderProfile() {
       }
     );
 
+
+  renderRecentActivity(
+    stats
+  );
+
+
+  renderMastery(
+    stats
+  );
+
+}
+
+
+
+/* =====================================================
+   RECENT ACTIVITY
+====================================================== */
+
+function renderRecentActivity(
+  stats
+) {
+
+  const container =
+    document.getElementById(
+      "recentActivity"
+    );
+
+
+  container.innerHTML =
+    "";
+
+
+  const recent =
+    stats.recentCompletions
+    ||
+    [];
+
+
+  if (
+    recent.length ===
+    0
+  ) {
+
+    container.innerHTML = `
+
+      <div class="empty-profile-data">
+
+        Complete an activity and it will appear here.
+
+      </div>
+
+    `;
+
+
+    return;
+
+  }
+
+
+  recent
+    .slice(
+      0,
+      4
+    )
+    .forEach(
+      function (
+        entry
+      ) {
+
+        const item =
+          document.createElement(
+            "div"
+          );
+
+
+        item.className =
+          "recent-item";
+
+
+        const gameName =
+          profileGameNames[
+            entry.gameId
+          ]
+          ||
+          entry.gameName
+          ||
+          entry.gameId;
+
+
+        item.innerHTML = `
+
+          <strong>
+            ${gameName}
+          </strong>
+
+          <br>
+
+          ${entry.activityId}
+
+          ${
+            entry.xpEarned
+            ?
+              " • +" +
+              entry.xpEarned +
+              " XP"
+            :
+              ""
+          }
+
+        `;
+
+
+        container.appendChild(
+          item
+        );
+
+      }
+    );
+
+}
+
+
+
+/* =====================================================
+   MASTERY
+====================================================== */
+
+function renderMastery(
+  stats
+) {
+
+  const container =
+    document.getElementById(
+      "masterySummary"
+    );
+
+
+  container.innerHTML =
+    "";
+
+
+  const mastery =
+    stats.mastery
+    ||
+    {};
+
+
+  const masteryEntries =
+    [];
+
+
+  Object.keys(
+    mastery
+  )
+  .forEach(
+    function (
+      gameId
+    ) {
+
+      const gameMastery =
+        mastery[
+          gameId
+        ]
+        ||
+        {};
+
+
+      Object.keys(
+        gameMastery
+      )
+      .forEach(
+        function (
+          key
+        ) {
+
+          const value =
+            gameMastery[
+              key
+            ];
+
+
+          if (
+            Number(
+              value
+            ) >
+            0
+          ) {
+
+            masteryEntries.push(
+              {
+
+                gameId:
+                  gameId,
+
+                key:
+                  key,
+
+                value:
+                  value
+
+              }
+            );
+
+          }
+
+        }
+      );
+
+    }
+  );
+
+
+  if (
+    masteryEntries.length ===
+    0
+  ) {
+
+    container.innerHTML = `
+
+      <div class="empty-profile-data">
+
+        Mastery grows as you build,
+        map, analyze and solve across the Lab.
+
+      </div>
+
+    `;
+
+
+    return;
+
+  }
+
+
+  masteryEntries
+    .sort(
+      function (
+        a,
+        b
+      ) {
+
+        return Number(
+          b.value
+        )
+        -
+        Number(
+          a.value
+        );
+
+      }
+    )
+    .slice(
+      0,
+      5
+    )
+    .forEach(
+      function (
+        entry
+      ) {
+
+        const item =
+          document.createElement(
+            "div"
+          );
+
+
+        item.className =
+          "mastery-item";
+
+
+        const gameName =
+          profileGameNames[
+            entry.gameId
+          ]
+          ||
+          entry.gameId;
+
+
+        const label =
+          masteryLabels[
+            entry.key
+          ]
+          ||
+          entry.key;
+
+
+        item.innerHTML = `
+
+          <strong>
+            ${entry.value}
+            ${label}
+          </strong>
+
+          <br>
+
+          ${gameName}
+
+        `;
+
+
+        container.appendChild(
+          item
+        );
+
+      }
+    );
+
 }
 
 
@@ -2961,53 +4056,54 @@ function renderProfile() {
    OPEN PROFILE
 ====================================================== */
 
-profileButton.addEventListener(
-  "click",
-  function () {
+profileButton
+  .addEventListener(
+    "click",
+    function () {
 
-    const profile =
-      PATProfile.get();
+      const profile =
+        PATProfile.get();
 
 
-    usernameInput.value =
-      profile.profileCreated
-      ?
-        profile.username
-      :
+      usernameInput.value =
+        profile.profileCreated
+        ?
+          profile.username
+        :
+          "";
+
+
+      emailInput.value =
+        profile.email
+        ||
         "";
 
 
-    emailInput.value =
-      profile.email
-      ||
-      "";
+      selectedAvatar =
+        profile.avatar
+        ||
+        "🧪";
 
 
-    selectedAvatar =
-      profile.avatar
-      ||
-      "🧪";
+      profileFeedback.textContent =
+        "";
 
 
-    profileFeedback.textContent =
-      "";
+      renderProfile();
 
 
-    renderProfile();
+      profileModal.classList.add(
+        "visible"
+      );
 
 
-    profileModal.classList.add(
-      "visible"
-    );
+      profileModal.setAttribute(
+        "aria-hidden",
+        "false"
+      );
 
-
-    profileModal.setAttribute(
-      "aria-hidden",
-      "false"
-    );
-
-  }
-);
+    }
+  );
 
 
 
@@ -3031,30 +4127,59 @@ function closeProfileModal() {
 
 
 
-closeProfile.addEventListener(
-  "click",
-  closeProfileModal
-);
+closeProfile
+  .addEventListener(
+    "click",
+    closeProfileModal
+  );
 
 
 
-profileModal.addEventListener(
-  "click",
-  function (
-    event
-  ) {
-
-    if (
-      event.target ===
-      profileModal
+profileModal
+  .addEventListener(
+    "click",
+    function (
+      event
     ) {
 
-      closeProfileModal();
+      if (
+        event.target ===
+        profileModal
+      ) {
+
+        closeProfileModal();
+
+      }
 
     }
+  );
 
-  }
-);
+
+
+document
+  .addEventListener(
+    "keydown",
+    function (
+      event
+    ) {
+
+      if (
+        event.key ===
+        "Escape"
+        &&
+        profileModal
+          .classList
+          .contains(
+            "visible"
+          )
+      ) {
+
+        closeProfileModal();
+
+      }
+
+    }
+  );
 
 
 
@@ -3109,108 +4234,109 @@ document
 
 
 /* =====================================================
-   SAVE ACCOUNT
+   SAVE PROFILE
 ====================================================== */
 
-saveProfile.addEventListener(
-  "click",
-  function () {
+saveProfile
+  .addEventListener(
+    "click",
+    function () {
 
-    const username =
-      usernameInput
-        .value
-        .trim();
-
-
-    const email =
-      emailInput
-        .value
-        .trim()
-        .toLowerCase();
+      const username =
+        usernameInput
+          .value
+          .trim();
 
 
-    if (
-      username.length <
-      2
-    ) {
-
-      profileFeedback.textContent =
-        "Choose a username with at least 2 characters.";
+      const email =
+        emailInput
+          .value
+          .trim()
+          .toLowerCase();
 
 
-      return;
+      if (
+        username.length <
+        2
+      ) {
 
-    }
-
-
-    const validEmail =
-      /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-    if (
-      !validEmail.test(
-        email
-      )
-    ) {
-
-      profileFeedback.textContent =
-        "Enter a valid email address.";
+        profileFeedback.textContent =
+          "Choose a username with at least 2 characters.";
 
 
-      return;
-
-    }
-
-
-    PATProfile.updateAccount(
-      {
-
-        username:
-          username,
-
-        email:
-          email,
-
-        avatar:
-          selectedAvatar
+        return;
 
       }
-    );
 
 
-    renderProfile();
+      const validEmail =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
-    profileFeedback.textContent =
-      "✓ Profile saved.";
+      if (
+        !validEmail.test(
+          email
+        )
+      ) {
+
+        profileFeedback.textContent =
+          "Enter a valid email address.";
 
 
-    if (
-      typeof gtag ===
-      "function"
-    ) {
+        return;
 
-      gtag(
-        "event",
-        "profile_saved",
+      }
+
+
+      PATProfile.updateAccount(
         {
 
-          location:
-            "learning_lab_home"
+          username:
+            username,
+
+          email:
+            email,
+
+          avatar:
+            selectedAvatar
 
         }
       );
 
+
+      profileFeedback.textContent =
+        "✓ Profile saved.";
+
+
+      renderProfile();
+
+
+      if (
+        typeof gtag ===
+        "function"
+      ) {
+
+        gtag(
+          "event",
+          "profile_saved",
+          {
+
+            location:
+              "learning_lab_home"
+
+          }
+        );
+
+      }
+
+
+      setTimeout(
+        closeProfileModal,
+        650
+      );
+
     }
-
-
-    setTimeout(
-      closeProfileModal,
-      650
-    );
-
-  }
-);
+  );
 
 
 
@@ -3218,145 +4344,139 @@ saveProfile.addEventListener(
    SIGN OUT
 ====================================================== */
 
-signOutProfile.addEventListener(
-  "click",
-  function () {
+signOutProfile
+  .addEventListener(
+    "click",
+    function () {
 
-    PATProfile.signOut();
-
-
-    renderProfile();
+      PATProfile.signOut();
 
 
-    usernameInput.value =
-      "";
+      usernameInput.value =
+        "";
 
 
-    emailInput.value =
-      "";
+      emailInput.value =
+        "";
 
 
-    profileFeedback.textContent =
-      "Signed out. Progress remains saved on this device.";
+      profileFeedback.textContent =
+        "Signed out. Progress remains saved on this device.";
 
-  }
-);
+
+      renderProfile();
+
+    }
+  );
 
 
 
 /* =====================================================
-   GAME CLICK ANALYTICS + PROFILE ACTIVITY
+   GAME LINKS
+
+   IMPORTANT:
+
+   markPlayed() ONLY records that the world was entered.
+
+   It does NOT:
+   - award XP
+   - advance the weekly Lab streak
+   - advance a puzzle streak
+
+   Those happen only when the game reports a
+   meaningful completion through PATProfile.complete().
 ====================================================== */
 
-document.addEventListener(
-  "DOMContentLoaded",
-  function () {
+document
+  .addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+      renderProfile();
 
 
-    renderProfile();
+      document
+        .querySelectorAll(
+          ".game-link"
+        )
+        .forEach(
+          function (
+            link
+          ) {
+
+            link.addEventListener(
+              "click",
+              function () {
+
+                const game =
+                  link.dataset.game;
 
 
-    document
-      .querySelectorAll(
-        ".game-link"
-      )
-      .forEach(
-        function (
-          link
-        ) {
+                if (
+                  window.PATProfile
+                  &&
+                  PATProfile.games[
+                    game
+                  ]
+                ) {
+
+                  PATProfile.markPlayed(
+                    game
+                  );
+
+                }
 
 
-          link.addEventListener(
-            "click",
-            function () {
+                if (
+                  typeof gtag ===
+                  "function"
+                ) {
+
+                  gtag(
+                    "event",
+                    "game_play",
+                    {
+
+                      game_name:
+                        game,
+
+                      destination:
+                        link.getAttribute(
+                          "href"
+                        )
+
+                    }
+                  );
 
 
-              const game =
-                link.dataset.game;
+                  gtag(
+                    "event",
+                    "play_"
+                    +
+                    game,
+                    {
 
+                      game_name:
+                        game
 
-              /*
-                Mark that the player entered this world.
+                    }
+                  );
 
-                This updates the overall Learning Lab
-                activity streak but does NOT create a
-                dedicated game streak unless that game's
-                completion code later does so.
-              */
-
-              if (
-                window.PATProfile
-                &&
-                PATProfile.games[
-                  game
-                ]
-              ) {
-
-                PATProfile.markPlayed(
-                  game
-                );
-
-              }
-
-
-              if (
-                typeof gtag ===
-                "function"
-              ) {
-
-
-                gtag(
-                  "event",
-                  "game_play",
-                  {
-
-                    game_name:
-                      game,
-
-                    destination:
-                      link.getAttribute(
-                        "href"
-                      )
-
-                  }
-                );
-
-
-                gtag(
-                  "event",
-                  "play_"
-                  +
-                  game,
-                  {
-
-                    game_name:
-                      game
-
-                  }
-                );
-
+                }
 
               }
+            );
 
+          }
+        );
 
-            }
-          );
-
-
-        }
-      );
-
-
-  }
-);
+    }
+  );
 
 
 
 /* =====================================================
-   LIVE PROFILE REFRESH
-
-   If another shared profile action updates the player,
-   refresh the homepage interface.
+   LIVE PROFILE UPDATE
 ====================================================== */
 
 window.addEventListener(
@@ -3368,6 +4488,15 @@ window.addEventListener(
   }
 );
 
+
+window.addEventListener(
+  "pat-profile-ready",
+  function () {
+
+    renderProfile();
+
+  }
+);
 
 </script>
 
