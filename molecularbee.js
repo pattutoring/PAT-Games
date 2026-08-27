@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
 
 
 /* ==========================================================
@@ -15,7 +17,9 @@ function trackBeeEvent(
     typeof gtag !==
     "function"
   ) {
+
     return;
+
   }
 
 
@@ -23,6 +27,7 @@ function trackBeeEvent(
     "event",
     eventName,
     {
+
       game_name:
         "molecular_bee",
 
@@ -30,16 +35,17 @@ function trackBeeEvent(
         mode,
 
       ...(extraData || {})
+
     }
   );
 
 }
 
 
-/*
-  Prevent repeated navigation clicks
-  from inflating mode-start numbers.
-*/
+
+/* ==========================================================
+   MODE START TRACKING
+========================================================== */
 
 const startedModes =
   new Set();
@@ -54,7 +60,9 @@ function trackModeStart(
       mode
     )
   ) {
+
     return;
+
   }
 
 
@@ -73,60 +81,99 @@ function trackModeStart(
 
 
 /* ==========================================================
-   PLAYER
+   SHARED PAT PROFILE
 ========================================================== */
 
-let player =
-  JSON.parse(
-    localStorage.getItem(
-      "molecularBeePlayer"
-    )
-  )
-  ||
-  {
-    xp: 0,
-    streak: 0
-  };
+function beeProfileAvailable() {
 
+  return Boolean(
 
-function updatePlayer() {
+    window.PATProfile
+    &&
+    typeof PATProfile.get ===
+    "function"
 
-  document
-    .getElementById(
-      "xpText"
-    )
-    .textContent =
-      player.xp +
-      " XP";
-
-
-  document
-    .getElementById(
-      "streakText"
-    )
-    .textContent =
-      player.streak;
+  );
 
 }
 
 
-function reward(
-  amount
-) {
 
-  player.xp +=
-    amount;
+function refreshBeeProfile() {
+
+  if (
+    typeof window.renderMolecularBeeProfile ===
+    "function"
+  ) {
+
+    window.renderMolecularBeeProfile();
+
+  }
+
+}
 
 
-  localStorage.setItem(
-    "molecularBeePlayer",
-    JSON.stringify(
-      player
-    )
-  );
+
+/*
+  Only Buzzword currently owns a Molecular Bee streak.
+
+  The remaining modes stay fully playable,
+  but do not create separate streaks.
+*/
+
+let buzzProfileCompletionHandled =
+  false;
 
 
-  updatePlayer();
+
+function completeBuzzwordProfile() {
+
+  if (
+    buzzProfileCompletionHandled
+  ) {
+
+    return null;
+
+  }
+
+
+  buzzProfileCompletionHandled =
+    true;
+
+
+  if (
+    !beeProfileAvailable()
+    ||
+    typeof PATProfile.complete !==
+    "function"
+  ) {
+
+    return null;
+
+  }
+
+
+  const result =
+    PATProfile.complete(
+
+      "molecular_bee",
+
+      "buzzword-001",
+
+      {
+
+        streakKey:
+          "buzzword"
+
+      }
+
+    );
+
+
+  refreshBeeProfile();
+
+
+  return result;
 
 }
 
@@ -176,11 +223,13 @@ function showScreen(
 
   window.scrollTo(
     {
+
       top:
         0,
 
       behavior:
         "smooth"
+
     }
   );
 
@@ -188,9 +237,9 @@ function showScreen(
 
 
 
-/*
-  Maps screen IDs to analytics mode names.
-*/
+/* ==========================================================
+   SCREEN → ANALYTICS MODE
+========================================================== */
 
 const screenModes = {
 
@@ -333,6 +382,7 @@ const elementNames = {
 };
 
 
+
 const subscripts = {
 
   2:
@@ -394,8 +444,10 @@ function formulaFromSequence(
 
 
   for (
-    let i = 1;
-    i <= sequence.length;
+    let i =
+      1;
+    i <=
+      sequence.length;
     i++
   ) {
 
@@ -415,11 +467,14 @@ function formulaFromSequence(
 
 
       if (
-        count > 1
+        count >
+        1
       ) {
 
         output +=
-          subscripts[count]
+          subscripts[
+            count
+          ]
           ||
           count;
 
@@ -450,6 +505,7 @@ function formulaFromSequence(
 
 let activeDrag =
   null;
+
 
 
 function registerDrag(
@@ -515,8 +571,10 @@ function registerDrag(
 
     },
     {
+
       passive:
         false
+
     }
   );
 
@@ -533,7 +591,9 @@ document.addEventListener(
     if (
       !activeDrag
     ) {
+
       return;
+
     }
 
 
@@ -653,8 +713,10 @@ document.addEventListener(
 
   },
   {
+
     passive:
       false
+
   }
 );
 
@@ -669,7 +731,9 @@ document.addEventListener(
     if (
       !activeDrag
     ) {
+
       return;
+
     }
 
 
@@ -810,13 +874,22 @@ function pointInside(
 
 
   return (
-    x >= rect.left
+
+    x >=
+    rect.left
+
     &&
-    x <= rect.right
+    x <=
+    rect.right
+
     &&
-    y >= rect.top
+    y >=
+    rect.top
+
     &&
-    y <= rect.bottom
+    y <=
+    rect.bottom
+
   );
 
 }
@@ -1288,11 +1361,13 @@ function createAtomTile(
   registerDrag(
     tile,
     {
+
       game:
         game,
 
       symbol:
         symbol
+
     }
   );
 
@@ -1305,160 +1380,185 @@ function createAtomTile(
 
 /* ==========================================================
    BUZZWORD
+
+   WEEKLY PUZZLE #001
+
+   Completion rule:
+   FIND ALL ACCEPTED COMPOUNDS.
+
+   Moleculargram:
+   collectively use every element somewhere
+   across your discovered swarm.
 ========================================================== */
 
-const buzzHiveElements =
-  [
-    "Cl",
-    "H",
-    "O",
-    "N",
-    "C",
-    "S",
-    "Na"
-  ];
+const BUZZWORD_NUMBER =
+  "001";
 
 
-const buzzAnswers =
-  [
+const buzzHiveElements = [
 
-    {
-      sequence:
-        [
-          "C",
-          "O"
-        ],
+  "Cl",
+  "H",
+  "O",
+  "N",
+  "C",
+  "S",
+  "Na"
 
-      formula:
-        "CO",
-
-      name:
-        "Carbon Monoxide"
-    },
+];
 
 
-    {
-      sequence:
-        [
-          "C",
-          "O",
-          "O"
-        ],
 
-      formula:
-        "CO₂",
-
-      name:
-        "Carbon Dioxide"
-    },
+const buzzAnswers = [
 
 
-    {
-      sequence:
-        [
-          "C",
-          "H",
-          "H",
-          "H",
-          "H"
-        ],
+  {
 
-      formula:
-        "CH₄",
+    sequence: [
+      "C",
+      "O"
+    ],
 
-      name:
-        "Methane"
-    },
+    formula:
+      "CO",
+
+    name:
+      "Carbon Monoxide"
+
+  },
 
 
-    {
-      sequence:
-        [
-          "C",
-          "S",
-          "S"
-        ],
+  {
 
-      formula:
-        "CS₂",
+    sequence: [
+      "C",
+      "O",
+      "O"
+    ],
 
-      name:
-        "Carbon Disulfide"
-    },
+    formula:
+      "CO₂",
 
+    name:
+      "Carbon Dioxide"
 
-    {
-      sequence:
-        [
-          "C",
-          "Cl",
-          "Cl",
-          "Cl",
-          "Cl"
-        ],
-
-      formula:
-        "CCl₄",
-
-      name:
-        "Carbon Tetrachloride"
-    },
+  },
 
 
-    {
-      sequence:
-        [
-          "H",
-          "C",
-          "N"
-        ],
+  {
 
-      formula:
-        "HCN",
+    sequence: [
+      "C",
+      "H",
+      "H",
+      "H",
+      "H"
+    ],
 
-      name:
-        "Hydrogen Cyanide"
-    },
+    formula:
+      "CH₄",
 
+    name:
+      "Methane"
 
-    {
-      sequence:
-        [
-          "H",
-          "H",
-          "C",
-          "O",
-          "O",
-          "O"
-        ],
-
-      formula:
-        "H₂CO₃",
-
-      name:
-        "Carbonic Acid"
-    },
+  },
 
 
-    {
-      sequence:
-        [
-          "Na",
-          "Na",
-          "C",
-          "O",
-          "O",
-          "O"
-        ],
+  {
 
-      formula:
-        "Na₂CO₃",
+    sequence: [
+      "C",
+      "S",
+      "S"
+    ],
 
-      name:
-        "Sodium Carbonate"
-    }
+    formula:
+      "CS₂",
 
-  ];
+    name:
+      "Carbon Disulfide"
+
+  },
+
+
+  {
+
+    sequence: [
+      "C",
+      "Cl",
+      "Cl",
+      "Cl",
+      "Cl"
+    ],
+
+    formula:
+      "CCl₄",
+
+    name:
+      "Carbon Tetrachloride"
+
+  },
+
+
+  {
+
+    sequence: [
+      "H",
+      "C",
+      "N"
+    ],
+
+    formula:
+      "HCN",
+
+    name:
+      "Hydrogen Cyanide"
+
+  },
+
+
+  {
+
+    sequence: [
+      "H",
+      "H",
+      "C",
+      "O",
+      "O",
+      "O"
+    ],
+
+    formula:
+      "H₂CO₃",
+
+    name:
+      "Carbonic Acid"
+
+  },
+
+
+  {
+
+    sequence: [
+      "Na",
+      "Na",
+      "C",
+      "O",
+      "O",
+      "O"
+    ],
+
+    formula:
+      "Na₂CO₃",
+
+    name:
+      "Sodium Carbonate"
+
+  }
+
+
+];
+
 
 
 let buzzSequence =
@@ -1470,6 +1570,10 @@ let buzzFound =
 
 
 let moleculargramTracked =
+  false;
+
+
+let buzzwordCompleted =
   false;
 
 
@@ -1510,6 +1614,7 @@ document
               );
 
             },
+
             120
           );
 
@@ -1634,6 +1739,217 @@ document
 
 
 
+/* ==========================================================
+   ELEMENTS USED ACROSS FOUND COMPOUNDS
+========================================================== */
+
+function getBuzzSwarmElements() {
+
+  const used =
+    new Set();
+
+
+  buzzFound.forEach(
+    function (
+      answer
+    ) {
+
+      answer.sequence.forEach(
+        function (
+          symbol
+        ) {
+
+          used.add(
+            symbol
+          );
+
+        }
+      );
+
+    }
+  );
+
+
+  return used;
+
+}
+
+
+
+/* ==========================================================
+   CHECK MOLECULARGRAM
+========================================================== */
+
+function checkMoleculargram() {
+
+  const used =
+    getBuzzSwarmElements();
+
+
+  const complete =
+    buzzHiveElements.every(
+      function (
+        symbol
+      ) {
+
+        return used.has(
+          symbol
+        );
+
+      }
+    );
+
+
+  if (
+    !complete
+  ) {
+
+    return false;
+
+  }
+
+
+  document
+    .getElementById(
+      "moleculargram"
+    )
+    .classList
+    .add(
+      "visible"
+    );
+
+
+  if (
+    !moleculargramTracked
+  ) {
+
+    moleculargramTracked =
+      true;
+
+
+    trackBeeEvent(
+      "moleculargram_earned",
+      "buzzword",
+      {
+
+        puzzle_number:
+          BUZZWORD_NUMBER,
+
+        compounds_found:
+          buzzFound.length
+
+      }
+    );
+
+  }
+
+
+  return true;
+
+}
+
+
+
+/* ==========================================================
+   COMPLETE WEEKLY BUZZWORD
+========================================================== */
+
+function checkBuzzwordCompletion() {
+
+  if (
+    buzzwordCompleted
+  ) {
+
+    return;
+
+  }
+
+
+  if (
+    buzzFound.length <
+    buzzAnswers.length
+  ) {
+
+    return;
+
+  }
+
+
+  buzzwordCompleted =
+    true;
+
+
+  const result =
+    completeBuzzwordProfile();
+
+
+  const feedback =
+    document.getElementById(
+      "buzzFeedback"
+    );
+
+
+  let message =
+    "🐝👑 Weekly Buzzword complete! You found the entire Molecular Swarm.";
+
+
+  if (
+    result
+    &&
+    result.xpEarned >
+    0
+  ) {
+
+    message +=
+      " +"
+      +
+      result.xpEarned
+      +
+      " XP";
+
+  }
+
+  else if (
+    result
+    &&
+    result.alreadyCompleted
+  ) {
+
+    message +=
+      " This week's Buzzword was already catalogued.";
+
+  }
+
+
+  feedback.textContent =
+    message;
+
+
+  trackBeeEvent(
+    "puzzle_solved",
+    "buzzword",
+    {
+
+      puzzle_number:
+        BUZZWORD_NUMBER,
+
+      compounds_found:
+        buzzFound.length,
+
+      moleculargram:
+        moleculargramTracked
+
+    }
+  );
+
+}
+
+
+
+/* ==========================================================
+   SUBMIT BUZZWORD COMPOUND
+========================================================== */
+
 document
   .getElementById(
     "buzzSubmit"
@@ -1728,6 +2044,13 @@ document
           ".";
 
 
+        buzzSequence =
+          [];
+
+
+        renderBuzz();
+
+
         return;
 
       }
@@ -1742,6 +2065,10 @@ document
         "compound_found",
         "buzzword",
         {
+
+          puzzle_number:
+            BUZZWORD_NUMBER,
+
           compound_name:
             answer.name,
 
@@ -1749,7 +2076,11 @@ document
             answer.formula,
 
           compounds_found:
-            buzzFound.length
+            buzzFound.length,
+
+          compounds_total:
+            buzzAnswers.length
+
         }
       );
 
@@ -1762,66 +2093,6 @@ document
         " found!";
 
 
-      reward(
-        10
-      );
-
-
-      if (
-        buzzHiveElements.every(
-          function (
-            symbol
-          ) {
-
-            return buzzSequence.includes(
-              symbol
-            );
-
-          }
-        )
-      ) {
-
-        document
-          .getElementById(
-            "moleculargram"
-          )
-          .classList
-          .add(
-            "visible"
-          );
-
-
-        feedback.textContent =
-          "🐝👑 MOLECULARGRAM! Every hive element was used!";
-
-
-        if (
-          !moleculargramTracked
-        ) {
-
-          moleculargramTracked =
-            true;
-
-
-          trackBeeEvent(
-            "moleculargram_earned",
-            "buzzword",
-            {
-              compounds_found:
-                buzzFound.length
-            }
-          );
-
-        }
-
-
-        reward(
-          25
-        );
-
-      }
-
-
       buzzSequence =
         [];
 
@@ -1831,10 +2102,34 @@ document
 
       renderBuzzFound();
 
+
+      const earnedMoleculargram =
+        checkMoleculargram();
+
+
+      if (
+        earnedMoleculargram
+        &&
+        buzzFound.length <
+        buzzAnswers.length
+      ) {
+
+        feedback.textContent =
+          "🐝👑 MOLECULARGRAM! Your swarm has now used every element in the hive.";
+
+      }
+
+
+      checkBuzzwordCompletion();
+
     }
   );
 
 
+
+/* ==========================================================
+   RENDER FOUND COMPOUNDS
+========================================================== */
 
 function renderBuzzFound() {
 
@@ -1914,103 +2209,105 @@ function renderBuzzFound() {
    SPELLING BEE
 ========================================================== */
 
-const spellingChallenges =
-  [
-
-    {
-      name:
-        "water",
-
-      answer:
-        [
-          "H",
-          "H",
-          "O"
-        ],
-
-      bank:
-        [
-          "H",
-          "H",
-          "O",
-          "C",
-          "N"
-        ]
-    },
+const spellingChallenges = [
 
 
-    {
-      name:
-        "carbon dioxide",
+  {
 
-      answer:
-        [
-          "C",
-          "O",
-          "O"
-        ],
+    name:
+      "water",
 
-      bank:
-        [
-          "C",
-          "O",
-          "O",
-          "H",
-          "N"
-        ]
-    },
+    answer: [
+      "H",
+      "H",
+      "O"
+    ],
 
+    bank: [
+      "H",
+      "H",
+      "O",
+      "C",
+      "N"
+    ]
 
-    {
-      name:
-        "ammonia",
-
-      answer:
-        [
-          "N",
-          "H",
-          "H",
-          "H"
-        ],
-
-      bank:
-        [
-          "N",
-          "H",
-          "H",
-          "H",
-          "O",
-          "C"
-        ]
-    },
+  },
 
 
-    {
-      name:
-        "methane",
+  {
 
-      answer:
-        [
-          "C",
-          "H",
-          "H",
-          "H",
-          "H"
-        ],
+    name:
+      "carbon dioxide",
 
-      bank:
-        [
-          "C",
-          "H",
-          "H",
-          "H",
-          "H",
-          "O",
-          "N"
-        ]
-    }
+    answer: [
+      "C",
+      "O",
+      "O"
+    ],
 
-  ];
+    bank: [
+      "C",
+      "O",
+      "O",
+      "H",
+      "N"
+    ]
+
+  },
+
+
+  {
+
+    name:
+      "ammonia",
+
+    answer: [
+      "N",
+      "H",
+      "H",
+      "H"
+    ],
+
+    bank: [
+      "N",
+      "H",
+      "H",
+      "H",
+      "O",
+      "C"
+    ]
+
+  },
+
+
+  {
+
+    name:
+      "methane",
+
+    answer: [
+      "C",
+      "H",
+      "H",
+      "H",
+      "H"
+    ],
+
+    bank: [
+      "C",
+      "H",
+      "H",
+      "H",
+      "H",
+      "O",
+      "N"
+    ]
+
+  }
+
+
+];
+
 
 
 let spellingIndex =
@@ -2061,9 +2358,10 @@ function loadSpelling() {
 
 
   for (
-    let index = 0;
+    let index =
+      0;
     index <
-    SPELLING_SLOT_COUNT;
+      SPELLING_SLOT_COUNT;
     index++
   ) {
 
@@ -2134,11 +2432,15 @@ function loadSpelling() {
 
       bank.appendChild(
         createAtomTile(
+
           symbol,
+
           "spelling",
+
           "spelling-"
           +
           index
+
         )
       );
 
@@ -2151,6 +2453,10 @@ function loadSpelling() {
 }
 
 
+
+/* ==========================================================
+   PLACE SPELLING ATOM
+========================================================== */
 
 function placeSpelling(
   source,
@@ -2418,6 +2724,7 @@ document
           "challenge_completed",
           "spelling_bee",
           {
+
             challenge_name:
               challenge.name,
 
@@ -2429,12 +2736,8 @@ document
             challenge_index:
               spellingIndex +
               1
+
           }
-        );
-
-
-        reward(
-          10
         );
 
 
@@ -2453,6 +2756,7 @@ document
             loadSpelling();
 
           },
+
           1000
         );
 
@@ -2475,319 +2779,335 @@ document
 
 
 /* ==========================================================
-   QUEEN BEE — FREE BUILD SANDBOX
+   QUEEN BEE
 ========================================================== */
 
-const queenAtomBank =
-  [
-    "H",
-    "C",
-    "N",
-    "O",
-    "F",
-    "Cl",
-    "S",
-    "Na",
-    "Mg"
-  ];
+const queenAtomBank = [
 
+  "H",
+  "C",
+  "N",
+  "O",
+  "F",
+  "Cl",
+  "S",
+  "Na",
+  "Mg"
 
+];
 
-const queenMolecules =
-  [
 
-    {
-      name:
-        "Methane",
 
-      formula:
-        "CH₄",
+const queenMolecules = [
 
-      center:
-        "C",
 
-      neighbors:
-        [
-          "H",
-          "H",
-          "H",
-          "H"
-        ],
+  {
 
-      info:
-        "Carbon forms four single bonds to hydrogen."
-    },
+    name:
+      "Methane",
 
+    formula:
+      "CH₄",
 
-    {
-      name:
-        "Carbon Dioxide",
+    center:
+      "C",
 
-      formula:
-        "CO₂",
+    neighbors: [
+      "H",
+      "H",
+      "H",
+      "H"
+    ],
 
-      center:
-        "C",
+    info:
+      "Carbon forms four single bonds to hydrogen."
 
-      neighbors:
-        [
-          "O",
-          "O"
-        ],
+  },
 
-      info:
-        "Carbon dioxide contains one carbon and two oxygen atoms."
-    },
 
+  {
 
-    {
-      name:
-        "Carbon Disulfide",
+    name:
+      "Carbon Dioxide",
 
-      formula:
-        "CS₂",
+    formula:
+      "CO₂",
 
-      center:
-        "C",
+    center:
+      "C",
 
-      neighbors:
-        [
-          "S",
-          "S"
-        ],
+    neighbors: [
+      "O",
+      "O"
+    ],
 
-      info:
-        "Carbon disulfide contains carbon bonded to two sulfur atoms."
-    },
+    info:
+      "Carbon dioxide contains one carbon and two oxygen atoms."
 
+  },
 
-    {
-      name:
-        "Carbon Tetrachloride",
 
-      formula:
-        "CCl₄",
+  {
 
-      center:
-        "C",
+    name:
+      "Carbon Disulfide",
 
-      neighbors:
-        [
-          "Cl",
-          "Cl",
-          "Cl",
-          "Cl"
-        ],
+    formula:
+      "CS₂",
 
-      info:
-        "Carbon tetrachloride contains carbon bonded to four chlorine atoms."
-    },
+    center:
+      "C",
 
+    neighbors: [
+      "S",
+      "S"
+    ],
 
-    {
-      name:
-        "Water",
+    info:
+      "Carbon disulfide contains carbon bonded to two sulfur atoms."
 
-      formula:
-        "H₂O",
+  },
 
-      center:
-        "O",
 
-      neighbors:
-        [
-          "H",
-          "H"
-        ],
+  {
 
-      info:
-        "Water contains one oxygen bonded to two hydrogen atoms."
-    },
+    name:
+      "Carbon Tetrachloride",
 
+    formula:
+      "CCl₄",
 
-    {
-      name:
-        "Ammonia",
+    center:
+      "C",
 
-      formula:
-        "NH₃",
+    neighbors: [
+      "Cl",
+      "Cl",
+      "Cl",
+      "Cl"
+    ],
 
-      center:
-        "N",
+    info:
+      "Carbon tetrachloride contains carbon bonded to four chlorine atoms."
 
-      neighbors:
-        [
-          "H",
-          "H",
-          "H"
-        ],
+  },
 
-      info:
-        "Ammonia contains nitrogen bonded to three hydrogen atoms."
-    },
 
+  {
 
-    {
-      name:
-        "Hydrogen Chloride",
+    name:
+      "Water",
 
-      formula:
-        "HCl",
+    formula:
+      "H₂O",
 
-      center:
-        "H",
+    center:
+      "O",
 
-      neighbors:
-        [
-          "Cl"
-        ],
+    neighbors: [
+      "H",
+      "H"
+    ],
 
-      info:
-        "Hydrogen chloride contains one hydrogen and one chlorine atom."
-    },
+    info:
+      "Water contains one oxygen bonded to two hydrogen atoms."
 
+  },
 
-    {
-      name:
-        "Hydrogen Chloride",
 
-      formula:
-        "HCl",
+  {
 
-      center:
-        "Cl",
+    name:
+      "Ammonia",
 
-      neighbors:
-        [
-          "H"
-        ],
+    formula:
+      "NH₃",
 
-      info:
-        "Hydrogen chloride contains one chlorine and one hydrogen atom."
-    },
+    center:
+      "N",
 
+    neighbors: [
+      "H",
+      "H",
+      "H"
+    ],
 
-    {
-      name:
-        "Hydrogen Fluoride",
+    info:
+      "Ammonia contains nitrogen bonded to three hydrogen atoms."
 
-      formula:
-        "HF",
+  },
 
-      center:
-        "H",
 
-      neighbors:
-        [
-          "F"
-        ],
+  {
 
-      info:
-        "Hydrogen fluoride contains hydrogen bonded to fluorine."
-    },
+    name:
+      "Hydrogen Chloride",
 
+    formula:
+      "HCl",
 
-    {
-      name:
-        "Hydrogen Fluoride",
+    center:
+      "H",
 
-      formula:
-        "HF",
+    neighbors: [
+      "Cl"
+    ],
 
-      center:
-        "F",
+    info:
+      "Hydrogen chloride contains one hydrogen and one chlorine atom."
 
-      neighbors:
-        [
-          "H"
-        ],
+  },
 
-      info:
-        "Hydrogen fluoride contains fluorine bonded to hydrogen."
-    },
 
+  {
 
-    {
-      name:
-        "Hydrogen Sulfide",
+    name:
+      "Hydrogen Chloride",
 
-      formula:
-        "H₂S",
+    formula:
+      "HCl",
 
-      center:
-        "S",
+    center:
+      "Cl",
 
-      neighbors:
-        [
-          "H",
-          "H"
-        ],
+    neighbors: [
+      "H"
+    ],
 
-      info:
-        "Hydrogen sulfide contains sulfur bonded to two hydrogen atoms."
-    },
+    info:
+      "Hydrogen chloride contains one chlorine and one hydrogen atom."
 
+  },
 
-    {
-      name:
-        "Molecular Hydrogen",
 
-      formula:
-        "H₂",
+  {
 
-      center:
-        "H",
+    name:
+      "Hydrogen Fluoride",
 
-      neighbors:
-        [
-          "H"
-        ],
+    formula:
+      "HF",
 
-      info:
-        "Elemental hydrogen normally exists as the diatomic molecule H₂."
-    },
+    center:
+      "H",
 
+    neighbors: [
+      "F"
+    ],
 
-    {
-      name:
-        "Molecular Oxygen",
+    info:
+      "Hydrogen fluoride contains hydrogen bonded to fluorine."
 
-      formula:
-        "O₂",
+  },
 
-      center:
-        "O",
 
-      neighbors:
-        [
-          "O"
-        ],
+  {
 
-      info:
-        "Elemental oxygen normally exists as O₂."
-    },
+    name:
+      "Hydrogen Fluoride",
 
+    formula:
+      "HF",
 
-    {
-      name:
-        "Molecular Nitrogen",
+    center:
+      "F",
 
-      formula:
-        "N₂",
+    neighbors: [
+      "H"
+    ],
 
-      center:
-        "N",
+    info:
+      "Hydrogen fluoride contains fluorine bonded to hydrogen."
 
-      neighbors:
-        [
-          "N"
-        ],
+  },
 
-      info:
-        "Elemental nitrogen normally exists as N₂."
-    }
 
-  ];
+  {
+
+    name:
+      "Hydrogen Sulfide",
+
+    formula:
+      "H₂S",
+
+    center:
+      "S",
+
+    neighbors: [
+      "H",
+      "H"
+    ],
+
+    info:
+      "Hydrogen sulfide contains sulfur bonded to two hydrogen atoms."
+
+  },
+
+
+  {
+
+    name:
+      "Molecular Hydrogen",
+
+    formula:
+      "H₂",
+
+    center:
+      "H",
+
+    neighbors: [
+      "H"
+    ],
+
+    info:
+      "Elemental hydrogen normally exists as the diatomic molecule H₂."
+
+  },
+
+
+  {
+
+    name:
+      "Molecular Oxygen",
+
+    formula:
+      "O₂",
+
+    center:
+      "O",
+
+    neighbors: [
+      "O"
+    ],
+
+    info:
+      "Elemental oxygen normally exists as O₂."
+
+  },
+
+
+  {
+
+    name:
+      "Molecular Nitrogen",
+
+    formula:
+      "N₂",
+
+    center:
+      "N",
+
+    neighbors: [
+      "N"
+    ],
+
+    info:
+      "Elemental nitrogen normally exists as N₂."
+
+  }
+
+
+];
 
 
 
@@ -2807,15 +3127,20 @@ const queenCoordinates =
   [];
 
 
+
 for (
-  let q = -3;
-  q <= 3;
+  let q =
+    -3;
+  q <=
+    3;
   q++
 ) {
 
   for (
-    let r = -3;
-    r <= 3;
+    let r =
+      -3;
+    r <=
+      3;
     r++
   ) {
 
@@ -2834,11 +3159,13 @@ for (
 
       queenCoordinates.push(
         {
+
           q:
             q,
 
           r:
             r
+
         }
       );
 
@@ -2856,8 +3183,10 @@ function queenKey(
 ) {
 
   return (
-    q +
-    "," +
+    q
+    +
+    ","
+    +
     r
   );
 
@@ -2865,15 +3194,16 @@ function queenKey(
 
 
 
-const queenDirections =
-  [
-    [1, 0],
-    [1, -1],
-    [0, -1],
-    [-1, 0],
-    [-1, 1],
-    [0, 1]
-  ];
+const queenDirections = [
+
+  [1, 0],
+  [1, -1],
+  [0, -1],
+  [-1, 0],
+  [-1, 1],
+  [0, 1]
+
+];
 
 
 
@@ -2889,11 +3219,13 @@ function getQueenNeighborKeys(
       ) {
 
         return queenKey(
+
           q +
           direction[0],
 
           r +
           direction[1]
+
         );
 
       }
@@ -3063,11 +3395,13 @@ function buildQueenBoard() {
   queenCells.set(
     "0,0",
     {
+
       symbol:
         "C",
 
       locked:
         true
+
     }
   );
 
@@ -3135,11 +3469,15 @@ function buildQueenAtomBank() {
 
       const tile =
         createAtomTile(
+
           symbol,
+
           "queen",
+
           "queen-unlimited-"
           +
           index
+
         );
 
 
@@ -3422,11 +3760,13 @@ function placeQueen(
   queenCells.set(
     key,
     {
+
       symbol:
         symbol,
 
       locked:
         false
+
     }
   );
 
@@ -3708,11 +4048,13 @@ function updateQueenFormula() {
   neighborSymbols.sort();
 
 
-  const sequence =
-    [
-      active.symbol,
-      ...neighborSymbols
-    ];
+  const sequence = [
+
+    active.symbol,
+
+    ...neighborSymbols
+
+  ];
 
 
   preview.textContent =
@@ -3880,6 +4222,7 @@ document
         "challenge_completed",
         "queen_bee",
         {
+
           molecule_name:
             match.name,
 
@@ -3891,12 +4234,8 @@ document
 
           center_atom:
             active.symbol
+
         }
-      );
-
-
-      reward(
-        15
       );
 
 
@@ -4087,69 +4426,79 @@ document
    WORKER BEE
 ========================================================== */
 
-const workerChallenges =
-  [
-
-    {
-      name:
-        "Helium-4",
-
-      protons:
-        2,
-
-      neutrons:
-        2,
-
-      electrons:
-        2
-    },
+const workerChallenges = [
 
 
-    {
-      name:
-        "Lithium-7",
+  {
 
-      protons:
-        3,
+    name:
+      "Helium-4",
 
-      neutrons:
-        4,
+    protons:
+      2,
 
-      electrons:
-        3
-    },
+    neutrons:
+      2,
 
+    electrons:
+      2
 
-    {
-      name:
-        "Beryllium-9",
-
-      protons:
-        4,
-
-      neutrons:
-        5,
-
-      electrons:
-        4
-    },
+  },
 
 
-    {
-      name:
-        "Carbon-12",
+  {
 
-      protons:
-        6,
+    name:
+      "Lithium-7",
 
-      neutrons:
-        6,
+    protons:
+      3,
 
-      electrons:
-        6
-    }
+    neutrons:
+      4,
 
-  ];
+    electrons:
+      3
+
+  },
+
+
+  {
+
+    name:
+      "Beryllium-9",
+
+    protons:
+      4,
+
+    neutrons:
+      5,
+
+    electrons:
+      4
+
+  },
+
+
+  {
+
+    name:
+      "Carbon-12",
+
+    protons:
+      6,
+
+    neutrons:
+      6,
+
+    electrons:
+      6
+
+  }
+
+
+];
+
 
 
 let workerIndex =
@@ -4181,11 +4530,13 @@ document
       registerDrag(
         source,
         {
+
           game:
             "worker",
 
           particle:
             source.dataset.particle
+
         }
       );
 
@@ -4582,18 +4933,15 @@ document
           "challenge_completed",
           "worker_bee",
           {
+
             challenge_name:
               challenge.name,
 
             challenge_index:
               workerIndex +
               1
+
           }
-        );
-
-
-        reward(
-          15
         );
 
 
@@ -4612,6 +4960,7 @@ document
             loadWorker();
 
           },
+
           1000
         );
 
@@ -4651,135 +5000,149 @@ document
    POLLINATION
 ========================================================== */
 
-const pollinationChallenges =
-  [
-
-    {
-      name:
-        "Sodium Chloride",
-
-      formula:
-        "NaCl",
-
-      cation:
-        "Na⁺",
-
-      anion:
-        "Cl⁻",
-
-      cationCount:
-        1,
-
-      anionCount:
-        1
-    },
+const pollinationChallenges = [
 
 
-    {
-      name:
-        "Magnesium Chloride",
+  {
 
-      formula:
-        "MgCl₂",
+    name:
+      "Sodium Chloride",
 
-      cation:
-        "Mg²⁺",
+    formula:
+      "NaCl",
 
-      anion:
-        "Cl⁻",
+    cation:
+      "Na⁺",
 
-      cationCount:
-        1,
+    anion:
+      "Cl⁻",
 
-      anionCount:
-        2
-    },
+    cationCount:
+      1,
 
+    anionCount:
+      1
 
-    {
-      name:
-        "Sodium Oxide",
-
-      formula:
-        "Na₂O",
-
-      cation:
-        "Na⁺",
-
-      anion:
-        "O²⁻",
-
-      cationCount:
-        2,
-
-      anionCount:
-        1
-    },
+  },
 
 
-    {
-      name:
-        "Calcium Fluoride",
+  {
 
-      formula:
-        "CaF₂",
+    name:
+      "Magnesium Chloride",
 
-      cation:
-        "Ca²⁺",
+    formula:
+      "MgCl₂",
 
-      anion:
-        "F⁻",
+    cation:
+      "Mg²⁺",
 
-      cationCount:
-        1,
+    anion:
+      "Cl⁻",
 
-      anionCount:
-        2
-    },
+    cationCount:
+      1,
 
+    anionCount:
+      2
 
-    {
-      name:
-        "Aluminum Oxide",
-
-      formula:
-        "Al₂O₃",
-
-      cation:
-        "Al³⁺",
-
-      anion:
-        "O²⁻",
-
-      cationCount:
-        2,
-
-      anionCount:
-        3
-    },
+  },
 
 
-    {
-      name:
-        "Lithium Nitride",
+  {
 
-      formula:
-        "Li₃N",
+    name:
+      "Sodium Oxide",
 
-      cation:
-        "Li⁺",
+    formula:
+      "Na₂O",
 
-      anion:
-        "N³⁻",
+    cation:
+      "Na⁺",
 
-      cationCount:
-        3,
+    anion:
+      "O²⁻",
 
-      anionCount:
-        1
-    }
+    cationCount:
+      2,
 
-  ];
+    anionCount:
+      1
+
+  },
+
+
+  {
+
+    name:
+      "Calcium Fluoride",
+
+    formula:
+      "CaF₂",
+
+    cation:
+      "Ca²⁺",
+
+    anion:
+      "F⁻",
+
+    cationCount:
+      1,
+
+    anionCount:
+      2
+
+  },
+
+
+  {
+
+    name:
+      "Aluminum Oxide",
+
+    formula:
+      "Al₂O₃",
+
+    cation:
+      "Al³⁺",
+
+    anion:
+      "O²⁻",
+
+    cationCount:
+      2,
+
+    anionCount:
+      3
+
+  },
+
+
+  {
+
+    name:
+      "Lithium Nitride",
+
+    formula:
+      "Li₃N",
+
+    cation:
+      "Li⁺",
+
+    anion:
+      "N³⁻",
+
+    cationCount:
+      3,
+
+    anionCount:
+      1
+
+  }
+
+
+];
+
 
 
 let pollinationIndex =
@@ -4841,21 +5204,20 @@ function loadPollination() {
     "";
 
 
-  const pollenOptions =
-    [
+  const pollenOptions = [
 
-      challenge.cation,
-      challenge.cation,
-      challenge.cation,
+    challenge.cation,
+    challenge.cation,
+    challenge.cation,
 
-      challenge.anion,
-      challenge.anion,
-      challenge.anion,
+    challenge.anion,
+    challenge.anion,
+    challenge.anion,
 
-      "K⁺",
-      "Br⁻"
+    "K⁺",
+    "Br⁻"
 
-    ];
+  ];
 
 
   pollenOptions.forEach(
@@ -4891,11 +5253,13 @@ function loadPollination() {
       registerDrag(
         pollen,
         {
+
           game:
             "pollination",
 
           ion:
             ion
+
         }
       );
 
@@ -4918,45 +5282,54 @@ function loadPollination() {
     "";
 
 
-  const flowers =
-    [
-
-      {
-        ion:
-          challenge.cation,
-
-        role:
-          "cation"
-      },
+  const flowers = [
 
 
-      {
-        ion:
-          challenge.anion,
+    {
 
-        role:
-          "anion"
-      },
+      ion:
+        challenge.cation,
 
+      role:
+        "cation"
 
-      {
-        ion:
-          "K⁺",
-
-        role:
-          "distractor"
-      },
+    },
 
 
-      {
-        ion:
-          "Br⁻",
+    {
 
-        role:
-          "distractor"
-      }
+      ion:
+        challenge.anion,
 
-    ];
+      role:
+        "anion"
+
+    },
+
+
+    {
+
+      ion:
+        "K⁺",
+
+      role:
+        "distractor"
+
+    },
+
+
+    {
+
+      ion:
+        "Br⁻",
+
+      role:
+        "distractor"
+
+    }
+
+
+  ];
 
 
   flowers.forEach(
@@ -5256,6 +5629,7 @@ document
           "challenge_completed",
           "pollination",
           {
+
             challenge_name:
               challenge.name,
 
@@ -5265,12 +5639,8 @@ document
             challenge_index:
               pollinationIndex +
               1
+
           }
-        );
-
-
-        reward(
-          15
         );
 
 
@@ -5289,6 +5659,7 @@ document
             loadPollination();
 
           },
+
           1200
         );
 
@@ -5327,14 +5698,38 @@ document
       );
 
 
+      const status =
+        buzzwordCompleted
+        ?
+          "✅ Weekly Buzzword complete"
+        :
+          buzzFound.length
+          +
+          "/"
+          +
+          buzzAnswers.length
+          +
+          " compounds found";
+
+
       const text =
-        "🐝 MOLECULAR BEE • WEEKLY BUZZWORD #001"
+        "🐝 MOLECULAR BEE • WEEKLY BUZZWORD #"
+        +
+        BUZZWORD_NUMBER
         +
         "\n\n"
         +
-        buzzFound.length
+        status
         +
-        " compounds found"
+        "\n"
+        +
+        (
+          moleculargramTracked
+          ?
+            "👑 MOLECULARGRAM earned"
+          :
+            ""
+        )
         +
         "\n\nHow many can you find?"
         +
@@ -5367,8 +5762,9 @@ document
             "puzzle_shared",
             "buzzword",
             {
+
               puzzle_number:
-                "001",
+                BUZZWORD_NUMBER,
 
               compounds_found:
                 buzzFound.length,
@@ -5376,8 +5772,12 @@ document
               moleculargram:
                 moleculargramTracked,
 
+              completed:
+                buzzwordCompleted,
+
               share_method:
                 "native"
+
             }
           );
 
@@ -5385,21 +5785,24 @@ document
 
         else {
 
-          await navigator.clipboard.writeText(
-            text
-            +
-            "\n"
-            +
-            window.location.href
-          );
+          await navigator
+            .clipboard
+            .writeText(
+              text
+              +
+              "\n"
+              +
+              window.location.href
+            );
 
 
           trackBeeEvent(
             "puzzle_shared",
             "buzzword",
             {
+
               puzzle_number:
-                "001",
+                BUZZWORD_NUMBER,
 
               compounds_found:
                 buzzFound.length,
@@ -5407,8 +5810,12 @@ document
               moleculargram:
                 moleculargramTracked,
 
+              completed:
+                buzzwordCompleted,
+
               share_method:
                 "clipboard"
+
             }
           );
 
@@ -5432,11 +5839,23 @@ document
 
 
 /* ==========================================================
-   START
+   PROFILE UPDATE
 ========================================================== */
 
-updatePlayer();
+window.addEventListener(
+  "pat-profile-updated",
+  function () {
 
+    refreshBeeProfile();
+
+  }
+);
+
+
+
+/* ==========================================================
+   START
+========================================================== */
 
 renderBuzz();
 
@@ -5454,6 +5873,9 @@ loadWorker();
 
 
 loadPollination();
+
+
+refreshBeeProfile();
 
 
 });
