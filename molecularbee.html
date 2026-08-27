@@ -48,12 +48,12 @@ gtag(
      SHARED LEARNING LAB PROFILE
 ====================================================== -->
 
-<script src="profile.js"></script>
+<script src="profile.js?v=20260827-3"></script>
 
 
 <link
   rel="stylesheet"
-  href="molecularbee.css?v=20260827-44"
+  href="molecularbee.css?v=20260827-45"
 >
 
 
@@ -295,6 +295,111 @@ gtag(
 }
 
 
+
+/* =====================================================
+   LEVEL PROGRESS
+====================================================== */
+
+.bee-level-progress {
+
+  width:
+    min(
+      800px,
+      94%
+    );
+
+  margin:
+    -9px
+    auto
+    20px;
+
+  padding:
+    11px
+    14px;
+
+  border:
+    1px
+    solid
+    #ddc994;
+
+  border-radius:
+    12px;
+
+  background:
+    #fff8df;
+
+}
+
+
+.bee-level-copy {
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  gap:
+    10px;
+
+  margin-bottom:
+    7px;
+
+  color:
+    #6e5d3d;
+
+  font-size:
+    .74rem;
+
+  font-weight:
+    bold;
+
+}
+
+
+.bee-level-track {
+
+  width:
+    100%;
+
+  height:
+    9px;
+
+  overflow:
+    hidden;
+
+  border-radius:
+    999px;
+
+  background:
+    #e9ddbf;
+
+}
+
+
+.bee-level-fill {
+
+  width:
+    0%;
+
+  height:
+    100%;
+
+  border-radius:
+    999px;
+
+  background:
+    #d6aa44;
+
+  transition:
+    width
+    .3s
+    ease;
+
+}
+
+
+
 /* =====================================================
    BUZZWORD STREAK BADGE
 ====================================================== */
@@ -334,6 +439,7 @@ gtag(
 }
 
 
+
 /* =====================================================
    MOBILE
 ====================================================== */
@@ -359,6 +465,14 @@ gtag(
 
     width:
       100%;
+
+  }
+
+
+  .bee-level-progress {
+
+    width:
+      96%;
 
   }
 
@@ -441,6 +555,14 @@ gtag(
 
 
 <span
+  id="beeProfileLevel"
+  class="bee-profile-pill"
+>
+  🧪 Level 1
+</span>
+
+
+<span
   id="beeProfileXP"
   class="bee-profile-pill"
 >
@@ -480,6 +602,46 @@ gtag(
 >
   Profile
 </button>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     LEVEL PROGRESS
+====================================================== -->
+
+<section class="bee-level-progress">
+
+
+<div class="bee-level-copy">
+
+
+<span id="beeLevelText">
+  Level 1
+</span>
+
+
+<span id="beeLevelXPText">
+  0 / 100 XP
+</span>
+
+
+</div>
+
+
+<div class="bee-level-track">
+
+
+<div
+  id="beeLevelFill"
+  class="bee-level-fill"
+>
+</div>
+
+
+</div>
 
 
 </section>
@@ -587,7 +749,8 @@ gtag(
 
   Every compound must use the center atom.
 
-  Find as many compounds as you can.
+  Find all accepted compounds
+  to complete this week's Molecular Swarm.
 
 </p>
 
@@ -1838,7 +2001,7 @@ Spell it. Build it. Bond it.
      GAME LOGIC
 ====================================================== -->
 
-<script src="molecularbee.js?v=20260827-44"></script>
+<script src="molecularbee.js?v=20260827-45"></script>
 
 
 
@@ -1848,6 +2011,10 @@ Spell it. Build it. Bond it.
 
 <script>
 
+
+/* =====================================================
+   RENDER MOLECULAR BEE PROFILE
+====================================================== */
 
 function renderMolecularBeeProfile() {
 
@@ -1874,6 +2041,41 @@ function renderMolecularBeeProfile() {
     0;
 
 
+  const level =
+    stats.level
+    ||
+    1;
+
+
+  const xp =
+    stats.xp
+    ||
+    0;
+
+
+  const xpIntoLevel =
+    stats.xpIntoLevel
+    ||
+    0;
+
+
+  const xpPerLevel =
+    stats.xpPerLevel
+    ||
+    100;
+
+
+  const levelPercent =
+    stats.levelPercent
+    ||
+    0;
+
+
+
+  /* ===================================================
+     AVATAR
+  =================================================== */
+
   document
     .getElementById(
       "beeProfileAvatar"
@@ -1883,6 +2085,11 @@ function renderMolecularBeeProfile() {
       ||
       "🧪";
 
+
+
+  /* ===================================================
+     USERNAME
+  =================================================== */
 
   document
     .getElementById(
@@ -1897,6 +2104,11 @@ function renderMolecularBeeProfile() {
       :
         "Guest Explorer";
 
+
+
+  /* ===================================================
+     PLAN
+  =================================================== */
 
   document
     .getElementById(
@@ -1916,6 +2128,26 @@ function renderMolecularBeeProfile() {
         "FREE EXPLORER";
 
 
+
+  /* ===================================================
+     LEVEL
+  =================================================== */
+
+  document
+    .getElementById(
+      "beeProfileLevel"
+    )
+    .textContent =
+      "🧪 Level "
+      +
+      level;
+
+
+
+  /* ===================================================
+     XP
+  =================================================== */
+
   document
     .getElementById(
       "beeProfileXP"
@@ -1923,14 +2155,15 @@ function renderMolecularBeeProfile() {
     .textContent =
       "⭐ "
       +
-      (
-        stats.xp
-        ||
-        0
-      )
+      xp
       +
       " XP";
 
+
+
+  /* ===================================================
+     LAB STREAK
+  =================================================== */
 
   document
     .getElementById(
@@ -1946,6 +2179,11 @@ function renderMolecularBeeProfile() {
       );
 
 
+
+  /* ===================================================
+     BUZZWORD STREAK
+  =================================================== */
+
   document
     .getElementById(
       "beeProfileBuzzStreak"
@@ -1954,6 +2192,7 @@ function renderMolecularBeeProfile() {
       "🐝 Buzzword "
       +
       buzzStreak;
+
 
 
   document
@@ -1965,12 +2204,57 @@ function renderMolecularBeeProfile() {
       +
       buzzStreak;
 
+
+
+  /* ===================================================
+     LEVEL PROGRESS
+  =================================================== */
+
+  document
+    .getElementById(
+      "beeLevelText"
+    )
+    .textContent =
+      "Level "
+      +
+      level;
+
+
+
+  document
+    .getElementById(
+      "beeLevelXPText"
+    )
+    .textContent =
+      xpIntoLevel
+      +
+      " / "
+      +
+      xpPerLevel
+      +
+      " XP";
+
+
+
+  document
+    .getElementById(
+      "beeLevelFill"
+    )
+    .style
+    .width =
+      levelPercent
+      +
+      "%";
+
 }
 
 
 
 /* =====================================================
    PROFILE BUTTON
+
+   PROFILE MANAGEMENT CURRENTLY LIVES
+   ON THE LEARNING LAB HOME PAGE.
 ====================================================== */
 
 document
@@ -1990,11 +2274,26 @@ document
 
 
 /* =====================================================
-   LIVE UPDATE
+   LIVE PROFILE UPDATE
 ====================================================== */
 
 window.addEventListener(
   "pat-profile-updated",
+  function () {
+
+    renderMolecularBeeProfile();
+
+  }
+);
+
+
+
+/* =====================================================
+   PROFILE READY
+====================================================== */
+
+window.addEventListener(
+  "pat-profile-ready",
   function () {
 
     renderMolecularBeeProfile();
