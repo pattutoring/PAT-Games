@@ -4,6 +4,39 @@ document.addEventListener(
 
 
 /* ==========================================================
+   KOAN~KAON
+   PAT LEARNING LAB
+
+   PROFILE.JS V3 COMPATIBLE
+
+   CURRENT RULES
+
+   SU(1)
+   - Genuine solve:
+     XP + completion + mastery
+   - Current puzzle:
+     advances koan_one streak
+   - Archived puzzle:
+     does NOT advance koan_one streak
+   - Reveal:
+     no XP / completion / streak
+
+   SU(2)
+   - Genuine solve:
+     XP + completion + mastery
+   - Current puzzle:
+     advances koan_two streak
+   - Archived puzzle:
+     does NOT advance koan_two streak
+   - Reveal:
+     no XP / completion / streak
+
+   LAST PUZZLE IN EACH DATABASE = CURRENT
+========================================================== */
+
+
+
+/* ==========================================================
    ANALYTICS
 ========================================================== */
 
@@ -67,10 +100,13 @@ function trackEvent(
 function profileAvailable() {
 
   return Boolean(
+
     window.PATProfile
+
     &&
     typeof PATProfile.get ===
     "function"
+
   );
 
 }
@@ -81,6 +117,7 @@ function archiveUnlocked() {
 
   if (
     !profileAvailable()
+
     ||
     typeof PATProfile.canAccessArchive !==
     "function"
@@ -115,6 +152,9 @@ function refreshKoanProfile() {
 
 /* ==========================================================
    PROFILE COMPLETION FLAGS
+
+   Prevent repeat completion calls during
+   the same loaded puzzle.
 ========================================================== */
 
 let generalProfileCompletionHandled =
@@ -127,16 +167,7 @@ let miniProfileCompletionHandled =
 
 
 /* ==========================================================
-   ARCHIVED STATE
-
-   IMPORTANT:
-
-   Archived puzzles may still:
-   - save as completed
-   - award one-time XP
-
-   Archived puzzles DO NOT:
-   - advance the current weekly streak
+   ARCHIVE STATE
 ========================================================== */
 
 let generalIsArchived =
@@ -151,11 +182,17 @@ let miniIsArchived =
 /* ==========================================================
    COMPLETE SU(1)
 
-   CURRENT PUZZLE:
-   completion + XP + koan_one streak
+   CURRENT:
+   - XP
+   - completion
+   - mastery
+   - koan_one release streak
 
-   ARCHIVED PUZZLE:
-   completion + XP only
+   ARCHIVED:
+   - XP
+   - completion
+   - mastery
+   - NO live release streak
 ========================================================== */
 
 function completeGeneralProfile() {
@@ -175,6 +212,7 @@ function completeGeneralProfile() {
 
   if (
     !profileAvailable()
+
     ||
     typeof PATProfile.complete !==
     "function"
@@ -185,8 +223,16 @@ function completeGeneralProfile() {
   }
 
 
-  let options =
-    {};
+  const options = {
+
+    mastery: {
+
+      puzzlesSolved:
+        1
+
+    }
+
+  };
 
 
   if (
@@ -224,11 +270,17 @@ function completeGeneralProfile() {
 /* ==========================================================
    COMPLETE SU(2)
 
-   CURRENT PUZZLE:
-   completion + XP + koan_two streak
+   CURRENT:
+   - XP
+   - completion
+   - mastery
+   - koan_two release streak
 
-   ARCHIVED PUZZLE:
-   completion + XP only
+   ARCHIVED:
+   - XP
+   - completion
+   - mastery
+   - NO live release streak
 ========================================================== */
 
 function completeMiniProfile() {
@@ -248,6 +300,7 @@ function completeMiniProfile() {
 
   if (
     !profileAvailable()
+
     ||
     typeof PATProfile.complete !==
     "function"
@@ -258,8 +311,16 @@ function completeMiniProfile() {
   }
 
 
-  let options =
-    {};
+  const options = {
+
+    mastery: {
+
+      puzzlesSolved:
+        1
+
+    }
+
+  };
 
 
   if (
@@ -295,7 +356,7 @@ function completeMiniProfile() {
 
 
 /* ==========================================================
-   ANALYTICS STATE
+   ANALYTICS / SOLVE STATE
 ========================================================== */
 
 let generalSolveTracked =
@@ -329,6 +390,7 @@ let miniWasRevealed =
    LAST ENTRY = CURRENT
    EARLIER ENTRIES = ARCHIVE
 ========================================================== */
+
 
 
 /* ==========================================================
@@ -685,7 +747,7 @@ const koanPlusPanel =
 
 
 /* ==========================================================
-   SHOW PLUS PANEL
+   PLUS PANEL
 ========================================================== */
 
 function showKoanPlusPanel() {
@@ -699,22 +761,25 @@ function showKoanPlusPanel() {
   }
 
 
-  koanPlusPanel.classList.add(
-    "visible"
-  );
+  koanPlusPanel
+    .classList
+    .add(
+      "visible"
+    );
 
 
-  koanPlusPanel.scrollIntoView(
-    {
+  koanPlusPanel
+    .scrollIntoView(
+      {
 
-      behavior:
-        "smooth",
+        behavior:
+          "smooth",
 
-      block:
-        "nearest"
+        block:
+          "nearest"
 
-    }
-  );
+      }
+    );
 
 }
 
@@ -946,7 +1011,6 @@ let generalDirection =
   "transverse";
 
 
-
 const generalGrid =
   document.getElementById(
     "generalGrid"
@@ -1111,7 +1175,7 @@ function loadGeneralPuzzle(
 
 
 /* ==========================================================
-   BUILD GRID
+   BUILD SU(1) GRID
 ========================================================== */
 
 function buildGeneralGrid() {
@@ -1124,7 +1188,7 @@ function buildGeneralGrid() {
     let row =
       0;
     row <
-    4;
+      4;
     row++
   ) {
 
@@ -1221,6 +1285,22 @@ function buildGeneralGrid() {
         column;
 
 
+      input.setAttribute(
+        "aria-label",
+        "Row "
+        +
+        (
+          row + 1
+        )
+        +
+        ", column "
+        +
+        (
+          column + 1
+        )
+      );
+
+
       input.addEventListener(
         "focus",
         function () {
@@ -1241,6 +1321,7 @@ function buildGeneralGrid() {
           if (
             generalSelectedRow ===
             row
+
             &&
             generalSelectedColumn ===
             column
@@ -1276,6 +1357,10 @@ function buildGeneralGrid() {
               .replace(
                 /[^A-Z]/g,
                 ""
+              )
+              .slice(
+                0,
+                1
               );
 
 
@@ -1303,6 +1388,7 @@ function buildGeneralGrid() {
           if (
             event.key ===
             "Backspace"
+
             &&
             input.value ===
             ""
@@ -1317,6 +1403,9 @@ function buildGeneralGrid() {
             event.key ===
             "Enter"
           ) {
+
+            event.preventDefault();
+
 
             checkGeneral();
 
@@ -1344,7 +1433,7 @@ function buildGeneralGrid() {
 
 
 /* ==========================================================
-   BUILD CLUES
+   BUILD SU(1) CLUES
 ========================================================== */
 
 function buildGeneralClues() {
@@ -1530,7 +1619,7 @@ function selectGeneralCell(
 
 function updateGeneralHighlight() {
 
-  document
+  generalGrid
     .querySelectorAll(
       ".crossword-cell"
     )
@@ -1571,7 +1660,7 @@ function updateGeneralHighlight() {
     "transverse"
   ) {
 
-    document
+    generalGrid
       .querySelectorAll(
         '.crossword-cell[data-row="'
         +
@@ -1599,14 +1688,20 @@ function updateGeneralHighlight() {
         ];
 
 
-    generalDirectionLabel.textContent =
-      "TRANSVERSE "
-      +
-      clue.number
-      +
-      " • "
-      +
-      clue.clue;
+    if (
+      clue
+    ) {
+
+      generalDirectionLabel.textContent =
+        "TRANSVERSE "
+        +
+        clue.number
+        +
+        " • "
+        +
+        clue.clue;
+
+    }
 
 
     const button =
@@ -1634,7 +1729,7 @@ function updateGeneralHighlight() {
 
   else {
 
-    document
+    generalGrid
       .querySelectorAll(
         '.crossword-cell[data-column="'
         +
@@ -1662,14 +1757,20 @@ function updateGeneralHighlight() {
         ];
 
 
-    generalDirectionLabel.textContent =
-      "CONJUGATE "
-      +
-      clue.number
-      +
-      " • "
-      +
-      clue.clue;
+    if (
+      clue
+    ) {
+
+      generalDirectionLabel.textContent =
+        "CONJUGATE "
+        +
+        clue.number
+        +
+        " • "
+        +
+        clue.clue;
+
+    }
 
 
     const button =
@@ -1699,7 +1800,7 @@ function updateGeneralHighlight() {
   const cell =
     generalGrid
       .querySelector(
-        '[data-row="'
+        '.crossword-cell[data-row="'
         +
         generalSelectedRow
         +
@@ -1788,6 +1889,7 @@ function moveGeneralForward() {
   if (
     generalDirection ===
     "transverse"
+
     &&
     column <
     3
@@ -1798,9 +1900,10 @@ function moveGeneralForward() {
   }
 
 
-  if (
+  else if (
     generalDirection ===
     "conjugate"
+
     &&
     row <
     3
@@ -1839,6 +1942,7 @@ function moveGeneralBackward() {
   if (
     generalDirection ===
     "transverse"
+
     &&
     column >
     0
@@ -1849,9 +1953,10 @@ function moveGeneralBackward() {
   }
 
 
-  if (
+  else if (
     generalDirection ===
     "conjugate"
+
     &&
     row >
     0
@@ -1878,12 +1983,12 @@ function moveGeneralBackward() {
 
 
 /* ==========================================================
-   SU(1) CHECK
+   SU(1) CHECK HELPERS
 ========================================================== */
 
 function clearGeneralStyles() {
 
-  document
+  generalGrid
     .querySelectorAll(
       ".crossword-cell"
     )
@@ -1910,7 +2015,7 @@ function generalIsSolved() {
     let row =
       0;
     row <
-    4;
+      4;
     row++
   ) {
 
@@ -1922,12 +2027,18 @@ function generalIsSolved() {
       column++
     ) {
 
-      if (
+      const input =
         getGeneralInput(
           row,
           column
-        ).value
-        !==
+        );
+
+
+      if (
+        !input
+
+        ||
+        input.value !==
         activeGeneral
           .solution[
             row
@@ -1951,6 +2062,10 @@ function generalIsSolved() {
 
 
 
+/* ==========================================================
+   CHECK SU(1)
+========================================================== */
+
 function checkGeneral() {
 
   clearGeneralStyles();
@@ -1968,7 +2083,7 @@ function checkGeneral() {
     let row =
       0;
     row <
-    4;
+      4;
     row++
   ) {
 
@@ -1988,6 +2103,8 @@ function checkGeneral() {
 
 
       if (
+        !input
+        ||
         !input.value
       ) {
 
@@ -2037,6 +2154,11 @@ function checkGeneral() {
   }
 
 
+
+  /* ========================================================
+     SOLVED
+  ======================================================== */
+
   if (
     generalIsSolved()
   ) {
@@ -2048,8 +2170,16 @@ function checkGeneral() {
       );
 
 
+    /*
+      Genuine solve.
+
+      If revealGeneral() was used,
+      generalWasRevealed is true and no completion occurs.
+    */
+
     if (
       !generalSolveTracked
+
       &&
       !generalWasRevealed
     ) {
@@ -2077,40 +2207,82 @@ function checkGeneral() {
 
       if (
         result
-        &&
-        result.xpEarned >
-        0
       ) {
 
-        generalFeedback.textContent =
+        let feedback =
           generalIsArchived
           ?
-            "✦ Archive symmetry restored. +"
-            +
-            result.xpEarned
-            +
-            " XP • Weekly streak unchanged."
+            "✦ Archive symmetry restored."
           :
-            "✦ Every letter satisfies both directions. +"
+            "✦ Every letter satisfies both directions.";
+
+
+        if (
+          result.xpEarned >
+          0
+        ) {
+
+          feedback +=
+            " +"
             +
             result.xpEarned
             +
             " XP";
 
-      }
+        }
 
-      else if (
-        result
-        &&
-        result.alreadyCompleted
-      ) {
+
+        if (
+          generalIsArchived
+        ) {
+
+          feedback +=
+            " • Live SU(1) streak unchanged.";
+
+        }
+
+
+        else if (
+          result.streakAdvanced
+
+          &&
+          result.profile
+
+          &&
+          result.profile.streaks
+        ) {
+
+          feedback +=
+            " • 🔥 SU(1) streak "
+            +
+            (
+              result
+                .profile
+                .streaks
+                .koan_one
+              ||
+              0
+            );
+
+        }
+
+
+        if (
+          result.alreadyCompleted
+        ) {
+
+          feedback =
+            generalIsArchived
+            ?
+              "✦ Archive symmetry restored. Puzzle already catalogued."
+            :
+              "✦ Every letter satisfies both directions. Puzzle already catalogued.";
+
+        }
+
 
         generalFeedback.textContent =
-          generalIsArchived
-          ?
-            "✦ Archive symmetry restored. Puzzle already catalogued."
-          :
-            "✦ Every letter satisfies both directions. Puzzle already catalogued.";
+          feedback;
 
       }
 
@@ -2123,12 +2295,13 @@ function checkGeneral() {
 
     }
 
+
     else {
 
       generalFeedback.textContent =
         generalWasRevealed
         ?
-          "✦ Symmetry restored after reveal. This does not count toward your streak."
+          "✦ Symmetry restored after reveal. This does not count toward XP or your SU(1) streak."
         :
           "✦ Every letter satisfies both directions.";
 
@@ -2139,6 +2312,11 @@ function checkGeneral() {
 
   }
 
+
+
+  /* ========================================================
+     EMPTY
+  ======================================================== */
 
   if (
     filled ===
@@ -2153,6 +2331,11 @@ function checkGeneral() {
 
   }
 
+
+
+  /* ========================================================
+     PARTIAL
+  ======================================================== */
 
   generalFeedback.textContent =
     correct
@@ -2181,7 +2364,7 @@ function hintGeneral() {
     let row =
       0;
     row <
-    4;
+      4;
     row++
   ) {
 
@@ -2201,6 +2384,9 @@ function hintGeneral() {
 
 
       if (
+        input
+
+        &&
         input.value !==
         activeGeneral
           .solution[
@@ -2246,7 +2432,9 @@ function hintGeneral() {
 
 
   const target =
-    candidates[0];
+    candidates[
+      0
+    ];
 
 
   target.input.value =
@@ -2260,6 +2448,19 @@ function hintGeneral() {
 
   generalFeedback.textContent =
     "✦ One symmetry point revealed.";
+
+
+  trackEvent(
+    "hint_used",
+    "su1",
+    activeGeneral.number,
+    {
+
+      archived:
+        generalIsArchived
+
+    }
+  );
 
 }
 
@@ -2299,6 +2500,13 @@ function clearGeneral() {
 
   generalFeedback.textContent =
     "Grid cleared.";
+
+
+  selectGeneralCell(
+    0,
+    0,
+    "transverse"
+  );
 
 }
 
@@ -2352,7 +2560,7 @@ function revealGeneral() {
     let row =
       0;
     row <
-    4;
+      4;
     row++
   ) {
 
@@ -2364,24 +2572,41 @@ function revealGeneral() {
       column++
     ) {
 
-      getGeneralInput(
-        row,
-        column
-      ).value =
-        activeGeneral
-          .solution[
-            row
-          ][
-            column
-          ];
+      const input =
+        getGeneralInput(
+          row,
+          column
+        );
+
+
+      if (
+        input
+      ) {
+
+        input.value =
+          activeGeneral
+            .solution[
+              row
+            ][
+              column
+            ];
+
+      }
 
     }
 
   }
 
 
+  clearGeneralStyles();
+
+
   generalFeedback.textContent =
-    "Solution revealed. This does not count toward your SU(1) streak.";
+    generalIsArchived
+    ?
+      "Archive solution revealed. No XP or live SU(1) streak progress awarded."
+    :
+      "Solution revealed. No XP or SU(1) streak progress awarded.";
 
 
   generalSolvedPanel
@@ -2440,7 +2665,7 @@ document
 
 
 /* ==========================================================
-   SU(2) MINI
+   SU(2) MINI ELEMENTS
 ========================================================== */
 
 const miniCenter =
@@ -2475,7 +2700,7 @@ const miniSolvedLetter =
 
 
 /* ==========================================================
-   LOAD MINI
+   LOAD SU(2)
 ========================================================== */
 
 function loadMiniPuzzle(
@@ -2583,7 +2808,7 @@ function loadMiniPuzzle(
 
 
 /* ==========================================================
-   MINI INPUT
+   SU(2) INPUT
 ========================================================== */
 
 miniCenterInput
@@ -2597,6 +2822,10 @@ miniCenterInput
           .replace(
             /[^A-Z]/g,
             ""
+          )
+          .slice(
+            0,
+            1
           );
 
 
@@ -2613,7 +2842,6 @@ miniCenterInput
   );
 
 
-
 miniCenterInput
   .addEventListener(
     "keydown",
@@ -2626,6 +2854,9 @@ miniCenterInput
         "Enter"
       ) {
 
+        event.preventDefault();
+
+
         checkMini();
 
       }
@@ -2636,7 +2867,7 @@ miniCenterInput
 
 
 /* ==========================================================
-   MINI CHECK
+   CHECK SU(2)
 ========================================================== */
 
 function checkMini() {
@@ -2659,6 +2890,11 @@ function checkMini() {
 
   }
 
+
+
+  /* ========================================================
+     CORRECT
+  ======================================================== */
 
   if (
     guess ===
@@ -2688,6 +2924,7 @@ function checkMini() {
 
     if (
       !miniSolveTracked
+
       &&
       !miniWasRevealed
     ) {
@@ -2715,40 +2952,82 @@ function checkMini() {
 
       if (
         result
-        &&
-        result.xpEarned >
-        0
       ) {
 
-        miniFeedback.textContent =
+        let feedback =
           miniIsArchived
           ?
-            "✣ Archive symmetry closed. +"
-            +
-            result.xpEarned
-            +
-            " XP • Weekly streak unchanged."
+            "✣ Archive symmetry closed."
           :
-            "✣ Correct — the symmetry closes at the center. +"
+            "✣ Correct — the symmetry closes at the center.";
+
+
+        if (
+          result.xpEarned >
+          0
+        ) {
+
+          feedback +=
+            " +"
             +
             result.xpEarned
             +
             " XP";
 
-      }
+        }
 
-      else if (
-        result
-        &&
-        result.alreadyCompleted
-      ) {
+
+        if (
+          miniIsArchived
+        ) {
+
+          feedback +=
+            " • Live SU(2) streak unchanged.";
+
+        }
+
+
+        else if (
+          result.streakAdvanced
+
+          &&
+          result.profile
+
+          &&
+          result.profile.streaks
+        ) {
+
+          feedback +=
+            " • 🔥 SU(2) streak "
+            +
+            (
+              result
+                .profile
+                .streaks
+                .koan_two
+              ||
+              0
+            );
+
+        }
+
+
+        if (
+          result.alreadyCompleted
+        ) {
+
+          feedback =
+            miniIsArchived
+            ?
+              "✣ Archive symmetry closed. Puzzle already catalogued."
+            :
+              "✣ Correct — the symmetry closes at the center. Puzzle already catalogued.";
+
+        }
+
 
         miniFeedback.textContent =
-          miniIsArchived
-          ?
-            "✣ Archive symmetry closed. Puzzle already catalogued."
-          :
-            "✣ Correct — the symmetry closes at the center. Puzzle already catalogued.";
+          feedback;
 
       }
 
@@ -2761,12 +3040,13 @@ function checkMini() {
 
     }
 
+
     else {
 
       miniFeedback.textContent =
         miniWasRevealed
         ?
-          "✣ Center completed after reveal. This does not count toward your streak."
+          "✣ Center completed after reveal. No XP or streak progress awarded."
         :
           "✣ Correct — the symmetry closes at the center.";
 
@@ -2777,6 +3057,11 @@ function checkMini() {
 
   }
 
+
+
+  /* ========================================================
+     INCORRECT
+  ======================================================== */
 
   miniCenter.classList.remove(
     "correct"
@@ -2796,7 +3081,7 @@ function checkMini() {
 
 
 /* ==========================================================
-   MINI HINT
+   SU(2) HINT
 ========================================================== */
 
 function hintMini() {
@@ -2804,12 +3089,25 @@ function hintMini() {
   miniFeedback.textContent =
     "Hint: the answer is a single letter shared by both clue directions.";
 
+
+  trackEvent(
+    "hint_used",
+    "su2_mini",
+    activeMini.number,
+    {
+
+      archived:
+        miniIsArchived
+
+    }
+  );
+
 }
 
 
 
 /* ==========================================================
-   MINI CLEAR
+   SU(2) CLEAR
 ========================================================== */
 
 function clearMini() {
@@ -2834,12 +3132,16 @@ function clearMini() {
       "visible"
     );
 
+
+  miniSolvedLetter.textContent =
+    "";
+
 }
 
 
 
 /* ==========================================================
-   MINI REVEAL
+   SU(2) REVEAL
 ========================================================== */
 
 function revealMini() {
@@ -2897,7 +3199,11 @@ function revealMini() {
 
 
   miniFeedback.textContent =
-    "Center revealed. This does not count toward your SU(2) streak.";
+    miniIsArchived
+    ?
+      "Archive center revealed. No XP or live SU(2) streak progress awarded."
+    :
+      "Center revealed. No XP or SU(2) streak progress awarded.";
 
 
   miniSolvedLetter.textContent =
@@ -2915,7 +3221,7 @@ function revealMini() {
 
 
 /* ==========================================================
-   MINI CONTROLS
+   SU(2) CONTROLS
 ========================================================== */
 
 document
@@ -2968,7 +3274,8 @@ async function sharePuzzle(
   title,
   text,
   mode,
-  puzzleNumber
+  puzzleNumber,
+  archived
 ) {
 
   try {
@@ -3000,7 +3307,10 @@ async function sharePuzzle(
         {
 
           share_method:
-            "native"
+            "native",
+
+          archived:
+            archived
 
         }
       );
@@ -3029,7 +3339,10 @@ async function sharePuzzle(
       {
 
         share_method:
-          "clipboard"
+          "clipboard",
+
+        archived:
+          archived
 
       }
     );
@@ -3115,10 +3428,23 @@ document
 
       if (
         generalIsSolved()
+
+        &&
+        !generalWasRevealed
       ) {
 
         status =
           "✦ SYMMETRY RESTORED";
+
+      }
+
+
+      else if (
+        generalWasRevealed
+      ) {
+
+        status =
+          "Solution revealed";
 
       }
 
@@ -3156,7 +3482,8 @@ document
         "KOAN~KAON SU(1)",
         text,
         "su1",
-        activeGeneral.number
+        activeGeneral.number,
+        generalIsArchived
       );
 
     }
@@ -3183,12 +3510,31 @@ document
         activeMini.answer;
 
 
-      const status =
+      let status =
+        "□ CENTER UNSOLVED";
+
+
+      if (
         miniSolved
-        ?
-          "✣ FOLD IN ONE — SOLVED"
-        :
-          "□ CENTER UNSOLVED";
+
+        &&
+        !miniWasRevealed
+      ) {
+
+        status =
+          "✣ FOLD IN ONE — SOLVED";
+
+      }
+
+
+      else if (
+        miniWasRevealed
+      ) {
+
+        status =
+          "Center revealed";
+
+      }
 
 
       const text =
@@ -3220,7 +3566,8 @@ document
         "KOAN~KAON SU(2) Mini",
         text,
         "su2_mini",
-        activeMini.number
+        activeMini.number,
+        miniIsArchived
       );
 
     }
@@ -3238,9 +3585,11 @@ function buildArchive() {
     koanPlusPanel
   ) {
 
-    koanPlusPanel.classList.remove(
-      "visible"
-    );
+    koanPlusPanel
+      .classList
+      .remove(
+        "visible"
+      );
 
   }
 
@@ -3283,11 +3632,15 @@ function buildGeneralArchive() {
     archiveGeneralList.innerHTML =
       '<div class="empty-archive">'
       +
-      'SU(1) Puzzle #001 is currently live.'
+      'SU(1) Puzzle #'
+      +
+      currentGeneral.number
+      +
+      ' is currently live.'
       +
       '<br><br>'
       +
-      'When #002 is released, #001 will automatically move here.'
+      'When the next SU(1) puzzle is released, this puzzle will automatically move here.'
       +
       '</div>';
 
@@ -3409,6 +3762,7 @@ function buildGeneralArchive() {
 
       }
 
+
       else {
 
         button.addEventListener(
@@ -3473,11 +3827,15 @@ function buildMiniArchive() {
     archiveMiniList.innerHTML =
       '<div class="empty-archive">'
       +
-      'SU(2) Mini #001 is currently live.'
+      'SU(2) Mini #'
+      +
+      currentMini.number
+      +
+      ' is currently live.'
       +
       '<br><br>'
       +
-      'When Mini #002 is released, #001 will automatically move here.'
+      'When the next SU(2) Mini is released, this puzzle will automatically move here.'
       +
       '</div>';
 
@@ -3599,6 +3957,7 @@ function buildMiniArchive() {
 
       }
 
+
       else {
 
         button.addEventListener(
@@ -3677,7 +4036,6 @@ archiveGeneralTab
   );
 
 
-
 archiveMiniTab
   .addEventListener(
     "click",
@@ -3718,8 +4076,9 @@ archiveMiniTab
 /* ==========================================================
    PROFILE UPDATE
 
-   Rebuild archive immediately if the user's
-   Learning Lab plan changes.
+   If plan / XP / streak changes:
+   - refresh profile strip
+   - rebuild archive if archive is open
 ========================================================== */
 
 window.addEventListener(
@@ -3737,6 +4096,7 @@ window.addEventListener(
 
     if (
       archiveScreen
+
       &&
       archiveScreen
         .classList
@@ -3755,14 +4115,32 @@ window.addEventListener(
 
 
 /* ==========================================================
+   PROFILE READY
+========================================================== */
+
+window.addEventListener(
+  "pat-profile-ready",
+  function () {
+
+    refreshKoanProfile();
+
+  }
+);
+
+
+
+/* ==========================================================
    START
 
-   Initialize UI only.
+   Initializes both current puzzles.
 
-   No streak is awarded here.
-   No XP is awarded here.
+   IMPORTANT:
 
-   Those only happen after a genuine solution.
+   No XP
+   No completion
+   No streak
+
+   is awarded merely by loading the page.
 ========================================================== */
 
 loadGeneralPuzzle(
@@ -3783,4 +4161,5 @@ buildArchive();
 refreshKoanProfile();
 
 
-});
+  }
+);
