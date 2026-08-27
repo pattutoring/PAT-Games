@@ -49,25 +49,46 @@ gtag(
 
 :root {
 
-  --cream: #fff8e8;
-  --paper: #fffdf7;
-  --ink: #29261f;
+  --cream:
+    #fff8e8;
 
-  --red: #cf2637;
-  --red-light: #f6dfdf;
+  --paper:
+    #fffdf7;
 
-  --blue: #205995;
-  --blue-light: #e1edf7;
+  --ink:
+    #29261f;
 
-  --gold: #d6aa44;
-  --gold-light: #f6e7ac;
+  --red:
+    #cf2637;
 
-  --brown: #8b633e;
+  --red-light:
+    #f6dfdf;
 
-  --border: #dcc8a5;
+  --blue:
+    #205995;
+
+  --blue-light:
+    #e1edf7;
+
+  --gold:
+    #d6aa44;
+
+  --gold-light:
+    #f6e7ac;
+
+  --brown:
+    #8b633e;
+
+  --border:
+    #dcc8a5;
 
   --shadow:
-    rgba(50,40,25,.14);
+    rgba(
+      50,
+      40,
+      25,
+      .14
+    );
 
 }
 
@@ -78,20 +99,28 @@ gtag(
 ===================================================== */
 
 * {
-  box-sizing: border-box;
+
+  box-sizing:
+    border-box;
+
 }
 
 
 html {
-  scroll-behavior: smooth;
+
+  scroll-behavior:
+    smooth;
+
 }
 
 
 body {
 
-  margin: 0;
+  margin:
+    0;
 
-  min-height: 100vh;
+  min-height:
+    100vh;
 
   padding:
     18px
@@ -309,7 +338,7 @@ button {
     center;
 
   gap:
-    8px;
+    10px;
 
   flex-wrap:
     wrap;
@@ -323,9 +352,12 @@ button {
 
 .top-nav button {
 
+  min-height:
+    48px;
+
   padding:
     10px
-    15px;
+    17px;
 
   border:
     1px
@@ -333,13 +365,24 @@ button {
     #d4c9b7;
 
   border-radius:
-    10px;
+    12px;
 
   background:
     #eee8dc;
 
   color:
     var(--ink);
+
+  box-shadow:
+    0
+    2px
+    6px
+    rgba(
+      50,
+      40,
+      25,
+      .08
+    );
 
 }
 
@@ -586,7 +629,9 @@ button {
     50%;
 
   transform:
-    translateX(-50%);
+    translateX(
+      -50%
+    );
 
   color:
     var(--red);
@@ -629,7 +674,9 @@ button {
     95%;
 
   transform:
-    translateX(-50%);
+    translateX(
+      -50%
+    );
 
   color:
     var(--brown);
@@ -648,7 +695,7 @@ button {
 
 
 /* =====================================================
-   CLUE CARDS
+   CLUE COLUMNS
 ===================================================== */
 
 .clue-column {
@@ -982,6 +1029,9 @@ button {
 
 .answer-section {
 
+  margin-top:
+    8px;
+
   text-align:
     center;
 
@@ -994,7 +1044,10 @@ button {
     var(--brown);
 
   font-size:
-    .83rem;
+    .84rem;
+
+  font-weight:
+    bold;
 
   letter-spacing:
     1px;
@@ -1011,13 +1064,13 @@ button {
     center;
 
   gap:
-    6px;
+    7px;
 
   flex-wrap:
     wrap;
 
   margin-top:
-    9px;
+    11px;
 
 }
 
@@ -1025,10 +1078,10 @@ button {
 .letter-box {
 
   width:
-    38px;
+    42px;
 
   height:
-    40px;
+    44px;
 
   border:
     2px
@@ -1036,7 +1089,7 @@ button {
     var(--blue);
 
   border-radius:
-    6px;
+    8px;
 
   background:
     white;
@@ -1048,7 +1101,10 @@ button {
     monospace;
 
   font-size:
-    1.2rem;
+    1.3rem;
+
+  font-weight:
+    bold;
 
   text-align:
     center;
@@ -1068,49 +1124,157 @@ button {
     0
     0
     0
-    3px
-    rgba(32,89,149,.13);
+    4px
+    rgba(
+      32,
+      89,
+      149,
+      .13
+    );
 
 }
 
 
 
 /* =====================================================
-   BUTTONS
+   BIG GAME CONTROLS
 ===================================================== */
 
 .button-row {
 
   display:
-    flex;
+    grid;
 
-  justify-content:
-    center;
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(
+        0,
+        1fr
+      )
+    );
 
   gap:
-    8px;
+    12px;
 
-  flex-wrap:
-    wrap;
+  width:
+    min(
+      680px,
+      100%
+    );
 
-  margin-top:
-    13px;
+  margin:
+    22px
+    auto
+    0;
 
 }
 
 
-button {
+.button-row button {
+
+  min-height:
+    62px;
+
+  padding:
+    14px
+    18px;
 
   border:
-    none;
+    2px
+    solid
+    transparent;
+
+  border-radius:
+    17px;
+
+  font-size:
+    1rem;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    .15px;
+
+  box-shadow:
+    0
+    5px
+    12px
+    rgba(
+      50,
+      40,
+      25,
+      .14
+    );
+
+  transition:
+    transform
+    .15s
+    ease,
+    box-shadow
+    .15s
+    ease,
+    filter
+    .15s
+    ease;
+
+}
+
+
+.button-row button:hover {
+
+  transform:
+    translateY(
+      -2px
+    );
+
+  box-shadow:
+    0
+    8px
+    17px
+    rgba(
+      50,
+      40,
+      25,
+      .17
+    );
+
+}
+
+
+.button-row button:active {
+
+  transform:
+    translateY(
+      1px
+    );
+
+  box-shadow:
+    0
+    3px
+    8px
+    rgba(
+      50,
+      40,
+      25,
+      .12
+    );
 
 }
 
 
 #submit-answer {
 
+  border-color:
+    #174b82;
+
   background:
-    var(--blue);
+    linear-gradient(
+      180deg,
+      #3274b7,
+      #205995
+    );
 
   color:
     white;
@@ -1118,43 +1282,124 @@ button {
 }
 
 
+#submit-answer::before {
+
+  content:
+    "✓ ";
+
+}
+
+
 #show-hint {
 
+  border-color:
+    #c89b34;
+
   background:
-    var(--gold-light);
+    linear-gradient(
+      180deg,
+      #f9eab4,
+      #efd174
+    );
 
   color:
-    #584817;
+    #5d4717;
+
+}
+
+
+#show-hint::before {
+
+  content:
+    "🔎 ";
 
 }
 
 
 #reset-puzzle {
 
+  border-color:
+    #ce6670;
+
   background:
-    var(--red-light);
+    linear-gradient(
+      180deg,
+      #f7e1e3,
+      #edbec2
+    );
 
   color:
-    #8b2630;
+    #8d2932;
 
 }
 
 
+#reset-puzzle::before {
+
+  content:
+    "↻ ";
+
+}
+
+
+.button-row button:disabled {
+
+  opacity:
+    .5;
+
+  cursor:
+    default;
+
+  transform:
+    none;
+
+  box-shadow:
+    none;
+
+}
+
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
 #attempts {
 
+  width:
+    fit-content;
+
+  max-width:
+    100%;
+
   margin:
-    10px
+    15px
     auto
     0;
+
+  padding:
+    8px
+    15px;
+
+  border:
+    1px
+    solid
+    #ddd0b8;
+
+  border-radius:
+    999px;
+
+  background:
+    #f5efe4;
 
   color:
     #665b4f;
 
   font-size:
-    .84rem;
+    .86rem;
 
-  font-style:
-    italic;
+  font-weight:
+    bold;
 
   text-align:
     center;
@@ -1168,21 +1413,39 @@ button {
     none;
 
   max-width:
-    560px;
+    580px;
 
   margin:
-    12px
+    16px
     auto
     0;
+
+  padding:
+    13px
+    16px;
+
+  border-left:
+    5px
+    solid
+    var(--gold);
+
+  border-radius:
+    11px;
+
+  background:
+    #fff6d2;
 
   color:
     #665b4f;
 
   font-size:
-    .88rem;
+    .9rem;
 
   font-style:
     italic;
+
+  line-height:
+    1.5;
 
   text-align:
     center;
@@ -1193,21 +1456,27 @@ button {
 #message {
 
   min-height:
-    29px;
+    34px;
 
   max-width:
-    560px;
+    580px;
 
   margin:
-    12px
+    15px
     auto
     0;
 
   color:
     var(--blue);
 
+  font-size:
+    .98rem;
+
   font-weight:
     bold;
+
+  line-height:
+    1.4;
 
   text-align:
     center;
@@ -1232,12 +1501,12 @@ button {
     );
 
   margin:
-    22px
+    24px
     auto
     0;
 
   padding:
-    18px;
+    20px;
 
   border:
     2px
@@ -1249,6 +1518,17 @@ button {
 
   background:
     #fff8d8;
+
+  box-shadow:
+    0
+    5px
+    15px
+    rgba(
+      50,
+      40,
+      25,
+      .1
+    );
 
 }
 
@@ -1282,7 +1562,7 @@ button {
     var(--blue);
 
   font-size:
-    1.1rem;
+    1.15rem;
 
   font-weight:
     bold;
@@ -1379,13 +1659,39 @@ button {
     center;
 
   gap:
-    8px;
+    9px;
 
   flex-wrap:
     wrap;
 
   margin-top:
-    10px;
+    12px;
+
+}
+
+
+.share-buttons button {
+
+  min-height:
+    46px;
+
+  padding:
+    10px
+    16px;
+
+  border:
+    1px
+    solid
+    #c9b991;
+
+  border-radius:
+    11px;
+
+  background:
+    white;
+
+  font-weight:
+    bold;
 
 }
 
@@ -1561,15 +1867,29 @@ button {
 
 .archive-play {
 
+  min-height:
+    46px;
+
   padding:
-    8px
-    12px;
+    9px
+    14px;
+
+  border:
+    1px
+    solid
+    #abc8dc;
 
   border-radius:
-    8px;
+    10px;
 
   background:
     var(--blue-light);
+
+  color:
+    var(--blue);
+
+  font-weight:
+    bold;
 
 }
 
@@ -1661,6 +1981,36 @@ button {
 ===================================================== */
 
 @media
+(max-width: 600px) {
+
+  .button-row {
+
+    grid-template-columns:
+      1fr;
+
+    width:
+      min(
+        390px,
+        100%
+      );
+
+  }
+
+
+  .button-row button {
+
+    min-height:
+      62px;
+
+    font-size:
+      1.03rem;
+
+  }
+
+}
+
+
+@media
 (max-width: 480px) {
 
   body {
@@ -1725,10 +2075,10 @@ button {
   .letter-box {
 
     width:
-      33px;
+      35px;
 
     height:
-      36px;
+      39px;
 
   }
 
@@ -1760,11 +2110,10 @@ button {
 <!-- =====================================================
      CONTRONYM LOGO
 
-     REAL ELLIPTICAL GEOMETRY
+     TRUE ROTATED ELLIPTICAL ORBIT
 
-     FULL ELLIPSE = BACK
-     C = MIDDLE
-     LOWER ARC = FRONT
+     BLUE DOT = LEFT ENDPOINT
+     ν = RIGHT ENDPOINT
 ===================================================== -->
 
 <svg
@@ -1775,14 +2124,13 @@ button {
 
 
 <!-- =====================================================
-     FULL DASHED ELLIPSE BEHIND C
-
-     This is a genuine SVG ellipse.
+     ENTIRE ORBIT BEHIND THE C
 ===================================================== -->
 
 <ellipse
   cx="220"
   cy="140"
+
   rx="165"
   ry="57"
 
@@ -1810,7 +2158,7 @@ button {
 <!-- =====================================================
      RED C
 
-     Drawn over the rear orbit.
+     C COVERS THE REAR PORTION OF THE ORBIT
 ===================================================== -->
 
 <path
@@ -1846,13 +2194,7 @@ button {
 
 
 <!-- =====================================================
-     FRONT HALF OF ELLIPSE
-
-     Same radius + same rotation as the real ellipse.
-
-     This is what creates the orbital wrap:
-     rear half disappears behind the C,
-     lower half returns in front.
+     LOWER / FRONT HALF OF THE SAME ORBIT
 ===================================================== -->
 
 <path
@@ -1888,15 +2230,14 @@ button {
 
 
 <!-- =====================================================
-     LEFT PARTICLE
+     BLUE DOT
 
-     Inside the left endpoint of the ellipse.
-     It deliberately does NOT touch the orbit.
+     ACTUAL LEFT ENDPOINT OF ROTATED ELLIPSE
 ===================================================== -->
 
 <circle
-  cx="77"
-  cy="180"
+  cx="62"
+  cy="188"
   r="12"
   fill="#205995"
 />
@@ -1904,17 +2245,16 @@ button {
 
 
 <!-- =====================================================
-     RIGHT ν
+     ν
 
-     Occupies the opposite endpoint position.
+     ACTUAL RIGHT ENDPOINT OF ROTATED ELLIPSE
 
-     NO right dot.
-     NO second ν.
+     THE ν REPLACES THE RIGHT-HAND DOT
 ===================================================== -->
 
 <text
-  x="345"
-  y="110"
+  x="378"
+  y="92"
 
   fill="#205995"
 
@@ -1929,6 +2269,10 @@ button {
   font-style="italic"
 
   font-weight="700"
+
+  text-anchor="middle"
+
+  dominant-baseline="middle"
 >
   ν
 </text>
@@ -1970,7 +2314,7 @@ button {
 
 
 <!-- =====================================================
-     NAV
+     NAVIGATION
 ===================================================== -->
 
 <div class="top-nav">
@@ -2110,7 +2454,7 @@ button {
 
 
 
-<!-- RED HALF -->
+<!-- LEFT / NEGATIVE BRANCH -->
 
 <path
   d="
@@ -2134,7 +2478,7 @@ button {
 
 
 
-<!-- BLUE HALF -->
+<!-- RIGHT / POSITIVE BRANCH -->
 
 <path
   d="
@@ -2158,7 +2502,7 @@ button {
 
 
 
-<!-- GOLD MAJORANA VERTEX -->
+<!-- GOLD VERTEX -->
 
 <circle
   cx="410"
@@ -2186,10 +2530,7 @@ button {
 
 
 <!-- =====================================================
-     THIN BLACK ν TRAIL
-
-     Goes around transverse axis.
-     Dips below the gold vertex.
+     THIN BLACK ν FIELD
 ===================================================== -->
 
 <path
@@ -2381,6 +2722,10 @@ button {
 
 
 
+<!-- =====================================================
+     LARGE GAME BUTTONS
+===================================================== -->
+
 <div class="button-row">
 
 
@@ -2422,7 +2767,7 @@ button {
 
 
 <!-- =====================================================
-     RESULTS
+     RESULT
 ===================================================== -->
 
 <div id="result-card">
@@ -3127,21 +3472,25 @@ const puzzles = [
 
       negative:
         {
+
           word:
             "restrict",
 
           icon:
             "restrict"
+
         },
 
 
       positive:
         {
+
           word:
             "permit",
 
           icon:
             "permit"
+
         }
 
     },
@@ -3151,21 +3500,25 @@ const puzzles = [
 
       negative:
         {
+
           word:
             "penalize",
 
           icon:
             "penalize"
+
         },
 
 
       positive:
         {
+
           word:
             "authorize",
 
           icon:
             "authorize"
+
         }
 
     },
@@ -3175,21 +3528,25 @@ const puzzles = [
 
       negative:
         {
+
           word:
             "punish",
 
           icon:
             "punish"
+
         },
 
 
       positive:
         {
+
           word:
             "approve",
 
           icon:
             "approve"
+
         }
 
     }
@@ -3243,21 +3600,25 @@ const puzzles = [
 
       negative:
         {
+
           word:
             "cut",
 
           icon:
             "cut"
+
         },
 
 
       positive:
         {
+
           word:
             "attach",
 
           icon:
             "attach"
+
         }
 
     },
@@ -3267,21 +3628,25 @@ const puzzles = [
 
       negative:
         {
+
           word:
             "trim",
 
           icon:
             "trim"
+
         },
 
 
       positive:
         {
+
           word:
             "fasten",
 
           icon:
             "fasten"
+
         }
 
     },
@@ -3291,21 +3656,25 @@ const puzzles = [
 
       negative:
         {
+
           word:
             "remove",
 
           icon:
             "remove"
+
         },
 
 
       positive:
         {
+
           word:
             "secure",
 
           icon:
             "secure"
+
         }
 
     }
@@ -3491,7 +3860,7 @@ const archiveList =
 
 
 /* =====================================================
-   CLUES
+   CLUE ROW
 ===================================================== */
 
 function clueRow(
@@ -3524,11 +3893,13 @@ function clueRow(
       ${index + 1}
     </div>
 
+
     <div class="clue-word-row">
 
       <span class="clue-word">
         ${clue.word}
       </span>
+
 
       <span class="clue-silhouette">
         ${icons[clue.icon] || ""}
@@ -3545,6 +3916,10 @@ function clueRow(
 
 
 
+/* =====================================================
+   RENDER HINTS
+===================================================== */
+
 function renderHints() {
 
   negativeClues.innerHTML =
@@ -3555,36 +3930,38 @@ function renderHints() {
     "";
 
 
-  puzzle.hintPairs.forEach(
-    function (
-      pair,
-      index
-    ) {
+  puzzle
+    .hintPairs
+    .forEach(
+      function (
+        pair,
+        index
+      ) {
 
-      const visible =
-        index <
-        visibleHintPairs;
-
-
-      negativeClues.appendChild(
-        clueRow(
-          pair.negative,
-          index,
-          visible
-        )
-      );
+        const visible =
+          index <
+          visibleHintPairs;
 
 
-      positiveClues.appendChild(
-        clueRow(
-          pair.positive,
-          index,
-          visible
-        )
-      );
+        negativeClues.appendChild(
+          clueRow(
+            pair.negative,
+            index,
+            visible
+          )
+        );
 
-    }
-  );
+
+        positiveClues.appendChild(
+          clueRow(
+            pair.positive,
+            index,
+            visible
+          )
+        );
+
+      }
+    );
 
 
   hintButton.textContent =
@@ -3684,7 +4061,7 @@ function makeBoxes() {
 
 
 /* =====================================================
-   ATTEMPTS
+   STATUS
 ===================================================== */
 
 function updateStatus() {
@@ -3709,7 +4086,7 @@ function updateStatus() {
 
 
 /* =====================================================
-   GUESS
+   CURRENT GUESS
 ===================================================== */
 
 function currentGuess() {
@@ -3778,7 +4155,7 @@ function resultPhrase() {
 
 
 /* =====================================================
-   SHARE
+   SHARE TEXT
 ===================================================== */
 
 function shareText() {
@@ -4059,19 +4436,20 @@ function submitGuess() {
   }
 
 
+  const remaining =
+    3 -
+    attempts;
+
+
   message.textContent =
     "Not quite — charge mismatch. "
     +
-    (
-      3 -
-      attempts
-    )
+    remaining
     +
     " attempt"
     +
     (
-      3 -
-      attempts ===
+      remaining ===
       1
       ?
         ""
@@ -4252,7 +4630,7 @@ answerBoxes.addEventListener(
 
 
 /* =====================================================
-   BUTTON EVENTS
+   SUBMIT
 ===================================================== */
 
 submitButton.addEventListener(
@@ -4261,6 +4639,10 @@ submitButton.addEventListener(
 );
 
 
+
+/* =====================================================
+   HINT
+===================================================== */
 
 hintButton.addEventListener(
   "click",
@@ -4303,14 +4685,46 @@ hintButton.addEventListener(
     hintText.style.display =
       "block";
 
+
+    trackContronymEvent(
+      "field_note_revealed",
+      puzzle,
+      {
+
+        hints_used:
+          hintsUsed
+
+      }
+    );
+
   }
 );
 
 
 
+/* =====================================================
+   RESET BUTTON
+===================================================== */
+
 resetButton.addEventListener(
   "click",
-  resetPuzzle
+  function () {
+
+    resetPuzzle();
+
+
+    trackContronymEvent(
+      "puzzle_restarted",
+      puzzle,
+      {
+
+        archived:
+          archived
+
+      }
+    );
+
+  }
 );
 
 
@@ -4393,6 +4807,28 @@ function buildArchive() {
               playView.style.display =
                 "flex";
 
+
+              currentTab.classList.remove(
+                "active"
+              );
+
+
+              archiveTab.classList.remove(
+                "active"
+              );
+
+
+              trackContronymEvent(
+                "puzzle_started",
+                puzzle,
+                {
+
+                  archived:
+                    true
+
+                }
+              );
+
             }
           );
 
@@ -4407,6 +4843,10 @@ function buildArchive() {
 }
 
 
+
+/* =====================================================
+   CURRENT TAB
+===================================================== */
 
 currentTab.addEventListener(
   "click",
@@ -4440,10 +4880,26 @@ currentTab.addEventListener(
       "active"
     );
 
+
+    trackContronymEvent(
+      "puzzle_started",
+      puzzle,
+      {
+
+        archived:
+          false
+
+      }
+    );
+
   }
 );
 
 
+
+/* =====================================================
+   ARCHIVE TAB
+===================================================== */
 
 archiveTab.addEventListener(
   "click",
@@ -4507,6 +4963,24 @@ document
             }
           );
 
+
+          trackContronymEvent(
+            "puzzle_shared",
+            puzzle,
+            {
+
+              method:
+                "native",
+
+              attempts:
+                attempts,
+
+              hints_used:
+                hintsUsed
+
+            }
+          );
+
         }
 
         catch (
@@ -4553,6 +5027,24 @@ document
 
         button.textContent =
           "Copied!";
+
+
+        trackContronymEvent(
+          "puzzle_shared",
+          puzzle,
+          {
+
+            method:
+              "clipboard",
+
+            attempts:
+              attempts,
+
+            hints_used:
+              hintsUsed
+
+          }
+        );
 
 
         setTimeout(
