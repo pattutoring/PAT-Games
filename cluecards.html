@@ -44,10 +44,439 @@ gtag(
 </script>
 
 
+<!-- =====================================================
+     SHARED PAT LEARNING LAB PROFILE
+===================================================== -->
+
+<script src="profile.js"></script>
+
+
 <link
   rel="stylesheet"
   href="cluecards.css?v=20260827-3"
 >
+
+
+<style>
+
+/* =====================================================
+   PROFILE STRIP
+===================================================== */
+
+.clue-profile-strip {
+
+  width:
+    min(
+      760px,
+      94%
+    );
+
+  margin:
+    0
+    auto
+    18px;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr
+    auto;
+
+  gap:
+    12px;
+
+  align-items:
+    center;
+
+  padding:
+    13px
+    15px;
+
+  border:
+    2px
+    solid
+    #d7c39d;
+
+  border-radius:
+    15px;
+
+  background:
+    #fffdf7;
+
+  box-shadow:
+    0
+    4px
+    12px
+    rgba(
+      50,
+      40,
+      25,
+      .10
+    );
+
+}
+
+
+.clue-profile-left {
+
+  min-width:
+    0;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    11px;
+
+}
+
+
+.clue-profile-avatar {
+
+  width:
+    48px;
+
+  height:
+    48px;
+
+  flex:
+    0
+    0
+    48px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border:
+    2px
+    solid
+    #d6aa44;
+
+  border-radius:
+    50%;
+
+  background:
+    #fff7e8;
+
+  font-size:
+    1.45rem;
+
+}
+
+
+.clue-profile-copy {
+
+  min-width:
+    0;
+
+}
+
+
+.clue-profile-name {
+
+  overflow:
+    hidden;
+
+  color:
+    #29261f;
+
+  font-weight:
+    bold;
+
+  text-overflow:
+    ellipsis;
+
+  white-space:
+    nowrap;
+
+}
+
+
+.clue-profile-plan {
+
+  margin-top:
+    2px;
+
+  color:
+    #8b633e;
+
+  font-size:
+    .72rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    1px;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+.clue-profile-stats {
+
+  display:
+    flex;
+
+  gap:
+    6px;
+
+  flex-wrap:
+    wrap;
+
+  margin-top:
+    6px;
+
+}
+
+
+.clue-profile-pill {
+
+  padding:
+    4px
+    8px;
+
+  border-radius:
+    999px;
+
+  background:
+    #f3ecdf;
+
+  color:
+    #65584a;
+
+  font-size:
+    .71rem;
+
+  font-weight:
+    bold;
+
+}
+
+
+.clue-profile-button {
+
+  min-height:
+    44px;
+
+  padding:
+    9px
+    14px;
+
+  border:
+    2px
+    solid
+    #71558e;
+
+  border-radius:
+    11px;
+
+  background:
+    #71558e;
+
+  color:
+    white;
+
+  font-weight:
+    bold;
+
+}
+
+
+
+/* =====================================================
+   ARCHIVE ACCESS
+===================================================== */
+
+.archive-access {
+
+  max-width:
+    700px;
+
+  margin:
+    0
+    auto
+    18px;
+
+  padding:
+    15px;
+
+  border:
+    2px
+    solid
+    #d6aa44;
+
+  border-radius:
+    14px;
+
+  background:
+    #fff6d2;
+
+  color:
+    #65584a;
+
+  line-height:
+    1.5;
+
+  text-align:
+    center;
+
+}
+
+
+.archive-access strong {
+
+  color:
+    #8b633e;
+
+}
+
+
+.clue-plus-panel {
+
+  display:
+    none;
+
+  max-width:
+    700px;
+
+  margin:
+    18px
+    auto
+    0;
+
+  padding:
+    18px;
+
+  border:
+    2px
+    solid
+    #71558e;
+
+  border-radius:
+    16px;
+
+  background:
+    #eee6f4;
+
+  text-align:
+    center;
+
+}
+
+
+.clue-plus-panel.visible {
+
+  display:
+    block;
+
+}
+
+
+.clue-plus-panel h3 {
+
+  margin:
+    5px
+    0
+    7px;
+
+}
+
+
+.clue-plus-panel p {
+
+  color:
+    #62566a;
+
+  line-height:
+    1.5;
+
+}
+
+
+.clue-plus-badge {
+
+  display:
+    inline-block;
+
+  margin-top:
+    4px;
+
+  padding:
+    8px
+    12px;
+
+  border-radius:
+    999px;
+
+  background:
+    #71558e;
+
+  color:
+    white;
+
+  font-size:
+    .78rem;
+
+  font-weight:
+    bold;
+
+}
+
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media
+(max-width:600px) {
+
+  .clue-profile-strip {
+
+    grid-template-columns:
+      1fr;
+
+    width:
+      96%;
+
+    padding:
+      11px;
+
+  }
+
+
+  .clue-profile-button {
+
+    width:
+      100%;
+
+  }
+
+
+  .archive-access,
+  .clue-plus-panel {
+
+    width:
+      96%;
+
+  }
+
+}
+
+</style>
 
 </head>
 
@@ -94,6 +523,92 @@ gtag(
 
 
 </header>
+
+
+
+<!-- =====================================================
+     SHARED PROFILE
+===================================================== -->
+
+<section class="clue-profile-strip">
+
+
+<div class="clue-profile-left">
+
+
+<div
+  id="clueProfileAvatar"
+  class="clue-profile-avatar"
+>
+  🧪
+</div>
+
+
+<div class="clue-profile-copy">
+
+
+<div
+  id="clueProfileName"
+  class="clue-profile-name"
+>
+  Guest Explorer
+</div>
+
+
+<div
+  id="clueProfilePlan"
+  class="clue-profile-plan"
+>
+  FREE EXPLORER
+</div>
+
+
+<div class="clue-profile-stats">
+
+
+<span
+  id="clueProfileXP"
+  class="clue-profile-pill"
+>
+  ⭐ 0 XP
+</span>
+
+
+<span
+  id="clueProfileLabStreak"
+  class="clue-profile-pill"
+>
+  🔥 Lab 0
+</span>
+
+
+<span
+  id="clueProfileStreak"
+  class="clue-profile-pill"
+>
+  🧩 Clue-Cards 0
+</span>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<button
+  id="clueProfileButton"
+  class="clue-profile-button"
+  type="button"
+>
+  Profile
+</button>
+
+
+</section>
 
 
 
@@ -346,6 +861,7 @@ gtag(
 </div>
 
 
+
 <!-- =====================================================
      SHARE
 ===================================================== -->
@@ -559,10 +1075,71 @@ gtag(
 </div>
 
 
+
+<div
+  id="clueArchiveAccess"
+  class="archive-access"
+>
+
+<strong>
+  🔒 Current Clue Free • Archive Learning Lab+
+</strong>
+
+<br>
+
+The newest Clue-Card is available to everyone.
+Previous clues will become part of the Learning Lab+ archive.
+
+</div>
+
+
+
 <div
   id="archiveList"
   class="archive-list"
 >
+</div>
+
+
+
+<div
+  id="cluePlusPanel"
+  class="clue-plus-panel"
+>
+
+
+<div
+  style="
+    color:#71558e;
+    font-size:.72rem;
+    font-weight:bold;
+    letter-spacing:2px;
+  "
+>
+  LEARNING LAB+
+</div>
+
+
+<h3>
+  Unlock the Clue-Card Archive
+</h3>
+
+
+<p>
+
+  Keep the newest weekly clue free,
+  while Learning Lab+ members can return
+  to the growing library of previous
+  Koan~Kaon Clue-Cards.
+
+</p>
+
+
+<span class="clue-plus-badge">
+  Subscriptions Coming Soon
+</span>
+
+
 </div>
 
 
@@ -601,6 +1178,228 @@ Master meaning.
 ===================================================== -->
 
 <script src="cluecards.js?v=20260827-3"></script>
+
+
+
+<!-- =====================================================
+     SHARED PROFILE DISPLAY
+
+     The actual solve/completion hook will be added
+     inside cluecards.js next.
+===================================================== -->
+
+<script>
+
+
+function renderClueCardProfile() {
+
+  if (
+    !window.PATProfile
+  ) {
+
+    return;
+
+  }
+
+
+  const profile =
+    PATProfile.get();
+
+
+  const stats =
+    PATProfile.stats();
+
+
+  document
+    .getElementById(
+      "clueProfileAvatar"
+    )
+    .textContent =
+      profile.avatar
+      ||
+      "🧪";
+
+
+  document
+    .getElementById(
+      "clueProfileName"
+    )
+    .textContent =
+      profile.profileCreated
+      ?
+        "@"
+        +
+        profile.username
+      :
+        "Guest Explorer";
+
+
+  document
+    .getElementById(
+      "clueProfilePlan"
+    )
+    .textContent =
+      profile.plan ===
+      "plus"
+      ?
+        "LEARNING LAB+"
+      :
+      profile.plan ===
+      "admin"
+      ?
+        "LAB ADMIN"
+      :
+        "FREE EXPLORER";
+
+
+  document
+    .getElementById(
+      "clueProfileXP"
+    )
+    .textContent =
+      "⭐ "
+      +
+      (
+        stats.xp
+        ||
+        0
+      )
+      +
+      " XP";
+
+
+  document
+    .getElementById(
+      "clueProfileLabStreak"
+    )
+    .textContent =
+      "🔥 Lab "
+      +
+      (
+        stats.globalStreak
+        ||
+        0
+      );
+
+
+  document
+    .getElementById(
+      "clueProfileStreak"
+    )
+    .textContent =
+      "🧩 Clue-Cards "
+      +
+      (
+        stats.streaks.cluecards
+        ||
+        0
+      );
+
+
+  const archiveAccess =
+    document.getElementById(
+      "clueArchiveAccess"
+    );
+
+
+  if (
+    archiveAccess
+  ) {
+
+    if (
+      PATProfile.canAccessArchive()
+    ) {
+
+      archiveAccess.innerHTML = `
+
+        <strong>
+          🔓 Clue-Card Archive Unlocked
+        </strong>
+
+        <br>
+
+        ${
+          profile.username
+          ||
+          "Explorer"
+        },
+        your Learning Lab+ access includes
+        previous Cryptic Clue-Cards.
+
+      `;
+
+    }
+
+    else {
+
+      archiveAccess.innerHTML = `
+
+        <strong>
+          🔒 Current Clue Free • Archive Learning Lab+
+        </strong>
+
+        <br>
+
+        Everyone can play the newest Clue-Card.
+
+        Previous clues remain part of the
+        Learning Lab+ archive.
+
+      `;
+
+    }
+
+  }
+
+}
+
+
+
+/* =====================================================
+   PROFILE BUTTON
+
+   Account creation remains centralized on index.html.
+===================================================== */
+
+document
+  .getElementById(
+    "clueProfileButton"
+  )
+  .addEventListener(
+    "click",
+    function () {
+
+      window.location.href =
+        "index.html";
+
+    }
+  );
+
+
+
+/* =====================================================
+   LIVE PROFILE UPDATE
+===================================================== */
+
+window.addEventListener(
+  "pat-profile-updated",
+  function () {
+
+    renderClueCardProfile();
+
+  }
+);
+
+
+
+/* =====================================================
+   START
+===================================================== */
+
+renderClueCardProfile();
+
+
+</script>
 
 
 </body>
