@@ -4,16 +4,20 @@ document.addEventListener("DOMContentLoaded", function () {
 /* ==========================================================
    CLUE-CARD DATABASE
 
-   ADD NEW CLUES HERE.
-
    The LAST clue automatically becomes the current clue.
    Earlier clues automatically move into the archive.
 ========================================================== */
 
 const clueCards = [
 
+  /* ========================================================
+     CLUE-CARD #001
+     ARCHIVED
+  ======================================================== */
+
   {
-    number: "001",
+    number:
+      "001",
 
     clue:
       "Pulling a rabbit out three times is the goal.",
@@ -69,9 +73,87 @@ const clueCards = [
       "/PAT-Games/images/cluecards/001/IMG_0205.jpeg"
 
     ]
+  },
+
+
+
+  /* ========================================================
+     CLUE-CARD #002
+     CURRENT PUZZLE
+  ======================================================== */
+
+  {
+    number:
+      "002",
+
+    clue:
+      "Sounds like baseball has a pair of these for their uniforms.",
+
+    enumeration:
+      "(3)",
+
+    answer:
+      "SOX",
+
+    type:
+      "Homophone / Approximation",
+
+    mechanism:
+      "Homophone / Approximation",
+
+    mechanismDescription:
+      "SOX approximates the sound of SOCKS. The surface reading suggests a pair of socks worn with a uniform, while the baseball reading collapses the sound into SOX.",
+
+    senseA:
+      "SOCKS: a pair of socks can be worn as part of a uniform.",
+
+    senseB:
+      "SOX: the baseball name found in Red Sox and White Sox.",
+
+    difficulty:
+      "Easy",
+
+
+    /* ======================================================
+       CLUE RELEASE
+       FIRST FIVE IMAGES
+    ====================================================== */
+
+    clueSlides: [
+
+      "/PAT-Games/images/cluecards/002/IMG_0270.jpeg",
+
+      "/PAT-Games/images/cluecards/002/IMG_0269.jpeg",
+
+      "/PAT-Games/images/cluecards/002/IMG_0265.jpeg",
+
+      "/PAT-Games/images/cluecards/002/IMG_0268.jpeg",
+
+      "/PAT-Games/images/cluecards/002/IMG_0266.jpeg"
+
+    ],
+
+
+    /* ======================================================
+       ANSWER REVEAL
+       FINAL FOUR IMAGES
+    ====================================================== */
+
+    solutionSlides: [
+
+      "/PAT-Games/images/cluecards/002/IMG_0273.jpeg",
+
+      "/PAT-Games/images/cluecards/002/IMG_0272.jpeg",
+
+      "/PAT-Games/images/cluecards/002/IMG_0271.jpeg",
+
+      "/PAT-Games/images/cluecards/002/IMG_0267.jpeg"
+
+    ]
   }
 
 ];
+
 
 
 /* ==========================================================
@@ -144,6 +226,7 @@ function trackEvent(
     "event",
     eventName,
     {
+
       game_name:
         "clue_cards",
 
@@ -157,6 +240,7 @@ function trackEvent(
         activeClue !== currentClue,
 
       ...(parameters || {})
+
     }
   );
 
@@ -192,119 +276,177 @@ function trackPuzzleStart() {
 ========================================================== */
 
 const currentTab =
-  document.getElementById("currentTab");
+  document.getElementById(
+    "currentTab"
+  );
 
 
 const archiveTab =
-  document.getElementById("archiveTab");
+  document.getElementById(
+    "archiveTab"
+  );
 
 
 const playView =
-  document.getElementById("playView");
+  document.getElementById(
+    "playView"
+  );
 
 
 const archiveView =
-  document.getElementById("archiveView");
+  document.getElementById(
+    "archiveView"
+  );
 
 
 const clueNumber =
-  document.getElementById("clueNumber");
+  document.getElementById(
+    "clueNumber"
+  );
 
 
 const clueTitle =
-  document.getElementById("clueTitle");
+  document.getElementById(
+    "clueTitle"
+  );
 
 
 const enumeration =
-  document.getElementById("enumeration");
+  document.getElementById(
+    "enumeration"
+  );
 
 
 const clueText =
-  document.getElementById("clueText");
+  document.getElementById(
+    "clueText"
+  );
 
 
 const cluePhaseButton =
-  document.getElementById("cluePhaseButton");
+  document.getElementById(
+    "cluePhaseButton"
+  );
 
 
 const solutionPhaseButton =
-  document.getElementById("solutionPhaseButton");
+  document.getElementById(
+    "solutionPhaseButton"
+  );
 
 
 const phaseLabel =
-  document.getElementById("phaseLabel");
+  document.getElementById(
+    "phaseLabel"
+  );
 
 
 const slideCounter =
-  document.getElementById("slideCounter");
+  document.getElementById(
+    "slideCounter"
+  );
 
 
 const clueImage =
-  document.getElementById("clueImage");
+  document.getElementById(
+    "clueImage"
+  );
 
 
 const imageFrame =
-  document.getElementById("imageFrame");
+  document.getElementById(
+    "imageFrame"
+  );
 
 
 const previousButton =
-  document.getElementById("previousButton");
+  document.getElementById(
+    "previousButton"
+  );
 
 
 const nextButton =
-  document.getElementById("nextButton");
+  document.getElementById(
+    "nextButton"
+  );
 
 
 const dots =
-  document.getElementById("dots");
+  document.getElementById(
+    "dots"
+  );
 
 
 const guessInput =
-  document.getElementById("guessInput");
+  document.getElementById(
+    "guessInput"
+  );
 
 
 const guessButton =
-  document.getElementById("guessButton");
+  document.getElementById(
+    "guessButton"
+  );
 
 
 const guessCounter =
-  document.getElementById("guessCounter");
+  document.getElementById(
+    "guessCounter"
+  );
 
 
 const guessFeedback =
-  document.getElementById("guessFeedback");
+  document.getElementById(
+    "guessFeedback"
+  );
 
 
 const shareButton =
-  document.getElementById("shareButton");
+  document.getElementById(
+    "shareButton"
+  );
 
 
 const revealBox =
-  document.getElementById("revealBox");
+  document.getElementById(
+    "revealBox"
+  );
 
 
 const bigRevealButton =
-  document.getElementById("bigRevealButton");
+  document.getElementById(
+    "bigRevealButton"
+  );
 
 
 const solutionInfo =
-  document.getElementById("solutionInfo");
+  document.getElementById(
+    "solutionInfo"
+  );
 
 
 const answerTitle =
-  document.getElementById("answerTitle");
+  document.getElementById(
+    "answerTitle"
+  );
 
 
 const senseA =
-  document.getElementById("senseA");
+  document.getElementById(
+    "senseA"
+  );
 
 
 const senseB =
-  document.getElementById("senseB");
+  document.getElementById(
+    "senseB"
+  );
 
 
 const mechanism =
-  document.getElementById("mechanism");
+  document.getElementById(
+    "mechanism"
+  );
 
 
 const mechanismDescription =
@@ -314,7 +456,9 @@ const mechanismDescription =
 
 
 const archiveList =
-  document.getElementById("archiveList");
+  document.getElementById(
+    "archiveList"
+  );
 
 
 
@@ -328,38 +472,51 @@ function buildAnswerPlaceholder(
 
   const clean =
     enumerationText
-      .replace(/[()]/g, "");
+      .replace(
+        /[()]/g,
+        ""
+      );
 
 
   const parts =
-    clean.split("-");
+    clean.split(
+      "-"
+    );
 
 
   return parts
-    .map(function (part) {
-
-      const amount =
-        parseInt(
-          part,
-          10
-        );
-
-
-      if (
-        isNaN(amount)
+    .map(
+      function (
+        part
       ) {
 
-        return "";
+        const amount =
+          parseInt(
+            part,
+            10
+          );
+
+
+        if (
+          isNaN(
+            amount
+          )
+        ) {
+
+          return "";
+
+        }
+
+
+        return "_".repeat(
+          amount
+        );
 
       }
-
-
-      return "_".repeat(
-        amount
-      );
-
-    })
-    .join("-");
+    )
+    .join(
+      "-"
+    );
 
 }
 
@@ -564,7 +721,8 @@ function renderSlide() {
 
   if (
     !slides ||
-    slides.length === 0
+    slides.length ===
+    0
   ) {
 
     return;
@@ -637,7 +795,8 @@ function renderSlide() {
 
 
   previousButton.disabled =
-    slideIndex === 0;
+    slideIndex ===
+    0;
 
 
   nextButton.disabled =
@@ -683,6 +842,15 @@ function buildDots() {
 
       dot.className =
         "dot";
+
+
+      dot.setAttribute(
+        "aria-label",
+        "Go to slide " +
+        (
+          index + 1
+        )
+      );
 
 
       if (
@@ -842,8 +1010,10 @@ function revealSolution(
     trackEvent(
       "puzzle_revealed",
       {
+
         guesses_before_reveal:
           guesses
+
       }
     );
 
@@ -972,6 +1142,13 @@ bigRevealButton.addEventListener(
 
 /* ==========================================================
    GUESSING
+
+   IMPORTANT:
+   Only the exact official answer counts.
+
+   For #002:
+   SOX = correct
+   SOCKS = incorrect
 ========================================================== */
 
 function submitGuess() {
@@ -1020,8 +1197,10 @@ function submitGuess() {
   trackEvent(
     "puzzle_guess",
     {
+
       guess_number:
         guesses
+
     }
   );
 
@@ -1052,8 +1231,10 @@ function submitGuess() {
       trackEvent(
         "puzzle_solved",
         {
+
           guesses:
             guesses
+
         }
       );
 
@@ -1081,6 +1262,11 @@ function submitGuess() {
   }
 
 
+  guessFeedback.classList.remove(
+    "correct"
+  );
+
+
   guessFeedback.textContent =
     "Not quite. Re-examine the clue from both senses.";
 
@@ -1090,6 +1276,10 @@ function submitGuess() {
 }
 
 
+
+/* ==========================================================
+   GUESS BUTTON
+========================================================== */
 
 guessButton.addEventListener(
   "click",
@@ -1143,7 +1333,8 @@ function buildShareText() {
       " "
       +
       (
-        guesses === 1
+        guesses ===
+        1
         ?
           "guess"
         :
@@ -1189,7 +1380,8 @@ function buildShareText() {
       " "
       +
       (
-        guesses === 1
+        guesses ===
+        1
         ?
           "guess"
         :
@@ -1250,7 +1442,9 @@ async function shareClue() {
 
 
   const imageUrl =
-    activeClue.clueSlides[0];
+    activeClue.clueSlides[
+      0
+    ];
 
 
   try {
@@ -1278,33 +1472,44 @@ async function shareClue() {
 
     const file =
       new File(
-        [blob],
+        [
+          blob
+        ],
         "Koan-Kaon-Clue-"
         +
         activeClue.number
         +
         ".jpeg",
         {
+
           type:
             blob.type ||
             "image/jpeg"
+
         }
       );
 
 
     if (
-      navigator.share &&
-      navigator.canShare &&
+      navigator.share
+      &&
+      navigator.canShare
+      &&
       navigator.canShare(
         {
+
           files:
-            [file]
+            [
+              file
+            ]
+
         }
       )
     ) {
 
       await navigator.share(
         {
+
           title:
             "Koan~Kaon Clue-Card #"
             +
@@ -1314,7 +1519,10 @@ async function shareClue() {
             text,
 
           files:
-            [file]
+            [
+              file
+            ]
+
         }
       );
 
@@ -1322,6 +1530,7 @@ async function shareClue() {
       trackEvent(
         "puzzle_shared",
         {
+
           guesses:
             guesses,
 
@@ -1333,6 +1542,7 @@ async function shareClue() {
 
           share_method:
             "native_file"
+
         }
       );
 
@@ -1348,6 +1558,7 @@ async function shareClue() {
 
       await navigator.share(
         {
+
           title:
             "Koan~Kaon Clue-Card #"
             +
@@ -1358,6 +1569,7 @@ async function shareClue() {
 
           url:
             window.location.href
+
         }
       );
 
@@ -1365,6 +1577,7 @@ async function shareClue() {
       trackEvent(
         "puzzle_shared",
         {
+
           guesses:
             guesses,
 
@@ -1376,6 +1589,7 @@ async function shareClue() {
 
           share_method:
             "native"
+
         }
       );
 
@@ -1397,6 +1611,7 @@ async function shareClue() {
     trackEvent(
       "puzzle_shared",
       {
+
         guesses:
           guesses,
 
@@ -1408,6 +1623,7 @@ async function shareClue() {
 
         share_method:
           "clipboard"
+
       }
     );
 
@@ -1444,6 +1660,7 @@ async function shareClue() {
 
         await navigator.share(
           {
+
             title:
               "Koan~Kaon Clue-Card #"
               +
@@ -1454,6 +1671,7 @@ async function shareClue() {
 
             url:
               window.location.href
+
           }
         );
 
@@ -1461,6 +1679,7 @@ async function shareClue() {
         trackEvent(
           "puzzle_shared",
           {
+
             guesses:
               guesses,
 
@@ -1472,7 +1691,20 @@ async function shareClue() {
 
             share_method:
               "native_fallback"
+
           }
+        );
+
+      }
+
+      else {
+
+        await navigator.clipboard.writeText(
+          text
+          +
+          "\n\n"
+          +
+          window.location.href
         );
 
       }
@@ -1529,11 +1761,7 @@ function buildArchive() {
     archiveList.innerHTML =
       '<div class="empty-archive">'
       +
-      'Clue-Card #001 is currently live.'
-      +
-      '<br><br>'
-      +
-      'When #002 is released, #001 will automatically move here.'
+      'No archived Clue-Cards yet.'
       +
       '</div>';
 
@@ -1627,7 +1855,13 @@ function buildArchive() {
             );
 
 
-            currentTab.classList.add(
+            /*
+              We are playing an archived clue,
+              so neither tab is treated as
+              "Current Clue".
+            */
+
+            currentTab.classList.remove(
               "active"
             );
 
@@ -1642,11 +1876,13 @@ function buildArchive() {
 
             window.scrollTo(
               {
+
                 top:
                   0,
 
                 behavior:
                   "smooth"
+
               }
             );
 
@@ -1757,13 +1993,17 @@ imageFrame.addEventListener(
 
     touchStartX =
       event
-        .changedTouches[0]
+        .changedTouches[
+          0
+        ]
         .screenX;
 
   },
   {
+
     passive:
       true
+
   }
 );
 
@@ -1777,7 +2017,9 @@ imageFrame.addEventListener(
 
     const touchEndX =
       event
-        .changedTouches[0]
+        .changedTouches[
+          0
+        ]
         .screenX;
 
 
@@ -1789,7 +2031,8 @@ imageFrame.addEventListener(
     if (
       Math.abs(
         difference
-      ) <
+      )
+      <
       50
     ) {
 
@@ -1806,7 +2049,8 @@ imageFrame.addEventListener(
 
 
     if (
-      difference < 0
+      difference <
+      0
       &&
       slideIndex <
       slides.length - 1
@@ -1821,9 +2065,11 @@ imageFrame.addEventListener(
 
 
     if (
-      difference > 0
+      difference >
+      0
       &&
-      slideIndex > 0
+      slideIndex >
+      0
     ) {
 
       slideIndex--;
@@ -1835,8 +2081,10 @@ imageFrame.addEventListener(
 
   },
   {
+
     passive:
       true
+
   }
 );
 
@@ -1844,6 +2092,11 @@ imageFrame.addEventListener(
 
 /* ==========================================================
    START GAME
+
+   Because #002 is last in clueCards,
+   it automatically loads as the current puzzle.
+
+   #001 automatically appears in Archive.
 ========================================================== */
 
 loadClue(
