@@ -831,8 +831,7 @@ button {
 
   margin-top:16px;
 
-  padding:
-    14px;
+  padding:14px;
 
   border:
     1px
@@ -3456,7 +3455,7 @@ FREE EXPLORER
   id="profileGlobalStreak"
   class="profile-pill"
 >
-🔥 Lab 0
+🔥 Weekly Lab 0
 </span>
 
 
@@ -3603,7 +3602,7 @@ XP
 </strong>
 
 <small>
-Lab Streak
+Weekly Lab Streak
 </small>
 
 </div>
@@ -4497,6 +4496,7 @@ const profileEmailInput =
   );
 
 
+
 function renderProfileUI() {
 
   const profile =
@@ -4560,7 +4560,14 @@ function renderProfileUI() {
       "profileName"
     )
     .textContent =
-      username;
+      username ===
+      "Guest"
+      ?
+        "Guest Explorer"
+      :
+        "@"
+        +
+        username;
 
 
   document
@@ -4598,7 +4605,7 @@ function renderProfileUI() {
       "profileGlobalStreak"
     )
     .textContent =
-      "🔥 Lab "
+      "🔥 Weekly Lab "
       +
       globalStreak;
 
@@ -4643,7 +4650,8 @@ function renderProfileUI() {
     ?
       "Sign In / Create Profile"
     :
-      "@" +
+      "@"
+      +
       username;
 
 }
@@ -4735,7 +4743,6 @@ openProfileButton
   );
 
 
-
 closeProfileButton
   .addEventListener(
     "click",
@@ -4743,13 +4750,11 @@ closeProfileButton
   );
 
 
-
 cancelProfileButton
   .addEventListener(
     "click",
     closeProfileModal
   );
-
 
 
 profileModal
@@ -4832,38 +4837,26 @@ saveProfileButton
       }
 
 
-      const profile =
-        getLearningLabProfile();
-
-
-      profile.username =
-        username.slice(
-          0,
-          30
-        );
-
-
-      profile.email =
-        email;
-
-
-      profile.profileCreated =
-        true;
-
-
       if (
-        !profile.avatar
+        window.PATProfile
+        &&
+        typeof PATProfile.updateAccount ===
+        "function"
       ) {
 
-        profile.avatar =
-          "🧪";
+        PATProfile.updateAccount(
+          {
+
+            username:
+              username,
+
+            email:
+              email
+
+          }
+        );
 
       }
-
-
-      saveLearningLabProfile(
-        profile
-      );
 
 
       renderProfileUI();
@@ -4903,6 +4896,21 @@ saveProfileButton
 
     }
   );
+
+
+
+/* =====================================================
+   LIVE PROFILE UPDATE
+===================================================== */
+
+window.addEventListener(
+  "pat-profile-updated",
+  function () {
+
+    renderProfileUI();
+
+  }
+);
 
 
 
@@ -5219,6 +5227,8 @@ approve:
 
 /* =====================================================
    PUZZLES
+
+   LAST PUZZLE = CURRENT PUZZLE
 ===================================================== */
 
 const puzzles = [
@@ -6072,6 +6082,16 @@ function showResult() {
 
 /* =====================================================
    COMPLETE PROFILE ACTIVITY
+
+   CURRENT PUZZLE:
+   - completion saved
+   - XP awarded once
+   - Contronym streak advances
+
+   ARCHIVED PUZZLE:
+   - completion saved
+   - XP awarded once
+   - live Contronym streak DOES NOT advance
 ===================================================== */
 
 function completeContronymProfile() {
@@ -6091,7 +6111,27 @@ function completeContronymProfile() {
   const result =
     PATProfile.complete(
       "contronym",
-      puzzle.number
+      puzzle.number,
+      {
+
+        /*
+          Current weekly Contronym contributes
+          to the live Contronym streak.
+
+          Archived Contronyms deliberately use
+          a nonregistered streak key so their
+          completion is saved without advancing
+          the live recurring streak.
+        */
+
+        streakKey:
+          archived
+          ?
+            "contronym_archive"
+          :
+            "contronym"
+
+      }
     );
 
 
@@ -6099,20 +6139,71 @@ function completeContronymProfile() {
 
 
   if (
-    result
-    &&
+    !result
+  ) {
+
+    return;
+
+  }
+
+
+  let rewardMessage =
+    "";
+
+
+  if (
     result.xpEarned >
     0
+  ) {
+
+    rewardMessage +=
+      " +"
+      +
+      result.xpEarned
+      +
+      " XP";
+
+  }
+
+
+  if (
+    !archived
+    &&
+    result.streakAdvanced
+  ) {
+
+    const updatedProfile =
+      result.profile;
+
+
+    const newStreak =
+      updatedProfile.streaks
+      &&
+      updatedProfile.streaks.contronym
+      ?
+        updatedProfile.streaks.contronym
+      :
+        1;
+
+
+    rewardMessage +=
+      " • 🔥 Contronym streak "
+      +
+      newStreak;
+
+  }
+
+
+  if (
+    solved
   ) {
 
     message.textContent =
       resultPhrase()
       +
-      " — you found the Majorana of Meaning. +"
+      " — you found the Majorana of Meaning."
       +
-      result.xpEarned
-      +
-      " XP";
+      rewardMessage;
 
   }
 
@@ -6284,7 +6375,10 @@ function submitGuess() {
           attempts,
 
         hints_used:
-          hintsUsed
+          hintsUsed,
+
+        archived:
+          archived
 
       }
     );
@@ -6644,7 +6738,10 @@ hintButton.addEventListener(
         {
 
           pair:
-            visibleHintPairs
+            visibleHintPairs,
+
+          archived:
+            archived
 
         }
       );
@@ -6799,6 +6896,35 @@ function buildArchive() {
         -1
       )
       .reverse();
+
+
+  if (
+    oldPuzzles.length ===
+    0
+  ) {
+
+    archiveList.innerHTML =
+      `
+
+      <div class="archive-card">
+
+        <div class="archive-description">
+
+          No archived Contronyms yet.
+
+          When a new weekly puzzle is released,
+          the previous puzzle will move here automatically.
+
+        </div>
+
+      </div>
+
+      `;
+
+
+    return;
+
+  }
 
 
   oldPuzzles.forEach(
@@ -7108,7 +7234,10 @@ document
                 attempts,
 
               hints_used:
-                hintsUsed
+                hintsUsed,
+
+              archived:
+                archived
 
             }
           );
@@ -7129,9 +7258,50 @@ document
 
       else {
 
-        alert(
-          shareText()
-        );
+        try {
+
+          await navigator
+            .clipboard
+            .writeText(
+              shareText()
+              +
+              "\n\n"
+              +
+              window.location.href
+            );
+
+
+          trackContronymEvent(
+            "puzzle_shared",
+            puzzle,
+            {
+
+              method:
+                "clipboard",
+
+              attempts:
+                attempts,
+
+              hints_used:
+                hintsUsed,
+
+              archived:
+                archived
+
+            }
+          );
+
+        }
+
+        catch (
+          error
+        ) {
+
+          alert(
+            shareText()
+          );
+
+        }
 
       }
 
@@ -7163,6 +7333,27 @@ document
             +
             window.location.href
           );
+
+
+        trackContronymEvent(
+          "puzzle_shared",
+          puzzle,
+          {
+
+            method:
+              "clipboard_result",
+
+            attempts:
+              attempts,
+
+            hints_used:
+              hintsUsed,
+
+            archived:
+              archived
+
+          }
+        );
 
 
         button.textContent =
