@@ -8,9 +8,9 @@
 <meta
   name="viewport"
   content="width=device-width, initial-scale=1.0"
->
+/>
 
-<title>Contronym | The Majorana of Meaning</title>
+<title>Contronym: The Majorana of Meaning</title>
 
 
 <!-- =========================================================
@@ -58,44 +58,32 @@ gtag(
   --ink:
     #29261f;
 
-  --soft-ink:
-    #665849;
-
   --red:
     #b62432;
 
-  --red-dark:
-    #8d1723;
-
   --red-light:
-    #f4dedd;
+    #f7e2e4;
 
   --blue:
     #1f568f;
 
   --blue-light:
-    #e1edf7;
-
-  --sky:
-    #7cc7e6;
+    #e2edf8;
 
   --gold:
     #d6aa44;
 
   --gold-light:
-    #f7e9b6;
+    #f7e8b1;
 
   --brown:
     #8b633e;
 
-  --green:
-    #58784b;
-
   --shadow:
     rgba(
-      49,
-      39,
-      28,
+      50,
+      40,
+      25,
       .14
     );
 
@@ -108,14 +96,18 @@ gtag(
 ========================================================= */
 
 * {
+
   box-sizing:
     border-box;
+
 }
 
 
 html {
+
   scroll-behavior:
     smooth;
+
 }
 
 
@@ -126,6 +118,11 @@ body {
 
   min-height:
     100vh;
+
+  padding:
+    22px
+    12px
+    40px;
 
   background:
     var(--cream);
@@ -163,78 +160,82 @@ button {
 
 
 /* =========================================================
-   HEADER
+   PAGE WRAP
 ========================================================= */
 
-header {
+.page-shell {
 
   width:
     min(
-      1120px,
-      95%
+      980px,
+      96%
     );
 
   margin:
     auto;
-
-  padding:
-    22px
-    0
-    10px;
-
-  text-align:
-    center;
-
-}
-
-
-.lab-link {
-
-  display:
-    inline-block;
-
-  margin-bottom:
-    16px;
-
-  padding:
-    8px
-    13px;
-
-  border:
-    2px
-    solid
-    var(--brown);
-
-  border-radius:
-    10px;
-
-  background:
-    var(--paper);
-
-  color:
-    var(--brown);
-
-  font-weight:
-    bold;
-
-  text-decoration:
-    none;
 
 }
 
 
 
 /* =========================================================
-   CONTRONYM BRAND
+   BRAND HEADER
 ========================================================= */
 
-.brand-lockup {
+.brand-panel {
 
-  max-width:
-    820px;
+  display:
+    grid;
 
-  margin:
-    auto;
+  grid-template-columns:
+    180px
+    minmax(
+      0,
+      1fr
+    );
+
+  align-items:
+    center;
+
+  gap:
+    22px;
+
+  margin-bottom:
+    20px;
+
+  padding:
+    20px;
+
+  border:
+    2px
+    solid
+    #d9c7a5;
+
+  border-radius:
+    20px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0
+    7px
+    20px
+    var(--shadow);
+
+}
+
+
+.majorana-mark {
+
+  width:
+    170px;
+
+  min-width:
+    170px;
+
+  height:
+    135px;
 
   display:
     flex;
@@ -245,16 +246,19 @@ header {
   justify-content:
     center;
 
-  gap:
-    20px;
-
 }
 
 
-.brand-copy {
+.logo-svg {
 
-  text-align:
-    left;
+  width:
+    100%;
+
+  height:
+    100%;
+
+  overflow:
+    visible;
 
 }
 
@@ -264,23 +268,18 @@ header {
   margin:
     0;
 
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
   font-size:
     clamp(
-      2.7rem,
-      9vw,
-      5.3rem
+      2.5rem,
+      7vw,
+      4.4rem
     );
 
   line-height:
-    .94;
+    .95;
 
   letter-spacing:
-    -3px;
+    1px;
 
 }
 
@@ -290,12 +289,12 @@ header {
   margin:
     8px
     0
-    0;
+    10px;
 
   font-size:
     clamp(
       1.2rem,
-      4vw,
+      3.8vw,
       2rem
     );
 
@@ -311,126 +310,31 @@ header {
 .brand-copy p {
 
   margin:
-    8px
-    0
     0;
 
   color:
-    var(--soft-ink);
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  line-height:
-    1.45;
-
-}
-
-
-
-/* =========================================================
-   Cν LOGO
-========================================================= */
-
-.majorana-mark {
-
-  position:
-    relative;
-
-  width:
-    170px;
-
-  min-width:
-    170px;
-
-  height:
-    150px;
-
-}
-
-
-.majorana-c {
-
-  position:
-    absolute;
-
-  left:
-    42px;
-
-  top:
-    10px;
-
-  color:
-    var(--red);
-
-  font-family:
-    Georgia,
-    serif;
+    var(--brown);
 
   font-size:
-    8.5rem;
-
-  font-weight:
-    bold;
+    1rem;
 
   line-height:
-    1;
+    1.5;
 
 }
 
 
-.majorana-orbit {
-
-  position:
-    absolute;
-
-  inset:
-    0;
-
-  width:
-    100%;
-
-  height:
-    100%;
-
-}
-
-
-.majorana-nu {
-
-  position:
-    absolute;
-
-  right:
-    3px;
-
-  top:
-    18px;
+.brand-copy strong {
 
   color:
     var(--blue);
 
-  font-family:
-    Georgia,
-    serif;
-
-  font-size:
-    2rem;
-
-  font-style:
-    italic;
-
-  font-weight:
-    bold;
-
 }
 
 
 
 /* =========================================================
-   NAVIGATION
+   TOP NAV
 ========================================================= */
 
 .top-nav {
@@ -447,10 +351,8 @@ header {
   flex-wrap:
     wrap;
 
-  margin:
-    22px
-    0
-    12px;
+  margin-bottom:
+    20px;
 
 }
 
@@ -459,24 +361,21 @@ header {
 
   padding:
     9px
-    14px;
+    13px;
 
   border:
-    2px
+    1px
     solid
-    #cfc1a8;
+    #d4c9b7;
 
   border-radius:
-    999px;
+    9px;
 
   background:
-    var(--paper);
+    #eee8dc;
 
   color:
-    var(--brown);
-
-  font-weight:
-    bold;
+    var(--ink);
 
 }
 
@@ -484,349 +383,13 @@ header {
 .top-nav button.active {
 
   border-color:
+    #9fc4d3;
+
+  background:
+    #d8ecf3;
+
+  color:
     var(--blue);
-
-  background:
-    var(--blue);
-
-  color:
-    white;
-
-}
-
-
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-main {
-
-  width:
-    min(
-      1180px,
-      95%
-    );
-
-  margin:
-    auto;
-
-  padding-bottom:
-    70px;
-
-}
-
-
-.view {
-
-  display:
-    none;
-
-}
-
-
-.view.active {
-
-  display:
-    block;
-
-  animation:
-    appear
-    .25s
-    ease;
-
-}
-
-
-@keyframes appear {
-
-  from {
-
-    opacity:
-      0;
-
-    transform:
-      translateY(
-        6px
-      );
-
-  }
-
-  to {
-
-    opacity:
-      1;
-
-    transform:
-      translateY(
-        0
-      );
-
-  }
-
-}
-
-
-
-/* =========================================================
-   PUZZLE META
-========================================================= */
-
-.puzzle-meta {
-
-  margin:
-    15px
-    auto
-    12px;
-
-  text-align:
-    center;
-
-}
-
-
-.puzzle-number {
-
-  color:
-    var(--brown);
-
-  font-size:
-    .76rem;
-
-  font-weight:
-    bold;
-
-  letter-spacing:
-    2px;
-
-}
-
-
-.puzzle-meta h2 {
-
-  margin:
-    5px
-    0;
-
-  font-size:
-    clamp(
-      1.35rem,
-      4vw,
-      2rem
-    );
-
-}
-
-
-.puzzle-meta p {
-
-  margin:
-    5px
-    0;
-
-  color:
-    var(--soft-ink);
-
-}
-
-
-
-/* =========================================================
-   MAIN CARD
-========================================================= */
-
-.contronym-card {
-
-  position:
-    relative;
-
-  overflow:
-    hidden;
-
-  padding:
-    22px;
-
-  border:
-    2px
-    solid
-    #d9c9aa;
-
-  border-radius:
-    22px;
-
-  background:
-    var(--paper);
-
-  box-shadow:
-    0
-    8px
-    24px
-    var(--shadow);
-
-}
-
-
-.card-kicker {
-
-  text-align:
-    center;
-
-  color:
-    var(--brown);
-
-  font-size:
-    .72rem;
-
-  font-weight:
-    bold;
-
-  letter-spacing:
-    1.6px;
-
-  text-transform:
-    uppercase;
-
-}
-
-
-.card-question {
-
-  margin:
-    8px
-    0
-    18px;
-
-  text-align:
-    center;
-
-  font-size:
-    clamp(
-      1.25rem,
-      4vw,
-      2rem
-    );
-
-}
-
-
-
-/* =========================================================
-   CARD GRID
-========================================================= */
-
-.semantic-board {
-
-  display:
-    grid;
-
-  grid-template-columns:
-    minmax(
-      175px,
-      .72fr
-    )
-    minmax(
-      420px,
-      1.6fr
-    )
-    minmax(
-      175px,
-      .72fr
-    );
-
-  gap:
-    18px;
-
-  align-items:
-    stretch;
-
-}
-
-
-
-/* =========================================================
-   SIDE CLUE RAILS
-========================================================= */
-
-.clue-rail {
-
-  padding:
-    15px;
-
-  border:
-    2px
-    solid;
-
-  border-radius:
-    16px;
-
-  background:
-    white;
-
-}
-
-
-.negative-rail {
-
-  border-color:
-    #d7a6aa;
-
-}
-
-
-.positive-rail {
-
-  border-color:
-    #9eb9d8;
-
-}
-
-
-.rail-heading {
-
-  text-align:
-    center;
-
-  margin-bottom:
-    13px;
-
-}
-
-
-.rail-charge {
-
-  width:
-    40px;
-
-  height:
-    40px;
-
-  margin:
-    0
-    auto
-    6px;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  border-radius:
-    50%;
-
-  color:
-    white;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size:
-    1.7rem;
 
   font-weight:
     bold;
@@ -834,221 +397,12 @@ main {
 }
 
 
-.negative-rail
-.rail-charge {
-
-  background:
-    var(--red);
-
-}
-
-
-.positive-rail
-.rail-charge {
-
-  background:
-    var(--blue);
-
-}
-
-
-.rail-heading h3 {
-
-  margin:
-    3px
-    0;
-
-  font-size:
-    1rem;
-
-  letter-spacing:
-    .5px;
-
-}
-
-
-.negative-rail h3 {
-
-  color:
-    var(--red-dark);
-
-}
-
-
-.positive-rail h3 {
-
-  color:
-    var(--blue);
-
-}
-
-
-.rail-heading small {
-
-  color:
-    var(--soft-ink);
-
-  font-style:
-    italic;
-
-}
-
-
 
 /* =========================================================
-   HINT ROW
+   VIEWS
 ========================================================= */
 
-.hint-list {
-
-  display:
-    grid;
-
-  gap:
-    9px;
-
-}
-
-
-.hint-row {
-
-  min-height:
-    54px;
-
-  display:
-    grid;
-
-  grid-template-columns:
-    27px
-    1fr
-    31px;
-
-  align-items:
-    center;
-
-  gap:
-    5px;
-
-  padding:
-    7px
-    6px;
-
-  border-bottom:
-    1px
-    solid
-    #e6ddd0;
-
-}
-
-
-.hint-index {
-
-  width:
-    23px;
-
-  height:
-    23px;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  border-radius:
-    50%;
-
-  color:
-    white;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size:
-    .72rem;
-
-  font-weight:
-    bold;
-
-}
-
-
-.negative-rail
-.hint-index {
-
-  background:
-    var(--red);
-
-}
-
-
-.positive-rail
-.hint-index {
-
-  background:
-    var(--blue);
-
-}
-
-
-.hint-word {
-
-  font-size:
-    .89rem;
-
-  font-weight:
-    bold;
-
-  letter-spacing:
-    .4px;
-
-}
-
-
-.hint-word.hidden {
-
-  color:
-    #a99e8c;
-
-  letter-spacing:
-    2px;
-
-}
-
-
-.hint-icon {
-
-  color:
-    #181818;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size:
-    1.35rem;
-
-  text-align:
-    center;
-
-}
-
-
-
-/* =========================================================
-   GRAPH
-========================================================= */
-
-.graph-panel {
-
-  min-width:
-    0;
+#play-view {
 
   display:
     flex;
@@ -1062,25 +416,148 @@ main {
 }
 
 
-.graph-wrap {
+#archive-view {
+
+  display:
+    none;
+
+  width:
+    min(
+      620px,
+      100%
+    );
+
+  margin:
+    auto;
+
+}
+
+
+
+/* =========================================================
+   PUZZLE CARD
+========================================================= */
+
+.puzzle-card {
+
+  width:
+    min(
+      900px,
+      100%
+    );
+
+  padding:
+    22px;
+
+  border:
+    2px
+    solid
+    #d8c7a6;
+
+  border-radius:
+    22px;
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    0
+    7px
+    20px
+    var(--shadow);
+
+}
+
+
+.puzzle-heading {
+
+  text-align:
+    center;
+
+  margin-bottom:
+    10px;
+
+}
+
+
+.puzzle-heading .kicker {
+
+  color:
+    var(--brown);
+
+  font-size:
+    .72rem;
+
+  font-weight:
+    bold;
+
+  letter-spacing:
+    2px;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+.puzzle-heading h3 {
+
+  margin:
+    5px
+    0;
+
+  font-size:
+    1.5rem;
+
+}
+
+
+.puzzle-heading p {
+
+  margin:
+    0;
+
+  color:
+    #6d6151;
+
+}
+
+
+
+/* =========================================================
+   GRAPH AREA
+========================================================= */
+
+.game-container {
 
   position:
     relative;
 
   width:
-    100%;
+    min(
+      650px,
+      100%
+    );
 
   height:
-    455px;
+    470px;
 
-  overflow:
-    hidden;
+  margin:
+    18px
+    auto
+    12px;
 
 }
 
 
 .graph-svg {
 
+  position:
+    absolute;
+
+  inset:
+    0;
+
   width:
     100%;
 
@@ -1090,13 +567,16 @@ main {
 }
 
 
-.graph-label {
+.label {
 
   position:
     absolute;
 
+  z-index:
+    5;
+
   padding:
-    4px
+    3px
     6px;
 
   border-radius:
@@ -1105,16 +585,62 @@ main {
   background:
     rgba(
       255,
-      253,
-      247,
+      248,
+      232,
       .9
     );
 
   font-size:
-    .76rem;
+    .82rem;
+
+  font-style:
+    italic;
+
+}
+
+
+.left-label {
+
+  left:
+    2%;
+
+  top:
+    18%;
+
+  max-width:
+    180px;
+
+  color:
+    var(--red);
+
+  text-align:
+    left;
 
   line-height:
-    1.25;
+    1.6;
+
+}
+
+
+.right-label {
+
+  right:
+    2%;
+
+  top:
+    18%;
+
+  max-width:
+    180px;
+
+  color:
+    var(--blue);
+
+  text-align:
+    right;
+
+  line-height:
+    1.6;
 
 }
 
@@ -1122,7 +648,7 @@ main {
 .conjugate-label {
 
   top:
-    26px;
+    2px;
 
   left:
     50%;
@@ -1144,10 +670,10 @@ main {
 .transverse-label {
 
   right:
-    8%;
+    3%;
 
   bottom:
-    62px;
+    58px;
 
   color:
     var(--blue);
@@ -1167,80 +693,104 @@ main {
     50%;
 
   bottom:
-    18px;
+    6px;
+
+  width:
+    94%;
 
   transform:
     translateX(
       -50%
     );
 
-  width:
-    90%;
-
-  text-align:
-    center;
-
   color:
     var(--brown);
 
   font-size:
-    .76rem;
+    .78rem;
 
   line-height:
     1.35;
 
+  text-align:
+    center;
+
 }
 
 
-.vertex-copy strong {
+.hint-side-title {
 
   display:
     block;
 
-  color:
-    var(--gold);
+  margin-bottom:
+    3px;
 
   font-size:
-    .82rem;
+    .72rem;
+
+  font-style:
+    normal;
+
+  font-weight:
+    bold;
 
   letter-spacing:
     1px;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+.hint-chip {
+
+  display:
+    block;
+
+  margin:
+    5px
+    0;
+
+  font-style:
+    normal;
+
+  font-weight:
+    bold;
+
+}
+
+
+.hint-chip .hint-icon {
+
+  display:
+    inline-block;
+
+  width:
+    22px;
+
+  color:
+    #111;
+
+  text-align:
+    center;
 
 }
 
 
 
 /* =========================================================
-   ANSWER AREA
+   ANSWER
 ========================================================= */
 
-.answer-area {
+.answer-section {
 
   margin-top:
-    10px;
+    6px;
 
   text-align:
     center;
-
-}
-
-
-.answer-area-label {
-
-  color:
-    var(--brown);
-
-  font-size:
-    .75rem;
-
-  font-weight:
-    bold;
-
-  letter-spacing:
-    1.5px;
-
-  text-transform:
-    uppercase;
 
 }
 
@@ -1254,13 +804,13 @@ main {
     center;
 
   gap:
-    8px;
+    6px;
 
   flex-wrap:
     wrap;
 
   margin-top:
-    8px;
+    10px;
 
 }
 
@@ -1268,18 +818,18 @@ main {
 .letter-box {
 
   width:
-    46px;
+    38px;
 
   height:
-    50px;
+    40px;
 
   border:
     2px
     solid
-    #9d8f7b;
+    #666;
 
   border-radius:
-    8px;
+    6px;
 
   background:
     white;
@@ -1288,14 +838,10 @@ main {
     var(--ink);
 
   font-family:
-    "Courier New",
     monospace;
 
   font-size:
-    1.4rem;
-
-  font-weight:
-    bold;
+    1.2rem;
 
   text-align:
     center;
@@ -1308,72 +854,31 @@ main {
 
 .letter-box:focus {
 
-  outline:
-    3px
-    solid
-    var(--gold-light);
-
   border-color:
-    var(--gold);
+    var(--blue);
+
+  outline:
+    none;
+
+  box-shadow:
+    0
+    0
+    0
+    3px
+    rgba(
+      31,
+      86,
+      143,
+      .12
+    );
 
 }
 
 
 
 /* =========================================================
-   CONTROLS
+   BUTTONS
 ========================================================= */
-
-.status-row {
-
-  display:
-    flex;
-
-  justify-content:
-    center;
-
-  gap:
-    10px;
-
-  flex-wrap:
-    wrap;
-
-  margin:
-    17px
-    0
-    7px;
-
-}
-
-
-.status-pill {
-
-  padding:
-    7px
-    11px;
-
-  border:
-    1px
-    solid
-    #d8caaa;
-
-  border-radius:
-    999px;
-
-  background:
-    var(--cream);
-
-  color:
-    var(--soft-ink);
-
-  font-size:
-    .78rem;
-
-  font-weight:
-    bold;
-
-}
-
 
 .button-row {
 
@@ -1384,40 +889,39 @@ main {
     center;
 
   gap:
-    9px;
+    8px;
 
   flex-wrap:
     wrap;
 
   margin-top:
-    12px;
+    13px;
 
 }
 
 
-.primary-button,
-.secondary-button,
-.danger-button {
+button {
 
   padding:
-    11px
-    16px;
+    9px
+    13px;
+
+  border:
+    none;
 
   border-radius:
-    10px;
+    9px;
 
-  font-weight:
-    bold;
+  background:
+    var(--blue-light);
+
+  color:
+    var(--ink);
 
 }
 
 
-.primary-button {
-
-  border:
-    2px
-    solid
-    var(--blue);
+#submit-answer {
 
   background:
     var(--blue);
@@ -1428,254 +932,102 @@ main {
 }
 
 
-.secondary-button {
-
-  border:
-    2px
-    solid
-    var(--brown);
+#show-hint {
 
   background:
-    white;
-
-  color:
-    var(--brown);
+    var(--gold-light);
 
 }
 
 
-.danger-button {
-
-  border:
-    2px
-    solid
-    var(--red);
+#reset-puzzle {
 
   background:
-    white;
+    var(--red-light);
 
   color:
-    var(--red);
-
-}
-
-
-button:disabled {
-
-  opacity:
-    .46;
-
-  cursor:
-    default;
+    #8a2530;
 
 }
 
 
 
 /* =========================================================
-   MESSAGE
+   STATUS
 ========================================================= */
 
-#message {
+#attempts {
 
-  min-height:
-    44px;
-
-  margin:
-    14px
-    auto
-    0;
-
-  max-width:
-    680px;
+  margin-top:
+    10px;
 
   color:
-    var(--green);
+    #665b4f;
 
-  font-weight:
-    bold;
+  font-size:
+    .85rem;
+
+  font-style:
+    italic;
 
   text-align:
     center;
 
-  line-height:
-    1.45;
-
 }
 
 
-
-/* =========================================================
-   MAJORANA EXPLANATION
-========================================================= */
-
-.majorana-principle {
-
-  margin-top:
-    23px;
+#hint-text {
 
   display:
-    grid;
+    none;
 
-  grid-template-columns:
-    1fr
+  max-width:
+    520px;
+
+  margin:
+    12px
     auto
-    1fr;
-
-  gap:
-    16px;
-
-  align-items:
-    center;
-
-  padding:
-    18px;
-
-  border-top:
-    1px
-    solid
-    #dfd3bf;
-
-}
-
-
-.principle-box {
-
-  padding:
-    14px;
-
-  border-radius:
-    12px;
-
-  background:
-    var(--cream);
-
-  line-height:
-    1.45;
-
-}
-
-
-.principle-box h3 {
-
-  margin:
-    0
-    0
-    6px;
-
-  font-size:
-    .92rem;
-
-}
-
-
-.principle-box p {
-
-  margin:
     0;
 
   color:
-    var(--soft-ink);
+    #666;
 
   font-size:
-    .82rem;
+    .88rem;
+
+  font-style:
+    italic;
+
+  text-align:
+    center;
 
 }
 
 
-.principle-venn {
+#message {
 
-  position:
-    relative;
+  min-height:
+    28px;
 
-  width:
-    140px;
+  max-width:
+    520px;
 
-  height:
-    90px;
-
-}
-
-
-.venn {
-
-  position:
-    absolute;
-
-  width:
-    78px;
-
-  height:
-    78px;
-
-  top:
-    4px;
-
-  border:
-    2px
-    solid;
-
-  border-radius:
-    50%;
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      .52
-    );
-
-}
-
-
-.venn-left {
-
-  left:
-    5px;
-
-  border-color:
-    var(--red);
-
-}
-
-
-.venn-right {
-
-  right:
-    5px;
-
-  border-color:
-    var(--blue);
-
-}
-
-
-.venn-star {
-
-  position:
-    absolute;
-
-  left:
-    50%;
-
-  top:
-    50%;
-
-  transform:
-    translate(
-      -50%,
-      -50%
-    );
+  margin:
+    12px
+    auto
+    0;
 
   color:
-    var(--gold);
+    var(--blue);
 
   font-size:
-    1.6rem;
+    .95rem;
 
-  z-index:
-    3;
+  font-style:
+    italic;
+
+  text-align:
+    center;
 
 }
 
@@ -1690,19 +1042,22 @@ button:disabled {
   display:
     none;
 
+  width:
+    min(
+      650px,
+      100%
+    );
+
   margin:
-    25px
+    22px
     auto
     0;
 
-  max-width:
-    780px;
-
   padding:
-    22px;
+    18px;
 
   border:
-    3px
+    2px
     solid
     var(--gold);
 
@@ -1710,18 +1065,23 @@ button:disabled {
     18px;
 
   background:
-    #fff6cf;
+    #fff8d8;
 
   box-shadow:
     0
-    7px
-    18px
-    var(--shadow);
+    4px
+    14px
+    rgba(
+      0,
+      0,
+      0,
+      .06
+    );
 
 }
 
 
-.result-top {
+.result-majorana {
 
   display:
     flex;
@@ -1733,25 +1093,15 @@ button:disabled {
     center;
 
   gap:
-    15px;
-
-  text-align:
-    center;
+    8px;
 
 }
 
 
-.result-logo {
-
-  color:
-    var(--red);
-
-  font-family:
-    Georgia,
-    serif;
+.result-majorana span {
 
   font-size:
-    2.5rem;
+    2rem;
 
   font-weight:
     bold;
@@ -1760,6 +1110,9 @@ button:disabled {
 
 
 .result-title {
+
+  margin-top:
+    8px;
 
   color:
     var(--blue);
@@ -1770,159 +1123,62 @@ button:disabled {
   font-weight:
     bold;
 
-}
-
-
-.answer-reveal {
-
-  margin:
-    15px
-    0;
-
   text-align:
     center;
 
 }
 
 
-.answer-reveal strong {
-
-  display:
-    block;
-
-  color:
-    var(--ink);
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size:
-    clamp(
-      2.3rem,
-      8vw,
-      4rem
-    );
-
-  letter-spacing:
-    4px;
-
-}
-
-
-.answer-reveal span {
-
-  color:
-    var(--brown);
-
-  font-style:
-    italic;
-
-}
-
-
-.definition-grid {
-
-  display:
-    grid;
-
-  grid-template-columns:
-    1fr
-    1fr;
-
-  gap:
-    12px;
+.definition-box {
 
   margin-top:
-    17px;
-
-}
-
-
-.definition-card {
-
-  padding:
-    15px;
-
-  border-radius:
-    12px;
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      .7
-    );
-
-  line-height:
-    1.45;
-
-}
-
-
-.definition-card.negative {
-
-  border-left:
-    6px
-    solid
-    var(--red);
-
-}
-
-
-.definition-card.positive {
-
-  border-left:
-    6px
-    solid
-    var(--blue);
-
-}
-
-
-.definition-card h3 {
-
-  margin:
-    0
-    0
-    6px;
-
-}
-
-
-.definition-card p {
-
-  margin:
-    5px
-    0;
-
-  font-size:
-    .9rem;
-
-}
-
-
-.field-note {
-
-  margin-top:
-    16px;
-
-  padding:
     14px;
-
-  border-radius:
-    10px;
-
-  background:
-    var(--paper);
-
-  text-align:
-    center;
 
   line-height:
     1.5;
+
+  text-align:
+    left;
+
+}
+
+
+.charge-definition {
+
+  margin-top:
+    12px;
+
+  padding:
+    12px;
+
+  border-radius:
+    11px;
+
+}
+
+
+.charge-definition.negative {
+
+  border-left:
+    5px
+    solid
+    var(--red);
+
+  background:
+    var(--red-light);
+
+}
+
+
+.charge-definition.positive {
+
+  border-left:
+    5px
+    solid
+    var(--blue);
+
+  background:
+    var(--blue-light);
 
 }
 
@@ -1930,10 +1186,10 @@ button:disabled {
 .share-preview {
 
   margin-top:
-    15px;
+    12px;
 
   padding:
-    12px;
+    11px;
 
   border-radius:
     10px;
@@ -1941,15 +1197,136 @@ button:disabled {
   background:
     var(--paper);
 
-  white-space:
-    pre-line;
-
   font-family:
-    "Courier New",
     monospace;
 
   font-size:
-    .8rem;
+    .82rem;
+
+  white-space:
+    pre-line;
+
+}
+
+
+.share-buttons {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  gap:
+    8px;
+
+  flex-wrap:
+    wrap;
+
+  margin-top:
+    11px;
+
+}
+
+
+
+/* =========================================================
+   MINI PHILOSOPHY PANEL
+========================================================= */
+
+.concept-panel {
+
+  width:
+    min(
+      820px,
+      100%
+    );
+
+  margin:
+    20px
+    auto
+    0;
+
+  padding:
+    18px;
+
+  border-left:
+    6px
+    solid
+    var(--gold);
+
+  border-radius:
+    12px;
+
+  background:
+    var(--paper);
+
+  line-height:
+    1.55;
+
+}
+
+
+.concept-panel h3 {
+
+  margin-top:
+    0;
+
+}
+
+
+.concept-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    10px;
+
+  margin-top:
+    14px;
+
+}
+
+
+.concept-box {
+
+  padding:
+    12px;
+
+  border:
+    1px
+    solid
+    #d8c7a6;
+
+  border-radius:
+    10px;
+
+  background:
+    var(--cream);
+
+  text-align:
+    center;
+
+}
+
+
+.concept-box strong {
+
+  display:
+    block;
+
+  margin-bottom:
+    4px;
 
 }
 
@@ -1959,22 +1336,12 @@ button:disabled {
    ARCHIVE
 ========================================================= */
 
-.archive-wrap {
-
-  max-width:
-    780px;
-
-  margin:
-    auto;
-
-}
-
-
 .archive-heading {
 
   margin:
-    25px
-    0;
+    6px
+    0
+    16px;
 
   text-align:
     center;
@@ -1982,10 +1349,24 @@ button:disabled {
 }
 
 
+.archive-heading h3 {
+
+  margin-bottom:
+    4px;
+
+}
+
+
 .archive-heading p {
 
+  margin-top:
+    0;
+
   color:
-    var(--soft-ink);
+    #666;
+
+  font-size:
+    .88rem;
 
 }
 
@@ -1993,49 +1374,33 @@ button:disabled {
 .archive-card {
 
   margin-bottom:
-    15px;
+    12px;
 
   padding:
-    18px;
+    15px
+    16px;
 
   border:
-    2px
+    1px
     solid
-    #d3c4a7;
+    #ddd;
 
   border-radius:
-    16px;
+    15px;
 
   background:
     var(--paper);
 
   box-shadow:
     0
-    4px
-    13px
+    2px
+    8px
     rgba(
-      49,
-      39,
-      28,
-      .09
+      0,
+      0,
+      0,
+      .05
     );
-
-}
-
-
-.archive-top {
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    space-between;
-
-  gap:
-    10px;
 
 }
 
@@ -2045,6 +1410,9 @@ button:disabled {
   color:
     var(--blue);
 
+  font-size:
+    1.05rem;
+
   font-weight:
     bold;
 
@@ -2053,11 +1421,14 @@ button:disabled {
 
 .archive-date {
 
+  margin-top:
+    2px;
+
   color:
-    var(--brown);
+    #777;
 
   font-size:
-    .78rem;
+    .8rem;
 
   font-style:
     italic;
@@ -2065,40 +1436,25 @@ button:disabled {
 }
 
 
-.archive-mini-graph {
-
-  position:
-    relative;
-
-  height:
-    100px;
-
-  margin:
-    12px
-    0;
-
-  overflow:
-    hidden;
-
-  border-radius:
-    10px;
-
-  background:
-    var(--cream);
-
-}
-
-
 .archive-description {
 
+  margin:
+    9px
+    0;
+
   color:
-    var(--soft-ink);
+    #555;
 
   font-size:
     .88rem;
 
-  line-height:
-    1.45;
+}
+
+
+.archive-play {
+
+  background:
+    var(--blue-light);
 
 }
 
@@ -2109,124 +1465,24 @@ button:disabled {
     22px;
 
   border:
-    2px
-    dashed
-    #d2c4ab;
-
-  border-radius:
-    14px;
-
-  background:
-    var(--paper);
-
-  color:
-    var(--soft-ink);
-
-  text-align:
-    center;
-
-}
-
-
-
-/* =========================================================
-   LEARN VIEW
-========================================================= */
-
-.learn-wrap {
-
-  max-width:
-    850px;
-
-  margin:
-    auto;
-
-}
-
-
-.learn-card {
-
-  margin:
-    20px
-    0;
-
-  padding:
-    22px;
-
-  border:
-    2px
+    1px
     solid
-    #d3c4a7;
+    #ddd;
 
   border-radius:
-    17px;
+    15px;
 
   background:
     var(--paper);
 
-  box-shadow:
-    0
-    5px
-    15px
-    var(--shadow);
+  color:
+    #777;
 
-  line-height:
-    1.55;
-
-}
-
-
-.learn-equation {
-
-  margin:
-    20px
-    0;
-
-  padding:
-    20px;
-
-  border-radius:
-    13px;
-
-  background:
-    var(--cream);
-
-  font-size:
-    clamp(
-      1.2rem,
-      5vw,
-      2rem
-    );
-
-  font-weight:
-    bold;
+  font-style:
+    italic;
 
   text-align:
     center;
-
-}
-
-
-.learn-negative {
-
-  color:
-    var(--red);
-
-}
-
-
-.learn-positive {
-
-  color:
-    var(--blue);
-
-}
-
-
-.learn-majorana {
-
-  color:
-    var(--gold);
 
 }
 
@@ -2236,20 +1492,19 @@ button:disabled {
    FOOTER
 ========================================================= */
 
-footer {
+.footer-note {
 
-  padding:
-    30px
+  margin-top:
     20px;
 
   color:
-    var(--soft-ink);
+    #6d6151;
 
   font-size:
-    .82rem;
+    .8rem;
 
-  line-height:
-    1.6;
+  font-style:
+    italic;
 
   text-align:
     center;
@@ -2257,64 +1512,19 @@ footer {
 }
 
 
+sup {
 
-/* =========================================================
-   TABLET
-========================================================= */
+  margin-left:
+    2px;
 
-@media
-(max-width: 900px) {
+  font-size:
+    .72rem;
 
-  .semantic-board {
+  font-style:
+    normal;
 
-    grid-template-columns:
-      1fr
-      1fr;
-
-  }
-
-
-  .graph-panel {
-
-    grid-column:
-      1
-      /
-      -1;
-
-    grid-row:
-      1;
-
-  }
-
-
-  .negative-rail {
-
-    grid-column:
-      1;
-
-    grid-row:
-      2;
-
-  }
-
-
-  .positive-rail {
-
-    grid-column:
-      2;
-
-    grid-row:
-      2;
-
-  }
-
-
-  .graph-wrap {
-
-    height:
-      420px;
-
-  }
+  font-weight:
+    bold;
 
 }
 
@@ -2325,28 +1535,12 @@ footer {
 ========================================================= */
 
 @media
-(max-width: 620px) {
+(max-width: 720px) {
 
-  header {
+  .brand-panel {
 
-    padding-top:
-      17px;
-
-  }
-
-
-  .brand-lockup {
-
-    flex-direction:
-      column;
-
-    gap:
-      2px;
-
-  }
-
-
-  .brand-copy {
+    grid-template-columns:
+      1fr;
 
     text-align:
       center;
@@ -2354,51 +1548,59 @@ footer {
   }
 
 
-  .brand-copy h1 {
-
-    letter-spacing:
-      -2px;
-
-  }
-
-
   .majorana-mark {
 
-    width:
-      135px;
+    margin:
+      auto;
 
-    min-width:
-      135px;
+  }
+
+
+  .game-container {
 
     height:
-      120px;
+      420px;
 
   }
 
 
-  .majorana-c {
-
-    left:
-      34px;
+  .left-label,
+  .right-label {
 
     top:
-      7px;
+      19%;
+
+    max-width:
+      145px;
 
     font-size:
-      6.8rem;
+      .74rem;
 
   }
 
 
-  .majorana-nu {
+  .concept-grid {
 
-    font-size:
-      1.65rem;
+    grid-template-columns:
+      1fr;
+
+  }
+
+}
+
+
+@media
+(max-width: 460px) {
+
+  body {
+
+    padding-top:
+      14px;
 
   }
 
 
-  .contronym-card {
+  .puzzle-card {
 
     padding:
       14px;
@@ -2406,108 +1608,32 @@ footer {
   }
 
 
-  .semantic-board {
-
-    grid-template-columns:
-      1fr;
-
-  }
-
-
-  .graph-panel {
-
-    grid-column:
-      1;
-
-    grid-row:
-      1;
-
-  }
-
-
-  .negative-rail {
-
-    grid-column:
-      1;
-
-    grid-row:
-      2;
-
-  }
-
-
-  .positive-rail {
-
-    grid-column:
-      1;
-
-    grid-row:
-      3;
-
-  }
-
-
-  .graph-wrap {
+  .game-container {
 
     height:
-      375px;
+      390px;
 
   }
 
 
-  .clue-rail {
+  .left-label {
 
-    padding:
-      12px;
+    left:
+      0;
 
-  }
-
-
-  .hint-list {
-
-    grid-template-columns:
-      repeat(
-        3,
-        1fr
-      );
-
-    gap:
-      6px;
+    max-width:
+      120px;
 
   }
 
 
-  .hint-row {
+  .right-label {
 
-    min-height:
-      82px;
+    right:
+      0;
 
-    grid-template-columns:
-      1fr;
-
-    grid-template-rows:
-      auto
-      auto
-      auto;
-
-    text-align:
-      center;
-
-    border:
-      1px
-      solid
-      #e2d8c8;
-
-    border-radius:
-      9px;
-
-  }
-
-
-  .hint-index {
-
-    margin:
-      auto;
+    max-width:
+      120px;
 
   }
 
@@ -2515,85 +1641,18 @@ footer {
   .letter-box {
 
     width:
-      42px;
+      33px;
 
     height:
-      47px;
+      36px;
 
   }
 
 
-  .majorana-principle {
+  .transverse-label {
 
-    grid-template-columns:
-      1fr;
-
-  }
-
-
-  .principle-venn {
-
-    margin:
-      auto;
-
-  }
-
-
-  .definition-grid {
-
-    grid-template-columns:
-      1fr;
-
-  }
-
-
-  .result-top {
-
-    flex-direction:
-      column;
-
-    gap:
-      3px;
-
-  }
-
-}
-
-
-
-/* =========================================================
-   SMALL PHONE
-========================================================= */
-
-@media
-(max-width: 390px) {
-
-  .graph-wrap {
-
-    height:
-      340px;
-
-  }
-
-
-  .letter-box {
-
-    width:
-      38px;
-
-    height:
-      44px;
-
-    font-size:
-      1.2rem;
-
-  }
-
-
-  .hint-word {
-
-    font-size:
-      .78rem;
+    bottom:
+      54px;
 
   }
 
@@ -2608,70 +1667,96 @@ footer {
 <body>
 
 
-<header>
-
-
-<a
-  class="lab-link"
-  href="index.html"
->
-  ← PAT Learning Lab
-</a>
+<div class="page-shell">
 
 
 
-<div class="brand-lockup">
+<!-- =========================================================
+     BRAND
+========================================================= -->
+
+<section class="brand-panel">
 
 
 <div class="majorana-mark">
 
-  <div class="majorana-c">
-    C
-  </div>
-
-
   <svg
-    class="majorana-orbit"
-    viewBox="0 0 170 150"
+    class="logo-svg"
+    viewBox="0 0 220 170"
+    aria-label="Contronym Majorana logo"
   >
+
+    <!-- RED CONTRONYM FORM -->
 
     <path
       d="
-        M 12 112
-        C 38 77,
-          67 130,
-          102 101
-        C 124 84,
-          145 69,
-          158 38
+        M 142 35
+        C 125 17,
+          88 18,
+          72 42
+        C 60 61,
+          60 109,
+          72 130
+        C 88 155,
+          126 155,
+          144 132
+      "
+      fill="none"
+      stroke="#b62432"
+      stroke-width="20"
+      stroke-linecap="round"
+    />
+
+
+    <!-- BLUE MAJORANA TRAJECTORY -->
+
+    <path
+      d="
+        M 20 125
+        C 58 91,
+          90 115,
+          116 103
+        C 145 90,
+          165 63,
+          195 45
       "
       fill="none"
       stroke="#1f568f"
       stroke-width="6"
       stroke-linecap="round"
-      stroke-dasharray="11 10"
+      stroke-dasharray="12 10"
     />
 
+
     <circle
-      cx="18"
-      cy="110"
+      cx="20"
+      cy="125"
       r="9"
       fill="#1f568f"
     />
 
+
     <circle
-      cx="157"
-      cy="37"
+      cx="195"
+      cy="45"
       r="9"
       fill="#1f568f"
     />
+
+
+    <text
+      x="165"
+      y="43"
+      font-size="27"
+      font-family="Georgia, serif"
+      font-style="italic"
+      font-weight="bold"
+      fill="#1f568f"
+    >
+      ν
+    </text>
 
   </svg>
-
-
-  <div class="majorana-nu">
-    ν
-  </div>
 
 </div>
 
@@ -2688,21 +1773,34 @@ footer {
   </h2>
 
   <p>
-    One word. Two meanings.
-    Opposites held in semantic symmetry.
+
+    One word.
+    Two meanings.
+    Opposites in perfect balance.
+
+    <br>
+
+    <strong>
+      Context determines charge.
+    </strong>
+
   </p>
 
 </div>
 
 
-</div>
+</section>
 
 
 
-<nav class="top-nav">
+<!-- =========================================================
+     NAV
+========================================================= -->
+
+<div class="top-nav">
 
   <button
-    id="currentTab"
+    id="current-tab"
     class="active"
     type="button"
   >
@@ -2711,7 +1809,7 @@ footer {
 
 
   <button
-    id="archiveTab"
+    id="archive-tab"
     type="button"
   >
     Archive
@@ -2719,232 +1817,170 @@ footer {
 
 
   <button
-    id="learnTab"
     type="button"
+    onclick="window.location.href='index.html'"
   >
-    The Majorana
+    Learning Lab
   </button>
 
-</nav>
+</div>
 
-
-</header>
-
-
-
-<main>
 
 
 <!-- =========================================================
-     CURRENT PUZZLE VIEW
+     PLAY VIEW
 ========================================================= -->
 
-<section
-  id="playView"
-  class="view active"
->
+<div id="play-view">
 
 
-<div class="puzzle-meta">
+<section class="puzzle-card">
 
-  <div
-    id="puzzleNumber"
-    class="puzzle-number"
-  >
+
+<div class="puzzle-heading">
+
+  <div class="kicker">
+    CAN ONE WORD MEAN BOTH?
   </div>
 
-  <h2>
-    Can one word mean both?
-  </h2>
+  <h3 id="puzzle-title">
+    Contronym
+  </h3>
 
   <p>
-    Reveal the semantic branches,
-    then collapse them onto one lexical state.
+    Use the negative and positive semantic branches
+    to reconstruct the neutral word at the vertex.
   </p>
 
 </div>
 
 
 
-<section class="contronym-card">
+<div class="game-container">
 
 
-<div class="card-kicker">
-  THE MAJORANA OF MEANING
-</div>
-
-
-<div class="card-question">
-  ONE WORD • TWO MEANINGS • OPPOSITES IN BALANCE
-</div>
-
-
-
-<div class="semantic-board">
-
-
-<!-- =======================================================
-     NEGATIVE RAIL
-======================================================= -->
-
-<aside class="clue-rail negative-rail">
-
-
-<div class="rail-heading">
-
-  <div class="rail-charge">
-    −
-  </div>
-
-  <h3>
-    OPPOSITE
-  </h3>
-
-  <small>
-    opposing meaning
-  </small>
-
-</div>
-
-
-<div
-  id="negativeHints"
-  class="hint-list"
->
-</div>
-
-
-</aside>
-
-
-
-<!-- =======================================================
-     GRAPH
-======================================================= -->
-
-<div class="graph-panel">
-
-
-<div class="graph-wrap">
-
-
-<div class="graph-label conjugate-label">
-
-  <strong>
-    CONJUGATE AXIS
-  </strong>
-
-  <br>
-
-  meaning inversion
-
-</div>
-
-
-
-<div class="graph-label transverse-label">
-
-  <strong>
-    TRANSVERSE AXIS
-  </strong>
-
-  <br>
-
-  semantic expansion
-
-</div>
-
-
+<!-- =====================================================
+     TRUE SEMANTIC PARABOLA
+===================================================== -->
 
 <svg
   class="graph-svg"
   viewBox="0 0 560 455"
-  preserveAspectRatio="none"
+  preserveAspectRatio="xMidYMid meet"
 >
 
 
-<!-- AXES -->
+<!-- TRANSVERSE AXIS -->
 
 <line
   x1="45"
-  y1="365"
-  x2="525"
-  y2="365"
+  y1="350"
+  x2="515"
+  y2="350"
   stroke="#1f568f"
-  stroke-width="3"
+  stroke-width="4"
 />
 
 
 <polygon
-  points="525,365 510,357 510,373"
+  points="522,350 505,340 505,360"
   fill="#1f568f"
 />
 
 
 <polygon
-  points="45,365 60,357 60,373"
+  points="38,350 55,340 55,360"
   fill="#1f568f"
 />
 
+
+
+<!-- CONJUGATE AXIS -->
 
 <line
   x1="280"
-  y1="48"
+  y1="38"
   x2="280"
-  y2="406"
+  y2="401"
   stroke="#b62432"
-  stroke-width="3"
+  stroke-width="4"
 />
 
 
 <polygon
-  points="280,48 271,65 289,65"
+  points="280,28 270,48 290,48"
   fill="#b62432"
 />
 
 
 
-<!-- LEFT PARABOLA -->
+<!-- BASE PARABOLA -->
 
 <path
   d="
-    M 100 65
-    Q 175 175
-      280 365
+    M 75 140
+    Q 280 560
+      485 140
+  "
+  fill="none"
+  stroke="#222"
+  stroke-width="5"
+  stroke-linecap="round"
+/>
+
+
+
+<!-- NEGATIVE SEMANTIC BRANCH -->
+
+<path
+  id="negative-branch"
+  d="
+    M 75 140
+    Q 177 350
+      280 350
   "
   fill="none"
   stroke="#b62432"
   stroke-width="4"
-  stroke-dasharray="10 10"
+  stroke-dasharray="11 10"
   stroke-linecap="round"
 />
 
 
 
-<!-- RIGHT PARABOLA -->
+<!-- POSITIVE SEMANTIC BRANCH -->
 
 <path
+  id="positive-branch"
   d="
-    M 460 65
-    Q 385 175
-      280 365
+    M 280 350
+    Q 383 350
+      485 140
   "
   fill="none"
   stroke="#1f568f"
   stroke-width="4"
-  stroke-dasharray="10 10"
+  stroke-dasharray="11 10"
   stroke-linecap="round"
 />
 
 
 
-<!-- VERTEX STAR -->
+<!-- GOLD VERTEX -->
+
+<circle
+  cx="280"
+  cy="350"
+  r="8"
+  fill="#d6aa44"
+/>
+
 
 <text
   x="280"
-  y="375"
+  y="360"
   text-anchor="middle"
-  font-size="34"
+  font-size="30"
   fill="#d6aa44"
 >
   ✦
@@ -2952,48 +1988,52 @@ footer {
 
 
 
-<!-- MAJORANA TRAIL -->
+<!-- MAJORANA TRAIL ACROSS TRANSVERSE DOMAIN -->
 
 <path
   d="
-    M 162 401
-    C 205 370,
-      229 433,
-      279 407
-
-    S 367 370,
-      409 411
+    M 90 373
+    C 145 340,
+      190 378,
+      235 354
+    C 275 333,
+      311 368,
+      350 350
+    C 395 329,
+      431 338,
+      475 315
   "
   fill="none"
   stroke="#1f568f"
-  stroke-width="3"
-  stroke-dasharray="8 8"
+  stroke-width="4"
   stroke-linecap="round"
+  stroke-dasharray="10 9"
 />
 
 
 <circle
-  cx="161"
-  cy="401"
-  r="7"
+  cx="90"
+  cy="373"
+  r="8"
   fill="#1f568f"
 />
 
 
 <circle
-  cx="411"
-  cy="411"
-  r="7"
+  cx="475"
+  cy="315"
+  r="8"
   fill="#1f568f"
 />
 
 
 <text
-  x="423"
-  y="408"
-  font-size="24"
-  font-family="Georgia"
+  x="448"
+  y="302"
+  font-size="28"
+  font-family="Georgia, serif"
   font-style="italic"
+  font-weight="bold"
   fill="#1f568f"
 >
   ν
@@ -3004,17 +2044,55 @@ footer {
 
 
 
+<!-- =====================================================
+     GRAPH LABELS
+===================================================== -->
+
+<div
+  class="label conjugate-label"
+>
+  CONJUGATE AXIS
+  <br>
+  <small>
+    meaning inversion
+  </small>
+</div>
+
+
+<div
+  class="label transverse-label"
+>
+  TRANSVERSE AXIS
+  <br>
+  <small>
+    semantic exploration
+  </small>
+</div>
+
+
+<div
+  class="label left-label"
+  id="left-label"
+>
+</div>
+
+
+<div
+  class="label right-label"
+  id="right-label"
+>
+</div>
+
+
 <div class="vertex-copy">
 
   <strong>
-    VERTEX ✦
+    VERTEX (0)
   </strong>
-
-  NEUTRAL ORIGIN
 
   <br>
 
-  where opposites meet
+  NEUTRAL ORIGIN • WHERE OPPOSITES MEET
 
 </div>
 
@@ -3023,346 +2101,127 @@ footer {
 
 
 
-<div class="answer-area">
+<!-- =====================================================
+     ANSWER
+===================================================== -->
 
-  <div class="answer-area-label">
-    One Contronym
-  </div>
+<div class="answer-section">
+
+  <strong id="letter-count">
+  </strong>
 
   <div
-    id="answerBoxes"
     class="answer-boxes"
+    id="answer-boxes"
   >
   </div>
 
 </div>
 
 
-</div>
 
-
-
-<!-- =======================================================
-     POSITIVE RAIL
-======================================================= -->
-
-<aside class="clue-rail positive-rail">
-
-
-<div class="rail-heading">
-
-  <div class="rail-charge">
-    +
-  </div>
-
-  <h3>
-    SIMILAR
-  </h3>
-
-  <small>
-    aligned meaning
-  </small>
-
-</div>
-
-
-<div
-  id="positiveHints"
-  class="hint-list"
->
-</div>
-
-
-</aside>
-
-
-</div>
-
-
-
-<!-- =======================================================
-     STATUS
-======================================================= -->
-
-<div class="status-row">
-
-  <div
-    id="attemptStatus"
-    class="status-pill"
-  >
-    Attempts 0 / 3
-  </div>
-
-  <div
-    id="hintStatus"
-    class="status-pill"
-  >
-    Hints 0
-  </div>
-
-  <div
-    id="difficultyStatus"
-    class="status-pill"
-  >
-  </div>
-
-</div>
+<p id="attempts">
+</p>
 
 
 
 <div class="button-row">
 
-<button
-  id="submitAnswer"
-  class="primary-button"
-  type="button"
->
-  Collapse the Clue
-</button>
+  <button
+    id="submit-answer"
+    type="button"
+  >
+    Submit Answer
+  </button>
 
 
-<button
-  id="showHint"
-  class="secondary-button"
-  type="button"
->
-  Reveal Hint
-</button>
+  <button
+    id="show-hint"
+    type="button"
+  >
+    Reveal Hint
+  </button>
 
 
-<button
-  id="resetPuzzle"
-  class="danger-button"
-  type="button"
->
-  Reset
-</button>
+  <button
+    id="reset-puzzle"
+    type="button"
+  >
+    Reset Puzzle
+  </button>
 
 </div>
 
 
 
-<div id="message">
-</div>
+<p id="hint-text">
+</p>
+
+
+<p id="message">
+</p>
 
 
 
-<!-- =======================================================
-     PRINCIPLE
-======================================================= -->
-
-<div class="majorana-principle">
-
-
-<div class="principle-box">
-
-  <h3>
-    THE CONTRONYM (Cν)
-  </h3>
-
-  <p>
-    A single lexical state whose contextual
-    readings resolve into opposing semantic charges.
-  </p>
-
-</div>
-
-
-
-<div class="principle-venn">
-
-  <div class="venn venn-left">
-  </div>
-
-  <div class="venn venn-right">
-  </div>
-
-  <div class="venn-star">
-    ✦
-  </div>
-
-</div>
-
-
-
-<div class="principle-box">
-
-  <h3>
-    THE MAJORANA OF MEANING
-  </h3>
-
-  <p>
-    Like the Majorana metaphor,
-    the contronym is its own semantic opposite.
-    Context determines charge.
-  </p>
-
-</div>
-
-
-</div>
-
-
-</section>
-
-
-
-<!-- =========================================================
+<!-- =====================================================
      RESULT
-========================================================= -->
+===================================================== -->
 
-<section id="result-card">
+<div id="result-card">
 
 
-<div class="result-top">
+  <div class="result-majorana">
 
-  <div class="result-logo">
-    Cν
+    <span style="color:#b62432;">
+      C
+    </span>
+
+    <span style="color:#1f568f;font-style:italic;">
+      ν
+    </span>
+
   </div>
 
+
   <div
-    id="resultTitle"
     class="result-title"
+    id="result-title"
   >
   </div>
 
-</div>
 
-
-
-<div class="answer-reveal">
-
-  <strong id="answerReveal">
-  </strong>
-
-  <span>
-    The lexical state has collapsed.
-  </span>
-
-</div>
-
-
-
-<div class="definition-grid">
-
-
-<div class="definition-card negative">
-
-  <h3>
-    − Opposing Charge
-  </h3>
-
-  <p id="negativeDefinition">
-  </p>
-
-  <p>
-    <em id="negativeExample">
-    </em>
-  </p>
-
-</div>
-
-
-
-<div class="definition-card positive">
-
-  <h3>
-    + Similar Charge
-  </h3>
-
-  <p id="positiveDefinition">
-  </p>
-
-  <p>
-    <em id="positiveExample">
-    </em>
-  </p>
-
-</div>
-
-
-</div>
-
-
-
-<div
-  id="fieldNote"
-  class="field-note"
->
-</div>
-
-
-
-<div
-  id="sharePreview"
-  class="share-preview"
->
-</div>
-
-
-
-<div class="button-row">
-
-<button
-  id="nativeShare"
-  class="primary-button"
-  type="button"
->
-  📤 Share Result
-</button>
-
-
-<button
-  id="copyShare"
-  class="secondary-button"
-  type="button"
->
-  Copy Result
-</button>
-
-</div>
-
-
-</section>
-
-
-</section>
-
-
-
-<!-- =========================================================
-     ARCHIVE VIEW
-========================================================= -->
-
-<section
-  id="archiveView"
-  class="view"
->
-
-
-<div class="archive-wrap">
-
-
-<div class="archive-heading">
-
-  <div class="puzzle-number">
-    CONTRONYM FIELD LOG
+  <div
+    class="definition-box"
+    id="definition-box"
+  >
   </div>
 
-  <h2>
-    Majorana Archive
-  </h2>
 
-  <p>
-    Revisit earlier lexical states.
-    Answers remain hidden until solved.
-  </p>
-
-</div>
+  <div
+    class="share-preview"
+    id="share-preview"
+  >
+  </div>
 
 
-<div id="archiveList">
-</div>
+  <div class="share-buttons">
+
+    <button
+      id="native-share"
+      type="button"
+    >
+      Share
+    </button>
+
+
+    <button
+      id="copy-share"
+      type="button"
+    >
+      Copy Result
+    </button>
+
+  </div>
 
 
 </div>
@@ -3373,168 +2232,107 @@ footer {
 
 
 <!-- =========================================================
-     LEARN VIEW
+     CONCEPT
 ========================================================= -->
 
-<section
-  id="learnView"
-  class="view"
->
+<section class="concept-panel">
 
-
-<div class="learn-wrap">
-
-
-<div class="archive-heading">
-
-  <div class="puzzle-number">
-    FIELD THEORY
-  </div>
-
-  <h2>
-    The Majorana of Meaning
-  </h2>
+  <h3>
+    The Contronym Model
+  </h3>
 
   <p>
-    The graph is not decoration.
-    It is the model the puzzle is played inside.
+
+    A contronym is a single lexical state
+    capable of resolving into opposing meanings.
+
+    The two semantic charges occupy opposite branches,
+    while the word itself sits at the neutral vertex.
+
   </p>
 
-</div>
+
+  <div class="concept-grid">
+
+    <div class="concept-box">
+
+      <strong style="color:#b62432;">
+        − Conjugate
+      </strong>
+
+      Opposing or inverse
+      semantic charge.
+
+    </div>
 
 
+    <div class="concept-box">
 
-<div class="learn-card">
+      <strong style="color:#d6aa44;">
+        ✦ Vertex
+      </strong>
 
-<h3>
-  Cν • The Contronym
-</h3>
+      The neutral lexical object
+      capable of expressing both.
 
-<p>
-
-  A contronym is one lexical form capable
-  of resolving into meanings that oppose one another.
-
-  The word stays fixed.
-
-  The surrounding context changes
-  which semantic charge becomes active.
-
-</p>
+    </div>
 
 
-<div class="learn-equation">
+    <div class="concept-box">
 
-  <span class="learn-negative">
-    meaning⁻
-  </span>
+      <strong style="color:#1f568f;">
+        + Transverse
+      </strong>
 
-  ←
+      Similar or affirmative
+      semantic charge.
 
-  <span class="learn-majorana">
-    Cν
-  </span>
+    </div>
 
-  →
-
-  <span class="learn-positive">
-    meaning⁺
-  </span>
-
-</div>
-
-
-<p>
-
-  The <strong>transverse axis</strong>
-  represents semantic expansion along related meanings.
-
-  The <strong>conjugate axis</strong>
-  represents the transformation connecting opposed readings.
-
-  Their intersection produces the gold vertex:
-  the lexical state shared by both.
-
-</p>
-
-</div>
-
-
-
-<div class="learn-card">
-
-<h3>
-  Why the Majorana?
-</h3>
-
-<p>
-
-  The Majorana analogy treats the contronym
-  as a word that contains a relation to its own opposite.
-
-  It is not literally particle physics.
-
-  It is a conceptual model for visualizing
-  semantic self-conjugacy:
-
-  <strong>
-    one word remains invariant while
-    context reverses the interpretation.
-  </strong>
-
-</p>
-
-</div>
-
-
-
-<div class="learn-card">
-
-<h3>
-  How to Play
-</h3>
-
-<p>
-
-  Begin with one clue on each semantic branch.
-
-  Reveal additional hints only when needed.
-
-  Use both sides of the graph to determine
-  which single word can satisfy the apparently
-  contradictory readings.
-
-  Then collapse the clue by entering that word
-  at the vertex.
-
-</p>
-
-</div>
-
-
-</div>
-
+  </div>
 
 </section>
 
 
-</main>
+</div>
 
 
 
-<footer>
+<!-- =========================================================
+     ARCHIVE
+========================================================= -->
 
-<strong>
-  Contronym™
-</strong>
+<div id="archive-view">
 
-• The Majorana of Meaning
+  <div class="archive-heading">
 
-<br>
+    <h3>
+      Contronym Archive
+    </h3>
 
-Context determines charge.
+    <p>
+      Return to earlier Majoranas of Meaning.
+    </p>
 
-</footer>
+  </div>
+
+
+  <div id="archive-list">
+  </div>
+
+</div>
+
+
+
+<div
+  class="footer-note"
+  id="footer-note"
+>
+  Context determines charge. • PAT Learning Lab
+</div>
+
+
+</div>
 
 
 
@@ -3561,31 +2359,36 @@ function trackContronymEvent(
   }
 
 
-  const payload =
-    {
+  const data = {
 
-      game_name:
-        "contronym",
+    game_name:
+      "contronym",
 
-      mode:
-        "majorana_of_meaning",
+    mode:
+      "majorana_of_meaning",
 
-      puzzle_number:
-        puzzle
-        ?
-          puzzle.number
-        :
-          "none",
+    puzzle_number:
+      puzzle.number
 
-      ...(extraData || {})
+  };
 
-    };
+
+  if (
+    extraData
+  ) {
+
+    Object.assign(
+      data,
+      extraData
+    );
+
+  }
 
 
   gtag(
     "event",
     eventName,
-    payload
+    data
   );
 
 }
@@ -3594,67 +2397,46 @@ function trackContronymEvent(
 
 /* =========================================================
    PUZZLE DATABASE
-
-   LAST PUZZLE = CURRENT PUZZLE
 ========================================================= */
 
-const puzzles =
-  [
+const puzzles = [
 
 
-/* =========================================================
-   #001 SANCTION
-========================================================= */
+  /* =======================================================
+     PUZZLE #001
+  ======================================================= */
 
-{
+  {
 
-  number:
-    "001",
+    number:
+      "001",
 
-  date:
-    "June 2026",
+    date:
+      "June 2026",
 
-  word:
-    "SANCTION",
+    word:
+      "SANCTION",
 
-  difficulty:
-    "Majorana I",
 
-  negativeHints:
-    [
+    hints: [
 
       {
         word:
-          "RESTRICT",
+          "restrict",
+
+        charge:
+          "-",
 
         icon:
-          "⊘"
+          "⛔"
       },
 
       {
         word:
-          "PENALIZE",
+          "permit",
 
-        icon:
-          "⚠"
-      },
-
-      {
-        word:
-          "PUNISH",
-
-        icon:
-          "⌁"
-      }
-
-    ],
-
-  positiveHints:
-    [
-
-      {
-        word:
-          "PERMIT",
+        charge:
+          "+",
 
         icon:
           "✓"
@@ -3662,15 +2444,43 @@ const puzzles =
 
       {
         word:
-          "AUTHORIZE",
+          "penalize",
+
+        charge:
+          "-",
 
         icon:
-          "✎"
+          "⚖"
       },
 
       {
         word:
-          "APPROVE",
+          "authorize",
+
+        charge:
+          "+",
+
+        icon:
+          "🔑"
+      },
+
+      {
+        word:
+          "punish",
+
+        charge:
+          "-",
+
+        icon:
+          "!"
+      },
+
+      {
+        word:
+          "approve",
+
+        charge:
+          "+",
 
         icon:
           "✓"
@@ -3678,49 +2488,58 @@ const puzzles =
 
     ],
 
-  negativeDefinition:
-    "To penalize, punish, or impose restrictions.",
 
-  positiveDefinition:
-    "To officially permit, authorize, or approve.",
-
-  negativeExample:
-    "The league sanctioned the player for the violation.",
-
-  positiveExample:
-    "The committee sanctioned the proposal.",
-
-  fieldNote:
-    "SANCTION remains the same lexical state while context reverses whether authority grants permission or imposes punishment."
-
-},
+    message:
+      "A single word can officially approve or penalize depending on context.",
 
 
+    positiveDefinition:
+      "to officially approve, permit, or authorize something.",
 
-/* =========================================================
-   #002 CLIP
-========================================================= */
 
-{
+    negativeDefinition:
+      "to penalize, punish, or place restrictions on someone or something.",
 
-  number:
-    "002",
 
-  date:
-    "August 2026",
+    positiveExample:
+      "The committee sanctioned the proposal.",
 
-  word:
-    "CLIP",
 
-  difficulty:
-    "Majorana I",
+    negativeExample:
+      "The league sanctioned the player.",
 
-  negativeHints:
-    [
+
+    footer:
+      "Context determines charge. • PAT Learning Lab"
+
+  },
+
+
+
+  /* =======================================================
+     PUZZLE #002
+  ======================================================= */
+
+  {
+
+    number:
+      "002",
+
+    date:
+      "August 2026",
+
+    word:
+      "CLIP",
+
+
+    hints: [
 
       {
         word:
-          "CUT",
+          "cut",
+
+        charge:
+          "-",
 
         icon:
           "✂"
@@ -3728,7 +2547,21 @@ const puzzles =
 
       {
         word:
-          "TRIM",
+          "attach",
+
+        charge:
+          "+",
+
+        icon:
+          "🔗"
+      },
+
+      {
+        word:
+          "trim",
+
+        charge:
+          "-",
 
         icon:
           "✂"
@@ -3736,60 +2569,64 @@ const puzzles =
 
       {
         word:
-          "SEVER",
+          "fasten",
+
+        charge:
+          "+",
 
         icon:
-          "╱"
-      }
-
-    ],
-
-  positiveHints:
-    [
-
-      {
-        word:
-          "ATTACH",
-
-        icon:
-          "⌕"
+          "📎"
       },
 
       {
         word:
-          "FASTEN",
+          "remove",
+
+        charge:
+          "-",
 
         icon:
-          "▣"
+          "−"
       },
 
       {
         word:
-          "JOIN",
+          "secure",
+
+        charge:
+          "+",
 
         icon:
-          "⊂"
+          "+"
       }
 
     ],
 
-  negativeDefinition:
-    "To cut, trim, or remove a portion from something.",
 
-  positiveDefinition:
-    "To attach, fasten, or hold something together with a clip.",
+    message:
+      "One word can remove material or attach something firmly.",
 
-  negativeExample:
-    "She clipped the loose thread from the sleeve.",
 
-  positiveExample:
-    "He clipped the papers together.",
+    positiveDefinition:
+      "to attach, fasten, or secure one thing to another.",
 
-  fieldNote:
-    "CLIP can remove material or secure material. The lexical state stays fixed while contextual direction reverses."
 
-}
+    negativeDefinition:
+      "to cut, trim, or remove a portion of something.",
 
+
+    positiveExample:
+      "She clipped the badge to her jacket.",
+
+
+    negativeExample:
+      "He clipped the hedge along the path.",
+
+
+    footer:
+      "Context determines charge. • PAT Learning Lab"
+
+  }
 
 ];
 
@@ -3809,11 +2646,15 @@ let puzzle =
   currentPuzzle;
 
 
+let word =
+  puzzle.word.toUpperCase();
+
+
+let visibleHintCount =
+  2;
+
+
 let attempts =
-  0;
-
-
-let hintsUsed =
   0;
 
 
@@ -3821,32 +2662,8 @@ let solved =
   false;
 
 
-let revealed =
-  false;
-
-
-/*
-  One hint on each side begins visible.
-*/
-
-let negativeVisible =
-  1;
-
-
-let positiveVisible =
-  1;
-
-
-/*
-  Determines which side gets the next reveal.
-*/
-
-let nextHintSide =
-  "negative";
-
-
-let currentPuzzleArchived =
-  false;
+let hintsUsed =
+  0;
 
 
 let solveTracked =
@@ -3857,1771 +2674,1460 @@ let revealTracked =
   false;
 
 
-
-/* =========================================================
-   ELEMENTS
-========================================================= */
-
-const currentTab =
-  document.getElementById(
-    "currentTab"
-  );
-
-
-const archiveTab =
-  document.getElementById(
-    "archiveTab"
-  );
-
-
-const learnTab =
-  document.getElementById(
-    "learnTab"
-  );
-
-
-const playView =
-  document.getElementById(
-    "playView"
-  );
-
-
-const archiveView =
-  document.getElementById(
-    "archiveView"
-  );
-
-
-const learnView =
-  document.getElementById(
-    "learnView"
-  );
-
-
-const puzzleNumber =
-  document.getElementById(
-    "puzzleNumber"
-  );
-
-
-const negativeHints =
-  document.getElementById(
-    "negativeHints"
-  );
-
-
-const positiveHints =
-  document.getElementById(
-    "positiveHints"
-  );
-
-
-const answerBoxes =
-  document.getElementById(
-    "answerBoxes"
-  );
-
-
-const attemptStatus =
-  document.getElementById(
-    "attemptStatus"
-  );
-
-
-const hintStatus =
-  document.getElementById(
-    "hintStatus"
-  );
-
-
-const difficultyStatus =
-  document.getElementById(
-    "difficultyStatus"
-  );
-
-
-const submitAnswer =
-  document.getElementById(
-    "submitAnswer"
-  );
-
-
-const showHint =
-  document.getElementById(
-    "showHint"
-  );
-
-
-const resetPuzzleButton =
-  document.getElementById(
-    "resetPuzzle"
-  );
-
-
-const message =
-  document.getElementById(
-    "message"
-  );
-
-
-const resultCard =
-  document.getElementById(
-    "result-card"
-  );
-
-
-const resultTitle =
-  document.getElementById(
-    "resultTitle"
-  );
-
-
-const answerReveal =
-  document.getElementById(
-    "answerReveal"
-  );
-
-
-const negativeDefinition =
-  document.getElementById(
-    "negativeDefinition"
-  );
-
-
-const positiveDefinition =
-  document.getElementById(
-    "positiveDefinition"
-  );
-
-
-const negativeExample =
-  document.getElementById(
-    "negativeExample"
-  );
-
-
-const positiveExample =
-  document.getElementById(
-    "positiveExample"
-  );
-
-
-const fieldNote =
-  document.getElementById(
-    "fieldNote"
-  );
-
-
-const sharePreview =
-  document.getElementById(
-    "sharePreview"
-  );
-
-
-const nativeShare =
-  document.getElementById(
-    "nativeShare"
-  );
-
-
-const copyShare =
-  document.getElementById(
-    "copyShare"
-  );
-
-
-const archiveList =
-  document.getElementById(
-    "archiveList"
-  );
+let currentPuzzleArchived =
+  false;
 
 
 
 /* =========================================================
-   VIEW NAVIGATION
+   GAME ENGINE
 ========================================================= */
 
-function showView(
-  view
-) {
-
-  [
-    playView,
-    archiveView,
-    learnView
-  ]
-  .forEach(
-    function (
-      item
-    ) {
-
-      item.classList.remove(
-        "active"
-      );
-
-    }
-  );
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
 
 
-  [
-    currentTab,
-    archiveTab,
-    learnTab
-  ]
-  .forEach(
-    function (
-      item
-    ) {
-
-      item.classList.remove(
-        "active"
-      );
-
-    }
-  );
+  const answerBoxes =
+    document.getElementById(
+      "answer-boxes"
+    );
 
 
-  if (
-    view ===
-    "play"
+  const hintText =
+    document.getElementById(
+      "hint-text"
+    );
+
+
+  const showHintBtn =
+    document.getElementById(
+      "show-hint"
+    );
+
+
+  const submitBtn =
+    document.getElementById(
+      "submit-answer"
+    );
+
+
+  const resetBtn =
+    document.getElementById(
+      "reset-puzzle"
+    );
+
+
+  const message =
+    document.getElementById(
+      "message"
+    );
+
+
+  const attemptsText =
+    document.getElementById(
+      "attempts"
+    );
+
+
+  const leftLabel =
+    document.getElementById(
+      "left-label"
+    );
+
+
+  const rightLabel =
+    document.getElementById(
+      "right-label"
+    );
+
+
+  const resultCard =
+    document.getElementById(
+      "result-card"
+    );
+
+
+  const resultTitle =
+    document.getElementById(
+      "result-title"
+    );
+
+
+  const definitionBox =
+    document.getElementById(
+      "definition-box"
+    );
+
+
+  const sharePreview =
+    document.getElementById(
+      "share-preview"
+    );
+
+
+  const nativeShareBtn =
+    document.getElementById(
+      "native-share"
+    );
+
+
+  const copyShareBtn =
+    document.getElementById(
+      "copy-share"
+    );
+
+
+  const currentTab =
+    document.getElementById(
+      "current-tab"
+    );
+
+
+  const archiveTab =
+    document.getElementById(
+      "archive-tab"
+    );
+
+
+  const playView =
+    document.getElementById(
+      "play-view"
+    );
+
+
+  const archiveView =
+    document.getElementById(
+      "archive-view"
+    );
+
+
+  const archiveList =
+    document.getElementById(
+      "archive-list"
+    );
+
+
+  const footerNote =
+    document.getElementById(
+      "footer-note"
+    );
+
+
+  const letterCount =
+    document.getElementById(
+      "letter-count"
+    );
+
+
+  const puzzleTitle =
+    document.getElementById(
+      "puzzle-title"
+    );
+
+
+
+  /* =======================================================
+     HINTS
+  ======================================================= */
+
+  function hintMarkup(
+    hints,
+    charge
   ) {
 
-    playView.classList.add(
-      "active"
-    );
-
-
-    currentTab.classList.add(
-      "active"
-    );
-
-  }
-
-
-  if (
-    view ===
-    "archive"
-  ) {
-
-    archiveView.classList.add(
-      "active"
-    );
-
-
-    archiveTab.classList.add(
-      "active"
-    );
-
-  }
-
-
-  if (
-    view ===
-    "learn"
-  ) {
-
-    learnView.classList.add(
-      "active"
-    );
-
-
-    learnTab.classList.add(
-      "active"
-    );
-
-  }
-
-
-  window.scrollTo(
-    {
-      top:
-        0,
-
-      behavior:
-        "smooth"
-    }
-  );
-
-}
-
-
-
-/* =========================================================
-   CREATE ANSWER BOXES
-========================================================= */
-
-function createAnswerBoxes() {
-
-  answerBoxes.innerHTML =
-    "";
-
-
-  puzzle.word
-    .split(
-      ""
-    )
-    .forEach(
-      function (
-        letter,
-        index
-      ) {
-
-        const box =
-          document.createElement(
-            "input"
-          );
-
-
-        box.type =
-          "text";
-
-
-        box.maxLength =
-          1;
-
-
-        box.className =
-          "letter-box";
-
-
-        box.dataset.index =
-          index;
-
-
-        box.autocomplete =
-          "off";
-
-
-        box.autocapitalize =
-          "characters";
-
-
-        box.spellcheck =
-          false;
-
-
-        answerBoxes.appendChild(
-          box
-        );
-
-      }
-    );
-
-}
-
-
-
-/* =========================================================
-   BUILD HINT ROW
-========================================================= */
-
-function makeHintRow(
-  hint,
-  index,
-  visible
-) {
-
-  const row =
-    document.createElement(
-      "div"
-    );
-
-
-  row.className =
-    "hint-row";
-
-
-  row.innerHTML = `
-
-    <div class="hint-index">
-      ${index + 1}
-    </div>
-
-    <div
-      class="hint-word
-      ${visible ? "" : "hidden"}"
-    >
-      ${visible ? hint.word : "?"}
-    </div>
-
-    <div class="hint-icon">
-      ${visible ? hint.icon : ""}
-    </div>
-
-  `;
-
-
-  return row;
-
-}
-
-
-
-/* =========================================================
-   RENDER HINTS
-========================================================= */
-
-function renderHints() {
-
-  negativeHints.innerHTML =
-    "";
-
-
-  positiveHints.innerHTML =
-    "";
-
-
-  puzzle
-    .negativeHints
-    .forEach(
-      function (
-        hint,
-        index
-      ) {
-
-        negativeHints.appendChild(
-
-          makeHintRow(
-
-            hint,
-
-            index,
-
-            index <
-            negativeVisible
-
-          )
-
-        );
-
-      }
-    );
-
-
-  puzzle
-    .positiveHints
-    .forEach(
-      function (
-        hint,
-        index
-      ) {
-
-        positiveHints.appendChild(
-
-          makeHintRow(
-
-            hint,
-
-            index,
-
-            index <
-            positiveVisible
-
-          )
-
-        );
-
-      }
-    );
-
-
-  const allVisible =
-    negativeVisible >=
-    puzzle.negativeHints.length
-    &&
-    positiveVisible >=
-    puzzle.positiveHints.length;
-
-
-  showHint.disabled =
-    allVisible;
-
-
-  showHint.textContent =
-    allVisible
-    ?
-      "All Hints Revealed"
-    :
-      "Reveal Hint";
-
-}
-
-
-
-/* =========================================================
-   STATUS
-========================================================= */
-
-function updateStatus() {
-
-  puzzleNumber.textContent =
-    "CONTRONYM #"
-    +
-    puzzle.number
-    +
-    " • "
-    +
-    puzzle.date;
-
-
-  attemptStatus.textContent =
-    "Attempts "
-    +
-    attempts
-    +
-    " / 3";
-
-
-  hintStatus.textContent =
-    "Hints "
-    +
-    hintsUsed;
-
-
-  difficultyStatus.textContent =
-    puzzle.difficulty;
-
-}
-
-
-
-/* =========================================================
-   GET GUESS
-========================================================= */
-
-function getGuess() {
-
-  return Array
-    .from(
-      answerBoxes.children
-    )
-    .map(
-      function (
-        box
-      ) {
-
-        return box.value
-          .toUpperCase();
-
-      }
-    )
-    .join(
-      ""
-    );
-
-}
-
-
-
-/* =========================================================
-   RESULT PHRASE
-========================================================= */
-
-function resultPhrase() {
-
-  if (
-    !solved
-  ) {
-
-    return (
-      "Majorana Revealed"
-    );
-
-  }
-
-
-  if (
-    attempts ===
-    1
-  ) {
-
-    return (
-      "Majorana in One"
-    );
-
-  }
-
-
-  if (
-    attempts ===
-    2
-  ) {
-
-    return (
-      "Majorana in Two"
-    );
-
-  }
-
-
-  return (
-    "Majorana in Three"
-  );
-
-}
-
-
-
-/* =========================================================
-   SHARE TEXT
-========================================================= */
-
-function buildShareText() {
-
-  return (
-    "Cν CONTRONYM #"
-    +
-    puzzle.number
-    +
-    "\n"
-    +
-    resultPhrase()
-    +
-    "\n\n"
-    +
-    "Attempts: "
-    +
-    attempts
-    +
-    "/3"
-    +
-    "\nHints used: "
-    +
-    hintsUsed
-    +
-    "\n\n"
-    +
-    (
-      solved
+    const title =
+      charge ===
+      "-"
       ?
-        "Lexical state: "
-        +
-        puzzle.word
+        "OPPOSITE"
       :
-        "Lexical state revealed: "
-        +
-        puzzle.word
-    )
-    +
-    "\n\n"
-    +
-    "− "
-    +
-    puzzle.negativeHints[0].word
-    +
-    "\n"
-    +
-    "+ "
-    +
-    puzzle.positiveHints[0].word
-    +
-    "\n\n"
-    +
-    "Context determines charge."
-    +
-    "\nPAT Learning Lab"
-  );
-
-}
+        "SIMILAR";
 
 
+    return `
 
-/* =========================================================
-   REVEAL FULL PUZZLE
-========================================================= */
+      <span class="hint-side-title">
+        ${charge}
+        ${title}
+      </span>
 
-function revealFullPuzzle() {
+      ${
+        hints
+          .map(
+            function (
+              hint
+            ) {
 
-  negativeVisible =
-    puzzle.negativeHints.length;
+              return `
 
+                <span class="hint-chip">
 
-  positiveVisible =
-    puzzle.positiveHints.length;
+                  <span class="hint-icon">
+                    ${hint.icon || "•"}
+                  </span>
 
+                  ${hint.word}
 
-  renderHints();
+                  <sup>
+                    ${charge}
+                  </sup>
 
+                </span>
 
-  Array
-    .from(
-      answerBoxes.children
-    )
-    .forEach(
-      function (
-        box,
-        index
-      ) {
+              `;
 
-        box.value =
-          puzzle.word[
-            index
-          ];
-
-
-        box.disabled =
-          true;
-
+            }
+          )
+          .join(
+            ""
+          )
       }
-    );
 
-}
-
-
-
-/* =========================================================
-   RESULT CARD
-========================================================= */
-
-function showResult() {
-
-  revealFullPuzzle();
-
-
-  resultCard.style.display =
-    "block";
-
-
-  resultTitle.textContent =
-    resultPhrase()
-    +
-    " • Contronym #"
-    +
-    puzzle.number;
-
-
-  answerReveal.textContent =
-    puzzle.word;
-
-
-  negativeDefinition.textContent =
-    puzzle.negativeDefinition;
-
-
-  positiveDefinition.textContent =
-    puzzle.positiveDefinition;
-
-
-  negativeExample.textContent =
-    puzzle.negativeExample;
-
-
-  positiveExample.textContent =
-    puzzle.positiveExample;
-
-
-  fieldNote.innerHTML = `
-
-    <strong>
-      FIELD NOTE
-    </strong>
-
-    <br>
-
-    ${puzzle.fieldNote}
-
-    <br><br>
-
-    <strong>
-      Context determines charge.
-    </strong>
-
-  `;
-
-
-  sharePreview.textContent =
-    buildShareText();
-
-
-  submitAnswer.disabled =
-    true;
-
-
-  showHint.disabled =
-    true;
-
-}
-
-
-
-/* =========================================================
-   SUBMIT GUESS
-========================================================= */
-
-function submitGuess() {
-
-  if (
-    solved
-    ||
-    revealed
-    ||
-    attempts >=
-    3
-  ) {
-
-    return;
+    `;
 
   }
 
 
-  const boxes =
-    Array.from(
-      answerBoxes.children
-    );
+
+  function renderHints() {
+
+    const shownHints =
+      puzzle.hints.slice(
+        0,
+        visibleHintCount
+      );
 
 
-  const incomplete =
-    boxes.some(
-      function (
-        box
-      ) {
+    const negatives =
+      shownHints.filter(
+        function (
+          hint
+        ) {
 
-        return (
-          !box.value
+          return hint.charge === "-";
+
+        }
+      );
+
+
+    const positives =
+      shownHints.filter(
+        function (
+          hint
+        ) {
+
+          return hint.charge === "+";
+
+        }
+      );
+
+
+    leftLabel.innerHTML =
+      hintMarkup(
+        negatives,
+        "-"
+      );
+
+
+    rightLabel.innerHTML =
+      hintMarkup(
+        positives,
+        "+"
+      );
+
+
+    hintText.textContent =
+      puzzle.message;
+
+
+    showHintBtn.textContent =
+      visibleHintCount >=
+      puzzle.hints.length
+      ?
+        "Reveal Full Field Note"
+      :
+        "Reveal Hint";
+
+  }
+
+
+
+  /* =======================================================
+     ANSWER BOXES
+  ======================================================= */
+
+  function createBoxes() {
+
+    answerBoxes.innerHTML =
+      "";
+
+
+    word =
+      puzzle.word.toUpperCase();
+
+
+    letterCount.textContent =
+      word.length
+      +
+      " LETTER"
+      +
+      (
+        word.length ===
+        1
+        ?
+          ""
+        :
+          "S"
+      )
+      +
+      " • ONE CONTRONYM";
+
+
+    puzzleTitle.textContent =
+      "Contronym #"
+      +
+      puzzle.number;
+
+
+    for (
+      let i = 0;
+      i < word.length;
+      i++
+    ) {
+
+      const box =
+        document.createElement(
+          "input"
         );
 
-      }
-    );
+
+      box.type =
+        "text";
 
 
-  if (
-    incomplete
-  ) {
-
-    message.textContent =
-      "Complete the lexical state before collapsing the clue.";
+      box.maxLength =
+        1;
 
 
-    return;
+      box.className =
+        "letter-box";
+
+
+      box.dataset.index =
+        i;
+
+
+      box.autocomplete =
+        "off";
+
+
+      box.inputMode =
+        "text";
+
+
+      answerBoxes.appendChild(
+        box
+      );
+
+    }
 
   }
 
 
-  attempts++;
+
+  function getGuess() {
+
+    return Array
+      .from(
+        answerBoxes.children
+      )
+      .map(
+        function (
+          box
+        ) {
+
+          return box.value
+            .toUpperCase();
+
+        }
+      )
+      .join(
+        ""
+      );
+
+  }
 
 
-  updateStatus();
+
+  /* =======================================================
+     STATUS
+  ======================================================= */
+
+  function updateAttempts() {
+
+    attemptsText.textContent =
+      "Contronym #"
+      +
+      puzzle.number
+      +
+      " • Attempts "
+      +
+      attempts
+      +
+      " / 3"
+      +
+      " • Hints used "
+      +
+      hintsUsed;
+
+  }
 
 
-  const guess =
-    getGuess();
+
+  function lockGame() {
+
+    Array
+      .from(
+        answerBoxes.children
+      )
+      .forEach(
+        function (
+          box
+        ) {
+
+          box.disabled =
+            true;
+
+        }
+      );
 
 
-  if (
-    guess ===
-    puzzle.word
-  ) {
-
-    solved =
+    submitBtn.disabled =
       true;
 
 
-    message.textContent =
-      "✦ "
+    showHintBtn.disabled =
+      true;
+
+  }
+
+
+
+  function resultPhrase() {
+
+    if (
+      !solved
+    ) {
+
+      return "No Majorana found";
+
+    }
+
+
+    if (
+      attempts ===
+      1
+    ) {
+
+      return "Majorana in One";
+
+    }
+
+
+    if (
+      attempts ===
+      2
+    ) {
+
+      return "Majorana in Two";
+
+    }
+
+
+    return "Majorana in Three";
+
+  }
+
+
+
+  /* =======================================================
+     SHARE
+  ======================================================= */
+
+  function shareText() {
+
+    return (
+      "Cν CONTRONYM #"
+      +
+      puzzle.number
+      +
+      "\n"
       +
       resultPhrase()
       +
-      " — the opposing readings collapse onto "
+      "\nAttempts: "
       +
-      puzzle.word
+      attempts
       +
-      ".";
-
-
-    showResult();
-
-
-    if (
-      !solveTracked
-    ) {
-
-      solveTracked =
-        true;
-
-
-      trackContronymEvent(
-        "puzzle_solved",
-        puzzle,
-        {
-
-          attempts:
-            attempts,
-
-          hints_used:
-            hintsUsed,
-
-          archived:
-            currentPuzzleArchived
-
-        }
-      );
-
-    }
-
-
-    return;
+      "/3"
+      +
+      "\nHints used: "
+      +
+      hintsUsed
+      +
+      "\n\nContext determines charge."
+      +
+      "\nPAT Learning Lab"
+    );
 
   }
 
 
-  if (
-    attempts >=
-    3
-  ) {
 
-    revealed =
-      true;
+  /* =======================================================
+     RESULT
+  ======================================================= */
+
+  function showResult() {
+
+    resultCard.style.display =
+      "block";
+
+
+    resultTitle.textContent =
+      resultPhrase()
+      +
+      " • "
+      +
+      puzzle.word;
+
+
+    definitionBox.innerHTML =
+      `
+
+      <strong>
+        ${puzzle.word}
+      </strong>
+
+      <br>
+
+      <em>
+        ${puzzle.date}
+      </em>
+
+
+      <div class="charge-definition positive">
+
+        <strong>
+          + Positive / Similar Branch
+        </strong>
+
+        <br>
+
+        ${puzzle.positiveDefinition}
+
+        <br><br>
+
+        <em>
+          ${puzzle.positiveExample}
+        </em>
+
+      </div>
+
+
+      <div class="charge-definition negative">
+
+        <strong>
+          − Negative / Opposite Branch
+        </strong>
+
+        <br>
+
+        ${puzzle.negativeDefinition}
+
+        <br><br>
+
+        <em>
+          ${puzzle.negativeExample}
+        </em>
+
+      </div>
+
+
+      <p>
+
+        <strong>
+          Majorana of Meaning:
+        </strong>
+
+        the same lexical object occupies the vertex,
+        while context determines which semantic charge
+        becomes expressed.
+
+      </p>
+
+      `;
+
+
+    sharePreview.textContent =
+      shareText();
+
+  }
+
+
+
+  /* =======================================================
+     SUBMIT
+  ======================================================= */
+
+  function submitGuess() {
+
+    if (
+      solved
+      ||
+      attempts >=
+      3
+    ) {
+
+      return;
+
+    }
+
+
+    const guess =
+      getGuess();
+
+
+    const incomplete =
+      Array
+        .from(
+          answerBoxes.children
+        )
+        .some(
+          function (
+            box
+          ) {
+
+            return box.value === "";
+
+          }
+        );
+
+
+    if (
+      incomplete
+    ) {
+
+      message.textContent =
+        "Fill in every box before submitting.";
+
+
+      return;
+
+    }
+
+
+    attempts++;
+
+
+    updateAttempts();
+
+
+
+    if (
+      guess ===
+      word
+    ) {
+
+      solved =
+        true;
+
+
+      message.textContent =
+        resultPhrase()
+        +
+        " — you found the Majorana of Meaning.";
+
+
+      lockGame();
+
+
+      showResult();
+
+
+      if (
+        !solveTracked
+      ) {
+
+        solveTracked =
+          true;
+
+
+        trackContronymEvent(
+          "puzzle_solved",
+          puzzle,
+          {
+
+            attempts:
+              attempts,
+
+            hints_used:
+              hintsUsed,
+
+            archived:
+              currentPuzzleArchived
+
+          }
+        );
+
+      }
+
+
+      return;
+
+    }
+
+
+
+    if (
+      attempts >=
+      3
+    ) {
+
+      message.textContent =
+        "The Majorana was "
+        +
+        word
+        +
+        ".";
+
+
+      lockGame();
+
+
+      showResult();
+
+
+      if (
+        !revealTracked
+      ) {
+
+        revealTracked =
+          true;
+
+
+        trackContronymEvent(
+          "puzzle_revealed",
+          puzzle,
+          {
+
+            attempts:
+              attempts,
+
+            hints_used:
+              hintsUsed,
+
+            reason:
+              "attempts_exhausted",
+
+            archived:
+              currentPuzzleArchived
+
+          }
+        );
+
+      }
+
+
+      return;
+
+    }
+
 
 
     message.textContent =
-      "The field collapsed after three attempts. The Majorana was "
+      "Not quite — charge mismatch. "
       +
-      puzzle.word
+      (
+        3 -
+        attempts
+      )
       +
-      ".";
-
-
-    showResult();
-
-
-    if (
-      !revealTracked
-    ) {
-
-      revealTracked =
-        true;
-
-
-      trackContronymEvent(
-        "puzzle_revealed",
-        puzzle,
-        {
-
-          attempts:
-            attempts,
-
-          hints_used:
-            hintsUsed,
-
-          archived:
-            currentPuzzleArchived,
-
-          reason:
-            "attempts_exhausted"
-
-        }
-      );
-
-    }
-
-
-    return;
+      " attempt"
+      +
+      (
+        (
+          3 -
+          attempts
+        )
+        ===
+        1
+        ?
+          ""
+        :
+          "s"
+      )
+      +
+      " left.";
 
   }
 
 
-  message.textContent =
-    "Charge mismatch. Reconsider both semantic branches — "
-    +
-    (
-      3 -
-      attempts
-    )
-    +
-    " attempt"
-    +
-    (
-      3 -
-      attempts ===
-      1
-      ?
-        ""
-      :
-        "s"
-    )
-    +
-    " remain.";
 
-}
+  /* =======================================================
+     RESET
+  ======================================================= */
+
+  function resetPuzzle() {
+
+    attempts =
+      0;
 
 
-
-/* =========================================================
-   REVEAL NEXT HINT
-========================================================= */
-
-function revealNextHint() {
-
-  let revealedSomething =
-    false;
+    solved =
+      false;
 
 
-  if (
-    nextHintSide ===
-    "negative"
-  ) {
-
-    if (
-      negativeVisible <
-      puzzle.negativeHints.length
-    ) {
-
-      negativeVisible++;
+    hintsUsed =
+      0;
 
 
-      nextHintSide =
-        "positive";
+    visibleHintCount =
+      2;
 
 
-      revealedSomething =
-        true;
-
-    }
-
-    else if (
-      positiveVisible <
-      puzzle.positiveHints.length
-    ) {
-
-      positiveVisible++;
+    solveTracked =
+      false;
 
 
-      nextHintSide =
-        "negative";
+    revealTracked =
+      false;
 
 
-      revealedSomething =
-        true;
-
-    }
-
-  }
-
-  else {
-
-    if (
-      positiveVisible <
-      puzzle.positiveHints.length
-    ) {
-
-      positiveVisible++;
+    createBoxes();
 
 
-      nextHintSide =
-        "negative";
+    submitBtn.disabled =
+      false;
 
 
-      revealedSomething =
-        true;
-
-    }
-
-    else if (
-      negativeVisible <
-      puzzle.negativeHints.length
-    ) {
-
-      negativeVisible++;
-
-
-      nextHintSide =
-        "positive";
-
-
-      revealedSomething =
-        true;
-
-    }
-
-  }
-
-
-  if (
-    revealedSomething
-  ) {
-
-    hintsUsed++;
+    showHintBtn.disabled =
+      false;
 
 
     renderHints();
 
 
-    updateStatus();
+    updateAttempts();
+
+
+    hintText.style.display =
+      "none";
+
+
+    message.textContent =
+      "";
+
+
+    resultCard.style.display =
+      "none";
+
+
+    footerNote.textContent =
+      puzzle.footer;
+
+
+    if (
+      answerBoxes.children[0]
+    ) {
+
+      answerBoxes
+        .children[0]
+        .focus();
+
+    }
+
+  }
+
+
+
+  /* =======================================================
+     LOAD PUZZLE
+  ======================================================= */
+
+  function loadPuzzle(
+    selectedPuzzle,
+    archived
+  ) {
+
+    puzzle =
+      selectedPuzzle;
+
+
+    word =
+      puzzle.word.toUpperCase();
+
+
+    currentPuzzleArchived =
+      Boolean(
+        archived
+      );
+
+
+    resetPuzzle();
+
+
+    playView.style.display =
+      "flex";
+
+
+    archiveView.style.display =
+      "none";
+
+
+    currentTab
+      .classList
+      .remove(
+        "active"
+      );
+
+
+    archiveTab
+      .classList
+      .remove(
+        "active"
+      );
 
 
     trackContronymEvent(
-      "hint_revealed",
+      "puzzle_started",
       puzzle,
       {
 
-        hints_used:
-          hintsUsed,
+        archived:
+          currentPuzzleArchived
 
-        negative_visible:
-          negativeVisible,
+      }
+    );
 
-        positive_visible:
-          positiveVisible
 
+    window.scrollTo(
+      {
+        top:
+          0,
+
+        behavior:
+          "smooth"
       }
     );
 
   }
 
-}
 
 
+  /* =======================================================
+     ARCHIVE
+  ======================================================= */
 
-/* =========================================================
-   RESET
-========================================================= */
-
-function resetPuzzleState() {
-
-  attempts =
-    0;
-
-
-  hintsUsed =
-    0;
-
-
-  solved =
-    false;
-
-
-  revealed =
-    false;
-
-
-  negativeVisible =
-    1;
-
-
-  positiveVisible =
-    1;
-
-
-  nextHintSide =
-    "negative";
-
-
-  solveTracked =
-    false;
-
-
-  revealTracked =
-    false;
-
-
-  resultCard.style.display =
-    "none";
-
-
-  message.textContent =
-    "";
-
-
-  submitAnswer.disabled =
-    false;
-
-
-  showHint.disabled =
-    false;
-
-
-  createAnswerBoxes();
-
-
-  renderHints();
-
-
-  updateStatus();
-
-
-  const first =
-    answerBoxes.children[
-      0
-    ];
-
-
-  if (
-    first
-  ) {
-
-    setTimeout(
-      function () {
-
-        first.focus();
-
-      },
-      50
-    );
-
-  }
-
-}
-
-
-
-/* =========================================================
-   LOAD PUZZLE
-========================================================= */
-
-function loadPuzzle(
-  selectedPuzzle,
-  archived
-) {
-
-  puzzle =
-    selectedPuzzle;
-
-
-  currentPuzzleArchived =
-    Boolean(
-      archived
-    );
-
-
-  resetPuzzleState();
-
-
-  showView(
-    "play"
-  );
-
-
-  trackContronymEvent(
-    "puzzle_started",
-    puzzle,
-    {
-
-      archived:
-        currentPuzzleArchived
-
-    }
-  );
-
-}
-
-
-
-/* =========================================================
-   ARCHIVE
-========================================================= */
-
-function buildArchive() {
-
-  archiveList.innerHTML =
-    "";
-
-
-  const archivedPuzzles =
-    puzzles
-      .slice(
-        0,
-        -1
-      )
-      .reverse();
-
-
-  if (
-    archivedPuzzles.length ===
-    0
-  ) {
+  function buildArchive() {
 
     archiveList.innerHTML =
-      `
-
-      <div class="empty-archive">
-
-        No archived lexical states yet.
-
-      </div>
-
-      `;
+      "";
 
 
-    return;
+    const oldPuzzles =
+      puzzles
+        .slice(
+          0,
+          -1
+        )
+        .reverse();
 
-  }
 
-
-  archivedPuzzles.forEach(
-    function (
-      oldPuzzle
+    if (
+      oldPuzzles.length ===
+      0
     ) {
 
-      const card =
-        document.createElement(
-          "div"
-        );
+      archiveList.innerHTML =
+        `
+
+        <div class="empty-archive">
+
+          No past puzzles yet.
+
+        </div>
+
+        `;
 
 
-      card.className =
-        "archive-card";
+      return;
+
+    }
 
 
-      card.innerHTML = `
+    oldPuzzles.forEach(
+      function (
+        oldPuzzle
+      ) {
 
-        <div class="archive-top">
+        const card =
+          document.createElement(
+            "div"
+          );
+
+
+        card.className =
+          "archive-card";
+
+
+        card.innerHTML =
+          `
 
           <div class="archive-number">
-            Cν CONTRONYM #${oldPuzzle.number}
+            Contronym #${oldPuzzle.number}
           </div>
 
           <div class="archive-date">
             ${oldPuzzle.date}
           </div>
 
-        </div>
+          <div class="archive-description">
 
+            Revisit this Majorana of Meaning.
+            The answer stays hidden until you solve it.
 
-        <div class="archive-mini-graph">
+          </div>
 
-          <svg
-            viewBox="0 0 500 100"
-            width="100%"
-            height="100%"
-          >
-
-            <line
-              x1="40"
-              y1="76"
-              x2="460"
-              y2="76"
-              stroke="#1f568f"
-              stroke-width="2"
-            />
-
-            <line
-              x1="250"
-              y1="10"
-              x2="250"
-              y2="94"
-              stroke="#b62432"
-              stroke-width="2"
-            />
-
-            <path
-              d="M 125 12 Q 185 46 250 76"
-              stroke="#b62432"
-              stroke-width="3"
-              stroke-dasharray="7 7"
-              fill="none"
-            />
-
-            <path
-              d="M 375 12 Q 315 46 250 76"
-              stroke="#1f568f"
-              stroke-width="3"
-              stroke-dasharray="7 7"
-              fill="none"
-            />
-
-            <text
-              x="250"
-              y="85"
-              text-anchor="middle"
-              fill="#d6aa44"
-              font-size="25"
-            >
-              ✦
-            </text>
-
-            <text
-              x="90"
-              y="58"
-              text-anchor="middle"
-              fill="#b62432"
-              font-size="13"
-              font-weight="bold"
-            >
-              ${oldPuzzle.negativeHints[0].word}
-            </text>
-
-            <text
-              x="410"
-              y="58"
-              text-anchor="middle"
-              fill="#1f568f"
-              font-size="13"
-              font-weight="bold"
-            >
-              ${oldPuzzle.positiveHints[0].word}
-            </text>
-
-          </svg>
-
-        </div>
-
-
-        <div class="archive-description">
-
-          One lexical state connects
-          <strong>${oldPuzzle.negativeHints[0].word}</strong>
-          and
-          <strong>${oldPuzzle.positiveHints[0].word}</strong>.
-
-          Can you collapse the field?
-
-        </div>
-
-
-        <div class="button-row">
-
-          <button
-            class="primary-button archivePlayButton"
-            type="button"
-          >
-            Play Archived Puzzle
+          <button class="archive-play">
+            Play Puzzle #${oldPuzzle.number}
           </button>
 
-        </div>
-
-      `;
+          `;
 
 
-      card
-        .querySelector(
-          ".archivePlayButton"
-        )
-        .addEventListener(
-          "click",
-          function () {
+        card
+          .querySelector(
+            ".archive-play"
+          )
+          .addEventListener(
+            "click",
+            function () {
 
-            loadPuzzle(
-              oldPuzzle,
-              true
-            );
+              loadPuzzle(
+                oldPuzzle,
+                true
+              );
 
-          }
+            }
+          );
+
+
+        archiveList.appendChild(
+          card
         );
 
+      }
+    );
 
-      archiveList.appendChild(
-        card
+  }
+
+
+
+  /* =======================================================
+     CURRENT TAB
+  ======================================================= */
+
+  currentTab.addEventListener(
+    "click",
+    function () {
+
+      puzzle =
+        currentPuzzle;
+
+
+      currentPuzzleArchived =
+        false;
+
+
+      resetPuzzle();
+
+
+      playView.style.display =
+        "flex";
+
+
+      archiveView.style.display =
+        "none";
+
+
+      currentTab.classList.add(
+        "active"
+      );
+
+
+      archiveTab.classList.remove(
+        "active"
+      );
+
+
+      trackContronymEvent(
+        "puzzle_started",
+        puzzle,
+        {
+          archived:
+            false
+        }
       );
 
     }
   );
 
-}
 
 
+  /* =======================================================
+     ARCHIVE TAB
+  ======================================================= */
 
-/* =========================================================
-   INPUT BEHAVIOR
-========================================================= */
+  archiveTab.addEventListener(
+    "click",
+    function () {
 
-answerBoxes.addEventListener(
-  "input",
-  function (
-    event
-  ) {
-
-    const target =
-      event.target;
+      buildArchive();
 
 
-    if (
-      !target.classList.contains(
-        "letter-box"
-      )
-    ) {
+      playView.style.display =
+        "none";
 
-      return;
+
+      archiveView.style.display =
+        "block";
+
+
+      archiveTab.classList.add(
+        "active"
+      );
+
+
+      currentTab.classList.remove(
+        "active"
+      );
 
     }
+  );
 
 
-    target.value =
-      target.value
-        .toUpperCase()
-        .replace(
-          /[^A-Z]/g,
-          ""
+
+  /* =======================================================
+     INPUT
+  ======================================================= */
+
+  answerBoxes.addEventListener(
+    "input",
+    function (
+      event
+    ) {
+
+      const target =
+        event.target;
+
+
+      const index =
+        parseInt(
+          target.dataset.index
         );
 
 
-    const index =
-      Number(
-        target.dataset.index
-      );
-
-
-    if (
-      target.value
-    ) {
-
-      const next =
-        answerBoxes.children[
-          index + 1
-        ];
+      target.value =
+        target.value
+          .toUpperCase()
+          .replace(
+            /[^A-Z]/g,
+            ""
+          );
 
 
       if (
-        next
+        target.value.length ===
+        1
       ) {
 
-        next.focus();
+        const next =
+          answerBoxes.children[
+            index + 1
+          ];
+
+
+        if (
+          next
+        ) {
+
+          next.focus();
+
+        }
 
       }
 
     }
-
-  }
-);
+  );
 
 
 
-answerBoxes.addEventListener(
-  "keydown",
-  function (
-    event
-  ) {
-
-    const target =
-      event.target;
-
-
-    if (
-      !target.classList.contains(
-        "letter-box"
-      )
+  answerBoxes.addEventListener(
+    "keydown",
+    function (
+      event
     ) {
 
-      return;
-
-    }
-
-
-    const index =
-      Number(
-        target.dataset.index
-      );
+      const target =
+        event.target;
 
 
-    if (
-      event.key ===
-      "Backspace"
-      &&
-      !target.value
-    ) {
-
-      const previous =
-        answerBoxes.children[
-          index - 1
-        ];
+      const index =
+        parseInt(
+          target.dataset.index
+        );
 
 
       if (
-        previous
+        event.key ===
+        "Backspace"
+        &&
+        target.value ===
+        ""
       ) {
 
-        previous.focus();
+        const previous =
+          answerBoxes.children[
+            index - 1
+          ];
+
+
+        if (
+          previous
+        ) {
+
+          previous.focus();
+
+        }
+
+      }
+
+
+      if (
+        event.key ===
+        "Enter"
+      ) {
+
+        submitGuess();
 
       }
 
     }
+  );
 
 
-    if (
-      event.key ===
-      "Enter"
-    ) {
 
-      submitGuess();
+  /* =======================================================
+     BUTTONS
+  ======================================================= */
+
+  submitBtn.addEventListener(
+    "click",
+    submitGuess
+  );
+
+
+
+  showHintBtn.addEventListener(
+    "click",
+    function () {
+
+      if (
+        visibleHintCount <
+        puzzle.hints.length
+      ) {
+
+        visibleHintCount++;
+
+
+        hintsUsed++;
+
+
+        renderHints();
+
+
+        updateAttempts();
+
+      }
+
+      else {
+
+        hintText.style.display =
+          "block";
+
+      }
 
     }
-
-  }
-);
+  );
 
 
 
-/* =========================================================
-   BUTTON EVENTS
-========================================================= */
+  resetBtn.addEventListener(
+    "click",
+    function () {
 
-submitAnswer.addEventListener(
-  "click",
-  submitGuess
-);
+      resetPuzzle();
 
 
-showHint.addEventListener(
-  "click",
-  revealNextHint
-);
+      trackContronymEvent(
+        "puzzle_started",
+        puzzle,
+        {
 
+          archived:
+            currentPuzzleArchived,
 
-resetPuzzleButton.addEventListener(
-  "click",
-  function () {
+          restarted:
+            true
 
-    resetPuzzleState();
+        }
+      );
 
-
-    trackContronymEvent(
-      "puzzle_started",
-      puzzle,
-      {
-
-        archived:
-          currentPuzzleArchived,
-
-        restarted:
-          true
-
-      }
-    );
-
-  }
-);
+    }
+  );
 
 
 
-/* =========================================================
-   NAV EVENTS
-========================================================= */
+  /* =======================================================
+     SHARE
+  ======================================================= */
 
-currentTab.addEventListener(
-  "click",
-  function () {
+  nativeShareBtn.addEventListener(
+    "click",
+    async function () {
 
-    puzzle =
-      currentPuzzle;
+      const text =
+        shareText();
 
-
-    currentPuzzleArchived =
-      false;
-
-
-    resetPuzzleState();
-
-
-    showView(
-      "play"
-    );
-
-
-    trackContronymEvent(
-      "puzzle_started",
-      puzzle,
-      {
-
-        archived:
-          false
-
-      }
-    );
-
-  }
-);
-
-
-
-archiveTab.addEventListener(
-  "click",
-  function () {
-
-    buildArchive();
-
-
-    showView(
-      "archive"
-    );
-
-
-    trackContronymEvent(
-      "archive_opened",
-      currentPuzzle,
-      {}
-    );
-
-  }
-);
-
-
-
-learnTab.addEventListener(
-  "click",
-  function () {
-
-    showView(
-      "learn"
-    );
-
-
-    trackContronymEvent(
-      "majorana_explanation_opened",
-      currentPuzzle,
-      {}
-    );
-
-  }
-);
-
-
-
-/* =========================================================
-   SHARING
-========================================================= */
-
-nativeShare.addEventListener(
-  "click",
-  async function () {
-
-    const text =
-      buildShareText();
-
-
-    try {
 
       if (
         navigator.share
       ) {
 
-        await navigator.share(
-          {
+        try {
 
-            title:
-              "Contronym: The Majorana of Meaning",
+          await navigator.share(
+            {
 
-            text:
-              text,
+              title:
+                "Contronym: The Majorana of Meaning",
 
-            url:
-              window.location.href
+              text:
+                text,
 
-          }
-        );
+              url:
+                window.location.href
+
+            }
+          );
 
 
-        trackContronymEvent(
-          "puzzle_shared",
-          puzzle,
-          {
+          trackContronymEvent(
+            "puzzle_shared",
+            puzzle,
+            {
 
-            share_method:
-              "native",
+              solved:
+                solved,
 
-            solved:
-              solved,
+              attempts:
+                attempts,
 
-            attempts:
-              attempts,
+              hints_used:
+                hintsUsed,
 
-            hints_used:
-              hintsUsed
+              share_method:
+                "native",
 
-          }
-        );
+              archived:
+                currentPuzzleArchived
+
+            }
+          );
+
+        }
+
+        catch (
+          error
+        ) {
+
+          console.log(
+            "Share cancelled."
+          );
+
+        }
 
       }
 
       else {
+
+        try {
+
+          await navigator
+            .clipboard
+            .writeText(
+              text
+              +
+              "\n\n"
+              +
+              window.location.href
+            );
+
+
+          nativeShareBtn.textContent =
+            "Copied!";
+
+
+          setTimeout(
+            function () {
+
+              nativeShareBtn.textContent =
+                "Share";
+
+            },
+            1200
+          );
+
+        }
+
+        catch (
+          error
+        ) {
+
+          console.log(
+            "Copy failed."
+          );
+
+        }
+
+      }
+
+    }
+  );
+
+
+
+  copyShareBtn.addEventListener(
+    "click",
+    async function () {
+
+      const text =
+        shareText();
+
+
+      try {
 
         await navigator
           .clipboard
@@ -5633,118 +4139,86 @@ nativeShare.addEventListener(
             window.location.href
           );
 
-      }
 
-    }
+        trackContronymEvent(
+          "puzzle_shared",
+          puzzle,
+          {
 
-    catch (
-      error
-    ) {
+            solved:
+              solved,
 
-      console.log(
-        "Share cancelled."
-      );
+            attempts:
+              attempts,
 
-    }
+            hints_used:
+              hintsUsed,
 
-  }
-);
+            share_method:
+              "clipboard",
 
+            archived:
+              currentPuzzleArchived
 
-
-copyShare.addEventListener(
-  "click",
-  async function () {
-
-    const text =
-      buildShareText()
-      +
-      "\n\n"
-      +
-      window.location.href;
-
-
-    try {
-
-      await navigator
-        .clipboard
-        .writeText(
-          text
+          }
         );
 
 
-      copyShare.textContent =
-        "Copied!";
+        copyShareBtn.textContent =
+          "Copied!";
 
 
-      trackContronymEvent(
-        "puzzle_shared",
-        puzzle,
-        {
+        setTimeout(
+          function () {
 
-          share_method:
-            "clipboard",
+            copyShareBtn.textContent =
+              "Copy Result";
 
-          solved:
-            solved,
+          },
+          1200
+        );
 
-          attempts:
-            attempts,
+      }
 
-          hints_used:
-            hintsUsed
+      catch (
+        error
+      ) {
 
-        }
-      );
+        alert(
+          text
+        );
 
-
-      setTimeout(
-        function () {
-
-          copyShare.textContent =
-            "Copy Result";
-
-        },
-        1200
-      );
+      }
 
     }
+  );
 
-    catch (
-      error
-    ) {
 
-      alert(
-        text
-      );
+
+  /* =======================================================
+     START
+  ======================================================= */
+
+  currentPuzzleArchived =
+    false;
+
+
+  resetPuzzle();
+
+
+  trackContronymEvent(
+    "puzzle_started",
+    currentPuzzle,
+    {
+
+      archived:
+        false
 
     }
-
-  }
-);
+  );
 
 
-
-/* =========================================================
-   START
-========================================================= */
-
-resetPuzzleState();
-
-
-buildArchive();
-
-
-trackContronymEvent(
-  "puzzle_started",
-  currentPuzzle,
-  {
-
-    archived:
-      false
-
-  }
-);
+});
 
 </script>
 
