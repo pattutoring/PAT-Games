@@ -2,459 +2,622 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+<meta charset="UTF-8">
 
-  <title>Koan~Kaon Clue-Cards | PAT Learning Lab</title>
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
 
-
-  <!-- =====================================================
-       GOOGLE ANALYTICS
-  ====================================================== -->
-
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-QCEPJP202V"
-  ></script>
-
-  <script>
-    window.dataLayer =
-      window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag(
-      "js",
-      new Date()
-    );
-
-    gtag(
-      "config",
-      "G-QCEPJP202V"
-    );
-  </script>
+<title>Koan~Kaon Clue-Cards | PAT Learning Lab</title>
 
 
-  <link
-    rel="stylesheet"
-    href="cluecards.css?v=20260813-1"
-  >
+<!-- =====================================================
+     GOOGLE ANALYTICS
+===================================================== -->
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-QCEPJP202V"
+></script>
+
+<script>
+
+window.dataLayer =
+  window.dataLayer || [];
+
+function gtag() {
+
+  dataLayer.push(arguments);
+
+}
+
+gtag(
+  "js",
+  new Date()
+);
+
+gtag(
+  "config",
+  "G-QCEPJP202V"
+);
+
+</script>
+
+
+<link
+  rel="stylesheet"
+  href="cluecards.css?v=20260827-1"
+>
+
 </head>
+
+
 
 <body>
 
+
 <header>
 
-  <a
-    class="lab-link"
-    href="index.html"
-  >
-    ← PAT Learning Lab
-  </a>
 
-  <div class="koan-logo">
+<a
+  class="lab-link"
+  href="index.html"
+>
+  ← PAT Learning Lab
+</a>
 
-    <span class="koan">
-      KOAN
-    </span>
 
-    <span class="tilde">
-      ~
-    </span>
+<div class="koan-logo">
 
-    <span class="kaon">
-      KAON
-    </span>
+<span class="koan">
+  KOAN
+</span>
 
-  </div>
+<span class="tilde">
+  ~
+</span>
 
-  <h1>
-    CRYPTIC CLUE-CARDS
-  </h1>
+<span class="kaon">
+  KAON
+</span>
 
-  <p class="tagline">
-    A Game of Meaning
-  </p>
+</div>
+
+
+<h1>
+  CRYPTIC CLUE-CARDS
+</h1>
+
+
+<p class="tagline">
+  A Game of Meaning
+</p>
+
 
 </header>
 
 
+
 <main>
 
-  <!-- TOP NAVIGATION -->
 
-  <div class="top-nav">
+<!-- =====================================================
+     TOP NAVIGATION
+===================================================== -->
 
-    <button
-      id="currentTab"
-      class="nav-button active"
-      type="button"
-    >
-      Current Clue
-    </button>
+<div class="top-nav">
 
-    <button
-      id="archiveTab"
-      class="nav-button"
-      type="button"
-    >
-      Archive
-    </button>
 
-  </div>
+<button
+  id="currentTab"
+  class="nav-button active"
+  type="button"
+>
+  Current Clue
+</button>
 
 
-  <!-- CURRENT CLUE -->
+<button
+  id="archiveTab"
+  class="nav-button"
+  type="button"
+>
+  Archive
+</button>
 
-  <section
-    id="playView"
-    class="view active"
-  >
 
-    <!-- CLUE HEADING -->
+</div>
 
-    <div class="clue-heading">
 
-      <div
-        id="clueNumber"
-        class="clue-number"
-      >
-        CLUE-CARD #001
-      </div>
 
+<!-- =====================================================
+     CURRENT CLUE
+===================================================== -->
 
-      <div class="answer-placeholder">
+<section
+  id="playView"
+  class="view active"
+>
 
-        <span class="answer-label">
-          ANSWER
-        </span>
 
-        <h2 id="clueTitle">
-          ___-_____
-        </h2>
+<!-- =====================================================
+     CLUE HEADING
+===================================================== -->
 
-        <div
-          id="enumeration"
-          class="enumeration"
-        >
-          (3-5)
-        </div>
+<div class="clue-heading">
 
-      </div>
 
+<div
+  id="clueNumber"
+  class="clue-number"
+>
+  CLUE-CARD #002
+</div>
 
-      <p
-        id="clueText"
-        class="clue-text"
-      >
-        “Pulling a rabbit out three times is the goal.”
-      </p>
 
-    </div>
+<div class="answer-placeholder">
 
 
-    <!-- PHASE BUTTONS -->
+<span class="answer-label">
+  ANSWER
+</span>
 
-    <div class="phase-row">
 
-      <button
-        id="cluePhaseButton"
-        class="phase-button active"
-        type="button"
-      >
-        🧩 Clue Release
-      </button>
+<h2 id="clueTitle">
+  ___
+</h2>
 
-      <button
-        id="solutionPhaseButton"
-        class="phase-button solution"
-        type="button"
-      >
-        🔒 Reveal Solution
-      </button>
 
-    </div>
+<div
+  id="enumeration"
+  class="enumeration"
+>
+  (3)
+</div>
 
 
-    <!-- IMAGE VIEWER -->
+</div>
 
-    <div class="viewer">
 
-      <div class="viewer-label">
+<p
+  id="clueText"
+  class="clue-text"
+>
+  “Sounds like baseball has a pair of these for their uniforms.”
+</p>
 
-        <span id="phaseLabel">
-          CLUE RELEASE
-        </span>
 
-        <span id="slideCounter">
-          1 / 4
-        </span>
+</div>
 
-      </div>
 
 
-      <div
-        id="imageFrame"
-        class="image-frame"
-      >
+<!-- =====================================================
+     PHASE BUTTONS
+===================================================== -->
 
-        <img
-          id="clueImage"
-          src="/PAT-Games/images/cluecards/001/IMG_0202.jpeg"
-          alt="Koan~Kaon Clue-Card #001"
-        >
+<div class="phase-row">
 
-      </div>
 
+<button
+  id="cluePhaseButton"
+  class="phase-button active"
+  type="button"
+>
+  🧩 Clue Release
+</button>
 
-      <div class="viewer-controls">
 
-        <button
-          id="previousButton"
-          class="viewer-button"
-          type="button"
-          disabled
-        >
-          ← Previous
-        </button>
+<button
+  id="solutionPhaseButton"
+  class="phase-button solution"
+  type="button"
+>
+  🔒 Reveal Solution
+</button>
 
-        <button
-          id="nextButton"
-          class="viewer-button primary"
-          type="button"
-        >
-          Next →
-        </button>
 
-      </div>
+</div>
 
 
-      <div
-        id="dots"
-        class="dots"
-      >
-      </div>
 
-    </div>
+<!-- =====================================================
+     IMAGE VIEWER
+===================================================== -->
 
+<div class="viewer">
 
-    <!-- GUESS SECTION -->
 
-    <div class="guess-panel">
+<div class="viewer-label">
 
-      <h3>
-        Collapse the clue.
-      </h3>
 
-      <div
-        id="guessCounter"
-        class="guess-counter"
-      >
-        Guesses: 0
-      </div>
+<span id="phaseLabel">
+  CLUE RELEASE
+</span>
 
 
-      <div class="guess-row">
+<span id="slideCounter">
+  1 / 5
+</span>
 
-        <input
-          id="guessInput"
-          type="text"
-          autocomplete="off"
-          autocapitalize="characters"
-          spellcheck="false"
-          placeholder="What is the answer?"
-        >
 
-        <button
-          id="guessButton"
-          class="guess-button"
-          type="button"
-        >
-          Submit Guess
-        </button>
+</div>
 
-      </div>
 
 
-      <div
-        id="guessFeedback"
-        class="guess-feedback"
-      >
-      </div>
+<div
+  id="imageFrame"
+  class="image-frame"
+>
 
 
-      <!-- SHARE BUTTON -->
+<img
+  id="clueImage"
+  src="/PAT-Games/images/cluecards/002/IMG_0270.jpeg"
+  alt="Koan~Kaon Clue-Card #002"
+>
 
-      <div class="share-row">
 
-        <button
-          id="shareButton"
-          class="share-button"
-          type="button"
-        >
-          📤 Share Clue
-        </button>
+</div>
 
-      </div>
 
-    </div>
 
+<div class="viewer-controls">
 
-    <!-- MANUAL REVEAL -->
 
-    <div
-      id="revealBox"
-      class="reveal-box"
-    >
+<button
+  id="previousButton"
+  class="viewer-button"
+  type="button"
+  disabled
+>
+  ← Previous
+</button>
 
-      <h3>
-        Think you've collapsed the clue?
-      </h3>
 
-      <p>
-        Work backward from the surface story.
-        Look for one answer capable of satisfying every layer.
-      </p>
+<button
+  id="nextButton"
+  class="viewer-button primary"
+  type="button"
+>
+  Next →
+</button>
 
-      <button
-        id="bigRevealButton"
-        class="reveal-answer-button"
-        type="button"
-      >
-        Reveal the Answer
-      </button>
 
-    </div>
+</div>
 
 
-    <!-- SOLUTION EXPLANATION -->
 
-    <div
-      id="solutionInfo"
-      class="solution-info"
-    >
+<div
+  id="dots"
+  class="dots"
+>
+</div>
 
-      <div class="solution-badge">
-        CLUE SOLVED
-      </div>
 
-      <h2 id="answerTitle">
-        HAT-TRICK
-      </h2>
+</div>
 
-      <p class="solution-intro">
-        One answer satisfies two different meanings at the same time.
-      </p>
 
 
-      <div class="solution-grid">
+<!-- =====================================================
+     GUESS SECTION
+===================================================== -->
 
-        <div class="solution-card">
+<div class="guess-panel">
 
-          <span class="mini-label red">
-            🎩 Magic Sense
-          </span>
 
-          <p id="senseA">
-            Magic: pulling a rabbit out of a hat.
-          </p>
+<h3>
+  Collapse the clue.
+</h3>
 
-        </div>
 
+<div
+  id="guessCounter"
+  class="guess-counter"
+>
+  Guesses: 0
+</div>
 
-        <div class="solution-card">
 
-          <span class="mini-label blue">
-            ⚽ Sport Sense
-          </span>
 
-          <p id="senseB">
-            Sport: scoring three goals.
-          </p>
+<div class="guess-row">
 
-        </div>
 
-      </div>
+<input
+  id="guessInput"
+  type="text"
+  autocomplete="off"
+  autocapitalize="characters"
+  spellcheck="false"
+  placeholder="What is the answer?"
+>
 
 
-      <div class="mechanism">
+<button
+  id="guessButton"
+  class="guess-button"
+  type="button"
+>
+  Submit Guess
+</button>
 
-        <strong>
-          Cryptic Mechanism
-        </strong>
 
-        <br><br>
+</div>
 
-        <strong id="mechanism">
-          Double-Play • Double Definition / Superposition
-        </strong>
 
-        <br><br>
 
-        <span id="mechanismDescription">
-          One answer satisfies two different meanings at the same time.
-        </span>
+<div
+  id="guessFeedback"
+  class="guess-feedback"
+>
+</div>
 
-      </div>
 
-    </div>
 
-  </section>
+<!-- =====================================================
+     SHARE
+===================================================== -->
 
+<div class="share-row">
 
-  <!-- ARCHIVE -->
 
-  <section
-    id="archiveView"
-    class="view"
-  >
+<button
+  id="shareButton"
+  class="share-button"
+  type="button"
+>
+  📤 Share Clue
+</button>
 
-    <div class="archive-heading">
 
-      <h2>
-        Clue-Card Archive
-      </h2>
+</div>
 
-      <p>
-        Return to previous Koan~Kaon puzzles
-        without revealing their answers first.
-      </p>
 
-    </div>
+</div>
 
-    <div
-      id="archiveList"
-      class="archive-list"
-    >
-    </div>
 
-  </section>
+
+<!-- =====================================================
+     MANUAL REVEAL
+===================================================== -->
+
+<div
+  id="revealBox"
+  class="reveal-box"
+>
+
+
+<h3>
+  Think you've collapsed the clue?
+</h3>
+
+
+<p>
+
+  Work backward from the surface story.
+
+  Follow the sound,
+  compare the meanings,
+  and look for the answer
+  that makes every part of the clue fit.
+
+</p>
+
+
+<button
+  id="bigRevealButton"
+  class="reveal-answer-button"
+  type="button"
+>
+  Reveal the Answer
+</button>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     SOLUTION EXPLANATION
+===================================================== -->
+
+<div
+  id="solutionInfo"
+  class="solution-info"
+>
+
+
+<div class="solution-badge">
+  CLUE SOLVED
+</div>
+
+
+<h2 id="answerTitle">
+  SOX
+</h2>
+
+
+<p class="solution-intro">
+
+  Two meanings occupy one sound-space.
+
+  <strong>
+    SOX ≈ SOCKS
+  </strong>
+
+</p>
+
+
+
+<div class="solution-grid">
+
+
+<div class="solution-card">
+
+
+<span class="mini-label red">
+  🧦 SOCKS
+</span>
+
+
+<p id="senseA">
+
+  Literal footwear:
+
+  a pair of socks can be part
+  of a uniform.
+
+</p>
+
+
+</div>
+
+
+
+<div class="solution-card">
+
+
+<span class="mini-label blue">
+  ⚾ SOX
+</span>
+
+
+<p id="senseB">
+
+  Baseball team name:
+
+  Red Sox and White Sox.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="mechanism">
+
+
+<strong>
+  Cryptic Mechanism
+</strong>
+
+
+<br><br>
+
+
+<strong id="mechanism">
+
+  Homophone / Approximation
+  • Double-Play / Superposition
+
+</strong>
+
+
+<br><br>
+
+
+<span id="mechanismDescription">
+
+  The clue primarily uses a sound-alike move:
+
+  SOCKS ≈ SOX.
+
+  The literal uniform meaning points toward SOCKS,
+  while the baseball reference points toward SOX.
+
+  Because both meanings occupy nearly the same sound-space,
+  the clue also creates a secondary Double-Play.
+
+</span>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     ARCHIVE
+===================================================== -->
+
+<section
+  id="archiveView"
+  class="view"
+>
+
+
+<div class="archive-heading">
+
+
+<h2>
+  Clue-Card Archive
+</h2>
+
+
+<p>
+
+  Return to previous Koan~Kaon puzzles
+  without revealing their answers first.
+
+</p>
+
+
+</div>
+
+
+<div
+  id="archiveList"
+  class="archive-list"
+>
+</div>
+
+
+</section>
+
 
 </main>
 
 
+
 <footer>
 
-  <strong>
-    KOAN~KAON
-  </strong>
 
-  • Powered by Cryptic-Calculus™
+<strong>
+  KOAN~KAON
+</strong>
 
-  <br>
 
-  Solve clues. Level up. Master meaning.
+• Powered by Cryptic-Calculus™
+
+
+<br>
+
+
+Solve clues.
+Level up.
+Master meaning.
+
 
 </footer>
 
 
-<script src="cluecards.js?v=20260813-2"></script>
+
+<!-- =====================================================
+     CLUE CARD GAME LOGIC
+===================================================== -->
+
+<script src="cluecards.js?v=20260827-1"></script>
+
 
 </body>
 
