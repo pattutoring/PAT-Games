@@ -27,21 +27,14 @@
 window.dataLayer =
   window.dataLayer || [];
 
-
 function gtag() {
-
-  dataLayer.push(
-    arguments
-  );
-
+  dataLayer.push(arguments);
 }
-
 
 gtag(
   "js",
   new Date()
 );
-
 
 gtag(
   "config",
@@ -56,74 +49,37 @@ gtag(
 
 :root {
 
-  --cream:
-    #fdf6e3;
+  --cream:#fdf6e3;
+  --paper:#fffdf7;
+  --ink:#29261f;
 
-  --paper:
-    #fffdf7;
+  --green:#58784b;
+  --green-light:#e2ecdb;
 
-  --ink:
-    #29261f;
+  --gold:#d5a83e;
+  --gold-light:#f7e8ab;
 
-  --green:
-    #58784b;
+  --brown:#8b633e;
+  --brown-dark:#65472f;
 
-  --green-light:
-    #e2ecdb;
+  --blue:#477ca8;
+  --blue-light:#dcebf5;
 
-  --gold:
-    #d5a83e;
+  --red:#b9574e;
+  --red-light:#f3dbd7;
 
-  --gold-light:
-    #f7e8ab;
+  --orange:#c47a36;
+  --orange-light:#f6e4cb;
 
-  --brown:
-    #8b633e;
+  --purple:#71558e;
+  --purple-light:#eee7f3;
 
-  --brown-dark:
-    #65472f;
+  --teal:#4e7f78;
+  --teal-light:#dcebe8;
 
-  --blue:
-    #477ca8;
+  --pink:#a95d78;
 
-  --blue-light:
-    #dcebf5;
-
-  --red:
-    #b9574e;
-
-  --red-light:
-    #f3dbd7;
-
-  --orange:
-    #c47a36;
-
-  --orange-light:
-    #f6e4cb;
-
-  --purple:
-    #71558e;
-
-  --purple-light:
-    #eee7f3;
-
-  --teal:
-    #4e7f78;
-
-  --teal-light:
-    #dcebe8;
-
-  --pink:
-    #a95d78;
-
-  --shadow:
-    rgba(
-      40,
-      34,
-      24,
-      .15
-    );
-
+  --shadow:rgba(40,34,24,.15);
 }
 
 
@@ -133,25 +89,16 @@ gtag(
 ====================================================== */
 
 * {
-
-  box-sizing:
-    border-box;
-
+  box-sizing:border-box;
 }
-
 
 html {
-
-  scroll-behavior:
-    smooth;
-
+  scroll-behavior:smooth;
 }
-
 
 body {
 
-  margin:
-    0;
+  margin:0;
 
   background:
     var(--cream);
@@ -166,22 +113,16 @@ body {
 
 }
 
-
 button,
-textarea,
 input,
+textarea,
 select {
-
-  font:
-    inherit;
-
+  font:inherit;
 }
-
 
 button {
 
-  cursor:
-    pointer;
+  cursor:pointer;
 
   -webkit-tap-highlight-color:
     transparent;
@@ -197,23 +138,20 @@ button {
 header {
 
   padding:
-    28px
+    25px
     20px
-    22px;
+    20px;
 
-  text-align:
-    center;
+  text-align:center;
 
 }
 
 
 .lab-link {
 
-  display:
-    inline-block;
+  display:inline-block;
 
-  margin-bottom:
-    15px;
+  margin-bottom:15px;
 
   padding:
     8px
@@ -233,56 +171,72 @@ header {
   color:
     var(--brown);
 
-  font-weight:
-    bold;
+  font-weight:bold;
 
-  text-decoration:
-    none;
+  text-decoration:none;
 
 }
 
 
-.twain-mark {
+.brand-lockup {
 
   width:
-    78px;
-
-  height:
-    78px;
+    min(
+      520px,
+      92vw
+    );
 
   margin:
-    3px
-    auto
-    12px;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  border:
-    3px
-    solid
-    var(--brown);
-
-  border-radius:
-    50%;
-
-  background:
-    var(--paper);
-
-  font-size:
-    2.5rem;
-
-  box-shadow:
     0
-    5px
-    13px
-    var(--shadow);
+    auto
+    10px;
+
+}
+
+
+.twain-logo {
+
+  display:block;
+
+  width:
+    min(
+      260px,
+      65vw
+    );
+
+  max-height:
+    220px;
+
+  object-fit:
+    contain;
+
+  margin:
+    0
+    auto;
+
+}
+
+
+.twain-editor-badge {
+
+  display:block;
+
+  width:
+    min(
+      180px,
+      46vw
+    );
+
+  max-height:
+    100px;
+
+  object-fit:
+    contain;
+
+  margin:
+    7px
+    auto
+    0;
 
 }
 
@@ -290,8 +244,9 @@ header {
 header h1 {
 
   margin:
-    4px
-    0;
+    8px
+    0
+    3px;
 
   font-family:
     "Courier New",
@@ -299,9 +254,9 @@ header h1 {
 
   font-size:
     clamp(
-      2.2rem,
-      9vw,
-      4.4rem
+      2.1rem,
+      8vw,
+      4rem
     );
 
   letter-spacing:
@@ -318,8 +273,7 @@ header h1 {
   color:
     var(--brown);
 
-  font-weight:
-    bold;
+  font-weight:bold;
 
 }
 
@@ -327,10 +281,10 @@ header h1 {
 .header-copy {
 
   max-width:
-    800px;
+    760px;
 
   margin:
-    17px
+    16px
     auto
     0;
 
@@ -356,8 +310,7 @@ main {
       94%
     );
 
-  margin:
-    auto;
+  margin:auto;
 
   padding-bottom:
     70px;
@@ -375,8 +328,7 @@ main {
     auto
     20px;
 
-  text-align:
-    center;
+  text-align:center;
 
 }
 
@@ -410,8 +362,7 @@ main {
   font-size:
     .72rem;
 
-  font-weight:
-    bold;
+  font-weight:bold;
 
   letter-spacing:
     2px;
@@ -424,13 +375,12 @@ main {
 
 
 /* =====================================================
-   EDITOR SHELL
+   EDITOR
 ====================================================== */
 
 .editor-shell {
 
-  overflow:
-    hidden;
+  overflow:hidden;
 
   border:
     3px
@@ -454,20 +404,15 @@ main {
 
 .editor-toolbar {
 
-  display:
-    flex;
+  display:flex;
 
-  align-items:
-    center;
+  align-items:center;
 
-  justify-content:
-    space-between;
+  justify-content:space-between;
 
-  gap:
-    12px;
+  gap:12px;
 
-  flex-wrap:
-    wrap;
+  flex-wrap:wrap;
 
   padding:
     12px
@@ -495,8 +440,7 @@ main {
 
 .editor-wrap {
 
-  display:
-    grid;
+  display:grid;
 
   grid-template-columns:
     50px
@@ -533,14 +477,11 @@ main {
   line-height:
     1.65;
 
-  text-align:
-    right;
+  text-align:right;
 
-  user-select:
-    none;
+  user-select:none;
 
-  white-space:
-    pre-line;
+  white-space:pre-line;
 
 }
 
@@ -553,8 +494,7 @@ main {
   padding:
     17px;
 
-  outline:
-    none;
+  outline:none;
 
   background:
     #fffdf8;
@@ -584,7 +524,9 @@ main {
 #editor:empty::before {
 
   content:
-    attr(data-placeholder);
+    attr(
+      data-placeholder
+    );
 
   color:
     #999184;
@@ -602,25 +544,220 @@ main {
 
 
 /* =====================================================
+   COLOR HIGHLIGHTS
+====================================================== */
+
+.rule-0 {
+  background:#ffaaa0;
+}
+
+.rule-1 {
+  background:#ffd78e;
+}
+
+.rule-2 {
+  background:#fff37d;
+}
+
+.rule-3 {
+  background:#b9dda8;
+}
+
+.rule-4 {
+  background:#9ee8df;
+}
+
+.rule-5 {
+  background:#b9b0ef;
+}
+
+.rule-6 {
+  background:#dfa5c2;
+}
+
+.rule-7 {
+  background:#f5c8bb;
+}
+
+.rule-8 {
+  background:#e6df8e;
+}
+
+
+#editor span[class^="rule-"] {
+
+  padding:
+    1px
+    2px;
+
+  border-radius:
+    4px;
+
+  cursor:pointer;
+
+  transition:
+    box-shadow
+    .2s ease,
+    transform
+    .2s ease;
+
+}
+
+
+#editor span[class^="rule-"]:hover {
+
+  box-shadow:
+    0
+    0
+    0
+    2px
+    rgba(
+      41,
+      38,
+      31,
+      .22
+    );
+
+}
+
+
+
+/* =====================================================
+   TWAIN COACH BUBBLE
+====================================================== */
+
+.twain-coach {
+
+  display:none;
+
+  position:relative;
+
+  width:
+    min(
+      760px,
+      94%
+    );
+
+  margin:
+    20px
+    auto
+    5px;
+
+  padding:
+    17px
+    20px;
+
+  border:
+    3px
+    solid
+    var(--brown);
+
+  border-radius:
+    18px;
+
+  background:
+    #fff7d8;
+
+  box-shadow:
+    5px
+    5px
+    0
+    rgba(
+      0,
+      0,
+      0,
+      .12
+    );
+
+  line-height:
+    1.55;
+
+}
+
+
+.twain-coach::before {
+
+  content:"";
+
+  position:absolute;
+
+  top:-16px;
+
+  left:48px;
+
+  width:25px;
+
+  height:25px;
+
+  border-top:
+    3px
+    solid
+    var(--brown);
+
+  border-left:
+    3px
+    solid
+    var(--brown);
+
+  background:
+    #fff7d8;
+
+  transform:
+    rotate(
+      45deg
+    );
+
+}
+
+
+.twain-coach-label {
+
+  display:block;
+
+  margin-bottom:5px;
+
+  color:
+    var(--brown-dark);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    .72rem;
+
+  font-weight:bold;
+
+  letter-spacing:
+    2px;
+
+}
+
+
+.twain-coach strong {
+
+  font-size:
+    1.08rem;
+
+}
+
+
+
+/* =====================================================
    CONTROLS
 ====================================================== */
 
 .control-row {
 
-  display:
-    flex;
+  display:flex;
 
-  align-items:
-    center;
+  align-items:center;
 
-  justify-content:
-    space-between;
+  justify-content:space-between;
 
-  gap:
-    12px;
+  gap:12px;
 
-  flex-wrap:
-    wrap;
+  flex-wrap:wrap;
 
   margin:
     14px
@@ -631,14 +768,11 @@ main {
 
 .editor-stats {
 
-  display:
-    flex;
+  display:flex;
 
-  gap:
-    8px;
+  gap:8px;
 
-  flex-wrap:
-    wrap;
+  flex-wrap:wrap;
 
 }
 
@@ -670,22 +804,18 @@ main {
   font-size:
     .8rem;
 
-  font-weight:
-    bold;
+  font-weight:bold;
 
 }
 
 
 .button-row {
 
-  display:
-    flex;
+  display:flex;
 
-  gap:
-    8px;
+  gap:8px;
 
-  flex-wrap:
-    wrap;
+  flex-wrap:wrap;
 
 }
 
@@ -701,8 +831,7 @@ main {
   border-radius:
     10px;
 
-  font-weight:
-    bold;
+  font-weight:bold;
 
 }
 
@@ -717,8 +846,7 @@ main {
   background:
     var(--blue);
 
-  color:
-    white;
+  color:white;
 
 }
 
@@ -746,8 +874,7 @@ main {
     solid
     var(--red);
 
-  background:
-    white;
+  background:white;
 
   color:
     var(--red);
@@ -757,13 +884,12 @@ main {
 
 
 /* =====================================================
-   ANALYSIS SUMMARY
+   SUMMARY
 ====================================================== */
 
 .analysis-summary {
 
-  display:
-    grid;
+  display:grid;
 
   grid-template-columns:
     repeat(
@@ -774,8 +900,7 @@ main {
       )
     );
 
-  gap:
-    12px;
+  gap:12px;
 
   margin:
     22px
@@ -800,16 +925,14 @@ main {
   background:
     var(--paper);
 
-  text-align:
-    center;
+  text-align:center;
 
 }
 
 
 .summary-card span {
 
-  display:
-    block;
+  display:block;
 
   margin-bottom:
     4px;
@@ -830,8 +953,7 @@ main {
 
 .summary-card small {
 
-  display:
-    block;
+  display:block;
 
   margin-top:
     5px;
@@ -844,7 +966,7 @@ main {
 
 
 /* =====================================================
-   TWAIN FEEDBACK
+   FEEDBACK
 ====================================================== */
 
 .feedback-section {
@@ -857,11 +979,9 @@ main {
 
 #feedback {
 
-  display:
-    grid;
+  display:grid;
 
-  gap:
-    12px;
+  gap:12px;
 
 }
 
@@ -885,24 +1005,27 @@ main {
   color:
     #766b5b;
 
-  text-align:
-    center;
+  text-align:center;
 
 }
 
 
 .twain-bubble {
 
-  position:
-    relative;
+  position:relative;
 
   padding:
-    15px
     17px;
 
   border:
     2px
-    solid;
+    solid
+    rgba(
+      80,
+      65,
+      45,
+      .28
+    );
 
   border-radius:
     14px;
@@ -915,34 +1038,31 @@ main {
       0,
       0,
       0,
-      .12
+      .1
     );
 
   line-height:
     1.5;
+
+  cursor:pointer;
 
 }
 
 
 .twain-bubble-top {
 
-  display:
-    flex;
+  display:flex;
 
-  align-items:
-    center;
+  justify-content:space-between;
 
-  justify-content:
-    space-between;
+  align-items:center;
 
-  gap:
-    10px;
+  gap:10px;
 
-  flex-wrap:
-    wrap;
+  flex-wrap:wrap;
 
   margin-bottom:
-    6px;
+    10px;
 
 }
 
@@ -961,14 +1081,13 @@ main {
       255,
       255,
       255,
-      .65
+      .7
     );
 
   font-size:
     .68rem;
 
-  font-weight:
-    bold;
+  font-weight:bold;
 
   letter-spacing:
     1px;
@@ -979,10 +1098,73 @@ main {
 }
 
 
+.twain-quote {
+
+  margin:
+    7px
+    0
+    12px;
+
+  font-size:
+    1.03rem;
+
+  font-style:italic;
+
+}
+
+
+.feedback-explanation {
+
+  padding:
+    10px
+    11px;
+
+  border-radius:
+    8px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .58
+    );
+
+}
+
+
+.suggestion-box {
+
+  margin-top:
+    9px;
+
+  padding:
+    10px
+    11px;
+
+  border-left:
+    4px
+    solid
+    var(--brown);
+
+  border-radius:
+    7px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .7
+    );
+
+}
+
+
 .detected-text {
 
   margin-top:
-    8px;
+    9px;
 
   padding:
     8px
@@ -1011,129 +1193,7 @@ main {
 
 
 /* =====================================================
-   HIGHLIGHTS
-====================================================== */
-
-.rule-0 {
-
-  background:
-    rgba(
-      185,
-      87,
-      78,
-      .28
-    );
-
-}
-
-
-.rule-1 {
-
-  background:
-    rgba(
-      196,
-      122,
-      54,
-      .28
-    );
-
-}
-
-
-.rule-2 {
-
-  background:
-    rgba(
-      213,
-      168,
-      62,
-      .34
-    );
-
-}
-
-
-.rule-3 {
-
-  background:
-    rgba(
-      88,
-      120,
-      75,
-      .27
-    );
-
-}
-
-
-.rule-4 {
-
-  background:
-    rgba(
-      78,
-      127,
-      120,
-      .28
-    );
-
-}
-
-
-.rule-5 {
-
-  background:
-    rgba(
-      71,
-      124,
-      168,
-      .27
-    );
-
-}
-
-
-.rule-6 {
-
-  background:
-    rgba(
-      113,
-      85,
-      142,
-      .27
-    );
-
-}
-
-
-.rule-7 {
-
-  background:
-    rgba(
-      169,
-      93,
-      120,
-      .26
-    );
-
-}
-
-
-.rule-8 {
-
-  background:
-    rgba(
-      194,
-      169,
-      51,
-      .27
-    );
-
-}
-
-
-
-/* =====================================================
-   PRINCIPLES
+   PRINCIPLE
 ====================================================== */
 
 .principle-box {
@@ -1170,20 +1230,15 @@ main {
 
 .principle-chain {
 
-  display:
-    flex;
+  display:flex;
 
-  align-items:
-    center;
+  align-items:center;
 
-  justify-content:
-    center;
+  justify-content:center;
 
-  gap:
-    8px;
+  gap:8px;
 
-  flex-wrap:
-    wrap;
+  flex-wrap:wrap;
 
   margin-top:
     18px;
@@ -1208,8 +1263,7 @@ main {
   background:
     var(--cream);
 
-  font-weight:
-    bold;
+  font-weight:bold;
 
 }
 
@@ -1219,8 +1273,7 @@ main {
   color:
     var(--gold);
 
-  font-weight:
-    bold;
+  font-weight:bold;
 
 }
 
@@ -1252,29 +1305,9 @@ main {
 }
 
 
-.rule-reference h2 {
-
-  margin-top:
-    0;
-
-}
-
-
-.rule-reference-intro {
-
-  color:
-    #685b4b;
-
-  line-height:
-    1.5;
-
-}
-
-
 .rule-grid {
 
-  display:
-    grid;
+  display:grid;
 
   grid-template-columns:
     repeat(
@@ -1285,8 +1318,7 @@ main {
       )
     );
 
-  gap:
-    10px;
+  gap:10px;
 
   margin-top:
     16px;
@@ -1307,9 +1339,6 @@ main {
   border-radius:
     11px;
 
-  background:
-    var(--cream);
-
 }
 
 
@@ -1319,6 +1348,10 @@ main {
     0
     0
     5px;
+
+  font-family:
+    "Courier New",
+    monospace;
 
   font-size:
     .95rem;
@@ -1332,20 +1365,20 @@ main {
     0;
 
   color:
-    #6b5f50;
+    #574c40;
 
   font-size:
     .84rem;
 
   line-height:
-    1.4;
+    1.45;
 
 }
 
 
 
 /* =====================================================
-   CROSS-LINK
+   WORDSMITH
 ====================================================== */
 
 .wordsmith-link {
@@ -1367,24 +1400,14 @@ main {
   background:
     var(--purple-light);
 
-  text-align:
-    center;
-
-}
-
-
-.wordsmith-link h2 {
-
-  margin-top:
-    0;
+  text-align:center;
 
 }
 
 
 .wordsmith-link a {
 
-  display:
-    inline-block;
+  display:inline-block;
 
   margin-top:
     8px;
@@ -1399,14 +1422,11 @@ main {
   background:
     var(--purple);
 
-  color:
-    white;
+  color:white;
 
-  font-weight:
-    bold;
+  font-weight:bold;
 
-  text-decoration:
-    none;
+  text-decoration:none;
 
 }
 
@@ -1431,8 +1451,7 @@ footer {
   line-height:
     1.6;
 
-  text-align:
-    center;
+  text-align:center;
 
 }
 
@@ -1443,45 +1462,29 @@ footer {
 ====================================================== */
 
 @media
-(max-width: 750px) {
+(max-width:750px) {
 
   .analysis-summary {
-
-    grid-template-columns:
-      1fr;
-
+    grid-template-columns:1fr;
   }
 
-
   .rule-grid {
-
-    grid-template-columns:
-      1fr;
-
+    grid-template-columns:1fr;
   }
 
 }
 
 
 @media
-(max-width: 520px) {
+(max-width:520px) {
 
   header {
-
-    padding-top:
-      20px;
-
+    padding-top:20px;
   }
-
 
   .editor-wrap {
-
-    grid-template-columns:
-      38px
-      1fr;
-
+    grid-template-columns:38px 1fr;
   }
-
 
   .line-numbers {
 
@@ -1493,7 +1496,6 @@ footer {
       12px;
 
   }
-
 
   #editor {
 
@@ -1508,28 +1510,16 @@ footer {
 
   }
 
-
   .control-row {
-
-    align-items:
-      stretch;
-
+    align-items:stretch;
   }
-
 
   .button-row {
-
-    width:
-      100%;
-
+    width:100%;
   }
 
-
   .button-row button {
-
-    flex:
-      1;
-
+    flex:1;
   }
 
 }
@@ -1554,8 +1544,20 @@ footer {
 </a>
 
 
-<div class="twain-mark">
-  ⌨️
+<div class="brand-lockup">
+
+<img
+  src="twain-logo.png"
+  alt="Twain logo"
+  class="twain-logo"
+>
+
+<img
+  src="twain-editor-logo.png"
+  alt="Twain Editor"
+  class="twain-editor-badge"
+>
+
 </div>
 
 
@@ -1571,15 +1573,18 @@ footer {
 
 <p class="header-copy">
 
-  Good revision is not simply correcting grammar.
+  Draft naturally.
 
-  It means asking whether every word
-  earns its place.
+  Then let Twain question the words,
+  phrases and habits that may be keeping
+  your meaning from landing cleanly.
 
-  Twain Editor looks for places where
-  a sentence may be inflated, vague,
-  repetitive or overly familiar —
-  then leaves the final decision to the writer.
+  <br><br>
+
+  <strong>
+    Twain does not rewrite for you.
+    He makes you notice.
+  </strong>
 
 </p>
 
@@ -1590,10 +1595,6 @@ footer {
 
 <main>
 
-
-<!-- =====================================================
-     INTRO
-====================================================== -->
 
 <div class="section-heading">
 
@@ -1607,11 +1608,12 @@ footer {
 
 <p>
 
-  Draft naturally first.
+  Write first.
 
-  Then analyze the passage and examine
-  the places where your writing might become
-  simpler, more precise or more original.
+  Analyze second.
+
+  Then decide which suggestions
+  make the sentence stronger.
 
 </p>
 
@@ -1637,7 +1639,6 @@ footer {
 </span>
 
 </div>
-
 
 
 <div class="editor-wrap">
@@ -1666,9 +1667,24 @@ footer {
 
 
 
-<!-- =====================================================
-     CONTROLS
-====================================================== -->
+<!-- TWAIN SPEECH -->
+
+<div
+  id="twainCoach"
+  class="twain-coach"
+>
+
+<span class="twain-coach-label">
+  TWAIN SAYS
+</span>
+
+<strong id="twainCoachText"></strong>
+
+</div>
+
+
+
+<!-- CONTROLS -->
 
 <div class="control-row">
 
@@ -1682,14 +1698,12 @@ footer {
   Words: 0
 </div>
 
-
 <div
   id="sentenceCount"
   class="stat-pill"
 >
   Sentences: 0
 </div>
-
 
 <div
   id="issueCount"
@@ -1701,9 +1715,7 @@ footer {
 </div>
 
 
-
 <div class="button-row">
-
 
 <button
   id="analyzeButton"
@@ -1713,7 +1725,6 @@ footer {
   🔎 Analyze Writing
 </button>
 
-
 <button
   id="restoreButton"
   class="secondary-button"
@@ -1721,7 +1732,6 @@ footer {
 >
   Remove Highlights
 </button>
-
 
 <button
   id="clearButton"
@@ -1731,7 +1741,6 @@ footer {
   Clear
 </button>
 
-
 </div>
 
 
@@ -1739,18 +1748,14 @@ footer {
 
 
 
-<!-- =====================================================
-     SUMMARY
-====================================================== -->
+<!-- SUMMARY -->
 
 <div class="analysis-summary">
 
 
 <div class="summary-card">
 
-<span>
-  ✂️
-</span>
+<span>✂️</span>
 
 <strong id="economyScore">
   —
@@ -1763,12 +1768,9 @@ footer {
 </div>
 
 
-
 <div class="summary-card">
 
-<span>
-  ⚡
-</span>
+<span>⚡</span>
 
 <strong id="precisionScore">
   —
@@ -1781,12 +1783,9 @@ footer {
 </div>
 
 
-
 <div class="summary-card">
 
-<span>
-  ✒️
-</span>
+<span>✒️</span>
 
 <strong id="originalityScore">
   —
@@ -1803,9 +1802,7 @@ footer {
 
 
 
-<!-- =====================================================
-     FEEDBACK
-====================================================== -->
+<!-- FEEDBACK -->
 
 <section class="feedback-section">
 
@@ -1813,12 +1810,17 @@ footer {
 <div class="section-heading">
 
 <div class="kicker">
-  EDITOR NOTES
+  TWAIN'S NOTES
 </div>
 
 <h2>
   What Might Be Worth Revising?
 </h2>
+
+<p>
+  The same colors appearing here
+  are highlighted in your writing above.
+</p>
 
 </div>
 
@@ -1828,7 +1830,10 @@ footer {
 <div class="empty-feedback">
 
   Write something above,
-  then press <strong>Analyze Writing</strong>.
+  then press
+  <strong>
+    Analyze Writing
+  </strong>.
 
 </div>
 
@@ -1839,9 +1844,7 @@ footer {
 
 
 
-<!-- =====================================================
-     PRINCIPLE
-====================================================== -->
+<!-- PRINCIPLE -->
 
 <section class="principle-box">
 
@@ -1859,10 +1862,13 @@ footer {
   not commandments.
 
   An adjective may be exactly right.
+
   Repetition may be deliberate.
+
   A cliché may be transformed into a joke.
 
   The editor's job is to make you
+
   <strong>
     notice the choice.
   </strong>
@@ -1915,9 +1921,7 @@ footer {
 
 
 
-<!-- =====================================================
-     RULE REFERENCE
-====================================================== -->
+<!-- RULE REFERENCE -->
 
 <section class="rule-reference">
 
@@ -1928,17 +1932,19 @@ footer {
 
 
 <h2>
-  What Twain Editor Watches For
+  Twain's Rules to Keep in Mind
 </h2>
 
 
-<p class="rule-reference-intro">
+<p>
 
-  These are revision signals rather than automatic errors.
+  These are revision signals,
+  not automatic errors.
 
-  Some are inspired by the plainspoken style
-  associated with Twain; others are general
-  clarity checks useful to student writers.
+  Twain's job is to raise an eyebrow.
+
+  Yours is to decide whether
+  the sentence deserves it.
 
 </p>
 
@@ -1954,9 +1960,7 @@ footer {
 
 
 
-<!-- =====================================================
-     WORDSMITH
-====================================================== -->
+<!-- WORDSMITH -->
 
 <section class="wordsmith-link">
 
@@ -1966,19 +1970,14 @@ footer {
 
 <p>
 
-  Twain Editor asks how your writing can be sharpened.
+  Twain Editor asks whether the language
+  can become sharper.
 
-  Wordsmith asks what your language is doing.
-
-  Take the finished piece into Wordsmith
-  to map its puns, metaphors, shifts,
-  repetitions and other relations.
+  Wordsmith asks what the language is doing.
 
 </p>
 
-<a
-  href="wordsmith.html"
->
+<a href="wordsmith.html">
   Continue to Wordsmith →
 </a>
 
@@ -2047,248 +2046,306 @@ function trackTwainEvent(
 
 
 /* =====================================================
-   RULES
-
-   These are intentionally presented as revision signals,
-   not absolute grammatical laws.
+   TWAIN RULES
 ====================================================== */
 
 const rules = [
 
 
-  {
+{
 
-    id:
-      "fancy-word",
+  id:
+    "fancy-word",
 
-    title:
-      "Five-Dollar Word",
+  title:
+    "Five-Dollar Word",
 
-    category:
-      "Economy",
+  category:
+    "Economy",
 
-    color:
-      0,
+  color:
+    0,
 
-    regex:
-      /\b(utilize|commence|ascertain|ameliorate|endeavor|employ|emolument|facilitate|aforementioned)\b/gi,
+  regex:
+    /\b(utilize|commence|ascertain|ameliorate|endeavor|employ|facilitate|aforementioned)\b/gi,
 
-    message:
-      "Could a shorter, more familiar word carry the same meaning?",
+  twain:
+    "Never use a five-dollar word when a fifty-cent one will suffice, dear friend.",
 
-    principle:
-      "Prefer clarity over unnecessary grandeur."
+  explanation:
+    "A simpler word may communicate the same idea more directly.",
 
-  },
+  suggestion:
+    "Try a shorter everyday equivalent such as “use,” “begin,” or “find.”",
 
+  principle:
+    "Prefer clarity over unnecessary grandeur."
 
-  {
+},
 
-    id:
-      "ly-word",
 
-    title:
-      "Adverb Check",
 
-    category:
-      "Precision",
+{
 
-    color:
-      1,
+  id:
+    "ly-word",
 
-    regex:
-      /\b[A-Za-z]+ly\b/gi,
+  title:
+    "Adverb Check",
 
-    message:
-      "This -ly word may be useful — but see whether a stronger verb could do the work instead.",
+  category:
+    "Precision",
 
-    principle:
-      "Modifiers are choices, not decorations."
+  color:
+    1,
 
-  },
+  regex:
+    /\b[A-Za-z]+ly\b/gi,
 
+  twain:
+    "That adverb appears to have hitched a ride. Make certain it paid the fare.",
 
-  {
+  explanation:
+    "An -ly modifier may be useful, but sometimes the verb itself can carry more meaning.",
 
-    id:
-      "very",
+  suggestion:
+    "Ask whether a stronger verb can replace the verb + adverb combination.",
 
-    title:
-      "Very",
+  principle:
+    "Modifiers are choices, not decorations."
 
-    category:
-      "Economy",
+},
 
-    color:
-      2,
 
-    regex:
-      /\bvery\b/gi,
 
-    message:
-      "VERY often signals that a more precise word may exist. Try strengthening the word beside it.",
+{
 
-    principle:
-      "Intensify meaning, not merely volume."
+  id:
+    "very",
 
-  },
+  title:
+    "Very",
 
+  category:
+    "Economy",
 
-  {
+  color:
+    2,
 
-    id:
-      "vague-intensifier",
+  regex:
+    /\bvery\b/gi,
 
-    title:
-      "Vague Intensifier",
+  twain:
+    "Swap 'very' for something with a little more backbone.",
 
-    category:
-      "Precision",
+  explanation:
+    "Very intensifies a word without making the description much more specific.",
 
-    color:
-      3,
+  suggestion:
+    "Try replacing the pair: “very tired” → “exhausted,” “very angry” → “furious.”",
 
-    regex:
-      /\b(really|quite|rather|somewhat|basically|literally)\b/gi,
+  principle:
+    "Intensify meaning, not merely volume."
 
-    message:
-      "Ask whether this modifier adds information or only emphasis.",
+},
 
-    principle:
-      "Choose the exact degree you mean."
 
-  },
 
+{
 
-  {
+  id:
+    "vague-intensifier",
 
-    id:
-      "alliteration",
+  title:
+    "Precision Check",
 
-    title:
-      "Alliteration",
+  category:
+    "Precision",
 
-    category:
-      "Style",
+  color:
+    3,
 
-    color:
-      4,
+  regex:
+    /\b(really|quite|rather|somewhat|basically|literally)\b/gi,
 
-    regex:
-      /\b([A-Za-z])\w*\s+\1\w*\b/gi,
+  twain:
+    "Choose the precise word. Lightning bugs are not lightning.",
 
-    message:
-      "Repeated opening sounds detected. Keep them if the music is intentional.",
+  explanation:
+    "This modifier may add emphasis without adding much information.",
 
-    principle:
-      "Sound patterns should serve the sentence."
+  suggestion:
+    "Describe the degree, action or quality more precisely.",
 
-  },
+  principle:
+    "Choose the exact degree you mean."
 
+},
 
-  {
 
-    id:
-      "cliche",
 
-    title:
-      "Familiar Phrase",
+{
 
-    category:
-      "Originality",
+  id:
+    "alliteration",
 
-    color:
-      5,
+  title:
+    "Alliteration",
 
-    regex:
-      /\b(at the end of the day|once in a lifetime|in the nick of time|old hat|like a plague|think outside the box|avoid it like the plague|better late than never)\b/gi,
+  category:
+    "Style",
 
-    message:
-      "This familiar phrase may be doing the thinking for you. Can you make the image your own?",
+  color:
+    4,
 
-    principle:
-      "Replace borrowed language with observed language."
+  regex:
+    /\b([A-Za-z])\w*\s+\1\w*\b/gi,
 
-  },
+  twain:
+    "Alliteration! A little music is fine. A marching band is another matter.",
 
+  explanation:
+    "Nearby words begin with the same sound.",
 
-  {
+  suggestion:
+    "Keep the repetition when it creates rhythm; revise it when it distracts.",
 
-    id:
-      "wordy-phrase",
+  principle:
+    "Sound patterns should serve the sentence."
 
-    title:
-      "Wordy Construction",
+},
 
-    category:
-      "Economy",
 
-    color:
-      6,
 
-    regex:
-      /\b(due to the fact that|in order to|at this point in time|for the purpose of|in the event that)\b/gi,
+{
 
-    message:
-      "This phrase may compress into fewer words without losing meaning.",
+  id:
+    "cliche",
 
-    principle:
-      "Remove scaffolding once the sentence can stand."
+  title:
+    "Cliché",
 
-  },
+  category:
+    "Originality",
 
+  color:
+    5,
 
-  {
+  regex:
+    /\b(at the end of the day|once in a lifetime|in the nick of time|old hat|think outside the box|avoid it like the plague|better late than never)\b/gi,
 
-    id:
-      "rhetorical-question",
+  twain:
+    "Clichés are language wearing somebody else's boots.",
 
-    title:
-      "Question Ending",
+  explanation:
+    "A familiar phrase can make the reader recognize an idea without truly seeing it.",
 
-    category:
-      "Structure",
+  suggestion:
+    "Describe the actual situation or invent an image of your own.",
 
-    color:
-      7,
+  principle:
+    "Replace borrowed language with observed language."
 
-    regex:
-      /[^.!?\n]+\?/g,
+},
 
-    message:
-      "A question changes the reader's role. Is the question genuinely useful, or could the claim be stated directly?",
 
-    principle:
-      "Use questions deliberately."
 
-  },
+{
 
+  id:
+    "wordy-phrase",
 
-  {
+  title:
+    "Trim the Fluff",
 
-    id:
-      "exaggeration",
+  category:
+    "Economy",
 
-    title:
-      "Scale Check",
+  color:
+    6,
 
-    category:
-      "Precision",
+  regex:
+    /\b(due to the fact that|in order to|at this point in time|for the purpose of|in the event that)\b/gi,
 
-    color:
-      8,
+  twain:
+    "Trim the fluff, my friend. Brevity wins.",
 
-    regex:
-      /\b(extremely|tremendously|gigantic|enormous|absolutely|completely|totally|incredibly)\b/gi,
+  explanation:
+    "This phrase takes several words to perform a job that may require only one or two.",
 
-    message:
-      "Check the scale. A concrete description may be stronger than an amplifier.",
+  suggestion:
+    "Try “because,” “to,” “now,” or “if,” depending on the sentence.",
 
-    principle:
-      "Specificity usually beats exaggeration."
+  principle:
+    "Remove scaffolding once the sentence can stand."
 
-  }
+},
 
+
+
+{
+
+  id:
+    "rhetorical-question",
+
+  title:
+    "Rhetorical Question",
+
+  category:
+    "Structure",
+
+  color:
+    7,
+
+  regex:
+    /[^.!?\n]+\?/g,
+
+  twain:
+    "A question, is it? Make sure the reader was invited to answer.",
+
+  explanation:
+    "A rhetorical question changes the relationship between writer and reader.",
+
+  suggestion:
+    "Ask whether stating the claim directly would be stronger.",
+
+  principle:
+    "Use questions deliberately."
+
+},
+
+
+
+{
+
+  id:
+    "exaggeration",
+
+  title:
+    "Scale Check",
+
+  category:
+    "Precision",
+
+  color:
+    8,
+
+  regex:
+    /\b(extremely|tremendously|gigantic|enormous|absolutely|completely|totally|incredibly)\b/gi,
+
+  twain:
+    "If everything is enormous, nothing has much room left to grow.",
+
+  explanation:
+    "Amplifiers can increase emotional volume without increasing descriptive precision.",
+
+  suggestion:
+    "Show the scale with a concrete image, measurement or consequence.",
+
+  principle:
+    "Specificity usually beats exaggeration."
+
+}
 
 ];
 
@@ -2334,13 +2391,21 @@ const feedback =
   );
 
 
-let lastPlainText =
-  "";
+const twainCoach =
+  document.getElementById(
+    "twainCoach"
+  );
+
+
+const twainCoachText =
+  document.getElementById(
+    "twainCoachText"
+  );
 
 
 
 /* =====================================================
-   HTML ESCAPE
+   ESCAPE
 ====================================================== */
 
 function escapeHTML(
@@ -2366,12 +2431,13 @@ function escapeHTML(
 
 
 /* =====================================================
-   GET PLAIN TEXT
+   TEXT
 ====================================================== */
 
 function getPlainText() {
 
-  return editor.innerText
+  return editor
+    .innerText
     .replace(
       /\u00A0/g,
       " "
@@ -2382,7 +2448,7 @@ function getPlainText() {
 
 
 /* =====================================================
-   LIVE STATS
+   STATS
 ====================================================== */
 
 function updateStats() {
@@ -2424,9 +2490,11 @@ function updateStats() {
   const lines =
     Math.max(
       1,
-      text.split(
-        "\n"
-      ).length
+      text
+        .split(
+          "\n"
+        )
+        .length
     );
 
 
@@ -2443,23 +2511,27 @@ function updateStats() {
 
 
   lineNumbers.textContent =
-    Array.from(
-      {
-        length:
-          lines
-      },
-      function (
-        item,
-        index
-      ) {
+    Array
+      .from(
+        {
+          length:
+            lines
+        },
 
-        return index + 1;
+        function (
+          item,
+          index
+        ) {
 
-      }
-    )
-    .join(
-      "\n"
-    );
+          return (
+            index + 1
+          );
+
+        }
+      )
+      .join(
+        "\n"
+      );
 
 
   localStorage.setItem(
@@ -2472,7 +2544,7 @@ function updateStats() {
 
 
 /* =====================================================
-   MATCH COLLECTION
+   MATCHES
 ====================================================== */
 
 function collectMatches(
@@ -2549,7 +2621,7 @@ function collectMatches(
 
 
 /* =====================================================
-   FILTER OVERLAPPING HIGHLIGHTS
+   REMOVE OVERLAPS
 ====================================================== */
 
 function removeOverlaps(
@@ -2626,7 +2698,7 @@ function removeOverlaps(
 
 
 /* =====================================================
-   RENDER HIGHLIGHTS
+   HIGHLIGHT WRITING
 ====================================================== */
 
 function renderHighlightedText(
@@ -2660,6 +2732,10 @@ function renderHighlightedText(
         '<span class="rule-'
         +
         match.rule.color
+        +
+        '" data-rule-id="'
+        +
+        match.rule.id
         +
         '" title="'
         +
@@ -2705,6 +2781,47 @@ function renderHighlightedText(
 
 
 /* =====================================================
+   COACH
+====================================================== */
+
+function showTwainCoach(
+  matches
+) {
+
+  if (
+    matches.length ===
+    0
+  ) {
+
+    twainCoach.style.display =
+      "block";
+
+
+    twainCoachText.textContent =
+      "I find no obvious trouble. That is not permission to stop reading it aloud.";
+
+
+    return;
+
+  }
+
+
+  const rule =
+    matches[0].rule;
+
+
+  twainCoach.style.display =
+    "block";
+
+
+  twainCoachText.textContent =
+    rule.twain;
+
+}
+
+
+
+/* =====================================================
    FEEDBACK
 ====================================================== */
 
@@ -2734,11 +2851,13 @@ function renderFeedback(
         grouped.set(
           match.rule.id,
           {
+
             rule:
               match.rule,
 
             examples:
               []
+
           }
         );
 
@@ -2776,13 +2895,14 @@ function renderFeedback(
 
       <div class="empty-feedback">
 
-        No current revision signals were detected.
+        Twain found no current revision signals.
 
         <br><br>
 
-        That does not automatically make the passage finished —
-        read it aloud and ask whether every sentence says
-        exactly what you mean.
+        Read the passage aloud.
+
+        If your tongue trips,
+        the reader probably will too.
 
       </div>
 
@@ -2815,6 +2935,10 @@ function renderFeedback(
         rule.color;
 
 
+      bubble.dataset.ruleId =
+        rule.id;
+
+
       bubble.innerHTML = `
 
         <div class="twain-bubble-top">
@@ -2830,14 +2954,48 @@ function renderFeedback(
         </div>
 
 
-        <div>
-          ${rule.message}
+        <div class="twain-quote">
+
+          <strong>
+            Twain says:
+          </strong>
+
+          “${rule.twain}”
+
+        </div>
+
+
+        <div class="feedback-explanation">
+
+          <strong>
+            Why Twain noticed:
+          </strong>
+
+          <br>
+
+          ${rule.explanation}
+
+        </div>
+
+
+        <div class="suggestion-box">
+
+          <strong>
+            Try this:
+          </strong>
+
+          <br>
+
+          ${rule.suggestion}
+
         </div>
 
 
         <div class="detected-text">
 
-          Detected:
+          <strong>
+            Highlighted:
+          </strong>
 
           ${group.examples
             .slice(
@@ -2867,12 +3025,70 @@ function renderFeedback(
 
         </div>
 
-
-        <small>
-          ${rule.principle}
-        </small>
-
       `;
+
+
+      bubble.addEventListener(
+        "click",
+        function () {
+
+          const target =
+            editor.querySelector(
+              '[data-rule-id="'
+              +
+              rule.id
+              +
+              '"]'
+            );
+
+
+          if (
+            target
+          ) {
+
+            target.scrollIntoView(
+              {
+
+                behavior:
+                  "smooth",
+
+                block:
+                  "center"
+
+              }
+            );
+
+
+            target.animate(
+              [
+
+                {
+                  boxShadow:
+                    "0 0 0 0 rgba(0,0,0,0)"
+                },
+
+                {
+                  boxShadow:
+                    "0 0 0 5px rgba(41,38,31,.32)"
+                },
+
+                {
+                  boxShadow:
+                    "0 0 0 0 rgba(0,0,0,0)"
+                }
+
+              ],
+
+              {
+                duration:
+                  900
+              }
+            );
+
+          }
+
+        }
+      );
 
 
       feedback.appendChild(
@@ -2902,7 +3118,8 @@ function updateScores(
         .trim()
         .split(
           /\s+/
-        ).length
+        )
+        .length
     :
       0;
 
@@ -3059,10 +3276,6 @@ function analyzeWriting() {
     getPlainText();
 
 
-  lastPlainText =
-    text;
-
-
   if (
     !text.trim()
   ) {
@@ -3070,6 +3283,8 @@ function analyzeWriting() {
     feedback.innerHTML = `
 
       <div class="empty-feedback">
+
+        Twain cannot edit invisible prose.
 
         Write something first.
 
@@ -3102,6 +3317,11 @@ function analyzeWriting() {
 
 
   renderFeedback(
+    allMatches
+  );
+
+
+  showTwainCoach(
     allMatches
   );
 
@@ -3161,6 +3381,10 @@ function restorePlainText() {
     "Signals: 0";
 
 
+  twainCoach.style.display =
+    "none";
+
+
   updateStats();
 
 }
@@ -3198,11 +3422,19 @@ function clearEditor() {
     <div class="empty-feedback">
 
       Write something above,
-      then press <strong>Analyze Writing</strong>.
+      then press
+
+      <strong>
+        Analyze Writing
+      </strong>.
 
     </div>
 
   `;
+
+
+  twainCoach.style.display =
+    "none";
 
 
   issueCount.textContent =
@@ -3278,15 +3510,17 @@ function buildRuleReference() {
       card.innerHTML = `
 
         <h3>
-          ${rule.title}
+          ${rule.twain}
         </h3>
 
         <p>
+
           <strong>
-            ${rule.category}:
+            ${rule.category}
           </strong>
 
-          ${rule.principle}
+          • ${rule.principle}
+
         </p>
 
       `;
@@ -3313,22 +3547,8 @@ editor.addEventListener(
 
     updateStats();
 
-
-    if (
-      getPlainText().length ===
-      1
-    ) {
-
-      trackTwainEvent(
-        "writing_started",
-        {}
-      );
-
-    }
-
   }
 );
-
 
 
 document
@@ -3341,7 +3561,6 @@ document
   );
 
 
-
 document
   .getElementById(
     "restoreButton"
@@ -3350,7 +3569,6 @@ document
     "click",
     restorePlainText
   );
-
 
 
 document
@@ -3365,7 +3583,7 @@ document
 
 
 /* =====================================================
-   RESTORE SAVED DRAFT
+   RESTORE
 ====================================================== */
 
 const savedText =
@@ -3398,8 +3616,10 @@ updateStats();
 trackTwainEvent(
   "twain_editor_opened",
   {
+
     prototype:
-      "twain_editor_001"
+      "twain_editor_002"
+
   }
 );
 
