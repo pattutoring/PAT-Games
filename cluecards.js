@@ -114,6 +114,9 @@ const clueCards = [
     difficulty:
       "Easy",
 
+
+    /* CLUE RELEASE */
+
     clueSlides: [
 
       "/PAT-Games/IMG_0270.jpeg",
@@ -127,6 +130,9 @@ const clueCards = [
       "/PAT-Games/IMG_0266.jpeg"
 
     ],
+
+
+    /* SOLUTION RELEASE */
 
     solutionSlides: [
 
@@ -191,6 +197,11 @@ let revealTracked =
   false;
 
 
+/*
+  Prevent the same clue from trying to report
+  profile completion repeatedly during one load.
+*/
+
 let profileCompletionHandled =
   false;
 
@@ -220,8 +231,15 @@ function trackEvent(
     eventName,
     {
 
+      /*
+        Analytics may keep its existing public-facing
+        identifier.
+
+        PATProfile uses "cluecards" separately below.
+      */
+
       game_name:
-        "cluecards",
+        "clue_cards",
 
       mode:
         "cryptic_clue_card",
@@ -274,6 +292,7 @@ function profileAvailable() {
   return Boolean(
 
     window.PATProfile
+
     &&
     typeof PATProfile.get ===
     "function"
@@ -303,6 +322,7 @@ function archiveUnlocked() {
 
   if (
     !profileAvailable()
+
     ||
     typeof PATProfile.canAccessArchive !==
     "function"
@@ -323,17 +343,19 @@ function archiveUnlocked() {
 /* ==========================================================
    COMPLETE CLUE-CARD
 
-   CURRENT CLUE:
-   - saves completion
-   - awards XP once
-   - advances Clue-Card streak
+   IMPORTANT:
 
-   ARCHIVED CLUE:
-   - saves completion
-   - awards XP once
-   - DOES NOT advance weekly streak
+   Only an ACTUAL CORRECT SOLVE reaches this function.
 
-   Manual solution reveal does NOT call this.
+   Manual reveal:
+   - does NOT award XP
+   - does NOT advance Lab streak
+   - does NOT advance Clue-Card streak
+   - does NOT create a completion
+
+   PROFILE GAME ID MUST MATCH profile.js:
+
+   cluecards
 ========================================================== */
 
 function completeClueCardProfile() {
@@ -353,6 +375,7 @@ function completeClueCardProfile() {
 
   if (
     !profileAvailable()
+
     ||
     typeof PATProfile.complete !==
     "function"
@@ -363,37 +386,32 @@ function completeClueCardProfile() {
   }
 
 
-  const isCurrentClue =
-    activeClue ===
-    currentClue;
-
-
   const result =
     PATProfile.complete(
 
+      /*
+        IMPORTANT V3 FIX:
+
+        This must be "cluecards",
+        NOT "clue_cards".
+      */
+
       "cluecards",
 
-      "clue-"
-      +
+      "clue-" +
       activeClue.number,
 
       {
 
-        /*
-          Current weekly clue:
-          advance the Clue-Card streak.
-
-          Archived clue:
-          save completion and XP,
-          but do not advance that streak.
-        */
-
         streakKey:
-          isCurrentClue
-          ?
-            "cluecards"
-          :
-            "archive_no_streak"
+          "cluecards",
+
+        mastery: {
+
+          cluesSolved:
+            1
+
+        }
 
       }
 
@@ -712,7 +730,9 @@ function normalizeAnswer(
   text
 ) {
 
-  return text
+  return String(
+    text || ""
+  )
     .trim()
     .toUpperCase()
     .replace(
@@ -796,6 +816,9 @@ function loadClue(
     false;
 
 
+
+  /* CLUE INFORMATION */
+
   clueNumber.textContent =
     "CLUE-CARD #"
     +
@@ -819,6 +842,9 @@ function loadClue(
     +
     "”";
 
+
+
+  /* GUESSING */
 
   guessCounter.textContent =
     "Guesses: 0";
@@ -847,6 +873,9 @@ function loadClue(
     );
 
 
+
+  /* SOLUTION DATA */
+
   answerTitle.textContent =
     card.answer;
 
@@ -871,6 +900,9 @@ function loadClue(
     card.mechanismDescription;
 
 
+
+  /* HIDE SOLUTION */
+
   solutionInfo
     .classList
     .remove(
@@ -885,6 +917,9 @@ function loadClue(
   shareButton.textContent =
     "📤 Share Clue";
 
+
+
+  /* PHASE */
 
   cluePhaseButton
     .classList
@@ -922,6 +957,7 @@ function renderSlide() {
 
   if (
     !slides
+
     ||
     slides.length ===
     0
@@ -930,6 +966,22 @@ function renderSlide() {
     clueImage.removeAttribute(
       "src"
     );
+
+
+    slideCounter.textContent =
+      "0 / 0";
+
+
+    dots.innerHTML =
+      "";
+
+
+    previousButton.disabled =
+      true;
+
+
+    nextButton.disabled =
+      true;
 
 
     return;
@@ -1037,6 +1089,15 @@ function buildDots() {
 
   const slides =
     getSlides();
+
+
+  if (
+    !slides
+  ) {
+
+    return;
+
+  }
 
 
   slides.forEach(
@@ -1152,6 +1213,9 @@ nextButton
 
 
       if (
+        slides
+
+        &&
         slideIndex <
         slides.length -
         1
@@ -1212,6 +1276,12 @@ cluePhaseButton
 
 /* ==========================================================
    REVEAL SOLUTION
+
+   wasSolved = true:
+   player solved correctly
+
+   wasSolved = false:
+   manual reveal
 ========================================================== */
 
 function revealSolution(
@@ -1221,20 +1291,19 @@ function revealSolution(
   trackPuzzleStart();
 
 
-  /*
-    MANUAL REVEAL:
-    analytics only.
 
-    It does NOT:
-    - complete the puzzle
-    - award XP
-    - advance a streak
-  */
+  /* ========================================================
+     MANUAL REVEAL ANALYTICS
+
+     Does NOT touch PATProfile.
+  ======================================================== */
 
   if (
     !wasSolved
+
     &&
     !solutionUnlocked
+
     &&
     !revealTracked
   ) {
@@ -1256,6 +1325,7 @@ function revealSolution(
   }
 
 
+
   solutionUnlocked =
     true;
 
@@ -1268,9 +1338,15 @@ function revealSolution(
     0;
 
 
+
+  /* SHOW ANSWER */
+
   clueTitle.textContent =
     activeClue.answer;
 
+
+
+  /* LOCK GUESSING */
 
   guessInput.disabled =
     true;
@@ -1279,6 +1355,9 @@ function revealSolution(
   guessButton.disabled =
     true;
 
+
+
+  /* PHASE BUTTONS */
 
   solutionPhaseButton.textContent =
     "🔓 Solution";
@@ -1297,6 +1376,9 @@ function revealSolution(
       "active"
     );
 
+
+
+  /* SOLUTION INFO */
 
   solutionInfo
     .classList
@@ -1396,6 +1478,7 @@ function submitGuess() {
 
   if (
     solved
+
     ||
     solutionUnlocked
   ) {
@@ -1454,6 +1537,7 @@ function submitGuess() {
     );
 
 
+
   /* ========================================================
      CORRECT
   ======================================================== */
@@ -1488,8 +1572,15 @@ function submitGuess() {
     }
 
 
+
+    /*
+      THIS IS THE ONLY PLACE
+      CLUE-CARD PROFILE COMPLETION OCCURS.
+    */
+
     const profileResult =
       completeClueCardProfile();
+
 
 
     let feedback =
@@ -1502,6 +1593,7 @@ function submitGuess() {
 
     if (
       profileResult
+
       &&
       profileResult.xpEarned >
       0
@@ -1516,8 +1608,10 @@ function submitGuess() {
 
     }
 
+
     else if (
       profileResult
+
       &&
       profileResult.alreadyCompleted
     ) {
@@ -1526,6 +1620,42 @@ function submitGuess() {
         " This Clue-Card is already in your solved collection.";
 
     }
+
+
+
+    /*
+      V3 streak feedback.
+    */
+
+    if (
+      profileResult
+
+      &&
+      profileResult.streakAdvanced
+
+      &&
+      profileResult.profile
+
+      &&
+      profileResult.profile.streaks
+    ) {
+
+      feedback +=
+        " 🧩 Streak "
+        +
+        (
+          profileResult
+            .profile
+            .streaks
+            .cluecards
+          ||
+          0
+        )
+        +
+        "!";
+
+    }
+
 
 
     guessFeedback.textContent =
@@ -1551,7 +1681,7 @@ function submitGuess() {
 
 
   /* ========================================================
-     SPECIAL #002 NEAR-MISS
+     INCORRECT
   ======================================================== */
 
   guessFeedback
@@ -1561,9 +1691,18 @@ function submitGuess() {
     );
 
 
+
+  /* ========================================================
+     SPECIAL #002 NEAR-MISS
+
+     SOCKS gets useful feedback,
+     but does NOT count as correct.
+  ======================================================== */
+
   if (
     activeClue.number ===
     "002"
+
     &&
     guess ===
     "SOCKS"
@@ -1658,6 +1797,7 @@ function buildShareText() {
 
   }
 
+
   else if (
     solutionUnlocked
   ) {
@@ -1685,6 +1825,7 @@ function buildShareText() {
 
   }
 
+
   else {
 
     resultText =
@@ -1711,8 +1852,10 @@ function buildShareText() {
     "KOAN~KAON • Clue-Card #"
     +
     activeClue.number
+
     +
     "\n\n"
+
     +
     "“"
     +
@@ -1721,16 +1864,22 @@ function buildShareText() {
     "” "
     +
     activeClue.enumeration
+
     +
     "\n\n"
+
     +
     resultText
+
     +
     "\n\n"
+
     +
     "Can you collapse the clue?"
+
     +
     "\n\n"
+
     +
     "PAT Learning Lab"
 
@@ -1807,10 +1956,17 @@ async function shareClue() {
       );
 
 
+
+    /* ======================================================
+       NATIVE SHARE WITH IMAGE
+    ====================================================== */
+
     if (
       navigator.share
+
       &&
       navigator.canShare
+
       &&
       navigator.canShare(
         {
@@ -1869,6 +2025,11 @@ async function shareClue() {
     }
 
 
+
+    /* ======================================================
+       NORMAL NATIVE SHARE
+    ====================================================== */
+
     if (
       navigator.share
     ) {
@@ -1916,14 +2077,23 @@ async function shareClue() {
     }
 
 
+
+    /* ======================================================
+       CLIPBOARD FALLBACK
+    ====================================================== */
+
     await navigator
       .clipboard
       .writeText(
+
         text
+
         +
         "\n\n"
+
         +
         window.location.href
+
       );
 
 
@@ -1968,9 +2138,17 @@ async function shareClue() {
 
   }
 
+
   catch (
     error
   ) {
+
+
+    /*
+      If image sharing failed,
+      retry with simple native share
+      or clipboard.
+    */
 
     try {
 
@@ -1995,6 +2173,26 @@ async function shareClue() {
           }
         );
 
+
+        trackEvent(
+          "puzzle_shared",
+          {
+
+            guesses:
+              guesses,
+
+            solved:
+              solved,
+
+            solution_unlocked:
+              solutionUnlocked,
+
+            share_method:
+              "native_fallback"
+
+          }
+        );
+
       }
 
       else {
@@ -2002,12 +2200,36 @@ async function shareClue() {
         await navigator
           .clipboard
           .writeText(
+
             text
+
             +
             "\n\n"
+
             +
             window.location.href
+
           );
+
+
+        trackEvent(
+          "puzzle_shared",
+          {
+
+            guesses:
+              guesses,
+
+            solved:
+              solved,
+
+            solution_unlocked:
+              solutionUnlocked,
+
+            share_method:
+              "clipboard_fallback"
+
+          }
+        );
 
       }
 
@@ -2094,6 +2316,7 @@ function buildArchive() {
     archiveUnlocked();
 
 
+
   archivedClues.forEach(
     function (
       card
@@ -2120,6 +2343,7 @@ function buildArchive() {
           );
 
       }
+
 
 
       archiveCard.innerHTML =
@@ -2185,12 +2409,18 @@ function buildArchive() {
         '</button>';
 
 
+
       const playButton =
         archiveCard
           .querySelector(
             ".archive-play-button"
           );
 
+
+
+      /* ====================================================
+         UNLOCKED ARCHIVE
+      ==================================================== */
 
       if (
         hasAccess
@@ -2219,6 +2449,12 @@ function buildArchive() {
                   "active"
                 );
 
+
+              /*
+                Neither top tab is marked active here because
+                the player is inside an archived puzzle,
+                not the current clue.
+              */
 
               currentTab
                 .classList
@@ -2253,6 +2489,12 @@ function buildArchive() {
           );
 
       }
+
+
+
+      /* ====================================================
+         LOCKED ARCHIVE
+      ==================================================== */
 
       else {
 
@@ -2400,6 +2642,20 @@ imageFrame
       event
     ) {
 
+      if (
+        !event.changedTouches
+
+        ||
+        !event.changedTouches[
+          0
+        ]
+      ) {
+
+        return;
+
+      }
+
+
       touchStartX =
         event
           .changedTouches[
@@ -2424,6 +2680,20 @@ imageFrame
     function (
       event
     ) {
+
+      if (
+        !event.changedTouches
+
+        ||
+        !event.changedTouches[
+          0
+        ]
+      ) {
+
+        return;
+
+      }
+
 
       const touchEndX =
         event
@@ -2458,8 +2728,21 @@ imageFrame
 
 
       if (
+        !slides
+      ) {
+
+        return;
+
+      }
+
+
+
+      /* SWIPE LEFT */
+
+      if (
         difference <
         0
+
         &&
         slideIndex <
         slides.length -
@@ -2474,9 +2757,13 @@ imageFrame
       }
 
 
+
+      /* SWIPE RIGHT */
+
       if (
         difference >
         0
+
         &&
         slideIndex >
         0
@@ -2503,8 +2790,10 @@ imageFrame
 /* ==========================================================
    PROFILE CHANGED
 
-   If profile, plan, XP or archive access changes,
-   refresh the Clue-Card interface.
+   Refresh XP / streak display.
+
+   If Learning Lab+ status changes while the
+   archive is visible, immediately rebuild it.
 ========================================================== */
 
 window.addEventListener(
@@ -2532,6 +2821,21 @@ window.addEventListener(
 
 
 /* ==========================================================
+   PROFILE READY
+========================================================== */
+
+window.addEventListener(
+  "pat-profile-ready",
+  function () {
+
+    refreshClueProfile();
+
+  }
+);
+
+
+
+/* ==========================================================
    START
 
    #002 = CURRENT
@@ -2546,4 +2850,5 @@ loadClue(
 refreshClueProfile();
 
 
-});
+  }
+);
