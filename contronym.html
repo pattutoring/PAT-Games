@@ -4856,5 +4856,41 @@ trackContronymEvent(
 
 
 </body>
+/* =====================================================
+   CONTRONYM PHILOSOPHY LINK
+===================================================== */
 
+const philosophyButton =
+  document.createElement(
+    "button"
+  );
+
+philosophyButton.type =
+  "button";
+
+philosophyButton.textContent =
+  "Philosophy & Learning Model";
+
+philosophyButton.addEventListener(
+  "click",
+  function () {
+
+    window.location.href =
+      "philosophy.html";
+
+  }
+);
+
+document
+  .querySelector(
+    ".top-nav"
+  )
+  .insertBefore(
+    philosophyButton,
+    document
+      .querySelector(
+        ".top-nav"
+      )
+      .lastElementChild
+  );
 </html>
