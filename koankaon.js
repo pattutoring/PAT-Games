@@ -5,15 +5,6 @@ document.addEventListener(
 
 /* ==========================================================
    ANALYTICS
-
-   Sends events to the GA4 tag already loaded
-   in koankaon.html.
-
-   Events:
-   puzzle_started
-   puzzle_solved
-   puzzle_revealed
-   puzzle_shared
 ========================================================== */
 
 function trackEvent(
@@ -70,19 +61,202 @@ function trackEvent(
 
 
 /* ==========================================================
-   ANALYTICS STATE
+   PROFILE HELPERS
+========================================================== */
 
-   Prevents:
-   - one solve being counted repeatedly
-   - a revealed answer later counting as a solve
-   - repeated reveal clicks counting repeatedly
+function profileAvailable() {
+
+  return Boolean(
+    window.PATProfile
+    &&
+    typeof PATProfile.get ===
+    "function"
+  );
+
+}
+
+
+
+function archiveUnlocked() {
+
+  if (
+    !profileAvailable()
+    ||
+    typeof PATProfile.canAccessArchive !==
+    "function"
+  ) {
+
+    return false;
+
+  }
+
+
+  return PATProfile
+    .canAccessArchive();
+
+}
+
+
+
+function refreshKoanProfile() {
+
+  if (
+    typeof window.renderKoanProfile ===
+    "function"
+  ) {
+
+    window.renderKoanProfile();
+
+  }
+
+}
+
+
+
+/* ==========================================================
+   PROFILE COMPLETION FLAGS
+========================================================== */
+
+let generalProfileCompletionHandled =
+  false;
+
+
+let miniProfileCompletionHandled =
+  false;
+
+
+
+/* ==========================================================
+   COMPLETE SU(1)
+
+   Only a genuine solve calls this.
+========================================================== */
+
+function completeGeneralProfile() {
+
+  if (
+    generalProfileCompletionHandled
+  ) {
+
+    return null;
+
+  }
+
+
+  generalProfileCompletionHandled =
+    true;
+
+
+  if (
+    !profileAvailable()
+    ||
+    typeof PATProfile.complete !==
+    "function"
+  ) {
+
+    return null;
+
+  }
+
+
+  const result =
+    PATProfile.complete(
+
+      "koan_kaon",
+
+      "su1-" +
+      activeGeneral.number,
+
+      {
+
+        streakKey:
+          "koan_one"
+
+      }
+
+    );
+
+
+  refreshKoanProfile();
+
+
+  return result;
+
+}
+
+
+
+/* ==========================================================
+   COMPLETE SU(2)
+
+   Only a genuine solve calls this.
+========================================================== */
+
+function completeMiniProfile() {
+
+  if (
+    miniProfileCompletionHandled
+  ) {
+
+    return null;
+
+  }
+
+
+  miniProfileCompletionHandled =
+    true;
+
+
+  if (
+    !profileAvailable()
+    ||
+    typeof PATProfile.complete !==
+    "function"
+  ) {
+
+    return null;
+
+  }
+
+
+  const result =
+    PATProfile.complete(
+
+      "koan_kaon",
+
+      "su2-" +
+      activeMini.number,
+
+      {
+
+        streakKey:
+          "koan_two"
+
+      }
+
+    );
+
+
+  refreshKoanProfile();
+
+
+  return result;
+
+}
+
+
+
+/* ==========================================================
+   ANALYTICS STATE
 ========================================================== */
 
 let generalSolveTracked =
   false;
 
+
 let generalRevealTracked =
   false;
+
 
 let generalWasRevealed =
   false;
@@ -91,8 +265,10 @@ let generalWasRevealed =
 let miniSolveTracked =
   false;
 
+
 let miniRevealTracked =
   false;
+
 
 let miniWasRevealed =
   false;
@@ -145,7 +321,8 @@ const generalPuzzles = [
 
       {
 
-        number: 1,
+        number:
+          1,
 
         clue:
           "Koan decays into ‘quark-y’ parable.",
@@ -161,7 +338,8 @@ const generalPuzzles = [
 
       {
 
-        number: 5,
+        number:
+          5,
 
         clue:
           "Gore gory goblin?",
@@ -177,7 +355,8 @@ const generalPuzzles = [
 
       {
 
-        number: 6,
+        number:
+          6,
 
         clue:
           "Fight-back, minus head of personal-narratives.",
@@ -193,7 +372,8 @@ const generalPuzzles = [
 
       {
 
-        number: 7,
+        number:
+          7,
 
         clue:
           "Cartoony ants cartoonist.",
@@ -213,7 +393,8 @@ const generalPuzzles = [
 
       {
 
-        number: 1,
+        number:
+          1,
 
         clue:
           "Koan symmetry-breaking particle.",
@@ -229,7 +410,8 @@ const generalPuzzles = [
 
       {
 
-        number: 2,
+        number:
+          2,
 
         clue:
           "Indian city lives in the heart of vagrant.",
@@ -245,7 +427,8 @@ const generalPuzzles = [
 
       {
 
-        number: 3,
+        number:
+          3,
 
         clue:
           "Rewound scroll, two fifties taken by trolls.",
@@ -261,7 +444,8 @@ const generalPuzzles = [
 
       {
 
-        number: 4,
+        number:
+          4,
 
         clue:
           "Make your bed from tens, now lie in it.",
@@ -397,14 +581,167 @@ function showScreen(
 
   window.scrollTo(
     {
-      top: 0,
-      behavior: "smooth"
+
+      top:
+        0,
+
+      behavior:
+        "smooth"
+
     }
   );
 
 }
 
 
+
+/* ==========================================================
+   ARCHIVE ELEMENTS
+========================================================== */
+
+const archiveGeneralTab =
+  document.getElementById(
+    "archiveGeneralTab"
+  );
+
+
+const archiveMiniTab =
+  document.getElementById(
+    "archiveMiniTab"
+  );
+
+
+const archiveGeneralList =
+  document.getElementById(
+    "archiveGeneralList"
+  );
+
+
+const archiveMiniList =
+  document.getElementById(
+    "archiveMiniList"
+  );
+
+
+const koanArchiveAccess =
+  document.getElementById(
+    "koanArchiveAccess"
+  );
+
+
+const koanPlusPanel =
+  document.getElementById(
+    "koanPlusPanel"
+  );
+
+
+
+/* ==========================================================
+   SHOW PLUS PANEL
+========================================================== */
+
+function showKoanPlusPanel() {
+
+  if (
+    !koanPlusPanel
+  ) {
+
+    return;
+
+  }
+
+
+  koanPlusPanel.classList.add(
+    "visible"
+  );
+
+
+  koanPlusPanel.scrollIntoView(
+    {
+
+      behavior:
+        "smooth",
+
+      block:
+        "nearest"
+
+    }
+  );
+
+}
+
+
+
+/* ==========================================================
+   ARCHIVE ACCESS MESSAGE
+========================================================== */
+
+function renderKoanArchiveAccess() {
+
+  if (
+    !koanArchiveAccess
+  ) {
+
+    return;
+
+  }
+
+
+  if (
+    archiveUnlocked()
+  ) {
+
+    const profile =
+      PATProfile.get();
+
+
+    koanArchiveAccess.innerHTML = `
+
+      <strong>
+        🔓 KOAN~KAON Archive Unlocked
+      </strong>
+
+      <br>
+
+      ${
+        profile.username
+        ||
+        "Explorer"
+      },
+      your Learning Lab+ access includes
+      previous SU(1) and SU(2) Mini puzzles.
+
+    `;
+
+
+    return;
+
+  }
+
+
+  koanArchiveAccess.innerHTML = `
+
+    <strong>
+      🔒 Current Puzzles Free • Archive Learning Lab+
+    </strong>
+
+    <br>
+
+    Everyone can play the current SU(1)
+    and SU(2) Mini.
+
+    Previous puzzles remain visible here
+    and unlock with Learning Lab+.
+
+  `;
+
+}
+
+
+
+/* ==========================================================
+   GENERIC SCREEN BUTTONS
+========================================================== */
 
 document
   .querySelectorAll(
@@ -468,8 +805,10 @@ document
         "su1",
         currentGeneral.number,
         {
+
           archived:
             false
+
         }
       );
 
@@ -505,8 +844,10 @@ document
         "su2_mini",
         currentMini.number,
         {
+
           archived:
             false
+
         }
       );
 
@@ -514,6 +855,10 @@ document
   );
 
 
+
+/* ==========================================================
+   MAIN ARCHIVE BUTTON
+========================================================== */
 
 document
   .getElementById(
@@ -599,7 +944,8 @@ function getCellNumber(
 ) {
 
   if (
-    row === 0
+    row ===
+    0
   ) {
 
     return column + 1;
@@ -608,7 +954,8 @@ function getCellNumber(
 
 
   if (
-    column === 0
+    column ===
+    0
   ) {
 
     return row + 4;
@@ -655,6 +1002,10 @@ function loadGeneralPuzzle(
 
 
   generalWasRevealed =
+    false;
+
+
+  generalProfileCompletionHandled =
     false;
 
 
@@ -712,14 +1063,18 @@ function buildGeneralGrid() {
 
 
   for (
-    let row = 0;
-    row < 4;
+    let row =
+      0;
+    row <
+    4;
     row++
   ) {
 
     for (
-      let column = 0;
-      column < 4;
+      let column =
+        0;
+      column <
+        4;
       column++
     ) {
 
@@ -749,7 +1104,8 @@ function buildGeneralGrid() {
 
 
       if (
-        number !== null
+        number !==
+        null
       ) {
 
         const label =
@@ -825,9 +1181,11 @@ function buildGeneralGrid() {
         function () {
 
           if (
-            generalSelectedRow === row
+            generalSelectedRow ===
+            row
             &&
-            generalSelectedColumn === column
+            generalSelectedColumn ===
+            column
           ) {
 
             generalDirection =
@@ -931,7 +1289,8 @@ function buildGeneralClues() {
     "";
 
 
-  activeGeneral.transverse
+  activeGeneral
+    .transverse
     .forEach(
       function (
         clue
@@ -997,7 +1356,8 @@ function buildGeneralClues() {
     );
 
 
-  activeGeneral.conjugate
+  activeGeneral
+    .conjugate
     .forEach(
       function (
         clue
@@ -1165,9 +1525,10 @@ function updateGeneralHighlight() {
 
 
     const clue =
-      activeGeneral.transverse[
-        generalSelectedRow
-      ];
+      activeGeneral
+        .transverse[
+          generalSelectedRow
+        ];
 
 
     generalDirectionLabel.textContent =
@@ -1181,13 +1542,14 @@ function updateGeneralHighlight() {
 
 
     const button =
-      generalAcrossClues.querySelector(
-        '[data-index="'
-        +
-        generalSelectedRow
-        +
-        '"]'
-      );
+      generalAcrossClues
+        .querySelector(
+          '[data-index="'
+          +
+          generalSelectedRow
+          +
+          '"]'
+        );
 
 
     if (
@@ -1226,9 +1588,10 @@ function updateGeneralHighlight() {
 
 
     const clue =
-      activeGeneral.conjugate[
-        generalSelectedColumn
-      ];
+      activeGeneral
+        .conjugate[
+          generalSelectedColumn
+        ];
 
 
     generalDirectionLabel.textContent =
@@ -1242,13 +1605,14 @@ function updateGeneralHighlight() {
 
 
     const button =
-      generalDownClues.querySelector(
-        '[data-index="'
-        +
-        generalSelectedColumn
-        +
-        '"]'
-      );
+      generalDownClues
+        .querySelector(
+          '[data-index="'
+          +
+          generalSelectedColumn
+          +
+          '"]'
+        );
 
 
     if (
@@ -1265,17 +1629,18 @@ function updateGeneralHighlight() {
 
 
   const cell =
-    generalGrid.querySelector(
-      '[data-row="'
-      +
-      generalSelectedRow
-      +
-      '"][data-column="'
-      +
-      generalSelectedColumn
-      +
-      '"]'
-    );
+    generalGrid
+      .querySelector(
+        '[data-row="'
+        +
+        generalSelectedRow
+        +
+        '"][data-column="'
+        +
+        generalSelectedColumn
+        +
+        '"]'
+      );
 
 
   if (
@@ -1301,17 +1666,18 @@ function getGeneralInput(
   column
 ) {
 
-  return generalGrid.querySelector(
-    'input[data-row="'
-    +
-    row
-    +
-    '"][data-column="'
-    +
-    column
-    +
-    '"]'
-  );
+  return generalGrid
+    .querySelector(
+      'input[data-row="'
+      +
+      row
+      +
+      '"][data-column="'
+      +
+      column
+      +
+      '"]'
+    );
 
 }
 
@@ -1355,7 +1721,8 @@ function moveGeneralForward() {
     generalDirection ===
     "transverse"
     &&
-    column < 3
+    column <
+    3
   ) {
 
     column++;
@@ -1367,7 +1734,8 @@ function moveGeneralForward() {
     generalDirection ===
     "conjugate"
     &&
-    row < 3
+    row <
+    3
   ) {
 
     row++;
@@ -1404,7 +1772,8 @@ function moveGeneralBackward() {
     generalDirection ===
     "transverse"
     &&
-    column > 0
+    column >
+    0
   ) {
 
     column--;
@@ -1416,7 +1785,8 @@ function moveGeneralBackward() {
     generalDirection ===
     "conjugate"
     &&
-    row > 0
+    row >
+    0
   ) {
 
     row--;
@@ -1469,14 +1839,18 @@ function clearGeneralStyles() {
 function generalIsSolved() {
 
   for (
-    let row = 0;
-    row < 4;
+    let row =
+      0;
+    row <
+    4;
     row++
   ) {
 
     for (
-      let column = 0;
-      column < 4;
+      let column =
+        0;
+      column <
+        4;
       column++
     ) {
 
@@ -1486,11 +1860,12 @@ function generalIsSolved() {
           column
         ).value
         !==
-        activeGeneral.solution[
-          row
-        ][
-          column
-        ]
+        activeGeneral
+          .solution[
+            row
+          ][
+            column
+          ]
       ) {
 
         return false;
@@ -1522,14 +1897,18 @@ function checkGeneral() {
 
 
   for (
-    let row = 0;
-    row < 4;
+    let row =
+      0;
+    row <
+    4;
     row++
   ) {
 
     for (
-      let column = 0;
-      column < 4;
+      let column =
+        0;
+      column <
+        4;
       column++
     ) {
 
@@ -1554,11 +1933,12 @@ function checkGeneral() {
 
       if (
         input.value ===
-        activeGeneral.solution[
-          row
-        ][
-          column
-        ]
+        activeGeneral
+          .solution[
+            row
+          ][
+            column
+          ]
       ) {
 
         correct++;
@@ -1593,24 +1973,12 @@ function checkGeneral() {
     generalIsSolved()
   ) {
 
-    generalFeedback.textContent =
-      "✦ Every letter satisfies both directions.";
-
-
     generalSolvedPanel
       .classList
       .add(
         "visible"
       );
 
-
-    /*
-      Only count a true solve.
-
-      If Reveal was used,
-      filling the grid later does not
-      become a puzzle_solved event.
-    */
 
     if (
       !generalSolveTracked
@@ -1628,6 +1996,52 @@ function checkGeneral() {
         activeGeneral.number
       );
 
+
+      const result =
+        completeGeneralProfile();
+
+
+      if (
+        result
+        &&
+        result.xpEarned >
+        0
+      ) {
+
+        generalFeedback.textContent =
+          "✦ Every letter satisfies both directions. +"
+          +
+          result.xpEarned
+          +
+          " XP";
+
+      }
+
+      else if (
+        result
+        &&
+        result.alreadyCompleted
+      ) {
+
+        generalFeedback.textContent =
+          "✦ Every letter satisfies both directions. Puzzle already catalogued.";
+
+      }
+
+      else {
+
+        generalFeedback.textContent =
+          "✦ Every letter satisfies both directions.";
+
+      }
+
+    }
+
+    else {
+
+      generalFeedback.textContent =
+        "✦ Every letter satisfies both directions.";
+
     }
 
 
@@ -1637,7 +2051,8 @@ function checkGeneral() {
 
 
   if (
-    filled === 0
+    filled ===
+    0
   ) {
 
     generalFeedback.textContent =
@@ -1673,14 +2088,18 @@ function hintGeneral() {
 
 
   for (
-    let row = 0;
-    row < 4;
+    let row =
+      0;
+    row <
+    4;
     row++
   ) {
 
     for (
-      let column = 0;
-      column < 4;
+      let column =
+        0;
+      column <
+        4;
       column++
     ) {
 
@@ -1693,15 +2112,17 @@ function hintGeneral() {
 
       if (
         input.value !==
-        activeGeneral.solution[
-          row
-        ][
-          column
-        ]
+        activeGeneral
+          .solution[
+            row
+          ][
+            column
+          ]
       ) {
 
         candidates.push(
           {
+
             input:
               input,
 
@@ -1710,6 +2131,7 @@ function hintGeneral() {
 
             column:
               column
+
           }
         );
 
@@ -1738,11 +2160,12 @@ function hintGeneral() {
 
 
   target.input.value =
-    activeGeneral.solution[
-      target.row
-    ][
-      target.column
-    ];
+    activeGeneral
+      .solution[
+        target.row
+      ][
+        target.column
+      ];
 
 
   generalFeedback.textContent =
@@ -1830,14 +2253,18 @@ function revealGeneral() {
 
 
   for (
-    let row = 0;
-    row < 4;
+    let row =
+      0;
+    row <
+    4;
     row++
   ) {
 
     for (
-      let column = 0;
-      column < 4;
+      let column =
+        0;
+      column <
+        4;
       column++
     ) {
 
@@ -1845,11 +2272,12 @@ function revealGeneral() {
         row,
         column
       ).value =
-        activeGeneral.solution[
-          row
-        ][
-          column
-        ];
+        activeGeneral
+          .solution[
+            row
+          ][
+            column
+          ];
 
     }
 
@@ -1857,7 +2285,7 @@ function revealGeneral() {
 
 
   generalFeedback.textContent =
-    "Solution revealed.";
+    "Solution revealed. This does not count toward your SU(1) streak.";
 
 
   generalSolvedPanel
@@ -1971,6 +2399,10 @@ function loadMiniPuzzle(
 
 
   miniWasRevealed =
+    false;
+
+
+  miniProfileCompletionHandled =
     false;
 
 
@@ -2139,10 +2571,6 @@ function checkMini() {
     );
 
 
-    miniFeedback.textContent =
-      "✣ Correct — the symmetry closes at the center.";
-
-
     miniSolvedLetter.textContent =
       activeMini.answer;
 
@@ -2169,6 +2597,52 @@ function checkMini() {
         "su2_mini",
         activeMini.number
       );
+
+
+      const result =
+        completeMiniProfile();
+
+
+      if (
+        result
+        &&
+        result.xpEarned >
+        0
+      ) {
+
+        miniFeedback.textContent =
+          "✣ Correct — the symmetry closes at the center. +"
+          +
+          result.xpEarned
+          +
+          " XP";
+
+      }
+
+      else if (
+        result
+        &&
+        result.alreadyCompleted
+      ) {
+
+        miniFeedback.textContent =
+          "✣ Correct — the symmetry closes at the center. Puzzle already catalogued.";
+
+      }
+
+      else {
+
+        miniFeedback.textContent =
+          "✣ Correct — the symmetry closes at the center.";
+
+      }
+
+    }
+
+    else {
+
+      miniFeedback.textContent =
+        "✣ Correct — the symmetry closes at the center.";
 
     }
 
@@ -2291,7 +2765,7 @@ function revealMini() {
 
 
   miniFeedback.textContent =
-    "Center revealed.";
+    "Center revealed. This does not count toward your SU(2) streak.";
 
 
   miniSolvedLetter.textContent =
@@ -2355,13 +2829,6 @@ document
 
 /* ==========================================================
    SHARE
-
-   Analytics fires only after:
-   - native share successfully resolves, OR
-   - clipboard copy succeeds.
-
-   Cancelling the native share sheet
-   does NOT count as a share.
 ========================================================== */
 
 async function sharePuzzle(
@@ -2380,6 +2847,7 @@ async function sharePuzzle(
 
       await navigator.share(
         {
+
           title:
             title,
 
@@ -2388,6 +2856,7 @@ async function sharePuzzle(
 
           url:
             window.location.href
+
         }
       );
 
@@ -2397,8 +2866,10 @@ async function sharePuzzle(
         mode,
         puzzleNumber,
         {
+
           share_method:
             "native"
+
         }
       );
 
@@ -2424,8 +2895,10 @@ async function sharePuzzle(
       mode,
       puzzleNumber,
       {
+
         share_method:
           "clipboard"
+
       }
     );
 
@@ -2445,6 +2918,7 @@ async function sharePuzzle(
           original;
 
       },
+
       1200
     );
 
@@ -2453,11 +2927,6 @@ async function sharePuzzle(
   catch (
     error
   ) {
-
-    /*
-      If someone cancels the system
-      share sheet, no share event fires.
-    */
 
     console.log(
       "Share cancelled."
@@ -2575,7 +3044,7 @@ document
     "click",
     function () {
 
-      const solved =
+      const miniSolved =
         miniCenterInput.value
           .toUpperCase()
         ===
@@ -2583,7 +3052,7 @@ document
 
 
       const status =
-        solved
+        miniSolved
         ?
           "✣ FOLD IN ONE — SOLVED"
         :
@@ -2628,35 +3097,24 @@ document
 
 
 /* ==========================================================
-   ARCHIVE
+   BUILD ARCHIVE
 ========================================================== */
 
-const archiveGeneralTab =
-  document.getElementById(
-    "archiveGeneralTab"
-  );
-
-
-const archiveMiniTab =
-  document.getElementById(
-    "archiveMiniTab"
-  );
-
-
-const archiveGeneralList =
-  document.getElementById(
-    "archiveGeneralList"
-  );
-
-
-const archiveMiniList =
-  document.getElementById(
-    "archiveMiniList"
-  );
-
-
-
 function buildArchive() {
+
+  if (
+    koanPlusPanel
+  ) {
+
+    koanPlusPanel.classList.remove(
+      "visible"
+    );
+
+  }
+
+
+  renderKoanArchiveAccess();
+
 
   buildGeneralArchive();
 
@@ -2707,6 +3165,10 @@ function buildGeneralArchive() {
   }
 
 
+  const hasAccess =
+    archiveUnlocked();
+
+
   archive.forEach(
     function (
       puzzle
@@ -2722,49 +3184,68 @@ function buildGeneralArchive() {
         "archive-card";
 
 
-      card.innerHTML =
-        '<div class="archive-top">'
-        +
-        '<span class="archive-number">'
-        +
-        'PUZZLE #'
-        +
-        puzzle.number
-        +
-        '</span>'
-        +
-        '<span class="archive-type general">'
-        +
-        'SU(1)'
-        +
-        '</span>'
-        +
-        '</div>'
-        +
-        '<div class="archive-title">'
-        +
-        puzzle.title
-        +
-        '</div>'
-        +
-        '<div class="archive-description">'
-        +
-        puzzle.subtitle
-        +
-        '</div>'
-        +
-        '<button class="archive-play-button" type="button">'
-        +
-        'Play Archived SU(1)'
-        +
-        '</button>';
+      if (
+        !hasAccess
+      ) {
+
+        card.classList.add(
+          "locked"
+        );
+
+      }
 
 
-      card
-        .querySelector(
+      card.innerHTML = `
+
+        <div class="archive-top">
+
+          <span class="archive-number">
+            PUZZLE #${puzzle.number}
+          </span>
+
+          <span class="archive-type general">
+            SU(1)
+          </span>
+
+        </div>
+
+        <div class="archive-title">
+          ${puzzle.title}
+        </div>
+
+        <div class="archive-description">
+          ${puzzle.subtitle}
+        </div>
+
+        <button
+          class="archive-play-button"
+          type="button"
+        >
+
+          ${
+            hasAccess
+            ?
+              "Play Archived SU(1)"
+            :
+              "🔒 Unlock with Learning Lab+"
+          }
+
+        </button>
+
+      `;
+
+
+      const button =
+        card.querySelector(
           ".archive-play-button"
-        )
-        .addEventListener(
+        );
+
+
+      if (
+        hasAccess
+      ) {
+
+        button.addEventListener(
           "click",
           function () {
 
@@ -2783,13 +3264,43 @@ function buildGeneralArchive() {
               "su1",
               puzzle.number,
               {
+
                 archived:
                   true
+
               }
             );
 
           }
         );
+
+      }
+
+      else {
+
+        button.addEventListener(
+          "click",
+          function () {
+
+            showKoanPlusPanel();
+
+
+            trackEvent(
+              "archive_locked_clicked",
+              "su1",
+              puzzle.number,
+              {
+
+                archived:
+                  true
+
+              }
+            );
+
+          }
+        );
+
+      }
 
 
       archiveGeneralList.appendChild(
@@ -2843,6 +3354,10 @@ function buildMiniArchive() {
   }
 
 
+  const hasAccess =
+    archiveUnlocked();
+
+
   archive.forEach(
     function (
       puzzle
@@ -2858,49 +3373,68 @@ function buildMiniArchive() {
         "archive-card";
 
 
-      card.innerHTML =
-        '<div class="archive-top">'
-        +
-        '<span class="archive-number">'
-        +
-        'MINI #'
-        +
-        puzzle.number
-        +
-        '</span>'
-        +
-        '<span class="archive-type mini">'
-        +
-        'SU(2) MINI'
-        +
-        '</span>'
-        +
-        '</div>'
-        +
-        '<div class="archive-title">'
-        +
-        puzzle.title
-        +
-        '</div>'
-        +
-        '<div class="archive-description">'
-        +
-        puzzle.subtitle
-        +
-        '</div>'
-        +
-        '<button class="archive-play-button" type="button">'
-        +
-        'Play Archived Mini'
-        +
-        '</button>';
+      if (
+        !hasAccess
+      ) {
+
+        card.classList.add(
+          "locked"
+        );
+
+      }
 
 
-      card
-        .querySelector(
+      card.innerHTML = `
+
+        <div class="archive-top">
+
+          <span class="archive-number">
+            MINI #${puzzle.number}
+          </span>
+
+          <span class="archive-type mini">
+            SU(2) MINI
+          </span>
+
+        </div>
+
+        <div class="archive-title">
+          ${puzzle.title}
+        </div>
+
+        <div class="archive-description">
+          ${puzzle.subtitle}
+        </div>
+
+        <button
+          class="archive-play-button"
+          type="button"
+        >
+
+          ${
+            hasAccess
+            ?
+              "Play Archived Mini"
+            :
+              "🔒 Unlock with Learning Lab+"
+          }
+
+        </button>
+
+      `;
+
+
+      const button =
+        card.querySelector(
           ".archive-play-button"
-        )
-        .addEventListener(
+        );
+
+
+      if (
+        hasAccess
+      ) {
+
+        button.addEventListener(
           "click",
           function () {
 
@@ -2919,13 +3453,43 @@ function buildMiniArchive() {
               "su2_mini",
               puzzle.number,
               {
+
                 archived:
                   true
+
               }
             );
 
           }
         );
+
+      }
+
+      else {
+
+        button.addEventListener(
+          "click",
+          function () {
+
+            showKoanPlusPanel();
+
+
+            trackEvent(
+              "archive_locked_clicked",
+              "su2_mini",
+              puzzle.number,
+              {
+
+                archived:
+                  true
+
+              }
+            );
+
+          }
+        );
+
+      }
 
 
       archiveMiniList.appendChild(
@@ -2948,24 +3512,32 @@ archiveGeneralTab
     "click",
     function () {
 
-      archiveGeneralTab.classList.add(
-        "active"
-      );
+      archiveGeneralTab
+        .classList
+        .add(
+          "active"
+        );
 
 
-      archiveMiniTab.classList.remove(
-        "active"
-      );
+      archiveMiniTab
+        .classList
+        .remove(
+          "active"
+        );
 
 
-      archiveGeneralList.classList.add(
-        "active"
-      );
+      archiveGeneralList
+        .classList
+        .add(
+          "active"
+        );
 
 
-      archiveMiniList.classList.remove(
-        "active"
-      );
+      archiveMiniList
+        .classList
+        .remove(
+          "active"
+        );
 
     }
   );
@@ -2977,24 +3549,32 @@ archiveMiniTab
     "click",
     function () {
 
-      archiveMiniTab.classList.add(
-        "active"
-      );
+      archiveMiniTab
+        .classList
+        .add(
+          "active"
+        );
 
 
-      archiveGeneralTab.classList.remove(
-        "active"
-      );
+      archiveGeneralTab
+        .classList
+        .remove(
+          "active"
+        );
 
 
-      archiveMiniList.classList.add(
-        "active"
-      );
+      archiveMiniList
+        .classList
+        .add(
+          "active"
+        );
 
 
-      archiveGeneralList.classList.remove(
-        "active"
-      );
+      archiveGeneralList
+        .classList
+        .remove(
+          "active"
+        );
 
     }
   );
@@ -3002,14 +3582,42 @@ archiveMiniTab
 
 
 /* ==========================================================
+   PROFILE UPDATE
+
+   Rebuild archive if plan changes.
+========================================================== */
+
+window.addEventListener(
+  "pat-profile-updated",
+  function () {
+
+    refreshKoanProfile();
+
+
+    if (
+      document
+        .getElementById(
+          "archiveScreen"
+        )
+        .classList
+        .contains(
+          "active"
+        )
+    ) {
+
+      buildArchive();
+
+    }
+
+  }
+);
+
+
+
+/* ==========================================================
    START
 
-   These initialize the UI only.
-
-   They intentionally DO NOT send
-   puzzle_started, because simply loading
-   koankaon.html is not the same thing as
-   choosing SU(1) or SU(2).
+   Initialize UI only.
 ========================================================== */
 
 loadGeneralPuzzle(
@@ -3023,6 +3631,9 @@ loadMiniPuzzle(
 
 
 buildArchive();
+
+
+refreshKoanProfile();
 
 
 });
