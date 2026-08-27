@@ -99,28 +99,20 @@ gtag(
 ========================================================= */
 
 * {
-
-  box-sizing:
-    border-box;
-
+  box-sizing: border-box;
 }
 
 
 html {
-
-  scroll-behavior:
-    smooth;
-
+  scroll-behavior: smooth;
 }
 
 
 body {
 
-  margin:
-    0;
+  margin: 0;
 
-  min-height:
-    100vh;
+  min-height: 100vh;
 
   padding:
     18px
@@ -143,17 +135,13 @@ body {
 
 button,
 input {
-
-  font:
-    inherit;
-
+  font: inherit;
 }
 
 
 button {
 
-  cursor:
-    pointer;
+  cursor: pointer;
 
   -webkit-tap-highlight-color:
     transparent;
@@ -236,7 +224,7 @@ button {
     center;
 
   margin-bottom:
-    -2px;
+    -5px;
 
 }
 
@@ -248,8 +236,8 @@ button {
 
   width:
     min(
-      290px,
-      76vw
+      300px,
+      78vw
     );
 
   height:
@@ -288,6 +276,9 @@ button {
     7px
     0
     10px;
+
+  color:
+    var(--red);
 
   font-size:
     clamp(
@@ -433,7 +424,7 @@ button {
 
 
 /* =========================================================
-   PUZZLE
+   PUZZLE CARD
 ========================================================= */
 
 .puzzle-card {
@@ -484,7 +475,7 @@ button {
 .kicker {
 
   color:
-    var(--brown);
+    var(--blue);
 
   font-size:
     .72rem;
@@ -576,7 +567,7 @@ button {
 
 
 /* =========================================================
-   GRAPH LABELS
+   AXIS LABELS
 ========================================================= */
 
 .axis-label {
@@ -905,10 +896,7 @@ button {
 
 
 .clue-content {
-
-  min-width:
-    0;
-
+  min-width: 0;
 }
 
 
@@ -1088,7 +1076,7 @@ button {
   border:
     2px
     solid
-    #555;
+    var(--blue);
 
   border-radius:
     6px;
@@ -1115,9 +1103,6 @@ button {
 
 
 .letter-box:focus {
-
-  border-color:
-    var(--blue);
 
   outline:
     none;
@@ -1163,10 +1148,7 @@ button {
 
 
 button {
-
-  border:
-    none;
-
+  border: none;
 }
 
 
@@ -1195,10 +1177,10 @@ button {
 #reset-puzzle {
 
   background:
-    var(--red-light);
+    var(--red);
 
   color:
-    #8a2530;
+    white;
 
 }
 
@@ -1280,7 +1262,7 @@ button {
 
 
 /* =========================================================
-   RESULT
+   RESULT CARD
 ========================================================= */
 
 #result-card {
@@ -1312,17 +1294,6 @@ button {
 
   background:
     #fff8d8;
-
-  box-shadow:
-    0
-    4px
-    14px
-    rgba(
-      0,
-      0,
-      0,
-      .06
-    );
 
 }
 
@@ -1486,15 +1457,15 @@ button {
     0;
 
   padding:
-    18px;
+    20px;
 
-  border-left:
-    6px
+  border:
+    1px
     solid
-    var(--gold);
+    var(--soft-border);
 
   border-radius:
-    12px;
+    16px;
 
   background:
     var(--paper);
@@ -1509,6 +1480,12 @@ button {
 
   margin-top:
     0;
+
+  color:
+    var(--blue);
+
+  text-align:
+    center;
 
 }
 
@@ -1722,28 +1699,6 @@ button {
   }
 
 
-  .clue-silhouette {
-
-    width:
-      27px;
-
-    height:
-      27px;
-
-  }
-
-
-  .clue-silhouette svg {
-
-    width:
-      26px;
-
-    height:
-      26px;
-
-  }
-
-
   .concept-grid {
 
     grid-template-columns:
@@ -1776,7 +1731,7 @@ button {
   .brand-logo {
 
     width:
-      235px;
+      245px;
 
   }
 
@@ -1808,55 +1763,6 @@ button {
   }
 
 
-  .clue-column-subtitle {
-
-    font-size:
-      .61rem;
-
-  }
-
-
-  .clue-number {
-
-    width:
-      20px;
-
-    height:
-      20px;
-
-  }
-
-
-  .clue-item {
-
-    padding:
-      4px;
-
-  }
-
-
-  .clue-silhouette {
-
-    width:
-      23px;
-
-    height:
-      23px;
-
-  }
-
-
-  .clue-silhouette svg {
-
-    width:
-      22px;
-
-    height:
-      22px;
-
-  }
-
-
   .letter-box {
 
     width:
@@ -1883,7 +1789,7 @@ button {
 
 
 <!-- =========================================================
-     CONTRONYM LOGO
+     MAIN CONTRONYM LOGO
 ========================================================= -->
 
 <section class="brand-panel">
@@ -1894,112 +1800,123 @@ button {
 
 <svg
   class="brand-logo"
-  viewBox="0 0 400 260"
-  aria-label="Contronym Majorana of Meaning"
+  viewBox="0 0 400 250"
+  aria-label="Contronym Majorana of Meaning logo"
 >
 
 
 <!-- =====================================================
-     UPPER HALF OF BLUE ORBIT
-
-     DRAWN FIRST:
-     PASSES BEHIND THE RED C
+     UPPER HALF OF SHORT ELLIPTICAL ORBIT
+     DRAWN BEHIND C
 ===================================================== -->
 
 <path
   d="
-    M 55 154
+    M 82 137
 
-    C 83 91,
-      150 49,
-      225 49
+    C 110 91,
+      164 70,
+      220 72
 
-    C 287 49,
-      331 75,
-      344 106
+    C 268 73,
+      304 91,
+      321 119
   "
   fill="none"
   stroke="#1f568f"
   stroke-width="7"
-  stroke-dasharray="18 13"
+  stroke-dasharray="17 13"
   stroke-linecap="round"
-  transform="rotate(-12 200 130)"
+/>
+
+
+
+<!-- =====================================================
+     BLUE LEFT ENDPOINT DOT
+     INSIDE THE ORBIT
+     NOT TOUCHING THE LINE
+===================================================== -->
+
+<circle
+  cx="103"
+  cy="133"
+  r="10"
+  fill="#1f568f"
 />
 
 
 
 <!-- =====================================================
      RED C
-
-     DRAWN ABOVE THE UPPER ORBIT
 ===================================================== -->
 
 <path
   d="
-    M 246 59
+    M 247 57
 
-    C 222 32,
-      173 30,
-      143 51
+    C 222 33,
+      178 30,
+      146 50
 
-    C 111 74,
-      96 111,
-      100 146
+    C 113 71,
+      99 107,
+      102 143
 
-    C 104 185,
-      128 210,
-      160 215
+    C 105 181,
+      129 209,
+      162 214
 
-    C 194 221,
-      225 202,
-      247 178
+    C 196 220,
+      226 202,
+      249 178
   "
   fill="none"
   stroke="#c92636"
-  stroke-width="30"
+  stroke-width="31"
   stroke-linecap="round"
 />
 
 
 
 <!-- =====================================================
-     LOWER HALF OF BLUE ORBIT
-
-     DRAWN AFTER THE C:
-     PASSES IN FRONT OF THE RED C
+     LOWER HALF OF SHORT ELLIPTICAL ORBIT
+     DRAWN IN FRONT OF C
 ===================================================== -->
 
 <path
   d="
-    M 344 106
+    M 321 119
 
-    C 324 169,
-      263 208,
-      191 215
+    C 305 157,
+      264 183,
+      214 191
 
-    C 124 221,
-      75 195,
-      55 154
+    C 163 199,
+      114 182,
+      82 137
   "
   fill="none"
   stroke="#1f568f"
   stroke-width="7"
-  stroke-dasharray="18 13"
+  stroke-dasharray="17 13"
   stroke-linecap="round"
-  transform="rotate(-12 200 130)"
 />
 
 
 
 <!-- =====================================================
-     ν ON RIGHT END OF ORBIT
+     SINGLE ν AT RIGHT ENDPOINT
+
+     REPLACES RIGHT DOT
+     SITS INSIDE ORBIT
+     DOES NOT TOUCH PATH
 ===================================================== -->
 
 <text
-  x="335"
-  y="92"
+  x="295"
+  y="128"
   font-family="Georgia, serif"
-  font-size="42"
+  font-size="43"
   font-style="italic"
   font-weight="bold"
   fill="#1f568f"
@@ -2103,10 +2020,9 @@ button {
 
 <p>
 
-  Each hint reveals one word from each side
-  of the semantic parabola.
+  Reveal paired clues from opposite sides of the graph.
 
-  Find the single word capable of carrying both charges.
+  Find the single word capable of carrying both meanings.
 
 </p>
 
@@ -2116,7 +2032,7 @@ button {
 
 
 <!-- =========================================================
-     GRAPH
+     MEANING GRAPH
 ========================================================= -->
 
 <div class="game-container">
@@ -2129,9 +2045,7 @@ button {
 >
 
 
-<!-- =====================================================
-     TRANSVERSE AXIS
-===================================================== -->
+<!-- TRANSVERSE AXIS -->
 
 <line
   x1="155"
@@ -2156,9 +2070,7 @@ button {
 
 
 
-<!-- =====================================================
-     CONJUGATE AXIS
-===================================================== -->
+<!-- CONJUGATE AXIS -->
 
 <line
   x1="410"
@@ -2177,16 +2089,14 @@ button {
 
 
 
-<!-- =====================================================
-     WIDE RED PARABOLA HALF
-===================================================== -->
+<!-- NEGATIVE PARABOLA -->
 
 <path
   d="
     M 190 72
 
-    C 216 188,
-      280 315,
+    C 215 185,
+      278 315,
       410 385
   "
   fill="none"
@@ -2198,16 +2108,14 @@ button {
 
 
 
-<!-- =====================================================
-     WIDE BLUE PARABOLA HALF
-===================================================== -->
+<!-- POSITIVE PARABOLA -->
 
 <path
   d="
     M 410 385
 
-    C 540 315,
-      604 188,
+    C 542 315,
+      605 185,
       630 72
   "
   fill="none"
@@ -2219,9 +2127,7 @@ button {
 
 
 
-<!-- =====================================================
-     GOLD VERTEX
-===================================================== -->
+<!-- GOLD VERTEX -->
 
 <circle
   cx="410"
@@ -2234,17 +2140,13 @@ button {
 <path
   d="
     M 410 367
-
     L 415 380
     L 429 385
     L 415 390
-
     L 410 403
-
     L 405 390
     L 391 385
     L 405 380
-
     Z
   "
   fill="#d6aa44"
@@ -2253,35 +2155,47 @@ button {
 
 
 <!-- =====================================================
-     BLACK ν TRAJECTORY
+     THIN BLACK ν FIELD TRAJECTORY
 
      WRAPS AROUND TRANSVERSE AXIS
-     BUT DIPS BELOW VERTEX
+     WITHOUT TOUCHING VERTEX
 ===================================================== -->
 
 <path
   d="
-    M 205 399
+    M 205 398
 
-    C 250 368,
-      292 371,
-      335 393
+    C 248 369,
+      286 369,
+      326 390
 
-    C 360 406,
-      381 418,
-      397 422
+    C 351 404,
+      373 418,
+      393 423
 
-    C 406 425,
-      416 425,
-      425 422
+    C 401 425,
+      404 426,
+      406 426
 
-    C 443 417,
-      464 405,
-      490 393
+    C 407 426,
+      408 426,
+      409 426
+
+    C 410 426,
+      411 426,
+      412 426
+
+    C 414 426,
+      417 425,
+      426 422
+
+    C 448 415,
+      468 402,
+      493 391
 
     C 535 371,
-      580 370,
-      625 398
+      579 371,
+      625 397
   "
   fill="none"
   stroke="#222"
@@ -2292,12 +2206,10 @@ button {
 
 
 
-<!-- =====================================================
-     ν AT RIGHT END
-===================================================== -->
+<!-- ν ON TRAJECTORY -->
 
 <text
-  x="633"
+  x="631"
   y="403"
   fill="#222"
   font-family="Georgia, serif"
@@ -2311,10 +2223,6 @@ button {
 </svg>
 
 
-
-<!-- =====================================================
-     AXIS LABELS
-===================================================== -->
 
 <div class="axis-label conjugate-label">
 
@@ -2343,9 +2251,7 @@ button {
 
 
 
-<!-- =====================================================
-     NEGATIVE CLUES
-===================================================== -->
+<!-- NEGATIVE CLUES -->
 
 <div class="clue-column negative-column">
 
@@ -2371,9 +2277,7 @@ button {
 
 
 
-<!-- =====================================================
-     POSITIVE CLUES
-===================================================== -->
+<!-- POSITIVE CLUES -->
 
 <div class="clue-column positive-column">
 
@@ -2484,7 +2388,7 @@ button {
 
 
 <!-- =========================================================
-     RESULT
+     RESULT CARD
 ========================================================= -->
 
 <div id="result-card">
@@ -2554,7 +2458,7 @@ button {
 
 
 <!-- =========================================================
-     EXPLANATION
+     CONCEPT
 ========================================================= -->
 
 <section class="concept-panel">
@@ -2571,9 +2475,9 @@ button {
   while context selects between opposite semantic expressions.
 
   The conjugate axis represents the polarity between those
-  meanings, while the transverse domain allows the same word
-  to move through different contextual states without losing
-  its underlying identity.
+  meanings, while the transverse domain lets the same word move
+  through different contextual states without losing its
+  underlying lexical identity.
 
 </p>
 
@@ -2587,6 +2491,8 @@ button {
   − Conjugate
 </strong>
 
+<br>
+
 Opposed semantic charge.
 
 </div>
@@ -2598,6 +2504,8 @@ Opposed semantic charge.
   ✦ Vertex
 </strong>
 
+<br>
+
 The neutral lexical invariant.
 
 </div>
@@ -2608,6 +2516,8 @@ The neutral lexical invariant.
 <strong style="color:#1f568f;">
   + Transverse
 </strong>
+
+<br>
 
 Contextual semantic expression.
 
@@ -2724,7 +2634,7 @@ function trackContronymEvent(
 
 
 /* =========================================================
-   SILHOUETTE ICONS
+   SILHOUETTES
 ========================================================= */
 
 const silhouetteIcons = {
@@ -2732,7 +2642,7 @@ const silhouetteIcons = {
 
 cut:
 `
-<svg viewBox="0 0 64 64" aria-hidden="true">
+<svg viewBox="0 0 64 64">
 
   <g
     fill="none"
@@ -2743,7 +2653,6 @@ cut:
   >
 
     <circle cx="14" cy="18" r="8" />
-
     <circle cx="14" cy="46" r="8" />
 
     <path
@@ -2762,7 +2671,7 @@ cut:
 
 trim:
 `
-<svg viewBox="0 0 64 64" aria-hidden="true">
+<svg viewBox="0 0 64 64">
 
   <g
     fill="#111"
@@ -2798,19 +2707,13 @@ trim:
     />
 
     <path
-      d="
-        M28 39
-        L15 55
-      "
+      d="M28 39 L15 55"
       fill="none"
       stroke-width="7"
     />
 
     <path
-      d="
-        M27 31
-        L12 15
-      "
+      d="M27 31 L12 15"
       fill="none"
       stroke-width="7"
     />
@@ -2823,7 +2726,7 @@ trim:
 
 remove:
 `
-<svg viewBox="0 0 64 64" aria-hidden="true">
+<svg viewBox="0 0 64 64">
 
   <rect
     x="7"
@@ -2845,10 +2748,7 @@ remove:
   />
 
   <path
-    d="
-      M37 31
-      H56
-    "
+    d="M37 31 H56"
     fill="none"
     stroke="#fff"
     stroke-width="4"
@@ -2861,7 +2761,7 @@ remove:
 
 attach:
 `
-<svg viewBox="0 0 64 64" aria-hidden="true">
+<svg viewBox="0 0 64 64">
 
   <path
     d="
@@ -2893,7 +2793,7 @@ attach:
 
 fasten:
 `
-<svg viewBox="0 0 64 64" aria-hidden="true">
+<svg viewBox="0 0 64 64">
 
   <rect
     x="8"
@@ -2931,7 +2831,7 @@ fasten:
 
 secure:
 `
-<svg viewBox="0 0 64 64" aria-hidden="true">
+<svg viewBox="0 0 64 64">
 
   <rect
     x="12"
@@ -2956,7 +2856,6 @@ secure:
     fill="none"
     stroke="#111"
     stroke-width="7"
-    stroke-linecap="round"
   />
 
   <circle
@@ -2966,21 +2865,13 @@ secure:
     fill="#fff"
   />
 
-  <rect
-    x="30"
-    y="40"
-    width="4"
-    height="9"
-    fill="#fff"
-  />
-
 </svg>
 `,
 
 
 restrict:
 `
-<svg viewBox="0 0 64 64" aria-hidden="true">
+<svg viewBox="0 0 64 64">
 
   <rect
     x="6"
@@ -3023,7 +2914,7 @@ restrict:
 
 penalize:
 `
-<svg viewBox="0 0 64 64" aria-hidden="true">
+<svg viewBox="0 0 64 64">
 
   <g fill="#111">
 
@@ -3061,7 +2952,7 @@ penalize:
 
 punish:
 `
-<svg viewBox="0 0 64 64" aria-hidden="true">
+<svg viewBox="0 0 64 64">
 
   <path
     d="
@@ -3085,23 +2976,13 @@ punish:
     transform="rotate(-25 35 38)"
   />
 
-  <path
-    d="
-      M7 53
-      H36
-    "
-    stroke="#111"
-    stroke-width="6"
-    stroke-linecap="round"
-  />
-
 </svg>
 `,
 
 
 permit:
 `
-<svg viewBox="0 0 64 64" aria-hidden="true">
+<svg viewBox="0 0 64 64">
 
   <rect
     x="8"
@@ -3130,23 +3011,13 @@ permit:
     fill="#111"
   />
 
-  <path
-    d="
-      M42 35
-      L57 35
-    "
-    stroke="#111"
-    stroke-width="5"
-    stroke-linecap="round"
-  />
-
 </svg>
 `,
 
 
 authorize:
 `
-<svg viewBox="0 0 64 64" aria-hidden="true">
+<svg viewBox="0 0 64 64">
 
   <path
     d="
@@ -3192,7 +3063,7 @@ authorize:
 
 approve:
 `
-<svg viewBox="0 0 64 64" aria-hidden="true">
+<svg viewBox="0 0 64 64">
 
   <circle
     cx="32"
@@ -3695,6 +3566,7 @@ function createClueElement(
       ${index + 1}
     </div>
 
+
     <div class="clue-content">
 
       <div class="clue-word-row">
@@ -3848,10 +3720,6 @@ function createBoxes() {
 
     input.autocomplete =
       "off";
-
-
-    input.inputMode =
-      "text";
 
 
     answerBoxes.appendChild(
@@ -4069,19 +3937,6 @@ function showResult() {
 
     </div>
 
-
-    <p>
-
-      <strong>
-        Majorana of Meaning:
-      </strong>
-
-      the lexical form remains invariant
-      while context determines which
-      semantic charge is expressed.
-
-    </p>
-
   `;
 
 
@@ -4148,7 +4003,6 @@ function submitGuess() {
   updateAttempts();
 
 
-
   if (
     guess ===
     word
@@ -4203,7 +4057,6 @@ function submitGuess() {
   }
 
 
-
   if (
     attempts >=
     3
@@ -4240,10 +4093,7 @@ function submitGuess() {
             attempts,
 
           hint_pairs_used:
-            hintsUsed,
-
-          archived:
-            currentPuzzleArchived
+            hintsUsed
 
         }
       );
@@ -4256,7 +4106,6 @@ function submitGuess() {
   }
 
 
-
   message.textContent =
     "Not quite — charge mismatch. "
     +
@@ -4265,22 +4114,7 @@ function submitGuess() {
       attempts
     )
     +
-    " attempt"
-    +
-    (
-      (
-        3 -
-        attempts
-      )
-      ===
-      1
-      ?
-        ""
-      :
-        "s"
-    )
-    +
-    " remain.";
+    " attempts remain.";
 
 }
 
@@ -4348,17 +4182,6 @@ function resetPuzzle() {
   footerNote.textContent =
     puzzle.footer;
 
-
-  if (
-    answerBoxes.children[0]
-  ) {
-
-    answerBoxes
-      .children[0]
-      .focus();
-
-  }
-
 }
 
 
@@ -4370,10 +4193,6 @@ function loadPuzzle(
 
   puzzle =
     selectedPuzzle;
-
-
-  word =
-    puzzle.word.toUpperCase();
 
 
   currentPuzzleArchived =
@@ -4393,16 +4212,6 @@ function loadPuzzle(
     "none";
 
 
-  currentTab.classList.remove(
-    "active"
-  );
-
-
-  archiveTab.classList.remove(
-    "active"
-  );
-
-
   trackContronymEvent(
     "puzzle_started",
     puzzle,
@@ -4411,17 +4220,6 @@ function loadPuzzle(
       archived:
         currentPuzzleArchived
 
-    }
-  );
-
-
-  window.scrollTo(
-    {
-      top:
-        0,
-
-      behavior:
-        "smooth"
     }
   );
 
@@ -4465,19 +4263,13 @@ function buildArchive() {
           Contronym #${oldPuzzle.number}
         </div>
 
-
         <div class="archive-date">
           ${oldPuzzle.date}
         </div>
 
-
         <div class="archive-description">
-
           Revisit this Majorana of Meaning.
-          The solution remains hidden.
-
         </div>
-
 
         <button class="archive-play">
           Play Puzzle #${oldPuzzle.number}
@@ -4544,16 +4336,6 @@ currentTab.addEventListener(
 
     archiveTab.classList.remove(
       "active"
-    );
-
-
-    trackContronymEvent(
-      "puzzle_started",
-      puzzle,
-      {
-        archived:
-          false
-      }
     );
 
   }
@@ -4729,10 +4511,7 @@ showHintBtn.addEventListener(
         {
 
           pair_number:
-            visibleHintPairs,
-
-          hint_pairs_used:
-            hintsUsed
+            visibleHintPairs
 
         }
       );
@@ -4753,26 +4532,7 @@ showHintBtn.addEventListener(
 
 resetBtn.addEventListener(
   "click",
-  function () {
-
-    resetPuzzle();
-
-
-    trackContronymEvent(
-      "puzzle_started",
-      puzzle,
-      {
-
-        archived:
-          currentPuzzleArchived,
-
-        restarted:
-          true
-
-      }
-    );
-
-  }
+  resetPuzzle
 );
 
 
@@ -4806,24 +4566,6 @@ nativeShareBtn.addEventListener(
           }
         );
 
-
-        trackContronymEvent(
-          "puzzle_shared",
-          puzzle,
-          {
-
-            attempts:
-              attempts,
-
-            hint_pairs_used:
-              hintsUsed,
-
-            share_method:
-              "native"
-
-          }
-        );
-
       }
 
       catch (
@@ -4832,34 +4574,6 @@ nativeShareBtn.addEventListener(
 
         console.log(
           "Share cancelled."
-        );
-
-      }
-
-    }
-
-    else {
-
-      try {
-
-        await navigator
-          .clipboard
-          .writeText(
-            text
-            +
-            "\n\n"
-            +
-            window.location.href
-          );
-
-      }
-
-      catch (
-        error
-      ) {
-
-        console.log(
-          "Copy failed."
         );
 
       }
@@ -4903,25 +4617,8 @@ copyShareBtn.addEventListener(
             "Copy Result";
 
         },
+
         1200
-      );
-
-
-      trackContronymEvent(
-        "puzzle_shared",
-        puzzle,
-        {
-
-          attempts:
-            attempts,
-
-          hint_pairs_used:
-            hintsUsed,
-
-          share_method:
-            "clipboard"
-
-        }
       );
 
     }
