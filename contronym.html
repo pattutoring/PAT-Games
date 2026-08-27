@@ -196,7 +196,7 @@ button {
   padding:
     18px
     18px
-    20px;
+    21px;
 
   border:
     2px
@@ -236,24 +236,24 @@ button {
     center;
 
   margin-bottom:
-    4px;
+    -2px;
 
 }
 
 
 .brand-logo {
 
+  display:
+    block;
+
   width:
     min(
-      270px,
-      72vw
+      280px,
+      74vw
     );
 
   height:
     auto;
-
-  display:
-    block;
 
   overflow:
     visible;
@@ -264,8 +264,6 @@ button {
 .brand-panel h1 {
 
   margin:
-    2px
-    0
     0;
 
   font-size:
@@ -435,7 +433,7 @@ button {
 
 
 /* =========================================================
-   MAIN PUZZLE CARD
+   PUZZLE
 ========================================================= */
 
 .puzzle-card {
@@ -531,7 +529,7 @@ button {
 
 
 /* =========================================================
-   CARD-LIKE GRAPH AREA
+   GRAPH
 ========================================================= */
 
 .game-container {
@@ -578,7 +576,7 @@ button {
 
 
 /* =========================================================
-   AXIS LABELS
+   GRAPH LABELS
 ========================================================= */
 
 .axis-label {
@@ -601,7 +599,7 @@ button {
       255,
       248,
       232,
-      .92
+      .93
     );
 
   font-size:
@@ -616,7 +614,7 @@ button {
 .conjugate-label {
 
   top:
-    3px;
+    2px;
 
   left:
     50%;
@@ -641,7 +639,7 @@ button {
     4%;
 
   bottom:
-    69px;
+    68px;
 
   color:
     var(--blue);
@@ -661,7 +659,7 @@ button {
     50%;
 
   bottom:
-    4px;
+    3px;
 
   width:
     95%;
@@ -724,7 +722,7 @@ button {
       255,
       253,
       247,
-      .95
+      .96
     );
 
   box-shadow:
@@ -821,7 +819,7 @@ button {
     grid;
 
   gap:
-    9px;
+    8px;
 
 }
 
@@ -829,20 +827,20 @@ button {
 .clue-item {
 
   min-height:
-    58px;
+    62px;
 
   display:
     grid;
 
   grid-template-columns:
-    30px
+    28px
     1fr;
 
   align-items:
     center;
 
   gap:
-    7px;
+    6px;
 
   padding:
     6px;
@@ -923,15 +921,21 @@ button {
     center;
 
   gap:
-    7px;
+    6px;
 
 }
 
 
 .clue-word {
 
+  flex:
+    1;
+
+  min-width:
+    0;
+
   font-size:
-    .82rem;
+    .79rem;
 
   font-weight:
     bold;
@@ -945,10 +949,10 @@ button {
 .clue-silhouette {
 
   width:
-    25px;
+    32px;
 
   height:
-    25px;
+    32px;
 
   display:
     flex;
@@ -967,20 +971,14 @@ button {
 
 .clue-silhouette svg {
 
-  width:
-    24px;
-
-  height:
-    24px;
-
   display:
     block;
 
-  fill:
-    #111;
+  width:
+    31px;
 
-  stroke:
-    #111;
+  height:
+    31px;
 
 }
 
@@ -988,7 +986,7 @@ button {
 .hidden-clue {
 
   opacity:
-    .25;
+    .27;
 
 }
 
@@ -996,11 +994,11 @@ button {
 .hidden-clue
 .clue-word {
 
-  color:
-    transparent;
-
   position:
     relative;
+
+  color:
+    transparent;
 
 }
 
@@ -1034,7 +1032,7 @@ button {
 
 
 /* =========================================================
-   ANSWER AREA
+   ANSWER
 ========================================================= */
 
 .answer-section {
@@ -1282,7 +1280,7 @@ button {
 
 
 /* =========================================================
-   RESULT CARD
+   RESULT
 ========================================================= */
 
 #result-card {
@@ -1471,7 +1469,7 @@ button {
 
 
 /* =========================================================
-   CONCEPT CARD
+   CONCEPT
 ========================================================= */
 
 .concept-panel {
@@ -1672,7 +1670,7 @@ button {
 
 
 /* =========================================================
-   TABLET / MOBILE
+   MOBILE
 ========================================================= */
 
 @media
@@ -1689,7 +1687,7 @@ button {
   .clue-column {
 
     top:
-      45px;
+      46px;
 
     width:
       145px;
@@ -1704,26 +1702,10 @@ button {
   }
 
 
-  .negative-column {
-
-    left:
-      0;
-
-  }
-
-
-  .positive-column {
-
-    right:
-      0;
-
-  }
-
-
   .clue-word {
 
     font-size:
-      .72rem;
+      .69rem;
 
   }
 
@@ -1731,7 +1713,7 @@ button {
   .clue-item {
 
     grid-template-columns:
-      25px
+      23px
       1fr;
 
     gap:
@@ -1743,10 +1725,10 @@ button {
   .clue-silhouette {
 
     width:
-      21px;
+      27px;
 
     height:
-      21px;
+      27px;
 
   }
 
@@ -1754,10 +1736,10 @@ button {
   .clue-silhouette svg {
 
     width:
-      20px;
+      26px;
 
     height:
-      20px;
+      26px;
 
   }
 
@@ -1794,7 +1776,7 @@ button {
   .brand-logo {
 
     width:
-      220px;
+      230px;
 
   }
 
@@ -1829,7 +1811,7 @@ button {
   .clue-column-subtitle {
 
     font-size:
-      .62rem;
+      .61rem;
 
   }
 
@@ -1849,6 +1831,28 @@ button {
 
     padding:
       4px;
+
+  }
+
+
+  .clue-silhouette {
+
+    width:
+      23px;
+
+    height:
+      23px;
+
+  }
+
+
+  .clue-silhouette svg {
+
+    width:
+      22px;
+
+    height:
+      22px;
 
   }
 
@@ -1879,7 +1883,7 @@ button {
 
 
 <!-- =========================================================
-     CENTERED CONTRONYM BRAND
+     CONTRONYM LOGO
 ========================================================= -->
 
 <section class="brand-panel">
@@ -1890,8 +1894,8 @@ button {
 
 <svg
   class="brand-logo"
-  viewBox="0 0 360 230"
-  aria-label="Contronym Majorana of Meaning logo"
+  viewBox="0 0 400 260"
+  aria-label="Contronym Majorana of Meaning"
 >
 
 
@@ -1901,84 +1905,87 @@ button {
 
 <path
   d="
-    M 230 52
+    M 246 59
 
-    C 211 27,
-      158 24,
-      127 54
+    C 222 32,
+      173 30,
+      143 51
 
-    C 105 75,
+    C 111 74,
       96 111,
-      99 145
+      100 146
 
-    C 102 181,
-      124 202,
-      155 207
+    C 104 185,
+      128 210,
+      160 215
 
-    C 188 212,
-      216 194,
-      234 170
+    C 194 221,
+      225 202,
+      247 178
   "
   fill="none"
-  stroke="#c92535"
-  stroke-width="29"
+  stroke="#c92636"
+  stroke-width="30"
   stroke-linecap="round"
 />
 
 
 
 <!-- =====================================================
-     BLUE DASHED MAJORANA TRAIL
+     TRUE BLUE ORBIT
+
+     Elliptical orbital path passing behind/in front
+     of the red C rather than just a diagonal line.
+===================================================== -->
+
+<ellipse
+  cx="193"
+  cy="134"
+  rx="145"
+  ry="55"
+  transform="rotate(-20 193 134)"
+  fill="none"
+  stroke="#1f568f"
+  stroke-width="7"
+  stroke-dasharray="18 13"
+/>
+
+
+
+<!-- =====================================================
+     SMALL INNER ORBITAL ARC
+
+     Gives the logo the orbital / particle feel
+     of the original mark rather than a single path.
 ===================================================== -->
 
 <path
   d="
-    M 60 177
+    M 92 174
 
-    C 98 141,
-      128 155,
-      161 142
+    C 126 196,
+      177 197,
+      220 177
 
-    C 193 130,
-      216 108,
-      243 83
-
-    C 266 62,
-      287 55,
-      312 64
+    C 253 161,
+      280 134,
+      300 101
   "
   fill="none"
   stroke="#1f568f"
-  stroke-width="8"
+  stroke-width="4"
   stroke-linecap="round"
-  stroke-dasharray="18 14"
-/>
-
-
-<circle
-  cx="60"
-  cy="177"
-  r="12"
-  fill="#1f568f"
-/>
-
-
-<circle
-  cx="312"
-  cy="64"
-  r="12"
-  fill="#1f568f"
 />
 
 
 
-<!-- NU -->
+<!-- ν ON RIGHT SIDE OF ORBIT -->
 
 <text
-  x="264"
-  y="56"
+  x="322"
+  y="99"
   font-family="Georgia, serif"
-  font-size="43"
+  font-size="42"
   font-style="italic"
   font-weight="bold"
   fill="#1f568f"
@@ -2059,7 +2066,7 @@ button {
 
 
 <!-- =========================================================
-     PLAY
+     PLAY VIEW
 ========================================================= -->
 
 <div id="play-view">
@@ -2082,10 +2089,10 @@ button {
 
 <p>
 
-  Each hint reveals one word from
-  each side of the semantic parabola.
+  Each hint reveals one word from each side
+  of the semantic parabola.
 
-  Find the single word that can carry both charges.
+  Find the single word capable of carrying both charges.
 
 </p>
 
@@ -2101,13 +2108,6 @@ button {
 <div class="game-container">
 
 
-
-<!-- =====================================================
-     PURE DASHED PARABOLA + AXES
-
-     NO BLACK PARABOLA UNDERLAY
-===================================================== -->
-
 <svg
   class="graph-svg"
   viewBox="0 0 760 500"
@@ -2115,7 +2115,9 @@ button {
 >
 
 
-<!-- TRANSVERSE AXIS -->
+<!-- =====================================================
+     TRANSVERSE AXIS — BLUE
+===================================================== -->
 
 <line
   x1="185"
@@ -2140,7 +2142,9 @@ button {
 
 
 
-<!-- CONJUGATE AXIS -->
+<!-- =====================================================
+     CONJUGATE AXIS — RED
+===================================================== -->
 
 <line
   x1="380"
@@ -2160,7 +2164,10 @@ button {
 
 
 <!-- =====================================================
-     LEFT DASHED PARABOLA BRANCH
+     LEFT PARABOLA
+
+     RED DASHES ONLY
+     NO BLACK UNDERLAY
 ===================================================== -->
 
 <path
@@ -2181,7 +2188,9 @@ button {
 
 
 <!-- =====================================================
-     RIGHT DASHED PARABOLA BRANCH
+     RIGHT PARABOLA
+
+     BLUE DASHES ONLY
 ===================================================== -->
 
 <path
@@ -2208,20 +2217,20 @@ button {
 <circle
   cx="380"
   cy="385"
-  r="9"
+  r="8"
   fill="#d6aa44"
 />
 
 
 <path
   d="
-    M 380 366
+    M 380 367
     L 385 380
-    L 400 385
+    L 399 385
     L 385 390
-    L 380 404
+    L 380 403
     L 375 390
-    L 360 385
+    L 361 385
     L 375 380
     Z
   "
@@ -2231,57 +2240,48 @@ button {
 
 
 <!-- =====================================================
-     MAJORANA TRAIL CROSSING TRANSVERSE AXIS
+     MAJORANA ν TRANSVERSE TRAIL
+
+     THIN
+     BLACK
+     DASHED
+     NO CIRCLES
 ===================================================== -->
 
 <path
   d="
-    M 224 401
+    M 214 401
 
-    C 267 367,
-      305 411,
-      347 388
+    C 254 370,
+      293 404,
+      330 389
 
-    C 386 366,
-      418 406,
-      456 384
+    C 368 373,
+      397 397,
+      430 386
 
-    C 494 362,
-      521 367,
-      548 346
+    C 468 373,
+      509 374,
+      546 354
   "
   fill="none"
-  stroke="#1f568f"
-  stroke-width="4"
-  stroke-dasharray="11 9"
+  stroke="#222"
+  stroke-width="2"
+  stroke-dasharray="7 7"
   stroke-linecap="round"
 />
 
 
-<circle
-  cx="224"
-  cy="401"
-  r="8"
-  fill="#1f568f"
-/>
 
-
-<circle
-  cx="548"
-  cy="346"
-  r="8"
-  fill="#1f568f"
-/>
-
+<!-- ν MOVED TO RIGHT END -->
 
 <text
-  x="516"
-  y="330"
-  fill="#1f568f"
+  x="551"
+  y="355"
+  fill="#222"
   font-family="Georgia, serif"
-  font-size="28"
+  font-size="29"
   font-style="italic"
-  font-weight="bold"
 >
   ν
 </text>
@@ -2338,7 +2338,7 @@ button {
 
 <div class="clue-column-subtitle">
 
-  opposite meaning
+  negative charge
 
 </div>
 
@@ -2370,7 +2370,7 @@ button {
 
 <div class="clue-column-subtitle">
 
-  similar meaning
+  positive charge
 
 </div>
 
@@ -2394,7 +2394,7 @@ button {
 
   <br>
 
-  NEUTRAL ORIGIN • WHERE OPPOSITES MEET
+  NEUTRAL ORIGIN • MAJORANA OF MEANING
 
 </div>
 
@@ -2471,7 +2471,7 @@ button {
 
 
 <!-- =========================================================
-     RESULT
+     RESULT CARD
 ========================================================= -->
 
 <div id="result-card">
@@ -2541,7 +2541,7 @@ button {
 
 
 <!-- =========================================================
-     MODEL EXPLANATION
+     EXPLANATION
 ========================================================= -->
 
 <section class="concept-panel">
@@ -2554,14 +2554,13 @@ button {
 
 <p>
 
-  The word itself remains one lexical object.
+  A contronym preserves one lexical identity
+  while context selects between opposite semantic expressions.
 
-  Context moves its interpretation between
-  opposed semantic states.
-
-  The two branches are therefore not two different words:
-  they are two contextual expressions
-  of the same underlying form.
+  The conjugate axis represents the polarity between those
+  meanings, while the transverse domain allows the same word
+  to move through different contextual states without losing
+  its underlying identity.
 
 </p>
 
@@ -2575,7 +2574,7 @@ button {
   − Conjugate
 </strong>
 
-Opposed semantic expression.
+Opposed semantic charge.
 
 </div>
 
@@ -2586,7 +2585,7 @@ Opposed semantic expression.
   ✦ Vertex
 </strong>
 
-The invariant lexical object.
+The neutral lexical invariant.
 
 </div>
 
@@ -2597,7 +2596,7 @@ The invariant lexical object.
   + Transverse
 </strong>
 
-Affirmative or similar semantic expression.
+Contextual semantic expression.
 
 </div>
 
@@ -2712,716 +2711,846 @@ function trackContronymEvent(
 
 
 /* =========================================================
-   BLACK SILHOUETTE ICON LIBRARY
+   SILHOUETTE ICONS
 
-   ALL ICONS ARE INLINE SVG.
-   NO EMOJI / COLORED ART.
+   EACH CLUE HAS ITS OWN BLACK IMAGE.
 ========================================================= */
 
 const silhouetteIcons = {
 
 
-  scissors:
-    `
-    <svg viewBox="0 0 64 64" aria-hidden="true">
-
-      <circle
-        cx="15"
-        cy="18"
-        r="9"
-        fill="none"
-        stroke-width="5"
-      />
-
-      <circle
-        cx="15"
-        cy="46"
-        r="9"
-        fill="none"
-        stroke-width="5"
-      />
-
-      <path
-        d="
-          M22 23
-          L54 5
-
-          M22 41
-          L54 59
-
-          M20 31
-          L36 31
-        "
-        fill="none"
-        stroke-width="5"
-        stroke-linecap="round"
-      />
-
-    </svg>
-    `,
-
-
-  trimmer:
-    `
-    <svg viewBox="0 0 64 64" aria-hidden="true">
-
-      <path
-        d="
-          M8 17
-          H44
-          L56 26
-          L44 35
-          H8
-          Z
-        "
-      />
-
-      <rect
-        x="14"
-        y="35"
-        width="9"
-        height="20"
-        rx="3"
-      />
-
-      <path
-        d="
-          M30 40
-          L44 53
-          L50 47
-          L38 36
-          Z
-        "
-      />
-
-    </svg>
-    `,
-
-
-  blade:
-    `
-    <svg viewBox="0 0 64 64" aria-hidden="true">
-
-      <path
-        d="
-          M7 43
-          C18 27,
-           31 16,
-           54 8
-
-          C47 29,
-           36 43,
-           20 55
-
-          Z
-        "
-      />
-
-      <rect
-        x="5"
-        y="44"
-        width="21"
-        height="8"
-        rx="4"
-        transform="rotate(-35 5 44)"
-      />
-
-    </svg>
-    `,
-
-
-  paperclip:
-    `
-    <svg viewBox="0 0 64 64" aria-hidden="true">
-
-      <path
-        d="
-          M21 43
-
-          L42 22
-
-          C49 15,
-           59 25,
-           52 32
-
-          L28 56
-
-          C16 68,
-           -1 50,
-           11 38
-
-          L37 12
-        "
-        fill="none"
-        stroke-width="6"
-        stroke-linecap="round"
-      />
-
-    </svg>
-    `,
-
-
-  clamp:
-    `
-    <svg viewBox="0 0 64 64" aria-hidden="true">
-
-      <path
-        d="
-          M14 11
-          H49
-          V21
-          H27
-          V44
-          H51
-          V54
-          H14
-          Z
-        "
-      />
-
-      <rect
-        x="7"
-        y="25"
-        width="12"
-        height="17"
-        rx="3"
-      />
-
-    </svg>
-    `,
-
-
-  chain:
-    `
-    <svg viewBox="0 0 64 64" aria-hidden="true">
-
-      <path
-        d="
-          M24 39
-          L18 45
-
-          C10 53,
-           -2 41,
-           6 33
-
-          L18 21
-
-          C25 14,
-           35 22,
-           31 30
-        "
-        fill="none"
-        stroke-width="6"
-        stroke-linecap="round"
-      />
-
-      <path
-        d="
-          M40 25
-          L46 19
-
-          C54 11,
-           66 23,
-           58 31
-
-          L46 43
-
-          C39 50,
-           29 42,
-           33 34
-        "
-        fill="none"
-        stroke-width="6"
-        stroke-linecap="round"
-      />
-
-      <path
-        d="
-          M23 41
-          L41 23
-        "
-        fill="none"
-        stroke-width="6"
-        stroke-linecap="round"
-      />
-
-    </svg>
-    `,
-
-
-  barrier:
-    `
-    <svg viewBox="0 0 64 64" aria-hidden="true">
-
-      <rect
-        x="8"
-        y="20"
-        width="48"
-        height="17"
-        rx="3"
-      />
-
-      <path
-        d="
-          M12 21
-          L24 36
-
-          M29 21
-          L41 36
-
-          M46 21
-          L55 32
-        "
-        fill="none"
-        stroke="#fff"
-        stroke-width="4"
-      />
-
-      <rect
-        x="14"
-        y="37"
-        width="6"
-        height="19"
-      />
-
-      <rect
-        x="44"
-        y="37"
-        width="6"
-        height="19"
-      />
-
-    </svg>
-    `,
-
-
-  gavel:
-    `
-    <svg viewBox="0 0 64 64" aria-hidden="true">
-
-      <rect
-        x="13"
-        y="12"
-        width="26"
-        height="13"
-        rx="3"
-        transform="rotate(-35 13 12)"
-      />
-
-      <rect
-        x="27"
-        y="24"
-        width="9"
-        height="34"
-        rx="3"
-        transform="rotate(-35 27 24)"
-      />
-
-      <rect
-        x="7"
-        y="50"
-        width="34"
-        height="7"
-        rx="3"
-      />
-
-    </svg>
-    `,
-
-
-  stop:
-    `
-    <svg viewBox="0 0 64 64" aria-hidden="true">
-
-      <path
-        d="
-          M21 5
-          H43
-          L59 21
-          V43
-          L43 59
-          H21
-          L5 43
-          V21
-          Z
-        "
-      />
-
-      <rect
-        x="17"
-        y="28"
-        width="30"
-        height="8"
-        fill="#fff"
-      />
-
-    </svg>
-    `,
-
-
-  key:
-    `
-    <svg viewBox="0 0 64 64" aria-hidden="true">
-
-      <circle
-        cx="20"
-        cy="24"
-        r="12"
-        fill="none"
-        stroke-width="6"
-      />
-
-      <path
-        d="
-          M29 32
-          L55 57
-
-          M43 45
-          L49 39
-
-          M49 51
-          L55 45
-        "
-        fill="none"
-        stroke-width="7"
-        stroke-linecap="round"
-      />
-
-    </svg>
-    `,
-
-
-  checkseal:
-    `
-    <svg viewBox="0 0 64 64" aria-hidden="true">
-
-      <circle
-        cx="32"
-        cy="32"
-        r="25"
-      />
-
-      <path
-        d="
-          M18 32
-          L27 42
-          L47 20
-        "
-        fill="none"
-        stroke="#fff"
-        stroke-width="7"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-
-    </svg>
-    `,
-
-
-  stamp:
-    `
-    <svg viewBox="0 0 64 64" aria-hidden="true">
-
-      <path
-        d="
-          M22 8
-          H42
-          C44 16,
-           42 24,
-           38 30
-
-          H26
-
-          C22 24,
-           20 16,
-           22 8
-          Z
-        "
-      />
-
-      <rect
-        x="15"
-        y="30"
-        width="34"
-        height="12"
-        rx="4"
-      />
-
-      <rect
-        x="9"
-        y="45"
-        width="46"
-        height="9"
-        rx="3"
-      />
-
-    </svg>
-    `
+/* =========================================================
+   CUT — SCISSORS
+========================================================= */
+
+cut:
+`
+<svg viewBox="0 0 64 64" aria-hidden="true">
+
+  <g
+    fill="none"
+    stroke="#111"
+    stroke-width="5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+
+    <circle
+      cx="14"
+      cy="18"
+      r="8"
+    />
+
+    <circle
+      cx="14"
+      cy="46"
+      r="8"
+    />
+
+    <path
+      d="
+        M20 23
+        L54 8
+
+        M20 41
+        L54 56
+
+        M21 31
+        L36 31
+      "
+    />
+
+  </g>
+
+</svg>
+`,
+
+
+
+/* =========================================================
+   TRIM — HEDGE SHEARS
+========================================================= */
+
+trim:
+`
+<svg viewBox="0 0 64 64" aria-hidden="true">
+
+  <g
+    fill="#111"
+    stroke="#111"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+
+    <path
+      d="
+        M30 31
+        L55 7
+        L59 11
+        L38 35
+        Z
+      "
+    />
+
+    <path
+      d="
+        M34 34
+        L57 53
+        L53 58
+        L30 39
+        Z
+      "
+    />
+
+    <circle
+      cx="31"
+      cy="35"
+      r="5"
+    />
+
+    <path
+      d="
+        M28 39
+        L15 55
+      "
+      fill="none"
+      stroke-width="7"
+    />
+
+    <path
+      d="
+        M27 31
+        L12 15
+      "
+      fill="none"
+      stroke-width="7"
+    />
+
+  </g>
+
+</svg>
+`,
+
+
+
+/* =========================================================
+   REMOVE — PIECE BEING CUT AWAY
+========================================================= */
+
+remove:
+`
+<svg viewBox="0 0 64 64" aria-hidden="true">
+
+  <rect
+    x="7"
+    y="18"
+    width="34"
+    height="28"
+    rx="3"
+    fill="#111"
+  />
+
+  <path
+    d="
+      M45 13
+      L59 27
+      L45 41
+      Z
+    "
+    fill="#111"
+  />
+
+  <path
+    d="
+      M37 31
+      H56
+    "
+    fill="none"
+    stroke="#fff"
+    stroke-width="4"
+    stroke-dasharray="4 4"
+  />
+
+</svg>
+`,
+
+
+
+/* =========================================================
+   ATTACH — PAPERCLIP
+========================================================= */
+
+attach:
+`
+<svg viewBox="0 0 64 64" aria-hidden="true">
+
+  <path
+    d="
+      M24 39
+
+      L43 20
+
+      C50 13,
+       59 22,
+       52 29
+
+      L28 53
+
+      C17 64,
+       2 49,
+       13 38
+
+      L38 13
+    "
+    fill="none"
+    stroke="#111"
+    stroke-width="6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+</svg>
+`,
+
+
+
+/* =========================================================
+   FASTEN — BUCKLE / FASTENER
+========================================================= */
+
+fasten:
+`
+<svg viewBox="0 0 64 64" aria-hidden="true">
+
+  <rect
+    x="8"
+    y="18"
+    width="48"
+    height="28"
+    rx="7"
+    fill="none"
+    stroke="#111"
+    stroke-width="6"
+  />
+
+  <rect
+    x="23"
+    y="24"
+    width="18"
+    height="16"
+    rx="3"
+    fill="#111"
+  />
+
+  <path
+    d="
+      M5 32
+      H23
+
+      M41 32
+      H59
+    "
+    stroke="#111"
+    stroke-width="7"
+    stroke-linecap="round"
+  />
+
+</svg>
+`,
+
+
+
+/* =========================================================
+   SECURE — PADLOCK
+========================================================= */
+
+secure:
+`
+<svg viewBox="0 0 64 64" aria-hidden="true">
+
+  <rect
+    x="12"
+    y="28"
+    width="40"
+    height="29"
+    rx="5"
+    fill="#111"
+  />
+
+  <path
+    d="
+      M21 29
+      V21
+
+      C21 7,
+       43 7,
+       43 21
+
+      V29
+    "
+    fill="none"
+    stroke="#111"
+    stroke-width="7"
+    stroke-linecap="round"
+  />
+
+  <circle
+    cx="32"
+    cy="40"
+    r="4"
+    fill="#fff"
+  />
+
+  <rect
+    x="30"
+    y="40"
+    width="4"
+    height="9"
+    fill="#fff"
+  />
+
+</svg>
+`,
+
+
+
+/* =========================================================
+   RESTRICT — BARRIER
+========================================================= */
+
+restrict:
+`
+<svg viewBox="0 0 64 64" aria-hidden="true">
+
+  <rect
+    x="6"
+    y="18"
+    width="52"
+    height="20"
+    rx="3"
+    fill="#111"
+  />
+
+  <path
+    d="
+      M10 20
+      L23 36
+
+      M27 20
+      L40 36
+
+      M44 20
+      L55 33
+    "
+    stroke="#fff"
+    stroke-width="4"
+  />
+
+  <rect
+    x="13"
+    y="38"
+    width="7"
+    height="19"
+    fill="#111"
+  />
+
+  <rect
+    x="44"
+    y="38"
+    width="7"
+    height="19"
+    fill="#111"
+  />
+
+</svg>
+`,
+
+
+
+/* =========================================================
+   PENALIZE — GAVEL
+========================================================= */
+
+penalize:
+`
+<svg viewBox="0 0 64 64" aria-hidden="true">
+
+  <g fill="#111">
+
+    <rect
+      x="17"
+      y="8"
+      width="30"
+      height="13"
+      rx="3"
+      transform="rotate(-34 32 14)"
+    />
+
+    <rect
+      x="28"
+      y="20"
+      width="8"
+      height="35"
+      rx="3"
+      transform="rotate(-34 32 37)"
+    />
+
+    <rect
+      x="8"
+      y="50"
+      width="38"
+      height="7"
+      rx="3"
+    />
+
+  </g>
+
+</svg>
+`,
+
+
+
+/* =========================================================
+   PUNISH — HAMMER / IMPACT
+========================================================= */
+
+punish:
+`
+<svg viewBox="0 0 64 64" aria-hidden="true">
+
+  <path
+    d="
+      M12 9
+      H43
+      V24
+      H12
+      Z
+    "
+    fill="#111"
+    transform="rotate(-25 27 17)"
+  />
+
+  <rect
+    x="31"
+    y="19"
+    width="8"
+    height="39"
+    rx="3"
+    fill="#111"
+    transform="rotate(-25 35 38)"
+  />
+
+  <path
+    d="
+      M7 53
+      H36
+    "
+    stroke="#111"
+    stroke-width="6"
+    stroke-linecap="round"
+  />
+
+</svg>
+`,
+
+
+
+/* =========================================================
+   PERMIT — OPEN GATE
+========================================================= */
+
+permit:
+`
+<svg viewBox="0 0 64 64" aria-hidden="true">
+
+  <rect
+    x="8"
+    y="9"
+    width="7"
+    height="47"
+    fill="#111"
+  />
+
+  <rect
+    x="49"
+    y="9"
+    width="7"
+    height="47"
+    fill="#111"
+  />
+
+  <path
+    d="
+      M16 48
+      L40 35
+      L40 14
+      L16 27
+      Z
+    "
+    fill="#111"
+  />
+
+  <path
+    d="
+      M42 35
+      L57 35
+    "
+    stroke="#111"
+    stroke-width="5"
+    stroke-linecap="round"
+  />
+
+</svg>
+`,
+
+
+
+/* =========================================================
+   AUTHORIZE — STAMP
+========================================================= */
+
+authorize:
+`
+<svg viewBox="0 0 64 64" aria-hidden="true">
+
+  <path
+    d="
+      M23 7
+      H41
+
+      C44 14,
+       43 22,
+       39 28
+
+      H25
+
+      C21 22,
+       20 14,
+       23 7
+
+      Z
+    "
+    fill="#111"
+  />
+
+  <rect
+    x="15"
+    y="27"
+    width="34"
+    height="13"
+    rx="4"
+    fill="#111"
+  />
+
+  <rect
+    x="9"
+    y="44"
+    width="46"
+    height="10"
+    rx="3"
+    fill="#111"
+  />
+
+</svg>
+`,
+
+
+
+/* =========================================================
+   APPROVE — CHECKMARK SEAL
+========================================================= */
+
+approve:
+`
+<svg viewBox="0 0 64 64" aria-hidden="true">
+
+  <circle
+    cx="32"
+    cy="32"
+    r="26"
+    fill="#111"
+  />
+
+  <path
+    d="
+      M17 32
+      L27 42
+      L48 19
+    "
+    fill="none"
+    stroke="#fff"
+    stroke-width="7"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+</svg>
+`
 
 };
 
 
 
 /* =========================================================
-   PUZZLE DATABASE
+   PUZZLES
 ========================================================= */
 
 const puzzles = [
 
 
-  /* =======================================================
-     PUZZLE #001 — SANCTION
-  ======================================================= */
+/* =========================================================
+   #001 SANCTION
+========================================================= */
 
-  {
+{
 
-    number:
-      "001",
+  number:
+    "001",
 
-    date:
-      "June 2026",
+  date:
+    "June 2026",
 
-    word:
-      "SANCTION",
+  word:
+    "SANCTION",
 
 
-    hintPairs: [
+  hintPairs: [
 
-      {
+    {
 
-        negative:
-          {
+      negative:
+        {
 
-            word:
-              "restrict",
+          word:
+            "restrict",
 
-            icon:
-              "barrier"
+          icon:
+            "restrict"
 
-          },
+        },
 
-        positive:
-          {
+      positive:
+        {
 
-            word:
-              "permit",
+          word:
+            "permit",
 
-            icon:
-              "key"
+          icon:
+            "permit"
 
-          }
+        }
 
-      },
+    },
 
 
-      {
+    {
 
-        negative:
-          {
+      negative:
+        {
 
-            word:
-              "penalize",
+          word:
+            "penalize",
 
-            icon:
-              "gavel"
+          icon:
+            "penalize"
 
-          },
+        },
 
-        positive:
-          {
+      positive:
+        {
 
-            word:
-              "authorize",
+          word:
+            "authorize",
 
-            icon:
-              "stamp"
+          icon:
+            "authorize"
 
-          }
+        }
 
-      },
+    },
 
 
-      {
+    {
 
-        negative:
-          {
+      negative:
+        {
 
-            word:
-              "punish",
+          word:
+            "punish",
 
-            icon:
-              "stop"
+          icon:
+            "punish"
 
-          },
+        },
 
-        positive:
-          {
+      positive:
+        {
 
-            word:
-              "approve",
+          word:
+            "approve",
 
-            icon:
-              "checkseal"
+          icon:
+            "approve"
 
-          }
+        }
 
-      }
+    }
 
-    ],
+  ],
 
 
-    message:
-      "A single word can officially approve something or impose a penalty depending on context.",
+  message:
+    "A single word can officially approve something or impose a penalty depending on context.",
 
 
-    positiveDefinition:
-      "to officially approve, authorize or permit something.",
+  positiveDefinition:
+    "to officially approve, authorize or permit something.",
 
 
-    negativeDefinition:
-      "to penalize, punish or impose restrictions.",
+  negativeDefinition:
+    "to penalize, punish or impose restrictions.",
 
 
-    positiveExample:
-      "The committee sanctioned the proposal.",
+  positiveExample:
+    "The committee sanctioned the proposal.",
 
 
-    negativeExample:
-      "The league sanctioned the player.",
+  negativeExample:
+    "The league sanctioned the player.",
 
 
-    footer:
-      "Context determines charge. • PAT Learning Lab"
+  footer:
+    "Context determines charge. • PAT Learning Lab"
 
-  },
+},
 
 
 
-  /* =======================================================
-     PUZZLE #002 — CLIP
-  ======================================================= */
+/* =========================================================
+   #002 CLIP
+========================================================= */
 
-  {
+{
 
-    number:
-      "002",
+  number:
+    "002",
 
-    date:
-      "August 2026",
+  date:
+    "August 2026",
 
-    word:
-      "CLIP",
+  word:
+    "CLIP",
 
 
-    hintPairs: [
+  hintPairs: [
 
-      {
+    {
 
-        negative:
-          {
+      negative:
+        {
 
-            word:
-              "cut",
+          word:
+            "cut",
 
-            icon:
-              "scissors"
+          icon:
+            "cut"
 
-          },
+        },
 
-        positive:
-          {
+      positive:
+        {
 
-            word:
-              "attach",
+          word:
+            "attach",
 
-            icon:
-              "paperclip"
+          icon:
+            "attach"
 
-          }
+        }
 
-      },
+    },
 
 
-      {
+    {
 
-        negative:
-          {
+      negative:
+        {
 
-            word:
-              "trim",
+          word:
+            "trim",
 
-            icon:
-              "trimmer"
+          icon:
+            "trim"
 
-          },
+        },
 
-        positive:
-          {
+      positive:
+        {
 
-            word:
-              "fasten",
+          word:
+            "fasten",
 
-            icon:
-              "clamp"
+          icon:
+            "fasten"
 
-          }
+        }
 
-      },
+    },
 
 
-      {
+    {
 
-        negative:
-          {
+      negative:
+        {
 
-            word:
-              "remove",
+          word:
+            "remove",
 
-            icon:
-              "blade"
+          icon:
+            "remove"
 
-          },
+        },
 
-        positive:
-          {
+      positive:
+        {
 
-            word:
-              "secure",
+          word:
+            "secure",
 
-            icon:
-              "chain"
+          icon:
+            "secure"
 
-          }
+        }
 
-      }
+    }
 
-    ],
+  ],
 
 
-    message:
-      "One word can remove material or attach something firmly.",
+  message:
+    "One word can remove material or attach something firmly.",
 
 
-    positiveDefinition:
-      "to attach, fasten or secure one object to another.",
+  positiveDefinition:
+    "to attach, fasten or secure one object to another.",
 
 
-    negativeDefinition:
-      "to cut, trim or remove part of something.",
+  negativeDefinition:
+    "to cut, trim or remove part of something.",
 
 
-    positiveExample:
-      "She clipped the badge to her jacket.",
+  positiveExample:
+    "She clipped the badge to her jacket.",
 
 
-    negativeExample:
-      "He clipped the hedge along the path.",
+  negativeExample:
+    "He clipped the hedge along the path.",
 
 
-    footer:
-      "Context determines charge. • PAT Learning Lab"
+  footer:
+    "Context determines charge. • PAT Learning Lab"
 
-  }
+}
 
 ];
 
@@ -3444,16 +3573,6 @@ let puzzle =
 let word =
   puzzle.word.toUpperCase();
 
-
-/*
-  ONE PAIR IS VISIBLE AT THE START.
-
-  EVERY HINT PRESS REVEALS:
-  - ONE NEGATIVE WORD
-  - ONE POSITIVE WORD
-
-  SIMULTANEOUSLY.
-*/
 
 let visibleHintPairs =
   1;
@@ -3485,7 +3604,7 @@ let currentPuzzleArchived =
 
 
 /* =========================================================
-   START GAME
+   GAME
 ========================================================= */
 
 document.addEventListener(
@@ -3493,941 +3612,1088 @@ document.addEventListener(
   function () {
 
 
-  const answerBoxes =
-    document.getElementById(
-      "answer-boxes"
+const answerBoxes =
+  document.getElementById(
+    "answer-boxes"
+  );
+
+
+const negativeClues =
+  document.getElementById(
+    "negativeClues"
+  );
+
+
+const positiveClues =
+  document.getElementById(
+    "positiveClues"
+  );
+
+
+const hintText =
+  document.getElementById(
+    "hint-text"
+  );
+
+
+const showHintBtn =
+  document.getElementById(
+    "show-hint"
+  );
+
+
+const submitBtn =
+  document.getElementById(
+    "submit-answer"
+  );
+
+
+const resetBtn =
+  document.getElementById(
+    "reset-puzzle"
+  );
+
+
+const message =
+  document.getElementById(
+    "message"
+  );
+
+
+const attemptsText =
+  document.getElementById(
+    "attempts"
+  );
+
+
+const resultCard =
+  document.getElementById(
+    "result-card"
+  );
+
+
+const resultTitle =
+  document.getElementById(
+    "result-title"
+  );
+
+
+const definitionBox =
+  document.getElementById(
+    "definition-box"
+  );
+
+
+const sharePreview =
+  document.getElementById(
+    "share-preview"
+  );
+
+
+const nativeShareBtn =
+  document.getElementById(
+    "native-share"
+  );
+
+
+const copyShareBtn =
+  document.getElementById(
+    "copy-share"
+  );
+
+
+const currentTab =
+  document.getElementById(
+    "current-tab"
+  );
+
+
+const archiveTab =
+  document.getElementById(
+    "archive-tab"
+  );
+
+
+const playView =
+  document.getElementById(
+    "play-view"
+  );
+
+
+const archiveView =
+  document.getElementById(
+    "archive-view"
+  );
+
+
+const archiveList =
+  document.getElementById(
+    "archive-list"
+  );
+
+
+const footerNote =
+  document.getElementById(
+    "footer-note"
+  );
+
+
+const letterCount =
+  document.getElementById(
+    "letter-count"
+  );
+
+
+const puzzleTitle =
+  document.getElementById(
+    "puzzle-title"
+  );
+
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+function getSilhouette(
+  icon
+) {
+
+  return (
+    silhouetteIcons[
+      icon
+    ]
+    ||
+    ""
+  );
+
+}
+
+
+
+/* =========================================================
+   CLUE ROW
+========================================================= */
+
+function createClueElement(
+  clue,
+  index,
+  visible
+) {
+
+  const row =
+    document.createElement(
+      "div"
     );
 
 
-  const negativeClues =
-    document.getElementById(
-      "negativeClues"
+  row.className =
+    "clue-item"
+    +
+    (
+      visible
+      ?
+        ""
+      :
+        " hidden-clue"
     );
 
 
-  const positiveClues =
-    document.getElementById(
-      "positiveClues"
-    );
+  row.innerHTML = `
+
+    <div class="clue-number">
+
+      ${index + 1}
+
+    </div>
 
 
-  const hintText =
-    document.getElementById(
-      "hint-text"
-    );
+    <div class="clue-content">
+
+      <div class="clue-word-row">
 
 
-  const showHintBtn =
-    document.getElementById(
-      "show-hint"
-    );
+        <span class="clue-word">
+
+          ${clue.word}
+
+        </span>
 
 
-  const submitBtn =
-    document.getElementById(
-      "submit-answer"
-    );
+        <span class="clue-silhouette">
 
+          ${getSilhouette(clue.icon)}
 
-  const resetBtn =
-    document.getElementById(
-      "reset-puzzle"
-    );
+        </span>
 
-
-  const message =
-    document.getElementById(
-      "message"
-    );
-
-
-  const attemptsText =
-    document.getElementById(
-      "attempts"
-    );
-
-
-  const resultCard =
-    document.getElementById(
-      "result-card"
-    );
-
-
-  const resultTitle =
-    document.getElementById(
-      "result-title"
-    );
-
-
-  const definitionBox =
-    document.getElementById(
-      "definition-box"
-    );
-
-
-  const sharePreview =
-    document.getElementById(
-      "share-preview"
-    );
-
-
-  const nativeShareBtn =
-    document.getElementById(
-      "native-share"
-    );
-
-
-  const copyShareBtn =
-    document.getElementById(
-      "copy-share"
-    );
-
-
-  const currentTab =
-    document.getElementById(
-      "current-tab"
-    );
-
-
-  const archiveTab =
-    document.getElementById(
-      "archive-tab"
-    );
-
-
-  const playView =
-    document.getElementById(
-      "play-view"
-    );
-
-
-  const archiveView =
-    document.getElementById(
-      "archive-view"
-    );
-
-
-  const archiveList =
-    document.getElementById(
-      "archive-list"
-    );
-
-
-  const footerNote =
-    document.getElementById(
-      "footer-note"
-    );
-
-
-  const letterCount =
-    document.getElementById(
-      "letter-count"
-    );
-
-
-  const puzzleTitle =
-    document.getElementById(
-      "puzzle-title"
-    );
-
-
-
-  /* =======================================================
-     SILHOUETTE
-  ======================================================= */
-
-  function getSilhouette(
-    iconName
-  ) {
-
-    return (
-      silhouetteIcons[
-        iconName
-      ]
-      ||
-      ""
-    );
-
-  }
-
-
-
-  /* =======================================================
-     BUILD ONE CLUE
-  ======================================================= */
-
-  function createClueElement(
-    clue,
-    index,
-    visible
-  ) {
-
-    const row =
-      document.createElement(
-        "div"
-      );
-
-
-    row.className =
-      "clue-item"
-      +
-      (
-        visible
-        ?
-          ""
-        :
-          " hidden-clue"
-      );
-
-
-    row.innerHTML = `
-
-      <div class="clue-number">
-
-        ${
-          index + 1
-        }
 
       </div>
 
+    </div>
 
-      <div class="clue-content">
-
-        <div class="clue-word-row">
-
-
-          <span class="clue-word">
-
-            ${clue.word}
-
-          </span>
+  `;
 
 
-          <span class="clue-silhouette">
+  return row;
 
-            ${
-              getSilhouette(
-                clue.icon
-              )
-            }
-
-          </span>
-
-
-        </div>
-
-      </div>
-
-    `;
-
-
-    return row;
-
-  }
+}
 
 
 
-  /* =======================================================
-     RENDER HINT PAIRS
-  ======================================================= */
+/* =========================================================
+   HINTS
+========================================================= */
 
-  function renderHints() {
+function renderHints() {
 
-    negativeClues.innerHTML =
-      "";
-
-
-    positiveClues.innerHTML =
-      "";
+  negativeClues.innerHTML =
+    "";
 
 
-    puzzle
-      .hintPairs
-      .forEach(
-        function (
-          pair,
-          index
-        ) {
-
-          const visible =
-            index <
-            visibleHintPairs;
+  positiveClues.innerHTML =
+    "";
 
 
-          negativeClues.appendChild(
-            createClueElement(
-              pair.negative,
-              index,
-              visible
-            )
-          );
+  puzzle
+    .hintPairs
+    .forEach(
+      function (
+        pair,
+        index
+      ) {
+
+        const visible =
+          index <
+          visibleHintPairs;
 
 
-          positiveClues.appendChild(
-            createClueElement(
-              pair.positive,
-              index,
-              visible
-            )
-          );
-
-        }
-      );
-
-
-    if (
-      visibleHintPairs >=
-      puzzle.hintPairs.length
-    ) {
-
-      showHintBtn.textContent =
-        "Reveal Field Note";
-
-    }
-
-    else {
-
-      showHintBtn.textContent =
-        "Reveal Hint Pair";
-
-    }
-
-  }
-
-
-
-  /* =======================================================
-     ANSWER BOXES
-  ======================================================= */
-
-  function createBoxes() {
-
-    answerBoxes.innerHTML =
-      "";
-
-
-    word =
-      puzzle.word.toUpperCase();
-
-
-    puzzleTitle.textContent =
-      "Contronym #"
-      +
-      puzzle.number;
-
-
-    letterCount.textContent =
-      word.length
-      +
-      " LETTER"
-      +
-      (
-        word.length ===
-        1
-        ?
-          ""
-        :
-          "S"
-      )
-      +
-      " • ONE CONTRONYM";
-
-
-    for (
-      let i = 0;
-      i < word.length;
-      i++
-    ) {
-
-      const input =
-        document.createElement(
-          "input"
+        negativeClues.appendChild(
+          createClueElement(
+            pair.negative,
+            index,
+            visible
+          )
         );
 
 
-      input.type =
-        "text";
+        positiveClues.appendChild(
+          createClueElement(
+            pair.positive,
+            index,
+            visible
+          )
+        );
+
+      }
+    );
 
 
-      input.maxLength =
-        1;
+  if (
+    visibleHintPairs >=
+    puzzle.hintPairs.length
+  ) {
 
-
-      input.className =
-        "letter-box";
-
-
-      input.dataset.index =
-        i;
-
-
-      input.autocomplete =
-        "off";
-
-
-      input.inputMode =
-        "text";
-
-
-      answerBoxes.appendChild(
-        input
-      );
-
-    }
+    showHintBtn.textContent =
+      "Reveal Field Note";
 
   }
 
+  else {
 
-
-  function getGuess() {
-
-    return Array
-      .from(
-        answerBoxes.children
-      )
-      .map(
-        function (
-          box
-        ) {
-
-          return box.value
-            .toUpperCase();
-
-        }
-      )
-      .join(
-        ""
-      );
+    showHintBtn.textContent =
+      "Reveal Hint Pair";
 
   }
 
-
-
-  /* =======================================================
-     ATTEMPTS
-  ======================================================= */
-
-  function updateAttempts() {
-
-    attemptsText.textContent =
-      "Contronym #"
-      +
-      puzzle.number
-      +
-      " • Attempts "
-      +
-      attempts
-      +
-      " / 3"
-      +
-      " • Hint pairs used "
-      +
-      hintsUsed;
-
-  }
+}
 
 
 
-  /* =======================================================
-     LOCK
-  ======================================================= */
+/* =========================================================
+   LETTER BOXES
+========================================================= */
 
-  function lockGame() {
+function createBoxes() {
 
-    Array
-      .from(
-        answerBoxes.children
-      )
-      .forEach(
-        function (
-          input
-        ) {
-
-          input.disabled =
-            true;
-
-        }
-      );
+  answerBoxes.innerHTML =
+    "";
 
 
-    submitBtn.disabled =
-      true;
+  word =
+    puzzle.word.toUpperCase();
 
 
-    showHintBtn.disabled =
-      true;
-
-  }
-
-
-
-  /* =======================================================
-     RESULT PHRASE
-  ======================================================= */
-
-  function resultPhrase() {
-
-    if (
-      !solved
-    ) {
-
-      return "No Majorana found";
-
-    }
+  puzzleTitle.textContent =
+    "Contronym #"
+    +
+    puzzle.number;
 
 
-    if (
-      attempts ===
+  letterCount.textContent =
+    word.length
+    +
+    " LETTER"
+    +
+    (
+      word.length ===
       1
-    ) {
-
-      return "Majorana in One";
-
-    }
-
-
-    if (
-      attempts ===
-      2
-    ) {
-
-      return "Majorana in Two";
-
-    }
+      ?
+        ""
+      :
+        "S"
+    )
+    +
+    " • ONE CONTRONYM";
 
 
-    return "Majorana in Three";
+  for (
+    let i = 0;
+    i < word.length;
+    i++
+  ) {
+
+    const input =
+      document.createElement(
+        "input"
+      );
+
+
+    input.type =
+      "text";
+
+
+    input.maxLength =
+      1;
+
+
+    input.className =
+      "letter-box";
+
+
+    input.dataset.index =
+      i;
+
+
+    input.autocomplete =
+      "off";
+
+
+    input.inputMode =
+      "text";
+
+
+    answerBoxes.appendChild(
+      input
+    );
 
   }
 
+}
 
 
-  /* =======================================================
-     SHARE
-  ======================================================= */
 
-  function shareText() {
+function getGuess() {
+
+  return Array
+    .from(
+      answerBoxes.children
+    )
+    .map(
+      function (
+        input
+      ) {
+
+        return input.value
+          .toUpperCase();
+
+      }
+    )
+    .join(
+      ""
+    );
+
+}
+
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+function updateAttempts() {
+
+  attemptsText.textContent =
+    "Contronym #"
+    +
+    puzzle.number
+    +
+    " • Attempts "
+    +
+    attempts
+    +
+    " / 3"
+    +
+    " • Hint pairs used "
+    +
+    hintsUsed;
+
+}
+
+
+
+function lockGame() {
+
+  Array
+    .from(
+      answerBoxes.children
+    )
+    .forEach(
+      function (
+        input
+      ) {
+
+        input.disabled =
+          true;
+
+      }
+    );
+
+
+  submitBtn.disabled =
+    true;
+
+
+  showHintBtn.disabled =
+    true;
+
+}
+
+
+
+/* =========================================================
+   RESULT
+========================================================= */
+
+function resultPhrase() {
+
+  if (
+    !solved
+  ) {
 
     return (
-      "Cν CONTRONYM #"
-      +
-      puzzle.number
-      +
-      "\n"
-      +
-      resultPhrase()
-      +
-      "\nAttempts: "
-      +
-      attempts
-      +
-      "/3"
-      +
-      "\nHint pairs used: "
-      +
-      hintsUsed
-      +
-      "\n\nContext determines charge."
-      +
-      "\nPAT Learning Lab"
+      "No Majorana found"
     );
 
   }
 
 
+  if (
+    attempts ===
+    1
+  ) {
 
-  /* =======================================================
-     RESULT CARD
-  ======================================================= */
+    return (
+      "Majorana in One"
+    );
 
-  function showResult() {
-
-    resultCard.style.display =
-      "block";
-
-
-    resultTitle.textContent =
-      resultPhrase()
-      +
-      " • "
-      +
-      puzzle.word;
+  }
 
 
-    definitionBox.innerHTML =
-      `
+  if (
+    attempts ===
+    2
+  ) {
+
+    return (
+      "Majorana in Two"
+    );
+
+  }
+
+
+  return (
+    "Majorana in Three"
+  );
+
+}
+
+
+
+function shareText() {
+
+  return (
+    "Cν CONTRONYM #"
+    +
+    puzzle.number
+    +
+    "\n"
+    +
+    resultPhrase()
+    +
+    "\nAttempts: "
+    +
+    attempts
+    +
+    "/3"
+    +
+    "\nHint pairs used: "
+    +
+    hintsUsed
+    +
+    "\n\nContext determines charge."
+    +
+    "\nPAT Learning Lab"
+  );
+
+}
+
+
+
+function showResult() {
+
+  resultCard.style.display =
+    "block";
+
+
+  resultTitle.textContent =
+    resultPhrase()
+    +
+    " • "
+    +
+    puzzle.word;
+
+
+  definitionBox.innerHTML = `
+
+    <strong>
+      ${puzzle.word}
+    </strong>
+
+    <br>
+
+    <em>
+      ${puzzle.date}
+    </em>
+
+
+    <div class="charge-definition negative">
 
       <strong>
-        ${puzzle.word}
+        − Conjugate Branch
       </strong>
 
       <br>
 
+      ${puzzle.negativeDefinition}
+
+      <br><br>
+
       <em>
-        ${puzzle.date}
+        ${puzzle.negativeExample}
       </em>
 
-
-      <div class="charge-definition negative">
-
-        <strong>
-          − Opposite / Conjugate Branch
-        </strong>
-
-        <br>
-
-        ${puzzle.negativeDefinition}
-
-        <br><br>
-
-        <em>
-          ${puzzle.negativeExample}
-        </em>
-
-      </div>
+    </div>
 
 
-      <div class="charge-definition positive">
+    <div class="charge-definition positive">
 
-        <strong>
-          + Similar / Transverse Branch
-        </strong>
+      <strong>
+        + Transverse Branch
+      </strong>
 
-        <br>
+      <br>
 
-        ${puzzle.positiveDefinition}
+      ${puzzle.positiveDefinition}
 
-        <br><br>
+      <br><br>
 
-        <em>
-          ${puzzle.positiveExample}
-        </em>
+      <em>
+        ${puzzle.positiveExample}
+      </em>
 
-      </div>
-
-
-      <p>
-
-        <strong>
-          Majorana of Meaning:
-        </strong>
-
-        the lexical form remains invariant
-        while contextual charge determines
-        which semantic state is expressed.
-
-      </p>
-
-      `;
+    </div>
 
 
-    sharePreview.textContent =
-      shareText();
+    <p>
+
+      <strong>
+        Majorana of Meaning:
+      </strong>
+
+      the lexical form remains invariant
+      while context determines which
+      semantic charge is expressed.
+
+    </p>
+
+  `;
+
+
+  sharePreview.textContent =
+    shareText();
+
+}
+
+
+
+/* =========================================================
+   SUBMIT
+========================================================= */
+
+function submitGuess() {
+
+  if (
+    solved
+    ||
+    attempts >=
+    3
+  ) {
+
+    return;
+
+  }
+
+
+  const incomplete =
+    Array
+      .from(
+        answerBoxes.children
+      )
+      .some(
+        function (
+          input
+        ) {
+
+          return (
+            input.value ===
+            ""
+          );
+
+        }
+      );
+
+
+  if (
+    incomplete
+  ) {
+
+    message.textContent =
+      "Fill every letter box before submitting.";
+
+
+    return;
+
+  }
+
+
+  const guess =
+    getGuess();
+
+
+  attempts++;
+
+
+  updateAttempts();
+
+
+
+  if (
+    guess ===
+    word
+  ) {
+
+    solved =
+      true;
+
+
+    message.textContent =
+      resultPhrase()
+      +
+      " — you found the Majorana of Meaning.";
+
+
+    lockGame();
+
+
+    showResult();
+
+
+    if (
+      !solveTracked
+    ) {
+
+      solveTracked =
+        true;
+
+
+      trackContronymEvent(
+        "puzzle_solved",
+        puzzle,
+        {
+
+          attempts:
+            attempts,
+
+          hint_pairs_used:
+            hintsUsed,
+
+          archived:
+            currentPuzzleArchived
+
+        }
+      );
+
+    }
+
+
+    return;
 
   }
 
 
 
-  /* =======================================================
-     SUBMIT GUESS
-  ======================================================= */
+  if (
+    attempts >=
+    3
+  ) {
 
-  function submitGuess() {
+    message.textContent =
+      "The Majorana was "
+      +
+      word
+      +
+      ".";
+
+
+    lockGame();
+
+
+    showResult();
+
 
     if (
-      solved
-      ||
-      attempts >=
-      3
+      !revealTracked
     ) {
 
-      return;
+      revealTracked =
+        true;
+
+
+      trackContronymEvent(
+        "puzzle_revealed",
+        puzzle,
+        {
+
+          attempts:
+            attempts,
+
+          hint_pairs_used:
+            hintsUsed,
+
+          archived:
+            currentPuzzleArchived
+
+        }
+      );
 
     }
 
 
-    const incomplete =
-      Array
-        .from(
-          answerBoxes.children
-        )
-        .some(
-          function (
-            input
-          ) {
+    return;
 
-            return (
-              input.value ===
-              ""
+  }
+
+
+
+  message.textContent =
+    "Not quite — charge mismatch. "
+    +
+    (
+      3 -
+      attempts
+    )
+    +
+    " attempt"
+    +
+    (
+      (
+        3 -
+        attempts
+      )
+      ===
+      1
+      ?
+        ""
+      :
+        "s"
+    )
+    +
+    " remain.";
+
+}
+
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+function resetPuzzle() {
+
+  attempts =
+    0;
+
+
+  solved =
+    false;
+
+
+  visibleHintPairs =
+    1;
+
+
+  hintsUsed =
+    0;
+
+
+  solveTracked =
+    false;
+
+
+  revealTracked =
+    false;
+
+
+  createBoxes();
+
+
+  renderHints();
+
+
+  updateAttempts();
+
+
+  submitBtn.disabled =
+    false;
+
+
+  showHintBtn.disabled =
+    false;
+
+
+  hintText.style.display =
+    "none";
+
+
+  hintText.textContent =
+    puzzle.message;
+
+
+  message.textContent =
+    "";
+
+
+  resultCard.style.display =
+    "none";
+
+
+  footerNote.textContent =
+    puzzle.footer;
+
+
+  if (
+    answerBoxes.children[0]
+  ) {
+
+    answerBoxes
+      .children[0]
+      .focus();
+
+  }
+
+}
+
+
+
+/* =========================================================
+   LOAD PUZZLE
+========================================================= */
+
+function loadPuzzle(
+  selectedPuzzle,
+  archived
+) {
+
+  puzzle =
+    selectedPuzzle;
+
+
+  word =
+    puzzle.word.toUpperCase();
+
+
+  currentPuzzleArchived =
+    Boolean(
+      archived
+    );
+
+
+  resetPuzzle();
+
+
+  playView.style.display =
+    "flex";
+
+
+  archiveView.style.display =
+    "none";
+
+
+  currentTab.classList.remove(
+    "active"
+  );
+
+
+  archiveTab.classList.remove(
+    "active"
+  );
+
+
+  trackContronymEvent(
+    "puzzle_started",
+    puzzle,
+    {
+
+      archived:
+        currentPuzzleArchived
+
+    }
+  );
+
+
+  window.scrollTo(
+    {
+      top:
+        0,
+
+      behavior:
+        "smooth"
+    }
+  );
+
+}
+
+
+
+/* =========================================================
+   ARCHIVE
+========================================================= */
+
+function buildArchive() {
+
+  archiveList.innerHTML =
+    "";
+
+
+  const oldPuzzles =
+    puzzles
+      .slice(
+        0,
+        -1
+      )
+      .reverse();
+
+
+  oldPuzzles.forEach(
+    function (
+      oldPuzzle
+    ) {
+
+      const card =
+        document.createElement(
+          "div"
+        );
+
+
+      card.className =
+        "archive-card";
+
+
+      card.innerHTML = `
+
+        <div class="archive-number">
+
+          Contronym #${oldPuzzle.number}
+
+        </div>
+
+
+        <div class="archive-date">
+
+          ${oldPuzzle.date}
+
+        </div>
+
+
+        <div class="archive-description">
+
+          Revisit this Majorana of Meaning.
+          The solution remains hidden.
+
+        </div>
+
+
+        <button class="archive-play">
+
+          Play Puzzle #${oldPuzzle.number}
+
+        </button>
+
+      `;
+
+
+      card
+        .querySelector(
+          ".archive-play"
+        )
+        .addEventListener(
+          "click",
+          function () {
+
+            loadPuzzle(
+              oldPuzzle,
+              true
             );
 
           }
         );
 
 
-    if (
-      incomplete
-    ) {
-
-      message.textContent =
-        "Fill every letter box before submitting.";
-
-
-      return;
+      archiveList.appendChild(
+        card
+      );
 
     }
+  );
 
+}
 
-    const guess =
-      getGuess();
 
 
-    attempts++;
+/* =========================================================
+   CURRENT TAB
+========================================================= */
 
-
-    updateAttempts();
-
-
-
-    if (
-      guess ===
-      word
-    ) {
-
-      solved =
-        true;
-
-
-      message.textContent =
-        resultPhrase()
-        +
-        " — you found the Majorana of Meaning.";
-
-
-      lockGame();
-
-
-      showResult();
-
-
-      if (
-        !solveTracked
-      ) {
-
-        solveTracked =
-          true;
-
-
-        trackContronymEvent(
-          "puzzle_solved",
-          puzzle,
-          {
-
-            attempts:
-              attempts,
-
-            hint_pairs_used:
-              hintsUsed,
-
-            archived:
-              currentPuzzleArchived
-
-          }
-        );
-
-      }
-
-
-      return;
-
-    }
-
-
-
-    if (
-      attempts >=
-      3
-    ) {
-
-      message.textContent =
-        "The Majorana was "
-        +
-        word
-        +
-        ".";
-
-
-      lockGame();
-
-
-      showResult();
-
-
-      if (
-        !revealTracked
-      ) {
-
-        revealTracked =
-          true;
-
-
-        trackContronymEvent(
-          "puzzle_revealed",
-          puzzle,
-          {
-
-            attempts:
-              attempts,
-
-            hint_pairs_used:
-              hintsUsed,
-
-            archived:
-              currentPuzzleArchived
-
-          }
-        );
-
-      }
-
-
-      return;
-
-    }
-
-
-
-    message.textContent =
-      "Not quite — charge mismatch. "
-      +
-      (
-        3 -
-        attempts
-      )
-      +
-      " attempt"
-      +
-      (
-        (
-          3 -
-          attempts
-        )
-        ===
-        1
-        ?
-          ""
-        :
-          "s"
-      )
-      +
-      " remain.";
-
-  }
-
-
-
-  /* =======================================================
-     RESET
-  ======================================================= */
-
-  function resetPuzzle() {
-
-    attempts =
-      0;
-
-
-    solved =
-      false;
-
-
-    visibleHintPairs =
-      1;
-
-
-    hintsUsed =
-      0;
-
-
-    solveTracked =
-      false;
-
-
-    revealTracked =
-      false;
-
-
-    createBoxes();
-
-
-    renderHints();
-
-
-    updateAttempts();
-
-
-    submitBtn.disabled =
-      false;
-
-
-    showHintBtn.disabled =
-      false;
-
-
-    hintText.style.display =
-      "none";
-
-
-    hintText.textContent =
-      puzzle.message;
-
-
-    message.textContent =
-      "";
-
-
-    resultCard.style.display =
-      "none";
-
-
-    footerNote.textContent =
-      puzzle.footer;
-
-
-    if (
-      answerBoxes.children[0]
-    ) {
-
-      answerBoxes
-        .children[0]
-        .focus();
-
-    }
-
-  }
-
-
-
-  /* =======================================================
-     LOAD PUZZLE
-  ======================================================= */
-
-  function loadPuzzle(
-    selectedPuzzle,
-    archived
-  ) {
+currentTab.addEventListener(
+  "click",
+  function () {
 
     puzzle =
-      selectedPuzzle;
-
-
-    word =
-      puzzle.word.toUpperCase();
+      currentPuzzle;
 
 
     currentPuzzleArchived =
-      Boolean(
-        archived
-      );
+      false;
 
 
     resetPuzzle();
@@ -4441,7 +4707,7 @@ document.addEventListener(
       "none";
 
 
-    currentTab.classList.remove(
+    currentTab.classList.add(
       "active"
     );
 
@@ -4457,530 +4723,283 @@ document.addEventListener(
       {
 
         archived:
-          currentPuzzleArchived
+          false
 
       }
     );
 
+  }
+);
 
-    window.scrollTo(
+
+
+/* =========================================================
+   ARCHIVE TAB
+========================================================= */
+
+archiveTab.addEventListener(
+  "click",
+  function () {
+
+    buildArchive();
+
+
+    playView.style.display =
+      "none";
+
+
+    archiveView.style.display =
+      "block";
+
+
+    archiveTab.classList.add(
+      "active"
+    );
+
+
+    currentTab.classList.remove(
+      "active"
+    );
+
+  }
+);
+
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+answerBoxes.addEventListener(
+  "input",
+  function (
+    event
+  ) {
+
+    const input =
+      event.target;
+
+
+    const index =
+      Number(
+        input.dataset.index
+      );
+
+
+    input.value =
+      input.value
+        .toUpperCase()
+        .replace(
+          /[^A-Z]/g,
+          ""
+        );
+
+
+    if (
+      input.value
+    ) {
+
+      const next =
+        answerBoxes.children[
+          index + 1
+        ];
+
+
+      if (
+        next
+      ) {
+
+        next.focus();
+
+      }
+
+    }
+
+  }
+);
+
+
+
+answerBoxes.addEventListener(
+  "keydown",
+  function (
+    event
+  ) {
+
+    const input =
+      event.target;
+
+
+    const index =
+      Number(
+        input.dataset.index
+      );
+
+
+    if (
+      event.key ===
+      "Backspace"
+      &&
+      input.value ===
+      ""
+    ) {
+
+      const previous =
+        answerBoxes.children[
+          index - 1
+        ];
+
+
+      if (
+        previous
+      ) {
+
+        previous.focus();
+
+      }
+
+    }
+
+
+    if (
+      event.key ===
+      "Enter"
+    ) {
+
+      submitGuess();
+
+    }
+
+  }
+);
+
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+submitBtn.addEventListener(
+  "click",
+  submitGuess
+);
+
+
+
+/* =========================================================
+   HINT PAIRS
+========================================================= */
+
+showHintBtn.addEventListener(
+  "click",
+  function () {
+
+    if (
+      visibleHintPairs <
+      puzzle.hintPairs.length
+    ) {
+
+      visibleHintPairs++;
+
+
+      hintsUsed++;
+
+
+      renderHints();
+
+
+      updateAttempts();
+
+
+      trackContronymEvent(
+        "hint_pair_revealed",
+        puzzle,
+        {
+
+          pair_number:
+            visibleHintPairs,
+
+          hint_pairs_used:
+            hintsUsed
+
+        }
+      );
+
+
+      return;
+
+    }
+
+
+    hintText.style.display =
+      "block";
+
+  }
+);
+
+
+
+/* =========================================================
+   RESET BUTTON
+========================================================= */
+
+resetBtn.addEventListener(
+  "click",
+  function () {
+
+    resetPuzzle();
+
+
+    trackContronymEvent(
+      "puzzle_started",
+      puzzle,
       {
-        top:
-          0,
 
-        behavior:
-          "smooth"
-      }
-    );
+        archived:
+          currentPuzzleArchived,
 
-  }
-
-
-
-  /* =======================================================
-     ARCHIVE
-  ======================================================= */
-
-  function buildArchive() {
-
-    archiveList.innerHTML =
-      "";
-
-
-    const oldPuzzles =
-      puzzles
-        .slice(
-          0,
-          -1
-        )
-        .reverse();
-
-
-    oldPuzzles.forEach(
-      function (
-        oldPuzzle
-      ) {
-
-        const card =
-          document.createElement(
-            "div"
-          );
-
-
-        card.className =
-          "archive-card";
-
-
-        card.innerHTML =
-          `
-
-          <div class="archive-number">
-
-            Contronym #${oldPuzzle.number}
-
-          </div>
-
-
-          <div class="archive-date">
-
-            ${oldPuzzle.date}
-
-          </div>
-
-
-          <div class="archive-description">
-
-            Revisit this Majorana of Meaning.
-            The solution remains hidden.
-
-          </div>
-
-
-          <button class="archive-play">
-
-            Play Puzzle #${oldPuzzle.number}
-
-          </button>
-
-          `;
-
-
-        card
-          .querySelector(
-            ".archive-play"
-          )
-          .addEventListener(
-            "click",
-            function () {
-
-              loadPuzzle(
-                oldPuzzle,
-                true
-              );
-
-            }
-          );
-
-
-        archiveList.appendChild(
-          card
-        );
+        restarted:
+          true
 
       }
     );
 
   }
+);
 
 
 
-  /* =======================================================
-     CURRENT TAB
-  ======================================================= */
+/* =========================================================
+   SHARE
+========================================================= */
 
-  currentTab.addEventListener(
-    "click",
-    function () {
+nativeShareBtn.addEventListener(
+  "click",
+  async function () {
 
-      puzzle =
-        currentPuzzle;
-
-
-      currentPuzzleArchived =
-        false;
+    const text =
+      shareText();
 
 
-      resetPuzzle();
-
-
-      playView.style.display =
-        "flex";
-
-
-      archiveView.style.display =
-        "none";
-
-
-      currentTab.classList.add(
-        "active"
-      );
-
-
-      archiveTab.classList.remove(
-        "active"
-      );
-
-
-      trackContronymEvent(
-        "puzzle_started",
-        puzzle,
-        {
-
-          archived:
-            false
-
-        }
-      );
-
-    }
-  );
-
-
-
-  /* =======================================================
-     ARCHIVE TAB
-  ======================================================= */
-
-  archiveTab.addEventListener(
-    "click",
-    function () {
-
-      buildArchive();
-
-
-      playView.style.display =
-        "none";
-
-
-      archiveView.style.display =
-        "block";
-
-
-      archiveTab.classList.add(
-        "active"
-      );
-
-
-      currentTab.classList.remove(
-        "active"
-      );
-
-    }
-  );
-
-
-
-  /* =======================================================
-     INPUT
-  ======================================================= */
-
-  answerBoxes.addEventListener(
-    "input",
-    function (
-      event
+    if (
+      navigator.share
     ) {
-
-      const input =
-        event.target;
-
-
-      const index =
-        Number(
-          input.dataset.index
-        );
-
-
-      input.value =
-        input.value
-          .toUpperCase()
-          .replace(
-            /[^A-Z]/g,
-            ""
-          );
-
-
-      if (
-        input.value
-      ) {
-
-        const next =
-          answerBoxes.children[
-            index + 1
-          ];
-
-
-        if (
-          next
-        ) {
-
-          next.focus();
-
-        }
-
-      }
-
-    }
-  );
-
-
-
-  answerBoxes.addEventListener(
-    "keydown",
-    function (
-      event
-    ) {
-
-      const input =
-        event.target;
-
-
-      const index =
-        Number(
-          input.dataset.index
-        );
-
-
-      if (
-        event.key ===
-        "Backspace"
-        &&
-        input.value ===
-        ""
-      ) {
-
-        const previous =
-          answerBoxes.children[
-            index - 1
-          ];
-
-
-        if (
-          previous
-        ) {
-
-          previous.focus();
-
-        }
-
-      }
-
-
-      if (
-        event.key ===
-        "Enter"
-      ) {
-
-        submitGuess();
-
-      }
-
-    }
-  );
-
-
-
-  /* =======================================================
-     SUBMIT
-  ======================================================= */
-
-  submitBtn.addEventListener(
-    "click",
-    submitGuess
-  );
-
-
-
-  /* =======================================================
-     REVEAL HINT PAIR
-
-     ONE WORD REVEALS ON EACH SIDE
-     AT THE SAME TIME.
-  ======================================================= */
-
-  showHintBtn.addEventListener(
-    "click",
-    function () {
-
-      if (
-        visibleHintPairs <
-        puzzle.hintPairs.length
-      ) {
-
-        visibleHintPairs++;
-
-
-        hintsUsed++;
-
-
-        renderHints();
-
-
-        updateAttempts();
-
-
-        trackContronymEvent(
-          "hint_pair_revealed",
-          puzzle,
-          {
-
-            pair_number:
-              visibleHintPairs,
-
-            hint_pairs_used:
-              hintsUsed
-
-          }
-        );
-
-
-        return;
-
-      }
-
-
-      hintText.style.display =
-        "block";
-
-  });
-
-
-
-  /* =======================================================
-     RESET
-  ======================================================= */
-
-  resetBtn.addEventListener(
-    "click",
-    function () {
-
-      resetPuzzle();
-
-
-      trackContronymEvent(
-        "puzzle_started",
-        puzzle,
-        {
-
-          archived:
-            currentPuzzleArchived,
-
-          restarted:
-            true
-
-        }
-      );
-
-    }
-  );
-
-
-
-  /* =======================================================
-     SHARE
-  ======================================================= */
-
-  nativeShareBtn.addEventListener(
-    "click",
-    async function () {
-
-      const text =
-        shareText();
-
-
-      if (
-        navigator.share
-      ) {
-
-        try {
-
-          await navigator.share(
-            {
-
-              title:
-                "Contronym: The Majorana of Meaning",
-
-              text:
-                text,
-
-              url:
-                window.location.href
-
-            }
-          );
-
-
-          trackContronymEvent(
-            "puzzle_shared",
-            puzzle,
-            {
-
-              attempts:
-                attempts,
-
-              hint_pairs_used:
-                hintsUsed,
-
-              share_method:
-                "native"
-
-            }
-          );
-
-        }
-
-        catch (
-          error
-        ) {
-
-          console.log(
-            "Share cancelled."
-          );
-
-        }
-
-      }
-
-      else {
-
-        await navigator
-          .clipboard
-          .writeText(
-            text
-            +
-            "\n\n"
-            +
-            window.location.href
-          );
-
-      }
-
-    }
-  );
-
-
-
-  copyShareBtn.addEventListener(
-    "click",
-    async function () {
-
-      const text =
-        shareText();
-
 
       try {
 
-        await navigator
-          .clipboard
-          .writeText(
-            text
-            +
-            "\n\n"
-            +
-            window.location.href
-          );
+        await navigator.share(
+          {
 
+            title:
+              "Contronym: The Majorana of Meaning",
 
-        copyShareBtn.textContent =
-          "Copied!";
+            text:
+              text,
 
+            url:
+              window.location.href
 
-        setTimeout(
-          function () {
-
-            copyShareBtn.textContent =
-              "Copy Result";
-
-          },
-          1200
+          }
         );
 
 
@@ -4996,7 +5015,7 @@ document.addEventListener(
               hintsUsed,
 
             share_method:
-              "clipboard"
+              "native"
 
           }
         );
@@ -5007,34 +5026,134 @@ document.addEventListener(
         error
       ) {
 
-        alert(
-          text
+        console.log(
+          "Share cancelled."
         );
 
       }
 
     }
-  );
 
+    else {
 
+      try {
 
-  /* =======================================================
-     START
-  ======================================================= */
+        await navigator
+          .clipboard
+          .writeText(
+            text
+            +
+            "\n\n"
+            +
+            window.location.href
+          );
 
-  resetPuzzle();
+      }
 
+      catch (
+        error
+      ) {
 
-  trackContronymEvent(
-    "puzzle_started",
-    currentPuzzle,
-    {
+        console.log(
+          "Copy failed."
+        );
 
-      archived:
-        false
+      }
 
     }
-  );
+
+  }
+);
+
+
+
+copyShareBtn.addEventListener(
+  "click",
+  async function () {
+
+    const text =
+      shareText();
+
+
+    try {
+
+      await navigator
+        .clipboard
+        .writeText(
+          text
+          +
+          "\n\n"
+          +
+          window.location.href
+        );
+
+
+      copyShareBtn.textContent =
+        "Copied!";
+
+
+      setTimeout(
+        function () {
+
+          copyShareBtn.textContent =
+            "Copy Result";
+
+        },
+        1200
+      );
+
+
+      trackContronymEvent(
+        "puzzle_shared",
+        puzzle,
+        {
+
+          attempts:
+            attempts,
+
+          hint_pairs_used:
+            hintsUsed,
+
+          share_method:
+            "clipboard"
+
+        }
+      );
+
+    }
+
+    catch (
+      error
+    ) {
+
+      alert(
+        text
+      );
+
+    }
+
+  }
+);
+
+
+
+/* =========================================================
+   START
+========================================================= */
+
+resetPuzzle();
+
+
+trackContronymEvent(
+  "puzzle_started",
+  currentPuzzle,
+  {
+
+    archived:
+      false
+
+  }
+);
 
 
 });
