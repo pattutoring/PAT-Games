@@ -177,7 +177,7 @@ button {
 
 
 /* =====================================================
-   BRAND CARD
+   BRAND
 ===================================================== */
 
 .brand-panel {
@@ -372,17 +372,6 @@ button {
 
   color:
     var(--ink);
-
-  box-shadow:
-    0
-    2px
-    6px
-    rgba(
-      50,
-      40,
-      25,
-      .08
-    );
 
 }
 
@@ -585,7 +574,7 @@ button {
 
 
 /* =====================================================
-   AXIS LABELS
+   GRAPH LABELS
 ===================================================== */
 
 .axis-label {
@@ -629,9 +618,7 @@ button {
     50%;
 
   transform:
-    translateX(
-      -50%
-    );
+    translateX(-50%);
 
   color:
     var(--red);
@@ -674,9 +661,7 @@ button {
     95%;
 
   transform:
-    translateX(
-      -50%
-    );
+    translateX(-50%);
 
   color:
     var(--brown);
@@ -732,17 +717,6 @@ button {
       253,
       247,
       .97
-    );
-
-  box-shadow:
-    0
-    3px
-    10px
-    rgba(
-      0,
-      0,
-      0,
-      .05
     );
 
 }
@@ -1137,7 +1111,7 @@ button {
 
 
 /* =====================================================
-   BIG GAME CONTROLS
+   GAME BUTTONS
 ===================================================== */
 
 .button-row {
@@ -1174,10 +1148,10 @@ button {
 .button-row button {
 
   min-height:
-    62px;
+    64px;
 
   padding:
-    14px
+    15px
     18px;
 
   border:
@@ -1186,21 +1160,18 @@ button {
     transparent;
 
   border-radius:
-    17px;
+    18px;
 
   font-size:
-    1rem;
+    1.03rem;
 
   font-weight:
     800;
 
-  letter-spacing:
-    .15px;
-
   box-shadow:
     0
-    5px
-    12px
+    6px
+    13px
     rgba(
       50,
       40,
@@ -1214,9 +1185,6 @@ button {
     ease,
     box-shadow
     .15s
-    ease,
-    filter
-    .15s
     ease;
 
 }
@@ -1225,40 +1193,17 @@ button {
 .button-row button:hover {
 
   transform:
-    translateY(
-      -2px
-    );
+    translateY(-2px);
 
   box-shadow:
     0
-    8px
-    17px
+    9px
+    18px
     rgba(
       50,
       40,
       25,
       .17
-    );
-
-}
-
-
-.button-row button:active {
-
-  transform:
-    translateY(
-      1px
-    );
-
-  box-shadow:
-    0
-    3px
-    8px
-    rgba(
-      50,
-      40,
-      25,
-      .12
     );
 
 }
@@ -1298,7 +1243,7 @@ button {
   background:
     linear-gradient(
       180deg,
-      #f9eab4,
+      #faecb9,
       #efd174
     );
 
@@ -1351,9 +1296,6 @@ button {
     default;
 
   transform:
-    none;
-
-  box-shadow:
     none;
 
 }
@@ -1518,17 +1460,6 @@ button {
 
   background:
     #fff8d8;
-
-  box-shadow:
-    0
-    5px
-    15px
-    rgba(
-      50,
-      40,
-      25,
-      .1
-    );
 
 }
 
@@ -1698,7 +1629,7 @@ button {
 
 
 /* =====================================================
-   CONCEPT PANEL
+   CONCEPT
 ===================================================== */
 
 .concept-panel {
@@ -1916,7 +1847,7 @@ button {
 
 
 /* =====================================================
-   TABLET
+   RESPONSIVE
 ===================================================== */
 
 @media
@@ -1938,13 +1869,6 @@ button {
     width:
       145px;
 
-    min-height:
-      240px;
-
-    padding:
-      9px
-      7px;
-
   }
 
 
@@ -1952,15 +1876,6 @@ button {
 
     font-size:
       .69rem;
-
-  }
-
-
-  .clue-item {
-
-    grid-template-columns:
-      23px
-      1fr;
 
   }
 
@@ -1974,11 +1889,6 @@ button {
 
 }
 
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
 
 @media
 (max-width: 600px) {
@@ -2000,10 +1910,7 @@ button {
   .button-row button {
 
     min-height:
-      62px;
-
-    font-size:
-      1.03rem;
+      64px;
 
   }
 
@@ -2107,15 +2014,6 @@ button {
 <div class="brand-logo-wrap">
 
 
-<!-- =====================================================
-     CONTRONYM LOGO
-
-     TRUE ROTATED ELLIPTICAL ORBIT
-
-     BLUE DOT = LEFT ENDPOINT
-     ν = RIGHT ENDPOINT
-===================================================== -->
-
 <svg
   class="brand-logo"
   viewBox="0 0 440 280"
@@ -2124,7 +2022,9 @@ button {
 
 
 <!-- =====================================================
-     ENTIRE ORBIT BEHIND THE C
+     COMPLETE ORBIT
+
+     THIS REMAINS THE SAME
 ===================================================== -->
 
 <ellipse
@@ -2158,7 +2058,7 @@ button {
 <!-- =====================================================
      RED C
 
-     C COVERS THE REAR PORTION OF THE ORBIT
+     UPPER ORBIT PASSES BEHIND THE C
 ===================================================== -->
 
 <path
@@ -2194,7 +2094,9 @@ button {
 
 
 <!-- =====================================================
-     LOWER / FRONT HALF OF THE SAME ORBIT
+     FRONT HALF OF ORBIT
+
+     REMAINS UNCHANGED
 ===================================================== -->
 
 <path
@@ -2230,9 +2132,24 @@ button {
 
 
 <!-- =====================================================
-     BLUE DOT
+     LEFT ENDPOINT MASK
 
-     ACTUAL LEFT ENDPOINT OF ROTATED ELLIPSE
+     ERASES ONLY THE DASH DIRECTLY UNDER THE DOT.
+===================================================== -->
+
+<circle
+  cx="62"
+  cy="188"
+  r="19"
+  fill="#fffdf7"
+/>
+
+
+
+<!-- =====================================================
+     LEFT PARTICLE
+
+     NOW CLEANLY VISIBLE ON THE ORBIT
 ===================================================== -->
 
 <circle
@@ -2245,16 +2162,31 @@ button {
 
 
 <!-- =====================================================
-     ν
+     RIGHT ν MASK
 
-     ACTUAL RIGHT ENDPOINT OF ROTATED ELLIPSE
+     ONLY ERASES THE ORBIT DIRECTLY BEHIND ν.
+     THE REST OF THE ELLIPSE IS UNCHANGED.
+===================================================== -->
 
-     THE ν REPLACES THE RIGHT-HAND DOT
+<ellipse
+  cx="378"
+  cy="92"
+
+  rx="25"
+  ry="29"
+
+  fill="#fffdf7"
+/>
+
+
+
+<!-- =====================================================
+     SINGLE ν ON RIGHT ORBITAL ENDPOINT
 ===================================================== -->
 
 <text
   x="378"
-  y="92"
+  y="94"
 
   fill="#205995"
 
@@ -2398,7 +2330,7 @@ button {
 >
 
 
-<!-- TRANSVERSE AXIS -->
+<!-- TRANSVERSE -->
 
 <line
   x1="150"
@@ -2431,7 +2363,7 @@ button {
 
 
 
-<!-- CONJUGATE AXIS -->
+<!-- CONJUGATE -->
 
 <line
   x1="410"
@@ -2454,7 +2386,7 @@ button {
 
 
 
-<!-- LEFT / NEGATIVE BRANCH -->
+<!-- NEGATIVE BRANCH -->
 
 <path
   d="
@@ -2478,7 +2410,7 @@ button {
 
 
 
-<!-- RIGHT / POSITIVE BRANCH -->
+<!-- POSITIVE BRANCH -->
 
 <path
   d="
@@ -2502,7 +2434,7 @@ button {
 
 
 
-<!-- GOLD VERTEX -->
+<!-- VERTEX -->
 
 <circle
   cx="410"
@@ -2529,9 +2461,7 @@ button {
 
 
 
-<!-- =====================================================
-     THIN BLACK ν FIELD
-===================================================== -->
+<!-- BLACK MAJORANA TRAIL -->
 
 <path
   d="
@@ -2622,10 +2552,6 @@ button {
 
 
 
-<!-- =====================================================
-     NEGATIVE CLUES
-===================================================== -->
-
 <div class="clue-column negative-column">
 
 
@@ -2649,10 +2575,6 @@ button {
 </div>
 
 
-
-<!-- =====================================================
-     POSITIVE CLUES
-===================================================== -->
 
 <div class="clue-column positive-column">
 
@@ -2721,10 +2643,6 @@ button {
 </p>
 
 
-
-<!-- =====================================================
-     LARGE GAME BUTTONS
-===================================================== -->
 
 <div class="button-row">
 
@@ -3003,7 +2921,7 @@ function trackContronymEvent(
 
 
 /* =====================================================
-   BLACK SILHOUETTES
+   SILHOUETTES
 ===================================================== */
 
 const icons = {
@@ -3020,17 +2938,8 @@ cut:
   stroke-linecap="round"
 >
 
-<circle
-  cx="14"
-  cy="18"
-  r="8"
-/>
-
-<circle
-  cx="14"
-  cy="46"
-  r="8"
-/>
+<circle cx="14" cy="18" r="8"/>
+<circle cx="14" cy="46" r="8"/>
 
 <path
   d="
@@ -3057,17 +2966,8 @@ trim:
   stroke-linecap="round"
 >
 
-<circle
-  cx="15"
-  cy="18"
-  r="7"
-/>
-
-<circle
-  cx="15"
-  cy="45"
-  r="7"
-/>
+<circle cx="15" cy="18" r="7"/>
+<circle cx="15" cy="45" r="7"/>
 
 <path
   d="
@@ -3132,13 +3032,9 @@ attach:
   "
 
   fill="none"
-
   stroke="#111"
-
   stroke-width="6"
-
   stroke-linecap="round"
-
   stroke-linejoin="round"
 />
 
@@ -3156,11 +3052,8 @@ fasten:
   width="50"
   height="27"
   rx="6"
-
   fill="none"
-
   stroke="#111"
-
   stroke-width="6"
 />
 
@@ -3170,7 +3063,6 @@ fasten:
   width="18"
   height="15"
   rx="3"
-
   fill="#111"
 />
 
@@ -3188,7 +3080,6 @@ secure:
   width="40"
   height="29"
   rx="5"
-
   fill="#111"
 />
 
@@ -3203,11 +3094,8 @@ secure:
 
     V29
   "
-
   fill="none"
-
   stroke="#111"
-
   stroke-width="7"
 />
 
@@ -3225,7 +3113,6 @@ restrict:
   width="52"
   height="20"
   rx="3"
-
   fill="#111"
 />
 
@@ -3234,7 +3121,6 @@ restrict:
   y="38"
   width="7"
   height="19"
-
   fill="#111"
 />
 
@@ -3243,7 +3129,6 @@ restrict:
   y="38"
   width="7"
   height="19"
-
   fill="#111"
 />
 
@@ -3261,9 +3146,7 @@ penalize:
   width="31"
   height="13"
   rx="3"
-
   fill="#111"
-
   transform="rotate(-34 32 14)"
 />
 
@@ -3272,9 +3155,7 @@ penalize:
   y="20"
   width="8"
   height="35"
-
   fill="#111"
-
   transform="rotate(-34 32 37)"
 />
 
@@ -3284,7 +3165,6 @@ penalize:
   width="39"
   height="7"
   rx="3"
-
   fill="#111"
 />
 
@@ -3302,9 +3182,7 @@ punish:
   width="33"
   height="15"
   rx="3"
-
   fill="#111"
-
   transform="rotate(-25 29 16)"
 />
 
@@ -3313,9 +3191,7 @@ punish:
   y="19"
   width="8"
   height="39"
-
   fill="#111"
-
   transform="rotate(-25 35 38)"
 />
 
@@ -3332,7 +3208,6 @@ permit:
   y="9"
   width="7"
   height="47"
-
   fill="#111"
 />
 
@@ -3341,7 +3216,6 @@ permit:
   y="9"
   width="7"
   height="47"
-
   fill="#111"
 />
 
@@ -3353,7 +3227,6 @@ permit:
     L16 27
     Z
   "
-
   fill="#111"
 />
 
@@ -3381,7 +3254,6 @@ authorize:
      23 7
     Z
   "
-
   fill="#111"
 />
 
@@ -3391,7 +3263,6 @@ authorize:
   width="34"
   height="13"
   rx="4"
-
   fill="#111"
 />
 
@@ -3401,7 +3272,6 @@ authorize:
   width="46"
   height="10"
   rx="3"
-
   fill="#111"
 />
 
@@ -3417,7 +3287,6 @@ approve:
   cx="32"
   cy="32"
   r="26"
-
   fill="#111"
 />
 
@@ -3427,15 +3296,10 @@ approve:
     L27 42
     L48 19
   "
-
   fill="none"
-
   stroke="#fff"
-
   stroke-width="7"
-
   stroke-linecap="round"
-
   stroke-linejoin="round"
 />
 
@@ -3464,33 +3328,26 @@ const puzzles = [
   word:
     "SANCTION",
 
-
   hintPairs: [
-
 
     {
 
       negative:
         {
-
           word:
             "restrict",
 
           icon:
             "restrict"
-
         },
-
 
       positive:
         {
-
           word:
             "permit",
 
           icon:
             "permit"
-
         }
 
     },
@@ -3500,25 +3357,20 @@ const puzzles = [
 
       negative:
         {
-
           word:
             "penalize",
 
           icon:
             "penalize"
-
         },
-
 
       positive:
         {
-
           word:
             "authorize",
 
           icon:
             "authorize"
-
         }
 
     },
@@ -3528,51 +3380,40 @@ const puzzles = [
 
       negative:
         {
-
           word:
             "punish",
 
           icon:
             "punish"
-
         },
-
 
       positive:
         {
-
           word:
             "approve",
 
           icon:
             "approve"
-
         }
 
     }
 
   ],
 
-
   message:
     "A single word can officially approve something or impose a penalty depending on context.",
-
 
   positiveDefinition:
     "to officially approve, authorize or permit something.",
 
-
   negativeDefinition:
     "to penalize, punish or impose restrictions.",
-
 
   positiveExample:
     "The committee sanctioned the proposal.",
 
-
   negativeExample:
     "The league sanctioned the player.",
-
 
   footer:
     "Context determines charge. • PAT Learning Lab"
@@ -3592,33 +3433,26 @@ const puzzles = [
   word:
     "CLIP",
 
-
   hintPairs: [
-
 
     {
 
       negative:
         {
-
           word:
             "cut",
 
           icon:
             "cut"
-
         },
-
 
       positive:
         {
-
           word:
             "attach",
 
           icon:
             "attach"
-
         }
 
     },
@@ -3628,25 +3462,20 @@ const puzzles = [
 
       negative:
         {
-
           word:
             "trim",
 
           icon:
             "trim"
-
         },
-
 
       positive:
         {
-
           word:
             "fasten",
 
           icon:
             "fasten"
-
         }
 
     },
@@ -3656,51 +3485,40 @@ const puzzles = [
 
       negative:
         {
-
           word:
             "remove",
 
           icon:
             "remove"
-
         },
-
 
       positive:
         {
-
           word:
             "secure",
 
           icon:
             "secure"
-
         }
 
     }
 
   ],
 
-
   message:
     "One word can remove material or attach something firmly.",
-
 
   positiveDefinition:
     "to attach, fasten or secure one thing to another.",
 
-
   negativeDefinition:
     "to cut, trim or remove part of something.",
-
 
   positiveExample:
     "She clipped the badge to her jacket.",
 
-
   negativeExample:
     "He clipped the hedge along the path.",
-
 
   footer:
     "Context determines charge. • PAT Learning Lab"
@@ -3860,7 +3678,7 @@ const archiveList =
 
 
 /* =====================================================
-   CLUE ROW
+   CLUES
 ===================================================== */
 
 function clueRow(
@@ -3893,13 +3711,11 @@ function clueRow(
       ${index + 1}
     </div>
 
-
     <div class="clue-word-row">
 
       <span class="clue-word">
         ${clue.word}
       </span>
-
 
       <span class="clue-silhouette">
         ${icons[clue.icon] || ""}
@@ -3915,10 +3731,6 @@ function clueRow(
 }
 
 
-
-/* =====================================================
-   RENDER HINTS
-===================================================== */
 
 function renderHints() {
 
@@ -4086,7 +3898,7 @@ function updateStatus() {
 
 
 /* =====================================================
-   CURRENT GUESS
+   GUESS
 ===================================================== */
 
 function currentGuess() {
@@ -4114,7 +3926,7 @@ function currentGuess() {
 
 
 /* =====================================================
-   RESULT PHRASE
+   RESULT
 ===================================================== */
 
 function resultPhrase() {
@@ -4154,10 +3966,6 @@ function resultPhrase() {
 
 
 
-/* =====================================================
-   SHARE TEXT
-===================================================== */
-
 function shareText() {
 
   return (
@@ -4185,10 +3993,6 @@ function shareText() {
 }
 
 
-
-/* =====================================================
-   RESULT
-===================================================== */
 
 function showResult() {
 
@@ -4522,7 +4326,7 @@ function resetPuzzle() {
 
 
 /* =====================================================
-   INPUT BEHAVIOR
+   INPUT
 ===================================================== */
 
 answerBoxes.addEventListener(
@@ -4630,7 +4434,7 @@ answerBoxes.addEventListener(
 
 
 /* =====================================================
-   SUBMIT
+   CONTROLS
 ===================================================== */
 
 submitButton.addEventListener(
@@ -4639,10 +4443,6 @@ submitButton.addEventListener(
 );
 
 
-
-/* =====================================================
-   HINT
-===================================================== */
 
 hintButton.addEventListener(
   "click",
@@ -4685,26 +4485,10 @@ hintButton.addEventListener(
     hintText.style.display =
       "block";
 
-
-    trackContronymEvent(
-      "field_note_revealed",
-      puzzle,
-      {
-
-        hints_used:
-          hintsUsed
-
-      }
-    );
-
   }
 );
 
 
-
-/* =====================================================
-   RESET BUTTON
-===================================================== */
 
 resetButton.addEventListener(
   "click",
@@ -4844,10 +4628,6 @@ function buildArchive() {
 
 
 
-/* =====================================================
-   CURRENT TAB
-===================================================== */
-
 currentTab.addEventListener(
   "click",
   function () {
@@ -4897,10 +4677,6 @@ currentTab.addEventListener(
 
 
 
-/* =====================================================
-   ARCHIVE TAB
-===================================================== */
-
 archiveTab.addEventListener(
   "click",
   function () {
@@ -4931,7 +4707,7 @@ archiveTab.addEventListener(
 
 
 /* =====================================================
-   SHARE
+   SHARING
 ===================================================== */
 
 document
@@ -5027,24 +4803,6 @@ document
 
         button.textContent =
           "Copied!";
-
-
-        trackContronymEvent(
-          "puzzle_shared",
-          puzzle,
-          {
-
-            method:
-              "clipboard",
-
-            attempts:
-              attempts,
-
-            hints_used:
-              hintsUsed
-
-          }
-        );
 
 
         setTimeout(
