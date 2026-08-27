@@ -10,7 +10,7 @@
   content="width=device-width, initial-scale=1.0"
 />
 
-<title>Contronym: The Majorana of Meaning</title>
+<title>Contronym | The Majorana of Meaning</title>
 
 
 <!-- =========================================================
@@ -62,7 +62,7 @@ gtag(
     #b62432;
 
   --red-light:
-    #f7e2e4;
+    #f6dfdf;
 
   --blue:
     #1f568f;
@@ -74,10 +74,13 @@ gtag(
     #d6aa44;
 
   --gold-light:
-    #f7e8b1;
+    #f6e7ac;
 
   --brown:
     #8b633e;
+
+  --soft-border:
+    #d9c8a8;
 
   --shadow:
     rgba(
@@ -120,9 +123,9 @@ body {
     100vh;
 
   padding:
-    22px
-    12px
-    40px;
+    18px
+    10px
+    45px;
 
   background:
     var(--cream);
@@ -158,17 +161,12 @@ button {
 }
 
 
-
-/* =========================================================
-   PAGE WRAP
-========================================================= */
-
 .page-shell {
 
   width:
     min(
       980px,
-      96%
+      97%
     );
 
   margin:
@@ -184,35 +182,29 @@ button {
 
 .brand-panel {
 
-  display:
-    grid;
-
-  grid-template-columns:
-    180px
-    minmax(
-      0,
-      1fr
+  width:
+    min(
+      760px,
+      100%
     );
 
-  align-items:
-    center;
-
-  gap:
-    22px;
-
-  margin-bottom:
-    20px;
+  margin:
+    0
+    auto
+    18px;
 
   padding:
+    18px
+    18px
     20px;
 
   border:
     2px
     solid
-    #d9c7a5;
+    var(--soft-border);
 
   border-radius:
-    20px;
+    22px;
 
   background:
     var(--paper);
@@ -223,39 +215,45 @@ button {
     20px
     var(--shadow);
 
+  text-align:
+    center;
+
 }
 
 
-.majorana-mark {
+.brand-logo-wrap {
 
   width:
-    170px;
-
-  min-width:
-    170px;
-
-  height:
-    135px;
+    100%;
 
   display:
     flex;
 
+  justify-content:
+    center;
+
   align-items:
     center;
 
-  justify-content:
-    center;
+  margin-bottom:
+    4px;
 
 }
 
 
-.logo-svg {
+.brand-logo {
 
   width:
-    100%;
+    min(
+      270px,
+      72vw
+    );
 
   height:
-    100%;
+    auto;
+
+  display:
+    block;
 
   overflow:
     visible;
@@ -263,20 +261,22 @@ button {
 }
 
 
-.brand-copy h1 {
+.brand-panel h1 {
 
   margin:
+    2px
+    0
     0;
 
   font-size:
     clamp(
-      2.5rem,
-      7vw,
-      4.4rem
+      2.6rem,
+      9vw,
+      4.6rem
     );
 
   line-height:
-    .95;
+    1;
 
   letter-spacing:
     1px;
@@ -284,18 +284,18 @@ button {
 }
 
 
-.brand-copy h2 {
+.brand-panel h2 {
 
   margin:
-    8px
+    7px
     0
     10px;
 
   font-size:
     clamp(
-      1.2rem,
-      3.8vw,
-      2rem
+      1.15rem,
+      4vw,
+      1.9rem
     );
 
   font-style:
@@ -307,24 +307,24 @@ button {
 }
 
 
-.brand-copy p {
+.brand-description {
+
+  max-width:
+    620px;
 
   margin:
-    0;
+    auto;
 
   color:
-    var(--brown);
-
-  font-size:
-    1rem;
+    #675a4b;
 
   line-height:
-    1.5;
+    1.55;
 
 }
 
 
-.brand-copy strong {
+.brand-description strong {
 
   color:
     var(--blue);
@@ -334,7 +334,7 @@ button {
 
 
 /* =========================================================
-   TOP NAV
+   NAVIGATION
 ========================================================= */
 
 .top-nav {
@@ -352,7 +352,7 @@ button {
     wrap;
 
   margin-bottom:
-    20px;
+    18px;
 
 }
 
@@ -361,7 +361,7 @@ button {
 
   padding:
     9px
-    13px;
+    14px;
 
   border:
     1px
@@ -369,7 +369,7 @@ button {
     #d4c9b7;
 
   border-radius:
-    9px;
+    10px;
 
   background:
     #eee8dc;
@@ -386,7 +386,7 @@ button {
     #9fc4d3;
 
   background:
-    #d8ecf3;
+    var(--blue-light);
 
   color:
     var(--blue);
@@ -435,7 +435,7 @@ button {
 
 
 /* =========================================================
-   PUZZLE CARD
+   MAIN PUZZLE CARD
 ========================================================= */
 
 .puzzle-card {
@@ -452,7 +452,7 @@ button {
   border:
     2px
     solid
-    #d8c7a6;
+    var(--soft-border);
 
   border-radius:
     22px;
@@ -471,16 +471,19 @@ button {
 
 .puzzle-heading {
 
+  max-width:
+    700px;
+
+  margin:
+    auto;
+
   text-align:
     center;
-
-  margin-bottom:
-    10px;
 
 }
 
 
-.puzzle-heading .kicker {
+.kicker {
 
   color:
     var(--brown);
@@ -503,7 +506,7 @@ button {
 .puzzle-heading h3 {
 
   margin:
-    5px
+    6px
     0;
 
   font-size:
@@ -520,12 +523,15 @@ button {
   color:
     #6d6151;
 
+  line-height:
+    1.45;
+
 }
 
 
 
 /* =========================================================
-   GRAPH AREA
+   CARD-LIKE GRAPH AREA
 ========================================================= */
 
 .game-container {
@@ -535,17 +541,17 @@ button {
 
   width:
     min(
-      650px,
+      760px,
       100%
     );
 
   height:
-    470px;
+    500px;
 
   margin:
-    18px
+    15px
     auto
-    12px;
+    8px;
 
 }
 
@@ -564,10 +570,18 @@ button {
   height:
     100%;
 
+  pointer-events:
+    none;
+
 }
 
 
-.label {
+
+/* =========================================================
+   AXIS LABELS
+========================================================= */
+
+.axis-label {
 
   position:
     absolute;
@@ -577,7 +591,7 @@ button {
 
   padding:
     3px
-    6px;
+    7px;
 
   border-radius:
     6px;
@@ -587,60 +601,14 @@ button {
       255,
       248,
       232,
-      .9
+      .92
     );
 
   font-size:
-    .82rem;
-
-  font-style:
-    italic;
-
-}
-
-
-.left-label {
-
-  left:
-    2%;
-
-  top:
-    18%;
-
-  max-width:
-    180px;
-
-  color:
-    var(--red);
-
-  text-align:
-    left;
+    .78rem;
 
   line-height:
-    1.6;
-
-}
-
-
-.right-label {
-
-  right:
-    2%;
-
-  top:
-    18%;
-
-  max-width:
-    180px;
-
-  color:
-    var(--blue);
-
-  text-align:
-    right;
-
-  line-height:
-    1.6;
+    1.35;
 
 }
 
@@ -648,7 +616,7 @@ button {
 .conjugate-label {
 
   top:
-    2px;
+    3px;
 
   left:
     50%;
@@ -670,10 +638,10 @@ button {
 .transverse-label {
 
   right:
-    3%;
+    4%;
 
   bottom:
-    58px;
+    69px;
 
   color:
     var(--blue);
@@ -684,7 +652,7 @@ button {
 }
 
 
-.vertex-copy {
+.vertex-label {
 
   position:
     absolute;
@@ -693,10 +661,10 @@ button {
     50%;
 
   bottom:
-    6px;
+    4px;
 
   width:
-    94%;
+    95%;
 
   transform:
     translateX(
@@ -707,7 +675,7 @@ button {
     var(--brown);
 
   font-size:
-    .78rem;
+    .75rem;
 
   line-height:
     1.35;
@@ -718,25 +686,255 @@ button {
 }
 
 
-.hint-side-title {
 
-  display:
-    block;
+/* =========================================================
+   CLUE COLUMNS
+========================================================= */
+
+.clue-column {
+
+  position:
+    absolute;
+
+  z-index:
+    7;
+
+  top:
+    75px;
+
+  width:
+    175px;
+
+  min-height:
+    260px;
+
+  padding:
+    12px
+    10px;
+
+  border:
+    2px
+    solid;
+
+  border-radius:
+    14px;
+
+  background:
+    rgba(
+      255,
+      253,
+      247,
+      .95
+    );
+
+  box-shadow:
+    0
+    3px
+    10px
+    rgba(
+      0,
+      0,
+      0,
+      .05
+    );
+
+}
+
+
+.negative-column {
+
+  left:
+    0;
+
+  border-color:
+    var(--red);
+
+}
+
+
+.positive-column {
+
+  right:
+    0;
+
+  border-color:
+    var(--blue);
+
+}
+
+
+.clue-column-title {
 
   margin-bottom:
-    3px;
+    4px;
+
+  font-weight:
+    bold;
+
+  text-align:
+    center;
+
+}
+
+
+.negative-column
+.clue-column-title {
+
+  color:
+    var(--red);
+
+}
+
+
+.positive-column
+.clue-column-title {
+
+  color:
+    var(--blue);
+
+}
+
+
+.clue-column-subtitle {
+
+  margin-bottom:
+    10px;
+
+  color:
+    #75695c;
 
   font-size:
     .72rem;
 
   font-style:
-    normal;
+    italic;
+
+  text-align:
+    center;
+
+}
+
+
+.clue-list {
+
+  display:
+    grid;
+
+  gap:
+    9px;
+
+}
+
+
+.clue-item {
+
+  min-height:
+    58px;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    30px
+    1fr;
+
+  align-items:
+    center;
+
+  gap:
+    7px;
+
+  padding:
+    6px;
+
+  border-radius:
+    9px;
+
+  background:
+    var(--cream);
+
+}
+
+
+.clue-number {
+
+  width:
+    24px;
+
+  height:
+    24px;
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  align-items:
+    center;
+
+  border-radius:
+    50%;
+
+  color:
+    white;
+
+  font-size:
+    .72rem;
 
   font-weight:
     bold;
 
-  letter-spacing:
-    1px;
+}
+
+
+.negative-column
+.clue-number {
+
+  background:
+    var(--red);
+
+}
+
+
+.positive-column
+.clue-number {
+
+  background:
+    var(--blue);
+
+}
+
+
+.clue-content {
+
+  min-width:
+    0;
+
+}
+
+
+.clue-word-row {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    7px;
+
+}
+
+
+.clue-word {
+
+  font-size:
+    .82rem;
+
+  font-weight:
+    bold;
 
   text-transform:
     uppercase;
@@ -744,53 +942,119 @@ button {
 }
 
 
-.hint-chip {
+.clue-silhouette {
+
+  width:
+    25px;
+
+  height:
+    25px;
 
   display:
-    block;
+    flex;
 
-  margin:
-    5px
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  flex-shrink:
     0;
-
-  font-style:
-    normal;
-
-  font-weight:
-    bold;
 
 }
 
 
-.hint-chip .hint-icon {
-
-  display:
-    inline-block;
+.clue-silhouette svg {
 
   width:
-    22px;
+    24px;
 
-  color:
+  height:
+    24px;
+
+  display:
+    block;
+
+  fill:
     #111;
 
-  text-align:
-    center;
+  stroke:
+    #111;
+
+}
+
+
+.hidden-clue {
+
+  opacity:
+    .25;
+
+}
+
+
+.hidden-clue
+.clue-word {
+
+  color:
+    transparent;
+
+  position:
+    relative;
+
+}
+
+
+.hidden-clue
+.clue-word::after {
+
+  content:
+    "?";
+
+  position:
+    absolute;
+
+  left:
+    0;
+
+  color:
+    #777;
+
+}
+
+
+.hidden-clue
+.clue-silhouette {
+
+  visibility:
+    hidden;
 
 }
 
 
 
 /* =========================================================
-   ANSWER
+   ANSWER AREA
 ========================================================= */
 
 .answer-section {
 
-  margin-top:
-    6px;
-
   text-align:
     center;
+
+}
+
+
+#letter-count {
+
+  color:
+    var(--brown);
+
+  font-size:
+    .83rem;
+
+  letter-spacing:
+    1px;
 
 }
 
@@ -810,7 +1074,7 @@ button {
     wrap;
 
   margin-top:
-    10px;
+    9px;
 
 }
 
@@ -826,7 +1090,7 @@ button {
   border:
     2px
     solid
-    #666;
+    #555;
 
   border-radius:
     6px;
@@ -869,7 +1133,7 @@ button {
       31,
       86,
       143,
-      .12
+      .13
     );
 
 }
@@ -877,7 +1141,7 @@ button {
 
 
 /* =========================================================
-   BUTTONS
+   CONTROLS
 ========================================================= */
 
 .button-row {
@@ -902,21 +1166,8 @@ button {
 
 button {
 
-  padding:
-    9px
-    13px;
-
   border:
     none;
-
-  border-radius:
-    9px;
-
-  background:
-    var(--blue-light);
-
-  color:
-    var(--ink);
 
 }
 
@@ -937,6 +1188,9 @@ button {
   background:
     var(--gold-light);
 
+  color:
+    #584817;
+
 }
 
 
@@ -951,21 +1205,18 @@ button {
 }
 
 
-
-/* =========================================================
-   STATUS
-========================================================= */
-
 #attempts {
 
-  margin-top:
-    10px;
+  margin:
+    10px
+    auto
+    0;
 
   color:
     #665b4f;
 
   font-size:
-    .85rem;
+    .84rem;
 
   font-style:
     italic;
@@ -982,7 +1233,7 @@ button {
     none;
 
   max-width:
-    520px;
+    560px;
 
   margin:
     12px
@@ -990,7 +1241,7 @@ button {
     0;
 
   color:
-    #666;
+    #665b4f;
 
   font-size:
     .88rem;
@@ -1007,10 +1258,10 @@ button {
 #message {
 
   min-height:
-    28px;
+    29px;
 
   max-width:
-    520px;
+    560px;
 
   margin:
     12px
@@ -1020,11 +1271,8 @@ button {
   color:
     var(--blue);
 
-  font-size:
-    .95rem;
-
-  font-style:
-    italic;
+  font-weight:
+    bold;
 
   text-align:
     center;
@@ -1044,7 +1292,7 @@ button {
 
   width:
     min(
-      650px,
+      660px,
       100%
     );
 
@@ -1093,15 +1341,10 @@ button {
     center;
 
   gap:
-    8px;
-
-}
-
-
-.result-majorana span {
+    4px;
 
   font-size:
-    2rem;
+    2.2rem;
 
   font-weight:
     bold;
@@ -1112,13 +1355,13 @@ button {
 .result-title {
 
   margin-top:
-    8px;
+    5px;
 
   color:
     var(--blue);
 
   font-size:
-    1.15rem;
+    1.1rem;
 
   font-weight:
     bold;
@@ -1137,9 +1380,6 @@ button {
   line-height:
     1.5;
 
-  text-align:
-    left;
-
 }
 
 
@@ -1152,7 +1392,7 @@ button {
     12px;
 
   border-radius:
-    11px;
+    10px;
 
 }
 
@@ -1224,14 +1464,14 @@ button {
     wrap;
 
   margin-top:
-    11px;
+    10px;
 
 }
 
 
 
 /* =========================================================
-   MINI PHILOSOPHY PANEL
+   CONCEPT CARD
 ========================================================= */
 
 .concept-panel {
@@ -1306,7 +1546,7 @@ button {
   border:
     1px
     solid
-    #d8c7a6;
+    var(--soft-border);
 
   border-radius:
     10px;
@@ -1320,17 +1560,6 @@ button {
 }
 
 
-.concept-box strong {
-
-  display:
-    block;
-
-  margin-bottom:
-    4px;
-
-}
-
-
 
 /* =========================================================
    ARCHIVE
@@ -1338,35 +1567,8 @@ button {
 
 .archive-heading {
 
-  margin:
-    6px
-    0
-    16px;
-
   text-align:
     center;
-
-}
-
-
-.archive-heading h3 {
-
-  margin-bottom:
-    4px;
-
-}
-
-
-.archive-heading p {
-
-  margin-top:
-    0;
-
-  color:
-    #666;
-
-  font-size:
-    .88rem;
 
 }
 
@@ -1377,8 +1579,7 @@ button {
     12px;
 
   padding:
-    15px
-    16px;
+    15px;
 
   border:
     1px
@@ -1391,17 +1592,6 @@ button {
   background:
     var(--paper);
 
-  box-shadow:
-    0
-    2px
-    8px
-    rgba(
-      0,
-      0,
-      0,
-      .05
-    );
-
 }
 
 
@@ -1410,9 +1600,6 @@ button {
   color:
     var(--blue);
 
-  font-size:
-    1.05rem;
-
   font-weight:
     bold;
 
@@ -1420,9 +1607,6 @@ button {
 
 
 .archive-date {
-
-  margin-top:
-    2px;
 
   color:
     #777;
@@ -1453,44 +1637,18 @@ button {
 
 .archive-play {
 
+  padding:
+    8px
+    12px;
+
+  border-radius:
+    8px;
+
   background:
     var(--blue-light);
 
 }
 
-
-.empty-archive {
-
-  padding:
-    22px;
-
-  border:
-    1px
-    solid
-    #ddd;
-
-  border-radius:
-    15px;
-
-  background:
-    var(--paper);
-
-  color:
-    #777;
-
-  font-style:
-    italic;
-
-  text-align:
-    center;
-
-}
-
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
 
 .footer-note {
 
@@ -1512,69 +1670,94 @@ button {
 }
 
 
-sup {
-
-  margin-left:
-    2px;
-
-  font-size:
-    .72rem;
-
-  font-style:
-    normal;
-
-  font-weight:
-    bold;
-
-}
-
-
 
 /* =========================================================
-   MOBILE
+   TABLET / MOBILE
 ========================================================= */
 
 @media
-(max-width: 720px) {
-
-  .brand-panel {
-
-    grid-template-columns:
-      1fr;
-
-    text-align:
-      center;
-
-  }
-
-
-  .majorana-mark {
-
-    margin:
-      auto;
-
-  }
-
+(max-width: 760px) {
 
   .game-container {
 
     height:
-      420px;
+      610px;
 
   }
 
 
-  .left-label,
-  .right-label {
+  .clue-column {
 
     top:
-      19%;
+      45px;
 
-    max-width:
+    width:
       145px;
 
+    min-height:
+      240px;
+
+    padding:
+      9px
+      7px;
+
+  }
+
+
+  .negative-column {
+
+    left:
+      0;
+
+  }
+
+
+  .positive-column {
+
+    right:
+      0;
+
+  }
+
+
+  .clue-word {
+
     font-size:
-      .74rem;
+      .72rem;
+
+  }
+
+
+  .clue-item {
+
+    grid-template-columns:
+      25px
+      1fr;
+
+    gap:
+      4px;
+
+  }
+
+
+  .clue-silhouette {
+
+    width:
+      21px;
+
+    height:
+      21px;
+
+  }
+
+
+  .clue-silhouette svg {
+
+    width:
+      20px;
+
+    height:
+      20px;
 
   }
 
@@ -1590,17 +1773,17 @@ sup {
 
 
 @media
-(max-width: 460px) {
+(max-width: 480px) {
 
   body {
 
     padding-top:
-      14px;
+      10px;
 
   }
 
 
-  .puzzle-card {
+  .brand-panel {
 
     padding:
       14px;
@@ -1608,32 +1791,64 @@ sup {
   }
 
 
+  .brand-logo {
+
+    width:
+      220px;
+
+  }
+
+
+  .puzzle-card {
+
+    padding:
+      12px;
+
+  }
+
+
   .game-container {
 
     height:
-      390px;
+      560px;
 
   }
 
 
-  .left-label {
+  .clue-column {
 
-    left:
-      0;
+    width:
+      127px;
 
-    max-width:
-      120px;
+    top:
+      52px;
 
   }
 
 
-  .right-label {
+  .clue-column-subtitle {
 
-    right:
-      0;
+    font-size:
+      .62rem;
 
-    max-width:
-      120px;
+  }
+
+
+  .clue-number {
+
+    width:
+      20px;
+
+    height:
+      20px;
+
+  }
+
+
+  .clue-item {
+
+    padding:
+      4px;
 
   }
 
@@ -1645,14 +1860,6 @@ sup {
 
     height:
       36px;
-
-  }
-
-
-  .transverse-label {
-
-    bottom:
-      54px;
 
   }
 
@@ -1672,121 +1879,143 @@ sup {
 
 
 <!-- =========================================================
-     BRAND
+     CENTERED CONTRONYM BRAND
 ========================================================= -->
 
 <section class="brand-panel">
 
 
-<div class="majorana-mark">
-
-  <svg
-    class="logo-svg"
-    viewBox="0 0 220 170"
-    aria-label="Contronym Majorana logo"
-  >
-
-    <!-- RED CONTRONYM FORM -->
-
-    <path
-      d="
-        M 142 35
-        C 125 17,
-          88 18,
-          72 42
-        C 60 61,
-          60 109,
-          72 130
-        C 88 155,
-          126 155,
-          144 132
-      "
-      fill="none"
-      stroke="#b62432"
-      stroke-width="20"
-      stroke-linecap="round"
-    />
+<div class="brand-logo-wrap">
 
 
-    <!-- BLUE MAJORANA TRAJECTORY -->
-
-    <path
-      d="
-        M 20 125
-        C 58 91,
-          90 115,
-          116 103
-        C 145 90,
-          165 63,
-          195 45
-      "
-      fill="none"
-      stroke="#1f568f"
-      stroke-width="6"
-      stroke-linecap="round"
-      stroke-dasharray="12 10"
-    />
+<svg
+  class="brand-logo"
+  viewBox="0 0 360 230"
+  aria-label="Contronym Majorana of Meaning logo"
+>
 
 
-    <circle
-      cx="20"
-      cy="125"
-      r="9"
-      fill="#1f568f"
-    />
+<!-- =====================================================
+     RED C
+===================================================== -->
 
+<path
+  d="
+    M 230 52
 
-    <circle
-      cx="195"
-      cy="45"
-      r="9"
-      fill="#1f568f"
-    />
+    C 211 27,
+      158 24,
+      127 54
 
+    C 105 75,
+      96 111,
+      99 145
 
-    <text
-      x="165"
-      y="43"
-      font-size="27"
-      font-family="Georgia, serif"
-      font-style="italic"
-      font-weight="bold"
-      fill="#1f568f"
-    >
-      ν
-    </text>
+    C 102 181,
+      124 202,
+      155 207
 
-  </svg>
-
-</div>
+    C 188 212,
+      216 194,
+      234 170
+  "
+  fill="none"
+  stroke="#c92535"
+  stroke-width="29"
+  stroke-linecap="round"
+/>
 
 
 
-<div class="brand-copy">
+<!-- =====================================================
+     BLUE DASHED MAJORANA TRAIL
+===================================================== -->
 
-  <h1>
-    Contronym
-  </h1>
+<path
+  d="
+    M 60 177
 
-  <h2>
-    The Majorana of Meaning
-  </h2>
+    C 98 141,
+      128 155,
+      161 142
 
-  <p>
+    C 193 130,
+      216 108,
+      243 83
 
-    One word.
-    Two meanings.
-    Opposites in perfect balance.
+    C 266 62,
+      287 55,
+      312 64
+  "
+  fill="none"
+  stroke="#1f568f"
+  stroke-width="8"
+  stroke-linecap="round"
+  stroke-dasharray="18 14"
+/>
 
-    <br>
 
-    <strong>
-      Context determines charge.
-    </strong>
+<circle
+  cx="60"
+  cy="177"
+  r="12"
+  fill="#1f568f"
+/>
 
-  </p>
+
+<circle
+  cx="312"
+  cy="64"
+  r="12"
+  fill="#1f568f"
+/>
+
+
+
+<!-- NU -->
+
+<text
+  x="264"
+  y="56"
+  font-family="Georgia, serif"
+  font-size="43"
+  font-style="italic"
+  font-weight="bold"
+  fill="#1f568f"
+>
+  ν
+</text>
+
+
+</svg>
+
 
 </div>
+
+
+
+<h1>
+  Contronym
+</h1>
+
+
+<h2>
+  The Majorana of Meaning
+</h2>
+
+
+<p class="brand-description">
+
+  One word. Two meanings.
+  Opposites in perfect balance.
+
+  <br>
+
+  <strong>
+    Context determines charge.
+  </strong>
+
+</p>
 
 
 </section>
@@ -1799,36 +2028,38 @@ sup {
 
 <div class="top-nav">
 
-  <button
-    id="current-tab"
-    class="active"
-    type="button"
-  >
-    Current Puzzle
-  </button>
+
+<button
+  id="current-tab"
+  class="active"
+  type="button"
+>
+  Current Puzzle
+</button>
 
 
-  <button
-    id="archive-tab"
-    type="button"
-  >
-    Archive
-  </button>
+<button
+  id="archive-tab"
+  type="button"
+>
+  Archive
+</button>
 
 
-  <button
-    type="button"
-    onclick="window.location.href='index.html'"
-  >
-    Learning Lab
-  </button>
+<button
+  type="button"
+  onclick="window.location.href='index.html'"
+>
+  Learning Lab
+</button>
+
 
 </div>
 
 
 
 <!-- =========================================================
-     PLAY VIEW
+     PLAY
 ========================================================= -->
 
 <div id="play-view">
@@ -1839,33 +2070,47 @@ sup {
 
 <div class="puzzle-heading">
 
-  <div class="kicker">
-    CAN ONE WORD MEAN BOTH?
-  </div>
 
-  <h3 id="puzzle-title">
-    Contronym
-  </h3>
+<div class="kicker">
+  CAN ONE WORD MEAN BOTH?
+</div>
 
-  <p>
-    Use the negative and positive semantic branches
-    to reconstruct the neutral word at the vertex.
-  </p>
+
+<h3 id="puzzle-title">
+</h3>
+
+
+<p>
+
+  Each hint reveals one word from
+  each side of the semantic parabola.
+
+  Find the single word that can carry both charges.
+
+</p>
+
 
 </div>
 
 
 
+<!-- =========================================================
+     GRAPH
+========================================================= -->
+
 <div class="game-container">
 
 
+
 <!-- =====================================================
-     TRUE SEMANTIC PARABOLA
+     PURE DASHED PARABOLA + AXES
+
+     NO BLACK PARABOLA UNDERLAY
 ===================================================== -->
 
 <svg
   class="graph-svg"
-  viewBox="0 0 560 455"
+  viewBox="0 0 760 500"
   preserveAspectRatio="xMidYMid meet"
 >
 
@@ -1873,23 +2118,23 @@ sup {
 <!-- TRANSVERSE AXIS -->
 
 <line
-  x1="45"
-  y1="350"
-  x2="515"
-  y2="350"
+  x1="185"
+  y1="385"
+  x2="575"
+  y2="385"
   stroke="#1f568f"
   stroke-width="4"
 />
 
 
 <polygon
-  points="522,350 505,340 505,360"
+  points="582,385 565,375 565,395"
   fill="#1f568f"
 />
 
 
 <polygon
-  points="38,350 55,340 55,360"
+  points="178,385 195,375 195,395"
   fill="#1f568f"
 />
 
@@ -1898,143 +2143,145 @@ sup {
 <!-- CONJUGATE AXIS -->
 
 <line
-  x1="280"
-  y1="38"
-  x2="280"
-  y2="401"
+  x1="380"
+  y1="30"
+  x2="380"
+  y2="427"
   stroke="#b62432"
   stroke-width="4"
 />
 
 
 <polygon
-  points="280,28 270,48 290,48"
+  points="380,20 370,42 390,42"
   fill="#b62432"
 />
 
 
 
-<!-- BASE PARABOLA -->
+<!-- =====================================================
+     LEFT DASHED PARABOLA BRANCH
+===================================================== -->
 
 <path
   d="
-    M 75 140
-    Q 280 560
-      485 140
-  "
-  fill="none"
-  stroke="#222"
-  stroke-width="5"
-  stroke-linecap="round"
-/>
+    M 245 88
 
-
-
-<!-- NEGATIVE SEMANTIC BRANCH -->
-
-<path
-  id="negative-branch"
-  d="
-    M 75 140
-    Q 177 350
-      280 350
+    C 258 165,
+      285 290,
+      380 385
   "
   fill="none"
   stroke="#b62432"
-  stroke-width="4"
-  stroke-dasharray="11 10"
+  stroke-width="5"
+  stroke-dasharray="15 13"
   stroke-linecap="round"
 />
 
 
 
-<!-- POSITIVE SEMANTIC BRANCH -->
+<!-- =====================================================
+     RIGHT DASHED PARABOLA BRANCH
+===================================================== -->
 
 <path
-  id="positive-branch"
   d="
-    M 280 350
-    Q 383 350
-      485 140
+    M 380 385
+
+    C 475 290,
+      502 165,
+      515 88
   "
   fill="none"
   stroke="#1f568f"
-  stroke-width="4"
-  stroke-dasharray="11 10"
+  stroke-width="5"
+  stroke-dasharray="15 13"
   stroke-linecap="round"
 />
 
 
 
-<!-- GOLD VERTEX -->
+<!-- =====================================================
+     GOLD VERTEX
+===================================================== -->
 
 <circle
-  cx="280"
-  cy="350"
-  r="8"
+  cx="380"
+  cy="385"
+  r="9"
   fill="#d6aa44"
 />
 
 
-<text
-  x="280"
-  y="360"
-  text-anchor="middle"
-  font-size="30"
+<path
+  d="
+    M 380 366
+    L 385 380
+    L 400 385
+    L 385 390
+    L 380 404
+    L 375 390
+    L 360 385
+    L 375 380
+    Z
+  "
   fill="#d6aa44"
->
-  ✦
-</text>
+/>
 
 
 
-<!-- MAJORANA TRAIL ACROSS TRANSVERSE DOMAIN -->
+<!-- =====================================================
+     MAJORANA TRAIL CROSSING TRANSVERSE AXIS
+===================================================== -->
 
 <path
   d="
-    M 90 373
-    C 145 340,
-      190 378,
-      235 354
-    C 275 333,
-      311 368,
-      350 350
-    C 395 329,
-      431 338,
-      475 315
+    M 224 401
+
+    C 267 367,
+      305 411,
+      347 388
+
+    C 386 366,
+      418 406,
+      456 384
+
+    C 494 362,
+      521 367,
+      548 346
   "
   fill="none"
   stroke="#1f568f"
   stroke-width="4"
+  stroke-dasharray="11 9"
   stroke-linecap="round"
-  stroke-dasharray="10 9"
 />
 
 
 <circle
-  cx="90"
-  cy="373"
+  cx="224"
+  cy="401"
   r="8"
   fill="#1f568f"
 />
 
 
 <circle
-  cx="475"
-  cy="315"
+  cx="548"
+  cy="346"
   r="8"
   fill="#1f568f"
 />
 
 
 <text
-  x="448"
-  y="302"
-  font-size="28"
+  x="516"
+  y="330"
+  fill="#1f568f"
   font-family="Georgia, serif"
+  font-size="28"
   font-style="italic"
   font-weight="bold"
-  fill="#1f568f"
 >
   ν
 </text>
@@ -2045,46 +2292,101 @@ sup {
 
 
 <!-- =====================================================
-     GRAPH LABELS
+     AXIS LABELS
 ===================================================== -->
 
-<div
-  class="label conjugate-label"
->
+<div class="axis-label conjugate-label">
+
   CONJUGATE AXIS
+
   <br>
+
   <small>
     meaning inversion
   </small>
+
 </div>
 
 
-<div
-  class="label transverse-label"
->
+<div class="axis-label transverse-label">
+
   TRANSVERSE AXIS
+
   <br>
+
   <small>
     semantic exploration
   </small>
+
+</div>
+
+
+
+<!-- =====================================================
+     NEGATIVE CLUES
+===================================================== -->
+
+<div class="clue-column negative-column">
+
+
+<div class="clue-column-title">
+
+  ⊖ OPPOSITE
+
+</div>
+
+
+<div class="clue-column-subtitle">
+
+  opposite meaning
+
 </div>
 
 
 <div
-  class="label left-label"
-  id="left-label"
+  id="negativeClues"
+  class="clue-list"
 >
+</div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     POSITIVE CLUES
+===================================================== -->
+
+<div class="clue-column positive-column">
+
+
+<div class="clue-column-title">
+
+  ⊕ SIMILAR
+
+</div>
+
+
+<div class="clue-column-subtitle">
+
+  similar meaning
+
 </div>
 
 
 <div
-  class="label right-label"
-  id="right-label"
+  id="positiveClues"
+  class="clue-list"
 >
 </div>
 
 
-<div class="vertex-copy">
+</div>
+
+
+
+<div class="vertex-label">
 
   <strong>
     VERTEX (0)
@@ -2101,20 +2403,23 @@ sup {
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      ANSWER
-===================================================== -->
+========================================================= -->
 
 <div class="answer-section">
 
-  <strong id="letter-count">
-  </strong>
 
-  <div
-    class="answer-boxes"
-    id="answer-boxes"
-  >
-  </div>
+<strong id="letter-count">
+</strong>
+
+
+<div
+  id="answer-boxes"
+  class="answer-boxes"
+>
+</div>
+
 
 </div>
 
@@ -2127,28 +2432,30 @@ sup {
 
 <div class="button-row">
 
-  <button
-    id="submit-answer"
-    type="button"
-  >
-    Submit Answer
-  </button>
+
+<button
+  id="submit-answer"
+  type="button"
+>
+  Submit Answer
+</button>
 
 
-  <button
-    id="show-hint"
-    type="button"
-  >
-    Reveal Hint
-  </button>
+<button
+  id="show-hint"
+  type="button"
+>
+  Reveal Hint Pair
+</button>
 
 
-  <button
-    id="reset-puzzle"
-    type="button"
-  >
-    Reset Puzzle
-  </button>
+<button
+  id="reset-puzzle"
+  type="button"
+>
+  Reset Puzzle
+</button>
+
 
 </div>
 
@@ -2163,65 +2470,67 @@ sup {
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      RESULT
-===================================================== -->
+========================================================= -->
 
 <div id="result-card">
 
 
-  <div class="result-majorana">
+<div class="result-majorana">
 
-    <span style="color:#b62432;">
-      C
-    </span>
+<span style="color:#b62432;">
+  C
+</span>
 
-    <span style="color:#1f568f;font-style:italic;">
-      ν
-    </span>
+<span style="color:#1f568f;font-style:italic;">
+  ν
+</span>
 
-  </div>
-
-
-  <div
-    class="result-title"
-    id="result-title"
-  >
-  </div>
+</div>
 
 
-  <div
-    class="definition-box"
-    id="definition-box"
-  >
-  </div>
+<div
+  id="result-title"
+  class="result-title"
+>
+</div>
 
 
-  <div
-    class="share-preview"
-    id="share-preview"
-  >
-  </div>
+<div
+  id="definition-box"
+  class="definition-box"
+>
+</div>
 
 
-  <div class="share-buttons">
-
-    <button
-      id="native-share"
-      type="button"
-    >
-      Share
-    </button>
+<div
+  id="share-preview"
+  class="share-preview"
+>
+</div>
 
 
-    <button
-      id="copy-share"
-      type="button"
-    >
-      Copy Result
-    </button>
+<div class="share-buttons">
 
-  </div>
+
+<button
+  id="native-share"
+  type="button"
+>
+  Share
+</button>
+
+
+<button
+  id="copy-share"
+  type="button"
+>
+  Copy Result
+</button>
+
+
+</div>
 
 
 </div>
@@ -2232,64 +2541,69 @@ sup {
 
 
 <!-- =========================================================
-     CONCEPT
+     MODEL EXPLANATION
 ========================================================= -->
 
 <section class="concept-panel">
 
-  <h3>
-    The Contronym Model
-  </h3>
 
-  <p>
-
-    A contronym is a single lexical state
-    capable of resolving into opposing meanings.
-
-    The two semantic charges occupy opposite branches,
-    while the word itself sits at the neutral vertex.
-
-  </p>
+<h3>
+  The Majorana of Meaning
+</h3>
 
 
-  <div class="concept-grid">
+<p>
 
-    <div class="concept-box">
+  The word itself remains one lexical object.
 
-      <strong style="color:#b62432;">
-        − Conjugate
-      </strong>
+  Context moves its interpretation between
+  opposed semantic states.
 
-      Opposing or inverse
-      semantic charge.
+  The two branches are therefore not two different words:
+  they are two contextual expressions
+  of the same underlying form.
 
-    </div>
-
-
-    <div class="concept-box">
-
-      <strong style="color:#d6aa44;">
-        ✦ Vertex
-      </strong>
-
-      The neutral lexical object
-      capable of expressing both.
-
-    </div>
+</p>
 
 
-    <div class="concept-box">
+<div class="concept-grid">
 
-      <strong style="color:#1f568f;">
-        + Transverse
-      </strong>
 
-      Similar or affirmative
-      semantic charge.
+<div class="concept-box">
 
-    </div>
+<strong style="color:#b62432;">
+  − Conjugate
+</strong>
 
-  </div>
+Opposed semantic expression.
+
+</div>
+
+
+<div class="concept-box">
+
+<strong style="color:#d6aa44;">
+  ✦ Vertex
+</strong>
+
+The invariant lexical object.
+
+</div>
+
+
+<div class="concept-box">
+
+<strong style="color:#1f568f;">
+  + Transverse
+</strong>
+
+Affirmative or similar semantic expression.
+
+</div>
+
+
+</div>
+
 
 </section>
 
@@ -2304,29 +2618,31 @@ sup {
 
 <div id="archive-view">
 
-  <div class="archive-heading">
 
-    <h3>
-      Contronym Archive
-    </h3>
+<div class="archive-heading">
 
-    <p>
-      Return to earlier Majoranas of Meaning.
-    </p>
+<h3>
+  Contronym Archive
+</h3>
 
-  </div>
+<p>
+  Return to earlier Majoranas of Meaning.
+</p>
+
+</div>
 
 
-  <div id="archive-list">
-  </div>
+<div id="archive-list">
+</div>
+
 
 </div>
 
 
 
 <div
-  class="footer-note"
   id="footer-note"
+  class="footer-note"
 >
   Context determines charge. • PAT Learning Lab
 </div>
@@ -2396,6 +2712,457 @@ function trackContronymEvent(
 
 
 /* =========================================================
+   BLACK SILHOUETTE ICON LIBRARY
+
+   ALL ICONS ARE INLINE SVG.
+   NO EMOJI / COLORED ART.
+========================================================= */
+
+const silhouetteIcons = {
+
+
+  scissors:
+    `
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+
+      <circle
+        cx="15"
+        cy="18"
+        r="9"
+        fill="none"
+        stroke-width="5"
+      />
+
+      <circle
+        cx="15"
+        cy="46"
+        r="9"
+        fill="none"
+        stroke-width="5"
+      />
+
+      <path
+        d="
+          M22 23
+          L54 5
+
+          M22 41
+          L54 59
+
+          M20 31
+          L36 31
+        "
+        fill="none"
+        stroke-width="5"
+        stroke-linecap="round"
+      />
+
+    </svg>
+    `,
+
+
+  trimmer:
+    `
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+
+      <path
+        d="
+          M8 17
+          H44
+          L56 26
+          L44 35
+          H8
+          Z
+        "
+      />
+
+      <rect
+        x="14"
+        y="35"
+        width="9"
+        height="20"
+        rx="3"
+      />
+
+      <path
+        d="
+          M30 40
+          L44 53
+          L50 47
+          L38 36
+          Z
+        "
+      />
+
+    </svg>
+    `,
+
+
+  blade:
+    `
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+
+      <path
+        d="
+          M7 43
+          C18 27,
+           31 16,
+           54 8
+
+          C47 29,
+           36 43,
+           20 55
+
+          Z
+        "
+      />
+
+      <rect
+        x="5"
+        y="44"
+        width="21"
+        height="8"
+        rx="4"
+        transform="rotate(-35 5 44)"
+      />
+
+    </svg>
+    `,
+
+
+  paperclip:
+    `
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+
+      <path
+        d="
+          M21 43
+
+          L42 22
+
+          C49 15,
+           59 25,
+           52 32
+
+          L28 56
+
+          C16 68,
+           -1 50,
+           11 38
+
+          L37 12
+        "
+        fill="none"
+        stroke-width="6"
+        stroke-linecap="round"
+      />
+
+    </svg>
+    `,
+
+
+  clamp:
+    `
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+
+      <path
+        d="
+          M14 11
+          H49
+          V21
+          H27
+          V44
+          H51
+          V54
+          H14
+          Z
+        "
+      />
+
+      <rect
+        x="7"
+        y="25"
+        width="12"
+        height="17"
+        rx="3"
+      />
+
+    </svg>
+    `,
+
+
+  chain:
+    `
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+
+      <path
+        d="
+          M24 39
+          L18 45
+
+          C10 53,
+           -2 41,
+           6 33
+
+          L18 21
+
+          C25 14,
+           35 22,
+           31 30
+        "
+        fill="none"
+        stroke-width="6"
+        stroke-linecap="round"
+      />
+
+      <path
+        d="
+          M40 25
+          L46 19
+
+          C54 11,
+           66 23,
+           58 31
+
+          L46 43
+
+          C39 50,
+           29 42,
+           33 34
+        "
+        fill="none"
+        stroke-width="6"
+        stroke-linecap="round"
+      />
+
+      <path
+        d="
+          M23 41
+          L41 23
+        "
+        fill="none"
+        stroke-width="6"
+        stroke-linecap="round"
+      />
+
+    </svg>
+    `,
+
+
+  barrier:
+    `
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+
+      <rect
+        x="8"
+        y="20"
+        width="48"
+        height="17"
+        rx="3"
+      />
+
+      <path
+        d="
+          M12 21
+          L24 36
+
+          M29 21
+          L41 36
+
+          M46 21
+          L55 32
+        "
+        fill="none"
+        stroke="#fff"
+        stroke-width="4"
+      />
+
+      <rect
+        x="14"
+        y="37"
+        width="6"
+        height="19"
+      />
+
+      <rect
+        x="44"
+        y="37"
+        width="6"
+        height="19"
+      />
+
+    </svg>
+    `,
+
+
+  gavel:
+    `
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+
+      <rect
+        x="13"
+        y="12"
+        width="26"
+        height="13"
+        rx="3"
+        transform="rotate(-35 13 12)"
+      />
+
+      <rect
+        x="27"
+        y="24"
+        width="9"
+        height="34"
+        rx="3"
+        transform="rotate(-35 27 24)"
+      />
+
+      <rect
+        x="7"
+        y="50"
+        width="34"
+        height="7"
+        rx="3"
+      />
+
+    </svg>
+    `,
+
+
+  stop:
+    `
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+
+      <path
+        d="
+          M21 5
+          H43
+          L59 21
+          V43
+          L43 59
+          H21
+          L5 43
+          V21
+          Z
+        "
+      />
+
+      <rect
+        x="17"
+        y="28"
+        width="30"
+        height="8"
+        fill="#fff"
+      />
+
+    </svg>
+    `,
+
+
+  key:
+    `
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+
+      <circle
+        cx="20"
+        cy="24"
+        r="12"
+        fill="none"
+        stroke-width="6"
+      />
+
+      <path
+        d="
+          M29 32
+          L55 57
+
+          M43 45
+          L49 39
+
+          M49 51
+          L55 45
+        "
+        fill="none"
+        stroke-width="7"
+        stroke-linecap="round"
+      />
+
+    </svg>
+    `,
+
+
+  checkseal:
+    `
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+
+      <circle
+        cx="32"
+        cy="32"
+        r="25"
+      />
+
+      <path
+        d="
+          M18 32
+          L27 42
+          L47 20
+        "
+        fill="none"
+        stroke="#fff"
+        stroke-width="7"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+
+    </svg>
+    `,
+
+
+  stamp:
+    `
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+
+      <path
+        d="
+          M22 8
+          H42
+          C44 16,
+           42 24,
+           38 30
+
+          H26
+
+          C22 24,
+           20 16,
+           22 8
+          Z
+        "
+      />
+
+      <rect
+        x="15"
+        y="30"
+        width="34"
+        height="12"
+        rx="4"
+      />
+
+      <rect
+        x="9"
+        y="45"
+        width="46"
+        height="9"
+        rx="3"
+      />
+
+    </svg>
+    `
+
+};
+
+
+
+/* =========================================================
    PUZZLE DATABASE
 ========================================================= */
 
@@ -2403,7 +3170,7 @@ const puzzles = [
 
 
   /* =======================================================
-     PUZZLE #001
+     PUZZLE #001 — SANCTION
   ======================================================= */
 
   {
@@ -2418,87 +3185,101 @@ const puzzles = [
       "SANCTION",
 
 
-    hints: [
+    hintPairs: [
 
       {
-        word:
-          "restrict",
 
-        charge:
-          "-",
+        negative:
+          {
 
-        icon:
-          "⛔"
+            word:
+              "restrict",
+
+            icon:
+              "barrier"
+
+          },
+
+        positive:
+          {
+
+            word:
+              "permit",
+
+            icon:
+              "key"
+
+          }
+
       },
 
+
       {
-        word:
-          "permit",
 
-        charge:
-          "+",
+        negative:
+          {
 
-        icon:
-          "✓"
+            word:
+              "penalize",
+
+            icon:
+              "gavel"
+
+          },
+
+        positive:
+          {
+
+            word:
+              "authorize",
+
+            icon:
+              "stamp"
+
+          }
+
       },
 
-      {
-        word:
-          "penalize",
-
-        charge:
-          "-",
-
-        icon:
-          "⚖"
-      },
 
       {
-        word:
-          "authorize",
 
-        charge:
-          "+",
+        negative:
+          {
 
-        icon:
-          "🔑"
-      },
+            word:
+              "punish",
 
-      {
-        word:
-          "punish",
+            icon:
+              "stop"
 
-        charge:
-          "-",
+          },
 
-        icon:
-          "!"
-      },
+        positive:
+          {
 
-      {
-        word:
-          "approve",
+            word:
+              "approve",
 
-        charge:
-          "+",
+            icon:
+              "checkseal"
 
-        icon:
-          "✓"
+          }
+
       }
 
     ],
 
 
     message:
-      "A single word can officially approve or penalize depending on context.",
+      "A single word can officially approve something or impose a penalty depending on context.",
 
 
     positiveDefinition:
-      "to officially approve, permit, or authorize something.",
+      "to officially approve, authorize or permit something.",
 
 
     negativeDefinition:
-      "to penalize, punish, or place restrictions on someone or something.",
+      "to penalize, punish or impose restrictions.",
 
 
     positiveExample:
@@ -2517,7 +3298,7 @@ const puzzles = [
 
 
   /* =======================================================
-     PUZZLE #002
+     PUZZLE #002 — CLIP
   ======================================================= */
 
   {
@@ -2532,72 +3313,86 @@ const puzzles = [
       "CLIP",
 
 
-    hints: [
+    hintPairs: [
 
       {
-        word:
-          "cut",
 
-        charge:
-          "-",
+        negative:
+          {
 
-        icon:
-          "✂"
+            word:
+              "cut",
+
+            icon:
+              "scissors"
+
+          },
+
+        positive:
+          {
+
+            word:
+              "attach",
+
+            icon:
+              "paperclip"
+
+          }
+
       },
 
+
       {
-        word:
-          "attach",
 
-        charge:
-          "+",
+        negative:
+          {
 
-        icon:
-          "🔗"
+            word:
+              "trim",
+
+            icon:
+              "trimmer"
+
+          },
+
+        positive:
+          {
+
+            word:
+              "fasten",
+
+            icon:
+              "clamp"
+
+          }
+
       },
 
-      {
-        word:
-          "trim",
-
-        charge:
-          "-",
-
-        icon:
-          "✂"
-      },
 
       {
-        word:
-          "fasten",
 
-        charge:
-          "+",
+        negative:
+          {
 
-        icon:
-          "📎"
-      },
+            word:
+              "remove",
 
-      {
-        word:
-          "remove",
+            icon:
+              "blade"
 
-        charge:
-          "-",
+          },
 
-        icon:
-          "−"
-      },
+        positive:
+          {
 
-      {
-        word:
-          "secure",
+            word:
+              "secure",
 
-        charge:
-          "+",
+            icon:
+              "chain"
 
-        icon:
-          "+"
+          }
+
       }
 
     ],
@@ -2608,11 +3403,11 @@ const puzzles = [
 
 
     positiveDefinition:
-      "to attach, fasten, or secure one thing to another.",
+      "to attach, fasten or secure one object to another.",
 
 
     negativeDefinition:
-      "to cut, trim, or remove a portion of something.",
+      "to cut, trim or remove part of something.",
 
 
     positiveExample:
@@ -2650,8 +3445,22 @@ let word =
   puzzle.word.toUpperCase();
 
 
-let visibleHintCount =
-  2;
+/*
+  ONE PAIR IS VISIBLE AT THE START.
+
+  EVERY HINT PRESS REVEALS:
+  - ONE NEGATIVE WORD
+  - ONE POSITIVE WORD
+
+  SIMULTANEOUSLY.
+*/
+
+let visibleHintPairs =
+  1;
+
+
+let hintsUsed =
+  0;
 
 
 let attempts =
@@ -2660,10 +3469,6 @@ let attempts =
 
 let solved =
   false;
-
-
-let hintsUsed =
-  0;
 
 
 let solveTracked =
@@ -2680,7 +3485,7 @@ let currentPuzzleArchived =
 
 
 /* =========================================================
-   GAME ENGINE
+   START GAME
 ========================================================= */
 
 document.addEventListener(
@@ -2691,6 +3496,18 @@ document.addEventListener(
   const answerBoxes =
     document.getElementById(
       "answer-boxes"
+    );
+
+
+  const negativeClues =
+    document.getElementById(
+      "negativeClues"
+    );
+
+
+  const positiveClues =
+    document.getElementById(
+      "positiveClues"
     );
 
 
@@ -2727,18 +3544,6 @@ document.addEventListener(
   const attemptsText =
     document.getElementById(
       "attempts"
-    );
-
-
-  const leftLabel =
-    document.getElementById(
-      "left-label"
-    );
-
-
-  const rightLabel =
-    document.getElementById(
-      "right-label"
     );
 
 
@@ -2828,126 +3633,164 @@ document.addEventListener(
 
 
   /* =======================================================
-     HINTS
+     SILHOUETTE
   ======================================================= */
 
-  function hintMarkup(
-    hints,
-    charge
+  function getSilhouette(
+    iconName
   ) {
 
-    const title =
-      charge ===
-      "-"
-      ?
-        "OPPOSITE"
-      :
-        "SIMILAR";
-
-
-    return `
-
-      <span class="hint-side-title">
-        ${charge}
-        ${title}
-      </span>
-
-      ${
-        hints
-          .map(
-            function (
-              hint
-            ) {
-
-              return `
-
-                <span class="hint-chip">
-
-                  <span class="hint-icon">
-                    ${hint.icon || "•"}
-                  </span>
-
-                  ${hint.word}
-
-                  <sup>
-                    ${charge}
-                  </sup>
-
-                </span>
-
-              `;
-
-            }
-          )
-          .join(
-            ""
-          )
-      }
-
-    `;
+    return (
+      silhouetteIcons[
+        iconName
+      ]
+      ||
+      ""
+    );
 
   }
 
 
 
+  /* =======================================================
+     BUILD ONE CLUE
+  ======================================================= */
+
+  function createClueElement(
+    clue,
+    index,
+    visible
+  ) {
+
+    const row =
+      document.createElement(
+        "div"
+      );
+
+
+    row.className =
+      "clue-item"
+      +
+      (
+        visible
+        ?
+          ""
+        :
+          " hidden-clue"
+      );
+
+
+    row.innerHTML = `
+
+      <div class="clue-number">
+
+        ${
+          index + 1
+        }
+
+      </div>
+
+
+      <div class="clue-content">
+
+        <div class="clue-word-row">
+
+
+          <span class="clue-word">
+
+            ${clue.word}
+
+          </span>
+
+
+          <span class="clue-silhouette">
+
+            ${
+              getSilhouette(
+                clue.icon
+              )
+            }
+
+          </span>
+
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    return row;
+
+  }
+
+
+
+  /* =======================================================
+     RENDER HINT PAIRS
+  ======================================================= */
+
   function renderHints() {
 
-    const shownHints =
-      puzzle.hints.slice(
-        0,
-        visibleHintCount
-      );
+    negativeClues.innerHTML =
+      "";
 
 
-    const negatives =
-      shownHints.filter(
+    positiveClues.innerHTML =
+      "";
+
+
+    puzzle
+      .hintPairs
+      .forEach(
         function (
-          hint
+          pair,
+          index
         ) {
 
-          return hint.charge === "-";
+          const visible =
+            index <
+            visibleHintPairs;
+
+
+          negativeClues.appendChild(
+            createClueElement(
+              pair.negative,
+              index,
+              visible
+            )
+          );
+
+
+          positiveClues.appendChild(
+            createClueElement(
+              pair.positive,
+              index,
+              visible
+            )
+          );
 
         }
       );
 
 
-    const positives =
-      shownHints.filter(
-        function (
-          hint
-        ) {
+    if (
+      visibleHintPairs >=
+      puzzle.hintPairs.length
+    ) {
 
-          return hint.charge === "+";
+      showHintBtn.textContent =
+        "Reveal Field Note";
 
-        }
-      );
+    }
 
+    else {
 
-    leftLabel.innerHTML =
-      hintMarkup(
-        negatives,
-        "-"
-      );
+      showHintBtn.textContent =
+        "Reveal Hint Pair";
 
-
-    rightLabel.innerHTML =
-      hintMarkup(
-        positives,
-        "+"
-      );
-
-
-    hintText.textContent =
-      puzzle.message;
-
-
-    showHintBtn.textContent =
-      visibleHintCount >=
-      puzzle.hints.length
-      ?
-        "Reveal Full Field Note"
-      :
-        "Reveal Hint";
+    }
 
   }
 
@@ -2967,6 +3810,12 @@ document.addEventListener(
       puzzle.word.toUpperCase();
 
 
+    puzzleTitle.textContent =
+      "Contronym #"
+      +
+      puzzle.number;
+
+
     letterCount.textContent =
       word.length
       +
@@ -2984,50 +3833,44 @@ document.addEventListener(
       " • ONE CONTRONYM";
 
 
-    puzzleTitle.textContent =
-      "Contronym #"
-      +
-      puzzle.number;
-
-
     for (
       let i = 0;
       i < word.length;
       i++
     ) {
 
-      const box =
+      const input =
         document.createElement(
           "input"
         );
 
 
-      box.type =
+      input.type =
         "text";
 
 
-      box.maxLength =
+      input.maxLength =
         1;
 
 
-      box.className =
+      input.className =
         "letter-box";
 
 
-      box.dataset.index =
+      input.dataset.index =
         i;
 
 
-      box.autocomplete =
+      input.autocomplete =
         "off";
 
 
-      box.inputMode =
+      input.inputMode =
         "text";
 
 
       answerBoxes.appendChild(
-        box
+        input
       );
 
     }
@@ -3061,7 +3904,7 @@ document.addEventListener(
 
 
   /* =======================================================
-     STATUS
+     ATTEMPTS
   ======================================================= */
 
   function updateAttempts() {
@@ -3077,13 +3920,17 @@ document.addEventListener(
       +
       " / 3"
       +
-      " • Hints used "
+      " • Hint pairs used "
       +
       hintsUsed;
 
   }
 
 
+
+  /* =======================================================
+     LOCK
+  ======================================================= */
 
   function lockGame() {
 
@@ -3093,10 +3940,10 @@ document.addEventListener(
       )
       .forEach(
         function (
-          box
+          input
         ) {
 
-          box.disabled =
+          input.disabled =
             true;
 
         }
@@ -3113,6 +3960,10 @@ document.addEventListener(
   }
 
 
+
+  /* =======================================================
+     RESULT PHRASE
+  ======================================================= */
 
   function resultPhrase() {
 
@@ -3172,7 +4023,7 @@ document.addEventListener(
       +
       "/3"
       +
-      "\nHints used: "
+      "\nHint pairs used: "
       +
       hintsUsed
       +
@@ -3186,7 +4037,7 @@ document.addEventListener(
 
 
   /* =======================================================
-     RESULT
+     RESULT CARD
   ======================================================= */
 
   function showResult() {
@@ -3217,29 +4068,10 @@ document.addEventListener(
       </em>
 
 
-      <div class="charge-definition positive">
-
-        <strong>
-          + Positive / Similar Branch
-        </strong>
-
-        <br>
-
-        ${puzzle.positiveDefinition}
-
-        <br><br>
-
-        <em>
-          ${puzzle.positiveExample}
-        </em>
-
-      </div>
-
-
       <div class="charge-definition negative">
 
         <strong>
-          − Negative / Opposite Branch
+          − Opposite / Conjugate Branch
         </strong>
 
         <br>
@@ -3255,15 +4087,34 @@ document.addEventListener(
       </div>
 
 
+      <div class="charge-definition positive">
+
+        <strong>
+          + Similar / Transverse Branch
+        </strong>
+
+        <br>
+
+        ${puzzle.positiveDefinition}
+
+        <br><br>
+
+        <em>
+          ${puzzle.positiveExample}
+        </em>
+
+      </div>
+
+
       <p>
 
         <strong>
           Majorana of Meaning:
         </strong>
 
-        the same lexical object occupies the vertex,
-        while context determines which semantic charge
-        becomes expressed.
+        the lexical form remains invariant
+        while contextual charge determines
+        which semantic state is expressed.
 
       </p>
 
@@ -3278,7 +4129,7 @@ document.addEventListener(
 
 
   /* =======================================================
-     SUBMIT
+     SUBMIT GUESS
   ======================================================= */
 
   function submitGuess() {
@@ -3295,10 +4146,6 @@ document.addEventListener(
     }
 
 
-    const guess =
-      getGuess();
-
-
     const incomplete =
       Array
         .from(
@@ -3306,10 +4153,13 @@ document.addEventListener(
         )
         .some(
           function (
-            box
+            input
           ) {
 
-            return box.value === "";
+            return (
+              input.value ===
+              ""
+            );
 
           }
         );
@@ -3320,12 +4170,16 @@ document.addEventListener(
     ) {
 
       message.textContent =
-        "Fill in every box before submitting.";
+        "Fill every letter box before submitting.";
 
 
       return;
 
     }
+
+
+    const guess =
+      getGuess();
 
 
     attempts++;
@@ -3372,7 +4226,7 @@ document.addEventListener(
             attempts:
               attempts,
 
-            hints_used:
+            hint_pairs_used:
               hintsUsed,
 
             archived:
@@ -3425,11 +4279,8 @@ document.addEventListener(
             attempts:
               attempts,
 
-            hints_used:
+            hint_pairs_used:
               hintsUsed,
-
-            reason:
-              "attempts_exhausted",
 
             archived:
               currentPuzzleArchived
@@ -3469,7 +4320,7 @@ document.addEventListener(
           "s"
       )
       +
-      " left.";
+      " remain.";
 
   }
 
@@ -3489,12 +4340,12 @@ document.addEventListener(
       false;
 
 
+    visibleHintPairs =
+      1;
+
+
     hintsUsed =
       0;
-
-
-    visibleHintCount =
-      2;
 
 
     solveTracked =
@@ -3508,6 +4359,12 @@ document.addEventListener(
     createBoxes();
 
 
+    renderHints();
+
+
+    updateAttempts();
+
+
     submitBtn.disabled =
       false;
 
@@ -3516,14 +4373,12 @@ document.addEventListener(
       false;
 
 
-    renderHints();
-
-
-    updateAttempts();
-
-
     hintText.style.display =
       "none";
+
+
+    hintText.textContent =
+      puzzle.message;
 
 
     message.textContent =
@@ -3586,18 +4441,14 @@ document.addEventListener(
       "none";
 
 
-    currentTab
-      .classList
-      .remove(
-        "active"
-      );
+    currentTab.classList.remove(
+      "active"
+    );
 
 
-    archiveTab
-      .classList
-      .remove(
-        "active"
-      );
+    archiveTab.classList.remove(
+      "active"
+    );
 
 
     trackContronymEvent(
@@ -3645,28 +4496,6 @@ document.addEventListener(
         .reverse();
 
 
-    if (
-      oldPuzzles.length ===
-      0
-    ) {
-
-      archiveList.innerHTML =
-        `
-
-        <div class="empty-archive">
-
-          No past puzzles yet.
-
-        </div>
-
-        `;
-
-
-      return;
-
-    }
-
-
     oldPuzzles.forEach(
       function (
         oldPuzzle
@@ -3686,22 +4515,31 @@ document.addEventListener(
           `
 
           <div class="archive-number">
+
             Contronym #${oldPuzzle.number}
+
           </div>
 
+
           <div class="archive-date">
+
             ${oldPuzzle.date}
+
           </div>
+
 
           <div class="archive-description">
 
             Revisit this Majorana of Meaning.
-            The answer stays hidden until you solve it.
+            The solution remains hidden.
 
           </div>
 
+
           <button class="archive-play">
+
             Play Puzzle #${oldPuzzle.number}
+
           </button>
 
           `;
@@ -3776,8 +4614,10 @@ document.addEventListener(
         "puzzle_started",
         puzzle,
         {
+
           archived:
             false
+
         }
       );
 
@@ -3829,18 +4669,18 @@ document.addEventListener(
       event
     ) {
 
-      const target =
+      const input =
         event.target;
 
 
       const index =
-        parseInt(
-          target.dataset.index
+        Number(
+          input.dataset.index
         );
 
 
-      target.value =
-        target.value
+      input.value =
+        input.value
           .toUpperCase()
           .replace(
             /[^A-Z]/g,
@@ -3849,8 +4689,7 @@ document.addEventListener(
 
 
       if (
-        target.value.length ===
-        1
+        input.value
       ) {
 
         const next =
@@ -3880,13 +4719,13 @@ document.addEventListener(
       event
     ) {
 
-      const target =
+      const input =
         event.target;
 
 
       const index =
-        parseInt(
-          target.dataset.index
+        Number(
+          input.dataset.index
         );
 
 
@@ -3894,7 +4733,7 @@ document.addEventListener(
         event.key ===
         "Backspace"
         &&
-        target.value ===
+        input.value ===
         ""
       ) {
 
@@ -3930,7 +4769,7 @@ document.addEventListener(
 
 
   /* =======================================================
-     BUTTONS
+     SUBMIT
   ======================================================= */
 
   submitBtn.addEventListener(
@@ -3940,16 +4779,23 @@ document.addEventListener(
 
 
 
+  /* =======================================================
+     REVEAL HINT PAIR
+
+     ONE WORD REVEALS ON EACH SIDE
+     AT THE SAME TIME.
+  ======================================================= */
+
   showHintBtn.addEventListener(
     "click",
     function () {
 
       if (
-        visibleHintCount <
-        puzzle.hints.length
+        visibleHintPairs <
+        puzzle.hintPairs.length
       ) {
 
-        visibleHintCount++;
+        visibleHintPairs++;
 
 
         hintsUsed++;
@@ -3960,19 +4806,37 @@ document.addEventListener(
 
         updateAttempts();
 
+
+        trackContronymEvent(
+          "hint_pair_revealed",
+          puzzle,
+          {
+
+            pair_number:
+              visibleHintPairs,
+
+            hint_pairs_used:
+              hintsUsed
+
+          }
+        );
+
+
+        return;
+
       }
 
-      else {
 
-        hintText.style.display =
-          "block";
+      hintText.style.display =
+        "block";
 
-      }
-
-    }
-  );
+  });
 
 
+
+  /* =======================================================
+     RESET
+  ======================================================= */
 
   resetBtn.addEventListener(
     "click",
@@ -4039,20 +4903,14 @@ document.addEventListener(
             puzzle,
             {
 
-              solved:
-                solved,
-
               attempts:
                 attempts,
 
-              hints_used:
+              hint_pairs_used:
                 hintsUsed,
 
               share_method:
-                "native",
-
-              archived:
-                currentPuzzleArchived
+                "native"
 
             }
           );
@@ -4073,44 +4931,15 @@ document.addEventListener(
 
       else {
 
-        try {
-
-          await navigator
-            .clipboard
-            .writeText(
-              text
-              +
-              "\n\n"
-              +
-              window.location.href
-            );
-
-
-          nativeShareBtn.textContent =
-            "Copied!";
-
-
-          setTimeout(
-            function () {
-
-              nativeShareBtn.textContent =
-                "Share";
-
-            },
-            1200
+        await navigator
+          .clipboard
+          .writeText(
+            text
+            +
+            "\n\n"
+            +
+            window.location.href
           );
-
-        }
-
-        catch (
-          error
-        ) {
-
-          console.log(
-            "Copy failed."
-          );
-
-        }
 
       }
 
@@ -4140,30 +4969,6 @@ document.addEventListener(
           );
 
 
-        trackContronymEvent(
-          "puzzle_shared",
-          puzzle,
-          {
-
-            solved:
-              solved,
-
-            attempts:
-              attempts,
-
-            hints_used:
-              hintsUsed,
-
-            share_method:
-              "clipboard",
-
-            archived:
-              currentPuzzleArchived
-
-          }
-        );
-
-
         copyShareBtn.textContent =
           "Copied!";
 
@@ -4176,6 +4981,24 @@ document.addEventListener(
 
           },
           1200
+        );
+
+
+        trackContronymEvent(
+          "puzzle_shared",
+          puzzle,
+          {
+
+            attempts:
+              attempts,
+
+            hint_pairs_used:
+              hintsUsed,
+
+            share_method:
+              "clipboard"
+
+          }
         );
 
       }
@@ -4198,10 +5021,6 @@ document.addEventListener(
   /* =======================================================
      START
   ======================================================= */
-
-  currentPuzzleArchived =
-    false;
-
 
   resetPuzzle();
 
