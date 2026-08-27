@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
 
 
 /* ==========================================================
@@ -16,7 +18,9 @@ const clueCards = [
   ======================================================== */
 
   {
-    number: "001",
+
+    number:
+      "001",
 
     clue:
       "Pulling a rabbit out three times is the goal.",
@@ -66,7 +70,9 @@ const clueCards = [
       "/PAT-Games/images/cluecards/001/IMG_0205.jpeg"
 
     ]
+
   },
+
 
 
   /* ========================================================
@@ -75,7 +81,9 @@ const clueCards = [
   ======================================================== */
 
   {
-    number: "002",
+
+    number:
+      "002",
 
     clue:
       "Sounds like baseball has a pair of these for their uniforms.",
@@ -83,10 +91,15 @@ const clueCards = [
     enumeration:
       "(3)",
 
+
     /*
-       IMPORTANT:
-       ONLY SOX IS ACCEPTED AS CORRECT.
-       SOCKS WILL NOT SOLVE THE PUZZLE.
+      IMPORTANT:
+
+      ONLY SOX IS ACCEPTED.
+
+      SOCKS IS INTENTIONALLY NOT ACCEPTED
+      BECAUSE IT REPRESENTS THE OTHER
+      HOMOPHONIC STATE.
     */
 
     answer:
@@ -111,6 +124,7 @@ const clueCards = [
       "Easy",
 
 
+
     /* CLUE RELEASE */
 
     clueSlides: [
@@ -128,6 +142,7 @@ const clueCards = [
     ],
 
 
+
     /* SOLUTION RELEASE */
 
     solutionSlides: [
@@ -141,6 +156,7 @@ const clueCards = [
       "/PAT-Games/IMG_0267.jpeg"
 
     ]
+
   }
 
 ];
@@ -152,7 +168,9 @@ const clueCards = [
 ========================================================== */
 
 const currentClue =
-  clueCards[clueCards.length - 1];
+  clueCards[
+    clueCards.length - 1
+  ];
 
 
 let activeClue =
@@ -191,6 +209,10 @@ let revealTracked =
   false;
 
 
+let profileCompletionHandled =
+  false;
+
+
 
 /* ==========================================================
    ANALYTICS
@@ -226,7 +248,8 @@ function trackEvent(
         activeClue.number,
 
       archived:
-        activeClue !== currentClue,
+        activeClue !==
+        currentClue,
 
       ...(parameters || {})
 
@@ -236,6 +259,135 @@ function trackEvent(
 }
 
 
+
+/* ==========================================================
+   PROFILE HELPERS
+========================================================== */
+
+function profileAvailable() {
+
+  return Boolean(
+    window.PATProfile
+    &&
+    typeof PATProfile.get ===
+    "function"
+  );
+
+}
+
+
+
+function archiveUnlocked() {
+
+  if (
+    !profileAvailable()
+  ) {
+
+    return false;
+
+  }
+
+
+  if (
+    typeof PATProfile.canAccessArchive !==
+    "function"
+  ) {
+
+    return false;
+
+  }
+
+
+  return PATProfile
+    .canAccessArchive();
+
+}
+
+
+
+/* ==========================================================
+   REFRESH PROFILE DISPLAY
+
+   renderClueCardProfile() exists in cluecards.html.
+========================================================== */
+
+function refreshProfileDisplay() {
+
+  if (
+    typeof window.renderClueCardProfile ===
+    "function"
+  ) {
+
+    window.renderClueCardProfile();
+
+  }
+
+}
+
+
+
+/* ==========================================================
+   COMPLETE CLUE-CARD PROFILE ACTIVITY
+
+   ONLY A REAL CORRECT GUESS CALLS THIS.
+
+   MANUAL REVEAL DOES NOT.
+========================================================== */
+
+function completeProfileClue() {
+
+  if (
+    profileCompletionHandled
+  ) {
+
+    return null;
+
+  }
+
+
+  profileCompletionHandled =
+    true;
+
+
+  if (
+    !profileAvailable()
+    ||
+    typeof PATProfile.complete !==
+    "function"
+  ) {
+
+    return null;
+
+  }
+
+
+  const result =
+    PATProfile.complete(
+
+      "cluecards",
+
+      activeClue.number
+
+    );
+
+
+  refreshProfileDisplay();
+
+
+  return result;
+
+}
+
+
+
+/* ==========================================================
+   TRACK PUZZLE START
+
+   Merely viewing the puzzle DOES NOT advance
+   the dedicated Clue-Card streak.
+
+   The streak advances only on completion.
+========================================================== */
 
 function trackPuzzleStart() {
 
@@ -450,6 +602,18 @@ const archiveList =
   );
 
 
+const clueArchiveAccess =
+  document.getElementById(
+    "clueArchiveAccess"
+  );
+
+
+const cluePlusPanel =
+  document.getElementById(
+    "cluePlusPanel"
+  );
+
+
 
 /* ==========================================================
    ANSWER PLACEHOLDER
@@ -467,12 +631,16 @@ function buildAnswerPlaceholder(
 
 
   const parts =
-    clean.split("-");
+    clean.split(
+      "-"
+    );
 
 
   return parts
     .map(
-      function (part) {
+      function (
+        part
+      ) {
 
         const amount =
           parseInt(
@@ -482,7 +650,9 @@ function buildAnswerPlaceholder(
 
 
         if (
-          isNaN(amount)
+          isNaN(
+            amount
+          )
         ) {
 
           return "";
@@ -496,7 +666,9 @@ function buildAnswerPlaceholder(
 
       }
     )
-    .join("-");
+    .join(
+      "-"
+    );
 
 }
 
@@ -533,12 +705,14 @@ function getSlides() {
     "solution"
   ) {
 
-    return activeClue.solutionSlides;
+    return activeClue
+      .solutionSlides;
 
   }
 
 
-  return activeClue.clueSlides;
+  return activeClue
+    .clueSlides;
 
 }
 
@@ -588,8 +762,13 @@ function loadClue(
     false;
 
 
+  profileCompletionHandled =
+    false;
+
+
   clueNumber.textContent =
-    "CLUE-CARD #" +
+    "CLUE-CARD #"
+    +
     card.number;
 
 
@@ -604,8 +783,10 @@ function loadClue(
 
 
   clueText.textContent =
-    "“" +
-    card.clue +
+    "“"
+    +
+    card.clue
+    +
     "”";
 
 
@@ -647,8 +828,10 @@ function loadClue(
 
 
   mechanism.textContent =
-    card.type +
-    " • " +
+    card.type
+    +
+    " • "
+    +
     card.mechanism;
 
 
@@ -700,13 +883,23 @@ function renderSlide() {
 
 
   if (
-    !slides ||
-    slides.length === 0
+    !slides
+    ||
+    slides.length ===
+    0
   ) {
 
     clueImage.removeAttribute(
       "src"
     );
+
+
+    slideCounter.textContent =
+      "0 / 0";
+
+
+    dots.innerHTML =
+      "";
 
 
     return;
@@ -715,7 +908,8 @@ function renderSlide() {
 
 
   if (
-    slideIndex < 0
+    slideIndex <
+    0
   ) {
 
     slideIndex =
@@ -736,13 +930,18 @@ function renderSlide() {
 
 
   clueImage.src =
-    slides[slideIndex];
+    slides[
+      slideIndex
+    ];
 
 
   clueImage.alt =
-    "Koan~Kaon Clue-Card #" +
-    activeClue.number +
-    " slide " +
+    "Koan~Kaon Clue-Card #"
+    +
+    activeClue.number
+    +
+    " slide "
+    +
     (
       slideIndex + 1
     );
@@ -777,7 +976,8 @@ function renderSlide() {
 
 
   previousButton.disabled =
-    slideIndex === 0;
+    slideIndex ===
+    0;
 
 
   nextButton.disabled =
@@ -827,7 +1027,8 @@ function buildDots() {
 
       dot.setAttribute(
         "aria-label",
-        "Go to slide " +
+        "Go to slide "
+        +
         (
           index + 1
         )
@@ -886,7 +1087,8 @@ previousButton.addEventListener(
 
 
     if (
-      slideIndex > 0
+      slideIndex >
+      0
     ) {
 
       slideIndex--;
@@ -930,7 +1132,7 @@ nextButton.addEventListener(
 
 
 /* ==========================================================
-   CLUE TAB
+   CLUE PHASE
 ========================================================== */
 
 cluePhaseButton.addEventListener(
@@ -967,6 +1169,16 @@ cluePhaseButton.addEventListener(
 
 /* ==========================================================
    REVEAL SOLUTION
+
+   IMPORTANT:
+
+   wasSolved = true:
+   Player actually solved it.
+
+   wasSolved = false:
+   Player manually revealed it.
+
+   Only the first case awards profile completion.
 ========================================================== */
 
 function revealSolution(
@@ -977,8 +1189,10 @@ function revealSolution(
 
 
   if (
-    !wasSolved &&
-    !solutionUnlocked &&
+    !wasSolved
+    &&
+    !solutionUnlocked
+    &&
     !revealTracked
   ) {
 
@@ -1125,6 +1339,7 @@ bigRevealButton.addEventListener(
    EXACT OFFICIAL ANSWER ONLY.
 
    #002:
+
    SOX   = CORRECT
    SOCKS = WRONG
 ========================================================== */
@@ -1132,7 +1347,8 @@ bigRevealButton.addEventListener(
 function submitGuess() {
 
   if (
-    solved ||
+    solved
+    ||
     solutionUnlocked
   ) {
 
@@ -1148,7 +1364,8 @@ function submitGuess() {
 
 
   if (
-    guess === ""
+    guess ===
+    ""
   ) {
 
     guessFeedback.textContent =
@@ -1167,7 +1384,8 @@ function submitGuess() {
 
 
   guessCounter.textContent =
-    "Guesses: " +
+    "Guesses: "
+    +
     guesses;
 
 
@@ -1218,10 +1436,64 @@ function submitGuess() {
     }
 
 
-    guessFeedback.textContent =
-      "Correct — " +
-      activeClue.answer +
-      "!";
+
+    /* ======================================================
+       PROFILE COMPLETION
+
+       This is the ONLY place that advances
+       Clue-Card completion/streak.
+    ====================================================== */
+
+    const profileResult =
+      completeProfileClue();
+
+
+
+    if (
+      profileResult
+      &&
+      profileResult.xpEarned >
+      0
+    ) {
+
+      guessFeedback.textContent =
+        "Correct — "
+        +
+        activeClue.answer
+        +
+        "! +"
+        +
+        profileResult.xpEarned
+        +
+        " XP";
+
+    }
+
+    else if (
+      profileResult
+      &&
+      profileResult.alreadyCompleted
+    ) {
+
+      guessFeedback.textContent =
+        "Correct — "
+        +
+        activeClue.answer
+        +
+        "! Already catalogued.";
+
+    }
+
+    else {
+
+      guessFeedback.textContent =
+        "Correct — "
+        +
+        activeClue.answer
+        +
+        "!";
+
+    }
 
 
     guessFeedback.classList.add(
@@ -1244,15 +1516,17 @@ function submitGuess() {
   );
 
 
-  /*
-     Special feedback for SOCKS on #002.
-     It recognizes the intended homophone
-     without accepting it as the solution.
-  */
+
+  /* ========================================================
+     SPECIAL SOX / SOCKS RESPONSE
+  ======================================================== */
 
   if (
-    activeClue.number === "002" &&
-    guess === "SOCKS"
+    activeClue.number ===
+    "002"
+    &&
+    guess ===
+    "SOCKS"
   ) {
 
     guessFeedback.textContent =
@@ -1330,9 +1604,12 @@ function buildShareText() {
       " "
       +
       (
-        guesses === 1
-          ? "guess"
-          : "guesses"
+        guesses ===
+        1
+        ?
+          "guess"
+        :
+          "guesses"
       )
       +
       "!";
@@ -1344,7 +1621,8 @@ function buildShareText() {
   ) {
 
     if (
-      guesses === 0
+      guesses ===
+      0
     ) {
 
       resultText =
@@ -1373,9 +1651,12 @@ function buildShareText() {
       " "
       +
       (
-        guesses === 1
-          ? "guess"
-          : "guesses"
+        guesses ===
+        1
+        ?
+          "guess"
+        :
+          "guesses"
       )
       +
       " so far";
@@ -1384,18 +1665,30 @@ function buildShareText() {
 
 
   return (
-    "KOAN~KAON • Clue-Card #" +
-    activeClue.number +
-    "\n\n" +
-    "“" +
-    activeClue.clue +
-    "” " +
-    activeClue.enumeration +
-    "\n\n" +
-    resultText +
-    "\n\n" +
-    "Can you collapse the clue?" +
-    "\n\n" +
+    "KOAN~KAON • Clue-Card #"
+    +
+    activeClue.number
+    +
+    "\n\n"
+    +
+    "“"
+    +
+    activeClue.clue
+    +
+    "” "
+    +
+    activeClue.enumeration
+    +
+    "\n\n"
+    +
+    resultText
+    +
+    "\n\n"
+    +
+    "Can you collapse the clue?"
+    +
+    "\n\n"
+    +
     "PAT Learning Lab"
   );
 
@@ -1417,7 +1710,8 @@ async function shareClue() {
 
 
   const imageUrl =
-    activeClue.clueSlides[0];
+    activeClue
+      .clueSlides[0];
 
 
   try {
@@ -1446,13 +1740,16 @@ async function shareClue() {
     const file =
       new File(
         [blob],
-        "Koan-Kaon-Clue-" +
-        activeClue.number +
+        "Koan-Kaon-Clue-"
+        +
+        activeClue.number
+        +
         ".jpeg",
         {
 
           type:
-            blob.type ||
+            blob.type
+            ||
             "image/jpeg"
 
         }
@@ -1460,11 +1757,16 @@ async function shareClue() {
 
 
     if (
-      navigator.share &&
-      navigator.canShare &&
+      navigator.share
+      &&
+      navigator.canShare
+      &&
       navigator.canShare(
         {
-          files: [file]
+
+          files:
+            [file]
+
         }
       )
     ) {
@@ -1473,7 +1775,8 @@ async function shareClue() {
         {
 
           title:
-            "Koan~Kaon Clue-Card #" +
+            "Koan~Kaon Clue-Card #"
+            +
             activeClue.number,
 
           text:
@@ -1519,7 +1822,8 @@ async function shareClue() {
         {
 
           title:
-            "Koan~Kaon Clue-Card #" +
+            "Koan~Kaon Clue-Card #"
+            +
             activeClue.number,
 
           text:
@@ -1557,11 +1861,15 @@ async function shareClue() {
     }
 
 
-    await navigator.clipboard.writeText(
-      text +
-      "\n\n" +
-      window.location.href
-    );
+    await navigator
+      .clipboard
+      .writeText(
+        text
+        +
+        "\n\n"
+        +
+        window.location.href
+      );
 
 
     const oldText =
@@ -1579,6 +1887,7 @@ async function shareClue() {
           oldText;
 
       },
+
       1200
     );
 
@@ -1598,7 +1907,8 @@ async function shareClue() {
           {
 
             title:
-              "Koan~Kaon Clue-Card #" +
+              "Koan~Kaon Clue-Card #"
+              +
               activeClue.number,
 
             text:
@@ -1614,11 +1924,15 @@ async function shareClue() {
 
       else {
 
-        await navigator.clipboard.writeText(
-          text +
-          "\n\n" +
-          window.location.href
-        );
+        await navigator
+          .clipboard
+          .writeText(
+            text
+            +
+            "\n\n"
+            +
+            window.location.href
+          );
 
       }
 
@@ -1648,6 +1962,108 @@ shareButton.addEventListener(
 
 
 /* ==========================================================
+   LEARNING LAB+ ARCHIVE PANEL
+========================================================== */
+
+function showPlusPanel() {
+
+  if (
+    !cluePlusPanel
+  ) {
+
+    return;
+
+  }
+
+
+  cluePlusPanel.classList.add(
+    "visible"
+  );
+
+
+  cluePlusPanel.scrollIntoView(
+    {
+
+      behavior:
+        "smooth",
+
+      block:
+        "nearest"
+
+    }
+  );
+
+}
+
+
+
+/* ==========================================================
+   ARCHIVE ACCESS MESSAGE
+========================================================== */
+
+function renderArchiveAccessMessage() {
+
+  if (
+    !clueArchiveAccess
+  ) {
+
+    return;
+
+  }
+
+
+  if (
+    archiveUnlocked()
+  ) {
+
+    const profile =
+      PATProfile.get();
+
+
+    clueArchiveAccess.innerHTML = `
+
+      <strong>
+        🔓 Clue-Card Archive Unlocked
+      </strong>
+
+      <br>
+
+      ${
+        profile.username
+        ||
+        "Explorer"
+      },
+      your Learning Lab+ access includes
+      previous Cryptic Clue-Cards.
+
+    `;
+
+
+    return;
+
+  }
+
+
+  clueArchiveAccess.innerHTML = `
+
+    <strong>
+      🔒 Current Clue Free • Archive Learning Lab+
+    </strong>
+
+    <br>
+
+    Everyone can play the newest Clue-Card.
+
+    Previous clues remain visible here
+    and unlock with Learning Lab+.
+
+  `;
+
+}
+
+
+
+/* ==========================================================
    ARCHIVE
 ========================================================== */
 
@@ -1655,6 +2071,20 @@ function buildArchive() {
 
   archiveList.innerHTML =
     "";
+
+
+  if (
+    cluePlusPanel
+  ) {
+
+    cluePlusPanel.classList.remove(
+      "visible"
+    );
+
+  }
+
+
+  renderArchiveAccessMessage();
 
 
   const archivedClues =
@@ -1667,18 +2097,25 @@ function buildArchive() {
 
 
   if (
-    archivedClues.length === 0
+    archivedClues.length ===
+    0
   ) {
 
     archiveList.innerHTML =
-      '<div class="empty-archive">' +
-      'No archived Clue-Cards yet.' +
+      '<div class="empty-archive">'
+      +
+      'No archived Clue-Cards yet.'
+      +
       '</div>';
 
 
     return;
 
   }
+
+
+  const hasArchiveAccess =
+    archiveUnlocked();
 
 
   archivedClues.forEach(
@@ -1696,40 +2133,67 @@ function buildArchive() {
         "archive-card";
 
 
-      archiveCard.innerHTML =
+      if (
+        !hasArchiveAccess
+      ) {
 
-        '<div class="archive-top">' +
+        archiveCard.classList.add(
+          "locked"
+        );
 
-          '<span class="archive-number">' +
-            'CLUE-CARD #' +
-            card.number +
-          '</span>' +
-
-          '<span>' +
-            card.difficulty +
-          '</span>' +
-
-        '</div>' +
-
-        '<div class="archive-clue">' +
-
-          '“' +
-          card.clue +
-          '” ' +
-          card.enumeration +
-
-        '</div>' +
-
-        '<button type="button" class="archive-play-button">' +
-          'Play Archived Clue' +
-        '</button>';
+      }
 
 
-      archiveCard
-        .querySelector(
+      archiveCard.innerHTML = `
+
+        <div class="archive-top">
+
+          <span class="archive-number">
+            CLUE-CARD #${card.number}
+          </span>
+
+          <span>
+            ${card.difficulty}
+          </span>
+
+        </div>
+
+        <div class="archive-clue">
+
+          “${card.clue}”
+          ${card.enumeration}
+
+        </div>
+
+        <button
+          type="button"
+          class="archive-play-button"
+        >
+
+          ${
+            hasArchiveAccess
+            ?
+              "Play Archived Clue"
+            :
+              "🔒 Unlock with Learning Lab+"
+          }
+
+        </button>
+
+      `;
+
+
+      const archiveButton =
+        archiveCard.querySelector(
           ".archive-play-button"
-        )
-        .addEventListener(
+        );
+
+
+      if (
+        hasArchiveAccess
+      ) {
+
+        archiveButton.addEventListener(
           "click",
           function () {
 
@@ -1764,7 +2228,8 @@ function buildArchive() {
             window.scrollTo(
               {
 
-                top: 0,
+                top:
+                  0,
 
                 behavior:
                   "smooth"
@@ -1774,6 +2239,32 @@ function buildArchive() {
 
           }
         );
+
+      }
+
+      else {
+
+        archiveButton.addEventListener(
+          "click",
+          function () {
+
+            showPlusPanel();
+
+
+            trackEvent(
+              "archive_locked_clicked",
+              {
+
+                archive_puzzle:
+                  card.number
+
+              }
+            );
+
+          }
+        );
+
+      }
 
 
       archiveList.appendChild(
@@ -1857,6 +2348,21 @@ archiveTab.addEventListener(
       "active"
     );
 
+
+    trackEvent(
+      "archive_opened",
+      {
+
+        access:
+          archiveUnlocked()
+          ?
+            "unlocked"
+          :
+            "locked"
+
+      }
+    );
+
   }
 );
 
@@ -1906,14 +2412,16 @@ imageFrame.addEventListener(
 
 
     const difference =
-      touchEndX -
+      touchEndX
+      -
       touchStartX;
 
 
     if (
       Math.abs(
         difference
-      ) < 50
+      ) <
+      50
     ) {
 
       return;
@@ -1929,7 +2437,9 @@ imageFrame.addEventListener(
 
 
     if (
-      difference < 0 &&
+      difference <
+      0
+      &&
       slideIndex <
       slides.length - 1
     ) {
@@ -1943,8 +2453,11 @@ imageFrame.addEventListener(
 
 
     if (
-      difference > 0 &&
-      slideIndex > 0
+      difference >
+      0
+      &&
+      slideIndex >
+      0
     ) {
 
       slideIndex--;
@@ -1966,6 +2479,34 @@ imageFrame.addEventListener(
 
 
 /* ==========================================================
+   PROFILE UPDATE LISTENER
+
+   Useful later if subscription status changes.
+========================================================== */
+
+window.addEventListener(
+  "pat-profile-updated",
+  function () {
+
+    refreshProfileDisplay();
+
+
+    if (
+      archiveView.classList.contains(
+        "active"
+      )
+    ) {
+
+      buildArchive();
+
+    }
+
+  }
+);
+
+
+
+/* ==========================================================
    START GAME
 
    #002 IS CURRENT.
@@ -1975,6 +2516,9 @@ imageFrame.addEventListener(
 loadClue(
   currentClue
 );
+
+
+refreshProfileDisplay();
 
 
 });
