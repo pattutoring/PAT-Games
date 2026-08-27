@@ -79,7 +79,14 @@ gtag(
 
   --pink:#a95d78;
 
-  --shadow:rgba(40,34,24,.15);
+  --shadow:
+    rgba(
+      40,
+      34,
+      24,
+      .15
+    );
+
 }
 
 
@@ -138,9 +145,9 @@ button {
 header {
 
   padding:
-    25px
+    26px
     20px
-    20px;
+    18px;
 
   text-align:center;
 
@@ -151,7 +158,8 @@ header {
 
   display:inline-block;
 
-  margin-bottom:15px;
+  margin-bottom:
+    22px;
 
   padding:
     8px
@@ -178,30 +186,14 @@ header {
 }
 
 
-.brand-lockup {
-
-  width:
-    min(
-      520px,
-      92vw
-    );
-
-  margin:
-    0
-    auto
-    10px;
-
-}
-
-
-.twain-logo {
+.twain-main-logo {
 
   display:block;
 
   width:
     min(
-      260px,
-      65vw
+      245px,
+      62vw
     );
 
   max-height:
@@ -212,31 +204,8 @@ header {
 
   margin:
     0
-    auto;
-
-}
-
-
-.twain-editor-badge {
-
-  display:block;
-
-  width:
-    min(
-      180px,
-      46vw
-    );
-
-  max-height:
-    100px;
-
-  object-fit:
-    contain;
-
-  margin:
-    7px
     auto
-    0;
+    12px;
 
 }
 
@@ -244,9 +213,8 @@ header {
 header h1 {
 
   margin:
-    8px
-    0
-    3px;
+    3px
+    0;
 
   font-family:
     "Courier New",
@@ -254,13 +222,13 @@ header h1 {
 
   font-size:
     clamp(
-      2.1rem,
+      2.2rem,
       8vw,
-      4rem
+      4.25rem
     );
 
   letter-spacing:
-    2px;
+    3px;
 
 }
 
@@ -268,7 +236,7 @@ header h1 {
 .tagline {
 
   margin-top:
-    7px;
+    8px;
 
   color:
     var(--brown);
@@ -284,7 +252,7 @@ header h1 {
     760px;
 
   margin:
-    16px
+    15px
     auto
     0;
 
@@ -324,7 +292,7 @@ main {
     780px;
 
   margin:
-    28px
+    26px
     auto
     20px;
 
@@ -410,12 +378,15 @@ main {
 
   justify-content:space-between;
 
-  gap:12px;
+  gap:14px;
 
   flex-wrap:wrap;
 
+  min-height:
+    70px;
+
   padding:
-    12px
+    9px
     15px;
 
   border-bottom:
@@ -429,11 +400,83 @@ main {
 }
 
 
-.editor-toolbar strong {
+.toolbar-brand {
+
+  display:flex;
+
+  align-items:center;
+
+  gap:11px;
+
+}
+
+
+.editor-badge {
+
+  width:
+    54px;
+
+  height:
+    54px;
+
+  object-fit:
+    contain;
+
+  border:
+    1px
+    solid
+    #d8c9ae;
+
+  border-radius:
+    7px;
+
+  background:
+    #fffdf7;
+
+}
+
+
+.toolbar-title {
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:2px;
+
+}
+
+
+.toolbar-title strong {
 
   font-family:
     "Courier New",
     monospace;
+
+  font-size:
+    1rem;
+
+}
+
+
+.toolbar-title small {
+
+  color:
+    #746858;
+
+  font-size:
+    .72rem;
+
+}
+
+
+.toolbar-flow {
+
+  color:
+    #594d40;
+
+  font-size:
+    .95rem;
 
 }
 
@@ -481,7 +524,8 @@ main {
 
   user-select:none;
 
-  white-space:pre-line;
+  white-space:
+    pre-line;
 
 }
 
@@ -544,7 +588,7 @@ main {
 
 
 /* =====================================================
-   COLOR HIGHLIGHTS
+   RULE COLOR SYSTEM
 ====================================================== */
 
 .rule-0 {
@@ -597,9 +641,8 @@ main {
 
   transition:
     box-shadow
-    .2s ease,
-    transform
-    .2s ease;
+    .2s
+    ease;
 
 }
 
@@ -615,7 +658,7 @@ main {
       41,
       38,
       31,
-      .22
+      .25
     );
 
 }
@@ -623,10 +666,16 @@ main {
 
 
 /* =====================================================
-   TWAIN COACH BUBBLE
+   TWAIN SPEECH BUBBLE
 ====================================================== */
 
 .twain-coach {
+
+  --coach-bg:
+    #fff7d8;
+
+  --coach-border:
+    #8b633e;
 
   display:none;
 
@@ -639,9 +688,9 @@ main {
     );
 
   margin:
-    20px
+    24px
     auto
-    5px;
+    7px;
 
   padding:
     17px
@@ -650,13 +699,13 @@ main {
   border:
     3px
     solid
-    var(--brown);
+    var(--coach-border);
 
   border-radius:
     18px;
 
   background:
-    #fff7d8;
+    var(--coach-bg);
 
   box-shadow:
     5px
@@ -671,6 +720,14 @@ main {
 
   line-height:
     1.55;
+
+  transition:
+    background
+    .25s
+    ease,
+    border-color
+    .25s
+    ease;
 
 }
 
@@ -692,15 +749,15 @@ main {
   border-top:
     3px
     solid
-    var(--brown);
+    var(--coach-border);
 
   border-left:
     3px
     solid
-    var(--brown);
+    var(--coach-border);
 
   background:
-    #fff7d8;
+    var(--coach-bg);
 
   transform:
     rotate(
@@ -714,10 +771,11 @@ main {
 
   display:block;
 
-  margin-bottom:5px;
+  margin-bottom:
+    5px;
 
   color:
-    var(--brown-dark);
+    #4c4033;
 
   font-family:
     "Courier New",
@@ -739,6 +797,57 @@ main {
   font-size:
     1.08rem;
 
+}
+
+
+
+/* =====================================================
+   COACH COLORS
+====================================================== */
+
+.twain-coach.coach-0 {
+  --coach-bg:#ffaaa0;
+  --coach-border:#b9574e;
+}
+
+.twain-coach.coach-1 {
+  --coach-bg:#ffd78e;
+  --coach-border:#c47a36;
+}
+
+.twain-coach.coach-2 {
+  --coach-bg:#fff37d;
+  --coach-border:#c49a25;
+}
+
+.twain-coach.coach-3 {
+  --coach-bg:#b9dda8;
+  --coach-border:#58784b;
+}
+
+.twain-coach.coach-4 {
+  --coach-bg:#9ee8df;
+  --coach-border:#4e7f78;
+}
+
+.twain-coach.coach-5 {
+  --coach-bg:#b9b0ef;
+  --coach-border:#71558e;
+}
+
+.twain-coach.coach-6 {
+  --coach-bg:#dfa5c2;
+  --coach-border:#a95d78;
+}
+
+.twain-coach.coach-7 {
+  --coach-bg:#f5c8bb;
+  --coach-border:#b9574e;
+}
+
+.twain-coach.coach-8 {
+  --coach-bg:#e6df8e;
+  --coach-border:#9b8731;
 }
 
 
@@ -981,7 +1090,8 @@ main {
 
   display:grid;
 
-  gap:12px;
+  gap:
+    12px;
 
 }
 
@@ -1361,8 +1471,7 @@ main {
 
 .rule-card p {
 
-  margin:
-    0;
+  margin:0;
 
   color:
     #574c40;
@@ -1510,6 +1619,18 @@ footer {
 
   }
 
+  .toolbar-flow {
+
+    width:100%;
+
+    padding-left:
+      65px;
+
+    font-size:
+      .8rem;
+
+  }
+
   .control-row {
     align-items:stretch;
   }
@@ -1544,21 +1665,11 @@ footer {
 </a>
 
 
-<div class="brand-lockup">
-
 <img
   src="twain-logo.png"
-  alt="Twain logo"
-  class="twain-logo"
+  alt="Twain"
+  class="twain-main-logo"
 >
-
-<img
-  src="twain-editor-logo.png"
-  alt="Twain Editor"
-  class="twain-editor-badge"
->
-
-</div>
 
 
 <h1>
@@ -1630,15 +1741,40 @@ footer {
 
 <div class="editor-toolbar">
 
+
+<div class="toolbar-brand">
+
+
+<img
+  src="twain-editor-logo.png"
+  alt="Twain Editor"
+  class="editor-badge"
+>
+
+
+<div class="toolbar-title">
+
 <strong>
   TWAIN STUDENT EDITOR
 </strong>
 
-<span>
-  Draft → Analyze → Revise
-</span>
+<small>
+  Revision desk
+</small>
 
 </div>
+
+
+</div>
+
+
+<div class="toolbar-flow">
+  Draft → Analyze → Revise
+</div>
+
+
+</div>
+
 
 
 <div class="editor-wrap">
@@ -1667,7 +1803,9 @@ footer {
 
 
 
-<!-- TWAIN SPEECH -->
+<!-- =====================================================
+     TWAIN SPEECH
+====================================================== -->
 
 <div
   id="twainCoach"
@@ -1684,12 +1822,15 @@ footer {
 
 
 
-<!-- CONTROLS -->
+<!-- =====================================================
+     CONTROLS
+====================================================== -->
 
 <div class="control-row">
 
 
 <div class="editor-stats">
+
 
 <div
   id="wordCount"
@@ -1698,12 +1839,14 @@ footer {
   Words: 0
 </div>
 
+
 <div
   id="sentenceCount"
   class="stat-pill"
 >
   Sentences: 0
 </div>
+
 
 <div
   id="issueCount"
@@ -1712,10 +1855,13 @@ footer {
   Signals: 0
 </div>
 
+
 </div>
 
 
+
 <div class="button-row">
+
 
 <button
   id="analyzeButton"
@@ -1725,6 +1871,7 @@ footer {
   🔎 Analyze Writing
 </button>
 
+
 <button
   id="restoreButton"
   class="secondary-button"
@@ -1732,6 +1879,7 @@ footer {
 >
   Remove Highlights
 </button>
+
 
 <button
   id="clearButton"
@@ -1741,21 +1889,26 @@ footer {
   Clear
 </button>
 
-</div>
-
 
 </div>
 
 
+</div>
 
-<!-- SUMMARY -->
+
+
+<!-- =====================================================
+     SUMMARY
+====================================================== -->
 
 <div class="analysis-summary">
 
 
 <div class="summary-card">
 
-<span>✂️</span>
+<span>
+  ✂️
+</span>
 
 <strong id="economyScore">
   —
@@ -1768,9 +1921,12 @@ footer {
 </div>
 
 
+
 <div class="summary-card">
 
-<span>⚡</span>
+<span>
+  ⚡
+</span>
 
 <strong id="precisionScore">
   —
@@ -1783,9 +1939,12 @@ footer {
 </div>
 
 
+
 <div class="summary-card">
 
-<span>✒️</span>
+<span>
+  ✒️
+</span>
 
 <strong id="originalityScore">
   —
@@ -1802,7 +1961,9 @@ footer {
 
 
 
-<!-- FEEDBACK -->
+<!-- =====================================================
+     FEEDBACK
+====================================================== -->
 
 <section class="feedback-section">
 
@@ -1818,8 +1979,11 @@ footer {
 </h2>
 
 <p>
-  The same colors appearing here
-  are highlighted in your writing above.
+
+  The colors in Twain's notes
+  correspond to the highlights
+  in your writing above.
+
 </p>
 
 </div>
@@ -1831,6 +1995,7 @@ footer {
 
   Write something above,
   then press
+
   <strong>
     Analyze Writing
   </strong>.
@@ -1844,7 +2009,9 @@ footer {
 
 
 
-<!-- PRINCIPLE -->
+<!-- =====================================================
+     PRINCIPLE
+====================================================== -->
 
 <section class="principle-box">
 
@@ -1921,7 +2088,9 @@ footer {
 
 
 
-<!-- RULE REFERENCE -->
+<!-- =====================================================
+     RULE REFERENCE
+====================================================== -->
 
 <section class="rule-reference">
 
@@ -1960,7 +2129,9 @@ footer {
 
 
 
-<!-- WORDSMITH -->
+<!-- =====================================================
+     WORDSMITH
+====================================================== -->
 
 <section class="wordsmith-link">
 
@@ -2046,7 +2217,7 @@ function trackTwainEvent(
 
 
 /* =====================================================
-   TWAIN RULES
+   RULES
 ====================================================== */
 
 const rules = [
@@ -2405,7 +2576,7 @@ const twainCoachText =
 
 
 /* =====================================================
-   ESCAPE
+   ESCAPE HTML
 ====================================================== */
 
 function escapeHTML(
@@ -2431,7 +2602,7 @@ function escapeHTML(
 
 
 /* =====================================================
-   TEXT
+   PLAIN TEXT
 ====================================================== */
 
 function getPlainText() {
@@ -2544,7 +2715,7 @@ function updateStats() {
 
 
 /* =====================================================
-   MATCHES
+   COLLECT MATCHES
 ====================================================== */
 
 function collectMatches(
@@ -2698,7 +2869,7 @@ function removeOverlaps(
 
 
 /* =====================================================
-   HIGHLIGHT WRITING
+   RENDER HIGHLIGHTS
 ====================================================== */
 
 function renderHighlightedText(
@@ -2781,21 +2952,46 @@ function renderHighlightedText(
 
 
 /* =====================================================
-   COACH
+   TWAIN COACH COLOR
+====================================================== */
+
+function clearCoachColor() {
+
+  for (
+    let i = 0;
+    i <= 8;
+    i++
+  ) {
+
+    twainCoach.classList.remove(
+      "coach-" + i
+    );
+
+  }
+
+}
+
+
+
+/* =====================================================
+   SHOW TWAIN COACH
 ====================================================== */
 
 function showTwainCoach(
   matches
 ) {
 
+  clearCoachColor();
+
+
+  twainCoach.style.display =
+    "block";
+
+
   if (
     matches.length ===
     0
   ) {
-
-    twainCoach.style.display =
-      "block";
-
 
     twainCoachText.textContent =
       "I find no obvious trouble. That is not permission to stop reading it aloud.";
@@ -2806,12 +3002,19 @@ function showTwainCoach(
   }
 
 
+  const primaryMatch =
+    matches[0];
+
+
   const rule =
-    matches[0].rule;
+    primaryMatch.rule;
 
 
-  twainCoach.style.display =
-    "block";
+  twainCoach.classList.add(
+    "coach-"
+    +
+    rule.color
+  );
 
 
   twainCoachText.textContent =
@@ -3069,7 +3272,7 @@ function renderFeedback(
 
                 {
                   boxShadow:
-                    "0 0 0 5px rgba(41,38,31,.32)"
+                    "0 0 0 6px rgba(41,38,31,.32)"
                 },
 
                 {
@@ -3385,6 +3588,9 @@ function restorePlainText() {
     "none";
 
 
+  clearCoachColor();
+
+
   updateStats();
 
 }
@@ -3435,6 +3641,9 @@ function clearEditor() {
 
   twainCoach.style.display =
     "none";
+
+
+  clearCoachColor();
 
 
   issueCount.textContent =
@@ -3583,7 +3792,7 @@ document
 
 
 /* =====================================================
-   RESTORE
+   RESTORE SAVED DRAFT
 ====================================================== */
 
 const savedText =
@@ -3618,7 +3827,7 @@ trackTwainEvent(
   {
 
     prototype:
-      "twain_editor_002"
+      "twain_editor_003"
 
   }
 );
