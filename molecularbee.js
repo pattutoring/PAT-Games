@@ -4,6 +4,45 @@ document.addEventListener(
 
 
 /* ==========================================================
+   MOLECULAR BEE
+   PAT LEARNING LAB INTEGRATION
+
+   PROFILE RULES
+
+   BUZZWORD:
+   - Weekly series
+   - Has its own streak
+   - Awards XP once per weekly Buzzword
+
+   SPELLING-BEE:
+   - Saves unique completed challenges
+   - Awards XP once per unique challenge
+   - NO dedicated streak
+
+   QUEEN-BEE:
+   - Saves unique molecule discoveries
+   - Awards XP once per unique molecule
+   - NO dedicated streak
+
+   WORKER BEE:
+   - Saves unique atom challenges
+   - Awards XP once per unique challenge
+   - NO dedicated streak
+
+   POLLINATION:
+   - Saves unique ionic-compound challenges
+   - Awards XP once per unique challenge
+   - NO dedicated streak
+
+   Everything contributes to:
+   - Total XP
+   - Total activities completed
+   - Overall Learning Lab activity
+========================================================== */
+
+
+
+/* ==========================================================
    GOOGLE ANALYTICS
 ========================================================== */
 
@@ -114,12 +153,129 @@ function refreshBeeProfile() {
 
 
 
-/*
-  Only Buzzword currently owns a Molecular Bee streak.
+/* ==========================================================
+   GENERIC PROFILE COMPLETION
 
-  The remaining modes stay fully playable,
-  but do not create separate streaks.
-*/
+   Every unique activity can award XP once.
+
+   No streak is supplied here unless explicitly requested.
+========================================================== */
+
+function completeBeeActivity(
+  activityId,
+  xp,
+  streakKey
+) {
+
+  if (
+    !beeProfileAvailable()
+    ||
+    typeof PATProfile.complete !==
+    "function"
+  ) {
+
+    return null;
+
+  }
+
+
+  const options = {
+
+    xp:
+      xp
+
+  };
+
+
+  if (
+    streakKey
+  ) {
+
+    options.streakKey =
+      streakKey;
+
+  }
+
+
+  const result =
+    PATProfile.complete(
+
+      "molecular_bee",
+
+      activityId,
+
+      options
+
+    );
+
+
+  refreshBeeProfile();
+
+
+  return result;
+
+}
+
+
+
+/* ==========================================================
+   COMPLETION MESSAGE HELPER
+========================================================== */
+
+function appendXPMessage(
+  message,
+  result
+) {
+
+  if (
+    !result
+  ) {
+
+    return message;
+
+  }
+
+
+  if (
+    result.xpEarned >
+    0
+  ) {
+
+    return (
+      message
+      +
+      " +"
+      +
+      result.xpEarned
+      +
+      " XP"
+    );
+
+  }
+
+
+  if (
+    result.alreadyCompleted
+  ) {
+
+    return (
+      message
+      +
+      " Already in your Learning Lab collection."
+    );
+
+  }
+
+
+  return message;
+
+}
+
+
+
+/* ==========================================================
+   BUZZWORD PROFILE STATE
+========================================================== */
 
 let buzzProfileCompletionHandled =
   false;
@@ -141,39 +297,15 @@ function completeBuzzwordProfile() {
     true;
 
 
-  if (
-    !beeProfileAvailable()
-    ||
-    typeof PATProfile.complete !==
-    "function"
-  ) {
+  return completeBeeActivity(
 
-    return null;
+    "buzzword-001",
 
-  }
+    30,
 
+    "buzzword"
 
-  const result =
-    PATProfile.complete(
-
-      "molecular_bee",
-
-      "buzzword-001",
-
-      {
-
-        streakKey:
-          "buzzword"
-
-      }
-
-    );
-
-
-  refreshBeeProfile();
-
-
-  return result;
+  );
 
 }
 
@@ -494,6 +626,37 @@ function formulaFromSequence(
 
 
   return output;
+
+}
+
+
+
+/* ==========================================================
+   SAFE ID MAKER
+
+   Converts:
+   Carbon Dioxide
+   into:
+   carbon-dioxide
+========================================================== */
+
+function safeBeeId(
+  text
+) {
+
+  return String(
+    text
+  )
+    .toLowerCase()
+    .trim()
+    .replace(
+      /[^a-z0-9]+/g,
+      "-"
+    )
+    .replace(
+      /^-+|-+$/g,
+      ""
+    );
 
 }
 
@@ -1380,15 +1543,6 @@ function createAtomTile(
 
 /* ==========================================================
    BUZZWORD
-
-   WEEKLY PUZZLE #001
-
-   Completion rule:
-   FIND ALL ACCEPTED COMPOUNDS.
-
-   Moleculargram:
-   collectively use every element somewhere
-   across your discovered swarm.
 ========================================================== */
 
 const BUZZWORD_NUMBER =
@@ -1740,7 +1894,7 @@ document
 
 
 /* ==========================================================
-   ELEMENTS USED ACROSS FOUND COMPOUNDS
+   ELEMENTS USED ACROSS BUZZWORD SWARM
 ========================================================== */
 
 function getBuzzSwarmElements() {
@@ -1777,7 +1931,7 @@ function getBuzzSwarmElements() {
 
 
 /* ==========================================================
-   CHECK MOLECULARGRAM
+   MOLECULARGRAM
 ========================================================== */
 
 function checkMoleculargram() {
@@ -1841,6 +1995,22 @@ function checkMoleculargram() {
       }
     );
 
+
+    if (
+      beeProfileAvailable()
+      &&
+      typeof PATProfile.awardAchievement ===
+      "function"
+    ) {
+
+      PATProfile.awardAchievement(
+        "moleculargram-buzzword-"
+        +
+        BUZZWORD_NUMBER
+      );
+
+    }
+
   }
 
 
@@ -1889,40 +2059,19 @@ function checkBuzzwordCompletion() {
     );
 
 
-  let message =
+  let resultMessage =
     "🐝👑 Weekly Buzzword complete! You found the entire Molecular Swarm.";
 
 
-  if (
-    result
-    &&
-    result.xpEarned >
-    0
-  ) {
-
-    message +=
-      " +"
-      +
-      result.xpEarned
-      +
-      " XP";
-
-  }
-
-  else if (
-    result
-    &&
-    result.alreadyCompleted
-  ) {
-
-    message +=
-      " This week's Buzzword was already catalogued.";
-
-  }
+  resultMessage =
+    appendXPMessage(
+      resultMessage,
+      result
+    );
 
 
   feedback.textContent =
-    message;
+    resultMessage;
 
 
   trackBeeEvent(
@@ -2455,7 +2604,7 @@ function loadSpelling() {
 
 
 /* ==========================================================
-   PLACE SPELLING ATOM
+   SPELLING PLACEMENT
 ========================================================== */
 
 function placeSpelling(
@@ -2706,18 +2855,43 @@ document
         )
       ) {
 
+        const profileResult =
+          completeBeeActivity(
+
+            "spelling-"
+            +
+            safeBeeId(
+              challenge.name
+            ),
+
+            10
+
+          );
+
+
+        let feedback =
+          "🐝 Correct — "
+          +
+          formulaFromSequence(
+            challenge.answer
+          )
+          +
+          "!";
+
+
+        feedback =
+          appendXPMessage(
+            feedback,
+            profileResult
+          );
+
+
         document
           .getElementById(
             "spellingFeedback"
           )
           .textContent =
-            "🐝 Correct — "
-            +
-            formulaFromSequence(
-              challenge.answer
-            )
-            +
-            "!";
+            feedback;
 
 
         trackBeeEvent(
@@ -2757,7 +2931,7 @@ document
 
           },
 
-          1000
+          1200
         );
 
       }
@@ -4218,6 +4392,20 @@ document
       queenCorrectCount++;
 
 
+      const profileResult =
+        completeBeeActivity(
+
+          "queen-"
+          +
+          safeBeeId(
+            match.name
+          ),
+
+          15
+
+        );
+
+
       trackBeeEvent(
         "challenge_completed",
         "queen_bee",
@@ -4239,7 +4427,7 @@ document
       );
 
 
-      feedback.textContent =
+      let feedbackMessage =
         "👑 Correct — "
         +
         match.name
@@ -4249,6 +4437,17 @@ document
         match.formula
         +
         "!";
+
+
+      feedbackMessage =
+        appendXPMessage(
+          feedbackMessage,
+          profileResult
+        );
+
+
+      feedback.textContent =
+        feedbackMessage;
 
 
       discovery.innerHTML =
@@ -4917,16 +5116,41 @@ document
         challenge.electrons
       ) {
 
+        const profileResult =
+          completeBeeActivity(
+
+            "worker-"
+            +
+            safeBeeId(
+              challenge.name
+            ),
+
+            15
+
+          );
+
+
+        let feedback =
+          "🔧 Correct — "
+          +
+          challenge.name
+          +
+          "!";
+
+
+        feedback =
+          appendXPMessage(
+            feedback,
+            profileResult
+          );
+
+
         document
           .getElementById(
             "workerFeedback"
           )
           .textContent =
-            "🔧 Correct — "
-            +
-            challenge.name
-            +
-            "!";
+            feedback;
 
 
         trackBeeEvent(
@@ -4961,7 +5185,7 @@ document
 
           },
 
-          1000
+          1200
         );
 
       }
@@ -5613,16 +5837,41 @@ document
         challenge.anionCount
       ) {
 
+        const profileResult =
+          completeBeeActivity(
+
+            "pollination-"
+            +
+            safeBeeId(
+              challenge.name
+            ),
+
+            15
+
+          );
+
+
+        let feedback =
+          "🌼🐝 Charges balanced — "
+          +
+          challenge.name
+          +
+          "!";
+
+
+        feedback =
+          appendXPMessage(
+            feedback,
+            profileResult
+          );
+
+
         document
           .getElementById(
             "pollinationFeedback"
           )
           .textContent =
-            "🌼🐝 Charges balanced — "
-            +
-            challenge.name
-            +
-            "!";
+            feedback;
 
 
         trackBeeEvent(
@@ -5660,7 +5909,7 @@ document
 
           },
 
-          1200
+          1300
         );
 
       }
@@ -5712,6 +5961,14 @@ document
           " compounds found";
 
 
+      const moleculargramLine =
+        moleculargramTracked
+        ?
+          "\n👑 MOLECULARGRAM earned"
+        :
+          "";
+
+
       const text =
         "🐝 MOLECULAR BEE • WEEKLY BUZZWORD #"
         +
@@ -5721,15 +5978,7 @@ document
         +
         status
         +
-        "\n"
-        +
-        (
-          moleculargramTracked
-          ?
-            "👑 MOLECULARGRAM earned"
-          :
-            ""
-        )
+        moleculargramLine
         +
         "\n\nHow many can you find?"
         +
@@ -5835,6 +6084,84 @@ document
 
     }
   );
+
+
+
+/* ==========================================================
+   PROFILE PROGRESS SUMMARY
+
+   Saves some useful Molecular Bee counters.
+
+   These do NOT create streaks or extra XP.
+========================================================== */
+
+function saveBeeProgressSummary() {
+
+  if (
+    !beeProfileAvailable()
+    ||
+    typeof PATProfile.setProgress !==
+    "function"
+  ) {
+
+    return;
+
+  }
+
+
+  PATProfile.setProgress(
+
+    "molecular_bee",
+
+    "buzzwordCompoundsFound",
+
+    buzzFound.length
+
+  );
+
+
+  PATProfile.setProgress(
+
+    "molecular_bee",
+
+    "buzzwordTotalCompounds",
+
+    buzzAnswers.length
+
+  );
+
+
+  PATProfile.setProgress(
+
+    "molecular_bee",
+
+    "queenCorrectBuilds",
+
+    queenCorrectCount
+
+  );
+
+}
+
+
+
+/* ==========================================================
+   SAVE BUZZWORD PROGRESS WHEN DISCOVERIES CHANGE
+========================================================== */
+
+const originalRenderBuzzFound =
+  renderBuzzFound;
+
+
+renderBuzzFound =
+  function () {
+
+    originalRenderBuzzFound();
+
+
+    saveBeeProgressSummary();
+
+  };
 
 
 
