@@ -18,7 +18,6 @@ const clueCards = [
   ======================================================== */
 
   {
-
     number:
       "001",
 
@@ -70,7 +69,6 @@ const clueCards = [
       "/PAT-Games/images/cluecards/001/IMG_0205.jpeg"
 
     ]
-
   },
 
 
@@ -81,7 +79,6 @@ const clueCards = [
   ======================================================== */
 
   {
-
     number:
       "002",
 
@@ -91,15 +88,9 @@ const clueCards = [
     enumeration:
       "(3)",
 
-
     /*
-      IMPORTANT:
-
-      ONLY SOX IS ACCEPTED.
-
-      SOCKS IS INTENTIONALLY NOT ACCEPTED
-      BECAUSE IT REPRESENTS THE OTHER
-      HOMOPHONIC STATE.
+       ONLY SOX IS ACCEPTED AS CORRECT.
+       SOCKS IS A NEAR-MISS.
     */
 
     answer:
@@ -124,7 +115,6 @@ const clueCards = [
       "Easy",
 
 
-
     /* CLUE RELEASE */
 
     clueSlides: [
@@ -142,7 +132,6 @@ const clueCards = [
     ],
 
 
-
     /* SOLUTION RELEASE */
 
     solutionSlides: [
@@ -156,7 +145,6 @@ const clueCards = [
       "/PAT-Games/IMG_0267.jpeg"
 
     ]
-
   }
 
 ];
@@ -260,18 +248,58 @@ function trackEvent(
 
 
 
+function trackPuzzleStart() {
+
+  if (
+    puzzleStartTracked
+  ) {
+
+    return;
+
+  }
+
+
+  puzzleStartTracked =
+    true;
+
+
+  trackEvent(
+    "puzzle_started"
+  );
+
+}
+
+
+
 /* ==========================================================
-   PROFILE HELPERS
+   SHARED PROFILE HELPERS
 ========================================================== */
 
 function profileAvailable() {
 
   return Boolean(
+
     window.PATProfile
     &&
     typeof PATProfile.get ===
     "function"
+
   );
+
+}
+
+
+
+function refreshClueProfile() {
+
+  if (
+    typeof window.renderClueCardProfile ===
+    "function"
+  ) {
+
+    window.renderClueCardProfile();
+
+  }
 
 }
 
@@ -281,14 +309,7 @@ function archiveUnlocked() {
 
   if (
     !profileAvailable()
-  ) {
-
-    return false;
-
-  }
-
-
-  if (
+    ||
     typeof PATProfile.canAccessArchive !==
     "function"
   ) {
@@ -306,35 +327,14 @@ function archiveUnlocked() {
 
 
 /* ==========================================================
-   REFRESH PROFILE DISPLAY
+   COMPLETE CLUE-CARD
 
-   renderClueCardProfile() exists in cluecards.html.
+   Called ONLY after an actual correct solve.
+
+   Manual solution reveal does not call this.
 ========================================================== */
 
-function refreshProfileDisplay() {
-
-  if (
-    typeof window.renderClueCardProfile ===
-    "function"
-  ) {
-
-    window.renderClueCardProfile();
-
-  }
-
-}
-
-
-
-/* ==========================================================
-   COMPLETE CLUE-CARD PROFILE ACTIVITY
-
-   ONLY A REAL CORRECT GUESS CALLS THIS.
-
-   MANUAL REVEAL DOES NOT.
-========================================================== */
-
-function completeProfileClue() {
+function completeClueCardProfile() {
 
   if (
     profileCompletionHandled
@@ -364,49 +364,26 @@ function completeProfileClue() {
   const result =
     PATProfile.complete(
 
-      "cluecards",
+      "clue_cards",
 
-      activeClue.number
+      "clue-"
+      +
+      activeClue.number,
+
+      {
+
+        streakKey:
+          "cluecards"
+
+      }
 
     );
 
 
-  refreshProfileDisplay();
+  refreshClueProfile();
 
 
   return result;
-
-}
-
-
-
-/* ==========================================================
-   TRACK PUZZLE START
-
-   Merely viewing the puzzle DOES NOT advance
-   the dedicated Clue-Card streak.
-
-   The streak advances only on completion.
-========================================================== */
-
-function trackPuzzleStart() {
-
-  if (
-    puzzleStartTracked
-  ) {
-
-    return;
-
-  }
-
-
-  puzzleStartTracked =
-    true;
-
-
-  trackEvent(
-    "puzzle_started"
-  );
 
 }
 
@@ -602,16 +579,49 @@ const archiveList =
   );
 
 
-const clueArchiveAccess =
-  document.getElementById(
-    "clueArchiveAccess"
-  );
-
-
 const cluePlusPanel =
   document.getElementById(
     "cluePlusPanel"
   );
+
+
+
+/* ==========================================================
+   PLUS PANEL
+========================================================== */
+
+function showPlusPanel() {
+
+  if (
+    !cluePlusPanel
+  ) {
+
+    return;
+
+  }
+
+
+  cluePlusPanel
+    .classList
+    .add(
+      "visible"
+    );
+
+
+  cluePlusPanel
+    .scrollIntoView(
+      {
+
+        behavior:
+          "smooth",
+
+        block:
+          "nearest"
+
+      }
+    );
+
+}
 
 
 
@@ -810,9 +820,11 @@ function loadClue(
     "";
 
 
-  guessFeedback.classList.remove(
-    "correct"
-  );
+  guessFeedback
+    .classList
+    .remove(
+      "correct"
+    );
 
 
   answerTitle.textContent =
@@ -839,9 +851,11 @@ function loadClue(
     card.mechanismDescription;
 
 
-  solutionInfo.classList.remove(
-    "visible"
-  );
+  solutionInfo
+    .classList
+    .remove(
+      "visible"
+    );
 
 
   revealBox.style.display =
@@ -852,14 +866,18 @@ function loadClue(
     "📤 Share Clue";
 
 
-  cluePhaseButton.classList.add(
-    "active"
-  );
+  cluePhaseButton
+    .classList
+    .add(
+      "active"
+    );
 
 
-  solutionPhaseButton.classList.remove(
-    "active"
-  );
+  solutionPhaseButton
+    .classList
+    .remove(
+      "active"
+    );
 
 
   solutionPhaseButton.textContent =
@@ -894,14 +912,6 @@ function renderSlide() {
     );
 
 
-    slideCounter.textContent =
-      "0 / 0";
-
-
-    dots.innerHTML =
-      "";
-
-
     return;
 
   }
@@ -924,7 +934,8 @@ function renderSlide() {
   ) {
 
     slideIndex =
-      slides.length - 1;
+      slides.length -
+      1;
 
   }
 
@@ -943,13 +954,15 @@ function renderSlide() {
     " slide "
     +
     (
-      slideIndex + 1
+      slideIndex +
+      1
     );
 
 
   slideCounter.textContent =
     (
-      slideIndex + 1
+      slideIndex +
+      1
     )
     +
     " / "
@@ -982,7 +995,8 @@ function renderSlide() {
 
   nextButton.disabled =
     slideIndex ===
-    slides.length - 1;
+    slides.length -
+    1;
 
 
   buildDots();
@@ -1030,7 +1044,8 @@ function buildDots() {
         "Go to slide "
         +
         (
-          index + 1
+          index +
+          1
         )
       );
 
@@ -1079,55 +1094,58 @@ function buildDots() {
    PREVIOUS / NEXT
 ========================================================== */
 
-previousButton.addEventListener(
-  "click",
-  function () {
+previousButton
+  .addEventListener(
+    "click",
+    function () {
 
-    trackPuzzleStart();
-
-
-    if (
-      slideIndex >
-      0
-    ) {
-
-      slideIndex--;
+      trackPuzzleStart();
 
 
-      renderSlide();
+      if (
+        slideIndex >
+        0
+      ) {
 
-    }
-
-  }
-);
-
-
-
-nextButton.addEventListener(
-  "click",
-  function () {
-
-    trackPuzzleStart();
+        slideIndex--;
 
 
-    const slides =
-      getSlides();
+        renderSlide();
 
-
-    if (
-      slideIndex <
-      slides.length - 1
-    ) {
-
-      slideIndex++;
-
-
-      renderSlide();
+      }
 
     }
+  );
 
-  }
-);
+
+
+nextButton
+  .addEventListener(
+    "click",
+    function () {
+
+      trackPuzzleStart();
+
+
+      const slides =
+        getSlides();
+
+
+      if (
+        slideIndex <
+        slides.length -
+        1
+      ) {
+
+        slideIndex++;
+
+
+        renderSlide();
+
+      }
+
+    }
+  );
 
 
 
@@ -1135,50 +1153,45 @@ nextButton.addEventListener(
    CLUE PHASE
 ========================================================== */
 
-cluePhaseButton.addEventListener(
-  "click",
-  function () {
+cluePhaseButton
+  .addEventListener(
+    "click",
+    function () {
 
-    trackPuzzleStart();
-
-
-    phase =
-      "clue";
+      trackPuzzleStart();
 
 
-    slideIndex =
-      0;
+      phase =
+        "clue";
 
 
-    cluePhaseButton.classList.add(
-      "active"
-    );
+      slideIndex =
+        0;
 
 
-    solutionPhaseButton.classList.remove(
-      "active"
-    );
+      cluePhaseButton
+        .classList
+        .add(
+          "active"
+        );
 
 
-    renderSlide();
+      solutionPhaseButton
+        .classList
+        .remove(
+          "active"
+        );
 
-  }
-);
+
+      renderSlide();
+
+    }
+  );
 
 
 
 /* ==========================================================
    REVEAL SOLUTION
-
-   IMPORTANT:
-
-   wasSolved = true:
-   Player actually solved it.
-
-   wasSolved = false:
-   Player manually revealed it.
-
-   Only the first case awards profile completion.
 ========================================================== */
 
 function revealSolution(
@@ -1187,6 +1200,13 @@ function revealSolution(
 
   trackPuzzleStart();
 
+
+  /*
+    MANUAL REVEAL
+
+    This records puzzle_revealed,
+    but does NOT touch PATProfile.
+  */
 
   if (
     !wasSolved
@@ -1241,19 +1261,25 @@ function revealSolution(
     "🔓 Solution";
 
 
-  solutionPhaseButton.classList.add(
-    "active"
-  );
+  solutionPhaseButton
+    .classList
+    .add(
+      "active"
+    );
 
 
-  cluePhaseButton.classList.remove(
-    "active"
-  );
+  cluePhaseButton
+    .classList
+    .remove(
+      "active"
+    );
 
 
-  solutionInfo.classList.add(
-    "visible"
-  );
+  solutionInfo
+    .classList
+    .add(
+      "visible"
+    );
 
 
   revealBox.style.display =
@@ -1274,74 +1300,73 @@ function revealSolution(
    SOLUTION BUTTON
 ========================================================== */
 
-solutionPhaseButton.addEventListener(
-  "click",
-  function () {
+solutionPhaseButton
+  .addEventListener(
+    "click",
+    function () {
 
-    trackPuzzleStart();
+      trackPuzzleStart();
 
 
-    if (
-      !solutionUnlocked
-    ) {
+      if (
+        !solutionUnlocked
+      ) {
+
+        revealSolution(
+          false
+        );
+
+
+        return;
+
+      }
+
+
+      phase =
+        "solution";
+
+
+      slideIndex =
+        0;
+
+
+      solutionPhaseButton
+        .classList
+        .add(
+          "active"
+        );
+
+
+      cluePhaseButton
+        .classList
+        .remove(
+          "active"
+        );
+
+
+      renderSlide();
+
+    }
+  );
+
+
+
+bigRevealButton
+  .addEventListener(
+    "click",
+    function () {
 
       revealSolution(
         false
       );
 
-
-      return;
-
     }
-
-
-    phase =
-      "solution";
-
-
-    slideIndex =
-      0;
-
-
-    solutionPhaseButton.classList.add(
-      "active"
-    );
-
-
-    cluePhaseButton.classList.remove(
-      "active"
-    );
-
-
-    renderSlide();
-
-  }
-);
-
-
-
-bigRevealButton.addEventListener(
-  "click",
-  function () {
-
-    revealSolution(
-      false
-    );
-
-  }
-);
+  );
 
 
 
 /* ==========================================================
    GUESSING
-
-   EXACT OFFICIAL ANSWER ONLY.
-
-   #002:
-
-   SOX   = CORRECT
-   SOCKS = WRONG
 ========================================================== */
 
 function submitGuess() {
@@ -1406,6 +1431,10 @@ function submitGuess() {
     );
 
 
+  /* ========================================================
+     CORRECT
+  ======================================================== */
+
   if (
     guess ===
     correctAnswer
@@ -1436,17 +1465,16 @@ function submitGuess() {
     }
 
 
-
-    /* ======================================================
-       PROFILE COMPLETION
-
-       This is the ONLY place that advances
-       Clue-Card completion/streak.
-    ====================================================== */
-
     const profileResult =
-      completeProfileClue();
+      completeClueCardProfile();
 
+
+    let feedback =
+      "Correct — "
+      +
+      activeClue.answer
+      +
+      "!";
 
 
     if (
@@ -1456,12 +1484,8 @@ function submitGuess() {
       0
     ) {
 
-      guessFeedback.textContent =
-        "Correct — "
-        +
-        activeClue.answer
-        +
-        "! +"
+      feedback +=
+        " +"
         +
         profileResult.xpEarned
         +
@@ -1475,30 +1499,21 @@ function submitGuess() {
       profileResult.alreadyCompleted
     ) {
 
-      guessFeedback.textContent =
-        "Correct — "
-        +
-        activeClue.answer
-        +
-        "! Already catalogued.";
-
-    }
-
-    else {
-
-      guessFeedback.textContent =
-        "Correct — "
-        +
-        activeClue.answer
-        +
-        "!";
+      feedback +=
+        " This Clue-Card is already in your solved collection.";
 
     }
 
 
-    guessFeedback.classList.add(
-      "correct"
-    );
+    guessFeedback.textContent =
+      feedback;
+
+
+    guessFeedback
+      .classList
+      .add(
+        "correct"
+      );
 
 
     revealSolution(
@@ -1511,15 +1526,17 @@ function submitGuess() {
   }
 
 
-  guessFeedback.classList.remove(
-    "correct"
-  );
-
-
 
   /* ========================================================
-     SPECIAL SOX / SOCKS RESPONSE
+     SPECIAL #002 NEAR-MISS
   ======================================================== */
+
+  guessFeedback
+    .classList
+    .remove(
+      "correct"
+    );
+
 
   if (
     activeClue.number ===
@@ -1530,7 +1547,7 @@ function submitGuess() {
   ) {
 
     guessFeedback.textContent =
-      "Very close — you found one side of the sound-alike. The answer is 3 letters.";
+      "Very close — you found one side of the sound-alike. The official answer is 3 letters.";
 
   }
 
@@ -1552,33 +1569,35 @@ function submitGuess() {
    GUESS CONTROLS
 ========================================================== */
 
-guessButton.addEventListener(
-  "click",
-  submitGuess
-);
+guessButton
+  .addEventListener(
+    "click",
+    submitGuess
+  );
 
 
 
-guessInput.addEventListener(
-  "keydown",
-  function (
-    event
-  ) {
-
-    if (
-      event.key ===
-      "Enter"
+guessInput
+  .addEventListener(
+    "keydown",
+    function (
+      event
     ) {
 
-      event.preventDefault();
+      if (
+        event.key ===
+        "Enter"
+      ) {
+
+        event.preventDefault();
 
 
-      submitGuess();
+        submitGuess();
+
+      }
 
     }
-
-  }
-);
+  );
 
 
 
@@ -1665,6 +1684,7 @@ function buildShareText() {
 
 
   return (
+
     "KOAN~KAON • Clue-Card #"
     +
     activeClue.number
@@ -1690,6 +1710,7 @@ function buildShareText() {
     "\n\n"
     +
     "PAT Learning Lab"
+
   );
 
 }
@@ -1710,8 +1731,9 @@ async function shareClue() {
 
 
   const imageUrl =
-    activeClue
-      .clueSlides[0];
+    activeClue.clueSlides[
+      0
+    ];
 
 
   try {
@@ -1739,12 +1761,17 @@ async function shareClue() {
 
     const file =
       new File(
-        [blob],
+
+        [
+          blob
+        ],
+
         "Koan-Kaon-Clue-"
         +
         activeClue.number
         +
         ".jpeg",
+
         {
 
           type:
@@ -1753,6 +1780,7 @@ async function shareClue() {
             "image/jpeg"
 
         }
+
       );
 
 
@@ -1765,7 +1793,9 @@ async function shareClue() {
         {
 
           files:
-            [file]
+            [
+              file
+            ]
 
         }
       )
@@ -1783,7 +1813,9 @@ async function shareClue() {
             text,
 
           files:
-            [file]
+            [
+              file
+            ]
 
         }
       );
@@ -1891,6 +1923,26 @@ async function shareClue() {
       1200
     );
 
+
+    trackEvent(
+      "puzzle_shared",
+      {
+
+        guesses:
+          guesses,
+
+        solved:
+          solved,
+
+        solution_unlocked:
+          solutionUnlocked,
+
+        share_method:
+          "clipboard"
+
+      }
+    );
+
   }
 
   catch (
@@ -1954,112 +2006,11 @@ async function shareClue() {
 
 
 
-shareButton.addEventListener(
-  "click",
-  shareClue
-);
-
-
-
-/* ==========================================================
-   LEARNING LAB+ ARCHIVE PANEL
-========================================================== */
-
-function showPlusPanel() {
-
-  if (
-    !cluePlusPanel
-  ) {
-
-    return;
-
-  }
-
-
-  cluePlusPanel.classList.add(
-    "visible"
+shareButton
+  .addEventListener(
+    "click",
+    shareClue
   );
-
-
-  cluePlusPanel.scrollIntoView(
-    {
-
-      behavior:
-        "smooth",
-
-      block:
-        "nearest"
-
-    }
-  );
-
-}
-
-
-
-/* ==========================================================
-   ARCHIVE ACCESS MESSAGE
-========================================================== */
-
-function renderArchiveAccessMessage() {
-
-  if (
-    !clueArchiveAccess
-  ) {
-
-    return;
-
-  }
-
-
-  if (
-    archiveUnlocked()
-  ) {
-
-    const profile =
-      PATProfile.get();
-
-
-    clueArchiveAccess.innerHTML = `
-
-      <strong>
-        🔓 Clue-Card Archive Unlocked
-      </strong>
-
-      <br>
-
-      ${
-        profile.username
-        ||
-        "Explorer"
-      },
-      your Learning Lab+ access includes
-      previous Cryptic Clue-Cards.
-
-    `;
-
-
-    return;
-
-  }
-
-
-  clueArchiveAccess.innerHTML = `
-
-    <strong>
-      🔒 Current Clue Free • Archive Learning Lab+
-    </strong>
-
-    <br>
-
-    Everyone can play the newest Clue-Card.
-
-    Previous clues remain visible here
-    and unlock with Learning Lab+.
-
-  `;
-
-}
 
 
 
@@ -2077,14 +2028,16 @@ function buildArchive() {
     cluePlusPanel
   ) {
 
-    cluePlusPanel.classList.remove(
-      "visible"
-    );
+    cluePlusPanel
+      .classList
+      .remove(
+        "visible"
+      );
 
   }
 
 
-  renderArchiveAccessMessage();
+  refreshClueProfile();
 
 
   const archivedClues =
@@ -2114,7 +2067,7 @@ function buildArchive() {
   }
 
 
-  const hasArchiveAccess =
+  const hasAccess =
     archiveUnlocked();
 
 
@@ -2134,135 +2087,172 @@ function buildArchive() {
 
 
       if (
-        !hasArchiveAccess
+        !hasAccess
       ) {
 
-        archiveCard.classList.add(
-          "locked"
-        );
+        archiveCard
+          .classList
+          .add(
+            "locked"
+          );
 
       }
 
 
-      archiveCard.innerHTML = `
+      archiveCard.innerHTML =
 
-        <div class="archive-top">
+        '<div class="archive-top">'
 
-          <span class="archive-number">
-            CLUE-CARD #${card.number}
-          </span>
+          +
 
-          <span>
-            ${card.difficulty}
-          </span>
+          '<span class="archive-number">'
+          +
+          'CLUE-CARD #'
+          +
+          card.number
+          +
+          '</span>'
 
-        </div>
+          +
 
-        <div class="archive-clue">
+          '<span>'
+          +
+          card.difficulty
+          +
+          '</span>'
 
-          “${card.clue}”
-          ${card.enumeration}
+        +
 
-        </div>
+        '</div>'
 
-        <button
-          type="button"
-          class="archive-play-button"
-        >
+        +
 
-          ${
-            hasArchiveAccess
+        '<div class="archive-clue">'
+
+          +
+
+          '“'
+          +
+          card.clue
+          +
+          '” '
+          +
+          card.enumeration
+
+        +
+
+        '</div>'
+
+        +
+
+        '<button type="button" class="archive-play-button">'
+
+          +
+
+          (
+            hasAccess
             ?
-              "Play Archived Clue"
+              'Play Archived Clue'
             :
-              "🔒 Unlock with Learning Lab+"
-          }
+              '🔒 Unlock with Learning Lab+'
+          )
 
-        </button>
+        +
 
-      `;
+        '</button>';
 
 
-      const archiveButton =
-        archiveCard.querySelector(
-          ".archive-play-button"
-        );
+      const playButton =
+        archiveCard
+          .querySelector(
+            ".archive-play-button"
+          );
 
 
       if (
-        hasArchiveAccess
+        hasAccess
       ) {
 
-        archiveButton.addEventListener(
-          "click",
-          function () {
+        playButton
+          .addEventListener(
+            "click",
+            function () {
 
-            loadClue(
-              card
-            );
-
-
-            playView.classList.add(
-              "active"
-            );
+              loadClue(
+                card
+              );
 
 
-            archiveView.classList.remove(
-              "active"
-            );
+              playView
+                .classList
+                .add(
+                  "active"
+                );
 
 
-            currentTab.classList.remove(
-              "active"
-            );
+              archiveView
+                .classList
+                .remove(
+                  "active"
+                );
 
 
-            archiveTab.classList.remove(
-              "active"
-            );
+              currentTab
+                .classList
+                .remove(
+                  "active"
+                );
 
 
-            trackPuzzleStart();
+              archiveTab
+                .classList
+                .remove(
+                  "active"
+                );
 
 
-            window.scrollTo(
-              {
+              trackPuzzleStart();
 
-                top:
-                  0,
 
-                behavior:
-                  "smooth"
+              window.scrollTo(
+                {
 
-              }
-            );
+                  top:
+                    0,
 
-          }
-        );
+                  behavior:
+                    "smooth"
+
+                }
+              );
+
+            }
+          );
 
       }
 
       else {
 
-        archiveButton.addEventListener(
-          "click",
-          function () {
+        playButton
+          .addEventListener(
+            "click",
+            function () {
 
-            showPlusPanel();
+              showPlusPanel();
 
 
-            trackEvent(
-              "archive_locked_clicked",
-              {
+              trackEvent(
+                "archive_locked_clicked",
+                {
 
-                archive_puzzle:
-                  card.number
+                  archive_puzzle:
+                    card.number
 
-              }
-            );
+                }
+              );
 
-          }
-        );
+            }
+          );
 
       }
 
@@ -2282,39 +2272,48 @@ function buildArchive() {
    CURRENT CLUE
 ========================================================== */
 
-currentTab.addEventListener(
-  "click",
-  function () {
+currentTab
+  .addEventListener(
+    "click",
+    function () {
 
-    loadClue(
-      currentClue
-    );
-
-
-    playView.classList.add(
-      "active"
-    );
+      loadClue(
+        currentClue
+      );
 
 
-    archiveView.classList.remove(
-      "active"
-    );
+      playView
+        .classList
+        .add(
+          "active"
+        );
 
 
-    currentTab.classList.add(
-      "active"
-    );
+      archiveView
+        .classList
+        .remove(
+          "active"
+        );
 
 
-    archiveTab.classList.remove(
-      "active"
-    );
+      currentTab
+        .classList
+        .add(
+          "active"
+        );
 
 
-    trackPuzzleStart();
+      archiveTab
+        .classList
+        .remove(
+          "active"
+        );
 
-  }
-);
+
+      trackPuzzleStart();
+
+    }
+  );
 
 
 
@@ -2322,49 +2321,43 @@ currentTab.addEventListener(
    ARCHIVE TAB
 ========================================================== */
 
-archiveTab.addEventListener(
-  "click",
-  function () {
+archiveTab
+  .addEventListener(
+    "click",
+    function () {
 
-    buildArchive();
-
-
-    playView.classList.remove(
-      "active"
-    );
+      buildArchive();
 
 
-    archiveView.classList.add(
-      "active"
-    );
+      playView
+        .classList
+        .remove(
+          "active"
+        );
 
 
-    currentTab.classList.remove(
-      "active"
-    );
+      archiveView
+        .classList
+        .add(
+          "active"
+        );
 
 
-    archiveTab.classList.add(
-      "active"
-    );
+      currentTab
+        .classList
+        .remove(
+          "active"
+        );
 
 
-    trackEvent(
-      "archive_opened",
-      {
+      archiveTab
+        .classList
+        .add(
+          "active"
+        );
 
-        access:
-          archiveUnlocked()
-          ?
-            "unlocked"
-          :
-            "locked"
-
-      }
-    );
-
-  }
-);
+    }
+  );
 
 
 
@@ -2377,124 +2370,133 @@ let touchStartX =
 
 
 
-imageFrame.addEventListener(
-  "touchstart",
-  function (
-    event
-  ) {
-
-    touchStartX =
+imageFrame
+  .addEventListener(
+    "touchstart",
+    function (
       event
-        .changedTouches[0]
-        .screenX;
+    ) {
 
-  },
-  {
+      touchStartX =
+        event
+          .changedTouches[
+            0
+          ]
+          .screenX;
 
-    passive:
-      true
+    },
+    {
 
-  }
-);
+      passive:
+        true
+
+    }
+  );
 
 
 
-imageFrame.addEventListener(
-  "touchend",
-  function (
-    event
-  ) {
-
-    const touchEndX =
+imageFrame
+  .addEventListener(
+    "touchend",
+    function (
       event
-        .changedTouches[0]
-        .screenX;
-
-
-    const difference =
-      touchEndX
-      -
-      touchStartX;
-
-
-    if (
-      Math.abs(
-        difference
-      ) <
-      50
     ) {
 
-      return;
+      const touchEndX =
+        event
+          .changedTouches[
+            0
+          ]
+          .screenX;
+
+
+      const difference =
+        touchEndX -
+        touchStartX;
+
+
+      if (
+        Math.abs(
+          difference
+        ) <
+        50
+      ) {
+
+        return;
+
+      }
+
+
+      trackPuzzleStart();
+
+
+      const slides =
+        getSlides();
+
+
+      if (
+        difference <
+        0
+        &&
+        slideIndex <
+        slides.length -
+        1
+      ) {
+
+        slideIndex++;
+
+
+        renderSlide();
+
+      }
+
+
+      if (
+        difference >
+        0
+        &&
+        slideIndex >
+        0
+      ) {
+
+        slideIndex--;
+
+
+        renderSlide();
+
+      }
+
+    },
+    {
+
+      passive:
+        true
 
     }
-
-
-    trackPuzzleStart();
-
-
-    const slides =
-      getSlides();
-
-
-    if (
-      difference <
-      0
-      &&
-      slideIndex <
-      slides.length - 1
-    ) {
-
-      slideIndex++;
-
-
-      renderSlide();
-
-    }
-
-
-    if (
-      difference >
-      0
-      &&
-      slideIndex >
-      0
-    ) {
-
-      slideIndex--;
-
-
-      renderSlide();
-
-    }
-
-  },
-  {
-
-    passive:
-      true
-
-  }
-);
+  );
 
 
 
 /* ==========================================================
-   PROFILE UPDATE LISTENER
+   PROFILE CHANGED
 
-   Useful later if subscription status changes.
+   If the user upgrades later,
+   rebuild the archive immediately.
 ========================================================== */
 
 window.addEventListener(
   "pat-profile-updated",
   function () {
 
-    refreshProfileDisplay();
+    refreshClueProfile();
 
 
     if (
-      archiveView.classList.contains(
-        "active"
-      )
+      archiveView
+        .classList
+        .contains(
+          "active"
+        )
     ) {
 
       buildArchive();
@@ -2507,10 +2509,10 @@ window.addEventListener(
 
 
 /* ==========================================================
-   START GAME
+   START
 
-   #002 IS CURRENT.
-   #001 IS ARCHIVED.
+   #002 = CURRENT
+   #001 = ARCHIVE
 ========================================================== */
 
 loadClue(
@@ -2518,7 +2520,7 @@ loadClue(
 );
 
 
-refreshProfileDisplay();
+refreshClueProfile();
 
 
 });
