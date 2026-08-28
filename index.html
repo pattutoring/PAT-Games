@@ -53,6 +53,18 @@ gtag(
 
 
 <!-- =====================================================
+     SUPABASE
+====================================================== -->
+
+<script
+  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+<script src="supabase.js"></script>
+
+
+
+<!-- =====================================================
      SHARED PROFILE SYSTEM
 ====================================================== -->
 
@@ -1512,6 +1524,7 @@ main {
 
 }
 
+
 .molecular-farm .card-button {
 
   background:
@@ -1526,6 +1539,7 @@ main {
     var(--gold);
 
 }
+
 
 .molecular-bee .card-button {
 
@@ -1542,6 +1556,7 @@ main {
 
 }
 
+
 .contronym .card-button {
 
   background:
@@ -1556,6 +1571,7 @@ main {
     var(--purple);
 
 }
+
 
 .clue-card .card-button {
 
@@ -1572,6 +1588,7 @@ main {
 
 }
 
+
 .koan-kaon .card-button {
 
   background:
@@ -1586,6 +1603,7 @@ main {
     var(--brown);
 
 }
+
 
 .cryptic-calculus .card-button {
 
@@ -1609,6 +1627,7 @@ main {
 
 }
 
+
 .candy-calculus .card-button {
 
   background:
@@ -1630,6 +1649,7 @@ main {
     );
 
 }
+
 
 .meaning-graphs .card-button {
 
@@ -1657,6 +1677,7 @@ main {
 
 }
 
+
 .mythopoetic .card-button {
 
   background:
@@ -1678,6 +1699,7 @@ main {
     );
 
 }
+
 
 .wordsmith .card-button {
 
@@ -1701,6 +1723,7 @@ main {
 
 }
 
+
 .twain-editor .card-button {
 
   background:
@@ -1722,6 +1745,7 @@ main {
     );
 
 }
+
 
 .sentence-model .card-button {
 
@@ -2674,15 +2698,11 @@ Sign Out
 Prototype account:
 </strong>
 
-Your profile is currently stored locally
-on this browser and device.
+Your profile currently loads through the shared PAT Learning Lab profile system.
 
-This is not yet a password-based cloud account.
-
-When secure authentication and subscriptions
-are added, this interface can connect to the
-real account system without redesigning
-the individual games.
+Supabase is now connected to this page so the next step can move profile progress,
+XP, streaks, mastery and game saves from device-only storage to the signed-in
+Learning Lab account.
 
 </div>
 
@@ -3511,8 +3531,6 @@ function renderProfile() {
 
 
 
-  /* AVATAR */
-
   document
     .getElementById(
       "profileAvatar"
@@ -3521,8 +3539,6 @@ function renderProfile() {
       selectedAvatar;
 
 
-
-  /* NAME */
 
   document
     .getElementById(
@@ -3538,8 +3554,6 @@ function renderProfile() {
         "Guest Explorer";
 
 
-
-  /* PLAN */
 
   document
     .getElementById(
@@ -3560,8 +3574,6 @@ function renderProfile() {
 
 
 
-  /* XP */
-
   document
     .getElementById(
       "profileXP"
@@ -3572,8 +3584,6 @@ function renderProfile() {
       0;
 
 
-
-  /* LEVEL */
 
   document
     .getElementById(
@@ -3631,8 +3641,6 @@ function renderProfile() {
 
 
 
-  /* GLOBAL STREAK */
-
   document
     .getElementById(
       "profileGlobalStreak"
@@ -3644,8 +3652,6 @@ function renderProfile() {
 
 
 
-  /* COMPLETIONS */
-
   document
     .getElementById(
       "profileCompleted"
@@ -3656,8 +3662,6 @@ function renderProfile() {
       0;
 
 
-
-  /* SERIES STREAKS */
 
   document
     .getElementById(
@@ -3710,8 +3714,6 @@ function renderProfile() {
 
 
 
-  /* PROFILE BUTTON */
-
   profileButton.textContent =
     profile.profileCreated
     ?
@@ -3720,8 +3722,6 @@ function renderProfile() {
       "Create Profile / Sign In";
 
 
-
-  /* AVATAR SELECTION */
 
   document
     .querySelectorAll(
@@ -4361,7 +4361,7 @@ signOutProfile
 
 
       profileFeedback.textContent =
-        "Signed out. Progress remains saved on this device.";
+        "Signed out.";
 
 
       renderProfile();
@@ -4373,18 +4373,6 @@ signOutProfile
 
 /* =====================================================
    GAME LINKS
-
-   IMPORTANT:
-
-   markPlayed() ONLY records that the world was entered.
-
-   It does NOT:
-   - award XP
-   - advance the weekly Lab streak
-   - advance a puzzle streak
-
-   Those happen only when the game reports a
-   meaningful completion through PATProfile.complete().
 ====================================================== */
 
 document
