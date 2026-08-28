@@ -2,19 +2,47 @@
    MOLECULAR FARM
    PAT LEARNING LAB
 
-   VERSION 3
+   VERSION 4
+
+   ACCOUNT-INTEGRATED EDITION
 
    BUILD → DISCOVER → CAPTURE → CATALOGUE
 
-   ELEMENTAL SPECIES
-   MOLECULAR SPECIES
-   ATOM CONSTRUCTION
-   MOLECULE CONSTRUCTION
-   HABITATS
-   EVOLUTION LINES
-   PERIOD-EX
-   ANALYTICS
+   SUPPORTS:
+   - Elemental Species
+   - Molecular Species
+   - Atom Construction
+   - Molecule Construction
+   - Habitats
+   - Evolution Lines
+   - Period-ex
+   - Analytics
+   - Shared PAT Learning Lab Profile
+   - Account XP
+   - Daily Lab Activity
+   - Molecular Farm Mastery
+   - Cloud-backed Farm Progress
+   - Legacy Farm Save Migration
+
+   IMPORTANT:
+
+   Molecular Farm progress now lives in:
+
+   PATProfile.progress.molecular_farm
+
+   When signed in, profile.js synchronizes that
+   progress to the player's Supabase account.
 ========================================================== */
+
+
+
+/* ==========================================================
+   GAME ID
+========================================================== */
+
+const MOLECULAR_FARM_GAME_ID =
+  "molecular_farm";
+
 
 
 /* ==========================================================
@@ -40,10 +68,12 @@ function trackFarmEvent(
     "event",
     eventName,
     {
+
       game_name:
         "molecular_farm",
 
       ...(extraData || {})
+
     }
   );
 
@@ -56,6 +86,7 @@ function trackFarmEvent(
 ========================================================== */
 
 const habitats = {
+
 
   period: {
 
@@ -118,15 +149,6 @@ const habitats = {
 
 /* ==========================================================
    ELEMENTAL SPECIES
-
-   commonNeutrons gives the atom builder
-   a stable/common isotope target.
-
-   Example:
-   Carbon-12
-   6 p+
-   6 n0
-   6 e-
 ========================================================== */
 
 const elementalSpecies = [
@@ -259,13 +281,12 @@ const elementalSpecies = [
         question:
           "How many valence electrons does Lithium have?",
 
-        answers:
-          [
-            "1",
-            "2",
-            "3",
-            "4"
-          ],
+        answers: [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
 
         correct:
           "1",
@@ -279,13 +300,12 @@ const elementalSpecies = [
         question:
           "Lithium has 2 inner electrons and 1 outer electron. How many total electrons?",
 
-        answers:
-          [
-            "2",
-            "3",
-            "4",
-            "5"
-          ],
+        answers: [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
 
         correct:
           "3",
@@ -299,13 +319,12 @@ const elementalSpecies = [
         question:
           "A neutral atom with 3 electrons must have how many protons?",
 
-        answers:
-          [
-            "1",
-            "2",
-            "3",
-            "4"
-          ],
+        answers: [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
 
         correct:
           "3",
@@ -713,11 +732,6 @@ const elementalSpecies = [
 
 /* ==========================================================
    BUILDING ELEMENTS
-
-   Some molecular animals use atoms that do not yet
-   have finished Molecular Farm animal artwork.
-
-   They can still be used chemically.
 ========================================================== */
 
 const buildingElements = {
@@ -775,7 +789,9 @@ const buildingElements = {
 const molecularSpecies = [
 
 
-  /* FARM */
+  /* ========================================================
+     FARM
+  ======================================================== */
 
   {
     id:
@@ -1037,7 +1053,9 @@ const molecularSpecies = [
 
 
 
-  /* WILD */
+  /* ========================================================
+     WILD
+  ======================================================== */
 
   {
     id:
@@ -1077,7 +1095,9 @@ const molecularSpecies = [
 
 
 
-  /* SEA */
+  /* ========================================================
+     SEA
+  ======================================================== */
 
   {
     id:
@@ -1229,15 +1249,6 @@ const molecularSpecies = [
 
 /* ==========================================================
    EVOLUTION LINES
-
-   IMPORTANT:
-
-   PHOSPHATE IS ONE PORCUPINE.
-
-   It does NOT evolve into the Pig.
-
-   The chemistry of the same Porcupine changes
-   as hydrogens are removed.
 ========================================================== */
 
 const evolutionLines = [
@@ -1444,6 +1455,7 @@ function getElementByAtomicNumber(
 }
 
 
+
 function getElementBySymbol(
   symbol
 ) {
@@ -1462,6 +1474,7 @@ function getElementBySymbol(
   );
 
 }
+
 
 
 function getMoleculeById(
@@ -1486,52 +1499,45 @@ function getMoleculeById(
 
 
 /* ==========================================================
-   PLAYER DATA
+   PROFILE AVAILABLE
 ========================================================== */
 
-const oldPlayer =
-  JSON.parse(
-    localStorage.getItem(
-      "patPlayer"
-    )
+function farmProfileAvailable() {
+
+  return Boolean(
+
+    window.PATProfile
+
+    &&
+    typeof PATProfile.getProgress ===
+    "function"
+
+    &&
+    typeof PATProfile.mergeProgress ===
+    "function"
+
   );
-
-
-const savedPlayer =
-  JSON.parse(
-    localStorage.getItem(
-      "molecularFarmPlayerV2"
-    )
-  );
-
-
-let player;
-
-
-if (
-  savedPlayer
-) {
-
-  player =
-    savedPlayer;
 
 }
 
-else {
 
-  player = {
 
-    xp:
-      oldPlayer?.xp || 0,
+/* ==========================================================
+   DEFAULT FARM PLAYER
 
-    unlockedElements:
-      Array.isArray(
-        oldPlayer?.unlocked
-      )
-      ?
-        oldPlayer.unlocked.slice()
-      :
-        [1, 2],
+   XP IS NO LONGER STORED HERE.
+
+   XP belongs to PATProfile globally.
+========================================================== */
+
+function createDefaultFarmPlayer() {
+
+  return {
+
+    unlockedElements: [
+      1,
+      2
+    ],
 
     unlockedMolecules:
       [],
@@ -1544,40 +1550,487 @@ else {
 }
 
 
-if (
-  !Array.isArray(
-    player.unlockedElements
-  )
+
+/* ==========================================================
+   LEGACY FARM SAVE
+========================================================== */
+
+function getLegacyFarmPlayer() {
+
+  let savedPlayer =
+    null;
+
+
+  let oldPlayer =
+    null;
+
+
+  try {
+
+    savedPlayer =
+      JSON.parse(
+        localStorage.getItem(
+          "molecularFarmPlayerV2"
+        )
+        ||
+        "null"
+      );
+
+  }
+
+  catch (
+    error
+  ) {
+
+    savedPlayer =
+      null;
+
+  }
+
+
+  try {
+
+    oldPlayer =
+      JSON.parse(
+        localStorage.getItem(
+          "patPlayer"
+        )
+        ||
+        "null"
+      );
+
+  }
+
+  catch (
+    error
+  ) {
+
+    oldPlayer =
+      null;
+
+  }
+
+
+  const migrated =
+    createDefaultFarmPlayer();
+
+
+
+  if (
+    savedPlayer
+    &&
+    Array.isArray(
+      savedPlayer.unlockedElements
+    )
+  ) {
+
+    migrated.unlockedElements =
+      savedPlayer.unlockedElements.slice();
+
+  }
+
+
+  else if (
+    oldPlayer
+    &&
+    Array.isArray(
+      oldPlayer.unlocked
+    )
+  ) {
+
+    migrated.unlockedElements =
+      oldPlayer.unlocked.slice();
+
+  }
+
+
+
+  if (
+    savedPlayer
+    &&
+    Array.isArray(
+      savedPlayer.unlockedMolecules
+    )
+  ) {
+
+    migrated.unlockedMolecules =
+      savedPlayer.unlockedMolecules.slice();
+
+  }
+
+
+
+  if (
+    savedPlayer
+    &&
+    Array.isArray(
+      savedPlayer.discoveredEvolutions
+    )
+  ) {
+
+    migrated.discoveredEvolutions =
+      savedPlayer.discoveredEvolutions.slice();
+
+  }
+
+
+  return migrated;
+
+}
+
+
+
+/* ==========================================================
+   NORMALIZE FARM PLAYER
+========================================================== */
+
+function normalizeFarmPlayer(
+  source
 ) {
+
+  const player =
+    createDefaultFarmPlayer();
+
+
+  if (
+    source
+    &&
+    typeof source ===
+    "object"
+  ) {
+
+
+    if (
+      Array.isArray(
+        source.unlockedElements
+      )
+    ) {
+
+      player.unlockedElements =
+        source.unlockedElements
+          .map(
+            Number
+          )
+          .filter(
+            function (
+              number
+            ) {
+
+              return Number.isFinite(
+                number
+              );
+
+            }
+          );
+
+    }
+
+
+    if (
+      Array.isArray(
+        source.unlockedMolecules
+      )
+    ) {
+
+      player.unlockedMolecules =
+        source.unlockedMolecules
+          .map(
+            String
+          );
+
+    }
+
+
+    if (
+      Array.isArray(
+        source.discoveredEvolutions
+      )
+    ) {
+
+      player.discoveredEvolutions =
+        source.discoveredEvolutions
+          .map(
+            String
+          );
+
+    }
+
+  }
+
+
+
+  /* ALWAYS DISCOVERED BY DEFAULT */
+
+  [
+    1,
+    2
+  ]
+  .forEach(
+    function (
+      atomicNumber
+    ) {
+
+      if (
+        !player.unlockedElements
+          .includes(
+            atomicNumber
+          )
+      ) {
+
+        player.unlockedElements
+          .push(
+            atomicNumber
+          );
+
+      }
+
+    }
+  );
+
+
 
   player.unlockedElements =
-    [1, 2];
+    [
+      ...new Set(
+        player.unlockedElements
+      )
+    ];
 
-}
-
-
-if (
-  !Array.isArray(
-    player.unlockedMolecules
-  )
-) {
 
   player.unlockedMolecules =
-    [];
+    [
+      ...new Set(
+        player.unlockedMolecules
+      )
+    ];
 
-}
-
-
-if (
-  !Array.isArray(
-    player.discoveredEvolutions
-  )
-) {
 
   player.discoveredEvolutions =
-    [];
+    [
+      ...new Set(
+        player.discoveredEvolutions
+      )
+    ];
+
+
+  return player;
 
 }
+
+
+
+/* ==========================================================
+   DOES PROFILE ALREADY CONTAIN FARM PROGRESS?
+========================================================== */
+
+function farmProfileHasProgress(
+  progress
+) {
+
+  if (
+    !progress
+    ||
+    typeof progress !==
+    "object"
+  ) {
+
+    return false;
+
+  }
+
+
+  return Boolean(
+
+    (
+      Array.isArray(
+        progress.unlockedElements
+      )
+      &&
+      progress.unlockedElements.length >
+      0
+    )
+
+    ||
+
+    (
+      Array.isArray(
+        progress.unlockedMolecules
+      )
+      &&
+      progress.unlockedMolecules.length >
+      0
+    )
+
+    ||
+
+    (
+      Array.isArray(
+        progress.discoveredEvolutions
+      )
+      &&
+      progress.discoveredEvolutions.length >
+      0
+    )
+
+  );
+
+}
+
+
+
+/* ==========================================================
+   BUILD DISCOVERED SPECIES LIST
+
+   Used by the shared profile display.
+========================================================== */
+
+function getFarmDiscoveredSpeciesIds(
+  farmPlayer
+) {
+
+  const ids =
+    [];
+
+
+  farmPlayer.unlockedElements
+    .forEach(
+      function (
+        atomicNumber
+      ) {
+
+        const element =
+          getElementByAtomicNumber(
+            atomicNumber
+          );
+
+
+        if (
+          element
+        ) {
+
+          ids.push(
+            element.id
+          );
+
+        }
+
+      }
+    );
+
+
+  farmPlayer.unlockedMolecules
+    .forEach(
+      function (
+        moleculeId
+      ) {
+
+        ids.push(
+          moleculeId
+        );
+
+      }
+    );
+
+
+  return [
+    ...new Set(
+      ids
+    )
+  ];
+
+}
+
+
+
+/* ==========================================================
+   LOAD FARM PLAYER
+
+   PROFILE SAVE WINS.
+
+   If no profile Farm progress exists yet,
+   migrate the old device Farm save once.
+========================================================== */
+
+function loadFarmPlayer() {
+
+  if (
+    farmProfileAvailable()
+  ) {
+
+    const profileProgress =
+      PATProfile.getProgress(
+        MOLECULAR_FARM_GAME_ID
+      )
+      ||
+      {};
+
+
+    if (
+      farmProfileHasProgress(
+        profileProgress
+      )
+    ) {
+
+      return normalizeFarmPlayer(
+        profileProgress
+      );
+
+    }
+
+
+    const legacy =
+      normalizeFarmPlayer(
+        getLegacyFarmPlayer()
+      );
+
+
+    PATProfile.mergeProgress(
+
+      MOLECULAR_FARM_GAME_ID,
+
+      {
+
+        unlockedElements:
+          legacy.unlockedElements,
+
+        unlockedMolecules:
+          legacy.unlockedMolecules,
+
+        discoveredEvolutions:
+          legacy.discoveredEvolutions,
+
+        discoveredSpecies:
+          getFarmDiscoveredSpeciesIds(
+            legacy
+          ),
+
+        migratedFromLegacy:
+          true
+
+      }
+
+    );
+
+
+    return legacy;
+
+  }
+
+
+  return normalizeFarmPlayer(
+    getLegacyFarmPlayer()
+  );
+
+}
+
+
+
+/* ==========================================================
+   PLAYER
+========================================================== */
+
+let player =
+  loadFarmPlayer();
 
 
 
@@ -1593,12 +2046,283 @@ let currentQuestion =
   0;
 
 
-/*
-   Discovered but NOT YET captured.
-*/
-
 let pendingCapture =
   null;
+
+
+let applyingProfileRefresh =
+  false;
+
+
+
+/* ==========================================================
+   SAVE FARM PROGRESS
+
+   PATProfile is now the permanent save.
+
+   profile.js handles:
+   localStorage immediately
+   +
+   Supabase cloud synchronization when signed in.
+========================================================== */
+
+function savePlayer() {
+
+  player =
+    normalizeFarmPlayer(
+      player
+    );
+
+
+  if (
+    farmProfileAvailable()
+  ) {
+
+    PATProfile.mergeProgress(
+
+      MOLECULAR_FARM_GAME_ID,
+
+      {
+
+        unlockedElements:
+          player.unlockedElements.slice(),
+
+        unlockedMolecules:
+          player.unlockedMolecules.slice(),
+
+        discoveredEvolutions:
+          player.discoveredEvolutions.slice(),
+
+        discoveredSpecies:
+          getFarmDiscoveredSpeciesIds(
+            player
+          ),
+
+        elementalSpeciesDiscovered:
+          player.unlockedElements.length,
+
+        molecularSpeciesDiscovered:
+          player.unlockedMolecules.length,
+
+        evolutionLinesDiscovered:
+          player.discoveredEvolutions.length
+
+      }
+
+    );
+
+
+    return;
+
+  }
+
+
+
+  /*
+    FALLBACK ONLY.
+
+    Allows gameplay if profile.js fails to load.
+  */
+
+  localStorage.setItem(
+
+    "molecularFarmPlayerV2",
+
+    JSON.stringify(
+      player
+    )
+
+  );
+
+}
+
+
+
+/* ==========================================================
+   ACCOUNT XP
+
+   XP is awarded through UNIQUE PATProfile completions.
+
+   Therefore:
+   - reloading the page cannot farm XP
+   - repeating the same capture cannot farm XP
+   - the XP belongs to the account
+   - the XP can synchronize across devices
+========================================================== */
+
+function awardFarmXP(
+  activityId,
+  amount,
+  mastery
+) {
+
+  if (
+    !window.PATProfile
+    ||
+    typeof PATProfile.complete !==
+    "function"
+  ) {
+
+    return null;
+
+  }
+
+
+  const result =
+    PATProfile.complete(
+
+      MOLECULAR_FARM_GAME_ID,
+
+      activityId,
+
+      {
+
+        xp:
+          amount,
+
+        mastery:
+          mastery
+          ||
+          {}
+
+      }
+
+    );
+
+
+  updateXP();
+
+
+  return result;
+
+}
+
+
+
+/* ==========================================================
+   XP DISPLAY
+========================================================== */
+
+function updateXP() {
+
+  const xpText =
+    document.getElementById(
+      "xpText"
+    );
+
+
+  const xpFill =
+    document.getElementById(
+      "xpFill"
+    );
+
+
+  if (
+    window.PATProfile
+    &&
+    typeof PATProfile.stats ===
+    "function"
+  ) {
+
+    const stats =
+      PATProfile.stats();
+
+
+    if (
+      xpText
+    ) {
+
+      xpText.textContent =
+        (
+          stats.xp
+          ||
+          0
+        )
+        +
+        " XP • Level "
+        +
+        (
+          stats.level
+          ||
+          1
+        );
+
+    }
+
+
+    if (
+      xpFill
+    ) {
+
+      xpFill.style.width =
+        Math.min(
+          100,
+          Math.max(
+            0,
+            stats.levelPercent
+            ||
+            0
+          )
+        )
+        +
+        "%";
+
+    }
+
+
+    return;
+
+  }
+
+
+
+  if (
+    xpText
+  ) {
+
+    xpText.textContent =
+      "0 XP";
+
+  }
+
+
+  if (
+    xpFill
+  ) {
+
+    xpFill.style.width =
+      "0%";
+
+  }
+
+}
+
+
+
+/* ==========================================================
+   MARK FARM ACTIVE
+
+   Powers the shared Daily Lab streak.
+
+   Merely entering does NOT award XP.
+========================================================== */
+
+function markFarmPlayed() {
+
+  if (
+    window.PATProfile
+    &&
+    typeof PATProfile.markPlayed ===
+    "function"
+  ) {
+
+    PATProfile.markPlayed(
+      MOLECULAR_FARM_GAME_ID
+    );
+
+  }
+
+}
 
 
 
@@ -1644,6 +2368,10 @@ function showScreen(
   }
 
 
+  markFarmPlayed();
+
+
+
   if (
     id ===
     "periodScreen"
@@ -1652,8 +2380,10 @@ function showScreen(
     trackFarmEvent(
       "chemical_period_opened",
       {
+
         discovered_elements:
           player.unlockedElements.length
+
       }
     );
 
@@ -1664,100 +2394,6 @@ function showScreen(
     0,
     0
   );
-
-}
-
-
-
-/* ==========================================================
-   SAVE
-========================================================== */
-
-function savePlayer() {
-
-  localStorage.setItem(
-    "molecularFarmPlayerV2",
-    JSON.stringify(
-      player
-    )
-  );
-
-
-  localStorage.setItem(
-    "patPlayer",
-    JSON.stringify(
-      {
-        xp:
-          player.xp,
-
-        unlocked:
-          player.unlockedElements
-      }
-    )
-  );
-
-}
-
-
-
-/* ==========================================================
-   XP
-========================================================== */
-
-function addXP(
-  amount
-) {
-
-  player.xp +=
-    amount;
-
-
-  savePlayer();
-
-
-  updateXP();
-
-}
-
-
-function updateXP() {
-
-  const xpText =
-    document.getElementById(
-      "xpText"
-    );
-
-
-  const xpFill =
-    document.getElementById(
-      "xpFill"
-    );
-
-
-  if (
-    xpText
-  ) {
-
-    xpText.textContent =
-      player.xp +
-      " XP";
-
-  }
-
-
-  if (
-    xpFill
-  ) {
-
-    xpFill.style.width =
-      (
-        player.xp %
-        100
-      )
-      +
-      "%";
-
-  }
 
 }
 
@@ -1812,10 +2448,10 @@ function buildPeriod() {
         +
         (
           discovered
-            ?
-              "unlocked"
-            :
-              "locked"
+          ?
+            "unlocked"
+          :
+            "locked"
         );
 
 
@@ -1845,20 +2481,20 @@ function buildPeriod() {
 
           ${
             discovered
-              ?
-                item.icon
-              :
-                "?"
+            ?
+              item.icon
+            :
+              "?"
           }
 
           <br>
 
           ${
             discovered
-              ?
-                item.name
-              :
-                item.element
+            ?
+              item.name
+            :
+              item.element
           }
 
         </div>
@@ -1890,7 +2526,7 @@ function buildPeriod() {
 
 
 /* ==========================================================
-   SPECIES DETAIL SCREEN
+   SPECIES DETAIL
 ========================================================== */
 
 function openSpecies(
@@ -1922,7 +2558,8 @@ function openSpecies(
       ?
         item.name
       :
-        item.element +
+        item.element
+        +
         " Species";
 
 
@@ -1954,6 +2591,7 @@ function openSpecies(
   trackFarmEvent(
     "species_viewed",
     {
+
       species_type:
         "elemental",
 
@@ -1962,6 +2600,7 @@ function openSpecies(
 
       discovered:
         discovered
+
     }
   );
 
@@ -2052,7 +2691,7 @@ function openSpecies(
 
 
 /* ==========================================================
-   EXISTING RECONSTRUCTION QUIZ
+   RECONSTRUCTION QUIZ
 ========================================================== */
 
 function loadQuestion() {
@@ -2134,6 +2773,11 @@ function loadQuestion() {
 }
 
 
+
+/* ==========================================================
+   CHECK QUIZ ANSWER
+========================================================== */
+
 function checkAnswer(
   answer
 ) {
@@ -2161,8 +2805,36 @@ function checkAnswer(
       q.explanation;
 
 
-    addXP(
-      5
+
+    /*
+      UNIQUE QUESTION XP.
+
+      A player can replay the quiz,
+      but each question awards XP once.
+    */
+
+    awardFarmXP(
+
+      "reconstruction-"
+      +
+      currentSpecies.id
+      +
+      "-q"
+      +
+      (
+        currentQuestion +
+        1
+      ),
+
+      5,
+
+      {
+
+        reconstructionsSolved:
+          1
+
+      }
+
     );
 
 
@@ -2198,9 +2870,21 @@ function checkAnswer(
             .innerHTML =
               "";
 
+
+          trackFarmEvent(
+            "reconstruction_completed",
+            {
+
+              species_name:
+                currentSpecies.name
+
+            }
+          );
+
         }
 
       },
+
       900
     );
 
@@ -2218,18 +2902,11 @@ function checkAnswer(
 
 
 /* ==========================================================
-   DISCOVERY BUILDERS
-
-   Each habitat automatically receives:
-
-   BUILD AN ATOM
-   BUILD A MOLECULE
-
-   We inject the controls so your current HTML
-   does NOT need another replacement yet.
+   HABITAT BUILDER STATE
 ========================================================== */
 
 const habitatBuilderState = {
+
 
   farm: {
 
@@ -2296,9 +2973,6 @@ const habitatBuilderState = {
 
 /* ==========================================================
    GET HABITAT ELEMENTS
-
-   Uses every element required by known molecules
-   in that habitat.
 ========================================================== */
 
 function getHabitatElements(
@@ -2347,11 +3021,6 @@ function getHabitatElements(
     );
 
 
-  /*
-    Also allow students to experiment
-    with familiar atoms.
-  */
-
   [
     "H",
     "C",
@@ -2361,17 +3030,17 @@ function getHabitatElements(
     "S",
     "Cl"
   ]
-    .forEach(
-      function (
+  .forEach(
+    function (
+      symbol
+    ) {
+
+      symbols.add(
         symbol
-      ) {
+      );
 
-        symbols.add(
-          symbol
-        );
-
-      }
-    );
+    }
+  );
 
 
   return Array.from(
@@ -2392,7 +3061,8 @@ function injectBuilderControls(
 
   const bank =
     document.getElementById(
-      habitat +
+      habitat
+      +
       "ElementBank"
     );
 
@@ -2534,36 +3204,43 @@ function renderHabitatBuilder(
 
   const bank =
     document.getElementById(
-      habitat +
+      habitat
+      +
       "ElementBank"
     );
 
 
   const tray =
     document.getElementById(
-      habitat +
+      habitat
+      +
       "BuildTray"
     );
 
 
   const formula =
     document.getElementById(
-      habitat +
+      habitat
+      +
       "Formula"
     );
 
 
   const buildButton =
     document.getElementById(
-      habitat +
+      habitat
+      +
       "BuildButton"
     );
 
 
   if (
-    !bank ||
-    !tray ||
-    !formula ||
+    !bank
+    ||
+    !tray
+    ||
+    !formula
+    ||
     !buildButton
   ) {
 
@@ -2615,63 +3292,63 @@ function renderHabitatBuilder(
   getHabitatElements(
     habitat
   )
-    .forEach(
-      function (
-        symbol
-      ) {
+  .forEach(
+    function (
+      symbol
+    ) {
 
-        const button =
-          document.createElement(
-            "button"
+      const button =
+        document.createElement(
+          "button"
+        );
+
+
+      button.type =
+        "button";
+
+
+      button.className =
+        "builder-element";
+
+
+      button.innerHTML = `
+
+        <strong>
+          ${symbol}
+        </strong>
+
+        <small>
+          ${
+            buildingElements[
+              symbol
+            ]
+            ||
+            symbol
+          }
+        </small>
+
+      `;
+
+
+      button.addEventListener(
+        "click",
+        function () {
+
+          addMoleculeAtom(
+            habitat,
+            symbol
           );
 
-
-        button.type =
-          "button";
-
-
-        button.className =
-          "builder-element";
+        }
+      );
 
 
-        button.innerHTML = `
+      bank.appendChild(
+        button
+      );
 
-          <strong>
-            ${symbol}
-          </strong>
-
-          <small>
-            ${
-              buildingElements[
-                symbol
-              ]
-              ||
-              symbol
-            }
-          </small>
-
-        `;
-
-
-        button.addEventListener(
-          "click",
-          function () {
-
-            addMoleculeAtom(
-              habitat,
-              symbol
-            );
-
-          }
-        );
-
-
-        bank.appendChild(
-          button
-        );
-
-      }
-    );
+    }
+  );
 
 
   renderMoleculeTray(
@@ -2698,21 +3375,24 @@ function renderAtomBuilder(
 
   const bank =
     document.getElementById(
-      habitat +
+      habitat
+      +
       "ElementBank"
     );
 
 
   const tray =
     document.getElementById(
-      habitat +
+      habitat
+      +
       "BuildTray"
     );
 
 
   const formula =
     document.getElementById(
-      habitat +
+      habitat
+      +
       "Formula"
     );
 
@@ -2888,7 +3568,8 @@ function renderAtomBuilder(
                 0,
                 state[
                   particle
-                ] +
+                ]
+                +
                 change
               );
 
@@ -2917,13 +3598,16 @@ function renderAtomBuilder(
   else {
 
     formula.textContent =
-      state.proton +
+      state.proton
+      +
       "p⁺  •  "
       +
-      state.neutron +
+      state.neutron
+      +
       "n⁰  •  "
       +
-      state.electron +
+      state.electron
+      +
       "e⁻";
 
   }
@@ -2948,7 +3632,8 @@ function attemptAtomBuild(
 
   const feedback =
     document.getElementById(
-      habitat +
+      habitat
+      +
       "BuildFeedback"
     );
 
@@ -2988,11 +3673,15 @@ function attemptAtomBuild(
       ) {
 
         return (
+
           item.atomicNumber ===
           state.proton
+
           &&
+
           item.commonNeutrons ===
           state.neutron
+
         );
 
       }
@@ -3002,6 +3691,7 @@ function attemptAtomBuild(
   trackFarmEvent(
     "atom_build_attempted",
     {
+
       habitat:
         habitat,
 
@@ -3018,6 +3708,7 @@ function attemptAtomBuild(
         Boolean(
           element
         )
+
     }
   );
 
@@ -3095,7 +3786,7 @@ function attemptAtomBuild(
 
 
 /* ==========================================================
-   MOLECULE BUILDER
+   ADD MOLECULE ATOM
 ========================================================== */
 
 function addMoleculeAtom(
@@ -3217,6 +3908,7 @@ const subscriptCharacters = {
 };
 
 
+
 function getIngredientFormula(
   ingredients
 ) {
@@ -3237,8 +3929,11 @@ function getIngredientFormula(
 
 
         return (
+
           symbol
+
           +
+
           (
             count >
             1
@@ -3253,6 +3948,7 @@ function getIngredientFormula(
             :
               ""
           )
+
         );
 
       }
@@ -3281,20 +3977,23 @@ function renderMoleculeTray(
 
   const tray =
     document.getElementById(
-      habitat +
+      habitat
+      +
       "BuildTray"
     );
 
 
   const formula =
     document.getElementById(
-      habitat +
+      habitat
+      +
       "Formula"
     );
 
 
   if (
-    !tray ||
+    !tray
+    ||
     !formula
   ) {
 
@@ -3342,11 +4041,12 @@ function renderMoleculeTray(
     ) {
 
       for (
-        let index = 0;
+        let index =
+          0;
         index <
-        state.atoms[
-          symbol
-        ];
+          state.atoms[
+            symbol
+          ];
         index++
       ) {
 
@@ -3473,14 +4173,17 @@ function findMolecularSpecies(
     ) {
 
       return (
+
         molecule.habitat ===
         habitat
+
         &&
+
         normalizeIngredientObject(
           molecule.ingredients
-        )
-        ===
+        ) ===
         target
+
       );
 
     }
@@ -3492,10 +4195,6 @@ function findMolecularSpecies(
 
 /* ==========================================================
    IDENTIFY MOLECULE
-
-   DOES NOT CAPTURE IT.
-
-   This is intentional.
 ========================================================== */
 
 function attemptMoleculeBuild(
@@ -3510,7 +4209,8 @@ function attemptMoleculeBuild(
 
   const feedback =
     document.getElementById(
-      habitat +
+      habitat
+      +
       "BuildFeedback"
     );
 
@@ -3541,6 +4241,7 @@ function attemptMoleculeBuild(
   trackFarmEvent(
     "molecule_build_attempted",
     {
+
       habitat:
         habitat,
 
@@ -3548,6 +4249,7 @@ function attemptMoleculeBuild(
         Boolean(
           molecule
         )
+
     }
   );
 
@@ -3612,7 +4314,8 @@ function showElementDiscovery(
 
   const card =
     document.getElementById(
-      habitat +
+      habitat
+      +
       "DiscoveryCard"
     );
 
@@ -3665,6 +4368,7 @@ function showElementDiscovery(
       type="button"
       class="primary-button capture-species-button"
     >
+
       ${
         alreadyCaptured
         ?
@@ -3672,6 +4376,7 @@ function showElementDiscovery(
         :
           "📸 Capture Species"
       }
+
     </button>
 
   `;
@@ -3721,7 +4426,8 @@ function showMoleculeDiscovery(
 
   const card =
     document.getElementById(
-      habitat +
+      habitat
+      +
       "DiscoveryCard"
     );
 
@@ -3769,6 +4475,7 @@ function showMoleculeDiscovery(
       type="button"
       class="primary-button capture-species-button"
     >
+
       ${
         alreadyCaptured
         ?
@@ -3776,6 +4483,7 @@ function showMoleculeDiscovery(
         :
           "📸 Capture Species"
       }
+
     </button>
 
   `;
@@ -3815,7 +4523,7 @@ function showMoleculeDiscovery(
 
 
 /* ==========================================================
-   HIDE DISCOVERY CARD
+   HIDE DISCOVERY
 ========================================================== */
 
 function hideDiscoveryCard(
@@ -3824,7 +4532,8 @@ function hideDiscoveryCard(
 
   const card =
     document.getElementById(
-      habitat +
+      habitat
+      +
       "DiscoveryCard"
     );
 
@@ -3848,7 +4557,7 @@ function hideDiscoveryCard(
 
 
 /* ==========================================================
-   CAPTURE SPECIES
+   CAPTURE PENDING SPECIES
 ========================================================== */
 
 function capturePendingSpecies() {
@@ -3868,8 +4577,11 @@ function capturePendingSpecies() {
   ) {
 
     captureElement(
+
       pendingCapture.data,
+
       pendingCapture.habitat
+
     );
 
   }
@@ -3881,8 +4593,11 @@ function capturePendingSpecies() {
   ) {
 
     captureMolecule(
+
       pendingCapture.data,
+
       pendingCapture.habitat
+
     );
 
   }
@@ -3893,6 +4608,13 @@ function capturePendingSpecies() {
 
 /* ==========================================================
    CAPTURE ELEMENT
+
+   SAVES:
+   - Farm progress
+   - account XP
+   - mastery
+   - completion history
+   - cloud profile
 ========================================================== */
 
 function captureElement(
@@ -3920,12 +4642,29 @@ function captureElement(
     );
 
 
-  addXP(
-    25
-  );
-
-
   savePlayer();
+
+
+  const result =
+    awardFarmXP(
+
+      "element-"
+      +
+      element.id,
+
+      25,
+
+      {
+
+        speciesDiscovered:
+          1,
+
+        atomsBuilt:
+          1
+
+      }
+
+    );
 
 
   buildPeriod();
@@ -3934,6 +4673,7 @@ function captureElement(
   trackFarmEvent(
     "species_captured",
     {
+
       species_type:
         "elemental",
 
@@ -3947,43 +4687,58 @@ function captureElement(
         element.atomicNumber,
 
       habitat:
-        habitat
+        habitat,
+
+      xp_earned:
+        result
+        ?
+          result.xpEarned
+        :
+          0
+
     }
   );
 
 
   const card =
     document.getElementById(
-      habitat +
+      habitat
+      +
       "DiscoveryCard"
     );
 
 
-  card.innerHTML += `
-
-    <div class="capture-success">
-      ✓ CAPTURED IN PERIOD-EX
-    </div>
-
-  `;
-
-
-  const button =
-    card.querySelector(
-      ".capture-species-button"
-    );
-
-
   if (
-    button
+    card
   ) {
 
-    button.textContent =
-      "✓ Captured";
+    card.innerHTML += `
+
+      <div class="capture-success">
+        ✓ CAPTURED IN PERIOD-EX
+      </div>
+
+    `;
 
 
-    button.disabled =
-      true;
+    const button =
+      card.querySelector(
+        ".capture-species-button"
+      );
+
+
+    if (
+      button
+    ) {
+
+      button.textContent =
+        "✓ Captured";
+
+
+      button.disabled =
+        true;
+
+    }
 
   }
 
@@ -4024,17 +4779,38 @@ function captureMolecule(
     );
 
 
-  addXP(
-    30
-  );
-
-
   savePlayer();
+
+
+  const result =
+    awardFarmXP(
+
+      "molecule-"
+      +
+      molecule.id,
+
+      30,
+
+      {
+
+        speciesDiscovered:
+          1,
+
+        moleculesBuilt:
+          1,
+
+        compoundsBuilt:
+          1
+
+      }
+
+    );
 
 
   trackFarmEvent(
     "species_captured",
     {
+
       species_type:
         "molecular",
 
@@ -4045,7 +4821,15 @@ function captureMolecule(
         molecule.formula,
 
       habitat:
-        habitat
+        habitat,
+
+      xp_earned:
+        result
+        ?
+          result.xpEarned
+        :
+          0
+
     }
   );
 
@@ -4055,36 +4839,43 @@ function captureMolecule(
 
   const card =
     document.getElementById(
-      habitat +
+      habitat
+      +
       "DiscoveryCard"
     );
 
 
-  card.innerHTML += `
-
-    <div class="capture-success">
-      ✓ CAPTURED IN PERIOD-EX
-    </div>
-
-  `;
-
-
-  const button =
-    card.querySelector(
-      ".capture-species-button"
-    );
-
-
   if (
-    button
+    card
   ) {
 
-    button.textContent =
-      "✓ Captured";
+    card.innerHTML += `
+
+      <div class="capture-success">
+        ✓ CAPTURED IN PERIOD-EX
+      </div>
+
+    `;
 
 
-    button.disabled =
-      true;
+    const button =
+      card.querySelector(
+        ".capture-species-button"
+      );
+
+
+    if (
+      button
+    ) {
+
+      button.textContent =
+        "✓ Captured";
+
+
+      button.disabled =
+        true;
+
+    }
 
   }
 
@@ -4132,7 +4923,8 @@ function clearHabitatBuild(
 
   const feedback =
     document.getElementById(
-      habitat +
+      habitat
+      +
       "BuildFeedback"
     );
 
@@ -4156,7 +4948,7 @@ function clearHabitatBuild(
 
 
 /* ==========================================================
-   BUILD / CLEAR BUTTON EVENTS
+   WIRE HABITAT BUTTONS
 ========================================================== */
 
 function wireHabitatButtons(
@@ -4165,14 +4957,16 @@ function wireHabitatButtons(
 
   const buildButton =
     document.getElementById(
-      habitat +
+      habitat
+      +
       "BuildButton"
     );
 
 
   const clearButton =
     document.getElementById(
-      habitat +
+      habitat
+      +
       "ClearButton"
     );
 
@@ -4184,6 +4978,9 @@ function wireHabitatButtons(
     buildButton.addEventListener(
       "click",
       function () {
+
+        markFarmPlayed();
+
 
         if (
           habitatBuilderState[
@@ -4245,12 +5042,6 @@ function wireHabitatButtons(
 function updateEvolutionUnlocks() {
 
 
-  /*
-    PORCUPINE LINE
-
-    Capture H3PO4 to unlock the family.
-  */
-
   if (
     player
       .unlockedMolecules
@@ -4266,10 +5057,6 @@ function updateEvolutionUnlocks() {
 
   }
 
-
-  /*
-    WATER LINE
-  */
 
   if (
     player
@@ -4287,19 +5074,15 @@ function updateEvolutionUnlocks() {
   }
 
 
-  /*
-    CHROMATE LINE
-
-    Require both Crow and Scarecrow.
-  */
-
   if (
     player
       .unlockedMolecules
       .includes(
         "chromate-crow"
       )
+
     &&
+
     player
       .unlockedMolecules
       .includes(
@@ -4324,7 +5107,8 @@ function updateEvolutionUnlocks() {
 
 function catalogueEvolution(
   evolutionId,
-  rewardPlayer = true
+  rewardPlayer =
+    true
 ) {
 
   if (
@@ -4371,19 +5155,88 @@ function catalogueEvolution(
     );
 
 
+  savePlayer();
+
+
+
+  /*
+    Most evolution lines currently unlock
+    automatically from captures.
+
+    Because the captures already awarded XP,
+    automatic discovery does not double-reward.
+
+    If a future Evolution activity explicitly
+    makes the student solve the line, call this
+    with rewardPlayer = true.
+  */
+
   if (
     rewardPlayer
   ) {
 
-    addXP(
-      40
+    awardFarmXP(
+
+      "evolution-"
+      +
+      evolutionId,
+
+      40,
+
+      {
+
+        transformationsMapped:
+          1
+
+      }
+
     );
 
   }
 
-  else {
+  else if (
+    window.PATProfile
+    &&
+    typeof PATProfile.incrementMastery ===
+    "function"
+  ) {
 
-    savePlayer();
+    /*
+      Mastery records the discovered relationship
+      even when no separate XP is awarded.
+    */
+
+    const masteryKey =
+      "evolutionCatalogued_"
+      +
+      evolutionId;
+
+
+    const existing =
+      PATProfile.getMastery(
+        MOLECULAR_FARM_GAME_ID,
+        masteryKey
+      );
+
+
+    if (
+      !existing
+    ) {
+
+      PATProfile.setMastery(
+        MOLECULAR_FARM_GAME_ID,
+        masteryKey,
+        1
+      );
+
+
+      PATProfile.incrementMastery(
+        MOLECULAR_FARM_GAME_ID,
+        "transformationsMapped",
+        1
+      );
+
+    }
 
   }
 
@@ -4391,8 +5244,10 @@ function catalogueEvolution(
   trackFarmEvent(
     "evolution_discovered",
     {
+
       evolution_name:
         evolution.name
+
     }
   );
 
@@ -4473,7 +5328,10 @@ function showPeriodex() {
     );
 
 
-  /* ELEMENTS */
+
+  /* ========================================================
+     ELEMENTAL SPECIES
+  ======================================================== */
 
   catalogue.innerHTML += `
 
@@ -4518,11 +5376,15 @@ function showPeriodex() {
           <br>
 
           <small>
+
             Atomic Number:
             ${item.atomicNumber}
+
             •
+
             Valence Electrons:
             ${item.valenceElectrons}
+
           </small>
 
         </div>
@@ -4534,7 +5396,9 @@ function showPeriodex() {
 
 
 
-  /* MOLECULES */
+  /* ========================================================
+     MOLECULAR SPECIES
+  ======================================================== */
 
   catalogue.innerHTML += `
 
@@ -4570,9 +5434,11 @@ function showPeriodex() {
         </strong>
 
         <p>
+
           Build and capture molecular animals
           on the Farm, in the Wild
           or Under the Sea.
+
         </p>
 
       </div>
@@ -4615,7 +5481,9 @@ function showPeriodex() {
 
 
 
-  /* EVOLUTIONS */
+  /* ========================================================
+     EVOLUTION LINES
+  ======================================================== */
 
   catalogue.innerHTML += `
 
@@ -4713,6 +5581,7 @@ function showPeriodex() {
   trackFarmEvent(
     "periodex_opened",
     {
+
       elements:
         discoveredElements.length,
 
@@ -4721,6 +5590,7 @@ function showPeriodex() {
 
       evolutions:
         discoveredEvolutions.length
+
     }
   );
 
@@ -4734,7 +5604,7 @@ function showPeriodex() {
 
 
 /* ==========================================================
-   INITIALIZE DISCOVERY HABITATS
+   INITIALIZE HABITAT
 ========================================================== */
 
 function initializeHabitat(
@@ -4760,7 +5630,133 @@ function initializeHabitat(
 
 
 /* ==========================================================
-   DEVELOPMENT HELPERS
+   REFRESH FARM FROM PROFILE
+
+   Important when Supabase downloads account data
+   after the page has already loaded.
+========================================================== */
+
+function refreshFarmFromProfile() {
+
+  if (
+    applyingProfileRefresh
+
+    ||
+    !farmProfileAvailable()
+  ) {
+
+    return;
+
+  }
+
+
+  applyingProfileRefresh =
+    true;
+
+
+  try {
+
+    const progress =
+      PATProfile.getProgress(
+        MOLECULAR_FARM_GAME_ID
+      );
+
+
+    if (
+      farmProfileHasProgress(
+        progress
+      )
+    ) {
+
+      player =
+        normalizeFarmPlayer(
+          progress
+        );
+
+
+      buildPeriod();
+
+
+      updateXP();
+
+
+      updateEvolutionUnlocks();
+
+    }
+
+  }
+
+  finally {
+
+    applyingProfileRefresh =
+      false;
+
+  }
+
+}
+
+
+
+/* ==========================================================
+   PROFILE EVENTS
+========================================================== */
+
+window.addEventListener(
+  "pat-cloud-synced",
+  function (
+    event
+  ) {
+
+    const detail =
+      event.detail
+      ||
+      {};
+
+
+    /*
+      Only force a reload after cloud → device sync.
+
+      Uploads already originated from this Farm.
+    */
+
+    if (
+      detail.direction ===
+      "download"
+    ) {
+
+      refreshFarmFromProfile();
+
+    }
+
+
+    updateXP();
+
+  }
+);
+
+
+
+window.addEventListener(
+  "pat-profile-ready",
+  function () {
+
+    refreshFarmFromProfile();
+
+
+    updateXP();
+
+  }
+);
+
+
+
+/* ==========================================================
+   DEVELOPMENT RESET
+
+   FARM PROGRESS ONLY.
+
+   DOES NOT DELETE THE PLAYER'S WHOLE ACCOUNT.
+   DOES NOT DELETE OTHER Learning Lab games.
 ========================================================== */
 
 window.resetMolecularFarmProgress =
@@ -4768,11 +5764,25 @@ window.resetMolecularFarmProgress =
 
     if (
       !window.confirm(
-        "Reset all Molecular Farm progress on this device?"
+        "Reset Molecular Farm species progress? Your other Learning Lab progress will remain."
       )
     ) {
 
       return;
+
+    }
+
+
+    if (
+      window.PATProfile
+      &&
+      typeof PATProfile.clearProgress ===
+      "function"
+    ) {
+
+      PATProfile.clearProgress(
+        MOLECULAR_FARM_GAME_ID
+      );
 
     }
 
@@ -4797,8 +5807,32 @@ window.resetMolecularFarmProgress =
    START
 ========================================================== */
 
+
+/*
+  Count opening Molecular Farm as today's
+  Learning Lab activity.
+
+  This can continue the shared Daily Lab streak.
+
+  It does NOT give XP.
+*/
+
+markFarmPlayed();
+
+
+
+/*
+  Make sure current Farm progress is normalized
+  and stored in the shared profile.
+*/
+
 savePlayer();
 
+
+
+/*
+  Build the interface.
+*/
 
 buildPeriod();
 
@@ -4824,11 +5858,40 @@ initializeHabitat(
 );
 
 
+
+/* ==========================================================
+   WORLD ENTERED ANALYTICS
+========================================================== */
+
 trackFarmEvent(
   "world_entered",
   {
+
     version:
-      "3",
+      "4",
+
+    profile_system:
+      (
+        farmProfileAvailable()
+        ?
+          "PATProfile"
+        :
+          "legacy_fallback"
+      ),
+
+    cloud_signed_in:
+      Boolean(
+
+        window.PATProfile
+
+        &&
+        typeof PATProfile.isCloudSignedIn ===
+        "function"
+
+        &&
+        PATProfile.isCloudSignedIn()
+
+      ),
 
     discovered_elements:
       player.unlockedElements.length,
@@ -4836,7 +5899,20 @@ trackFarmEvent(
     discovered_molecules:
       player.unlockedMolecules.length,
 
+    discovered_evolutions:
+      player.discoveredEvolutions.length,
+
     xp:
-      player.xp
+      (
+        window.PATProfile
+        &&
+        typeof PATProfile.stats ===
+        "function"
+      )
+      ?
+        PATProfile.stats().xp
+      :
+        0
+
   }
 );
