@@ -53,19 +53,34 @@ gtag(
 
 
 <!-- =====================================================
-     SUPABASE
+     SUPABASE LIBRARY
 ====================================================== -->
 
 <script
   src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
 ></script>
 
+
+
+<!-- =====================================================
+     PAT SUPABASE CONNECTION
+====================================================== -->
+
 <script src="supabase.js"></script>
 
 
 
 <!-- =====================================================
-     SHARED PROFILE SYSTEM
+     SHARED PAT PROFILE SYSTEM
+
+     PROFILE.JS V5 OWNS:
+     - authentication
+     - account attachment
+     - cloud bootstrap
+     - cloud upload
+     - cloud download
+     - conflict handling
+     - local fallback
 ====================================================== -->
 
 <script src="profile.js"></script>
@@ -1213,6 +1228,10 @@ h1 {
   min-height:
     49px;
 
+  padding:
+    10px
+    12px;
+
   border-radius:
     11px;
 
@@ -2212,11 +2231,13 @@ Level 1
 
 <div class="level-track">
 
+
 <div
   id="profileLevelFill"
   class="level-fill"
 >
 </div>
+
 
 </div>
 
@@ -2313,7 +2334,9 @@ not consecutive calendar days.
 
 <div class="streak-card">
 
-<span>±</span>
+<span>
+±
+</span>
 
 <strong id="streakContronym">
 0
@@ -2328,7 +2351,9 @@ Contronym
 
 <div class="streak-card">
 
-<span>🧩</span>
+<span>
+🧩
+</span>
 
 <strong id="streakCluecards">
 0
@@ -2343,7 +2368,9 @@ Clue-Cards
 
 <div class="streak-card">
 
-<span>✣</span>
+<span>
+✣
+</span>
 
 <strong id="streakKoanOne">
 0
@@ -2358,7 +2385,9 @@ KOAN SU(1)
 
 <div class="streak-card">
 
-<span>◈</span>
+<span>
+◈
+</span>
 
 <strong id="streakKoanTwo">
 0
@@ -2373,7 +2402,9 @@ KOAN SU(2)
 
 <div class="streak-card">
 
-<span>🐝</span>
+<span>
+🐝
+</span>
 
 <strong id="streakBuzzword">
 0
@@ -2402,20 +2433,25 @@ Buzzword
 
 <div class="profile-extra-card">
 
+
 <h3>
 🕘 Recent Activity
 </h3>
+
 
 <div
   id="recentActivity"
   class="recent-list"
 >
 
+
 <div class="empty-profile-data">
 Complete an activity and it will appear here.
 </div>
 
+
 </div>
+
 
 </div>
 
@@ -2423,14 +2459,17 @@ Complete an activity and it will appear here.
 
 <div class="profile-extra-card">
 
+
 <h3>
 🏅 Mastery
 </h3>
+
 
 <div
   id="masterySummary"
   class="mastery-list"
 >
+
 
 <div class="empty-profile-data">
 
@@ -2439,7 +2478,9 @@ map, analyze and solve across the Lab.
 
 </div>
 
+
 </div>
+
 
 </div>
 
@@ -2452,7 +2493,7 @@ map, analyze and solve across the Lab.
 
 
 <!-- =====================================================
-     PROFILE MODAL
+     PROFILE / ACCOUNT MODAL
 ====================================================== -->
 
 <div
@@ -2520,9 +2561,11 @@ can follow your account across devices.
 
 <div class="profile-field">
 
+
 <label for="usernameInput">
 Username
 </label>
+
 
 <input
   id="usernameInput"
@@ -2532,15 +2575,18 @@ Username
   placeholder="Choose a username"
 >
 
+
 </div>
 
 
 
 <div class="profile-field">
 
+
 <label for="emailInput">
 Email
 </label>
+
 
 <input
   id="emailInput"
@@ -2550,15 +2596,18 @@ Email
   placeholder="you@example.com"
 >
 
+
 </div>
 
 
 
 <div class="profile-field">
 
+
 <label for="passwordInput">
 Password
 </label>
+
 
 <input
   id="passwordInput"
@@ -2568,11 +2617,13 @@ Password
   placeholder="At least 6 characters"
 >
 
+
 </div>
 
 
 
 <div class="profile-field">
+
 
 <label>
 Explorer Icon
@@ -2585,40 +2636,80 @@ Explorer Icon
 >
 
 
-<button class="avatar-choice" data-avatar="🧪" type="button">
+<button
+  class="avatar-choice"
+  data-avatar="🧪"
+  type="button"
+>
 🧪
 </button>
 
-<button class="avatar-choice" data-avatar="🧠" type="button">
+
+<button
+  class="avatar-choice"
+  data-avatar="🧠"
+  type="button"
+>
 🧠
 </button>
 
-<button class="avatar-choice" data-avatar="⚛️" type="button">
+
+<button
+  class="avatar-choice"
+  data-avatar="⚛️"
+  type="button"
+>
 ⚛️
 </button>
 
-<button class="avatar-choice" data-avatar="📚" type="button">
+
+<button
+  class="avatar-choice"
+  data-avatar="📚"
+  type="button"
+>
 📚
 </button>
 
-<button class="avatar-choice" data-avatar="🧩" type="button">
+
+<button
+  class="avatar-choice"
+  data-avatar="🧩"
+  type="button"
+>
 🧩
 </button>
 
-<button class="avatar-choice" data-avatar="🐝" type="button">
+
+<button
+  class="avatar-choice"
+  data-avatar="🐝"
+  type="button"
+>
 🐝
 </button>
 
-<button class="avatar-choice" data-avatar="✒️" type="button">
+
+<button
+  class="avatar-choice"
+  data-avatar="✒️"
+  type="button"
+>
 ✒️
 </button>
 
-<button class="avatar-choice" data-avatar="📈" type="button">
+
+<button
+  class="avatar-choice"
+  data-avatar="📈"
+  type="button"
+>
 📈
 </button>
 
 
 </div>
+
 
 </div>
 
@@ -2666,6 +2757,7 @@ Sign Out
 </div>
 
 
+
 <div
   id="profileFeedback"
   class="profile-feedback"
@@ -2680,12 +2772,12 @@ Sign Out
 Cloud account:
 </strong>
 
-When signed in, your Learning Lab account can synchronize
-progress through Supabase.
+When signed in, your Learning Lab account synchronizes
+through Supabase.
 
-The browser can still keep a local copy for faster loading,
-but the signed-in account will become the persistent identity
-used across devices.
+The browser still keeps a local copy for immediate gameplay,
+while the signed-in account provides persistent progress
+across devices.
 
 </div>
 
@@ -2707,9 +2799,11 @@ used across devices.
 
 <div class="section-title">
 
+
 <h2>
 Choose a Learning World
 </h2>
+
 
 <p>
 
@@ -2718,23 +2812,33 @@ mathematics, meaning and critical thinking.
 
 </p>
 
+
 </div>
 
 
+
+<!-- =====================================================
+     CORE WORLDS
+====================================================== -->
 
 <div class="lab-grid">
 
 
 
+<!-- MOLECULAR FARM -->
+
 <article class="lab-card molecular-farm">
+
 
 <div class="lab-icon">
 🌾
 </div>
 
+
 <h2>
 Molecular Farm
 </h2>
+
 
 <p>
 
@@ -2745,6 +2849,7 @@ real chemical behavior.
 
 </p>
 
+
 <a
   class="card-button game-link"
   href="molecularfarm.html"
@@ -2753,19 +2858,25 @@ real chemical behavior.
 Enter Molecular Farm
 </a>
 
+
 </article>
 
 
 
+<!-- MOLECULAR BEE -->
+
 <article class="lab-card molecular-bee">
+
 
 <div class="lab-icon">
 🐝
 </div>
 
+
 <h2>
 Molecular Bee
 </h2>
+
 
 <p>
 
@@ -2775,6 +2886,7 @@ chemistry through multiple hive challenges.
 
 </p>
 
+
 <a
   class="card-button game-link"
   href="molecularbee.html"
@@ -2783,19 +2895,25 @@ chemistry through multiple hive challenges.
 Enter Molecular Bee
 </a>
 
+
 </article>
 
 
 
+<!-- CONTRONYM -->
+
 <article class="lab-card contronym">
+
 
 <div class="lab-icon">
 ±
 </div>
 
+
 <h2>
 Contronym
 </h2>
+
 
 <p>
 
@@ -2807,6 +2925,7 @@ to reverse-engineer the word.
 
 </p>
 
+
 <a
   class="card-button game-link"
   href="contronym.html"
@@ -2815,19 +2934,25 @@ to reverse-engineer the word.
 Play Contronym
 </a>
 
+
 </article>
 
 
 
+<!-- CLUE CARDS -->
+
 <article class="lab-card clue-card">
+
 
 <div class="lab-icon">
 🧩
 </div>
 
+
 <h2>
 Cryptic Clue-Cards
 </h2>
+
 
 <p>
 
@@ -2838,6 +2963,7 @@ and Cryptic-Calculus.
 
 </p>
 
+
 <a
   class="card-button game-link"
   href="cluecards.html"
@@ -2846,19 +2972,25 @@ and Cryptic-Calculus.
 Play Current Clue-Card
 </a>
 
+
 </article>
 
 
 
+<!-- KOAN -->
+
 <article class="lab-card koan-kaon">
+
 
 <div class="lab-icon">
 ✣
 </div>
 
+
 <h2>
 KOAN~KAON
 </h2>
+
 
 <p>
 
@@ -2868,6 +3000,7 @@ intersect through a shared lexical structure.
 
 </p>
 
+
 <a
   class="card-button game-link"
   href="koankaon.html"
@@ -2876,19 +3009,25 @@ intersect through a shared lexical structure.
 Play KOAN~KAON
 </a>
 
+
 </article>
 
 
 
+<!-- CRYPTIC CALCULUS -->
+
 <article class="lab-card cryptic-calculus">
+
 
 <div class="lab-icon">
 ∫
 </div>
 
+
 <h2>
 Cryptic-Calculus
 </h2>
+
 
 <p>
 
@@ -2899,6 +3038,7 @@ and reconstruct the answer.
 
 </p>
 
+
 <a
   class="card-button game-link"
   href="crypticcalculus.html"
@@ -2907,6 +3047,7 @@ and reconstruct the answer.
 Enter Cryptic-Calculus
 </a>
 
+
 </article>
 
 
@@ -2914,11 +3055,17 @@ Enter Cryptic-Calculus
 
 
 
+<!-- =====================================================
+     EXPERIMENTAL SYSTEMS
+====================================================== -->
+
 <div class="world-divider">
+
 
 <h2>
 New Experimental Systems
 </h2>
+
 
 <p>
 
@@ -2928,6 +3075,7 @@ built around the same reverse-engineering principle.
 
 </p>
 
+
 </div>
 
 
@@ -2936,15 +3084,20 @@ built around the same reverse-engineering principle.
 
 
 
+<!-- CANDY CALCULUS -->
+
 <article class="lab-card candy-calculus">
+
 
 <div class="lab-icon">
 🍬
 </div>
 
+
 <h2>
 Oberlander! Candy-Calculus
 </h2>
+
 
 <p>
 
@@ -2958,6 +3111,7 @@ and other mathematical treats.
 
 </p>
 
+
 <a
   class="card-button game-link"
   href="candyalgebra.html"
@@ -2966,19 +3120,25 @@ and other mathematical treats.
 Enter Candy-Calculus
 </a>
 
+
 </article>
 
 
 
+<!-- MEANING GRAPHS -->
+
 <article class="lab-card meaning-graphs">
+
 
 <div class="lab-icon">
 📈
 </div>
 
+
 <h2>
 Meaning Graphs
 </h2>
+
 
 <p>
 
@@ -2992,6 +3152,7 @@ of meaning.
 
 </p>
 
+
 <a
   class="card-button game-link"
   href="meaninggraphs.html"
@@ -3000,19 +3161,25 @@ of meaning.
 Explore Meaning Graphs
 </a>
 
+
 </article>
 
 
 
+<!-- MYTHOPOETIC -->
+
 <article class="lab-card mythopoetic">
+
 
 <div class="lab-icon">
 📖
 </div>
 
+
 <h2>
 Mythopoetic Diagrams
 </h2>
+
 
 <p>
 
@@ -3026,6 +3193,7 @@ character FOILs and narrative symmetry.
 
 </p>
 
+
 <a
   class="card-button game-link"
   href="mythopoeticdiagrams.html"
@@ -3034,19 +3202,25 @@ character FOILs and narrative symmetry.
 Enter Mythopoetic Diagrams
 </a>
 
+
 </article>
 
 
 
+<!-- WORDSMITH -->
+
 <article class="lab-card wordsmith">
+
 
 <div class="lab-icon">
 ✒️
 </div>
 
+
 <h2>
 Wordsmith
 </h2>
+
 
 <p>
 
@@ -3060,6 +3234,7 @@ then build a map of the piece.
 
 </p>
 
+
 <a
   class="card-button game-link"
   href="wordsmith.html"
@@ -3068,19 +3243,25 @@ then build a map of the piece.
 Enter Wordsmith
 </a>
 
+
 </article>
 
 
 
+<!-- TWAIN EDITOR -->
+
 <article class="lab-card twain-editor">
+
 
 <div class="lab-icon">
 ⌨️
 </div>
 
+
 <h2>
 Twain Editor
 </h2>
+
 
 <p>
 
@@ -3095,6 +3276,7 @@ revision signals.
 
 </p>
 
+
 <a
   class="card-button game-link"
   href="twaineditor.html"
@@ -3103,19 +3285,25 @@ revision signals.
 Open Twain Editor
 </a>
 
+
 </article>
 
 
 
+<!-- SENTENCE MODEL -->
+
 <article class="lab-card sentence-model">
+
 
 <div class="lab-icon">
 ⚛️
 </div>
 
+
 <h2>
 Sentence Standard Model
 </h2>
+
 
 <p>
 
@@ -3130,6 +3318,7 @@ and transformations of meaning.
 
 </p>
 
+
 <a
   class="card-button game-link"
   href="sentencestandardmodel.html"
@@ -3138,6 +3327,7 @@ and transformations of meaning.
 Enter the Standard Model
 </a>
 
+
 </article>
 
 
@@ -3145,11 +3335,17 @@ Enter the Standard Model
 
 
 
+<!-- =====================================================
+     PHILOSOPHY
+====================================================== -->
+
 <section class="philosophy">
+
 
 <h2>
 The Reverse-Engineering Principle
 </h2>
+
 
 <p>
 
@@ -3159,6 +3355,7 @@ Understanding gives you a way
 to find it again.
 
 </p>
+
 
 <p>
 
@@ -3175,15 +3372,22 @@ and explaining why they work.
 
 </p>
 
+
 </section>
 
 
 
+<!-- =====================================================
+     GROWING
+====================================================== -->
+
 <section class="growing">
+
 
 <h2>
 🧪 The Lab Is Growing
 </h2>
+
 
 <p>
 
@@ -3195,6 +3399,7 @@ experiments are being added over time.
 
 </p>
 
+
 </section>
 
 
@@ -3203,7 +3408,9 @@ experiments are being added over time.
 
 
 <footer>
+
 PAT Tutoring • Learning Lab Prototype
+
 </footer>
 
 
@@ -3212,7 +3419,7 @@ PAT Tutoring • Learning Lab Prototype
 
 
 /* =====================================================
-   PROFILE ELEMENTS
+   ELEMENTS
 ====================================================== */
 
 const profileModal =
@@ -3342,7 +3549,7 @@ const masteryLabels = {
 
 
 /* =====================================================
-   GAME SHORT NAMES
+   GAME NAMES
 ====================================================== */
 
 const profileGameNames = {
@@ -3388,6 +3595,29 @@ const profileGameNames = {
 
 
 /* =====================================================
+   CLOUD SIGNED-IN HELPER
+====================================================== */
+
+function isCloudSignedIn() {
+
+  return Boolean(
+
+    window.PATProfile
+
+    &&
+    typeof PATProfile.isCloudSignedIn ===
+    "function"
+
+    &&
+    PATProfile.isCloudSignedIn()
+
+  );
+
+}
+
+
+
+/* =====================================================
    RENDER PROFILE
 ====================================================== */
 
@@ -3416,6 +3646,9 @@ function renderProfile() {
     "🧪";
 
 
+
+  /* AVATAR */
+
   document
     .getElementById(
       "profileAvatar"
@@ -3423,6 +3656,9 @@ function renderProfile() {
     .textContent =
       selectedAvatar;
 
+
+
+  /* NAME */
 
   document
     .getElementById(
@@ -3437,6 +3673,9 @@ function renderProfile() {
       :
         "Guest Explorer";
 
+
+
+  /* PLAN */
 
   document
     .getElementById(
@@ -3456,6 +3695,9 @@ function renderProfile() {
         "FREE EXPLORER";
 
 
+
+  /* XP */
+
   document
     .getElementById(
       "profileXP"
@@ -3465,6 +3707,9 @@ function renderProfile() {
       ||
       0;
 
+
+
+  /* DAILY */
 
   document
     .getElementById(
@@ -3476,6 +3721,9 @@ function renderProfile() {
       0;
 
 
+
+  /* WEEKLY */
+
   document
     .getElementById(
       "profileGlobalStreak"
@@ -3486,6 +3734,9 @@ function renderProfile() {
       0;
 
 
+
+  /* COMPLETIONS */
+
   document
     .getElementById(
       "profileCompleted"
@@ -3495,6 +3746,9 @@ function renderProfile() {
       ||
       0;
 
+
+
+  /* LEVEL */
 
   document
     .getElementById(
@@ -3551,6 +3805,9 @@ function renderProfile() {
       "%";
 
 
+
+  /* RELEASE STREAKS */
+
   document
     .getElementById(
       "streakContronym"
@@ -3601,19 +3858,19 @@ function renderProfile() {
       0;
 
 
-  profileButton.textContent =
-    (
-      typeof PATProfile.isCloudSignedIn ===
-      "function"
 
-      &&
-      PATProfile.isCloudSignedIn()
-    )
+  /* PROFILE BUTTON */
+
+  profileButton.textContent =
+    isCloudSignedIn()
     ?
       "Manage Account"
     :
       "Create Account / Sign In";
 
+
+
+  /* AVATAR */
 
   document
     .querySelectorAll(
@@ -3632,6 +3889,7 @@ function renderProfile() {
 
       }
     );
+
 
 
   renderRecentActivity(
@@ -3782,65 +4040,67 @@ function renderMastery(
     [];
 
 
-  Object.keys(
-    mastery
-  )
-  .forEach(
-    function (
-      gameId
-    ) {
+  Object
+    .keys(
+      mastery
+    )
+    .forEach(
+      function (
+        gameId
+      ) {
 
-      const gameMastery =
-        mastery[
-          gameId
-        ]
-        ||
-        {};
+        const gameMastery =
+          mastery[
+            gameId
+          ]
+          ||
+          {};
 
 
-      Object.keys(
-        gameMastery
-      )
-      .forEach(
-        function (
-          key
-        ) {
-
-          const value =
-            gameMastery[
+        Object
+          .keys(
+            gameMastery
+          )
+          .forEach(
+            function (
               key
-            ];
+            ) {
+
+              const value =
+                gameMastery[
+                  key
+                ];
 
 
-          if (
-            Number(
-              value
-            ) >
-            0
-          ) {
-
-            masteryEntries.push(
-              {
-
-                gameId:
-                  gameId,
-
-                key:
-                  key,
-
-                value:
+              if (
+                Number(
                   value
+                ) >
+                0
+              ) {
+
+                masteryEntries.push(
+                  {
+
+                    gameId:
+                      gameId,
+
+                    key:
+                      key,
+
+                    value:
+                      value
+
+                  }
+                );
 
               }
-            );
 
-          }
+            }
+          );
 
-        }
-      );
-
-    }
-  );
+      }
+    );
 
 
   if (
@@ -3986,9 +4246,11 @@ profileButton
       renderProfile();
 
 
-      profileModal.classList.add(
-        "visible"
-      );
+      profileModal
+        .classList
+        .add(
+          "visible"
+        );
 
 
       profileModal.setAttribute(
@@ -4007,9 +4269,11 @@ profileButton
 
 function closeProfileModal() {
 
-  profileModal.classList.remove(
-    "visible"
-  );
+  profileModal
+    .classList
+    .remove(
+      "visible"
+    );
 
 
   profileModal.setAttribute(
@@ -4079,7 +4343,7 @@ document
 
 
 /* =====================================================
-   AVATAR
+   AVATAR SELECTION
 ====================================================== */
 
 document
@@ -4116,9 +4380,11 @@ document
             );
 
 
-          button.classList.add(
-            "selected"
-          );
+          button
+            .classList
+            .add(
+              "selected"
+            );
 
         }
       );
@@ -4130,12 +4396,38 @@ document
 
 /* =====================================================
    CREATE ACCOUNT
+
+   IMPORTANT:
+
+   INDEX.HTML DOES NOT CALL SUPABASE DIRECTLY.
+
+   PATProfile.signUp() handles:
+   - Supabase signup
+   - identity attachment
+   - cloud bootstrap
+   - local progress preservation
 ====================================================== */
 
 createAccountButton
   .addEventListener(
     "click",
     async function () {
+
+      if (
+        !window.PATProfile
+        ||
+        typeof PATProfile.signUp !==
+        "function"
+      ) {
+
+        profileFeedback.textContent =
+          "Learning Lab account system has not loaded.";
+
+
+        return;
+
+      }
+
 
       const username =
         usernameInput
@@ -4154,6 +4446,7 @@ createAccountButton
         passwordInput.value;
 
 
+
       if (
         username.length <
         2
@@ -4166,6 +4459,7 @@ createAccountButton
         return;
 
       }
+
 
 
       const validEmail =
@@ -4187,6 +4481,7 @@ createAccountButton
       }
 
 
+
       if (
         password.length <
         6
@@ -4201,20 +4496,13 @@ createAccountButton
       }
 
 
-      if (
-        !window.PATCloud
-        ||
-        typeof PATCloud.signUp !==
-        "function"
-      ) {
 
-        profileFeedback.textContent =
-          "Supabase account system is not available.";
+      createAccountButton.disabled =
+        true;
 
 
-        return;
-
-      }
+      signInButton.disabled =
+        true;
 
 
       profileFeedback.textContent =
@@ -4222,6 +4510,14 @@ createAccountButton
 
 
       try {
+
+
+        /*
+          Save the chosen public profile locally first.
+
+          If this player already has local game progress,
+          V5 can attach that progress to the new account.
+        */
 
         PATProfile.updateAccount(
           {
@@ -4239,8 +4535,9 @@ createAccountButton
         );
 
 
+
         const result =
-          await PATCloud.signUp(
+          await PATProfile.signUp(
 
             email,
 
@@ -4251,74 +4548,29 @@ createAccountButton
           );
 
 
-        const user =
-          result
-          &&
-          result.user
-          ?
-            result.user
-          :
-            null;
-
-
-        const session =
-          result
-          &&
-          result.session
-          ?
-            result.session
-          :
-            null;
-
-
-        if (
-          user
-          &&
-          typeof PATProfile.setCloudAccount ===
-          "function"
-        ) {
-
-          PATProfile.setCloudAccount(
-            {
-
-              userId:
-                user.id,
-
-              authProvider:
-                "supabase",
-
-              cloudEnabled:
-                Boolean(
-                  session
-                ),
-
-              cloudLastSyncedAt:
-                null
-
-            }
-          );
-
-        }
-
 
         renderProfile();
 
 
+
         if (
-          session
+          result
+          &&
+          result.session
         ) {
 
           profileFeedback.textContent =
-            "✓ Account created and signed in.";
+            "✓ Account created and signed in. Your Learning Lab progress is connected to this account.";
 
         }
 
         else {
 
           profileFeedback.textContent =
-            "✓ Account created. Check your email to confirm the account, then sign in.";
+            "✓ Account created. Check your email if confirmation is required, then sign in.";
 
         }
+
 
 
         if (
@@ -4357,6 +4609,17 @@ createAccountButton
 
       }
 
+      finally {
+
+        createAccountButton.disabled =
+          false;
+
+
+        signInButton.disabled =
+          false;
+
+      }
+
     }
   );
 
@@ -4364,12 +4627,33 @@ createAccountButton
 
 /* =====================================================
    SIGN IN
+
+   PATProfile.signIn() OWNS THE CLOUD BOOTSTRAP.
+
+   On another device, this is what causes the player's
+   cloud profile to replace the blank local profile.
 ====================================================== */
 
 signInButton
   .addEventListener(
     "click",
     async function () {
+
+      if (
+        !window.PATProfile
+        ||
+        typeof PATProfile.signIn !==
+        "function"
+      ) {
+
+        profileFeedback.textContent =
+          "Learning Lab account system has not loaded.";
+
+
+        return;
+
+      }
+
 
       const email =
         emailInput
@@ -4380,6 +4664,7 @@ signInButton
 
       const password =
         passwordInput.value;
+
 
 
       if (
@@ -4397,120 +4682,36 @@ signInButton
       }
 
 
-      if (
-        !window.PATCloud
-        ||
-        typeof PATCloud.signIn !==
-        "function"
-      ) {
 
-        profileFeedback.textContent =
-          "Supabase account system is not available.";
+      signInButton.disabled =
+        true;
 
 
-        return;
-
-      }
+      createAccountButton.disabled =
+        true;
 
 
       profileFeedback.textContent =
-        "Signing in...";
+        "Signing in and loading your Learning Lab progress...";
 
 
       try {
 
-        const result =
-          await PATCloud.signIn(
+        await PATProfile.signIn(
 
-            email,
+          email,
 
-            password
+          password
 
-          );
-
-
-        const user =
-          result
-          &&
-          result.user
-          ?
-            result.user
-          :
-            null;
-
-
-        if (
-          user
-        ) {
-
-          const username =
-            (
-              user.user_metadata
-              &&
-              user.user_metadata.username
-            )
-            ||
-            usernameInput.value.trim()
-            ||
-            PATProfile.get().username
-            ||
-            "Explorer";
-
-
-          PATProfile.updateAccount(
-            {
-
-              username:
-                username,
-
-              email:
-                user.email
-                ||
-                email,
-
-              avatar:
-                selectedAvatar,
-
-              userId:
-                user.id,
-
-              authProvider:
-                "supabase"
-
-            }
-          );
-
-
-          if (
-            typeof PATProfile.setCloudAccount ===
-            "function"
-          ) {
-
-            PATProfile.setCloudAccount(
-              {
-
-                userId:
-                  user.id,
-
-                authProvider:
-                  "supabase",
-
-                cloudEnabled:
-                  true
-
-              }
-            );
-
-          }
-
-        }
+        );
 
 
         renderProfile();
 
 
         profileFeedback.textContent =
-          "✓ Signed in to your Learning Lab account.";
+          "✓ Signed in. Your Learning Lab account has been loaded.";
+
 
 
         if (
@@ -4532,9 +4733,10 @@ signInButton
         }
 
 
+
         setTimeout(
           closeProfileModal,
-          800
+          900
         );
 
       }
@@ -4555,6 +4757,17 @@ signInButton
 
       }
 
+      finally {
+
+        signInButton.disabled =
+          false;
+
+
+        createAccountButton.disabled =
+          false;
+
+      }
+
     }
   );
 
@@ -4562,12 +4775,28 @@ signInButton
 
 /* =====================================================
    SAVE PROFILE
+
+   This updates:
+   - username
+   - email display value
+   - avatar
+
+   profile.js will queue a cloud sync when signed in.
 ====================================================== */
 
 saveProfile
   .addEventListener(
     "click",
-    function () {
+    async function () {
+
+      if (
+        !window.PATProfile
+      ) {
+
+        return;
+
+      }
+
 
       const username =
         usernameInput
@@ -4582,6 +4811,7 @@ saveProfile
           .toLowerCase();
 
 
+
       if (
         username.length <
         2
@@ -4594,6 +4824,7 @@ saveProfile
         return;
 
       }
+
 
 
       const validEmail =
@@ -4615,6 +4846,7 @@ saveProfile
       }
 
 
+
       PATProfile.updateAccount(
         {
 
@@ -4631,21 +4863,56 @@ saveProfile
       );
 
 
-      profileFeedback.textContent =
-        (
-          typeof PATProfile.isCloudSignedIn ===
-          "function"
 
-          &&
-          PATProfile.isCloudSignedIn()
-        )
-        ?
-          "✓ Profile saved to your signed-in account."
-        :
-          "✓ Profile saved locally. Sign in to connect it to your cloud account.";
+      if (
+        isCloudSignedIn()
+
+        &&
+        typeof PATProfile.upload ===
+        "function"
+      ) {
+
+        profileFeedback.textContent =
+          "Saving profile...";
+
+
+        try {
+
+          await PATProfile.upload();
+
+
+          profileFeedback.textContent =
+            "✓ Profile saved to your Learning Lab account.";
+
+        }
+
+        catch (
+          error
+        ) {
+
+          console.error(
+            error
+          );
+
+
+          profileFeedback.textContent =
+            "Profile saved locally. Cloud synchronization will retry.";
+
+        }
+
+      }
+
+      else {
+
+        profileFeedback.textContent =
+          "✓ Profile saved locally. Sign in to keep it across devices.";
+
+      }
+
 
 
       renderProfile();
+
 
 
       if (
@@ -4673,6 +4940,12 @@ saveProfile
 
 /* =====================================================
    SIGN OUT
+
+   IMPORTANT:
+
+   PATProfile.signOut() ALREADY CALLS SUPABASE SIGN OUT.
+
+   DO NOT CALL PATCloud.signOut() HERE TOO.
 ====================================================== */
 
 signOutProfile
@@ -4680,18 +4953,52 @@ signOutProfile
     "click",
     async function () {
 
+      if (
+        !window.PATProfile
+        ||
+        typeof PATProfile.signOut !==
+        "function"
+      ) {
+
+        return;
+
+      }
+
+
+      signOutProfile.disabled =
+        true;
+
+
+      profileFeedback.textContent =
+        "Signing out...";
+
+
       try {
 
-        if (
-          window.PATCloud
-          &&
-          typeof PATCloud.signOut ===
-          "function"
-        ) {
+        await PATProfile.signOut();
 
-          await PATCloud.signOut();
 
-        }
+        usernameInput.value =
+          "";
+
+
+        emailInput.value =
+          "";
+
+
+        passwordInput.value =
+          "";
+
+
+        selectedAvatar =
+          "🧪";
+
+
+        renderProfile();
+
+
+        profileFeedback.textContent =
+          "✓ Signed out. Your cloud progress remains saved to your account.";
 
       }
 
@@ -4703,29 +5010,18 @@ signOutProfile
           error
         );
 
+
+        profileFeedback.textContent =
+          "Could not completely sign out.";
+
       }
 
+      finally {
 
-      PATProfile.signOut();
+        signOutProfile.disabled =
+          false;
 
-
-      usernameInput.value =
-        "";
-
-
-      emailInput.value =
-        "";
-
-
-      passwordInput.value =
-        "";
-
-
-      profileFeedback.textContent =
-        "Signed out.";
-
-
-      renderProfile();
+      }
 
     }
   );
@@ -4735,92 +5031,93 @@ signOutProfile
 /* =====================================================
    GAME LINKS
 
-   markPlayed() powers the Daily Lab streak.
+   markPlayed():
+
+   YES:
+   - records game activity
+   - advances Daily Lab streak once per day
+   - saves local state immediately
+   - queues cloud synchronization if signed in
+
+   NO:
+   - does not award XP
+   - does not advance puzzle streak
+   - does not advance weekly completion streak
 ====================================================== */
 
 document
-  .addEventListener(
-    "DOMContentLoaded",
-    function () {
+  .querySelectorAll(
+    ".game-link"
+  )
+  .forEach(
+    function (
+      link
+    ) {
 
-      renderProfile();
+      link.addEventListener(
+        "click",
+        function () {
+
+          const game =
+            link.dataset.game;
 
 
-      document
-        .querySelectorAll(
-          ".game-link"
-        )
-        .forEach(
-          function (
-            link
+          if (
+            window.PATProfile
+
+            &&
+            PATProfile.games[
+              game
+            ]
           ) {
 
-            link.addEventListener(
-              "click",
-              function () {
+            PATProfile.markPlayed(
+              game
+            );
 
-                const game =
-                  link.dataset.game;
-
-
-                if (
-                  window.PATProfile
-
-                  &&
-                  PATProfile.games[
-                    game
-                  ]
-                ) {
-
-                  PATProfile.markPlayed(
-                    game
-                  );
-
-                }
+          }
 
 
-                if (
-                  typeof gtag ===
-                  "function"
-                ) {
 
-                  gtag(
-                    "event",
-                    "game_play",
-                    {
+          if (
+            typeof gtag ===
+            "function"
+          ) {
 
-                      game_name:
-                        game,
+            gtag(
+              "event",
+              "game_play",
+              {
 
-                      destination:
-                        link.getAttribute(
-                          "href"
-                        )
+                game_name:
+                  game,
 
-                    }
-                  );
+                destination:
+                  link.getAttribute(
+                    "href"
+                  )
+
+              }
+            );
 
 
-                  gtag(
-                    "event",
-                    "play_"
-                    +
-                    game,
-                    {
+            gtag(
+              "event",
+              "play_"
+              +
+              game,
+              {
 
-                      game_name:
-                        game
-
-                    }
-                  );
-
-                }
+                game_name:
+                  game
 
               }
             );
 
           }
-        );
+
+        }
+      );
 
     }
   );
@@ -4828,216 +5125,11 @@ document
 
 
 /* =====================================================
-   SUPABASE AUTH SESSION CHECK
-====================================================== */
+   PROFILE UPDATES
 
-async function checkCloudSession() {
+   profile.js owns cloud synchronization.
 
-  if (
-    !window.PATCloud
-    ||
-    typeof PATCloud.getUser !==
-    "function"
-  ) {
-
-    return;
-
-  }
-
-
-  try {
-
-    const user =
-      await PATCloud.getUser();
-
-
-    if (
-      !user
-    ) {
-
-      renderProfile();
-
-      return;
-
-    }
-
-
-    const currentProfile =
-      PATProfile.get();
-
-
-    PATProfile.updateAccount(
-      {
-
-        username:
-          (
-            user.user_metadata
-            &&
-            user.user_metadata.username
-          )
-          ||
-          currentProfile.username
-          ||
-          "Explorer",
-
-        email:
-          user.email
-          ||
-          currentProfile.email,
-
-        avatar:
-          currentProfile.avatar
-          ||
-          "🧪",
-
-        userId:
-          user.id,
-
-        authProvider:
-          "supabase"
-
-      }
-    );
-
-
-    if (
-      typeof PATProfile.setCloudAccount ===
-      "function"
-    ) {
-
-      PATProfile.setCloudAccount(
-        {
-
-          userId:
-            user.id,
-
-          authProvider:
-            "supabase",
-
-          cloudEnabled:
-            true
-
-        }
-      );
-
-    }
-
-
-    renderProfile();
-
-  }
-
-  catch (
-    error
-  ) {
-
-    console.error(
-      "Could not check Supabase session.",
-      error
-    );
-
-  }
-
-}
-
-
-
-/* =====================================================
-   AUTH CHANGE
-====================================================== */
-
-window.addEventListener(
-  "pat-cloud-auth-changed",
-  function (
-    event
-  ) {
-
-    const detail =
-      event.detail
-      ||
-      {};
-
-
-    const user =
-      detail.user;
-
-
-    if (
-      user
-    ) {
-
-      const profile =
-        PATProfile.get();
-
-
-      PATProfile.updateAccount(
-        {
-
-          username:
-            (
-              user.user_metadata
-              &&
-              user.user_metadata.username
-            )
-            ||
-            profile.username
-            ||
-            "Explorer",
-
-          email:
-            user.email
-            ||
-            profile.email,
-
-          avatar:
-            profile.avatar
-            ||
-            "🧪",
-
-          userId:
-            user.id,
-
-          authProvider:
-            "supabase"
-
-        }
-      );
-
-
-      if (
-        typeof PATProfile.setCloudAccount ===
-        "function"
-      ) {
-
-        PATProfile.setCloudAccount(
-          {
-
-            userId:
-              user.id,
-
-            authProvider:
-              "supabase",
-
-            cloudEnabled:
-              true
-
-          }
-        );
-
-      }
-
-    }
-
-
-    renderProfile();
-
-  }
-);
-
-
-
-/* =====================================================
-   LIVE PROFILE UPDATE
+   index.html only redraws the interface.
 ====================================================== */
 
 window.addEventListener(
@@ -5050,6 +5142,7 @@ window.addEventListener(
 );
 
 
+
 window.addEventListener(
   "pat-profile-ready",
   function () {
@@ -5060,11 +5153,12 @@ window.addEventListener(
 );
 
 
+
 window.addEventListener(
-  "pat-cloud-ready",
+  "pat-cloud-synced",
   function () {
 
-    checkCloudSession();
+    renderProfile();
 
   }
 );
@@ -5073,12 +5167,17 @@ window.addEventListener(
 
 /* =====================================================
    START
+
+   NO DIRECT SUPABASE SESSION LOGIC HERE.
+
+   profile.js V5 performs:
+   - session detection
+   - auth change detection
+   - cloud bootstrap
+   - cloud/local conflict resolution
 ====================================================== */
 
 renderProfile();
-
-
-checkCloudSession();
 
 
 </script>
