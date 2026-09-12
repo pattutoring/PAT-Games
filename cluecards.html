@@ -31,15 +31,8 @@ function gtag() {
   dataLayer.push(arguments);
 }
 
-gtag(
-  "js",
-  new Date()
-);
-
-gtag(
-  "config",
-  "G-QCEPJP202V"
-);
+gtag("js", new Date());
+gtag("config", "G-QCEPJP202V");
 
 </script>
 
@@ -48,12 +41,12 @@ gtag(
      SHARED PAT LEARNING LAB PROFILE V3
 ===================================================== -->
 
-<script src="profile.js"></script>
+<script src="./profile.js"></script>
 
 
 <link
   rel="stylesheet"
-  href="cluecards.css?v=20260911-1"
+  href="./cluecards.css?v=20260911-6"
 >
 
 
@@ -64,251 +57,93 @@ gtag(
 ===================================================== */
 
 .clue-profile-strip {
-
-  width:
-    min(
-      800px,
-      94%
-    );
-
-  margin:
-    0
-    auto
-    18px;
-
-  padding:
-    15px;
-
-  border:
-    2px
-    solid
-    #d7c39d;
-
-  border-radius:
-    16px;
-
-  background:
-    #fffdf7;
-
-  box-shadow:
-    0
-    4px
-    12px
-    rgba(
-      50,
-      40,
-      25,
-      .10
-    );
-
+  width: min(800px, 94%);
+  margin: 0 auto 18px;
+  padding: 15px;
+  border: 2px solid #d7c39d;
+  border-radius: 16px;
+  background: #fffdf7;
+  box-shadow: 0 4px 12px rgba(50, 40, 25, .10);
 }
-
 
 .clue-profile-main {
-
-  display:
-    grid;
-
-  grid-template-columns:
-    1fr
-    auto;
-
-  gap:
-    12px;
-
-  align-items:
-    center;
-
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
 }
-
 
 .clue-profile-left {
-
-  min-width:
-    0;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  gap:
-    11px;
-
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 11px;
 }
-
 
 .clue-profile-avatar {
-
-  width:
-    50px;
-
-  height:
-    50px;
-
-  flex:
-    0
-    0
-    50px;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  border:
-    2px
-    solid
-    #d6aa44;
-
-  border-radius:
-    50%;
-
-  background:
-    #fff7e8;
-
-  font-size:
-    1.5rem;
-
+  width: 50px;
+  height: 50px;
+  flex: 0 0 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #d6aa44;
+  border-radius: 50%;
+  background: #fff7e8;
+  font-size: 1.5rem;
 }
-
 
 .clue-profile-copy {
-
-  min-width:
-    0;
-
+  min-width: 0;
 }
-
 
 .clue-profile-name {
-
-  overflow:
-    hidden;
-
-  color:
-    #29261f;
-
-  font-weight:
-    bold;
-
-  text-overflow:
-    ellipsis;
-
-  white-space:
-    nowrap;
-
+  overflow: hidden;
+  color: #29261f;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-
 
 .clue-profile-plan {
-
-  margin-top:
-    2px;
-
-  color:
-    #8b633e;
-
-  font-size:
-    .72rem;
-
-  font-weight:
-    bold;
-
-  letter-spacing:
-    1px;
-
-  text-transform:
-    uppercase;
-
+  margin-top: 2px;
+  color: #8b633e;
+  font-size: .72rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
-
 
 .clue-profile-stats {
-
-  display:
-    flex;
-
-  gap:
-    6px;
-
-  flex-wrap:
-    wrap;
-
-  margin-top:
-    6px;
-
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 6px;
 }
-
 
 .clue-profile-pill {
-
-  padding:
-    4px
-    8px;
-
-  border-radius:
-    999px;
-
-  background:
-    #f3ecdf;
-
-  color:
-    #65584a;
-
-  font-size:
-    .71rem;
-
-  font-weight:
-    bold;
-
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #f3ecdf;
+  color: #65584a;
+  font-size: .71rem;
+  font-weight: bold;
 }
-
 
 .clue-level-pill {
-
-  background:
-    #eee6f4;
-
-  color:
-    #71558e;
-
+  background: #eee6f4;
+  color: #71558e;
 }
-
 
 .clue-profile-button {
-
-  min-height:
-    44px;
-
-  padding:
-    9px
-    14px;
-
-  border:
-    2px
-    solid
-    #71558e;
-
-  border-radius:
-    11px;
-
-  background:
-    #71558e;
-
-  color:
-    white;
-
-  font-weight:
-    bold;
-
+  min-height: 44px;
+  padding: 9px 14px;
+  border: 2px solid #71558e;
+  border-radius: 11px;
+  background: #71558e;
+  color: white;
+  font-weight: bold;
 }
-
 
 
 /* =====================================================
@@ -316,93 +151,41 @@ gtag(
 ===================================================== */
 
 .clue-level-panel {
-
-  margin-top:
-    13px;
-
-  padding-top:
-    12px;
-
-  border-top:
-    1px
-    solid
-    #ded0b8;
-
+  margin-top: 13px;
+  padding-top: 12px;
+  border-top: 1px solid #ded0b8;
 }
-
 
 .clue-level-row {
-
-  display:
-    flex;
-
-  justify-content:
-    space-between;
-
-  gap:
-    10px;
-
-  margin-bottom:
-    6px;
-
-  color:
-    #65584a;
-
-  font-size:
-    .73rem;
-
-  font-weight:
-    bold;
-
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+  color: #65584a;
+  font-size: .73rem;
+  font-weight: bold;
 }
-
 
 .clue-level-track {
-
-  width:
-    100%;
-
-  height:
-    9px;
-
-  overflow:
-    hidden;
-
-  border-radius:
-    999px;
-
-  background:
-    #e9e1d5;
-
+  width: 100%;
+  height: 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e9e1d5;
 }
-
 
 .clue-level-fill {
-
-  width:
-    0%;
-
-  height:
-    100%;
-
-  border-radius:
-    999px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #477ca8,
-      #71558e,
-      #b9574e
-    );
-
-  transition:
-    width
-    .3s
-    ease;
-
+  width: 0%;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    #477ca8,
+    #71558e,
+    #b9574e
+  );
+  transition: width .3s ease;
 }
-
 
 
 /* =====================================================
@@ -410,47 +193,18 @@ gtag(
 ===================================================== */
 
 .current-clue-streak {
-
-  width:
-    fit-content;
-
-  max-width:
-    94%;
-
-  margin:
-    0
-    auto
-    18px;
-
-  padding:
-    7px
-    12px;
-
-  border:
-    1px
-    solid
-    #cdbbdf;
-
-  border-radius:
-    999px;
-
-  background:
-    #f2ebf7;
-
-  color:
-    #71558e;
-
-  font-size:
-    .76rem;
-
-  font-weight:
-    bold;
-
-  text-align:
-    center;
-
+  width: fit-content;
+  max-width: 94%;
+  margin: 0 auto 18px;
+  padding: 7px 12px;
+  border: 1px solid #cdbbdf;
+  border-radius: 999px;
+  background: #f2ebf7;
+  color: #71558e;
+  font-size: .76rem;
+  font-weight: bold;
+  text-align: center;
 }
-
 
 
 /* =====================================================
@@ -458,190 +212,83 @@ gtag(
 ===================================================== */
 
 .archive-access {
-
-  max-width:
-    700px;
-
-  margin:
-    0
-    auto
-    18px;
-
-  padding:
-    15px;
-
-  border:
-    2px
-    solid
-    #d6aa44;
-
-  border-radius:
-    14px;
-
-  background:
-    #fff6d2;
-
-  color:
-    #65584a;
-
-  line-height:
-    1.5;
-
-  text-align:
-    center;
-
+  max-width: 700px;
+  margin: 0 auto 18px;
+  padding: 15px;
+  border: 2px solid #d6aa44;
+  border-radius: 14px;
+  background: #fff6d2;
+  color: #65584a;
+  line-height: 1.5;
+  text-align: center;
 }
-
 
 .archive-access strong {
-
-  color:
-    #8b633e;
-
+  color: #8b633e;
 }
-
 
 .clue-plus-panel {
-
-  display:
-    none;
-
-  max-width:
-    700px;
-
-  margin:
-    18px
-    auto
-    0;
-
-  padding:
-    18px;
-
-  border:
-    2px
-    solid
-    #71558e;
-
-  border-radius:
-    16px;
-
-  background:
-    #eee6f4;
-
-  text-align:
-    center;
-
+  display: none;
+  max-width: 700px;
+  margin: 18px auto 0;
+  padding: 18px;
+  border: 2px solid #71558e;
+  border-radius: 16px;
+  background: #eee6f4;
+  text-align: center;
 }
-
 
 .clue-plus-panel.visible {
-
-  display:
-    block;
-
+  display: block;
 }
-
 
 .clue-plus-panel h3 {
-
-  margin:
-    5px
-    0
-    7px;
-
+  margin: 5px 0 7px;
 }
-
 
 .clue-plus-panel p {
-
-  color:
-    #62566a;
-
-  line-height:
-    1.5;
-
+  color: #62566a;
+  line-height: 1.5;
 }
-
 
 .clue-plus-badge {
-
-  display:
-    inline-block;
-
-  margin-top:
-    4px;
-
-  padding:
-    8px
-    12px;
-
-  border-radius:
-    999px;
-
-  background:
-    #71558e;
-
-  color:
-    white;
-
-  font-size:
-    .78rem;
-
-  font-weight:
-    bold;
-
+  display: inline-block;
+  margin-top: 4px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #71558e;
+  color: white;
+  font-size: .78rem;
+  font-weight: bold;
 }
-
 
 
 /* =====================================================
    MOBILE
 ===================================================== */
 
-@media
-(max-width:600px) {
+@media (max-width:600px) {
 
   .clue-profile-strip {
-
-    width:
-      96%;
-
-    padding:
-      11px;
-
+    width: 96%;
+    padding: 11px;
   }
-
 
   .clue-profile-main {
-
-    grid-template-columns:
-      1fr;
-
+    grid-template-columns: 1fr;
   }
-
 
   .clue-profile-button {
-
-    width:
-      100%;
-
+    width: 100%;
   }
-
 
   .clue-level-row {
-
-    font-size:
-      .68rem;
-
+    font-size: .68rem;
   }
-
 
   .archive-access,
   .clue-plus-panel {
-
-    width:
-      96%;
-
+    width: 96%;
   }
 
 }
@@ -655,7 +302,6 @@ gtag(
 
 
 <header>
-
 
 <a
   class="lab-link"
@@ -691,7 +337,6 @@ gtag(
   A Game of Meaning
 </p>
 
-
 </header>
 
 
@@ -702,12 +347,9 @@ gtag(
 
 <section class="clue-profile-strip">
 
-
 <div class="clue-profile-main">
 
-
 <div class="clue-profile-left">
-
 
 <div
   id="clueProfileAvatar"
@@ -718,7 +360,6 @@ gtag(
 
 
 <div class="clue-profile-copy">
-
 
 <div
   id="clueProfileName"
@@ -738,14 +379,12 @@ gtag(
 
 <div class="clue-profile-stats">
 
-
 <span
   id="clueProfileLevel"
   class="clue-profile-pill clue-level-pill"
 >
   🧪 Level 1
 </span>
-
 
 <span
   id="clueProfileXP"
@@ -754,14 +393,12 @@ gtag(
   ⭐ 0 XP
 </span>
 
-
 <span
   id="clueProfileLabStreak"
   class="clue-profile-pill"
 >
   🔥 Lab 0
 </span>
-
 
 <span
   id="clueProfileStreak"
@@ -770,12 +407,9 @@ gtag(
   🧩 Clue-Cards 0
 </span>
 
-
 </div>
 
-
 </div>
-
 
 </div>
 
@@ -788,45 +422,35 @@ gtag(
   Profile
 </button>
 
-
 </div>
 
 
 
 <div class="clue-level-panel">
 
-
 <div class="clue-level-row">
-
 
 <span id="clueLevelText">
   Level 1 Progress
 </span>
 
-
 <span id="clueLevelXPText">
   0 / 100 XP
 </span>
-
 
 </div>
 
 
 <div class="clue-level-track">
 
-
 <div
   id="clueLevelFill"
   class="clue-level-fill"
->
-</div>
-
+></div>
 
 </div>
 
-
 </div>
-
 
 </section>
 
@@ -850,7 +474,6 @@ gtag(
 
 <div class="top-nav">
 
-
 <button
   id="currentTab"
   class="nav-button active"
@@ -859,7 +482,6 @@ gtag(
   Current Clue
 </button>
 
-
 <button
   id="archiveTab"
   class="nav-button"
@@ -867,7 +489,6 @@ gtag(
 >
   Archive
 </button>
-
 
 </div>
 
@@ -883,12 +504,7 @@ gtag(
 >
 
 
-<!-- =====================================================
-     CLUE HEADING
-===================================================== -->
-
 <div class="clue-heading">
-
 
 <div
   id="clueNumber"
@@ -900,16 +516,13 @@ gtag(
 
 <div class="answer-placeholder">
 
-
 <span class="answer-label">
   ANSWER
 </span>
 
-
 <h2 id="clueTitle">
   _____
 </h2>
-
 
 <div
   id="enumeration"
@@ -917,7 +530,6 @@ gtag(
 >
   (5)
 </div>
-
 
 </div>
 
@@ -929,7 +541,6 @@ gtag(
   “Long arm of the law? Arraigns lifer.”
 </p>
 
-
 </div>
 
 
@@ -940,7 +551,6 @@ gtag(
 
 <div class="phase-row">
 
-
 <button
   id="cluePhaseButton"
   class="phase-button active"
@@ -949,7 +559,6 @@ gtag(
   🧩 Clue Release
 </button>
 
-
 <button
   id="solutionPhaseButton"
   class="phase-button solution"
@@ -957,7 +566,6 @@ gtag(
 >
   🔒 Reveal Solution
 </button>
-
 
 </div>
 
@@ -969,19 +577,15 @@ gtag(
 
 <div class="viewer">
 
-
 <div class="viewer-label">
-
 
 <span id="phaseLabel">
   CLUE RELEASE
 </span>
 
-
 <span id="slideCounter">
   1 / 4
 </span>
-
 
 </div>
 
@@ -991,19 +595,16 @@ gtag(
   class="image-frame"
 >
 
-
 <img
   id="clueImage"
   src="/PAT-Games/cluecards/003/IMG_0293.jpeg"
   alt="Koan~Kaon Clue-Card #003"
 >
 
-
 </div>
 
 
 <div class="viewer-controls">
-
 
 <button
   id="previousButton"
@@ -1014,7 +615,6 @@ gtag(
   ← Previous
 </button>
 
-
 <button
   id="nextButton"
   class="viewer-button primary"
@@ -1023,16 +623,13 @@ gtag(
   Next →
 </button>
 
-
 </div>
 
 
 <div
   id="dots"
   class="dots"
->
-</div>
-
+></div>
 
 </div>
 
@@ -1043,7 +640,6 @@ gtag(
 ===================================================== -->
 
 <div class="guess-panel">
-
 
 <h3>
   Collapse the clue.
@@ -1060,7 +656,6 @@ gtag(
 
 <div class="guess-row">
 
-
 <input
   id="guessInput"
   type="text"
@@ -1070,7 +665,6 @@ gtag(
   placeholder="What is the answer?"
 >
 
-
 <button
   id="guessButton"
   class="guess-button"
@@ -1079,24 +673,16 @@ gtag(
   Submit Guess
 </button>
 
-
 </div>
 
 
 <div
   id="guessFeedback"
   class="guess-feedback"
->
-</div>
+></div>
 
-
-
-<!-- =====================================================
-     SHARE
-===================================================== -->
 
 <div class="share-row">
-
 
 <button
   id="shareButton"
@@ -1106,9 +692,7 @@ gtag(
   📤 Share Clue
 </button>
 
-
 </div>
-
 
 </div>
 
@@ -1123,23 +707,17 @@ gtag(
   class="reveal-box"
 >
 
-
 <h3>
   Think you've collapsed the clue?
 </h3>
 
-
 <p>
-
   Work backward from the surface story.
-
   Look for the source letters,
   identify the wordplay mechanism,
   and find the answer that makes
   the whole clue fit.
-
 </p>
-
 
 <button
   id="bigRevealButton"
@@ -1148,7 +726,6 @@ gtag(
 >
   Reveal the Answer
 </button>
-
 
 </div>
 
@@ -1163,7 +740,6 @@ gtag(
   class="solution-info"
 >
 
-
 <div class="solution-badge">
   CLUE SOLVED
 </div>
@@ -1175,13 +751,8 @@ gtag(
 
 
 <p class="solution-intro">
-
   The clue rearranges one word into another:
-
-  <strong>
-    LIFER → RIFLE
-  </strong>
-
+  <strong>LIFER → RIFLE</strong>
 </p>
 
 
@@ -1190,38 +761,28 @@ gtag(
 
 <div class="solution-card">
 
-
 <span class="mini-label red">
   ⚖️ LIFER
 </span>
 
-
 <p id="senseA">
-
-  A prisoner serving a life sentence
-  supplies the source letters.
-
+  LIFER: a prisoner serving a life sentence
+  and the source letters for the anagram.
 </p>
-
 
 </div>
 
 
 <div class="solution-card">
 
-
 <span class="mini-label blue">
   🎯 RIFLE
 </span>
 
-
 <p id="senseB">
-
-  A long firearm supplies
-  the playful definition.
-
+  RIFLE: a long firearm — the playful
+  “long arm” supplied by the clue.
 </p>
-
 
 </div>
 
@@ -1231,41 +792,28 @@ gtag(
 
 <div class="mechanism">
 
-
 <strong>
   Cryptic Mechanism
 </strong>
 
-
 <br><br>
-
 
 <strong id="mechanism">
-
   Anagram / Rearrangement
-
 </strong>
-
 
 <br><br>
 
-
 <span id="mechanismDescription">
-
   LIFER is rearranged to form RIFLE.
-
   “Arraigns” signals the rearrangement,
   while “Long arm of the law?” supplies
   the playful definition.
-
 </span>
 
-
 </div>
 
-
 </div>
-
 
 </section>
 
@@ -1280,25 +828,18 @@ gtag(
   class="view"
 >
 
-
 <div class="archive-heading">
-
 
 <h2>
   Clue-Card Archive
 </h2>
 
-
 <p>
-
   Return to previous Koan~Kaon puzzles
   without revealing their answers first.
-
 </p>
 
-
 </div>
-
 
 
 <div
@@ -1306,38 +847,29 @@ gtag(
   class="archive-access"
 >
 
-
 <strong>
   🔒 Current Clue Free • Archive Learning Lab+
 </strong>
 
-
 <br>
 
-
 The newest Clue-Card is available to everyone.
-
 Previous clues will become part of
 the Learning Lab+ archive.
 
-
 </div>
-
 
 
 <div
   id="archiveList"
   class="archive-list"
->
-</div>
-
+></div>
 
 
 <div
   id="cluePlusPanel"
   class="clue-plus-panel"
 >
-
 
 <div
   style="
@@ -1350,29 +882,22 @@ the Learning Lab+ archive.
   LEARNING LAB+
 </div>
 
-
 <h3>
   Unlock the Clue-Card Archive
 </h3>
 
-
 <p>
-
   Keep the newest weekly clue free,
   while Learning Lab+ members can return
   to the growing library of previous
   Koan~Kaon Clue-Cards.
-
 </p>
-
 
 <span class="clue-plus-badge">
   Subscriptions Coming Soon
 </span>
 
-
 </div>
-
 
 </section>
 
@@ -1383,32 +908,19 @@ the Learning Lab+ archive.
 
 <footer>
 
-
 <strong>
   KOAN~KAON
 </strong>
 
-
 • Powered by Cryptic-Calculus™
 
-
 <br>
-
 
 Solve clues.
 Level up.
 Master meaning.
 
-
 </footer>
-
-
-
-<!-- =====================================================
-     CLUE CARD GAME LOGIC
-===================================================== -->
-
-<script src="cluecards.js?v=20260911-1"></script>
 
 
 
@@ -1418,15 +930,10 @@ Master meaning.
 
 <script>
 
-
 function renderClueCardProfile() {
 
-  if (
-    !window.PATProfile
-  ) {
-
+  if (!window.PATProfile) {
     return;
-
   }
 
 
@@ -1438,210 +945,222 @@ function renderClueCardProfile() {
     PATProfile.stats();
 
 
+  const streaks =
+    stats.streaks || {};
+
+
   const clueStreak =
     Number(
-      stats.streaks.cluecards
-      ||
-      0
+      streaks.cluecards || 0
     );
 
 
   const level =
     Number(
-      stats.level
-      ||
-      1
+      stats.level || 1
     );
 
 
   const levelPercent =
     Number(
-      stats.levelPercent
-      ||
-      0
+      stats.levelPercent || 0
     );
 
 
   const xpIntoLevel =
     Number(
-      stats.xpIntoLevel
-      ||
-      0
+      stats.xpIntoLevel || 0
     );
 
 
   const xpPerLevel =
     Number(
-      stats.xpPerLevel
-      ||
-      100
+      stats.xpPerLevel || 100
     );
 
 
-
-  /* ===================================================
-     IDENTITY
-  ==================================================== */
-
-  document
-    .getElementById(
+  const avatarElement =
+    document.getElementById(
       "clueProfileAvatar"
-    )
-    .textContent =
-      profile.avatar
-      ||
-      "🧪";
+    );
 
 
-  document
-    .getElementById(
+  const nameElement =
+    document.getElementById(
       "clueProfileName"
-    )
-    .textContent =
+    );
+
+
+  const planElement =
+    document.getElementById(
+      "clueProfilePlan"
+    );
+
+
+  const levelElement =
+    document.getElementById(
+      "clueProfileLevel"
+    );
+
+
+  const xpElement =
+    document.getElementById(
+      "clueProfileXP"
+    );
+
+
+  const levelTextElement =
+    document.getElementById(
+      "clueLevelText"
+    );
+
+
+  const levelXPElement =
+    document.getElementById(
+      "clueLevelXPText"
+    );
+
+
+  const levelFillElement =
+    document.getElementById(
+      "clueLevelFill"
+    );
+
+
+  const labStreakElement =
+    document.getElementById(
+      "clueProfileLabStreak"
+    );
+
+
+  const clueStreakElement =
+    document.getElementById(
+      "clueProfileStreak"
+    );
+
+
+  const currentStreakElement =
+    document.getElementById(
+      "currentClueStreak"
+    );
+
+
+  if (avatarElement) {
+
+    avatarElement.textContent =
+      profile.avatar || "🧪";
+
+  }
+
+
+  if (nameElement) {
+
+    nameElement.textContent =
       profile.profileCreated
       ?
-        "@"
-        +
-        profile.username
+        "@" + profile.username
       :
         "Guest Explorer";
 
+  }
 
-  document
-    .getElementById(
-      "clueProfilePlan"
-    )
-    .textContent =
-      profile.plan ===
-      "plus"
+
+  if (planElement) {
+
+    planElement.textContent =
+      profile.plan === "plus"
       ?
         "LEARNING LAB+"
       :
-      profile.plan ===
-      "admin"
+      profile.plan === "admin"
       ?
         "LAB ADMIN"
       :
         "FREE EXPLORER";
 
+  }
 
 
-  /* ===================================================
-     LEVEL + XP
-  ==================================================== */
+  if (levelElement) {
 
-  document
-    .getElementById(
-      "clueProfileLevel"
-    )
-    .textContent =
-      "🧪 Level "
-      +
-      level;
+    levelElement.textContent =
+      "🧪 Level " + level;
+
+  }
 
 
-  document
-    .getElementById(
-      "clueProfileXP"
-    )
-    .textContent =
-      "⭐ "
-      +
-      (
-        stats.xp
-        ||
-        0
-      )
-      +
+  if (xpElement) {
+
+    xpElement.textContent =
+      "⭐ " +
+      (stats.xp || 0) +
       " XP";
 
+  }
 
-  document
-    .getElementById(
-      "clueLevelText"
-    )
-    .textContent =
-      "Level "
-      +
-      level
-      +
+
+  if (levelTextElement) {
+
+    levelTextElement.textContent =
+      "Level " +
+      level +
       " Progress";
 
+  }
 
-  document
-    .getElementById(
-      "clueLevelXPText"
-    )
-    .textContent =
-      xpIntoLevel
-      +
-      " / "
-      +
-      xpPerLevel
-      +
+
+  if (levelXPElement) {
+
+    levelXPElement.textContent =
+      xpIntoLevel +
+      " / " +
+      xpPerLevel +
       " XP";
 
+  }
 
-  document
-    .getElementById(
-      "clueLevelFill"
-    )
-    .style
-    .width =
+
+  if (levelFillElement) {
+
+    levelFillElement.style.width =
       Math.min(
         100,
         Math.max(
           0,
           levelPercent
         )
-      )
-      +
+      ) +
       "%";
 
+  }
 
 
-  /* ===================================================
-     STREAKS
-  ==================================================== */
+  if (labStreakElement) {
 
-  document
-    .getElementById(
-      "clueProfileLabStreak"
-    )
-    .textContent =
-      "🔥 Lab "
-      +
-      (
-        stats.globalStreak
-        ||
-        0
-      );
+    labStreakElement.textContent =
+      "🔥 Lab " +
+      (stats.globalStreak || 0);
+
+  }
 
 
-  document
-    .getElementById(
-      "clueProfileStreak"
-    )
-    .textContent =
-      "🧩 Clue-Cards "
-      +
+  if (clueStreakElement) {
+
+    clueStreakElement.textContent =
+      "🧩 Clue-Cards " +
       clueStreak;
 
+  }
 
-  document
-    .getElementById(
-      "currentClueStreak"
-    )
-    .textContent =
-      "🔥 Current Clue-Card streak: "
-      +
+
+  if (currentStreakElement) {
+
+    currentStreakElement.textContent =
+      "🔥 Current Clue-Card streak: " +
       clueStreak;
 
+  }
 
-
-  /* ===================================================
-     ARCHIVE ACCESS
-  ==================================================== */
 
   const archiveAccess =
     document.getElementById(
@@ -1649,13 +1168,16 @@ function renderClueCardProfile() {
     );
 
 
-  if (
-    archiveAccess
-  ) {
+  if (archiveAccess) {
 
-    if (
-      PATProfile.canAccessArchive()
-    ) {
+    const canAccess =
+      typeof PATProfile.canAccessArchive ===
+      "function"
+      &&
+      PATProfile.canAccessArchive();
+
+
+    if (canAccess) {
 
       archiveAccess.innerHTML = `
 
@@ -1666,8 +1188,7 @@ function renderClueCardProfile() {
         <br>
 
         ${
-          profile.username
-          ||
+          profile.username ||
           "Explorer"
         },
         your Learning Lab+ access includes
@@ -1701,16 +1222,19 @@ function renderClueCardProfile() {
 }
 
 
-
 /* =====================================================
    PROFILE BUTTON
 ===================================================== */
 
-document
-  .getElementById(
+const clueProfileButton =
+  document.getElementById(
     "clueProfileButton"
-  )
-  .addEventListener(
+  );
+
+
+if (clueProfileButton) {
+
+  clueProfileButton.addEventListener(
     "click",
     function () {
 
@@ -1720,6 +1244,7 @@ document
     }
   );
 
+}
 
 
 /* =====================================================
@@ -1736,7 +1261,6 @@ window.addEventListener(
 );
 
 
-
 /* =====================================================
    PROFILE READY
 ===================================================== */
@@ -1751,17 +1275,24 @@ window.addEventListener(
 );
 
 
-
 /* =====================================================
-   START
+   INITIAL PROFILE RENDER
 ===================================================== */
 
 renderClueCardProfile();
 
-
-<script>
-alert("CLUECARD JAVASCRIPT IS RUNNING");
 </script>
+
+
+
+<!-- =====================================================
+     CLUE CARD GAME LOGIC
+
+     IMPORTANT:
+     LOAD THIS AFTER THE PAGE ELEMENTS EXIST.
+===================================================== -->
+
+<script src="./cluecards.js?v=20260911-6"></script>
 
 
 </body>
