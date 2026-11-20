@@ -21,3 +21,23 @@ button,input,select,textarea{font:inherit}button{border-radius:12px;transition:t
 
 /* Ensure the wordmark stays on one line across engines and breakpoints. */
 nav.pat-arcade-nav .pat-mark{display:inline-flex!important;flex-direction:row!important;align-items:center;justify-content:center;white-space:nowrap!important}
+
+
+/* Learning Lab landing: keep playable games distinct from the curriculum hub. */
+.pat-hero{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);align-items:center;gap:clamp(20px,5vw,68px);min-height:470px;padding:clamp(40px,7vw,82px) max(6vw,24px);background:#1c3153;color:#f8f5ef}
+.pat-hero::before{position:absolute;z-index:-1;inset:0;content:"";background:radial-gradient(ellipse at 78% 48%,rgba(90,116,151,.2),transparent 42%),linear-gradient(105deg,rgba(16,32,56,.22),transparent 70%)}
+.pat-hero-copy{max-width:690px}.pat-hero .pat-eyebrow,.pat-resource-section>.pat-eyebrow{margin:0 0 14px;color:#e9c56f;font-size:.76rem;font-weight:800;letter-spacing:.16em}
+.pat-hero h1{margin:0;color:#fff;font-size:clamp(2.7rem,5.5vw,4.7rem);letter-spacing:-.055em}.pat-hero h2{margin:17px 0 12px;color:#f2c866;font-size:clamp(1.45rem,2.6vw,2rem);letter-spacing:-.025em}
+.pat-hero-copy>p:not(.pat-eyebrow){max-width:640px;margin:0;color:#d8e0ec;font-size:clamp(1rem,1.45vw,1.15rem);line-height:1.75}
+.pat-hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px;margin-top:27px}.pat-hero-actions a{display:inline-flex;min-height:52px;align-items:center;justify-content:center;gap:16px;font-weight:750;text-decoration:none}
+.pat-hero-primary{padding:13px 21px;border:1px solid #f0c668;border-radius:12px;background:#f0c668;color:#1c3153!important;box-shadow:0 8px 24px rgba(0,0,0,.14)}.pat-hero-primary:hover{background:#ffda80;color:#1c3153!important}
+.pat-hero-secondary{color:#ffdc8c!important;text-decoration:underline!important;text-underline-offset:5px}.pat-orbit-art{display:block;width:min(100%,480px);justify-self:center;overflow:visible}
+.pat-orbit-center{fill:#1c3153;font:800 27px system-ui,sans-serif;letter-spacing:2px}.pat-orbit-glyph{fill:#263c5b;font:800 29px system-ui,sans-serif}
+.pat-resource-section{margin:0 auto;padding:clamp(46px,7vw,82px) clamp(16px,4vw,34px) 8px}.pat-resource-section>.pat-eyebrow{color:var(--pat-wine)}.pat-resource-section h2{max-width:760px;margin:0;color:var(--pat-ink)}
+.pat-resource-lead{max-width:760px;margin:13px 0 26px;color:#665d5a}.pat-resource-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.pat-resource-card{display:flex;min-height:225px;flex-direction:column;align-items:flex-start;gap:10px;padding:22px;border:1px solid var(--pat-line);border-radius:16px;background:var(--pat-surface);box-shadow:var(--pat-shadow);color:var(--pat-body);text-decoration:none;transition:transform .18s,border-color .18s}
+.pat-resource-card:hover{transform:translateY(-3px);border-color:var(--pat-gold);color:var(--pat-body)}.pat-resource-icon{color:var(--pat-gold);font-size:.75rem;font-weight:850;letter-spacing:.14em}
+.pat-resource-card strong{color:var(--pat-ink);font-size:1.08rem}.pat-resource-card span:not(.pat-resource-icon){line-height:1.55}.pat-resource-card b{margin-top:auto;color:var(--pat-wine);font-size:.9rem}
+.pat-legacy-intro{display:none!important}#arcade-games{scroll-margin-top:20px}
+@media(max-width:800px){.pat-hero{grid-template-columns:minmax(0,1fr) minmax(250px,.8fr);gap:16px;padding-inline:28px}.pat-resource-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.pat-hero{grid-template-columns:1fr;gap:8px;min-height:0;padding:42px 22px 32px}.pat-hero-copy{position:relative;z-index:1}.pat-orbit-art{width:min(100%,370px);max-height:300px;margin:-4px auto -15px}.pat-hero-actions{align-items:stretch;flex-direction:column;gap:8px}.pat-hero-actions a{width:100%;justify-content:space-between}.pat-resource-grid{grid-template-columns:1fr}.pat-resource-card{min-height:0}}
