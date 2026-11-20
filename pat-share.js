@@ -1,11 +1,10 @@
-/* Shared PAT Learning Lab share helper. */
+/* Reliable sharing for every PAT Learning Lab game. */
 (function () {
-  function flash(button, message) {
-    if (!button) return;
-    const old = button.dataset.shareLabel || button.textContent.trim();
-    button.dataset.shareLabel = old;
-    button.textContent = message;
-    window.setTimeout(function () { button.textContent = old; }, 1500);
+  function flash(button, label) {
+    const original = button.dataset.shareLabel || button.textContent.trim();
+    button.dataset.shareLabel = original;
+    button.textContent = label;
+    window.setTimeout(function () { button.textContent = original; }, 1700);
   }
 
   async function copyText(text) {
@@ -34,26 +33,37 @@
     }
   }
 
-  async function share(button, payload) {
-    const url = payload.url || window.location.href;
-    if (typeof navigator.share === "function") {
+  function pageShareText(button) {
+    const heading = document.querySelector("h1") || document.querySelector("main h2");
+    const puzzle = document.querySelector("#clueNumber, #puzzle-number, .puzzle-number, .puzzle-type");
+    return [
+      heading ? heading.textContent.trim() : document.title,
+      puzzle ? puzzle.textContent.trim() : "PAT Learning Lab activity",
+      "Play and learn with PAT Learning Lab."
+    ].join("\n");
+  }
+
+  document.addEventListener("click", async function (event) {
+    const button = event.target.closest("#shareButton, #generalShare, #miniShare, #shareBuzz, #native-share, #copy-share, [data-share]");
+    if (!button) return;
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const text = pageShareText(button);
+    const url = window.location.href;
+    const payload = { title: document.title, text: text, url: url };
+
+    if (button.id !== "copy-share" && typeof navigator.share === "function") {
       try {
-        await navigator.share({ title: payload.title, text: payload.text, url: url });
+        await navigator.share(payload);
         flash(button, "Shared!");
-        return "native";
+        return;
       } catch (error) {
-        if (error && error.name === "AbortError") return "cancelled";
+        if (error && error.name === "AbortError") return;
       }
     }
 
-    const ok = await copyText([payload.text || "", url].filter(Boolean).join("\n\n"));
-    if (ok) {
-      flash(button, "Copied!");
-      return "clipboard";
-    }
-    flash(button, "Copy unavailable");
-    return "unavailable";
-  }
-
-  window.PATShare = { copyText: copyText, share: share };
+    const ok = await copyText([text, url].join("\n\n"));
+    flash(button, ok ? "Copied!" : "Copy unavailable");
+  }, true);
 })();
