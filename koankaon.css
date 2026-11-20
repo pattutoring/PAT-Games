@@ -2265,3 +2265,13 @@ footer {
   }
 
 }
+
+
+/* KOAN~KAON mini crossword scales to phone widths without horizontal clipping. */
+@media (max-width: 480px) {
+  .mini-lattice { transform: translateX(-50%) scale(.62); margin-bottom: -167px; }
+}
+@media (max-width: 360px) {
+  .mini-lattice { transform: translateX(-50%) scale(.58); margin-bottom: -185px; }
+  .general-grid { width: min(272px, 88vw); }
+}
