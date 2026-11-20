@@ -18,3 +18,6 @@ button,input,select,textarea{font:inherit}button{border-radius:12px;transition:t
 
 /* Keep the PAT monogram horizontal inside its ring. */
 .pat-mark{display:flex;align-items:center;justify-content:center;gap:0;font-size:12px;line-height:1}
+
+/* Ensure the wordmark stays on one line across engines and breakpoints. */
+nav.pat-arcade-nav .pat-mark{display:inline-flex!important;flex-direction:row!important;align-items:center;justify-content:center;white-space:nowrap!important}
