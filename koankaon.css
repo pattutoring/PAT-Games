@@ -2275,3 +2275,27 @@ footer {
   .mini-lattice { transform: translateX(-50%) scale(.58); margin-bottom: -185px; }
   .general-grid { width: min(272px, 88vw); }
 }
+
+
+/* Center the scaled SU(2) lattice on narrow screens. */
+@media (max-width: 480px) {
+  .mini-board-column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mini-lattice {
+    left: 50%;
+    margin-left: 0;
+    transform: translateX(-50%) scale(.62);
+    transform-origin: top center;
+  }
+}
+
+@media (max-width: 360px) {
+  .mini-lattice {
+    transform: translateX(-50%) scale(.58);
+  }
+}
